@@ -1,0 +1,423 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout 1`] = `
+Array [
+  <div
+    className=" css-14qb38z-LeftSidebar eu5n9bq0"
+  >
+    <div
+      className="css-3xwi1s-LogoWrapper eu5n9bq1"
+    >
+      <img
+        src="/images/dwolla-developers-logo.png"
+      />
+    </div>
+    <div
+      className="css-11xrmrt-SideNavWrapper eu5n9bq2"
+    >
+      <div
+        className="css-1gqrwdk-Container e10mac9s0"
+      >
+        <div
+          className=" css-1f0sx94-Slide e10mac9s1"
+        >
+          <div
+            className="css-p3a8sa-SlidePane e10mac9s2"
+          >
+            <div
+              className="css-1klu905-SectionLinksWrapper e10mac9s8"
+            >
+              <a
+                className="css-3bamg-SectionLink-SectionLink"
+                href="/"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <div>
+                  <img
+                    src="/images/home-icon.svg"
+                  />
+                </div>
+                Home
+              </a>
+              <a
+                className="css-3bamg-SectionLink-SectionLink"
+                href="/docs/guides"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <div>
+                  <img
+                    src="/images/guides-icon.svg"
+                  />
+                </div>
+                Guides
+              </a>
+              <a
+                className="css-3bamg-SectionLink-SectionLink"
+                href="/docs/concepts"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <div>
+                  <img
+                    src="/images/concepts-icon.svg"
+                  />
+                </div>
+                Concepts
+              </a>
+              <a
+                className="css-3bamg-SectionLink-SectionLink"
+                href="/sdks-tools"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <div>
+                  <img
+                    src="/images/sdks-tools-icon.svg"
+                  />
+                </div>
+                SDKs & Tools
+              </a>
+            </div>
+          </div>
+          <div
+            className="css-p3a8sa-SlidePane e10mac9s2"
+          >
+            <div
+              className="css-mhn8j-StickyTop e10mac9s3"
+            >
+              <div
+                className="css-1klu905-SectionLinksWrapper e10mac9s8"
+              >
+                <a
+                  className="css-3bamg-SectionLink-SectionLink"
+                  href="/"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                >
+                  <div>
+                    <img
+                      src="/images/home-icon.svg"
+                    />
+                  </div>
+                  Back Home
+                </a>
+              </div>
+            </div>
+            <ul
+              className="css-1ekxq2g-CategoriesNav e10mac9s4"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <a
+      className="css-8aopii-ContainerLink ewnpdbq0"
+      href="https://status.dwolla.com"
+      target="_blank"
+    >
+      <span
+        className="indicator-undefined css-2u2kiz-StatusIcon ewnpdbq1"
+      />
+    </a>
+  </div>,
+  <div
+    className="css-a3vp85-MainArea eu5n9bq3"
+  >
+    <div
+      className="css-wyx2b5-Container e1xhgpyy0"
+    >
+      <select>
+        <option>
+          Node.js
+        </option>
+        <option>
+          Python
+        </option>
+        <option>
+          Ruby
+        </option>
+        <option>
+          Kotlin
+        </option>
+        <option>
+          Java
+        </option>
+      </select>
+    </div>
+    <div>
+      page
+    </div>
+    <div
+      className="css-19nh8vv-Container en8mxva0"
+    >
+      <div
+        className="css-szg2y-Group en8mxva1"
+      >
+        <h3
+          className="css-1aabfl1-Heading en8mxva2"
+        >
+          Discover
+        </h3>
+        <ul
+          className="css-499foe-List en8mxva3"
+        >
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#discover-send"
+            >
+              Send
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#discover-receive"
+            >
+              Receive
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#discover-send-receive"
+            >
+              Send & Receive
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#facilitate"
+            >
+              Facilitate
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#me-to-me"
+            >
+              Me to Me
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-szg2y-Group en8mxva1"
+      >
+        <h3
+          className="css-1aabfl1-Heading en8mxva2"
+        >
+          Concepts
+        </h3>
+        <ul
+          className="css-499foe-List en8mxva3"
+        >
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#concepts-basics"
+            >
+              Basics
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#concepts-essentials"
+            >
+              Essentials
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#concepts-integrations"
+            >
+              Integrations
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-szg2y-Group en8mxva1"
+      >
+        <h3
+          className="css-1aabfl1-Heading en8mxva2"
+        >
+          Guides
+        </h3>
+        <ul
+          className="css-499foe-List en8mxva3"
+        >
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#guides-prerequisites"
+            >
+              Prerequisites
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#guides-get-building"
+            >
+              Get Building
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#features"
+            >
+              Features
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-szg2y-Group en8mxva1"
+      >
+        <h3
+          className="css-1aabfl1-Heading en8mxva2"
+        >
+          API Reference
+        </h3>
+        <ul
+          className="css-499foe-List en8mxva3"
+        >
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#api-reference-documentation"
+            >
+              Documentation
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="api-reference-sdk-support"
+            >
+              SDK Support
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#api-reference-what-it-do"
+            >
+              What does the Dwolla API do?
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        className="css-szg2y-Group en8mxva1"
+      >
+        <h3
+          className="css-1aabfl1-Heading en8mxva2"
+        >
+          Tools and SDKs
+        </h3>
+        <ul
+          className="css-499foe-List en8mxva3"
+        >
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#tools-and-sdks-ruby"
+            >
+              Ruby
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#tools-and-sdks-python"
+            >
+              Python
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#tools-and-sdks-php"
+            >
+              PHP
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#tools-and-sdks-csharp"
+            >
+              C#
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#tools-and-sdks-java"
+            >
+              Java
+            </a>
+          </li>
+          <li
+            className="css-gu46f2-Item en8mxva4"
+          >
+            <a
+              className="css-1k75nkf-ListLink en8mxva5"
+              href="#tools-and-sdks-javascript"
+            >
+              JavaScript
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>,
+]
+`;

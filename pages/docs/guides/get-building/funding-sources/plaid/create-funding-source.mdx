@@ -1,0 +1,79 @@
+---
+title: Create Customer Funding Source
+---
+
+# Step 2 - Create a funding source for a Customer using a plaidToken
+
+This step assumes you’ve [created a Customer](https://docs.dwolla.com/#create-a-customer) for the user that you’ve authenticated or will authenticate with Plaid. Using the processor_token obtained from the previous step, you’ll pass this in as the value of the `plaidToken` request parameter; along with a funding source `name` in the request to [create a funding source for a Customer](https://docs.dwolla.com/#new-funding-source-for-a-customer).
+
+##### Request and response (view schema in 'raw')
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "plaidToken": "processor-sandbox-161c86dd-d470-47e9-a741-d381c2b2cb6f",
+  "name": "Jane Doe’s Checking"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+```
+
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  plaidToken: 'processor-sandbox-161c86dd-d470-47e9-a741-d381c2b2cb6f',
+  name: 'Jane Doe’s Checking'
+}
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+funding_source = app_token.post "#{customer_url}/funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  'plaidToken': 'processor-sandbox-161c86dd-d470-47e9-a741-d381c2b2cb6f',
+  'name': 'Jane Doe’s Checking'
+}
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer = app_token.post('%s/funding-sources' % customer_url, request_body)
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
+var requestBody = {
+  plaidToken: "processor-sandbox-161c86dd-d470-47e9-a741-d381c2b2cb6f",
+  name: "Jane Doe’s Checking",
+};
+
+appToken
+  .post(`${customerUrl}/funding-sources`, requestBody)
+  .then(res => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+### Obtain a funding source URL that belongs to the Customer
+
+Once you’ve received a successful response from the API, you’ll use the unique funding source URL to identify the Customer’s bank when initiating ACH transfers.
+
+---
+
+Previous steps:
+
+- [Generate Plaid Token](https://developers.dwolla.com/guides/funding-sources/plaid/generate-processor-token)

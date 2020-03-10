@@ -1,0 +1,142 @@
+---
+title: "Step 2 - Add funding source"
+---
+
+# Step 2: Adding a Funding Source
+
+Within Dwolla, the sending party must always have a verified funding source. Since your Customer is the one sending funds, they will need to both add and verify their bank funding source before being eligible to send funds.
+
+The destination party, or the party receiving funds, does not need to have a verified funding source to receive these funds.
+
+## Bank Addition and Verification methods
+
+There are three ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
+
+| Bank Addition Method                     | Will the bank be verified?    | Required Information            |
+| ---------------------------------------- | ----------------------------- | ------------------------------- |
+| API - Account // Routing Number          | Optional - With Microdeposits | Bank Account and Routing Number |
+| Dwolla.js - Instant Account Verification | Yes                           | Online Bank Credentials         |
+| Third party - Plaid                      | Yes                           | Online Bank Credentials         |
+
+For an in-depth look at these methods and the features and benefits of each, take a look at our [developer resource article.](https://developers.dwolla.com/guides/funding-sources)
+
+In this guide, we’ll be utilizing Dwolla’s Instant Account Verification (IAV) method via dwolla.js for adding and verifying our user’s bank account. Micro-deposit verification can take 1-2 business days to complete, so if speed is a primary factor in your user experience, then you may want to feature IAV as your preferred bank verification method.
+
+## Step 2A: Adding a bank to the Unverified Customer
+
+In this step, we will be attaching a bank account to the Customer, which will be accomplished by using Instant Account Verification (IAV). This method will give the Customer the ability to add and verify their bank account in a matter of seconds through authentication of their online banking credentials.
+
+Once the Customer reaches the page in your application to add a bank account, you’ll send an API request to Dwolla’s server to [generate an IAV token](https://docs.dwolla.com/#create-an-iav-token-for-dwolla-js).
+
+### Generate a single-use IAV token for your Customer (view schema in ‘raw’)
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/iav-token
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+HTTP/1.1 200 OK
+
+{
+ "_links": {
+   "self": {
+     "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/iav-token"
+   }
+ },
+ "token": "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
+}
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$fsToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C");
+$fsToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+?>
+```
+
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer = app_token.post "#{customer_url}/iav-token"
+customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
+
+app_token.post('%s/iav-token' % customer_url)
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C";
+
+appToken.post(`${customerUrl}/iav-token`).then(res => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+```
+
+Then, you’ll pass this single-use IAV token to the client-side of your application where it will be used in the JavaScript function dwolla.iav.start(). This token will be used to authenticate the request asking Dwolla to render the IAV flow. Before calling this function, you’ll want to include the dwolla.js library in the HEAD of your page.
+
+```htmlnoselect
+<head>
+  <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
+</head>
+```
+
+Next, you’ll add in a container to the body of your page where you want to render the IAV flow.
+
+```htmlnoselect
+<div id="mainContainer">
+  <input type="button" id="start" value="Add Bank">
+</div>
+
+<div id="iavContainer"></div>
+```
+
+Now that you have dwolla.js initialized on the page and the container created where you’ll render the IAV flow, you’ll create a JavaScript function that responds when clicking the “Add bank” button on your page. Once your Customer clicks “Add Bank”, your application will call dwolla.iav.start() passing in the following arguments: the iavContainer element where IAV will render, a string value of your single-use IAV token, and a callback function that will handle any error or response.
+
+```javascriptnoselect
+<script type="text/javascript">
+$('#start').click(function() {
+  var iavToken = '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY';
+  dwolla.configure('sandbox');
+  dwolla.iav.start(iavToken, {
+          container: 'iavContainer',
+          stylesheets: [
+            'https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
+          ],
+          microDeposits: 'true',
+          fallbackToMicroDeposits: (fallbackToMicroDeposits.value === 'true')
+        }, function(err, res) {
+    console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
+  });
+});
+</script>
+
+```
+
+The Customer will complete the IAV flow by authenticating with their online banking credentials. You’ll know their bank account was successfully added and verified if you receive a JSON response in your callback that includes a link to the newly created funding source.
+
+<img src="/images/iav_checking.png" width="75%" height="75%" />
+
+You’ll know their bank account was successfully added and verified if you receive a JSON response in your callback that includes a link to the newly created funding source.
+
+### Example success callback
+
+```
+{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}
+```
+
+## Step 2B: Handle Webhooks
+
+If you have an active webhook subscription, you should receive both the `customer_funding_source_created` and `customer_funding_source_verified` webhook immediately following the completion of the IAV flow.
+
+<nav class="pager-nav">
+  <a href="create-customer.html">Back: Customer Onboarding</a>
+  <a href="retrieve-funding-source.html">Next: Retrieve Funding Sources</a>
+</nav>

@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNav 1`] = `
+<div
+  className="css-1gqrwdk-Container e10mac9s0"
+>
+  <div
+    className=" css-1f0sx94-Slide e10mac9s1"
+  >
+    <div
+      className="css-p3a8sa-SlidePane e10mac9s2"
+    >
+      <div
+        className="css-1klu905-SectionLinksWrapper e10mac9s8"
+      >
+        <a
+          className="css-3bamg-SectionLink-SectionLink"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div>
+            <img
+              src="/images/home-icon.svg"
+            />
+          </div>
+          Home
+        </a>
+        <a
+          className="css-3bamg-SectionLink-SectionLink"
+          href="/docs/guides"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div>
+            <img
+              src="/images/guides-icon.svg"
+            />
+          </div>
+          Guides
+        </a>
+        <a
+          className="css-3bamg-SectionLink-SectionLink"
+          href="/docs/concepts"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div>
+            <img
+              src="/images/concepts-icon.svg"
+            />
+          </div>
+          Concepts
+        </a>
+        <a
+          className="css-3bamg-SectionLink-SectionLink"
+          href="/sdks-tools"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div>
+            <img
+              src="/images/sdks-tools-icon.svg"
+            />
+          </div>
+          SDKs & Tools
+        </a>
+      </div>
+    </div>
+    <div
+      className="css-p3a8sa-SlidePane e10mac9s2"
+    >
+      <div
+        className="css-mhn8j-StickyTop e10mac9s3"
+      >
+        <div
+          className="css-1klu905-SectionLinksWrapper e10mac9s8"
+        >
+          <a
+            className="css-3bamg-SectionLink-SectionLink"
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <div>
+              <img
+                src="/images/home-icon.svg"
+              />
+            </div>
+            Back Home
+          </a>
+        </div>
+      </div>
+      <ul
+        className="css-1ekxq2g-CategoriesNav e10mac9s4"
+      />
+    </div>
+  </div>
+</div>
+`;

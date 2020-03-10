@@ -1,0 +1,196 @@
+---
+title: "Step 1: Customer onboarding"
+---
+
+# Step 1: Creating your Customer
+
+## Choose the Customer Type for Your Funds Flow
+
+Before your end-user can send or receive funds to their connected bank account, they must be created as a Customer via the Dwolla API. With this funds flow, however, the only eligible Customer types are:
+
+- Verified Personal Customers
+- Verified Business Customers
+
+To learn more on the differences between personal and business verified Customers and the capabilities of each, [check out our developer resource article.](https://developers.dwolla.com/articles/customers)
+
+**A note on verified Customers:**
+
+Verified Customers must go through the identity verification process and have a `verified` status in order to be eligible to transact. In order to verify the identity of the individual or business creating a Dwolla Customer account, you will need to pass information including, but not limited to, social security number (ssn), address, date of birth, and/or Employer Identification Number (EIN).
+
+## Step 1A. Create the Customer
+
+While both the Personal and Business verified Customer types are valid in this funds flow, we will be creating a Personal verified Customer in this guide.
+
+#### Request Parameters - Personal Verified Customer
+
+| Parameter | Required | Type   | Description                         |
+|-------------|----------|--------|-------------------------------------|
+| firstName | yes      | string | An individual Customer’s first name |
+| lastName  | yes      | string | An individual Customer’s last name  |
+| email     | yes      | string | Customer’s email address            |
+| ipAddress | no       | string | Customer’s IP address               |
+| type      | yes      | string | The Verified Customer type–set to personal if creating a verified personal Customer |
+| address1  | yes      | string | First line of the street address of the Customer’s permanent residence–must be 50 characters or less. Note: PO Boxes are not allowed. |
+| address2  | no       | string | Second line of the street address of the Customer’s permanent residence–must be 50 characters or less. Note: PO Boxes are not allowed. |
+| city      | yes      | string | City of Customer’s permanent residence |
+| state     | yes      | string | Two letter abbreviation of the state in which the Customer resides (e.g. CA) |
+| postalCode | yes      | string | Postal code of Customer’s permanent residence. US five-digit ZIP or ZIP + 4 code (e.g. 50314) |
+| dateOfBirth | yes      | string | Customer’s date of birth in YYYY-MM-DD format–must be 18 years or older |
+| ssn       | yes      | string | Last four digits of the Customer’s Social Security Number |
+| phone     | no       | string | Customer’s 10 digit phone number–no hyphens or other separators (e.g. 3334447777) |
+
+#### Request and response (view schema in ‘raw’)
+
+```bash
+POST https://api-sandbox.dwolla.com/customers
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@nomail.net",
+  "ipAddress": "10.10.10.10",
+  "type": "personal",
+  "address1": "99-99 33rd St",
+  "city": "Some City",
+  "state": "NY",
+  "postalCode": "11101",
+  "dateOfBirth": "1970-01-01",
+  "ssn": "1234"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->create([
+  'firstName' => 'John',
+  'lastName' => 'Doe',
+  'email' => 'jdoe@nomail.net',
+  'type' => 'personal',
+  'address1' => '99-99 33rd St',
+  'city' => 'Some City',
+  'state' => 'NY',
+  'postalCode' => '11101',
+  'dateOfBirth' => '1970-01-01',
+
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+
+  # If the entire SSN is provided,
+  # it will still be accepted
+  'ssn' => '1234'
+]);
+
+$customer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :firstName => 'John',
+  :lastName => 'Doe',
+  :email => 'jdoe@nomail.net',
+  :type => 'personal',
+  :address1 => '99-99 33rd St',
+  :city => 'Some City',
+  :state => 'NY',
+  :postalCode => '11101',
+  :dateOfBirth => '1970-01-01',
+
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+
+  # If the entire SSN is provided,
+  # it will still be accepted
+
+  :ssn => '1234'
+}
+
+customer = app_token.post "customers", request_body
+customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'firstName': 'John',
+  'lastName': 'Doe',
+  'email': 'jdoe@nomail.net',
+  'type': 'personal',
+  'address1': '99-99 33rd St',
+  'city': 'Some City',
+  'state': 'NY',
+  'postalCode': '11101',
+  'dateOfBirth': '1970-01-01',
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+  # If the entire SSN is provided,
+  # it will still be accepted
+  'ssn': '1234'
+}
+
+customer = app_token.post('customers', request_body)
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+```
+
+```javascript
+var requestBody = {
+  firstName: 'John',
+  lastName: 'Doe',
+  email: 'jdoe@nomail.net',
+  type: 'personal',
+  address1: '99-99 33rd St',
+  city: 'Some City',
+  state: 'NY',
+  postalCode: '11101',
+  dateOfBirth: '1970-01-01',
+  // For the first attempt, only the
+  // last 4 digits of SSN required
+  // If the entire SSN is provided,
+  // it will still be accepted
+  ssn: '1234'
+};
+
+appToken
+  .post('customers', requestBody)
+  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+```
+
+When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating webhooks that are triggered for the user in the Dwolla system.
+
+<ol class = "alerts">
+    <li class="alert icon-alert-alert">
+      Provide the IP address of the end-user accessing your application as the `ipAddress` parameter. This enhances fraud detection and tracking.
+    </li>
+</ol>
+
+## Step 1B: Handle Webhooks
+
+If you have an active webhook subscription, you will receive the `customer_created` and `customer_verified` webhook immediately after the resource has been created.
+
+## Other expected behavior
+
+### Customer Statuses
+
+Not all Customers will have a `verified` status upon initial Customer creation. In production, you may run into an instance where more information is needed from your end-user in order for Dwolla to fully verify their identity. Other statuses your Customer may be placed in include, `retry`, `document`, `deactivated`, or `suspended`. For more information on these statuses, refer to our developer resource article.
+
+### Balance Funding Source
+
+On successful Customer verification, Dwolla will also create a [Balance Funding Source](https://developers.dwolla.com/articles/funding-sources/balance-funding-sources) for this Customer.
+
+**A Note on the Balance Funding Source**
+
+There are two types of Funding Sources available within the Dwolla Platform which include a bank or a balance. A bank account is commonly used as the source or destination for ACH transfers. A `balance` is a Funding Source that can be utilized like a “wallet” for holding a stored value of funds. The Dwolla balance is made available for Customers that have fully `verified` their identity within Dwolla.
+
+<nav class="pager-nav">
+    <a href="./">Back: Overview</a>
+    <a href="create-funding-source.html">Next: Add funding source</a>
+</nav>

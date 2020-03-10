@@ -1,0 +1,40 @@
+---
+title: List of Operational Notifications
+---
+
+When using Dwolla’s white-label API, your application is responsible for all interactions to your end users. You decide how to customize the payments experience end-to-end, which includes taking on the required delivery of notifications to end users for their account and payment activity. By default, Dwolla provides functionality via Operational Notifications and sends email notifications to your end users on your behalf. When actions occur within the Dwolla Network on a resource (Customers, Transfers, etc.), events are created to record those changes. Dwolla systematically delivers an email using the email address tied to the [creation of a Customer](https://docs.dwolla.com/#customers) when an applicable event occurs.
+
+## Operational Notification Events
+
+Email notifications are sent to your end users when they complete the activities focused on the following key functions in your application (powered by the Dwolla Platform) or via the Dwolla Dashboard:
+
++ Customer creation
++ Bank account management and validation
++ Money added to a balance
++ Money withdrawn from a balance
++ Money sent to another end user (or your company)
++ Money received from another end user (or your company)
++ Customer verification and suspension
+
+A full list of events are listed below. Please review to ensure you know when your users will receive notifications via Operational Notifications. In addition to the email notifications listed in this article, further communications, per Dwolla’s requirements and your own application’s functionality, will need to be sent by you to your end users. Please contact your Integration Manager with questions specific to your integration and recommended (or required) emails.
+
+## Customization
+
+When configuring Operational Notifications, there are several items that can be customized to your business. Below is a list of the items that you can currently customize:
+
+| Item                      | Required? | Description |
+|---------------------------|-----------|-------------|
+| **Account Name** | Yes | The name that will display in the **From** section, defaults to the name on your Dwolla account or specified DBA name.<br /> Example: <code>Your Business Name</code>|
+| **From Email Address** | Yes | The email address that will display in the [From] address, only the local-part can be customized.<br /> Example: <code>yourbusinessname@dwolla.com</code>|
+| **Reply-to Email Address** | Yes | The email address your company will specify to receive replies.<br /> Example: <code>support@yourbusinessname.com</code>|
+| **Logo**| No | The branded image for your company, to be displayed at the top of the email content. |
+| **Logo Link** | No | The link that when the logo is clicked on, will redirect the receiver.<br /> Example: <code>www.yourbusinessname.com</code> |
+| **Support Address** | Yes | The physical address that will display in the email footer, defaulted to the address on the account.<br /> Example: <code>123 Main Street, Des Moines, IA 50309</code> |
+| **Support phone** | Conditional | An optional item. Required if a <code>Support email</code> isn't provided. The phone number that will show up in the support section, defaulted to the account phone number.<br /> Example: <code>"If you have any questions or concerns please contact support at 555-555-5555."</code> |
+| **Support Email Address** | Conditional | An optional item. Required if a <code>Support phone</code> isn't provided. The email address that will show up in the support section, optional and defaults to the account email address.<br /> Example: <code>"If you have any questions or concerns please contact support at support@yourbusinessname.com."</code> |
+
+#### Example Email Template
+
+An example email template is shown below for a payment initiated email. At the present time, only the information listed  in the customization section can be edited. Emails are viewable within the Dwolla Dashboard upon delivery attempt to your customers.
+
+![email template](/images/email-template.png)

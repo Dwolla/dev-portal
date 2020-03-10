@@ -1,0 +1,20 @@
+{
+  "folders": [{ "name": "dev-portal", "path": "." }],
+  "settings": {
+    "files.exclude": {
+      "node_modules/": true,
+      ".next/": true,
+      "out/": true,
+      ".mdx-data/": true,
+      "coverage/": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "blanu.vscode-styled-jsx",
+      "zhuangtongfa.vscode-styled-jsx-languageserver-scss",
+      "tlent.jest-snapshot-language-support"
+    ]
+  }
+}

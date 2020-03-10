@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`all 1`] = `
+Array [
+  Object {
+    "foo": "Lorem",
+    "id": "/docs/guides/hello",
+  },
+  Object {
+    "bar": "Ipsum",
+    "id": "/docs/world",
+  },
+  Object {
+    "bar": "Docs",
+    "id": "/docs",
+  },
+  Object {
+    "foo": "Dolor",
+    "id": "/other/area/hello",
+  },
+  Object {
+    "bar": "Sit",
+    "id": "/other/world",
+  },
+  Object {
+    "foo": "Amet",
+    "id": "/",
+  },
+  Object {
+    "bar": "Consectetur",
+    "id": "/other",
+  },
+  Object {
+    "group": Object {
+      "id": "/group",
+      "title": "Group Title",
+    },
+    "id": "/group",
+  },
+  Object {
+    "group": Object {
+      "id": "/group",
+      "title": "Group Title",
+    },
+    "id": "/group/under-a-group",
+  },
+]
+`;
+
+exports[`under 1`] = `
+Array [
+  Object {
+    "foo": "Lorem",
+    "id": "/docs/guides/hello",
+  },
+  Object {
+    "bar": "Ipsum",
+    "id": "/docs/world",
+  },
+]
+`;

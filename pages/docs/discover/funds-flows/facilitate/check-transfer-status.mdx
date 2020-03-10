@@ -1,0 +1,82 @@
+---
+title: "Step 7: Check the status of your transfer"
+---
+
+# Step 7: Check the status of your transfer
+
+You can check the status of the newly created transfer by retrieving the transfer by its URL.
+
+#### Request and response (view schema in `raw`)
+```bash
+GET https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/transfers/D76265CD-0951-E511-80DA-0AA34A9B2388"
+    },
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+    },
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/customers/C7F300C0-F1EF-4151-9BBE-005005AC3747"
+    }
+  },
+  "id": "D76265CD-0951-E511-80DA-0AA34A9B2388",
+  "status": "pending",
+  "amount": {
+    "value": "225.00",
+    "currency": "USD"
+  },
+  "created": "2015-09-02T00:30:25.580Z"
+}
+```
+
+```ruby
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+# For Dwolla  API applications, an app_token can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
+transfer = app_token.get transfer_url
+transfer.status # => "pending"
+```
+
+```php
+<?php
+$transferUrl = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
+
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->byId($transferUrl);
+$transfer->status; # => "pending"
+?>
+```
+
+```python
+transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+# For Dwolla API applications, an app_token can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
+transfer = app_token.get(transfer_url)
+transfer.body['status'] # => 'pending'
+```
+
+```javascript
+var transferUrl = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
+
+// For Dwolla API applications, an appToken can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
+appToken
+  .get(transferUrl)
+  .then(res => res.body.status); // => 'pending'
+```
+
+That’s it!  You’ve successfully transferred money from Joe Buyer to Jane Merchant. Please continue to the Webhooks guide for information on implementing notifications for your customers about the transfer.
+
+<nav className="pager-nav">
+    <a href="create-transfer.html">Back: Overview</a>
+    <a href="/guides/webhooks">Next guide: Webhooks</a>
+</nav>
