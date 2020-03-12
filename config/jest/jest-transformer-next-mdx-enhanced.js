@@ -1,3 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable strict */
+
 "use strict";
 
 const matter = require("gray-matter");

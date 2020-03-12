@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useEffect, useReducer } from "react";
 import classnames from "classnames";
 import groupby from "lodash.groupby";
-import { Page } from "../../modules/pages";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
+import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
 import { ORANGE_PRIMARY, GREY_6, GREY_2 } from "../colors";
 
 // proptypes
@@ -54,7 +54,9 @@ type Action =
   | ReturnType<typeof toggleGroup>
   | ReturnType<typeof setMostRecentSectionHref>;
 
+// eslint-disable-next-line consistent-return
 const reducer = (state: State, action: Action): State => {
+  // eslint-disable-next-line default-case
   switch (action.type) {
     case "groupToggled":
       return {
@@ -79,10 +81,10 @@ const reducer = (state: State, action: Action): State => {
 
 // helpers
 
-const bySection = (section: string) => d =>
+const bySection = (section: string) => (d) =>
   section && d.id.indexOf(`${section}/`) === 0;
 
-const getCategory = d => (d.group ? d.group.category : d.category);
+const getCategory = (d) => (d.group ? d.group.category : d.category);
 
 const isSelectedSection = (pathname: string) => (l: SideNavLinkProps) =>
   l.isSection && (pathname === l.href || pathname.startsWith(`${l.href}/`));
@@ -93,7 +95,7 @@ const hrefIs = (lastSelectedSectionHref: string) => (l: SideNavLinkProps) =>
 const keys = (o: Record<string, {}>): string[] => {
   const sorted = Object.keys(o).sort();
   return sorted.indexOf("null") >= 0 || sorted.indexOf(null) >= 0
-    ? [null, ...sorted.filter(s => s !== "null" && s !== null)]
+    ? [null, ...sorted.filter((s) => s !== "null" && s !== null)]
     : sorted;
 };
 
@@ -101,10 +103,10 @@ const byDocGroup = (g: string) => (d: Page) =>
   (!d.group && g === null) || (d.group && d.group.id === g);
 
 const groupTitle = (docs, group) =>
-  docs.find(d => d.group && d.group.id === group).group.title;
+  docs.find((d) => d.group && d.group.id === group).group.title;
 
 const groupsFrom = (categoryDocs: Page[]) => [
-  ...(new Set(categoryDocs.map(d => (d.group ? d.group.id : null))) as Set<
+  ...(new Set(categoryDocs.map((d) => (d.group ? d.group.id : null))) as Set<
     string
   >),
 ];
@@ -260,7 +262,7 @@ function SectionLink(props: SideNavLinkProps) {
         `}
       >
         <div>
-          <img src={props.iconSrc} />
+          <img src={props.iconSrc} alt={props.text} />
         </div>
 
         {props.text}
@@ -278,17 +280,16 @@ export default function SideNav(props: SideNavProps) {
 
   const selectedSectionHref = selectedSection?.href;
   useEffect(() => {
-    if (selectedSectionHref)
+    if (selectedSectionHref) {
       dispatch(setMostRecentSectionHref(selectedSectionHref));
+    }
   }, [selectedSectionHref]);
 
   const mostRecentSection = props.links.find(
     hrefIs(state.mostRecentSectionHref)
   );
 
-  const displayedSection = selectedSection
-    ? selectedSection
-    : mostRecentSection;
+  const displayedSection = selectedSection || mostRecentSection;
 
   const sectionDocs = props.pages.filter(
     bySection(state.mostRecentSectionHref)
@@ -301,7 +302,7 @@ export default function SideNav(props: SideNavProps) {
       <Slide className={classnames({ selectedSection })}>
         <SlidePane>
           <SectionLinksWrapper>
-            {props.links.map(l => (
+            {props.links.map((l) => (
               <SectionLink key={l.href} {...l} />
             ))}
           </SectionLinksWrapper>
@@ -322,7 +323,7 @@ export default function SideNav(props: SideNavProps) {
           </StickyTop>
 
           <CategoriesNav>
-            {keys(groupedByCategory).map(c => {
+            {keys(groupedByCategory).map((c) => {
               const categoryDocs = groupedByCategory[c];
 
               const groups = groupsFrom(categoryDocs);
@@ -331,7 +332,7 @@ export default function SideNav(props: SideNavProps) {
                 <CategoryItem key={c}>
                   {c && <CategoryHeading>{c}</CategoryHeading>}
 
-                  {groups.map(g => {
+                  {groups.map((g) => {
                     const docs = categoryDocs.filter(byDocGroup(g));
 
                     const ungroupedGroup = g === null;
@@ -341,7 +342,7 @@ export default function SideNav(props: SideNavProps) {
                     return (
                       <div key={g}>
                         {ungroupedGroup ? (
-                          docs.map(d => (
+                          docs.map((d) => (
                             <DocLink
                               key={d.id}
                               grouped={false}
@@ -360,7 +361,7 @@ export default function SideNav(props: SideNavProps) {
                             </GroupToggle>
 
                             {groupToggled &&
-                              docs.map(d => (
+                              docs.map((d) => (
                                 <DocLink
                                   key={d.id}
                                   grouped
