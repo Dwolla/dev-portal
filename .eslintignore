@@ -1,0 +1,8 @@
+build/
+coverage/
+node_modules/
+out/
+.mdx-data/
+.next/
+.pnp
+.storybook-out/

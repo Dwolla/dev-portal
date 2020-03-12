@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "_eslint": "eslint {.storybook,components,config,modules,pages,stories} *.js *.ts --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "_eslint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "_prettier": "prettier .babelrc *.{js,json} \"./!(*node_modules|.next|coverage|.storybook-out|out)/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage|.storybook-out|out)/**/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage|.storybook-out|out)/**/**/*.{js,jsx,ts,tsx,css,scss}\"",
     "build": "next build && next export && build-storybook -c .storybook -o .storybook-out",
     "checks": "yarn _prettier --check && yarn _eslint && tsc --noEmit",
