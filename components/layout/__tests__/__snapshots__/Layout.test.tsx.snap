@@ -9,6 +9,7 @@ Array [
       className="css-3xwi1s-LogoWrapper eu5n9bq1"
     >
       <img
+        alt="Dwolla Developers Logo"
         src="/images/dwolla-developers-logo.png"
       />
     </div>
@@ -35,6 +36,7 @@ Array [
               >
                 <div>
                   <img
+                    alt="Home"
                     src="/images/home-icon.svg"
                   />
                 </div>
@@ -48,6 +50,7 @@ Array [
               >
                 <div>
                   <img
+                    alt="Guides"
                     src="/images/guides-icon.svg"
                   />
                 </div>
@@ -61,6 +64,7 @@ Array [
               >
                 <div>
                   <img
+                    alt="Concepts"
                     src="/images/concepts-icon.svg"
                   />
                 </div>
@@ -74,6 +78,7 @@ Array [
               >
                 <div>
                   <img
+                    alt="SDKs & Tools"
                     src="/images/sdks-tools-icon.svg"
                   />
                 </div>
@@ -98,6 +103,7 @@ Array [
                 >
                   <div>
                     <img
+                      alt="Back Home"
                       src="/images/home-icon.svg"
                     />
                   </div>
