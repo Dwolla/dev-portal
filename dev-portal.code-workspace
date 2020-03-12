@@ -6,14 +6,15 @@
       ".next/": true,
       "out/": true,
       ".mdx-data/": true,
-      "coverage/": true
+      "coverage/": true,
+      ".storybook-out": true
     }
   },
   "extensions": {
     "recommendations": [
       "esbenp.prettier-vscode",
-      "blanu.vscode-styled-jsx",
-      "zhuangtongfa.vscode-styled-jsx-languageserver-scss",
+      "jpoissonnier.vscode-styled-components",
+      "silvenon.mdx",
       "tlent.jest-snapshot-language-support"
     ]
   }
