@@ -12,7 +12,7 @@ import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-var
 // proptypes
 
 interface LayoutProps {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element;
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;

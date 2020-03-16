@@ -1,4 +1,5 @@
 import App, { createUrl } from "next/app";
+import { MDXProvider } from "@mdx-js/react";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
 
@@ -72,19 +73,23 @@ const TOP_BAR_CHILDREN = [
   </select>,
 ];
 
+const MDX_COMPONENTS = {};
+
 export default class MyApp extends App {
   render() {
     const { router, Component, pageProps } = this.props;
     const url = createUrl(router);
     return (
-      <Layout
-        footerLinks={FOOTER_LINKS}
-        pages={Pages.all()}
-        sideNavLinks={SIDE_NAV_LINKS}
-        topBarChildren={TOP_BAR_CHILDREN}
-      >
-        <Component {...pageProps} url={url} />
-      </Layout>
+      <MDXProvider components={MDX_COMPONENTS}>
+        <Layout
+          footerLinks={FOOTER_LINKS}
+          pages={Pages.all()}
+          sideNavLinks={SIDE_NAV_LINKS}
+          topBarChildren={TOP_BAR_CHILDREN}
+        >
+          <Component {...pageProps} url={url} />
+        </Layout>
+      </MDXProvider>
     );
   }
 }
