@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "_prettier": "prettier .babelrc *.{js,json} \"./!(*node_modules|.next|coverage)/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage)/**/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage)/**/**/*.{js,jsx,ts,tsx,css,scss}\"",
+    "_eslint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
+    "_prettier": "prettier .babelrc *.{js,json} \"./!(*node_modules|.next|coverage|.storybook-out|out)/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage|.storybook-out|out)/**/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage|.storybook-out|out)/**/**/*.{js,jsx,ts,tsx,css,scss}\"",
     "build": "next build && next export && build-storybook -c .storybook -o .storybook-out",
-    "checks": "yarn _prettier --check && tsc --noEmit",
+    "checks": "yarn _prettier --check && yarn _eslint && tsc --noEmit",
     "dev": "rm -rf .next/cache/ && next dev",
-    "fix": "yarn _prettier --write",
+    "fix": "yarn _prettier --write && yarn _eslint --fix",
     "start": "next start",
     "storybook": "start-storybook -p 6006 -c .storybook",
     "test": "jest --clearCache && jest --watch",
@@ -35,6 +36,7 @@
     "babel-plugin-import-glob-array": "^0.2.0",
     "babel-preset-react-app": "^9.1.1",
     "classnames": "^2.2.6",
+    "eslint-plugin-jest": "^23.8.2",
     "identity-obj-proxy": "^3.0.0",
     "isomorphic-unfetch": "^3.0.0",
     "jest": "^25.1.0",
@@ -50,5 +52,15 @@
     "react-test-renderer": "^16.12.0",
     "swr": "^0.1.18",
     "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.23.0",
+    "@typescript-eslint/parser": "^2.23.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }

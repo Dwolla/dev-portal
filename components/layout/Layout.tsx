@@ -2,12 +2,12 @@ import Head from "next/head";
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
-import SideNav, { SideNavLinkProps } from "./SideNav";
+import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2 } from "../colors";
 import ApiStatus from "./ApiStatus";
 import TopBar from "./TopBar";
-import Footer, { FooterLink } from "./Footer";
-import { Page } from "../../modules/pages";
+import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
+import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
 
 // proptypes
 
@@ -98,7 +98,10 @@ export default function Layout(props: LayoutProps) {
 
       <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
         <LogoWrapper>
-          <img src="/images/dwolla-developers-logo.png" />
+          <img
+            src="/images/dwolla-developers-logo.png"
+            alt="Dwolla Developers Logo"
+          />
         </LogoWrapper>
 
         <SideNavWrapper>

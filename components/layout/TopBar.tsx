@@ -20,6 +20,6 @@ interface TopBarProps {
   children: JSX.Element | JSX.Element[];
 }
 
-export default function TopBar(props: TopBarProps) {
-  return <Container>{props.children}</Container>;
+export default function TopBar({ children }: TopBarProps) {
+  return <Container>{children}</Container>;
 }

@@ -1,6 +1,6 @@
-import { GREY_2, HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 import styled from "@emotion/styled";
 import map from "lodash.map";
+import { GREY_2, HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 
 const Container = styled.div`
   border-top: 1px solid ${GREY_2};
@@ -59,7 +59,7 @@ export default function Footer(props: FooterProps) {
           <Heading>{k}</Heading>
 
           <List>
-            {v.map(i => (
+            {v.map((i) => (
               <Item key={i.href}>
                 <ListLink href={i.href}>{i.text}</ListLink>
               </Item>
