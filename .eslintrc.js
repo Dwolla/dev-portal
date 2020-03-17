@@ -27,6 +27,7 @@ module.exports = {
     "import/extensions": "off", // webpack
     "import/no-unresolved": "off", // typescript
     "jsx-a11y/anchor-is-valid": "off", // next/link
+    "object-curly-newline": "off", // prettier
     "operator-linebreak": "off", // prettier
     quotes: ["error", "double"],
     "react/destructuring-assignment": "off",
