@@ -32,6 +32,7 @@ module.exports = {
     "react/destructuring-assignment": "off",
     "react/jsx-closing-tag-location": "off", // prettier
     "react/jsx-filename-extension": "off", // typescript
+    "react/jsx-one-expression-per-line": "off", // prettier
     "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off", // next
     "react/self-closing-comp": "off", // prettier
