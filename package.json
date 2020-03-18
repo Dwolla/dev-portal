@@ -5,7 +5,8 @@
   "scripts": {
     "_eslint": "eslint . --ext .js --ext .jsx --ext .ts --ext .tsx",
     "_prettier": "prettier .babelrc *.{js,json} \"./!(*node_modules|.next|coverage|.storybook-out|out)/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage|.storybook-out|out)/**/*.{js,jsx,ts,tsx,css,scss}\" \"./!(*node_modules|.next|coverage|.storybook-out|out)/**/**/*.{js,jsx,ts,tsx,css,scss}\"",
-    "build": "next build && next export && build-storybook -c .storybook -o .storybook-out",
+    "build": "next build && next export",
+    "build-storybook": "build-storybook -c .storybook -o .storybook-out",
     "checks": "yarn _prettier --check && yarn _eslint && tsc --noEmit",
     "dev": "rm -rf .next/cache/ && next dev",
     "fix": "yarn _prettier --write && yarn _eslint --fix",
