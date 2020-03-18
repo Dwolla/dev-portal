@@ -1,9 +1,9 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import Card from "../components/Card";
+import Card from "../components/content/Card";
 import guideIcon from "../public/images/guides-icon-large.svg";
 
-//card when 'link' and 'badge' are not present
+// card when 'link' and 'badge' are not present
 storiesOf("Card", module).add("Default", () => {
   return (
     <Card
@@ -14,7 +14,7 @@ storiesOf("Card", module).add("Default", () => {
   );
 });
 
-//card when only 'link' is present
+// card when only 'link' is present
 storiesOf("Card", module).add("Link", () => {
   return (
     <Card
@@ -26,7 +26,7 @@ storiesOf("Card", module).add("Link", () => {
   );
 });
 
-//card when only 'badge' is present
+// card when only 'badge' is present
 storiesOf("Card", module).add("Badge", () => {
   return (
     <Card
@@ -38,7 +38,7 @@ storiesOf("Card", module).add("Badge", () => {
   );
 });
 
-//card when 'link' and 'badge' are present
+// card when 'link' and 'badge' are present
 storiesOf("Card", module).add("Link and Badge", () => {
   return (
     <Card
@@ -51,7 +51,7 @@ storiesOf("Card", module).add("Link and Badge", () => {
   );
 });
 
-//card when centered
+// card when centered
 storiesOf("Card", module).add("Center Align", () => {
   return (
     <Card
@@ -63,7 +63,7 @@ storiesOf("Card", module).add("Center Align", () => {
   );
 });
 
-//card when centered with link
+// card when centered with link
 storiesOf("Card", module).add("Center Align + Link", () => {
   return (
     <Card
@@ -76,7 +76,7 @@ storiesOf("Card", module).add("Center Align + Link", () => {
   );
 });
 
-//card when centered with badge
+// card when centered with badge
 storiesOf("Card", module).add("Center Align + Badge", () => {
   return (
     <Card
@@ -89,7 +89,7 @@ storiesOf("Card", module).add("Center Align + Badge", () => {
   );
 });
 
-//card when centered with link and badge
+// card when centered with link and badge
 storiesOf("Card", module).add("Center Align + Link + Badge", () => {
   return (
     <Card

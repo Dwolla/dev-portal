@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { GREY_5, GREY_4 } from "./colors";
+import { GREY_5, GREY_4 } from "../colors";
 
 const Button = styled.a`
   color: ${GREY_5};

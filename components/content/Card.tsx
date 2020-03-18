@@ -3,8 +3,13 @@ import styled from "@emotion/styled";
 
 import Badge from "./Badge";
 import newTabIcon from "../public/images/open-in-new-tab-icon-light-grey.svg";
-import { GREY_2, WHITE_PRIMARY, HEADLINE_TEXT, PARAGRAPH_TEXT } from "./colors";
-import { BOX_SHADOW_4 } from "./shadow-depths";
+import {
+  GREY_2,
+  WHITE_PRIMARY,
+  HEADLINE_TEXT,
+  PARAGRAPH_TEXT,
+} from "../colors";
+import { BOX_SHADOW_4 } from "../shadowDepths";
 
 const CardStyle = styled.div`
   height: 305px;
