@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Badge from "./Badge";
-import newTabIcon from "../public/images/open-in-new-tab-icon-light-grey.svg";
+import newTabIcon from "../../public/images/open-in-new-tab-icon-light-grey.svg";
 import {
   GREY_2,
   WHITE_PRIMARY,
