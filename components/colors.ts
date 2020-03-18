@@ -19,6 +19,7 @@ export const PURPLE_PRIMARY = "#483d66";
 export const PURPLE_PRIMARY_BUTTON = "#5e4e76";
 export const PURPLE_DARK = "#2d2d47";
 export const PINK_SECONDARY_BUTTON = "#cb4976";
+export const WHITE_PRIMARY = "#ffffff";
 
 // Code Block Colors
 export const CODE_BLOCK_YELLOW = "#e6db74";
