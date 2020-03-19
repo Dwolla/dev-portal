@@ -20,8 +20,8 @@ const Button = styled.a`
 
 type Props = { text: string };
 
-function Badge(props: Props) {
-  return <Button>{props.text}</Button>;
+function Badge({ text }: Props) {
+  return <Button>{text}</Button>;
 }
 
 export default Badge;

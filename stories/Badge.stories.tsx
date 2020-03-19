@@ -1,7 +1,5 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import Badge from "../components/content/Badge";
+import Badge from "../components/base/Badge";
 
-storiesOf("Badge", module).add("default", () => {
-  return <Badge text="BADGETEXT" />;
-});
+storiesOf("Badge", module).add("default", () => <Badge text="BADGETEXT" />);
