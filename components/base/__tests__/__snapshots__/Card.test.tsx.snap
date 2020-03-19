@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<div
+  className=" css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className=" css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className=" css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className=" css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Badge 1`] = `
+<div
+  className=" css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className=" css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-vz2qld-BadgeStyle eguc8hf2"
+  >
+    <a
+      className="css-tlj6u6-Button e1w3mjmy0"
+    >
+      BADGETEXT
+    </a>
+  </div>
+  <div
+    className=" css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className=" css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align 1`] = `
+<div
+  className="center css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className="center css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="center css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className="center css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align and Badge 1`] = `
+<div
+  className="center css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className="center css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-vz2qld-BadgeStyle eguc8hf2"
+  >
+    <a
+      className="css-tlj6u6-Button e1w3mjmy0"
+    >
+      BADGETEXT
+    </a>
+  </div>
+  <div
+    className="center css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className="center css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align and Link 1`] = `
+<div
+  className="center css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className="center css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-kd2whk-LinkStyle eguc8hf3"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="center css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className="center css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align, Link and Badge 1`] = `
+<div
+  className="center css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className="center css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-vz2qld-BadgeStyle eguc8hf2"
+  >
+    <a
+      className="css-tlj6u6-Button e1w3mjmy0"
+    >
+      BADGETEXT
+    </a>
+  </div>
+  <div
+    className="css-kd2whk-LinkStyle eguc8hf3"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="center css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className="center css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Link 1`] = `
+<div
+  className=" css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className=" css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-kd2whk-LinkStyle eguc8hf3"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className=" css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className=" css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Link and Badge 1`] = `
+<div
+  className=" css-187e2f2-CardStyle eguc8hf0"
+>
+  <div
+    className=" css-aqeaqx-IconStyle eguc8hf1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-vz2qld-BadgeStyle eguc8hf2"
+  >
+    <a
+      className="css-tlj6u6-Button e1w3mjmy0"
+    >
+      BADGETEXT
+    </a>
+  </div>
+  <div
+    className="css-kd2whk-LinkStyle eguc8hf3"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className=" css-17viy88-TopicStyle eguc8hf4"
+  >
+    topic
+  </div>
+  <div
+    className=" css-1gxma6r-DescriptionStyle eguc8hf5"
+  >
+    Description
+  </div>
+</div>
+`;
