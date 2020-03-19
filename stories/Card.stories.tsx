@@ -1,6 +1,6 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import Card from "../components/content/Card";
+import Card from "../components/base/Card";
 import guideIcon from "../public/images/guides-icon-large.svg";
 
 // card when 'link' and 'badge' are not present

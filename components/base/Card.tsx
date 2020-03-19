@@ -2,9 +2,14 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Badge from "./Badge";
-import newTabIcon from "../public/images/open-in-new-tab-icon-light-grey.svg";
-import { GREY_2, WHITE_PRIMARY, HEADLINE_TEXT, PARAGRAPH_TEXT } from "./colors";
-import { BOX_SHADOW_4 } from "./shadow-depths";
+import newTabIcon from "../../public/images/open-in-new-tab-icon-light-grey.svg";
+import {
+  GREY_2,
+  WHITE_PRIMARY,
+  HEADLINE_TEXT,
+  PARAGRAPH_TEXT,
+} from "../colors";
+import { BOX_SHADOW_4 } from "../shadowDepths";
 
 const CardStyle = styled.div`
   height: 305px;
@@ -83,27 +88,29 @@ type Props = {
   description: string;
 };
 
-function Card(props: Props) {
+function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
   return (
-    <CardStyle className={props.centerAlign ? "center" : ""}>
-      <IconStyle className={props.centerAlign ? "center" : ""}>
-        <img src={props.icon} alt="" />
+    <CardStyle className={centerAlign ? "center" : ""}>
+      <IconStyle className={centerAlign ? "center" : ""}>
+        <img src={icon} alt="" />
       </IconStyle>
-      {props.badge && (
+
+      {badge && (
         <BadgeStyle>
-          <Badge text={props.badge} />
+          <Badge text={badge} />
         </BadgeStyle>
       )}
-      {props.link && (
+
+      {link && (
         <LinkStyle>
           <img src={newTabIcon} alt="" />
         </LinkStyle>
       )}
-      <TopicStyle className={props.centerAlign ? "center" : ""}>
-        {props.topic}
-      </TopicStyle>
-      <DescriptionStyle className={props.centerAlign ? "center" : ""}>
-        {props.description}
+
+      <TopicStyle className={centerAlign ? "center" : ""}>{topic}</TopicStyle>
+
+      <DescriptionStyle className={centerAlign ? "center" : ""}>
+        {description}
       </DescriptionStyle>
     </CardStyle>
   );
