@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge 1`] = `
+<a
+  className="css-tlj6u6-Button e1w3mjmy0"
+>
+  BADGETEXT
+</a>
+`;
