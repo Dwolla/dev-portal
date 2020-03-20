@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { GREY_5, GREY_4 } from "./colors";
+import { GREY_5, GREY_4 } from "../colors";
 
 const Button = styled.a`
   color: ${GREY_5};
@@ -20,8 +20,8 @@ const Button = styled.a`
 
 type Props = { text: string };
 
-function Badge(props: Props) {
-  return <Button>{props.text}</Button>;
+function Badge({ text }: Props) {
+  return <Button>{text}</Button>;
 }
 
 export default Badge;

@@ -1,3 +1,4 @@
+// Box shadow depths
 export const BOX_SHADOW_1 = "0 1px 2px 0 rgba(31,54,78,0.12)";
 export const BOX_SHADOW_2 = "0 2px 4px 0 rgba(31,54,78,0.12)";
 export const BOX_SHADOW_3 = "0 4px 8px 0 rgba(31,54,78,0.12)";
