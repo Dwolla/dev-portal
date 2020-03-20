@@ -11,6 +11,9 @@ import {
 } from "../colors";
 
 const Group = styled.div`
+  @media only screen and (max-width: 1025px) {
+    display: none;
+  }
   width: 235px;
   margin: auto;
   padding: 20px;
@@ -50,6 +53,9 @@ const Group = styled.div`
 `;
 
 const Heading = styled.div`
+  @media only screen and (max-width: 1025px) {
+    display: none;
+  }
   height: 16px;
   color: ${GREY_5};
   font-family: "Poppins", sans-serif;
@@ -61,6 +67,9 @@ const Heading = styled.div`
 `;
 
 const PageTop = styled.div`
+  @media only screen and (max-width: 1025px) {
+    display: none;
+  }
   color: #52627b;
   font-family: "Roboto", sans-serif;
   font-size: 13px;

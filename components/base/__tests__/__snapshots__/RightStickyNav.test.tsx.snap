@@ -88,10 +88,10 @@ exports[`With content 1`] = `
       className="css-rgn0gs-StickyNav egzsi4z1"
     >
       <div
-        className="css-a2c0yj-Group e1ycoeu80"
+        className="css-147j5y1-Group e1ycoeu80"
       >
         <div
-          className="css-1w28r9v-Heading e1ycoeu81"
+          className="css-1w5i3w7-Heading e1ycoeu81"
         >
           ON THIS PAGE
         </div>
@@ -138,7 +138,7 @@ exports[`With content 1`] = `
           Handling retry status
         </a>
         <div
-          className="css-1txt6v-PageTop e1ycoeu82"
+          className="css-1u5ck7p-PageTop e1ycoeu82"
           onClick={[Function]}
         >
           Top of Page
@@ -154,10 +154,10 @@ exports[`With content 1`] = `
 
 exports[`default 1`] = `
 <div
-  className="css-a2c0yj-Group e1ycoeu80"
+  className="css-147j5y1-Group e1ycoeu80"
 >
   <div
-    className="css-1w28r9v-Heading e1ycoeu81"
+    className="css-1w5i3w7-Heading e1ycoeu81"
   >
     ON THIS PAGE
   </div>
@@ -204,7 +204,7 @@ exports[`default 1`] = `
     Handling retry status
   </a>
   <div
-    className="css-1txt6v-PageTop e1ycoeu82"
+    className="css-1u5ck7p-PageTop e1ycoeu82"
     onClick={[Function]}
   >
     Top of Page
