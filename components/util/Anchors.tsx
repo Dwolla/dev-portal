@@ -5,24 +5,14 @@ import {
   useContext,
   Children,
   cloneElement,
-  ReactElement, // eslint-disable-line no-unused-vars
 } from "react";
 import { useRouter } from "next/router";
 import GithubSlugger from "github-slugger";
+import { childrenToString } from "../../modules/helpers";
 
 // constants
 
 const ANCHOR_EL_TYPES = ["h1", "h2", "h3", "h4", "h5", "h6"];
-
-// helpers
-
-const childrenToString = (children) =>
-  Children.toArray(children).reduce((acc, child: ReactElement | string) => {
-    if (typeof child === "object") {
-      return child.props.children.toString();
-    }
-    return acc + child.toString();
-  }, "");
 
 // useAnchors (Context)
 

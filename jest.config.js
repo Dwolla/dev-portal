@@ -1,8 +1,7 @@
 // https://github.com/zeit/next.js/tree/canary/examples/with-jest
 module.exports = {
   transform: {
-    "^.+\\.(md|mdx)$":
-      "<rootDir>/.jest/jest-transformer-next-mdx-enhanced",
+    "^.+\\.(md|mdx)$": "<rootDir>/.jest/jest-transformer-next-mdx-enhanced",
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
   },
   collectCoverageFrom: [
