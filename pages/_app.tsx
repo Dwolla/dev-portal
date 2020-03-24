@@ -75,7 +75,7 @@ const TOP_BAR_CHILDREN = [
 ];
 
 const MDX_COMPONENTS = {
-  wrapper: Anchors.Wrapper,
+  wrapper: Anchors.Set,
 };
 
 export default class MyApp extends App {

@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchors 1`] = `
+Array [
+  <h1
+    id="a"
+  >
+    A
+  </h1>,
+  <h2
+    id="b"
+  >
+    B
+  </h2>,
+  <h3
+    id="c"
+  >
+    C
+  </h3>,
+  <h2
+    id="a-1"
+  >
+    A
+  </h2>,
+  <pre>
+    [
+  {
+    "id": "a",
+    "text": "A",
+    "level": 1
+  },
+  {
+    "id": "b",
+    "text": "B",
+    "level": 2
+  },
+  {
+    "id": "c",
+    "text": "C",
+    "level": 3
+  },
+  {
+    "id": "a-1",
+    "text": "A",
+    "level": 2
+  }
+]
+  </pre>,
+]
+`;

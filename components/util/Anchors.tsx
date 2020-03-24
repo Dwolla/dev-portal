@@ -5,8 +5,7 @@ import {
   useContext,
   Children,
   cloneElement,
-  // eslint-disable-next-line no-unused-vars
-  ReactElement,
+  ReactElement, // eslint-disable-line no-unused-vars
 } from "react";
 import { useRouter } from "next/router";
 import GithubSlugger from "github-slugger";
@@ -25,16 +24,18 @@ const childrenToString = (children) =>
     return acc + child.toString();
   }, "");
 
-// Context
+// useAnchors (Context)
 
 const Context = createContext({
-  anchors: [],
-  setAnchors: (_anchors: string[]) => {}, // eslint-disable-line no-unused-vars
+  anchors: [] as Anchor[],
+  setAnchors: (_anchors: Anchor[]) => {}, // eslint-disable-line no-unused-vars
 });
 
-// Provider
+export const useAnchors = () => useContext(Context);
 
-function Provider(props: { children: JSX.Element }) {
+// Anchors.Provider
+
+function Provider(props: { children: JSX.Element | JSX.Element[] }) {
   const [anchors, setAnchorsState] = useState([]);
 
   const setAnchors = (newAnchors) => setAnchorsState(newAnchors);
@@ -46,24 +47,42 @@ function Provider(props: { children: JSX.Element }) {
   );
 }
 
-// Wrapper
+// Anchors.Set
 
-function Wrapper(props) {
+interface AnchorWrapperProps {
+  anchor: Anchor;
+  children: JSX.Element;
+}
+
+function AnchorData(props: AnchorWrapperProps) {
+  return props.children;
+}
+
+function Set(props) {
   const { setAnchors } = useContext(Context);
   const { pathname } = useRouter();
 
   const slugger = new GithubSlugger();
 
-  const children = Children.map(props.children, (el) =>
-    ANCHOR_EL_TYPES.includes(el.props.mdxType)
-      ? cloneElement(el, {
-          id: slugger.slug(childrenToString(el.props.children)),
-        })
-      : el
-  );
+  const children = Children.map(props.children, (el) => {
+    if (ANCHOR_EL_TYPES.includes(el.props.mdxType)) {
+      const text = childrenToString(el.props.children);
+      const id = slugger.slug(text);
+      const level = ANCHOR_EL_TYPES.indexOf(el.props.mdxType) + 1;
+      return (
+        <AnchorData anchor={{ id, text, level }}>
+          {cloneElement(el, {
+            id,
+          })}
+        </AnchorData>
+      );
+    }
+    return el;
+  });
 
   const anchors = children.reduce(
-    (acc, current) => (current.props.id ? [...acc, current.props.id] : acc),
+    (acc, current) =>
+      current.props.anchor ? [...acc, current.props.anchor] : acc,
     []
   );
 
@@ -76,12 +95,7 @@ function Wrapper(props) {
   return children;
 }
 
-// exports
-
-export const useAnchors = () => useContext(Context);
-
 export default {
-  Context,
   Provider,
-  Wrapper,
+  Set,
 };
