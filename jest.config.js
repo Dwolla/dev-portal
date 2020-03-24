@@ -2,7 +2,7 @@
 module.exports = {
   transform: {
     "^.+\\.(md|mdx)$":
-      "<rootDir>/config/jest/jest-transformer-next-mdx-enhanced",
+      "<rootDir>/.jest/jest-transformer-next-mdx-enhanced",
     "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
   },
   collectCoverageFrom: [
@@ -11,7 +11,7 @@ module.exports = {
     "!**/node_modules/**",
     "!**/*.import.js",
   ],
-  setupFilesAfterEnv: ["<rootDir>/config/jest/jest.setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/.jest/jest.setup.js"],
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
   transformIgnorePatterns: [
     "/node_modules/",
@@ -19,6 +19,6 @@ module.exports = {
   ],
   moduleNameMapper: {
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-    "^.+\\.(png|svg)$": "<rootDir>/config/jest/__mocks__/imageMock.js",
+    "^.+\\.(png|svg)$": "<rootDir>/.jest/__mocks__/imageMock.js",
   },
 };

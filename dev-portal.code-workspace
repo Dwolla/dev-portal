@@ -2,12 +2,13 @@
   "folders": [{ "name": "dev-portal", "path": "." }],
   "settings": {
     "files.exclude": {
-      "node_modules/": true,
-      ".next/": true,
-      "out/": true,
       ".mdx-data/": true,
+      ".next/": true,
+      ".storybook-out": true,
       "coverage/": true,
-      ".storybook-out": true
+      "node_modules/": true,
+      "out/": true,
+      "yarn-error.log": true
     }
   },
   "extensions": {
