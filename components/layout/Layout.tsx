@@ -8,6 +8,7 @@ import ApiStatus from "./ApiStatus";
 import TopBar from "./TopBar";
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
+import OnThisPage from "./OnThisPage";
 
 // proptypes
 
@@ -113,6 +114,8 @@ export default function Layout(props: LayoutProps) {
 
       <MainArea>
         <TopBar>{props.topBarChildren}</TopBar>
+
+        <OnThisPage />
 
         {props.children}
 
