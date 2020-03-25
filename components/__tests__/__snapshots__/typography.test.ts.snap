@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`typography 1`] = `
+Object {
+  "POPPINS": "\\"Poppins\\", sans-serif",
+  "ROBOTO": "\\"Roboto\\", sans-serif",
+}
+`;

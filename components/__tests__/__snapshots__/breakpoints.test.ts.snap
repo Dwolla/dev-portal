@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`breakpoints 1`] = `
+Object {
+  "BREAKPOINT_DESKTOP": 1024,
+  "maxWidth": [Function],
+}
+`;
