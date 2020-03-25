@@ -14,30 +14,30 @@ import { childrenToString } from "../../modules/helpers";
 
 const ANCHOR_EL_TYPES = ["h1", "h2", "h3", "h4", "h5", "h6"];
 
-// useAnchors (Context)
+// AnchorsContext
 
-const Context = createContext({
+export const AnchorsContext = createContext({
   anchors: [] as Anchor[],
   setAnchors: (_anchors: Anchor[]) => {}, // eslint-disable-line no-unused-vars
 });
 
-export const useAnchors = () => useContext(Context);
+export const useAnchors = () => useContext(AnchorsContext);
 
-// Anchors.Provider
+// AnchorsProvider
 
-function Provider(props: { children: JSX.Element | JSX.Element[] }) {
-  const [anchors, setAnchorsState] = useState([]);
-
-  const setAnchors = (newAnchors) => setAnchorsState(newAnchors);
+export function AnchorsProvider(props: {
+  children: JSX.Element | JSX.Element[];
+}) {
+  const [anchors, setAnchors] = useState([]);
 
   return (
-    <Context.Provider value={{ anchors, setAnchors }}>
+    <AnchorsContext.Provider value={{ anchors, setAnchors }}>
       {props.children}
-    </Context.Provider>
+    </AnchorsContext.Provider>
   );
 }
 
-// Anchors.Set
+// AnchorsSetter
 
 interface AnchorWrapperProps {
   anchor: Anchor;
@@ -48,26 +48,23 @@ function AnchorData(props: AnchorWrapperProps) {
   return props.children;
 }
 
-function Set(props) {
-  const { setAnchors } = useContext(Context);
-  const { pathname } = useRouter();
+export function AnchorsSetter(props) {
+  const { setAnchors } = useAnchors();
 
   const slugger = new GithubSlugger();
 
-  const children = Children.map(props.children, (el) => {
-    if (ANCHOR_EL_TYPES.includes(el.props.mdxType)) {
-      const text = childrenToString(el.props.children);
+  const children = Children.map(props.children, (c) => {
+    if (ANCHOR_EL_TYPES.includes(c.props.originalType)) {
+      const text = childrenToString(c.props.children);
       const id = slugger.slug(text);
-      const level = ANCHOR_EL_TYPES.indexOf(el.props.mdxType) + 1;
+      const level = ANCHOR_EL_TYPES.indexOf(c.props.originalType) + 1;
       return (
         <AnchorData anchor={{ id, text, level }}>
-          {cloneElement(el, {
-            id,
-          })}
+          {cloneElement(c, { id })}
         </AnchorData>
       );
     }
-    return el;
+    return c;
   });
 
   const anchors = children.reduce(
@@ -75,6 +72,8 @@ function Set(props) {
       current.props.anchor ? [...acc, current.props.anchor] : acc,
     []
   );
+
+  const { pathname } = useRouter();
 
   useEffect(() => {
     setAnchors(anchors);
@@ -84,8 +83,3 @@ function Set(props) {
 
   return children;
 }
-
-export default {
-  Provider,
-  Set,
-};

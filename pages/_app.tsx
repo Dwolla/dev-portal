@@ -2,7 +2,7 @@ import App, { createUrl } from "next/app";
 import { MDXProvider } from "@mdx-js/react";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
-import Anchors from "../components/util/Anchors";
+import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
 
 const SIDE_NAV_LINKS = [
   {
@@ -75,7 +75,7 @@ const TOP_BAR_CHILDREN = [
 ];
 
 const MDX_COMPONENTS = {
-  wrapper: Anchors.Set,
+  wrapper: AnchorsSetter,
 };
 
 export default class MyApp extends App {
@@ -83,7 +83,7 @@ export default class MyApp extends App {
     const { router, Component, pageProps } = this.props;
     const url = createUrl(router);
     return (
-      <Anchors.Provider>
+      <AnchorsProvider>
         <MDXProvider components={MDX_COMPONENTS}>
           <Layout
             footerLinks={FOOTER_LINKS}
@@ -94,7 +94,7 @@ export default class MyApp extends App {
             <Component {...pageProps} url={url} />
           </Layout>
         </MDXProvider>
-      </Anchors.Provider>
+      </AnchorsProvider>
     );
   }
 }

@@ -17,8 +17,28 @@ Array [
   >
     C
   </h3>,
-  <h2
+  <h4
+    id="d"
+  >
+    D
+  </h4>,
+  <h5
+    id="e"
+  >
+    E
+  </h5>,
+  <h6
+    id="f"
+  >
+    F
+  </h6>,
+  <h1
     id="a-1"
+  >
+    A
+  </h1>,
+  <h2
+    id="a-2"
   >
     A
   </h2>,
@@ -40,7 +60,27 @@ Array [
     "level": 3
   },
   {
+    "id": "d",
+    "text": "D",
+    "level": 4
+  },
+  {
+    "id": "e",
+    "text": "E",
+    "level": 5
+  },
+  {
+    "id": "f",
+    "text": "F",
+    "level": 6
+  },
+  {
     "id": "a-1",
+    "text": "A",
+    "level": 1
+  },
+  {
+    "id": "a-2",
     "text": "A",
     "level": 2
   }
