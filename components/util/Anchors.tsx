@@ -39,12 +39,7 @@ export function AnchorsProvider(props: {
 
 // AnchorsSetter
 
-interface AnchorWrapperProps {
-  anchor: Anchor;
-  children: JSX.Element;
-}
-
-function AnchorData(props: AnchorWrapperProps) {
+function AnchorData(props: { anchor: Anchor; children: JSX.Element }) {
   return props.children;
 }
 
