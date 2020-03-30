@@ -1,9 +1,11 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
+import centered from "@storybook/addon-centered/react";
 import Card from "../../components/base/Card";
 import guideIcon from "../../public/images/guides-icon-large.svg";
 
 storiesOf("base|Card", module)
+  .addDecorator(centered)
   .add("default", () => (
     <Card
       icon={guideIcon}

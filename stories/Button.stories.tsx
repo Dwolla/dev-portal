@@ -24,8 +24,6 @@ storiesOf("Button", module)
   .add("Hollow-light Standard", () => (
     <Button text="Button" size="standard" variant="hollow-light" />
   ))
-  .add(
-    "Hollow-dark Standard",
-    () => <Button text="Button" size="standard" variant="hollow-dark" />,
-    { backgrounds: [{ name: "dark", value: "#2d2d47" }] }
-  );
+  .add("Hollow-dark Standard", () => (
+    <Button text="Button" size="standard" variant="hollow-dark" />
+  ));
