@@ -2,6 +2,12 @@ import React from "react";
 import styled from "@emotion/styled";
 import { GREY_5, GREY_4 } from "../colors";
 
+type Props = { text: string };
+
+function Badge({ text }: Props) {
+  return <Button>{text}</Button>;
+}
+
 const Button = styled.a`
   color: ${GREY_5};
   font-family: "Poppins", sans-serif;
@@ -17,11 +23,5 @@ const Button = styled.a`
   border-radius: 10px;
   padding: 2px 5.15px;
 `;
-
-type Props = { text: string };
-
-function Badge({ text }: Props) {
-  return <Button>{text}</Button>;
-}
 
 export default Badge;

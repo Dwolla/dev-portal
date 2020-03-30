@@ -11,6 +11,43 @@ import {
 } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
 
+type Props = {
+  link?: boolean;
+  centerAlign?: boolean;
+  icon: string;
+  badge?: string;
+  topic: string;
+  description: string;
+};
+
+function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
+  return (
+    <CardStyle className={centerAlign ? "center" : ""}>
+      <IconStyle className={centerAlign ? "center" : ""}>
+        <img src={icon} alt="" />
+      </IconStyle>
+
+      {badge && (
+        <BadgeStyle>
+          <Badge text={badge} />
+        </BadgeStyle>
+      )}
+
+      {link && (
+        <LinkStyle>
+          <img src={newTabIcon} alt="" />
+        </LinkStyle>
+      )}
+
+      <TopicStyle className={centerAlign ? "center" : ""}>{topic}</TopicStyle>
+
+      <DescriptionStyle className={centerAlign ? "center" : ""}>
+        {description}
+      </DescriptionStyle>
+    </CardStyle>
+  );
+}
+
 const CardStyle = styled.div`
   height: 305px;
   width: 300px;
@@ -78,42 +115,5 @@ const DescriptionStyle = styled.div`
     margin: 11px auto 18px;
   }
 `;
-
-type Props = {
-  link?: boolean;
-  centerAlign?: boolean;
-  icon: string;
-  badge?: string;
-  topic: string;
-  description: string;
-};
-
-function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
-  return (
-    <CardStyle className={centerAlign ? "center" : ""}>
-      <IconStyle className={centerAlign ? "center" : ""}>
-        <img src={icon} alt="" />
-      </IconStyle>
-
-      {badge && (
-        <BadgeStyle>
-          <Badge text={badge} />
-        </BadgeStyle>
-      )}
-
-      {link && (
-        <LinkStyle>
-          <img src={newTabIcon} alt="" />
-        </LinkStyle>
-      )}
-
-      <TopicStyle className={centerAlign ? "center" : ""}>{topic}</TopicStyle>
-
-      <DescriptionStyle className={centerAlign ? "center" : ""}>
-        {description}
-      </DescriptionStyle>
-    </CardStyle>
-  );
-}
 
 export default Card;
