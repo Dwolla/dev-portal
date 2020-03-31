@@ -10,6 +10,7 @@ import {
   PARAGRAPH_TEXT,
 } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
+import { ROBOTO, POPPINS } from "../typography";
 
 type Props = {
   link?: boolean;
@@ -62,7 +63,6 @@ const CardStyle = styled.div`
     box-shadow: ${BOX_SHADOW_4};
   }
   &.center {
-    /* height: 160px; */
     height: auto;
     width: 656px;
     padding: 0px;
@@ -95,7 +95,7 @@ const LinkStyle = styled.div`
 
 const TopicStyle = styled.div`
   color: ${HEADLINE_TEXT};
-  font-family: "Poppins", sans-serif;
+  font-family: ${POPPINS};
   font-size: 18px;
   line-height: 26px;
   margin-top: 30px;
@@ -107,7 +107,7 @@ const TopicStyle = styled.div`
 
 const DescriptionStyle = styled.div`
   color: ${PARAGRAPH_TEXT};
-  font-family: "Roboto", sans-serif;
+  font-family: ${ROBOTO};
   font-size: 15px;
   line-height: 25px;
   margin-top: 15px;

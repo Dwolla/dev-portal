@@ -15,11 +15,12 @@ import {
   PURPLE_DARK,
 } from "../colors";
 import { BOX_SHADOW_6 } from "../shadowDepths";
+import { POPPINS } from "../typography";
 
 type Props = {
   text: string;
-  size: string;
-  variant: string;
+  size: "tiny" | "small" | "standard" | "large";
+  variant: "primary" | "secondary" | "hollow-light" | "hollow-dark";
 };
 
 function Button({ text, size, variant }: Props) {
@@ -32,7 +33,7 @@ function Button({ text, size, variant }: Props) {
 
 const ButtonStyle = styled.button`
   color: ${WHITE_PRIMARY};
-  font-family: "Poppins", sans-serif;
+  font-family: ${POPPINS};
   font-style: thin;
   text-align: center;
   border-radius: 5px;
