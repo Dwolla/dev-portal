@@ -3,9 +3,9 @@ import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { GREY_2 } from "../colors";
+import { GREY_2, WHITE_PRIMARY } from "../colors";
 import ApiStatus from "./ApiStatus";
-import TopBar from "./TopBar";
+import TopBar, { TOP_BAR_HEIGHT } from "./TopBar";
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
@@ -69,6 +69,39 @@ const MainArea = styled.div`
   @media (min-width: 980px) {
     margin-left: 25%;
   }
+
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "top-bar top-bar"
+    "content sidebar"
+    "footer footer";
+`;
+
+const TopBarWrapper = styled.div`
+  grid-area: top-bar;
+  position: sticky;
+  top: 0;
+`;
+
+const OnThisPageWrapper = styled.div`
+  grid-area: sidebar;
+  position: sticky;
+  top: ${TOP_BAR_HEIGHT}px;
+  max-height: calc(100vh - ${TOP_BAR_HEIGHT}px);
+  overflow-y: scroll;
+`;
+
+const ContentWrapper = styled.div`
+  grid-area: content;
+  overflow: hidden;
+`;
+
+const FooterWrapper = styled.div`
+  grid-area: footer;
+  background: ${WHITE_PRIMARY};
+  z-index: 9;
 `;
 
 export default function Layout(props: LayoutProps) {
@@ -113,13 +146,19 @@ export default function Layout(props: LayoutProps) {
       </LeftSidebar>
 
       <MainArea>
-        <TopBar>{props.topBarChildren}</TopBar>
+        <TopBarWrapper>
+          <TopBar>{props.topBarChildren}</TopBar>
+        </TopBarWrapper>
 
-        <OnThisPage />
+        <OnThisPageWrapper>
+          <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
+        </OnThisPageWrapper>
 
-        {props.children}
+        <ContentWrapper>{props.children}</ContentWrapper>
 
-        <Footer links={props.footerLinks} />
+        <FooterWrapper>
+          <Footer links={props.footerLinks} />
+        </FooterWrapper>
       </MainArea>
     </>
   );
