@@ -31,7 +31,7 @@ module.exports = {
     "no-confusing-arrow": "off", // prettier
     "object-curly-newline": "off", // prettier
     "operator-linebreak": "off", // prettier
-    quotes: ["error", "double"],
+    quotes: "off", // prettier
     "react/destructuring-assignment": "off",
     "react/jsx-closing-tag-location": "off", // prettier
     "react/jsx-filename-extension": "off", // typescript

@@ -68,13 +68,13 @@ export function AnchorsSetter(props) {
     []
   );
 
-  const { pathname } = useRouter();
+  const router = useRouter();
 
   useEffect(() => {
     setAnchors(anchors);
 
     return () => setAnchors([]);
-  }, [pathname]);
+  }, [router?.pathname]);
 
   return children;
 }
