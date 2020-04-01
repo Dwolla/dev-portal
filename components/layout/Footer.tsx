@@ -1,20 +1,22 @@
 import styled from "@emotion/styled";
 import map from "lodash.map";
 import { GREY_2, HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
+import { POPPINS, ROBOTO } from "../typography";
 
 const Container = styled.div`
   border-top: 1px solid ${GREY_2};
   display: flex;
   flex-wrap: wrap;
-  padding: 40px 0;
+  padding: 20px;
 `;
 
 const Group = styled.div`
   width: 200px;
+  padding: 20px;
 `;
 
 const Heading = styled.h3`
-  font-family: Poppins;
+  font-family: ${POPPINS};
   font-weight: 600;
   color: ${HEADLINE_TEXT};
   text-transform: uppercase;
@@ -32,7 +34,7 @@ const Item = styled.li`
 `;
 
 const ListLink = styled.a`
-  font-family: Roboto;
+  font-family: ${ROBOTO};
   font-size: 14px;
   color: ${PARAGRAPH_TEXT};
   text-decoration: none;
