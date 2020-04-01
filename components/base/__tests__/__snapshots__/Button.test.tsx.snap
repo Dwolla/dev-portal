@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button 1`] = `
+<button
+  className="standard primary css-1i9mvwh-ButtonStyle e12ysvgk0"
+  type="button"
+>
+  <div
+    className="standard css-1cvhdlc-SpanStyle e12ysvgk1"
+  >
+    Button
+  </div>
+</button>
+`;

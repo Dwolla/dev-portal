@@ -17,8 +17,12 @@ export const PARAGRAPH_TEXT = "#6a7282";
 export const ORANGE_PRIMARY = "#d9725c";
 export const PURPLE_PRIMARY = "#483d66";
 export const PURPLE_PRIMARY_BUTTON = "#5e4e76";
+export const PURPLE_PRIMARY_HOVER = "#6a5885";
+export const PURPLE_PRIMARY_ACTIVE = "#524467";
 export const PURPLE_DARK = "#2d2d47";
 export const PINK_SECONDARY_BUTTON = "#cb4976";
+export const PINK_SECONDARY_HOVER = "#e24d80";
+export const PINK_SECONDARY_ACTIVE = "#be406c";
 export const WHITE_PRIMARY = "#ffffff";
 
 // Code Block Colors
