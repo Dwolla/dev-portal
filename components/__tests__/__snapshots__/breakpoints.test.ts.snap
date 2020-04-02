@@ -3,6 +3,7 @@
 exports[`breakpoints 1`] = `
 Object {
   "BREAKPOINT_DESKTOP": 1024,
+  "BREAKPOINT_MOBILE": 414,
   "maxWidth": [Function],
   "minWidth": [Function],
 }
