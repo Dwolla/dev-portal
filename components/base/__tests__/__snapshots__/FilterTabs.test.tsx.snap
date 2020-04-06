@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Filter Tabs 1`] = `
+exports[`FilterTabs 1`] = `
 <div>
   <div
     className="css-bg0uto-TabsContainerStyle efq5uj30"
   >
     <div
       className="tab is-active css-1xj4km3-TabStyle efq5uj31"
+      onClick={[Function]}
     >
       ALL
     </div>
