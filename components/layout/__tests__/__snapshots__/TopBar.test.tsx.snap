@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar 1`] = `
+<div
+  className="css-18kqr8q-Container e1xhgpyy0"
+>
+  <a
+    className=" css-1gmbmq9-StyledLink e1xhgpyy2"
+    href="https://docs.dwolla.com"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    target="_blank"
+  >
+    <span
+      className="text"
+    >
+      API Docs
+    </span>
+    <img
+      alt="Open in new tab"
+      className="icon"
+      height={13}
+      src="test-image-stub"
+      width={13}
+    />
+  </a>
+  <a
+    className="active css-1gmbmq9-StyledLink e1xhgpyy2"
+    href="/changelog"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <span
+      className="text"
+    >
+      Changelog
+    </span>
+  </a>
+  <a
+    className="active css-1gmbmq9-StyledLink e1xhgpyy2"
+    href="/manually-active"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <span
+      className="text"
+    >
+      Manually Active
+    </span>
+  </a>
+  <div
+    className="css-1px9jcr-ButtonWrapper e1xhgpyy1"
+  >
+    <button
+      className="standard primary css-np6ip9-ButtonStyle e12ysvgk0"
+      type="button"
+    >
+      <div
+        className="standard css-1cvhdlc-SpanStyle e12ysvgk1"
+      >
+        Get API Keys
+      </div>
+    </button>
+  </div>
+</div>
+`;

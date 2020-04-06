@@ -135,46 +135,59 @@ Array [
       className="css-fc9hgf-TopBarWrapper eu5n9bq4"
     >
       <div
-        className="css-1mpyoho-Container e1xhgpyy0"
+        className="css-18kqr8q-Container e1xhgpyy0"
       >
-        <select>
-          <option>
-            Node.js
-          </option>
-          <option>
-            Python
-          </option>
-          <option>
-            Ruby
-          </option>
-          <option>
-            Kotlin
-          </option>
-          <option>
-            Java
-          </option>
-        </select>
+        <a
+          className=" css-1gmbmq9-StyledLink e1xhgpyy2"
+          href="https://docs.dwolla.com"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          target="_blank"
+        >
+          <span
+            className="text"
+          >
+            API Docs
+          </span>
+          <img
+            alt="Open in new tab"
+            className="icon"
+            height={13}
+            src="test-image-stub"
+            width={13}
+          />
+        </a>
+        <a
+          className=" css-1gmbmq9-StyledLink e1xhgpyy2"
+          href="/changelog"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <span
+            className="text"
+          >
+            Changelog
+          </span>
+        </a>
+        <div
+          className="css-1px9jcr-ButtonWrapper e1xhgpyy1"
+        >
+          <button
+            className="standard primary css-np6ip9-ButtonStyle e12ysvgk0"
+            type="button"
+          >
+            <div
+              className="standard css-1cvhdlc-SpanStyle e12ysvgk1"
+            >
+              Get API Keys
+            </div>
+          </button>
+        </div>
       </div>
     </div>
     <div
-      className="css-3nnzg1-OnThisPageWrapper eu5n9bq5"
-    >
-      <div
-        className="css-3xynp2-Container e12irmr20"
-      >
-        <div
-          className="css-1106oo1-Heading e12irmr21"
-        >
-          ON THIS PAGE
-        </div>
-        <div
-          className="css-9anku6-PageTop e12irmr22"
-          onClick={[Function]}
-        >
-          Top of Page
-        </div>
-      </div>
-    </div>
+      className="css-1k2k6t4-OnThisPageWrapper eu5n9bq5"
+    />
     <div
       className="css-731s8c-ContentWrapper eu5n9bq6"
     >
@@ -200,50 +213,50 @@ Array [
             className="css-499foe-List en8mxva3"
           >
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#discover-send"
               >
                 Send
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#discover-receive"
               >
                 Receive
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#discover-send-receive"
               >
                 Send & Receive
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#facilitate"
               >
                 Facilitate
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#me-to-me"
               >
                 Me to Me
@@ -263,30 +276,30 @@ Array [
             className="css-499foe-List en8mxva3"
           >
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#concepts-basics"
               >
                 Basics
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#concepts-essentials"
               >
                 Essentials
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#concepts-integrations"
               >
                 Integrations
@@ -306,30 +319,30 @@ Array [
             className="css-499foe-List en8mxva3"
           >
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#guides-prerequisites"
               >
                 Prerequisites
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#guides-get-building"
               >
                 Get Building
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#features"
               >
                 Features
@@ -349,30 +362,30 @@ Array [
             className="css-499foe-List en8mxva3"
           >
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#api-reference-documentation"
               >
                 Documentation
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="api-reference-sdk-support"
               >
                 SDK Support
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#api-reference-what-it-do"
               >
                 What does the Dwolla API do?
@@ -392,60 +405,60 @@ Array [
             className="css-499foe-List en8mxva3"
           >
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#tools-and-sdks-ruby"
               >
                 Ruby
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#tools-and-sdks-python"
               >
                 Python
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#tools-and-sdks-php"
               >
                 PHP
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#tools-and-sdks-csharp"
               >
                 C#
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#tools-and-sdks-java"
               >
                 Java
               </a>
             </li>
             <li
-              className="css-gu46f2-Item en8mxva4"
+              className="css-52hjeb-Item en8mxva4"
             >
               <a
-                className="css-4vb2dd-ListLink en8mxva5"
+                className="css-irwgy-ListLink en8mxva5"
                 href="#tools-and-sdks-javascript"
               >
                 JavaScript
