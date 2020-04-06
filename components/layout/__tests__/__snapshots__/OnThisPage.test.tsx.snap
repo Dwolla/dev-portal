@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OnThisPage 1`] = `
+exports[`with anchors 1`] = `
 Array [
   <h1
     id="hello-1"
@@ -26,20 +26,11 @@ Array [
   >
     Hello 4
   </h1>,
-  <div
-    className="css-3xynp2-Container e12irmr20"
-  >
-    <div
-      className="css-1106oo1-Heading e12irmr21"
-    >
-      ON THIS PAGE
-    </div>
-    <div
-      className="css-9anku6-PageTop e12irmr22"
-      onClick={[Function]}
-    >
-      Top of Page
-    </div>
-  </div>,
 ]
+`;
+
+exports[`without anchors 1`] = `
+<div>
+  hello
+</div>
 `;

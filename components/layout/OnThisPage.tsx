@@ -94,6 +94,8 @@ function OnThisPage({ topOfPageOffset }: { topOfPageOffset: number }) {
     }
   }, [activeAnchor]);
 
+  if (anchors.length === 0) return null;
+
   return (
     <Container>
       <Heading>ON THIS PAGE</Heading>
