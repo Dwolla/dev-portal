@@ -32,7 +32,7 @@ export default function Tabs({ tabs, filter, setFilter }: Props) {
       <TabsContainerStyle>
         <TabStyle
           className={`tab ${filter === null ? "is-active" : ""}`}
-          onClick={setFilter(null)}
+          onClick={() => setFilter(null)}
         >
           ALL
         </TabStyle>
@@ -73,7 +73,7 @@ const TabsContainerStyle = styled.div`
   }
 `;
 
-const TabStyle = styled.div`
+export const TabStyle = styled.div`
   height: 25px;
   color: ${GREY_4};
   font-family: ${POPPINS};
