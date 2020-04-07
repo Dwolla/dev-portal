@@ -5,22 +5,10 @@ import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import ApiStatus from "./ApiStatus";
-import TopBar, { TOP_BAR_HEIGHT } from "./TopBar";
+import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
-
-// proptypes
-
-interface LayoutProps {
-  children: JSX.Element;
-  pages: Page[];
-  sideNavLinks: SideNavLinkProps[];
-  footerLinks: Record<string, FooterLink[]>;
-  topBarChildren: JSX.Element | JSX.Element[];
-}
-
-// components
 
 export const LEFT_SIDEBAR_PADDING_X = "20px";
 
@@ -91,6 +79,10 @@ const OnThisPageWrapper = styled.div`
   top: ${TOP_BAR_HEIGHT}px;
   max-height: calc(100vh - ${TOP_BAR_HEIGHT}px);
   overflow-y: scroll;
+
+  :empty {
+    display: none;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -104,7 +96,19 @@ const FooterWrapper = styled.div`
   z-index: 9;
 `;
 
-export default function Layout(props: LayoutProps) {
+export default function Layout({
+  children,
+  pages,
+  sideNavLinks,
+  footerLinks,
+  topBarProps,
+}: {
+  children: JSX.Element;
+  pages: Page[];
+  sideNavLinks: SideNavLinkProps[];
+  footerLinks: Record<string, FooterLink[]>;
+  topBarProps: TopBarProps;
+}) {
   const sidebarToggled = false;
 
   return (
@@ -139,7 +143,7 @@ export default function Layout(props: LayoutProps) {
         </LogoWrapper>
 
         <SideNavWrapper>
-          <SideNav links={props.sideNavLinks} pages={props.pages} />
+          <SideNav links={sideNavLinks} pages={pages} />
         </SideNavWrapper>
 
         <ApiStatus />
@@ -147,17 +151,17 @@ export default function Layout(props: LayoutProps) {
 
       <MainArea>
         <TopBarWrapper>
-          <TopBar>{props.topBarChildren}</TopBar>
+          <TopBar {...topBarProps} />
         </TopBarWrapper>
 
         <OnThisPageWrapper>
           <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
         </OnThisPageWrapper>
 
-        <ContentWrapper>{props.children}</ContentWrapper>
+        <ContentWrapper>{children}</ContentWrapper>
 
         <FooterWrapper>
-          <Footer links={props.footerLinks} />
+          <Footer links={footerLinks} />
         </FooterWrapper>
       </MainArea>
     </>

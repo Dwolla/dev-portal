@@ -30,12 +30,15 @@ const List = styled.ul`
 `;
 
 const Item = styled.li`
-  margin: 12px 0;
+  margin: 0;
 `;
 
 const ListLink = styled.a`
+  display: block;
+  padding: 6px 0;
   font-family: ${ROBOTO};
   font-size: 14px;
+  line-height: 20px;
   color: ${PARAGRAPH_TEXT};
   text-decoration: none;
 
