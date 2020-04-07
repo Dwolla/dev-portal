@@ -64,15 +64,13 @@ const FOOTER_LINKS = {
   ],
 };
 
-const TOP_BAR_CHILDREN = [
-  <select key="languages">
-    <option>Node.js</option>
-    <option>Python</option>
-    <option>Ruby</option>
-    <option>Kotlin</option>
-    <option>Java</option>
-  </select>,
-];
+const TOP_BAR_PROPS = {
+  button: { text: "Get API Keys" },
+  links: [
+    { text: "API Docs", href: "https://docs.dwolla.com", external: true },
+    { text: "Changelog", href: "/changelog" },
+  ],
+};
 
 const MDX_COMPONENTS = {
   wrapper: AnchorsSetter,
@@ -89,7 +87,7 @@ export default class MyApp extends App {
             footerLinks={FOOTER_LINKS}
             pages={Pages.all()}
             sideNavLinks={SIDE_NAV_LINKS}
-            topBarChildren={TOP_BAR_CHILDREN}
+            topBarProps={TOP_BAR_PROPS}
           >
             <Component {...pageProps} url={url} />
           </Layout>

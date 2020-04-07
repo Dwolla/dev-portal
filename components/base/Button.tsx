@@ -35,7 +35,7 @@ const ButtonStyle = styled.button`
   color: ${WHITE_PRIMARY};
   font-family: ${POPPINS};
   font-style: thin;
-  text-align: center;
+  padding: 0 15px;
   border-radius: 5px;
   cursor: pointer;
   :focus {
@@ -43,19 +43,15 @@ const ButtonStyle = styled.button`
   }
   &.tiny {
     height: 26px;
-    width: 72px;
   }
   &.small {
     height: 32px;
-    width: 102px;
   }
   &.standard {
     height: 40px;
-    width: 151px;
   }
   &.large {
     height: 54px;
-    width: 160px;
   }
 
   &.primary {
