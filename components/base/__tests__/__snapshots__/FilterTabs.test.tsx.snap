@@ -12,19 +12,19 @@ exports[`FilterTabs 1`] = `
       ALL
     </div>
     <div
-      className="tab  css-1xj4km3-TabStyle efq5uj31"
+      className="tab css-1xj4km3-TabStyle efq5uj31"
       onClick={[Function]}
     >
       GET BUILDING
     </div>
     <div
-      className="tab  css-1xj4km3-TabStyle efq5uj31"
+      className="tab css-1xj4km3-TabStyle efq5uj31"
       onClick={[Function]}
     >
       PREREQUISITES
     </div>
     <div
-      className="tab  css-1xj4km3-TabStyle efq5uj31"
+      className="tab css-1xj4km3-TabStyle efq5uj31"
       onClick={[Function]}
     >
       FEATURES

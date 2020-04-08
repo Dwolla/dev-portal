@@ -2,16 +2,17 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
 import styled from "@emotion/styled";
-import Tabs from "../../components/base/FilterTabs";
+import FilterTabs from "../../components/base/FilterTabs";
+import { PURPLE_DARK } from "../../components/colors";
 
-storiesOf("base|Filter tabs", module)
+storiesOf("base|FilterTabs", module)
   .addDecorator(centered)
-  .addParameters({ backgrounds: [{ name: "dark", value: "#2d2d47" }] })
+  .addParameters({ backgrounds: [{ name: "dark", value: PURPLE_DARK }] })
   .add("default", () => {
     const [filter, setFilter] = React.useState(null);
     return (
       <BackgroundStyle>
-        <Tabs
+        <FilterTabs
           tabs={["GET BUILDING", "PREREQUISITES", "FEATURES"]}
           filter={filter}
           setFilter={setFilter}
@@ -21,6 +22,6 @@ storiesOf("base|Filter tabs", module)
   });
 
 const BackgroundStyle = styled.div`
-  background: #2d2d47;
+  background: ${PURPLE_DARK};
   width: 414px;
 `;

@@ -6,6 +6,7 @@ import arrowUp from "../../public/images/arrow-up-icon.svg";
 import { GREY_4, WHITE_PRIMARY, PURPLE_DARK, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import { minWidth, maxWidth, BREAKPOINT_MOBILE } from "../breakpoints";
+import classnames from "../../modules/classnames";
 
 type Props = {
   tabs: string[];
@@ -13,32 +14,30 @@ type Props = {
   setFilter: Function;
 };
 
-export default function Tabs({ tabs, filter, setFilter }: Props) {
-  // Initializing options array for Dropdown component derived from react-dropdown
-  const options = [{ value: "ALL", label: "ALL", className: "option" }];
-
-  tabs.map((item) =>
-    options.push({
+export default function FilterTabs({ tabs, filter, setFilter }: Props) {
+  const dropdownOptions = [
+    { value: "ALL", label: "ALL", className: "option" },
+    ...tabs.map((item) => ({
       value: item,
       label: item,
       className: "option",
-    })
-  );
-
-  const defaultOption = !filter ? options[0] : filter;
+    })),
+  ];
+  const defaultOption = filter || dropdownOptions[0];
 
   return (
     <div>
       <TabsContainerStyle>
         <TabStyle
-          className={`tab ${filter === null ? "is-active" : ""}`}
+          className={classnames("tab", { "is-active": filter === null })}
           onClick={() => setFilter(null)}
         >
           ALL
         </TabStyle>
+
         {tabs.map((tab) => (
           <TabStyle
-            className={`tab ${filter === tab ? "is-active" : ""}`}
+            className={classnames("tab", { "is-active": filter === tab })}
             key={tab}
             onClick={() => setFilter(tab)}
           >
@@ -46,6 +45,7 @@ export default function Tabs({ tabs, filter, setFilter }: Props) {
           </TabStyle>
         ))}
       </TabsContainerStyle>
+
       <Drop>
         <Dropdown
           controlClassName="customControlClass"
@@ -53,7 +53,7 @@ export default function Tabs({ tabs, filter, setFilter }: Props) {
           placeholderClassName="customPlaceHolderClass"
           arrowOpen={<span className="arrowOpenClass" />}
           arrowClosed={<span className="arrowClosedClass" />}
-          options={options}
+          options={dropdownOptions}
           value={defaultOption}
           onChange={(e) => setFilter(e.label)}
         />
@@ -100,7 +100,7 @@ const Drop = styled.div`
     display: none;
   }
 
-  /* Customer styles that are passed as props to react-dropdown component */
+  /* Custom styles that are passed as props to react-dropdown component */
   .customControlClass {
     display: flex;
     justify-content: space-between;
