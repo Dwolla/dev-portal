@@ -119,13 +119,14 @@ Array [
       </div>
     </div>
     <a
-      className="css-8aopii-ContainerLink ewnpdbq0"
+      className="css-8aopii-ContainerLink e1nkb8hi0"
       href="https://status.dwolla.com"
       target="_blank"
     >
       <span
-        className="indicator-undefined css-2u2kiz-StatusIcon ewnpdbq1"
+        className="indicator-none css-1tmj2bz-StatusIcon e1nkb8hi1"
       />
+      apiStatus description
     </a>
   </div>,
   <div

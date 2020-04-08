@@ -37,6 +37,8 @@ export const CODE_BLOCK_ORANGE = "#ee7c2b";
 export const CODE_BLOCK_AQUA = "#4fb4d7";
 
 // Alert Bar Colors
-export const ALERT_BAR_INFO_BLUE = "#0082d5";
-export const ALERT_BAR_WARNING_YELLOW = "#f8ba01";
-export const ALERT_BAR_SUCCESS_GREEN = "#04be5b";
+export const API_STATUS_BAR_BLUE = "#0182d5";
+export const API_STATUS_BAR_ORANGE = "#e67e22";
+export const API_STATUS_BAR_YELLOW = "#f8ba01";
+export const API_STATUS_BAR_GREEN = "#04be5b";
+export const API_STATUS_BAR_RED = "#e84d3d";
