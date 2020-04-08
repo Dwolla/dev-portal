@@ -21,11 +21,12 @@ type Props = {
   text: string;
   size: "tiny" | "small" | "standard" | "large";
   variant: "primary" | "secondary" | "hollow-light" | "hollow-dark";
+  type?: "button" | "submit" | "reset";
 };
 
-function Button({ text, size, variant }: Props) {
+function Button({ text, size, variant, type = "button" }: Props) {
   return (
-    <ButtonStyle type="button" className={`${size} ${variant}`}>
+    <ButtonStyle type={type} className={`${size} ${variant}`}>
       <SpanStyle className={`${size}`}>{text}</SpanStyle>
     </ButtonStyle>
   );
