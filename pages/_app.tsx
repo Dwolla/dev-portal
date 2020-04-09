@@ -1,8 +1,10 @@
+import React, { useState } from "react";
 import App, { createUrl } from "next/app";
 import { MDXProvider } from "@mdx-js/react";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
 import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
+import AuthPage from "../components/AuthPage";
 
 const SIDE_NAV_LINKS = [
   {
@@ -76,23 +78,38 @@ const MDX_COMPONENTS = {
   wrapper: AnchorsSetter,
 };
 
+const AppWithHooks = ({ router, Component, pageProps }: any) => {
+  const [isAuthenticated, setAuthenticated] = useState(process.env.isDev);
+
+  const url = createUrl(router);
+
+  return isAuthenticated ? (
+    <AnchorsProvider>
+      <MDXProvider components={MDX_COMPONENTS}>
+        <Layout
+          footerLinks={FOOTER_LINKS}
+          pages={Pages.all()}
+          sideNavLinks={SIDE_NAV_LINKS}
+          topBarProps={TOP_BAR_PROPS}
+        >
+          <Component {...pageProps} url={url} />
+        </Layout>
+      </MDXProvider>
+    </AnchorsProvider>
+  ) : (
+    <AuthPage setAuthenticated={setAuthenticated} />
+  );
+};
+
 export default class MyApp extends App {
   render() {
     const { router, Component, pageProps } = this.props;
-    const url = createUrl(router);
     return (
-      <AnchorsProvider>
-        <MDXProvider components={MDX_COMPONENTS}>
-          <Layout
-            footerLinks={FOOTER_LINKS}
-            pages={Pages.all()}
-            sideNavLinks={SIDE_NAV_LINKS}
-            topBarProps={TOP_BAR_PROPS}
-          >
-            <Component {...pageProps} url={url} />
-          </Layout>
-        </MDXProvider>
-      </AnchorsProvider>
+      <AppWithHooks
+        router={router}
+        Component={Component}
+        pageProps={pageProps}
+      />
     );
   }
 }
