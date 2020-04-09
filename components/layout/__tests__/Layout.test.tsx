@@ -90,6 +90,7 @@ test("Layout", () => {
         footerLinks={FOOTER_LINKS}
         topBarProps={TOP_BAR_PROPS}
         pages={Pages.all()}
+        apiStatus={{ indicator: "none", description: "apiStatus description" }}
       >
         <div>page</div>
       </Layout>

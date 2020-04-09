@@ -4,11 +4,10 @@ import styled from "@emotion/styled";
 import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
-import ApiStatus from "./ApiStatus";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
-import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
+import APIStatusBar from "./APIStatusBar";
 
 export const LEFT_SIDEBAR_PADDING_X = "20px";
 
@@ -102,12 +101,14 @@ export default function Layout({
   sideNavLinks,
   footerLinks,
   topBarProps,
+  apiStatus,
 }: {
   children: JSX.Element;
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;
   topBarProps: TopBarProps;
+  apiStatus: APIStatus;
 }) {
   const sidebarToggled = false;
 
@@ -146,7 +147,7 @@ export default function Layout({
           <SideNav links={sideNavLinks} pages={pages} />
         </SideNavWrapper>
 
-        <ApiStatus />
+        <APIStatusBar apiStatus={apiStatus} />
       </LeftSidebar>
 
       <MainArea>

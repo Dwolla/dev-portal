@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import App, { createUrl } from "next/app";
 import { MDXProvider } from "@mdx-js/react";
+import useSWR from "swr";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
 import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
 import AuthPage from "../components/AuthPage";
+import fetcher from "../modules/fetcher";
+
+const STATUS_PAGE_SUMMARY_URL =
+  "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
 
 const SIDE_NAV_LINKS = [
   {
@@ -83,6 +88,10 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
 
   const url = createUrl(router);
 
+  const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
+    refreshInterval: 60000,
+  }).data?.status;
+
   return isAuthenticated ? (
     <AnchorsProvider>
       <MDXProvider components={MDX_COMPONENTS}>
@@ -91,6 +100,7 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
           topBarProps={TOP_BAR_PROPS}
+          apiStatus={apiStatus}
         >
           <Component {...pageProps} url={url} />
         </Layout>
