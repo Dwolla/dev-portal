@@ -1,17 +1,24 @@
 // next.config.js
 const withMdxEnhanced = require("next-mdx-enhanced");
 const withImages = require("next-images");
+const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 
-module.exports = withImages(
-  withMdxEnhanced({
-    // layoutPath: 'layouts',
-    // defaultLayout: true,
-    // fileExtensions: ['mdx'],
-    // remarkPlugins: [],
-    // rehypePlugins: [],
-    // extendFrontMatter: {
-    //   process: (mdxContent, frontMatter) => {},
-    //   phase: 'prebuild|loader|both'
-    // }
-  })({ target: "serverless" })
-);
+module.exports = (phase) =>
+  withImages(
+    withMdxEnhanced({
+      // layoutPath: 'layouts',
+      // defaultLayout: true,
+      // fileExtensions: ['mdx'],
+      // remarkPlugins: [],
+      // rehypePlugins: [],
+      // extendFrontMatter: {
+      //   process: (mdxContent, frontMatter) => {},
+      //   phase: 'prebuild|loader|both'
+      // }
+    })({
+      target: "serverless",
+      env: {
+        isDev: phase === PHASE_DEVELOPMENT_SERVER,
+      },
+    })
+  );
