@@ -2,17 +2,24 @@ import styled from "@emotion/styled";
 import map from "lodash.map";
 import { GREY_2, HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
+import { minWidth, BREAKPOINT_DESKTOP } from "../breakpoints";
 
 const Container = styled.div`
   border-top: 1px solid ${GREY_2};
   display: flex;
   flex-wrap: wrap;
-  padding: 20px;
+
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+    padding: 20px;
+  }
 `;
 
 const Group = styled.div`
-  width: 200px;
   padding: 20px;
+
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+    width: 200px;
+  }
 `;
 
 const Heading = styled.h3`

@@ -9,6 +9,7 @@ import { POPPINS } from "../typography";
 import Button from "../base/Button";
 import Select from "../base/select/Select";
 import { LanguageContext } from "../util/Contexts";
+import { BREAKPOINT_DESKTOP, minWidth } from "../breakpoints";
 
 export const TOP_BAR_HEIGHT = 68;
 
@@ -99,12 +100,40 @@ export type TopBarButtonProps = {
 export type TopBarProps = {
   button: TopBarButtonProps;
   links: TopBarLinkProps[];
+  onHamburgerClick?: () => void;
 };
 
-export default function TopBar({ button, links }: TopBarProps) {
+const Hamburger = styled.div`
+  width: 15px;
+  height: 12px;
+  background-image: linear-gradient(
+    to bottom,
+    #000,
+    #000 16.67%,
+    transparent 16.67%,
+    transparent 41.67%,
+    #000 41.67%,
+    #000 58.33%,
+    transparent 58.33%,
+    transparent 83.33%,
+    #000 83.33%,
+    #000 100%
+  );
+
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+    display: none;
+  }
+`;
+
+export default function TopBar({
+  button,
+  links,
+  onHamburgerClick,
+}: TopBarProps) {
   const { selectedLanguage, setSelectedLanguage, languageOptions } = useContext(
     LanguageContext
   );
+
   const router = useRouter();
 
   return (
@@ -129,6 +158,8 @@ export default function TopBar({ button, links }: TopBarProps) {
       <ButtonWrapper>
         <Button {...button} size="standard" variant="primary" />
       </ButtonWrapper>
+
+      {onHamburgerClick && <Hamburger onClick={onHamburgerClick} />}
     </Container>
   );
 }

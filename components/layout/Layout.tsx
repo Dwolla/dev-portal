@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Head from "next/head";
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
+import { useState } from "react";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import {
@@ -20,7 +24,7 @@ export const LEFT_SIDEBAR_PADDING_X = "20px";
 const LeftSidebar = styled.div`
   position: fixed;
   top: 0;
-  right: 10%;
+  right: 0;
   bottom: 0;
   left: 0;
   overflow-y: scroll;
@@ -28,8 +32,8 @@ const LeftSidebar = styled.div`
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid ${GREY_2};
-  transform: translate3d(-100%, 0, 0);
-  transition: transform 0.2s ease-in-out;
+  transform: translate3d(0, -100vh, 0);
+  z-index: 9999;
 
   @media (${minWidth(BREAKPOINT_DESKTOP)}) {
     right: 75%;
@@ -38,10 +42,6 @@ const LeftSidebar = styled.div`
 
   &.toggled {
     transform: translate3d(0, 0, 0);
-
-    @media (${minWidth(BREAKPOINT_DESKTOP)}) {
-      right: 75%;
-    }
   }
 `;
 
@@ -75,7 +75,7 @@ const ContentArea = styled.div`
 const TopBarWrapper = styled.div`
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 99;
 `;
 
 const OnThisPageWrapper = styled.div`
@@ -121,7 +121,10 @@ export default function Layout({
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
 }) {
-  const sidebarToggled = false;
+  const [sidebarToggled, setSidebarToggled] = useState(false);
+
+  const showSidebar = () => setSidebarToggled(true);
+  const hideSidebar = () => setSidebarToggled(false);
 
   return (
     <>
@@ -149,6 +152,20 @@ export default function Layout({
       <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
         <LogoWrapper>
           <img
+            src="/images/close-icon-orange.svg"
+            alt=""
+            onClick={hideSidebar}
+            css={css`
+              float: right;
+              transform: translate3d(0, 15px, 0);
+
+              @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+                display: none;
+              }
+            `}
+          />
+
+          <img
             src="/images/dwolla-developers-logo.png"
             alt="Dwolla Developers Logo"
           />
@@ -163,7 +180,7 @@ export default function Layout({
 
       <MainArea>
         <TopBarWrapper>
-          <TopBar {...topBarProps} />
+          <TopBar {...topBarProps} onHamburgerClick={showSidebar} />
         </TopBarWrapper>
 
         <ContentArea>
