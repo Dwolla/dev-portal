@@ -1,8 +1,13 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
+import styled from "@emotion/styled";
 import Card from "../../components/base/Card";
 import guideIcon from "../../public/images/guides-icon-large.svg";
+
+const CardWrapper = styled.div`
+  width: 300px;
+`;
 
 storiesOf("base|Card", module)
   .addDecorator(centered)
@@ -12,6 +17,15 @@ storiesOf("base|Card", module)
       topic="This is the Topic"
       description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
     />
+  ))
+  .add("Card with Width wrapper", () => (
+    <CardWrapper>
+      <Card
+        icon={guideIcon}
+        topic="This is the Topic"
+        description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
+      />
+    </CardWrapper>
   ))
   .add("`link`", () => (
     <Card
