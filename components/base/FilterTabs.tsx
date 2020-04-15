@@ -81,7 +81,7 @@ export const TabStyle = styled.div`
   font-weight: 500;
   line-height: 20px;
   justify-self: center;
-  padding: 0px;
+  padding-bottom: 30px;
   cursor: pointer;
 
   :hover {
@@ -95,7 +95,7 @@ export const TabStyle = styled.div`
 `;
 
 const Drop = styled.div`
-  padding: 5px;
+  padding: 10px;
   @media (${minWidth(BREAKPOINT_MOBILE)}) {
     display: none;
   }

@@ -174,14 +174,10 @@ Array [
           className="css-1px9jcr-ButtonWrapper e1xhgpyy1"
         >
           <button
-            className="standard primary css-np6ip9-ButtonStyle e12ysvgk0"
+            className="primary standard css-1eto6r1-ButtonStyle e12ysvgk0"
             type="button"
           >
-            <div
-              className="standard css-1cvhdlc-SpanStyle e12ysvgk1"
-            >
-              Get API Keys
-            </div>
+            Get API Keys
           </button>
         </div>
       </div>
