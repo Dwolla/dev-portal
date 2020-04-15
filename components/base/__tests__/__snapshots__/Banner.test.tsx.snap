@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner 1`] = `
+<div
+  className=" css-18bvzn3-StyledBanner eyaavg40"
+>
+  <div
+    className="css-1hg7ivq-StyledTopic eyaavg42"
+  >
+    Comprehensive API documentation for developers and businesses.
+  </div>
+  <div
+    className=" css-hiwaf6-StyledDescription eyaavg43"
+  >
+    Step-by-step instructions to get you set up in the Dwolla API
+  </div>
+</div>
+`;
+
+exports[`with Button 1`] = `
+<div
+  className=" css-18bvzn3-StyledBanner eyaavg40"
+>
+  <div
+    className="css-1hg7ivq-StyledTopic eyaavg42"
+  >
+    Comprehensive API documentation for developers and businesses.
+  </div>
+  <div
+    className=" css-hiwaf6-StyledDescription eyaavg43"
+  >
+    Step-by-step instructions to get you set up in the Dwolla API
+  </div>
+  <button
+    className="standard primary css-np6ip9-ButtonStyle e12ysvgk0"
+    type="button"
+  >
+    <div
+      className="standard css-1cvhdlc-SpanStyle e12ysvgk1"
+    >
+      Discover the Possibilities
+    </div>
+  </button>
+</div>
+`;

@@ -3,7 +3,7 @@
 exports[`FilterTabs 1`] = `
 <div>
   <div
-    className="css-bg0uto-TabsContainerStyle efq5uj30"
+    className="css-9vpk5d-TabsContainerStyle efq5uj30"
   >
     <div
       className="tab is-active css-1xj4km3-TabStyle efq5uj31"
@@ -31,7 +31,7 @@ exports[`FilterTabs 1`] = `
     </div>
   </div>
   <div
-    className="css-r1dmct-Drop efq5uj32"
+    className="css-11g2pu0-Drop efq5uj32"
   >
     <div
       className="Dropdown-root"
