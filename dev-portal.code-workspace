@@ -7,7 +7,8 @@
       "out/": true,
       ".mdx-data/": true,
       "coverage/": true,
-      ".storybook-out": true
+      ".storybook-out": true,
+      "component-types.jpg": true
     }
   },
   "extensions": {

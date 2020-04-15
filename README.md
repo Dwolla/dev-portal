@@ -13,25 +13,95 @@ open dev-portal.code-workspace
 
 - `yarn install` - Install dependencies
 - `yarn dev` - Start development server
-- `yarn test` `yarn test:ci` `yarn test:coverage` - Run tests
-- `yarn checks` - Run Prettier, TypeScript checks
-- `yarn fix` - Attempt to fix Prettier, TypeScript errors
-- `yarn build` - Build and export for production
+- `yarn test{,:ci,:coverage}` - Run tests
+- `yarn checks` - Run Prettier, TypeScript, ESLint checks
+- `yarn fix` - Attempt to fix Prettier, TypeScript, ESLint errors
+- `yarn build` - Build for production
+- `yarn build-storybook` - Build Storybook
 - `yarn start` - Start production server
 - `yarn storybook` - Start Storybook
 
-## Docs
+## Pages
 
-Docs are located in the `pages/docs/` folder. At the moment, the following
-metadata can be defined as YAML frontmatter:
+The framework powering `dev-portal`, [Next.js][nextjs], centers around [pages][nextjs-pages].
 
-```yaml
+> In Next.js, a **page** is a [React Component][react-component] exported from a `.js`, `.ts`, or `.tsx` file in the `pages` directory. Each page is associated with a route based on its file name.
+>
+> **Example**: If you create `pages/about.js` that exports a React component like below, it will be accessible at `/about`.
+
+In addition, `dev-portal` supports [`.mdx`][mdx] pages which:
+
+- are Markdown files
+- define metadata as YAML frontmatter
+- can embed React components
+
+For example:
+
+```markdown
+---
 category: "" # Which category doc is displayed under in sidebar
 title: "" # Doc title when linked to
 
-# (optional for index.mdx files)
-# Groups docs in same folder as index.mdx in the sidebar
+# Defining a `group` on `index.mdx` groups docs in same folder
 group:
   category: "" # Overrides individual doc categories
   title: "" # Group title that can be expanded in sidebar
+---
+
+Page content
+
+<MyComponent />
+```
+
+[mdx]: https://mdxjs.com
+[nextjs]: https://nextjs.org
+[nextjs-pages]: https://nextjs.org/docs/basic-features/pages
+[react-component]: https://reactjs.org/docs/components-and-props.html
+
+## Components
+
+In addition to pages, the following can be found in `/components`:
+
+- `layout` components
+  - render the layout _surrounding_ a page
+- `partial` components
+  - render parts _within_ a page
+- `atom` components
+  - building blocks extracted from `layout` and `partial` components
+- `util` components
+  - don't contain markup or styles
+
+### Where to put components?
+
+Components are organized based on their relationship to pages.
+
+As a rule of thumb, start with a `layout` or `partial` component. Which one depends on _where the component is rendered relative to a page_:
+
+- `layout` components are rendered _outside_ the page
+- `partial` components are rendered _within_ the page
+
+![component types](/component-types.jpg)
+
+### What about `atom` and `logic` components?
+
+`atom` components can be extracted from `layout` and `partial` components when an abstraction becomes apparent. In general, it's a good idea to wait until you have some concrete use cases for an abstraction before creating one.
+
+- https://terodox.tech/one-two-n-pattern/
+- https://overreacted.io/goodbye-clean-code/
+- https://www.sandimetz.com/blog/2016/1/20/the-wrong-abstraction
+
+`util` components are different than other types of components in that they don't contain markup or styles. `util` components are good candidates for breaking out into their own library/package at some point.
+
+## Conventions
+
+#### Naming Styled Components
+
+Prefix styled components with `Styled*`, for example:
+
+```tsx
+const StyledContainer = styled.div`
+  padding: 10px;
+`;
+
+const MyComponent = () => <StyledContainer>MyComponent</StyledContainer>;
 ```
