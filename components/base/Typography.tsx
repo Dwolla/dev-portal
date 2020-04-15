@@ -103,12 +103,8 @@ const StyledInlineCode = styled.code`
   }
 `;
 
-const StyledLink = styled.a`
+export const Link = styled.a`
   color: ${ORANGE_PRIMARY};
-  &:hover {
-    text-decoration: underline;
-    cursor: pointer;
-  }
 `;
 
 // List styles
@@ -120,92 +116,111 @@ const ListStyles = css`
 `;
 
 // Prop types
-type Props = {
+type TypographyProps = {
   children: any;
   isDark?: boolean;
 };
 
-export const PreHeader = ({ children, isDark }: Props) => (
+interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
+  isDark?: boolean;
+}
+
+interface ParagraphProps extends React.HTMLAttributes<HTMLParagraphElement> {
+  isDark?: boolean;
+}
+
+interface UListProps extends React.HTMLAttributes<HTMLUListElement> {
+  isDark?: boolean;
+}
+
+interface OListProps extends React.HTMLAttributes<HTMLOListElement> {
+  isDark?: boolean;
+}
+
+interface QuoteProps extends React.HTMLAttributes<HTMLQuoteElement> {
+  isDark?: boolean;
+}
+
+export const PreHeader = ({ children, isDark }: TypographyProps) => (
   <StyledPreHeader className={classnames({ dark: isDark })}>
     {children}
   </StyledPreHeader>
 );
 
-export const H1 = ({ children, isDark }: Props) => (
-  <StyledH1 className={classnames({ dark: isDark })}>{children}</StyledH1>
+export const H1 = ({ isDark, ...props }: HeadingProps) => (
+  <StyledH1
+    {...props}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const H2 = ({ children, isDark }: Props) => (
-  <StyledH2 className={classnames({ dark: isDark })}>{children}</StyledH2>
+export const H2 = ({ isDark, ...props }: HeadingProps) => (
+  <StyledH2
+    {...props}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const H3 = ({ children, isDark }: Props) => (
-  <StyledH3 className={classnames({ dark: isDark })}>{children}</StyledH3>
+export const H3 = ({ isDark, ...props }: HeadingProps) => (
+  <StyledH3
+    {...props}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const H4 = ({ children, isDark }: Props) => (
-  <StyledH4 className={classnames({ dark: isDark })}>{children}</StyledH4>
+export const H4 = ({ isDark, ...props }: HeadingProps) => (
+  <StyledH4
+    {...props}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const H5 = ({ children, isDark }: Props) => (
-  <StyledH5 className={classnames({ dark: isDark })}>{children}</StyledH5>
+export const H5 = ({ isDark, ...props }: HeadingProps) => (
+  <StyledH5
+    {...props}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const SubHeader = ({ children, isDark }: Props) => (
+export const SubHeader = ({ children, isDark }: TypographyProps) => (
   <StyledSubHeader className={classnames({ dark: isDark })}>
     {children}
   </StyledSubHeader>
 );
 
-export const Paragraph = ({ children, isDark }: Props) => (
-  <StyledParagraph className={classnames({ dark: isDark })}>
-    {children}
-  </StyledParagraph>
+export const Paragraph = ({ isDark, ...props }: ParagraphProps) => (
+  <StyledParagraph
+    {...props}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const UnorderedList = ({ children, isDark }: Props) => (
+export const UnorderedList = ({ isDark, ...props }: UListProps) => (
   <ul
-    css={css`
-      ${ListStyles}
-    `}
-    className={classnames({ dark: isDark })}
-  >
-    {children.map((item) => (
-      <li key={item.id}>{item.text}</li>
-    ))}
-  </ul>
+    {...props}
+    css={ListStyles}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const OrderedList = ({ children, isDark }: Props) => (
+export const OrderedList = ({ isDark, ...props }: OListProps) => (
   <ol
-    css={css`
-      ${ListStyles}
-    `}
-    className={classnames({ dark: isDark })}
-  >
-    {children.map((item) => (
-      <li key={item.id}>{item.text}</li>
-    ))}
-  </ol>
+    {...props}
+    css={ListStyles}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const BlockQuote = ({ children, isDark }: Props) => (
+export const BlockQuote = ({ isDark, ...props }: QuoteProps) => (
   <blockquote
-    css={css`
-      ${ParagraphStyles}
-    `}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </blockquote>
+    {...props}
+    css={ParagraphStyles}
+    className={classnames(props.className, { dark: isDark })}
+  />
 );
 
-export const InlineCode = ({ children, isDark }: Props) => (
+export const InlineCode = ({ children, isDark }: TypographyProps) => (
   <StyledInlineCode className={classnames({ dark: isDark })}>
     {children}
   </StyledInlineCode>
-);
-
-export const Link = ({ children }: Props) => (
-  <StyledLink>{children}</StyledLink>
 );

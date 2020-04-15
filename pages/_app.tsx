@@ -7,6 +7,19 @@ import Pages from "../modules/pages";
 import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
+import {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  Paragraph,
+  UnorderedList,
+  OrderedList,
+  Link,
+  BlockQuote,
+  InlineCode,
+} from "../components/base/Typography";
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
@@ -81,6 +94,17 @@ const TOP_BAR_PROPS = {
 
 const MDX_COMPONENTS = {
   wrapper: AnchorsSetter,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  p: Paragraph,
+  ol: OrderedList,
+  ul: UnorderedList,
+  a: Link,
+  blockquote: BlockQuote,
+  code: InlineCode, // only p>code, not pre>code
 };
 
 const AppWithHooks = ({ router, Component, pageProps }: any) => {

@@ -1,16 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`H1 1`] = `
-<h1
-  className="dark css-hhrgpu-StyledH1-headingStyles-headingStyles e1i8011f1"
->
-  H1 Heading
-</h1>
-`;
-
-exports[`OrderedList 1`] = `
+exports[`OrderedList (dark) 1`] = `
 <ol
-  className=" css-1736k0p-ParagraphStyles-ParagraphStyles-ListStyles-ListStyles-OrderedList-OrderedList"
+  className="my-class dark css-1ox5242-ParagraphStyles-ParagraphStyles-ListStyles-ListStyles"
+  id="my-list"
 >
   <li>
     Ordered list text goes here
@@ -22,4 +15,143 @@ exports[`OrderedList 1`] = `
     Ordered list text goes here
   </li>
 </ol>
+`;
+
+exports[`OrderedList 1`] = `
+<ol
+  className="my-class css-1ox5242-ParagraphStyles-ParagraphStyles-ListStyles-ListStyles"
+  id="my-list"
+>
+  <li>
+    Ordered list text goes here
+  </li>
+  <li>
+    Ordered list text goes here
+  </li>
+  <li>
+    Ordered list text goes here
+  </li>
+</ol>
+`;
+
+exports[`Paragraph (dark) 1`] = `
+<p
+  className="my-class dark css-1193mgq-StyledParagraph-ParagraphStyles-ParagraphStyles e1i8011f7"
+  id="my-p"
+>
+  Paragraph (dark)
+</p>
+`;
+
+exports[`Paragraph 1`] = `
+<p
+  className="my-class css-1193mgq-StyledParagraph-ParagraphStyles-ParagraphStyles e1i8011f7"
+  id="my-p"
+>
+  Paragraph
+</p>
+`;
+
+exports[`UnorderedList (dark) 1`] = `
+<ul
+  className="my-class dark css-1ox5242-ParagraphStyles-ParagraphStyles-ListStyles-ListStyles"
+  id="my-list"
+>
+  <li>
+    Unordered list text goes here
+  </li>
+  <li>
+    Unordered list text goes here
+  </li>
+  <li>
+    Unordered list text goes here
+  </li>
+</ul>
+`;
+
+exports[`UnorderedList 1`] = `
+<ul
+  className="my-class css-1ox5242-ParagraphStyles-ParagraphStyles-ListStyles-ListStyles"
+  id="my-list"
+>
+  <li>
+    Unordered list text goes here
+  </li>
+  <li>
+    Unordered list text goes here
+  </li>
+  <li>
+    Unordered list text goes here
+  </li>
+</ul>
+`;
+
+exports[`headings (dark) 1`] = `
+Array [
+  <h1
+    className="my-class dark css-19e190r-StyledH1-headingStyles-headingStyles e1i8011f1"
+    id="my-h1"
+  >
+    H1 Heading
+  </h1>,
+  <h2
+    className="my-class dark css-1hcxbbh-StyledH2-headingStyles-headingStyles e1i8011f2"
+    id="my-h2"
+  >
+    H2 Heading
+  </h2>,
+  <h3
+    className="my-class dark css-1m268t4-StyledH3-headingStyles-headingStyles e1i8011f3"
+    id="my-h3"
+  >
+    H3 Heading
+  </h3>,
+  <h4
+    className="my-class dark css-12gfugp-StyledH4-headingStyles-headingStyles e1i8011f4"
+    id="my-h4"
+  >
+    H4 Heading
+  </h4>,
+  <h5
+    className="my-class dark css-c77exq-StyledH5-headingStyles-headingStyles e1i8011f5"
+    id="my-h5"
+  >
+    H5 Heading
+  </h5>,
+]
+`;
+
+exports[`headings 1`] = `
+Array [
+  <h1
+    className="my-class css-19e190r-StyledH1-headingStyles-headingStyles e1i8011f1"
+    id="my-h1"
+  >
+    H1 Heading
+  </h1>,
+  <h2
+    className="my-class css-1hcxbbh-StyledH2-headingStyles-headingStyles e1i8011f2"
+    id="my-h2"
+  >
+    H2 Heading
+  </h2>,
+  <h3
+    className="my-class css-1m268t4-StyledH3-headingStyles-headingStyles e1i8011f3"
+    id="my-h3"
+  >
+    H3 Heading
+  </h3>,
+  <h4
+    className="my-class css-12gfugp-StyledH4-headingStyles-headingStyles e1i8011f4"
+    id="my-h4"
+  >
+    H4 Heading
+  </h4>,
+  <h5
+    className="my-class css-c77exq-StyledH5-headingStyles-headingStyles e1i8011f5"
+    id="my-h5"
+  >
+    H5 Heading
+  </h5>,
+]
 `;

@@ -92,7 +92,7 @@ storiesOf("base|Typography", module)
         {paragraph}
         <InlineCode isDark>{inlineCode}</InlineCode>
         {paragraph}
-        <Link isDark>{link}</Link>
+        <Link>{link}</Link>
       </Paragraph>
       <UnorderedList isDark>{unorderedlList}</UnorderedList>
       <OrderedList isDark>{orderedlList}</OrderedList>
