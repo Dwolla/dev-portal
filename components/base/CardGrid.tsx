@@ -9,12 +9,11 @@ import {
 const StyledGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: -15px;
 `;
 const CardWrapper = styled.div`
   width: 25%;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 30px;
+  padding: 15px;
   @media (${maxWidth(BREAKPOINT_DESKTOP)}) {
     width: 33.3%;
   }
