@@ -82,7 +82,7 @@ As a rule of thumb, start with a `layout` or `partial` component. Which one depe
 
 ![component types](/component-types.jpg)
 
-### What about `atom` and `logic` components?
+### What about `atom` and `util` components?
 
 `atom` components can be extracted from `layout` and `partial` components when an abstraction becomes apparent. In general, it's a good idea to wait until you have some concrete use cases for an abstraction before creating one.
 
