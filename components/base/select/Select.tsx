@@ -1,5 +1,5 @@
 import React from "react";
-import ReactSelect, { components } from "react-select"; // https://bundlephobia.com/result?p=react-select@3.1.0
+import ReactSelect, { components } from "react-select";
 import arrowSelectIcon from "../../../public/images/arrow-select-icon.svg";
 import DoubleArrowSelectIcon from "../../../public/images/double-arrows-select-icon";
 import CheckMarkIcon from "../../../public/images/check-mark-icon";
