@@ -11,6 +11,7 @@ import {
 } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
+import { maxWidth, BREAKPOINT_MOBILE } from "../breakpoints";
 
 type Props = {
   link?: boolean;
@@ -50,8 +51,7 @@ function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
 }
 
 const CardStyle = styled.div`
-  height: 305px;
-  width: 300px;
+  height: 100%;
   padding: 30px;
   box-sizing: border-box;
   border: 1px solid ${GREY_2};
@@ -62,12 +62,17 @@ const CardStyle = styled.div`
     cursor: pointer;
     box-shadow: ${BOX_SHADOW_4};
   }
+
   &.center {
+    max-width: none;
     height: auto;
     width: 656px;
     padding: 0px;
     position: relative;
     text-align: center;
+    @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+      width: 100%;
+    }
   }
 `;
 
