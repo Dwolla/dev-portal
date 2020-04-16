@@ -22,14 +22,16 @@ module.exports = {
   rules: {
     "arrow-body-style": "off",
     "comma-dangle": "off", // prettier
+    "function-paren-newline": "off", // prettier
     indent: "off", // prettier
     "implicit-arrow-linebreak": "off",
     "import/extensions": "off", // webpack
     "import/no-unresolved": "off", // typescript
     "jsx-a11y/anchor-is-valid": "off", // next/link
+    "no-confusing-arrow": "off", // prettier
     "object-curly-newline": "off", // prettier
     "operator-linebreak": "off", // prettier
-    quotes: ["error", "double"],
+    quotes: "off", // prettier
     "react/destructuring-assignment": "off",
     "react/jsx-closing-tag-location": "off", // prettier
     "react/jsx-filename-extension": "off", // typescript

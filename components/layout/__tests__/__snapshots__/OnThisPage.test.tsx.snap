@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`with anchors 1`] = `
+Array [
+  <h1
+    id="hello-1"
+    originalType="h1"
+  >
+    Hello 1
+  </h1>,
+  <h1
+    id="hello-2"
+    originalType="h1"
+  >
+    Hello 2
+  </h1>,
+  <h1
+    id="hello-3"
+    originalType="h1"
+  >
+    Hello 3
+  </h1>,
+  <h1
+    id="hello-4"
+    originalType="h1"
+  >
+    Hello 4
+  </h1>,
+]
+`;
+
+exports[`without anchors 1`] = `
+<div>
+  hello
+</div>
+`;

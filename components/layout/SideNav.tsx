@@ -5,7 +5,6 @@ import classnames from "classnames";
 import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
 import { ORANGE_PRIMARY, GREY_6, GREY_2 } from "../colors";
 
 // proptypes

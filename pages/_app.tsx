@@ -1,7 +1,15 @@
+import React, { useState } from "react";
 import App, { createUrl } from "next/app";
 import { MDXProvider } from "@mdx-js/react";
+import useSWR from "swr";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
+import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
+import AuthPage from "../components/AuthPage";
+import fetcher from "../modules/fetcher";
+
+const STATUS_PAGE_SUMMARY_URL =
+  "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
 
 const SIDE_NAV_LINKS = [
   {
@@ -63,33 +71,55 @@ const FOOTER_LINKS = {
   ],
 };
 
-const TOP_BAR_CHILDREN = [
-  <select key="languages">
-    <option>Node.js</option>
-    <option>Python</option>
-    <option>Ruby</option>
-    <option>Kotlin</option>
-    <option>Java</option>
-  </select>,
-];
+const TOP_BAR_PROPS = {
+  button: { text: "Get API Keys" },
+  links: [
+    { text: "API Docs", href: "https://docs.dwolla.com", external: true },
+    { text: "Changelog", href: "/changelog" },
+  ],
+};
 
-const MDX_COMPONENTS = {};
+const MDX_COMPONENTS = {
+  wrapper: AnchorsSetter,
+};
 
-export default class MyApp extends App {
-  render() {
-    const { router, Component, pageProps } = this.props;
-    const url = createUrl(router);
-    return (
+const AppWithHooks = ({ router, Component, pageProps }: any) => {
+  const [isAuthenticated, setAuthenticated] = useState(process.env.isDev);
+
+  const url = createUrl(router);
+
+  const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
+    refreshInterval: 60000,
+  }).data?.status;
+
+  return isAuthenticated ? (
+    <AnchorsProvider>
       <MDXProvider components={MDX_COMPONENTS}>
         <Layout
           footerLinks={FOOTER_LINKS}
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
-          topBarChildren={TOP_BAR_CHILDREN}
+          topBarProps={TOP_BAR_PROPS}
+          apiStatus={apiStatus}
         >
           <Component {...pageProps} url={url} />
         </Layout>
       </MDXProvider>
+    </AnchorsProvider>
+  ) : (
+    <AuthPage setAuthenticated={setAuthenticated} />
+  );
+};
+
+export default class MyApp extends App {
+  render() {
+    const { router, Component, pageProps } = this.props;
+    return (
+      <AppWithHooks
+        router={router}
+        Component={Component}
+        pageProps={pageProps}
+      />
     );
   }
 }

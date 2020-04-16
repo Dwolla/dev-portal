@@ -36,15 +36,6 @@ const ALL_PAGES: Page[] = pages
     ];
   }, []);
 
-type PageGroup = {
-  id: string;
-};
-
-export type Page = {
-  id: string;
-  group?: PageGroup;
-};
-
 const Pages = {
   all(): Page[] {
     return ALL_PAGES;

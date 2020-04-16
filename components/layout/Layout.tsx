@@ -3,23 +3,11 @@ import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { GREY_2 } from "../colors";
-import ApiStatus from "./ApiStatus";
-import TopBar from "./TopBar";
+import { GREY_2, WHITE_PRIMARY } from "../colors";
+import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
-import { Page } from "../../modules/pages"; // eslint-disable-line no-unused-vars
-
-// proptypes
-
-interface LayoutProps {
-  children: JSX.Element;
-  pages: Page[];
-  sideNavLinks: SideNavLinkProps[];
-  footerLinks: Record<string, FooterLink[]>;
-  topBarChildren: JSX.Element | JSX.Element[];
-}
-
-// components
+import OnThisPage from "./OnThisPage";
+import APIStatusBar from "./APIStatusBar";
 
 export const LEFT_SIDEBAR_PADDING_X = "20px";
 
@@ -68,9 +56,60 @@ const MainArea = styled.div`
   @media (min-width: 980px) {
     margin-left: 25%;
   }
+
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "top-bar top-bar"
+    "content sidebar"
+    "footer footer";
 `;
 
-export default function Layout(props: LayoutProps) {
+const TopBarWrapper = styled.div`
+  grid-area: top-bar;
+  position: sticky;
+  top: 0;
+`;
+
+const OnThisPageWrapper = styled.div`
+  grid-area: sidebar;
+  position: sticky;
+  top: ${TOP_BAR_HEIGHT}px;
+  max-height: calc(100vh - ${TOP_BAR_HEIGHT}px);
+  overflow-y: scroll;
+
+  :empty {
+    display: none;
+  }
+`;
+
+const ContentWrapper = styled.div`
+  grid-area: content;
+  overflow: hidden;
+`;
+
+const FooterWrapper = styled.div`
+  grid-area: footer;
+  background: ${WHITE_PRIMARY};
+  z-index: 9;
+`;
+
+export default function Layout({
+  children,
+  pages,
+  sideNavLinks,
+  footerLinks,
+  topBarProps,
+  apiStatus,
+}: {
+  children: JSX.Element;
+  pages: Page[];
+  sideNavLinks: SideNavLinkProps[];
+  footerLinks: Record<string, FooterLink[]>;
+  topBarProps: TopBarProps;
+  apiStatus: APIStatus;
+}) {
   const sidebarToggled = false;
 
   return (
@@ -105,18 +144,26 @@ export default function Layout(props: LayoutProps) {
         </LogoWrapper>
 
         <SideNavWrapper>
-          <SideNav links={props.sideNavLinks} pages={props.pages} />
+          <SideNav links={sideNavLinks} pages={pages} />
         </SideNavWrapper>
 
-        <ApiStatus />
+        <APIStatusBar apiStatus={apiStatus} />
       </LeftSidebar>
 
       <MainArea>
-        <TopBar>{props.topBarChildren}</TopBar>
+        <TopBarWrapper>
+          <TopBar {...topBarProps} />
+        </TopBarWrapper>
 
-        {props.children}
+        <OnThisPageWrapper>
+          <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
+        </OnThisPageWrapper>
 
-        <Footer links={props.footerLinks} />
+        <ContentWrapper>{children}</ContentWrapper>
+
+        <FooterWrapper>
+          <Footer links={footerLinks} />
+        </FooterWrapper>
       </MainArea>
     </>
   );

@@ -74,15 +74,13 @@ const FOOTER_LINKS = {
   ],
 };
 
-const TOP_BAR_CHILDREN = [
-  <select key="languages">
-    <option>Node.js</option>
-    <option>Python</option>
-    <option>Ruby</option>
-    <option>Kotlin</option>
-    <option>Java</option>
-  </select>,
-];
+const TOP_BAR_PROPS = {
+  button: { text: "Get API Keys" },
+  links: [
+    { text: "API Docs", href: "https://docs.dwolla.com", external: true },
+    { text: "Changelog", href: "/changelog" },
+  ],
+};
 
 test("Layout", () => {
   const tree = renderer
@@ -90,8 +88,9 @@ test("Layout", () => {
       <Layout
         sideNavLinks={SIDE_NAV_LINKS}
         footerLinks={FOOTER_LINKS}
-        topBarChildren={TOP_BAR_CHILDREN}
+        topBarProps={TOP_BAR_PROPS}
         pages={Pages.all()}
+        apiStatus={{ indicator: "none", description: "apiStatus description" }}
       >
         <div>page</div>
       </Layout>

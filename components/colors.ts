@@ -17,8 +17,12 @@ export const PARAGRAPH_TEXT = "#6a7282";
 export const ORANGE_PRIMARY = "#d9725c";
 export const PURPLE_PRIMARY = "#483d66";
 export const PURPLE_PRIMARY_BUTTON = "#5e4e76";
+export const PURPLE_PRIMARY_HOVER = "#6a5885";
+export const PURPLE_PRIMARY_ACTIVE = "#524467";
 export const PURPLE_DARK = "#2d2d47";
 export const PINK_SECONDARY_BUTTON = "#cb4976";
+export const PINK_SECONDARY_HOVER = "#e24d80";
+export const PINK_SECONDARY_ACTIVE = "#be406c";
 export const WHITE_PRIMARY = "#ffffff";
 
 // Code Block Colors
@@ -33,6 +37,8 @@ export const CODE_BLOCK_ORANGE = "#ee7c2b";
 export const CODE_BLOCK_AQUA = "#4fb4d7";
 
 // Alert Bar Colors
-export const ALERT_BAR_INFO_BLUE = "#0082d5";
-export const ALERT_BAR_WARNING_YELLOW = "#f8ba01";
-export const ALERT_BAR_SUCCESS_GREEN = "#04be5b";
+export const API_STATUS_BAR_BLUE = "#0182d5";
+export const API_STATUS_BAR_ORANGE = "#e67e22";
+export const API_STATUS_BAR_YELLOW = "#f8ba01";
+export const API_STATUS_BAR_GREEN = "#04be5b";
+export const API_STATUS_BAR_RED = "#e84d3d";

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterTabs 1`] = `
+<div>
+  <div
+    className="css-bg0uto-TabsContainerStyle efq5uj30"
+  >
+    <div
+      className="tab is-active css-1xj4km3-TabStyle efq5uj31"
+      onClick={[Function]}
+    >
+      ALL
+    </div>
+    <div
+      className="tab css-1xj4km3-TabStyle efq5uj31"
+      onClick={[Function]}
+    >
+      GET BUILDING
+    </div>
+    <div
+      className="tab css-1xj4km3-TabStyle efq5uj31"
+      onClick={[Function]}
+    >
+      PREREQUISITES
+    </div>
+    <div
+      className="tab css-1xj4km3-TabStyle efq5uj31"
+      onClick={[Function]}
+    >
+      FEATURES
+    </div>
+  </div>
+  <div
+    className="css-r1dmct-Drop efq5uj32"
+  >
+    <div
+      className="Dropdown-root"
+    >
+      <div
+        aria-haspopup="listbox"
+        className="Dropdown-control customControlClass"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className="Dropdown-placeholder customPlaceHolderClass is-selected"
+        >
+          ALL
+        </div>
+        <div
+          className="Dropdown-arrow-wrapper"
+        >
+          <span
+            className="arrowClosedClass"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
