@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 
 import {
@@ -26,8 +25,8 @@ type Props = {
 
 function Button({ text, size, variant, type = "button" }: Props) {
   return (
-    <ButtonStyle type={type} className={`${size} ${variant}`}>
-      <SpanStyle className={`${size}`}>{text}</SpanStyle>
+    <ButtonStyle type={type} className={`${variant} ${size}`}>
+      {text}
     </ButtonStyle>
   );
 }
@@ -36,23 +35,24 @@ const ButtonStyle = styled.button`
   color: ${WHITE_PRIMARY};
   font-family: ${POPPINS};
   font-style: thin;
-  padding: 0 15px;
+  padding: 12px 15px;
   border-radius: 5px;
   cursor: pointer;
   :focus {
     outline: 0;
   }
   &.tiny {
-    height: 26px;
+    font-size: 11px;
+    font-weight: 500;
   }
   &.small {
-    height: 32px;
+    font-size: 13px;
   }
   &.standard {
-    height: 40px;
+    font-size: 14px;
   }
   &.large {
-    height: 54px;
+    font-size: 16px;
   }
 
   &.primary {
@@ -96,24 +96,6 @@ const ButtonStyle = styled.button`
       background-color: ${WHITE_PRIMARY};
       color: ${PURPLE_DARK};
     }
-  }
-`;
-
-const SpanStyle = styled.div`
-  letter-spacing: 0;
-  text-align: center;
-  &.tiny {
-    font-size: 11px;
-    font-weight: 500;
-  }
-  &.small {
-    font-size: 13px;
-  }
-  &.standard {
-    font-size: 14px;
-  }
-  &.large {
-    font-size: 16px;
   }
 `;
 
