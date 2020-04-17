@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`H1 1`] = `
+<h1
+  className="dark css-7ja6ob-StyledH1-headingStyles-headingStyles e1i8011f1"
+>
+  H1 Heading
+</h1>
+`;
+
+exports[`OrderedList 1`] = `
+<ol
+  className=" css-1i49ef2-ParagraphStyles-ParagraphStyles-ListStyles-ListStyles-OrderedList-OrderedList"
+>
+  <li>
+    Ordered list text goes here
+  </li>
+  <li>
+    Ordered list text goes here
+  </li>
+  <li>
+    Ordered list text goes here
+  </li>
+</ol>
+`;
