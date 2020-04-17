@@ -27,6 +27,7 @@
     "@next/mdx": "^9.2.1",
     "@storybook/addon-backgrounds": "^5.3.17",
     "@storybook/addon-centered": "5.1.11",
+    "@storybook/addon-viewport": "^5.3.18",
     "@storybook/react": "^5.3.14",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
@@ -59,6 +60,7 @@
     "react-dom": "^16.12.0",
     "react-dropdown": "^1.7.0",
     "react-scroll": "^1.7.16",
+    "react-select": "3.1.0",
     "react-test-renderer": "^16.12.0",
     "swr": "^0.1.18",
     "typescript": "^3.7.5"

@@ -2,13 +2,9 @@
 
 exports[`Button 1`] = `
 <button
-  className="standard primary css-np6ip9-ButtonStyle e12ysvgk0"
+  className="primary standard css-1eto6r1-ButtonStyle e12ysvgk0"
   type="button"
 >
-  <div
-    className="standard css-1cvhdlc-SpanStyle e12ysvgk1"
-  >
-    Button
-  </div>
+  Button
 </button>
 `;
