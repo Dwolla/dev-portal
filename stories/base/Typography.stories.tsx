@@ -37,7 +37,7 @@ const preHeader = "Preheader Text";
 const subHeader = "Intro / Subhead Text Goes Here";
 const blockquote = "Note: This is a blockquote.";
 const inlineCode = "in-line code";
-const link = "This is a link.";
+const link = { text: "This is a link.", href: "#" };
 const paragraph =
   " Paragraph text here. Lorem ipsum dolor sit amet. Integer nec augue purus. Morbi sollicitudin ectus id justo condimentum, sit amet euismod metus efficitur. Cras laoreet congue posuere. Nam at tempor nibh. Morbi pellentesque nunc nec sollicitudin luctus. ";
 const unorderedlList = [
@@ -54,9 +54,6 @@ const orderedlList = [
 // Stories
 storiesOf("base|Typography", module)
   .addDecorator(centered)
-  .addParameters({
-    notes: "To view components in Dark mode, set background to Dark ",
-  })
   // All variations of Typography in light background
   .add("Default", () => (
     <DivStyle>
@@ -71,7 +68,7 @@ storiesOf("base|Typography", module)
         {paragraph}
         <InlineCode>{inlineCode}</InlineCode>
         {paragraph}
-        <Link>{link}</Link>
+        <Link text={link.text} href={link.href} />
       </Paragraph>
       <UnorderedList>{unorderedlList}</UnorderedList>
       <OrderedList>{orderedlList}</OrderedList>
@@ -92,7 +89,7 @@ storiesOf("base|Typography", module)
         {paragraph}
         <InlineCode isDark>{inlineCode}</InlineCode>
         {paragraph}
-        <Link isDark>{link}</Link>
+        <Link text={link.text} href={link.href} />
       </Paragraph>
       <UnorderedList isDark>{unorderedlList}</UnorderedList>
       <OrderedList isDark>{orderedlList}</OrderedList>

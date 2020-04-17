@@ -105,9 +105,9 @@ const StyledInlineCode = styled.code`
 
 const StyledLink = styled.a`
   color: ${ORANGE_PRIMARY};
+  text-decoration: none;
   &:hover {
     text-decoration: underline;
-    cursor: pointer;
   }
 `;
 
@@ -123,6 +123,12 @@ const ListStyles = css`
 type Props = {
   children: any;
   isDark?: boolean;
+};
+
+// Link Prop types
+type LinkProps = {
+  text: string;
+  href: string;
 };
 
 export const PreHeader = ({ children, isDark }: Props) => (
@@ -206,6 +212,6 @@ export const InlineCode = ({ children, isDark }: Props) => (
   </StyledInlineCode>
 );
 
-export const Link = ({ children }: Props) => (
-  <StyledLink>{children}</StyledLink>
+export const Link = ({ text, href }: LinkProps) => (
+  <StyledLink href={href}>{text}</StyledLink>
 );

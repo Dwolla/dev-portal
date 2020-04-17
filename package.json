@@ -27,7 +27,6 @@
     "@next/mdx": "^9.2.1",
     "@storybook/addon-backgrounds": "^5.3.17",
     "@storybook/addon-centered": "5.1.11",
-    "@storybook/addon-notes": "^5.3.18",
     "@storybook/react": "^5.3.14",
     "@testing-library/jest-dom": "^5.1.1",
     "@testing-library/react": "^9.4.0",
