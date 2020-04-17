@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoWidth Code Block Select 1`] = `
+<div
+  className=" css-k377xg-container"
+  onKeyDown={[Function]}
+>
+  <div
+    className=" css-1sqlxei-control"
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+  >
+    <div
+      className=" css-86rg1c-ValueContainer"
+    >
+      <div
+        className=" css-1j7jp7w-singleValue"
+      >
+        JAVASCRIPT
+      </div>
+      <input
+        aria-autocomplete="list"
+        className="css-62g3xt-dummyInput"
+        disabled={false}
+        id="react-select-5-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={true}
+        tabIndex="0"
+        value=""
+      />
+    </div>
+    <div
+      className=" css-1hb7zxy-IndicatorsContainer"
+    >
+      <span
+        className=" css-43ykx9-indicatorSeparator"
+      />
+      <div
+        aria-hidden="true"
+        className=" css-1hkylt5-indicatorContainer"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <svg
+          viewBox="0 0 7 12"
+          width="7px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="#CFCFF5"
+            fillRule="evenodd"
+          >
+            <path
+              d="M6.136 8.148L3.5 10.788.864 8.148a.505.505 0 10-.716.717l2.984 2.988c.101.101.235.15.368.147a.504.504 0 00.368-.147l2.984-2.988a.507.507 0 00-.716-.717zM6.136 3.852L3.5 1.212.864 3.852a.506.506 0 11-.716-.718L3.132.147A.502.502 0 013.5 0a.503.503 0 01.368.147l2.984 2.987a.506.506 0 11-.716.717z"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`AutoWidth Select 1`] = `
+<div
+  className=" css-k377xg-container"
+  onKeyDown={[Function]}
+>
+  <div
+    className=" css-1xxipdn-control"
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+  >
+    <div
+      className=" css-86rg1c-ValueContainer"
+    >
+      <div
+        className=" css-1hirrs0-singleValue"
+      >
+        JAVASCRIPT
+      </div>
+      <input
+        aria-autocomplete="list"
+        className="css-62g3xt-dummyInput"
+        disabled={false}
+        id="react-select-3-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={true}
+        tabIndex="0"
+        value=""
+      />
+    </div>
+    <div
+      className=" css-1hb7zxy-IndicatorsContainer"
+    >
+      <span
+        className=" css-43ykx9-indicatorSeparator"
+      />
+      <div
+        aria-hidden="true"
+        className=" css-unjupu-indicatorContainer"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <img
+          alt=""
+          className=" css-vfym8x-StyledDefaultDropdownIcon e1oqaitj0"
+          src="test-image-stub"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Code Block Select 1`] = `
+<div
+  className=" css-2b097c-container"
+  onKeyDown={[Function]}
+>
+  <div
+    className=" css-1sqlxei-control"
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+  >
+    <div
+      className=" css-86rg1c-ValueContainer"
+    >
+      <div
+        className=" css-1j7jp7w-singleValue"
+      >
+        JAVASCRIPT
+      </div>
+      <input
+        aria-autocomplete="list"
+        className="css-62g3xt-dummyInput"
+        disabled={false}
+        id="react-select-4-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={true}
+        tabIndex="0"
+        value=""
+      />
+    </div>
+    <div
+      className=" css-1hb7zxy-IndicatorsContainer"
+    >
+      <span
+        className=" css-43ykx9-indicatorSeparator"
+      />
+      <div
+        aria-hidden="true"
+        className=" css-1hkylt5-indicatorContainer"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <svg
+          viewBox="0 0 7 12"
+          width="7px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="#CFCFF5"
+            fillRule="evenodd"
+          >
+            <path
+              d="M6.136 8.148L3.5 10.788.864 8.148a.505.505 0 10-.716.717l2.984 2.988c.101.101.235.15.368.147a.504.504 0 00.368-.147l2.984-2.988a.507.507 0 00-.716-.717zM6.136 3.852L3.5 1.212.864 3.852a.506.506 0 11-.716-.718L3.132.147A.502.502 0 013.5 0a.503.503 0 01.368.147l2.984 2.987a.506.506 0 11-.716.717z"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Default Select 1`] = `
+<div
+  className=" css-2b097c-container"
+  onKeyDown={[Function]}
+>
+  <div
+    className=" css-1xxipdn-control"
+    onMouseDown={[Function]}
+    onTouchEnd={[Function]}
+  >
+    <div
+      className=" css-86rg1c-ValueContainer"
+    >
+      <div
+        className=" css-1hirrs0-singleValue"
+      >
+        JAVASCRIPT
+      </div>
+      <input
+        aria-autocomplete="list"
+        className="css-62g3xt-dummyInput"
+        disabled={false}
+        id="react-select-2-input"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        readOnly={true}
+        tabIndex="0"
+        value=""
+      />
+    </div>
+    <div
+      className=" css-1hb7zxy-IndicatorsContainer"
+    >
+      <span
+        className=" css-43ykx9-indicatorSeparator"
+      />
+      <div
+        aria-hidden="true"
+        className=" css-unjupu-indicatorContainer"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <img
+          alt=""
+          className=" css-vfym8x-StyledDefaultDropdownIcon e1oqaitj0"
+          src="test-image-stub"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
