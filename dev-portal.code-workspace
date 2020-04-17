@@ -5,6 +5,7 @@
       ".mdx-data/": true,
       ".next/": true,
       ".storybook-out": true,
+      "component-types.jpg": true,
       "coverage/": true,
       "node_modules/": true,
       "out/": true,
