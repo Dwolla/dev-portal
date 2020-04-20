@@ -5,6 +5,7 @@ import useSWR from "swr";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
 import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
+import { LanguageContext } from "../components/util/Contexts";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
 
@@ -79,12 +80,21 @@ const TOP_BAR_PROPS = {
   ],
 };
 
+const LANGUAGE_OPTIONS = [
+  { value: "javascript", label: "JavaScript" },
+  { value: "php", label: "PHP" },
+  { value: "ruby", label: "Ruby" },
+  { value: "python", label: "Python" },
+  { value: "raw", label: "Raw" },
+];
+
 const MDX_COMPONENTS = {
   wrapper: AnchorsSetter,
 };
 
 const AppWithHooks = ({ router, Component, pageProps }: any) => {
   const [isAuthenticated, setAuthenticated] = useState(process.env.isDev);
+  const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
 
   const url = createUrl(router);
 
@@ -95,15 +105,23 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
   return isAuthenticated ? (
     <AnchorsProvider>
       <MDXProvider components={MDX_COMPONENTS}>
-        <Layout
-          footerLinks={FOOTER_LINKS}
-          pages={Pages.all()}
-          sideNavLinks={SIDE_NAV_LINKS}
-          topBarProps={TOP_BAR_PROPS}
-          apiStatus={apiStatus}
+        <LanguageContext.Provider
+          value={{
+            selectedLanguage,
+            setSelectedLanguage,
+            languageOptions: LANGUAGE_OPTIONS,
+          }}
         >
-          <Component {...pageProps} url={url} />
-        </Layout>
+          <Layout
+            footerLinks={FOOTER_LINKS}
+            pages={Pages.all()}
+            sideNavLinks={SIDE_NAV_LINKS}
+            topBarProps={TOP_BAR_PROPS}
+            apiStatus={apiStatus}
+          >
+            <Component {...pageProps} url={url} />
+          </Layout>
+        </LanguageContext.Provider>
       </MDXProvider>
     </AnchorsProvider>
   ) : (

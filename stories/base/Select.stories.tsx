@@ -28,18 +28,14 @@ const SelectWrap = ({
   autoWidth?: boolean;
   variant?: "default" | "code";
 }) => {
-  const [selectedValue, setSelectedValue] = useState({
-    value: "javascript",
-    label: "JAVASCRIPT",
-  });
-
   const options = [
-    { value: "javascript", label: "JAVASCRIPT" },
+    { value: "javascript", label: "JavaScript" },
     { value: "php", label: "PHP" },
-    { value: "ruby", label: "RUBY" },
-    { value: "python", label: "PYTHON" },
-    { value: "raw", label: "RAW" },
+    { value: "ruby", label: "Ruby" },
+    { value: "python", label: "Python" },
+    { value: "raw", label: "Raw" },
   ];
+  const [selectedValue, setSelectedValue] = useState(options[0]);
 
   return (
     <SelectWrapContainer>
