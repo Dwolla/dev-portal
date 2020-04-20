@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner - no icon 1`] = `
+<div
+  className=" css-18bvzn3-StyledBanner eyaavg40"
+>
+  <div
+    className="css-1hg7ivq-StyledTopic eyaavg42"
+  >
+    Comprehensive API documentation for developers and businesses.
+  </div>
+  <div
+    className=" css-hiwaf6-StyledDescription eyaavg43"
+  >
+    Step-by-step instructions to get you set up in the Dwolla API
+  </div>
+</div>
+`;
+
+exports[`Banner - with Button 1`] = `
+<div
+  className=" css-18bvzn3-StyledBanner eyaavg40"
+>
+  <div
+    className="css-1hg7ivq-StyledTopic eyaavg42"
+  >
+    Comprehensive API documentation for developers and businesses.
+  </div>
+  <div
+    className=" css-hiwaf6-StyledDescription eyaavg43"
+  >
+    Step-by-step instructions to get you set up in the Dwolla API
+  </div>
+  <button
+    className="primary standard css-1eto6r1-ButtonStyle e12ysvgk0"
+    type="button"
+  >
+    Discover the Possibilities
+  </button>
+</div>
+`;
+
+exports[`Banner - with Filters 1`] = `
+<div
+  className="filters css-18bvzn3-StyledBanner eyaavg40"
+>
+  <img
+    alt=""
+    className="css-wrcaoo-StyledIcon eyaavg41"
+    src="test-image-stub"
+  />
+  <div
+    className="css-1hg7ivq-StyledTopic eyaavg42"
+  >
+    Guides
+  </div>
+  <div
+    className="filters css-hiwaf6-StyledDescription eyaavg43"
+  >
+    Step-by-step instructions to get you set up in the Dwolla API
+  </div>
+  <div
+    className="css-1xqq64w-StyledFilter eyaavg44"
+  >
+    <div>
+      <div
+        className="css-9vpk5d-TabsContainerStyle efq5uj30"
+      >
+        <div
+          className="tab is-active css-ptatp0-TabStyle efq5uj31"
+          onClick={[Function]}
+        >
+          ALL
+        </div>
+        <div
+          className="tab css-ptatp0-TabStyle efq5uj31"
+          onClick={[Function]}
+        >
+          GET BUILDING
+        </div>
+        <div
+          className="tab css-ptatp0-TabStyle efq5uj31"
+          onClick={[Function]}
+        >
+          PREREQUISITES
+        </div>
+        <div
+          className="tab css-ptatp0-TabStyle efq5uj31"
+          onClick={[Function]}
+        >
+          FEATURES
+        </div>
+      </div>
+      <div
+        className="css-7gfibw-Drop efq5uj32"
+      >
+        <div
+          className="Dropdown-root"
+        >
+          <div
+            aria-haspopup="listbox"
+            className="Dropdown-control customControlClass"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <div
+              className="Dropdown-placeholder customPlaceHolderClass is-selected"
+            >
+              ALL
+            </div>
+            <div
+              className="Dropdown-arrow-wrapper"
+            >
+              <span
+                className="arrowClosedClass"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Default Banner 1`] = `
+<div
+  className=" css-18bvzn3-StyledBanner eyaavg40"
+>
+  <img
+    alt=""
+    className="css-wrcaoo-StyledIcon eyaavg41"
+    src="test-image-stub"
+  />
+  <div
+    className="css-1hg7ivq-StyledTopic eyaavg42"
+  >
+    Guides
+  </div>
+  <div
+    className=" css-hiwaf6-StyledDescription eyaavg43"
+  >
+    Step-by-step instructions to get you set up in the Dwolla API
+  </div>
+</div>
+`;

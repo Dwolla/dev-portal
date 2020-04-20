@@ -37,6 +37,7 @@ module.exports = {
     "react/jsx-filename-extension": "off", // typescript
     "react/jsx-one-expression-per-line": "off", // prettier
     "react/jsx-props-no-spreading": "off",
+    "react/jsx-wrap-multilines": "off", // prettier
     "react/react-in-jsx-scope": "off", // next
     "react/self-closing-comp": "off", // prettier
     "spaced-comment": "off", // typescript
