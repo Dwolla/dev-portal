@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table 1`] = `
+<table
+  className="css-ebh2j6-StyledTable e1i4g4ws0"
+>
+  <table>
+    <tr>
+      <th>
+        Parameter
+      </th>
+      <th>
+        Required?
+      </th>
+      <th>
+        Type
+      </th>
+      <th>
+        Description
+      </th>
+    </tr>
+    <tr>
+      <td>
+        firstName
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        Customer's first name
+      </td>
+    </tr>
+    <tr>
+      <td>
+        lastName
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        Customer's last name
+      </td>
+    </tr>
+    <tr>
+      <td>
+        email
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        Customer's last name
+      </td>
+    </tr>
+    <tr>
+      <td>
+        type
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        Value of 
+        <code
+          className=" css-defxww-StyledInlineCode e1i8011f8"
+        >
+          receive-only
+        </code>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        businessName
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        Customer's registered business name
+      </td>
+    </tr>
+    <tr>
+      <td>
+        ipAddress
+      </td>
+      <td>
+        yes
+      </td>
+      <td>
+        string
+      </td>
+      <td>
+        Customer's IP address
+      </td>
+    </tr>
+  </table>
+</table>
+`;
