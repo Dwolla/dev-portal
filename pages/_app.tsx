@@ -7,6 +7,7 @@ import Pages from "../modules/pages";
 import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
+import { MDXTypographyWrapper } from "../components/base/Typography";
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
@@ -80,7 +81,11 @@ const TOP_BAR_PROPS = {
 };
 
 const MDX_COMPONENTS = {
-  wrapper: AnchorsSetter,
+  wrapper: ({ children }: { children: any }) => (
+    <MDXTypographyWrapper>
+      <AnchorsSetter>{children}</AnchorsSetter>
+    </MDXTypographyWrapper>
+  ),
 };
 
 const AppWithHooks = ({ router, Component, pageProps }: any) => {
