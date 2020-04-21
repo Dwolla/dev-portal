@@ -4,6 +4,14 @@ import Banner from "../../components/base/Banner";
 import FilterTabs from "../../components/base/FilterTabs";
 import guideIcon from "../../public/images/guides-icon-large.svg";
 
+// Filters to display as tabs
+const TABS = [
+  { value: "all", label: "ALL" },
+  { value: "get-building", label: "GET BUILDING" },
+  { value: "prerequisites", label: "PREREQUISITES" },
+  { value: "features", label: "FEATURES" },
+];
+
 storiesOf("base|Banner", module)
   .add("default", () => (
     <Banner
@@ -26,18 +34,14 @@ storiesOf("base|Banner", module)
     />
   ))
   .add("With Filters", () => {
-    const [filter, setFilter] = React.useState(null);
+    const [filter, setFilter] = React.useState(TABS[0]);
     return (
       <Banner
         icon={guideIcon}
         topic="Guides"
         description="Step-by-step instructions to get you set up in the Dwolla API"
         filterTabs={
-          <FilterTabs
-            tabs={["GET BUILDING", "PREREQUISITES", "FEATURES"]}
-            filter={filter}
-            setFilter={setFilter}
-          />
+          <FilterTabs tabs={TABS} filter={filter} setFilter={setFilter} />
         }
       />
     );

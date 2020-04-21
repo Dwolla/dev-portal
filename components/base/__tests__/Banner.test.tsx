@@ -44,7 +44,12 @@ test("Banner - with Button", () => {
   expect(tree).toMatchSnapshot();
 });
 
-const TABS = ["GET BUILDING", "PREREQUISITES", "FEATURES"];
+const TABS = [
+  { value: "all", label: "ALL" },
+  { value: "get-building", label: "GET BUILDING" },
+  { value: "prerequisites", label: "PREREQUISITES" },
+  { value: "features", label: "FEATURES" },
+];
 
 test("Banner - with Filters", () => {
   const setState = jest.fn();
@@ -53,13 +58,13 @@ test("Banner - with Filters", () => {
       icon={guideIcon}
       topic="Guides"
       description="Step-by-step instructions to get you set up in the Dwolla API"
-      filterTabs={<FilterTabs tabs={TABS} filter={null} setFilter={setState} />}
+      filterTabs={
+        <FilterTabs tabs={TABS} filter={TABS[0]} setFilter={setState} />
+      }
     />
   );
   tree.root.findAllByType(TabStyle).map((t) => t.props.onClick());
 
-  expect(setState.mock.calls.map((c) => c)).toEqual(
-    [null, ...TABS].map((t) => [t])
-  );
+  expect(setState.mock.calls.map((c) => c)).toEqual([...TABS].map((t) => [t]));
   expect(tree.toJSON()).toMatchSnapshot();
 });

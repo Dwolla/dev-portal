@@ -60,7 +60,7 @@ exports[`Banner - with Filters 1`] = `
     Step-by-step instructions to get you set up in the Dwolla API
   </div>
   <div
-    className="css-1xqq64w-StyledFilter eyaavg44"
+    className="css-3o678d-StyledFilter eyaavg44"
   >
     <div>
       <div
@@ -92,28 +92,56 @@ exports[`Banner - with Filters 1`] = `
         </div>
       </div>
       <div
-        className="css-7gfibw-Drop efq5uj32"
+        className="css-19cggbi-SelectWrapper efq5uj32"
       >
         <div
-          className="Dropdown-root"
+          className=" css-2b097c-container"
+          onKeyDown={[Function]}
         >
           <div
-            aria-haspopup="listbox"
-            className="Dropdown-control customControlClass"
+            className=" css-1xxipdn-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >
             <div
-              className="Dropdown-placeholder customPlaceHolderClass is-selected"
+              className=" css-86rg1c-ValueContainer"
             >
-              ALL
+              <div
+                className=" css-1hirrs0-singleValue"
+              >
+                ALL
+              </div>
+              <input
+                aria-autocomplete="list"
+                className="css-62g3xt-dummyInput"
+                disabled={false}
+                id="react-select-2-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                readOnly={true}
+                tabIndex="0"
+                value=""
+              />
             </div>
             <div
-              className="Dropdown-arrow-wrapper"
+              className=" css-1hb7zxy-IndicatorsContainer"
             >
               <span
-                className="arrowClosedClass"
+                className=" css-43ykx9-indicatorSeparator"
               />
+              <div
+                aria-hidden="true"
+                className=" css-unjupu-indicatorContainer"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <img
+                  alt=""
+                  className=" css-vfym8x-StyledDefaultDropdownIcon e1oqaitj0"
+                  src="test-image-stub"
+                />
+              </div>
             </div>
           </div>
         </div>

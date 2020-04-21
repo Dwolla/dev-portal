@@ -61,7 +61,6 @@ const StyledDescription = styled.div`
 `;
 
 const StyledFilter = styled.div`
-  width: 100%;
   margin-top: 52px;
   margin-bottom: 0px;
   position: absolute;
