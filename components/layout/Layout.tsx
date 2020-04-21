@@ -70,6 +70,7 @@ const TopBarWrapper = styled.div`
   grid-area: top-bar;
   position: sticky;
   top: 0;
+  z-index: 10;
 `;
 
 const OnThisPageWrapper = styled.div`

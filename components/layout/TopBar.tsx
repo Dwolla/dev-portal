@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import Link from "next/link";
@@ -6,6 +7,8 @@ import openInNewTabIcon from "../../public/images/open-in-new-tab-icon.svg";
 import { GREY_2, GREY_6, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import Button from "../base/Button";
+import Select from "../base/select/Select";
+import { LanguageContext } from "../util/Contexts";
 
 export const TOP_BAR_HEIGHT = 68;
 
@@ -21,6 +24,10 @@ const Container = styled.div`
 const ButtonWrapper = styled.div`
   margin-left: auto;
   padding-right: 20px;
+`;
+
+const SelectWrapper = styled.div`
+  padding-left: 20px;
 `;
 
 const StyledLink = styled.a`
@@ -95,6 +102,9 @@ export type TopBarProps = {
 };
 
 export default function TopBar({ button, links }: TopBarProps) {
+  const { selectedLanguage, setSelectedLanguage, languageOptions } = useContext(
+    LanguageContext
+  );
   const router = useRouter();
 
   return (
@@ -106,6 +116,15 @@ export default function TopBar({ button, links }: TopBarProps) {
           active={l.active || l.href === router?.pathname}
         />
       ))}
+
+      <SelectWrapper>
+        <Select
+          options={languageOptions}
+          selectedValue={selectedLanguage}
+          setSelectedValue={setSelectedLanguage}
+          autoWidth
+        />
+      </SelectWrapper>
 
       <ButtonWrapper>
         <Button {...button} size="standard" variant="primary" />

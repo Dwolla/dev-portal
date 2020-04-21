@@ -14,16 +14,41 @@ import {
   GREY_4,
   GREY_5,
 } from "../colors";
+import { minWidth, BREAKPOINT_IPAD } from "../breakpoints";
 
 // Heading styles
-const headingStyles = css`
-  color: ${HEADLINE_TEXT};
-  font-family: ${POPPINS};
-  font-weight: 300;
-  &.dark {
-    color: ${WHITE_PRIMARY};
-  }
-`;
+const headingStyles = {
+  global: css`
+    color: ${HEADLINE_TEXT};
+    font-family: ${POPPINS};
+    font-weight: 300;
+    &.dark {
+      color: ${WHITE_PRIMARY};
+    }
+  `,
+  h1: css`
+    font-size: 42px;
+    line-height: 52px;
+  `,
+  h2: css`
+    font-size: 30px;
+    line-height: 46px;
+  `,
+  h3: css`
+    font-size: 22px;
+    line-height: 33px;
+  `,
+  h4: css`
+    font-size: 18px;
+    line-height: 27px;
+  `,
+  h5: css`
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  `,
+};
 
 const StyledPreHeader = styled.span`
   color: ${GREY_5};
@@ -38,36 +63,8 @@ const StyledPreHeader = styled.span`
   }
 `;
 
-const StyledH1 = styled.h1`
-  ${headingStyles}
-  font-size: 42px;
-  line-height: 52px;
-`;
-const StyledH2 = styled.h2`
-  ${headingStyles}
-  font-size: 30px;
-  line-height: 46px;
-`;
-const StyledH3 = styled.h3`
-  ${headingStyles}
-  font-size: 22px;
-  line-height: 33px;
-`;
-const StyledH4 = styled.h4`
-  ${headingStyles}
-  font-size: 18px;
-  line-height: 27px;
-`;
-const StyledH5 = styled.h5`
-  ${headingStyles}
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 1px;
-`;
-
 // Paragraph syles
-const ParagraphStyles = css`
+const baseTextStyles = css`
   color: ${PARAGRAPH_TEXT};
   font-family: ${ROBOTO};
   &.dark {
@@ -76,19 +73,19 @@ const ParagraphStyles = css`
 `;
 
 const StyledSubHeader = styled.span`
-  ${ParagraphStyles}
+  ${baseTextStyles}
   font-size: 20px;
   font-weight: 300;
   line-height: 26px;
 `;
 
-const StyledParagraph = styled.p`
-  ${ParagraphStyles}
+const paragraphStyles = css`
+  ${baseTextStyles}
   font-size: 16px;
   line-height: 28px;
 `;
 
-const StyledInlineCode = styled.code`
+const codeStyle = css`
   color: ${PARAGRAPH_TEXT};
   font-family: ${MONACO};
   font-size: 13px;
@@ -103,7 +100,7 @@ const StyledInlineCode = styled.code`
   }
 `;
 
-const StyledLink = styled.a`
+const linkStyles = css`
   color: ${ORANGE_PRIMARY};
   text-decoration: none;
   &:hover {
@@ -112,8 +109,8 @@ const StyledLink = styled.a`
 `;
 
 // List styles
-const ListStyles = css`
-  ${ParagraphStyles}
+const listStyles = css`
+  ${baseTextStyles}
   font-size: 16px;
   letter-spacing: 0;
   line-height: 28px;
@@ -138,23 +135,48 @@ export const PreHeader = ({ children, isDark }: Props) => (
 );
 
 export const H1 = ({ children, isDark }: Props) => (
-  <StyledH1 className={classnames({ dark: isDark })}>{children}</StyledH1>
+  <h1
+    css={[headingStyles.global, headingStyles.h1]}
+    className={classnames({ dark: isDark })}
+  >
+    {children}
+  </h1>
 );
 
 export const H2 = ({ children, isDark }: Props) => (
-  <StyledH2 className={classnames({ dark: isDark })}>{children}</StyledH2>
+  <h2
+    css={[headingStyles.global, headingStyles.h2]}
+    className={classnames({ dark: isDark })}
+  >
+    {children}
+  </h2>
 );
 
 export const H3 = ({ children, isDark }: Props) => (
-  <StyledH3 className={classnames({ dark: isDark })}>{children}</StyledH3>
+  <h3
+    css={[headingStyles.global, headingStyles.h3]}
+    className={classnames({ dark: isDark })}
+  >
+    {children}
+  </h3>
 );
 
 export const H4 = ({ children, isDark }: Props) => (
-  <StyledH4 className={classnames({ dark: isDark })}>{children}</StyledH4>
+  <h4
+    css={[headingStyles.global, headingStyles.h4]}
+    className={classnames({ dark: isDark })}
+  >
+    {children}
+  </h4>
 );
 
 export const H5 = ({ children, isDark }: Props) => (
-  <StyledH5 className={classnames({ dark: isDark })}>{children}</StyledH5>
+  <h5
+    css={[headingStyles.global, headingStyles.h5]}
+    className={classnames({ dark: isDark })}
+  >
+    {children}
+  </h5>
 );
 
 export const SubHeader = ({ children, isDark }: Props) => (
@@ -164,15 +186,15 @@ export const SubHeader = ({ children, isDark }: Props) => (
 );
 
 export const Paragraph = ({ children, isDark }: Props) => (
-  <StyledParagraph className={classnames({ dark: isDark })}>
+  <p css={paragraphStyles} className={classnames({ dark: isDark })}>
     {children}
-  </StyledParagraph>
+  </p>
 );
 
 export const UnorderedList = ({ children, isDark }: Props) => (
   <ul
     css={css`
-      ${ListStyles}
+      ${listStyles}
     `}
     className={classnames({ dark: isDark })}
   >
@@ -185,7 +207,7 @@ export const UnorderedList = ({ children, isDark }: Props) => (
 export const OrderedList = ({ children, isDark }: Props) => (
   <ol
     css={css`
-      ${ListStyles}
+      ${listStyles}
     `}
     className={classnames({ dark: isDark })}
   >
@@ -198,7 +220,7 @@ export const OrderedList = ({ children, isDark }: Props) => (
 export const BlockQuote = ({ children, isDark }: Props) => (
   <blockquote
     css={css`
-      ${ParagraphStyles}
+      ${baseTextStyles}
     `}
     className={classnames({ dark: isDark })}
   >
@@ -207,11 +229,74 @@ export const BlockQuote = ({ children, isDark }: Props) => (
 );
 
 export const InlineCode = ({ children, isDark }: Props) => (
-  <StyledInlineCode className={classnames({ dark: isDark })}>
+  <code css={codeStyle} className={classnames({ dark: isDark })}>
     {children}
-  </StyledInlineCode>
+  </code>
 );
 
 export const Link = ({ text, href }: LinkProps) => (
-  <StyledLink href={href}>{text}</StyledLink>
+  <a css={linkStyles} href={href}>
+    {text}
+  </a>
+);
+
+export const MDXTypographyWrapper = ({ children }: { children: any }) => (
+  <div
+    css={css`
+      padding: 20px;
+
+      @media (${minWidth(BREAKPOINT_IPAD)}) {
+        padding: 20px 40px;
+      }
+
+      > h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        ${headingStyles.global.styles}
+      }
+
+      > h1 {
+        ${headingStyles.h1.styles}
+      }
+
+      > h2 {
+        ${headingStyles.h2.styles}
+      }
+
+      > h3 {
+        ${headingStyles.h3.styles}
+      }
+
+      > h4 {
+        ${headingStyles.h4.styles}
+      }
+
+      > h5 {
+        ${headingStyles.h5.styles}
+      }
+
+      > p,
+      blockquote {
+        ${paragraphStyles.styles}
+
+        > code {
+          ${codeStyle.styles}
+        }
+      }
+
+      a {
+        ${linkStyles.styles}
+      }
+
+      ol,
+      ul {
+        ${listStyles.styles}
+      }
+    `}
+  >
+    {children}
+  </div>
 );
