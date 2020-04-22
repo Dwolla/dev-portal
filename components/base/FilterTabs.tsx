@@ -41,6 +41,7 @@ export const TabStyle = styled.div`
 // Tabs are replaced with Select dropdown on mobile
 const SelectWrapper = styled.div`
   width: 150px;
+  padding-bottom: 10px;
   @media (${minWidth(BREAKPOINT_MOBILE)}) {
     display: none;
   }
