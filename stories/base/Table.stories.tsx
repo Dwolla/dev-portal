@@ -1,8 +1,12 @@
 import * as React from "react";
+import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered/react";
 import Table from "../../components/base/Table";
 import { InlineCode } from "../../components/base/Typography";
+
+const ParentDiv = styled.div`
+  padding: 50px;
+`;
 
 const tableData = (
   <table>
@@ -52,6 +56,8 @@ const tableData = (
     </tr>
   </table>
 );
-storiesOf("base|Table", module)
-  .addDecorator(centered)
-  .add("default", () => <Table>{tableData}</Table>);
+storiesOf("base|Table", module).add("default", () => (
+  <ParentDiv>
+    <Table>{tableData}</Table>
+  </ParentDiv>
+));
