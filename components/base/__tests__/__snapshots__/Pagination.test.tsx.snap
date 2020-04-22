@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination next 1`] = `
+<a
+  className="css-83egvd-StyledAnchor eutkdkv0"
+  href="#"
+>
+  <div
+    className="css-1ykv15e-Container eutkdkv1"
+  >
+    <div
+      className="css-1fjf31g-ArrowDiv eutkdkv2"
+    >
+      NEXT
+      <img
+        alt="Next"
+        src="test-image-stub"
+      />
+    </div>
+    <p>
+      Step 2: Add a funding source
+    </p>
+  </div>
+</a>
+`;
+
+exports[`Pagination previous 1`] = `
+<a
+  className="css-83egvd-StyledAnchor eutkdkv0"
+  href="#"
+>
+  <div
+    className="css-1ykv15e-Container eutkdkv1"
+  >
+    <div
+      className="css-1fjf31g-ArrowDiv eutkdkv2"
+    >
+      <img
+        alt="Previous"
+        src="test-image-stub"
+      />
+      PREVIOUS
+    </div>
+    <p>
+      Step 1: Creating Business Verified Customers
+    </p>
+  </div>
+</a>
+`;
