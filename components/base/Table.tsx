@@ -4,14 +4,15 @@ import { ROBOTO } from "../typography";
 import { HEADLINE_TEXT, PARAGRAPH_TEXT, GREY_1, GREY_2 } from "../colors";
 
 // Styles for Table
-const StyledTable = styled.table`
+const StyledTable = styled.div`
+  overflow-x: scroll;
+  white-space: nowrap;
   table {
     /* Separate borders to selectively apply border radius */
     border-collapse: separate;
     border-spacing: 0;
     text-align: left;
     font-family: ${ROBOTO};
-    overflow-x: scroll;
   }
   th {
     color: ${HEADLINE_TEXT};
