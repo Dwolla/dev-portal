@@ -9,6 +9,7 @@ const StyledTable = styled.div`
   white-space: nowrap;
   table {
     /* Separate borders to selectively apply border radius */
+    wiidth: 100%;
     border-collapse: separate;
     border-spacing: 0;
     text-align: left;
