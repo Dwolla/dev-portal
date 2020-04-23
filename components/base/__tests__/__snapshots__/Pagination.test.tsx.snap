@@ -4,12 +4,14 @@ exports[`Pagination next 1`] = `
 <a
   className="css-83egvd-StyledAnchor eutkdkv0"
   href="#"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
 >
   <div
-    className="css-1ykv15e-Container eutkdkv1"
+    className="next css-ihd8qb-Container eutkdkv1"
   >
     <div
-      className="css-1fjf31g-ArrowDiv eutkdkv2"
+      className="css-195yjlt-ArrowDiv eutkdkv2"
     >
       NEXT
       <img
@@ -17,9 +19,9 @@ exports[`Pagination next 1`] = `
         src="test-image-stub"
       />
     </div>
-    <p>
+    <span>
       Step 2: Add a funding source
-    </p>
+    </span>
   </div>
 </a>
 `;
@@ -28,12 +30,14 @@ exports[`Pagination previous 1`] = `
 <a
   className="css-83egvd-StyledAnchor eutkdkv0"
   href="#"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
 >
   <div
-    className="css-1ykv15e-Container eutkdkv1"
+    className="previous css-ihd8qb-Container eutkdkv1"
   >
     <div
-      className="css-1fjf31g-ArrowDiv eutkdkv2"
+      className="css-195yjlt-ArrowDiv eutkdkv2"
     >
       <img
         alt="Previous"
@@ -41,9 +45,9 @@ exports[`Pagination previous 1`] = `
       />
       PREVIOUS
     </div>
-    <p>
+    <span>
       Step 1: Creating Business Verified Customers
-    </p>
+    </span>
   </div>
 </a>
 `;

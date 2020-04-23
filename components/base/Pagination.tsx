@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import arrowLeft from "../../public/images/arrow-left-grey.svg";
 import arrowRight from "../../public/images/arrow-right-grey.svg";
 import { GREY_2, GREY_5, GREY_6, WHITE_PRIMARY } from "../colors";
@@ -19,7 +20,7 @@ const Container = styled.div`
   border-radius: 5px;
   background-color: ${WHITE_PRIMARY};
   padding: 21px;
-  p {
+  span {
     color: ${GREY_6};
     font-family: ${ROBOTO};
     font-size: 13px;
@@ -29,12 +30,19 @@ const Container = styled.div`
   :hover {
     box-shadow: ${BOX_SHADOW_5};
   }
+  &.next {
+    text-align: left;
+  }
+  &.previous {
+    text-align: right;
+  }
 `;
 
 const ArrowDiv = styled.div`
   display: flex;
   justify-content: space-between;
   color: ${GREY_5};
+  text-transform: uppercase;
   font-family: ${POPPINS};
   font-size: 11px;
   font-weight: 500;
@@ -54,22 +62,24 @@ type Props = {
 // Pagination component
 function Pagination({ variant, variantText, href, children }: Props) {
   return (
-    <StyledAnchor href={href}>
-      <Container>
-        {variant === "next" ? (
-          <ArrowDiv>
-            {variantText}
-            <img src={arrowRight} alt="Next" />
-          </ArrowDiv>
-        ) : (
-          <ArrowDiv>
-            <img src={arrowLeft} alt="Previous" />
-            {variantText}
-          </ArrowDiv>
-        )}
-        <p>{children}</p>
-      </Container>
-    </StyledAnchor>
+    <Link href={href} passHref>
+      <StyledAnchor>
+        <Container className={variant}>
+          {variant === "next" ? (
+            <ArrowDiv>
+              {variantText}
+              <img src={arrowRight} alt="Next" />
+            </ArrowDiv>
+          ) : (
+            <ArrowDiv>
+              <img src={arrowLeft} alt="Previous" />
+              {variantText}
+            </ArrowDiv>
+          )}
+          <span>{children}</span>
+        </Container>
+      </StyledAnchor>
+    </Link>
   );
 }
 export default Pagination;
