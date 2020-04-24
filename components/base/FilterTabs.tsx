@@ -5,6 +5,7 @@ import { GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import { minWidth, maxWidth, BREAKPOINT_MOBILE } from "../breakpoints";
 import classnames from "../../modules/classnames";
+import { slugify } from "../../modules/helpers";
 
 // Styles
 const TabsContainerStyle = styled.div`
@@ -47,20 +48,30 @@ const SelectWrapper = styled.div`
   }
 `;
 
+type Tab = string | { value: string; label: string };
 type Props = {
-  tabs: any;
-  filter: any;
-  setFilter: any;
+  tabs: Array<Tab>;
+  filter: Tab | null;
+  setFilter: Function;
 };
 
 export default function FilterTabs({ tabs, filter, setFilter }: Props) {
+  const formattedTabs = tabs.map((tab) =>
+    typeof tab === "string" ? { value: slugify(tab), label: tab } : tab
+  );
+  const formattedFilter =
+    typeof filter === "string" || filter === null
+      ? formattedTabs.find((tab) => tab.value === filter)
+      : filter;
+
   return (
     <div>
       <TabsContainerStyle>
-        {tabs.map((tab) => (
+        {formattedTabs.map((tab) => (
           <TabStyle
             className={classnames("tab", {
-              "is-active": filter === tab,
+              "is-active":
+                JSON.stringify(formattedFilter) === JSON.stringify(tab),
             })}
             key={tab.value}
             onClick={() => {
@@ -74,8 +85,8 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
 
       <SelectWrapper>
         <Select
-          options={tabs}
-          selectedValue={filter}
+          options={formattedTabs}
+          selectedValue={formattedFilter}
           setSelectedValue={setFilter}
         />
       </SelectWrapper>

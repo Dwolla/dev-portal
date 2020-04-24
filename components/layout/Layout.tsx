@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
+import { maxWidth, BREAKPOINT_IPAD } from "../breakpoints";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
@@ -56,42 +57,42 @@ const MainArea = styled.div`
   @media (min-width: 980px) {
     margin-left: 25%;
   }
+`;
 
-  display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "top-bar top-bar"
-    "content sidebar"
-    "footer footer";
+const ContentArea = styled.div`
+  display: flex;
 `;
 
 const TopBarWrapper = styled.div`
-  grid-area: top-bar;
   position: sticky;
   top: 0;
   z-index: 10;
 `;
 
 const OnThisPageWrapper = styled.div`
-  grid-area: sidebar;
   position: sticky;
   top: ${TOP_BAR_HEIGHT}px;
   max-height: calc(100vh - ${TOP_BAR_HEIGHT}px);
+  width: 30%;
+  flex-shrink: 0;
   overflow-y: scroll;
 
   :empty {
     display: none;
   }
+
+  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+    display: none;
+  }
 `;
 
 const ContentWrapper = styled.div`
-  grid-area: content;
   overflow: hidden;
+  min-width: 70%;
+  flex-grow: 1;
 `;
 
 const FooterWrapper = styled.div`
-  grid-area: footer;
   background: ${WHITE_PRIMARY};
   z-index: 9;
 `;
@@ -156,11 +157,13 @@ export default function Layout({
           <TopBar {...topBarProps} />
         </TopBarWrapper>
 
-        <OnThisPageWrapper>
-          <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
-        </OnThisPageWrapper>
+        <ContentArea>
+          <ContentWrapper>{children}</ContentWrapper>
 
-        <ContentWrapper>{children}</ContentWrapper>
+          <OnThisPageWrapper>
+            <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
+          </OnThisPageWrapper>
+        </ContentArea>
 
         <FooterWrapper>
           <Footer links={footerLinks} />

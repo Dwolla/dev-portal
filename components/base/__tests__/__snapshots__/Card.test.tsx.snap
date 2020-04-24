@@ -40,11 +40,11 @@ exports[`with Badge 1`] = `
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
-    <a
-      className="css-x2kp1o-Button e1w3mjmy0"
+    <div
+      className="css-1ykc0g8-StyledBadge e1w3mjmy0"
     >
       BADGETEXT
-    </a>
+    </div>
   </div>
   <div
     className=" css-bgc4kb-TopicStyle eguc8hf4"
@@ -99,11 +99,11 @@ exports[`with Center Align and Badge 1`] = `
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
-    <a
-      className="css-x2kp1o-Button e1w3mjmy0"
+    <div
+      className="css-1ykc0g8-StyledBadge e1w3mjmy0"
     >
       BADGETEXT
-    </a>
+    </div>
   </div>
   <div
     className="center css-bgc4kb-TopicStyle eguc8hf4"
@@ -166,11 +166,11 @@ exports[`with Center Align, Link and Badge 1`] = `
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
-    <a
-      className="css-x2kp1o-Button e1w3mjmy0"
+    <div
+      className="css-1ykc0g8-StyledBadge e1w3mjmy0"
     >
       BADGETEXT
-    </a>
+    </div>
   </div>
   <div
     className="css-kd2whk-LinkStyle eguc8hf3"
@@ -241,11 +241,11 @@ exports[`with Link and Badge 1`] = `
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
-    <a
-      className="css-x2kp1o-Button e1w3mjmy0"
+    <div
+      className="css-1ykc0g8-StyledBadge e1w3mjmy0"
     >
       BADGETEXT
-    </a>
+    </div>
   </div>
   <div
     className="css-kd2whk-LinkStyle eguc8hf3"

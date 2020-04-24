@@ -15,7 +15,7 @@ import { useAnchors } from "../util/Anchors";
 const { scrollToTop } = animateScroll;
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 20px 40px 20px 0;
 
   > a {
     display: block;
