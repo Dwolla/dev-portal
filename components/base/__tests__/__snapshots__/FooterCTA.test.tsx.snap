@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterCTA 1`] = `
+<div
+  className="css-16tcxol-Container exx89mw0"
+>
+  <div>
+    <h2
+      className="dark css-14u5tg-global-global-h2"
+    >
+      Test in the Sandbox for free today.
+    </h2>
+    <span
+      className="dark css-721y2z-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
+    >
+      Use sandbox environment to test API requests.
+    </span>
+  </div>
+  <button
+    className="primary large css-xjnv7x-ButtonStyle e12ysvgk0"
+    type="button"
+  >
+    Get a Sandbox Account
+  </button>
+</div>
+`;
