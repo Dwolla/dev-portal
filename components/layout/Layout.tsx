@@ -4,7 +4,12 @@ import styled from "@emotion/styled";
 import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
-import { maxWidth, BREAKPOINT_IPAD } from "../breakpoints";
+import {
+  maxWidth,
+  minWidth,
+  BREAKPOINT_DESKTOP,
+  BREAKPOINT_IPAD,
+} from "../breakpoints";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
@@ -26,7 +31,7 @@ const LeftSidebar = styled.div`
   transform: translate3d(-100%, 0, 0);
   transition: transform 0.2s ease-in-out;
 
-  @media (min-width: 980px) {
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
     right: 75%;
     transform: translate3d(0, 0, 0);
   }
@@ -34,7 +39,7 @@ const LeftSidebar = styled.div`
   &.toggled {
     transform: translate3d(0, 0, 0);
 
-    @media (min-width: 980px) {
+    @media (${minWidth(BREAKPOINT_DESKTOP)}) {
       right: 75%;
     }
   }
@@ -54,13 +59,17 @@ const SideNavWrapper = styled.div`
 `;
 
 const MainArea = styled.div`
-  @media (min-width: 980px) {
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
     margin-left: 25%;
   }
 `;
 
 const ContentArea = styled.div`
   display: flex;
+
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+    margin-right: 40px;
+  }
 `;
 
 const TopBarWrapper = styled.div`
