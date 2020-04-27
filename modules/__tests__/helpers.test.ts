@@ -1,5 +1,5 @@
 import { createElement } from "react";
-import { childrenToString } from "../helpers";
+import { childrenToString, slugify } from "../helpers";
 
 describe("childrenToString", () => {
   test("string child", () => {
@@ -16,5 +16,14 @@ describe("childrenToString", () => {
     ];
 
     expect(childrenToString(children)).toBe("hello world!");
+  });
+});
+
+describe("slugify", () => {
+  test("string with bad formatting", () => {
+    const normalString = "Hello, World!!!";
+    const expectedSlug = "hello-world";
+
+    expect(slugify(normalString)).toBe(expectedSlug);
   });
 });

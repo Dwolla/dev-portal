@@ -6,10 +6,11 @@ import { POPPINS } from "../typography";
 type Props = { text: string };
 
 function Badge({ text }: Props) {
-  return <Button>{text}</Button>;
+  return <StyledBadge>{text}</StyledBadge>;
 }
 
-const Button = styled.a`
+const StyledBadge = styled.div`
+  text-transform: uppercase;
   color: ${GREY_5};
   font-family: ${POPPINS};
   font-size: 10px;

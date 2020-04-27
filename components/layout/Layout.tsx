@@ -4,6 +4,12 @@ import styled from "@emotion/styled";
 import classnames from "classnames";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
+import {
+  maxWidth,
+  minWidth,
+  BREAKPOINT_DESKTOP,
+  BREAKPOINT_IPAD,
+} from "../breakpoints";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
@@ -25,7 +31,7 @@ const LeftSidebar = styled.div`
   transform: translate3d(-100%, 0, 0);
   transition: transform 0.2s ease-in-out;
 
-  @media (min-width: 980px) {
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
     right: 75%;
     transform: translate3d(0, 0, 0);
   }
@@ -33,7 +39,7 @@ const LeftSidebar = styled.div`
   &.toggled {
     transform: translate3d(0, 0, 0);
 
-    @media (min-width: 980px) {
+    @media (${minWidth(BREAKPOINT_DESKTOP)}) {
       right: 75%;
     }
   }
@@ -53,45 +59,49 @@ const SideNavWrapper = styled.div`
 `;
 
 const MainArea = styled.div`
-  @media (min-width: 980px) {
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
     margin-left: 25%;
   }
+`;
 
-  display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "top-bar top-bar"
-    "content sidebar"
-    "footer footer";
+const ContentArea = styled.div`
+  display: flex;
+
+  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+    margin-right: 40px;
+  }
 `;
 
 const TopBarWrapper = styled.div`
-  grid-area: top-bar;
   position: sticky;
   top: 0;
   z-index: 10;
 `;
 
 const OnThisPageWrapper = styled.div`
-  grid-area: sidebar;
   position: sticky;
   top: ${TOP_BAR_HEIGHT}px;
   max-height: calc(100vh - ${TOP_BAR_HEIGHT}px);
+  width: 30%;
+  flex-shrink: 0;
   overflow-y: scroll;
 
   :empty {
     display: none;
   }
+
+  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+    display: none;
+  }
 `;
 
 const ContentWrapper = styled.div`
-  grid-area: content;
   overflow: hidden;
+  min-width: 70%;
+  flex-grow: 1;
 `;
 
 const FooterWrapper = styled.div`
-  grid-area: footer;
   background: ${WHITE_PRIMARY};
   z-index: 9;
 `;
@@ -156,11 +166,13 @@ export default function Layout({
           <TopBar {...topBarProps} />
         </TopBarWrapper>
 
-        <OnThisPageWrapper>
-          <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
-        </OnThisPageWrapper>
+        <ContentArea>
+          <ContentWrapper>{children}</ContentWrapper>
 
-        <ContentWrapper>{children}</ContentWrapper>
+          <OnThisPageWrapper>
+            <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
+          </OnThisPageWrapper>
+        </ContentArea>
 
         <FooterWrapper>
           <Footer links={footerLinks} />

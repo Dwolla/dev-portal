@@ -8,8 +8,8 @@ const Heading = (props: { children: string; originalType: "h1" | "h2" }) =>
 
 storiesOf("layout|OnThisPage", module).add("default", () => (
   <AnchorsProvider>
-    <div style={{ display: "grid", gridTemplateColumns: "70% 30%" }}>
-      <div>
+    <div style={{ display: "flex" }}>
+      <div style={{ minWidth: "70%", flexGrow: 1 }}>
         <AnchorsSetter>
           <Heading originalType="h1">Hello 1</Heading>
           <p>
@@ -193,7 +193,15 @@ storiesOf("layout|OnThisPage", module).add("default", () => (
           </p>
         </AnchorsSetter>
       </div>
-      <div style={{ position: "sticky", top: 0, maxHeight: "100vh" }}>
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          maxHeight: "100vh",
+          width: "30%",
+          flexShrink: 0,
+        }}
+      >
         <OnThisPage topOfPageOffset={0} />
       </div>
     </div>

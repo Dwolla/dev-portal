@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Badge 1`] = `
-<a
-  className="css-x2kp1o-Button e1w3mjmy0"
+<div
+  className="css-1ykc0g8-StyledBadge e1w3mjmy0"
 >
   BADGETEXT
-</a>
+</div>
 `;

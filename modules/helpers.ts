@@ -8,3 +8,10 @@ export const childrenToString = (children) =>
     }
     return acc + child.toString();
   }, "");
+
+export const slugify = (text) =>
+  text
+    .toLowerCase()
+    .replace(/ /g, "-")
+    .replace(/[-]+/g, "-")
+    .replace(/[^\w-]+/g, "");

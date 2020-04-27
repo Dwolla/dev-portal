@@ -14,7 +14,7 @@ const StyledBanner = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  position: absolute;
+  position: relative;
   width: 100%;
   &.filters {
     padding-bottom: 0px;
@@ -61,6 +61,7 @@ const StyledDescription = styled.div`
 `;
 
 const StyledFilter = styled.div`
+  text-transform: uppercase;
   margin-top: 52px;
   margin-bottom: 0px;
   position: absolute;

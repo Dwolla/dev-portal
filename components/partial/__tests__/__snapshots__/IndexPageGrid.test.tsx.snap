@@ -1,0 +1,237 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IndexPageGrid 1`] = `
+Array [
+  <div
+    className="css-14oiyjc-BannerWrap e10u28530"
+  >
+    <div
+      className="filters css-1cx8r1g-StyledBanner eyaavg40"
+    >
+      <img
+        alt=""
+        className="css-wrcaoo-StyledIcon eyaavg41"
+        src="test-image-stub"
+      />
+      <div
+        className="css-1hg7ivq-StyledTopic eyaavg42"
+      >
+        Guides
+      </div>
+      <div
+        className="filters css-hiwaf6-StyledDescription eyaavg43"
+      >
+        Step-by-step instructions to get you set up in the Dwolla API
+      </div>
+      <div
+        className="css-5t23wi-StyledFilter eyaavg44"
+      >
+        <div>
+          <div
+            className="css-9vpk5d-TabsContainerStyle efq5uj30"
+          >
+            <div
+              className="tab is-active css-ptatp0-TabStyle efq5uj31"
+              onClick={[Function]}
+            >
+              All
+            </div>
+            <div
+              className="tab css-ptatp0-TabStyle efq5uj31"
+              onClick={[Function]}
+            >
+              Get Building
+            </div>
+          </div>
+          <div
+            className="css-1ebuoxl-SelectWrapper efq5uj32"
+          >
+            <div
+              className=" css-2b097c-container"
+              onKeyDown={[Function]}
+            >
+              <div
+                className=" css-1xxipdn-control"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
+              >
+                <div
+                  className=" css-86rg1c-ValueContainer"
+                >
+                  <div
+                    className=" css-1me8bqy-singleValue"
+                  >
+                    All
+                  </div>
+                  <input
+                    aria-autocomplete="list"
+                    className="css-62g3xt-dummyInput"
+                    disabled={false}
+                    id="react-select-2-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    readOnly={true}
+                    tabIndex="0"
+                    value=""
+                  />
+                </div>
+                <div
+                  className=" css-1hb7zxy-IndicatorsContainer"
+                >
+                  <span
+                    className=" css-43ykx9-indicatorSeparator"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className=" css-unjupu-indicatorContainer"
+                    onMouseDown={[Function]}
+                    onTouchEnd={[Function]}
+                  >
+                    <img
+                      alt=""
+                      className=" css-vfym8x-StyledDefaultDropdownIcon e1oqaitj0"
+                      src="test-image-stub"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="css-1ujvi4q-CardGridWrap e10u28531"
+  >
+    <div
+      className="css-1vq1bk2-StyledGrid e1k3ap260"
+    >
+      <div
+        className="css-18v8ewl-CardWrapper e1k3ap261"
+      >
+        <a
+          href="/docs/guides/send-money"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className=" css-qhvpk8-CardStyle eguc8hf0"
+          >
+            <div
+              className=" css-aqeaqx-IconStyle eguc8hf1"
+            >
+              <img
+                alt=""
+                src="test-image-stub"
+              />
+            </div>
+            <div
+              className="css-vz2qld-BadgeStyle eguc8hf2"
+            >
+              <div
+                className="css-1ykc0g8-StyledBadge e1w3mjmy0"
+              >
+                Get Building
+              </div>
+            </div>
+            <div
+              className=" css-bgc4kb-TopicStyle eguc8hf4"
+            >
+              Send Money to your Users
+            </div>
+            <div
+              className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+            >
+              Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="css-18v8ewl-CardWrapper e1k3ap261"
+      >
+        <a
+          href="/docs/guides/receive-money"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className=" css-qhvpk8-CardStyle eguc8hf0"
+          >
+            <div
+              className=" css-aqeaqx-IconStyle eguc8hf1"
+            >
+              <img
+                alt=""
+                src="test-image-stub"
+              />
+            </div>
+            <div
+              className="css-vz2qld-BadgeStyle eguc8hf2"
+            >
+              <div
+                className="css-1ykc0g8-StyledBadge e1w3mjmy0"
+              >
+                Get Building
+              </div>
+            </div>
+            <div
+              className=" css-bgc4kb-TopicStyle eguc8hf4"
+            >
+              Receive Money from your Users
+            </div>
+            <div
+              className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+            >
+              Accept ACH transfers. Covers both Access API and Transfer integrations.
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        className="css-18v8ewl-CardWrapper e1k3ap261"
+      >
+        <a
+          href="/docs/guides/transfer-money-between-users/obtain-access-token"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className=" css-qhvpk8-CardStyle eguc8hf0"
+          >
+            <div
+              className=" css-aqeaqx-IconStyle eguc8hf1"
+            >
+              <img
+                alt=""
+                src="test-image-stub"
+              />
+            </div>
+            <div
+              className="css-vz2qld-BadgeStyle eguc8hf2"
+            >
+              <div
+                className="css-1ykc0g8-StyledBadge e1w3mjmy0"
+              >
+                Get Building
+              </div>
+            </div>
+            <div
+              className=" css-bgc4kb-TopicStyle eguc8hf4"
+            >
+              Transfer Money Between Users
+            </div>
+            <div
+              className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+            >
+              Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments. Features Access API integration.
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>,
+]
+`;
