@@ -2,7 +2,7 @@
 
 exports[`Collapsible list 1`] = `
 <div
-  className="css-1xy74ie-CollapsibleWrapper exlpbrg0"
+  className="css-wecru8-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -15,11 +15,11 @@ exports[`Collapsible list 1`] = `
       tabIndex={null}
     >
       <div
-        className="css-d0b41q-StyledTrigger exlpbrg1"
+        className="css-w0k8hx-StyledTrigger exlpbrg1"
       >
         My Customer has a retry status. What activity would they able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?
         <img
-          alt="Collapsible closed icon"
+          alt="Open collapsible content"
           className="css-bnfv21-ImageStyles"
           src="test-image-stub"
         />
@@ -42,7 +42,7 @@ exports[`Collapsible list 1`] = `
         className="Collapsible__contentInner"
       >
         <ul
-          className=" css-16qomau-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
+          className=" css-1i7ig5e-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
         >
           <li>
             Send funds - No
@@ -65,7 +65,7 @@ exports[`Collapsible list 1`] = `
 
 exports[`Collapsible paragraph 1`] = `
 <div
-  className="css-1xy74ie-CollapsibleWrapper exlpbrg0"
+  className="css-wecru8-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -78,11 +78,11 @@ exports[`Collapsible paragraph 1`] = `
       tabIndex={null}
     >
       <div
-        className="css-d0b41q-StyledTrigger exlpbrg1"
+        className="css-w0k8hx-StyledTrigger exlpbrg1"
       >
         My Customer has a document status. Can I submit more than one document via the API?
         <img
-          alt="Collapsible closed icon"
+          alt="Open collapsible content"
           className="css-bnfv21-ImageStyles"
           src="test-image-stub"
         />
@@ -105,7 +105,7 @@ exports[`Collapsible paragraph 1`] = `
         className="Collapsible__contentInner"
       >
         <p
-          className=" css-3ecwap-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
+          className=" css-e1sksv-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
         >
           Yes, although this is not necessary, nor recommended. Dwolla manually reviews all documents, so sending more documents than necessary may slow down the verification process for your Customers.
         </p>

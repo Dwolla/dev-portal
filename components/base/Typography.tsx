@@ -113,7 +113,10 @@ const listStyles = css`
   ${baseTextStyles}
   font-size: 16px;
   letter-spacing: 0;
-  line-height: 36px;
+  line-height: 28px;
+  > li {
+    margin-bottom: 8px;
+  }
 `;
 
 // Prop types

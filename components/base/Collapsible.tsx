@@ -12,7 +12,6 @@ import { BOX_SHADOW_7 } from "../shadowDepths";
 const CollapsibleWrapper = styled.div`
   /* Main container element for react-collapsible https://www.npmjs.com/package/react-collapsible#collapsible */
   .Collapsible {
-    padding: 26px 30px;
     box-sizing: border-box;
     width: 100%;
     border: 1px solid ${GREY_2};
@@ -26,10 +25,10 @@ const CollapsibleWrapper = styled.div`
       box-shadow: ${BOX_SHADOW_7};
     }
   }
+
   /* Content element for react-collapsible https://www.npmjs.com/package/react-collapsible#collapsible__contentinner */
   .Collapsible__contentInner {
-    margin-top: 24px;
-    padding-right: 40px;
+    margin: 0px 70px 25px 30px;
     > * {
       margin: unset;
     }
@@ -37,6 +36,7 @@ const CollapsibleWrapper = styled.div`
 `;
 
 const StyledTrigger = styled.div`
+  padding: 25px 30px;
   display: flex;
   justify-content: space-between;
   align-items: start;
@@ -55,7 +55,7 @@ function Collapsible({ triggerText, children }: Props) {
   const closedTrigger = (
     <StyledTrigger>
       {triggerText}
-      <img css={ImageStyles} src={plusIcon} alt="Collapsible closed icon" />
+      <img css={ImageStyles} src={plusIcon} alt="Open collapsible content" />
     </StyledTrigger>
   );
 
@@ -63,7 +63,7 @@ function Collapsible({ triggerText, children }: Props) {
   const openTrigger = (
     <StyledTrigger>
       {triggerText}
-      <img css={ImageStyles} src={minusIcon} alt="Collapsible open icon" />
+      <img css={ImageStyles} src={minusIcon} alt="Close collapsible content" />
     </StyledTrigger>
   );
 

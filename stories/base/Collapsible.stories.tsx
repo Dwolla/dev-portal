@@ -2,9 +2,14 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
 import Collapsible from "../../components/base/Collapsible";
-import { UnorderedList, Paragraph } from "../../components/base/Typography";
+import {
+  UnorderedList,
+  Paragraph,
+  Link,
+} from "../../components/base/Typography";
 
 const ParentDiv = styled.div`
+  max-width: 1000px;
   padding: 20px;
   > * {
     margin-top: 30px;
@@ -30,7 +35,7 @@ const Answer1 = (
       {
         id: "3",
         text:
-          "Receive funds - Yes - Note that funds will only process to their balance and the transfer will stay pending until the Customer has been verified.",
+          "Receive funds - Yes - Note that funds will only process to their balance and the transfer will stay pending until the Customer has been verified. Add and verify a bank funding source - Yes",
       },
       { id: "4", text: "Add and verify a bank funding source - Yes" },
     ]}
@@ -47,8 +52,9 @@ const Answer2 = (
 
 const Answer3 = (
   <Paragraph>
-    Receive funds - Yes - Note that funds will only process to their balance and
-    the transfer will stay pending until the Customer has been verified.
+    Receive funds - Yes - <Link text="Here is a link." href="#" /> Note that
+    funds will only process to their balance and the transfer will stay pending
+    until the Customer has been verified.
   </Paragraph>
 );
 

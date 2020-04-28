@@ -2,7 +2,7 @@
 
 exports[`H1 1`] = `
 <h1
-  className="dark css-28zqvu-global-global-h1"
+  className="dark css-ko7o6p-global-global-h1"
 >
   H1 Heading
 </h1>
@@ -10,7 +10,7 @@ exports[`H1 1`] = `
 
 exports[`OrderedList 1`] = `
 <ol
-  className=" css-1eo4tuv-baseTextStyles-baseTextStyles-listStyles-listStyles-OrderedList-OrderedList"
+  className=" css-bte8te-baseTextStyles-baseTextStyles-listStyles-listStyles-OrderedList-OrderedList"
 >
   <li>
     Ordered list text goes here
