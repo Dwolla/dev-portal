@@ -9,6 +9,7 @@ import { LanguageContext } from "../components/util/Contexts";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
 import { MDXTypographyWrapper } from "../components/base/Typography";
+import groupCodeExamples from "../components/util/groupCodeExamples";
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
@@ -92,7 +93,17 @@ const LANGUAGE_OPTIONS = [
 const MDX_COMPONENTS = {
   wrapper: ({ children }: { children: any }) => (
     <MDXTypographyWrapper>
-      <AnchorsSetter>{children}</AnchorsSetter>
+      <AnchorsSetter>
+        {groupCodeExamples({
+          children,
+          into: ({ children: c }: any) => (
+            <>
+              <h3>code examples</h3>
+              {c}
+            </>
+          ),
+        })}
+      </AnchorsSetter>
     </MDXTypographyWrapper>
   ),
 };
