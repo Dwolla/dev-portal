@@ -20,7 +20,6 @@ const CollapsibleWrapper = styled.div`
     font-family: ${POPPINS};
     font-size: 18px;
     line-height: 27px;
-    cursor: pointer;
     :hover {
       box-shadow: ${BOX_SHADOW_7};
     }
@@ -40,6 +39,7 @@ const StyledTrigger = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: start;
+  cursor: pointer;
 `;
 
 const ImageStyles = css`

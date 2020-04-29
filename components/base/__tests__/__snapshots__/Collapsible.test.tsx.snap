@@ -2,7 +2,7 @@
 
 exports[`Collapsible list 1`] = `
 <div
-  className="css-wecru8-CollapsibleWrapper exlpbrg0"
+  className="css-zzd91j-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -15,7 +15,7 @@ exports[`Collapsible list 1`] = `
       tabIndex={null}
     >
       <div
-        className="css-w0k8hx-StyledTrigger exlpbrg1"
+        className="css-icu0je-StyledTrigger exlpbrg1"
       >
         My Customer has a retry status. What activity would they able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?
         <img
@@ -65,7 +65,7 @@ exports[`Collapsible list 1`] = `
 
 exports[`Collapsible paragraph 1`] = `
 <div
-  className="css-wecru8-CollapsibleWrapper exlpbrg0"
+  className="css-zzd91j-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -78,7 +78,7 @@ exports[`Collapsible paragraph 1`] = `
       tabIndex={null}
     >
       <div
-        className="css-w0k8hx-StyledTrigger exlpbrg1"
+        className="css-icu0je-StyledTrigger exlpbrg1"
       >
         My Customer has a document status. Can I submit more than one document via the API?
         <img
