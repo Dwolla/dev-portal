@@ -3,11 +3,17 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className=" css-78it7j-LeftSidebar eu5n9bq0"
+    className=" css-99ba7r-LeftSidebar eu5n9bq0"
   >
     <div
       className="css-3xwi1s-LogoWrapper eu5n9bq1"
     >
+      <img
+        alt=""
+        className="css-feqq4n-Layout-Layout"
+        onClick={[Function]}
+        src="/images/close-icon-orange.svg"
+      />
       <img
         alt="Dwolla Developers Logo"
         src="/images/dwolla-developers-logo.png"
@@ -133,7 +139,7 @@ Array [
     className="css-173gxmw-MainArea eu5n9bq3"
   >
     <div
-      className="css-18nswzc-TopBarWrapper eu5n9bq5"
+      className="css-jrlzw3-TopBarWrapper eu5n9bq5"
     >
       <div
         className="css-18kqr8q-Container e1xhgpyy0"
@@ -235,6 +241,10 @@ Array [
             Get API Keys
           </button>
         </div>
+        <div
+          className="css-ldxdar-Hamburger e1xhgpyy4"
+          onClick={[Function]}
+        />
       </div>
     </div>
     <div
@@ -255,10 +265,10 @@ Array [
       className="css-cdxnl8-FooterWrapper eu5n9bq8"
     >
       <div
-        className="css-e2rgnw-Container en8mxva0"
+        className="css-1e12l9h-Container en8mxva0"
       >
         <div
-          className="css-872axt-Group en8mxva1"
+          className="css-t8a825-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -321,7 +331,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-872axt-Group en8mxva1"
+          className="css-t8a825-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -364,7 +374,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-872axt-Group en8mxva1"
+          className="css-t8a825-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -407,7 +417,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-872axt-Group en8mxva1"
+          className="css-t8a825-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -450,7 +460,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-872axt-Group en8mxva1"
+          className="css-t8a825-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
