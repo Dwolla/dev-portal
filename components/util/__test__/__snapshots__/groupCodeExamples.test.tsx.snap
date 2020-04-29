@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`groupCodeExamples 1`] = `
+Array [
+  <MockCodeExamples>
+    <MockMDXCreateElement
+      originalType="pre"
+    >
+      <MockMDXCreateElement
+        className="language-php"
+        originalType="code"
+      >
+        code example A
+      </MockMDXCreateElement>
+      <MockMDXCreateElement
+        className="language-java"
+        originalType="code"
+      >
+        code example B
+      </MockMDXCreateElement>
+    </MockMDXCreateElement>
+  </MockCodeExamples>,
+  <MockMDXCreateElement
+    originalType="p"
+  >
+    paragraph text
+  </MockMDXCreateElement>,
+  <MockCodeExamples>
+    <MockMDXCreateElement
+      originalType="pre"
+    >
+      <MockMDXCreateElement
+        className="language-php"
+        originalType="code"
+      >
+        code example C
+      </MockMDXCreateElement>
+      <MockMDXCreateElement
+        className="language-java"
+        originalType="code"
+      >
+        code example D
+      </MockMDXCreateElement>
+    </MockMDXCreateElement>
+  </MockCodeExamples>,
+]
+`;
