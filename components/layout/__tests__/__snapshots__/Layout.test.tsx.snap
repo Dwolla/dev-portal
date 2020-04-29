@@ -10,13 +10,13 @@ Array [
     >
       <img
         alt=""
-        className="css-feqq4n-Layout-Layout"
+        className="css-5xnblz-Layout-Layout"
         onClick={[Function]}
-        src="/images/close-icon-orange.svg"
+        src="test-image-stub"
       />
       <img
         alt="Dwolla Developers Logo"
-        src="/images/dwolla-developers-logo.png"
+        src="test-image-stub"
       />
     </div>
     <div
@@ -32,7 +32,7 @@ Array [
             className="css-p3a8sa-SlidePane e10mac9s2"
           >
             <div
-              className="css-1klu905-SectionLinksWrapper e10mac9s8"
+              className="css-1klu905-SectionLinksWrapper e10mac9s9"
             >
               <a
                 className="css-3bamg-SectionLink-SectionLink"
@@ -43,7 +43,8 @@ Array [
                 <div>
                   <img
                     alt="Home"
-                    src="/images/home-icon.svg"
+                    className="css-1nhdjhw-StyledIcon e10mac9s8"
+                    src="test-image-stub"
                   />
                 </div>
                 Home
@@ -57,7 +58,8 @@ Array [
                 <div>
                   <img
                     alt="Guides"
-                    src="/images/guides-icon.svg"
+                    className="css-1nhdjhw-StyledIcon e10mac9s8"
+                    src="test-image-stub"
                   />
                 </div>
                 Guides
@@ -71,7 +73,8 @@ Array [
                 <div>
                   <img
                     alt="Concepts"
-                    src="/images/concepts-icon.svg"
+                    className="css-1nhdjhw-StyledIcon e10mac9s8"
+                    src="test-image-stub"
                   />
                 </div>
                 Concepts
@@ -85,7 +88,8 @@ Array [
                 <div>
                   <img
                     alt="SDKs & Tools"
-                    src="/images/sdks-tools-icon.svg"
+                    className="css-1nhdjhw-StyledIcon e10mac9s8"
+                    src="test-image-stub"
                   />
                 </div>
                 SDKs & Tools
@@ -99,7 +103,7 @@ Array [
               className="css-mhn8j-StickyTop e10mac9s3"
             >
               <div
-                className="css-1klu905-SectionLinksWrapper e10mac9s8"
+                className="css-1klu905-SectionLinksWrapper e10mac9s9"
               >
                 <a
                   className="css-3bamg-SectionLink-SectionLink"
@@ -110,7 +114,8 @@ Array [
                   <div>
                     <img
                       alt="Back Home"
-                      src="/images/home-icon.svg"
+                      className="css-1nhdjhw-StyledIcon e10mac9s8"
+                      src="test-image-stub"
                     />
                   </div>
                   Back Home
@@ -145,7 +150,7 @@ Array [
         className="css-18kqr8q-Container e1xhgpyy0"
       >
         <a
-          className=" css-1gmbmq9-StyledLink e1xhgpyy3"
+          className=" css-mrweef-StyledLink e1xhgpyy3"
           href="https://docs.dwolla.com"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -159,13 +164,11 @@ Array [
           <img
             alt="Open in new tab"
             className="icon"
-            height={13}
             src="test-image-stub"
-            width={13}
           />
         </a>
         <a
-          className=" css-1gmbmq9-StyledLink e1xhgpyy3"
+          className=" css-mrweef-StyledLink e1xhgpyy3"
           href="/changelog"
           onClick={[Function]}
           onMouseEnter={[Function]}

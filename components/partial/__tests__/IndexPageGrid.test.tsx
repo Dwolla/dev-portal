@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import IndexPageGrid from "../IndexPageGrid";
-import guidesIcon from "../../public/images/guides-icon-large.svg";
+import guidesIcon from "../../../assets/images/content-icons/guides-icon.svg";
 
 const mockPath = "/docs/guide";
 jest.mock("next/router", () => ({

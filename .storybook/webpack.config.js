@@ -6,6 +6,10 @@ module.exports = ({ config }) => {
       presets: [require.resolve("babel-preset-react-app")],
     },
   });
+  config.module.rules.unshift({
+    test: /\.svg$/,
+    use: ["@svgr/webpack"],
+  });
 
   config.resolve.extensions.push(".ts", ".tsx");
   return config;

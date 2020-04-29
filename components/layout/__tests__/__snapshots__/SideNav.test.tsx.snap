@@ -11,7 +11,7 @@ exports[`SideNav 1`] = `
       className="css-p3a8sa-SlidePane e10mac9s2"
     >
       <div
-        className="css-1klu905-SectionLinksWrapper e10mac9s8"
+        className="css-1klu905-SectionLinksWrapper e10mac9s9"
       >
         <a
           className="css-3bamg-SectionLink-SectionLink"
@@ -22,7 +22,8 @@ exports[`SideNav 1`] = `
           <div>
             <img
               alt="Home"
-              src="/images/home-icon.svg"
+              className="css-1nhdjhw-StyledIcon e10mac9s8"
+              src="test-image-stub"
             />
           </div>
           Home
@@ -36,7 +37,8 @@ exports[`SideNav 1`] = `
           <div>
             <img
               alt="Guides"
-              src="/images/guides-icon.svg"
+              className="css-1nhdjhw-StyledIcon e10mac9s8"
+              src="test-image-stub"
             />
           </div>
           Guides
@@ -50,7 +52,8 @@ exports[`SideNav 1`] = `
           <div>
             <img
               alt="Concepts"
-              src="/images/concepts-icon.svg"
+              className="css-1nhdjhw-StyledIcon e10mac9s8"
+              src="test-image-stub"
             />
           </div>
           Concepts
@@ -64,7 +67,8 @@ exports[`SideNav 1`] = `
           <div>
             <img
               alt="SDKs & Tools"
-              src="/images/sdks-tools-icon.svg"
+              className="css-1nhdjhw-StyledIcon e10mac9s8"
+              src="test-image-stub"
             />
           </div>
           SDKs & Tools
@@ -78,7 +82,7 @@ exports[`SideNav 1`] = `
         className="css-mhn8j-StickyTop e10mac9s3"
       >
         <div
-          className="css-1klu905-SectionLinksWrapper e10mac9s8"
+          className="css-1klu905-SectionLinksWrapper e10mac9s9"
         >
           <a
             className="css-3bamg-SectionLink-SectionLink"
@@ -89,7 +93,8 @@ exports[`SideNav 1`] = `
             <div>
               <img
                 alt="Back Home"
-                src="/images/home-icon.svg"
+                className="css-1nhdjhw-StyledIcon e10mac9s8"
+                src="test-image-stub"
               />
             </div>
             Back Home

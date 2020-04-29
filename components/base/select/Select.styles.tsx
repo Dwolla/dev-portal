@@ -126,7 +126,7 @@ export const codeCustomStyles = {
     color: isFocused ? WHITE_PRIMARY : GREY_10,
 
     svg: {
-      g: {
+      path: {
         fill: isFocused ? WHITE_PRIMARY : GREY_10,
       },
     },
@@ -136,7 +136,7 @@ export const codeCustomStyles = {
       color: WHITE_PRIMARY,
 
       svg: {
-        g: {
+        path: {
           fill: WHITE_PRIMARY,
         },
       },

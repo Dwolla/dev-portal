@@ -10,14 +10,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -36,14 +33,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -62,14 +56,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -88,14 +79,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -114,14 +102,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -140,14 +125,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -166,14 +148,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >
@@ -192,14 +171,11 @@ exports[`CardGrid 1`] = `
     <div
       className=" css-qhvpk8-CardStyle eguc8hf0"
     >
-      <div
-        className=" css-aqeaqx-IconStyle eguc8hf1"
-      >
-        <img
-          alt=""
-          src="test-image-stub"
-        />
-      </div>
+      <img
+        alt=""
+        className=" css-142sfdf-StyledIcon eguc8hf1"
+        src="test-image-stub"
+      />
       <div
         className=" css-bgc4kb-TopicStyle eguc8hf4"
       >

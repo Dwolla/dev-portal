@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import CardGrid from "../CardGrid";
 import Card from "../Card";
-import guideIcon from "../../public/images/guides-icon-large.svg";
+import guideIcon from "../../assets/images/content-icons/guides-icon.svg";
 
 test("CardGrid", () => {
   const tree = renderer

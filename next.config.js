@@ -20,5 +20,12 @@ module.exports = (phase) =>
       env: {
         isDev: phase === PHASE_DEVELOPMENT_SERVER,
       },
+      webpack: (config) => {
+        config.module.rules.unshift({
+          test: /\.svg$/,
+          use: ["@svgr/webpack"],
+        });
+        return config;
+      },
     })
   );
