@@ -2,7 +2,7 @@
 
 exports[`Button 1`] = `
 <button
-  className="primary standard css-1eto6r1-ButtonStyle e12ysvgk0"
+  className="primary standard css-xjnv7x-ButtonStyle e12ysvgk0"
   type="button"
 >
   Button
