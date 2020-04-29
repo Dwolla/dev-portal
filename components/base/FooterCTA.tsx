@@ -18,15 +18,28 @@ const Container = styled.div`
     padding: 10px;
     flex-direction: column;
   }
+`;
+
+const StyledContent = styled.div`
+  padding-right: 20px;
+  > * {
+    margin: unset;
+    margin-bottom: 13px;
+  }
+  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+    padding-right: unset;
+    text-align: center;
+  }
   /* Text sizes decrease in smaller screens */
-  > div > h2 {
-    @media (${maxWidth(BREAKPOINT_IPAD)}) {
+  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+    > * {
+      margin-bottom: 7px;
+    }
+    > h2 {
       font-size: 18px;
       line-height: 22px;
     }
-  }
-  > div > span {
-    @media (${maxWidth(BREAKPOINT_IPAD)}) {
+    > p {
       font-size: 16px;
       line-height: 20px;
     }
@@ -42,10 +55,10 @@ type Props = { topic: string; description: string; button?: ButtonProps };
 function FooterCTA({ topic, description, button }: Props) {
   return (
     <Container>
-      <div>
+      <StyledContent>
         <H2 isDark>{topic}</H2>
         <SubHeader isDark>{description}</SubHeader>
-      </div>
+      </StyledContent>
       <Button {...button} size="large" variant="primary" />
     </Container>
   );
