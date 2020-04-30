@@ -5,3 +5,4 @@ export const BOX_SHADOW_3 = "0 4px 8px 0 rgba(31,54,78,0.12)";
 export const BOX_SHADOW_4 = "0 8px 14px 0 rgba(31,54,78,0.12)";
 export const BOX_SHADOW_5 = "0 15px 25px 0 rgba(31,54,78,0.12)";
 export const BOX_SHADOW_6 = "0 3px 5px 0 rgba(53, 65, 83, 0.24)";
+export const BOX_SHADOW_7 = "0 15px 25px 0 rgba(218, 225, 232, 0.7)";
