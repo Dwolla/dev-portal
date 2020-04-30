@@ -42,7 +42,7 @@ exports[`Collapsible list 1`] = `
         className="Collapsible__contentInner"
       >
         <ul
-          className=" css-1i7ig5e-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
+          className=" css-9y7dad-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
         >
           <li>
             Send funds - No
@@ -105,7 +105,7 @@ exports[`Collapsible paragraph 1`] = `
         className="Collapsible__contentInner"
       >
         <p
-          className=" css-e1sksv-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
+          className=" css-bf1b6h-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
         >
           Yes, although this is not necessary, nor recommended. Dwolla manually reviews all documents, so sending more documents than necessary may slow down the verification process for your Customers.
         </p>
