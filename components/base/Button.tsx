@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-
 import {
   WHITE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
@@ -35,23 +34,26 @@ const ButtonStyle = styled.button`
   color: ${WHITE_PRIMARY};
   font-family: ${POPPINS};
   font-style: thin;
-  padding: 12px 15px;
   border-radius: 5px;
   cursor: pointer;
   :focus {
     outline: 0;
   }
   &.tiny {
+    padding: 5px 11px;
     font-size: 11px;
     font-weight: 500;
   }
   &.small {
+    padding: 5px 15px;
     font-size: 13px;
   }
   &.standard {
+    padding: 10px 15px;
     font-size: 14px;
   }
   &.large {
+    padding: 15px 25px;
     font-size: 16px;
   }
 

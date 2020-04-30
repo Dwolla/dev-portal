@@ -50,7 +50,7 @@ const headingStyles = {
   `,
 };
 
-const StyledPreHeader = styled.span`
+const StyledPreHeader = styled.p`
   color: ${GREY_5};
   text-transform: uppercase;
   font-family: ${POPPINS};
@@ -72,7 +72,7 @@ const baseTextStyles = css`
   }
 `;
 
-const StyledSubHeader = styled.span`
+const StyledSubHeader = styled.p`
   ${baseTextStyles}
   font-size: 20px;
   font-weight: 300;
