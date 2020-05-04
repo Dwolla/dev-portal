@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IFrame 1`] = `
+<div
+  className="css-1fg03je-IFrameWrap e4wjssg0"
+>
+  <iframe
+    src="https://go.dwolla.com/l/391342/2018-10-30/n92nqn"
+    style={
+      Object {
+        "border": 0,
+        "minWidth": "100%",
+        "width": "1px",
+      }
+    }
+    title="iframe"
+  />
+</div>
+`;

@@ -9,6 +9,7 @@ export const GREY_7 = "#3e4e67";
 export const GREY_8 = "#354153";
 export const GREY_9 = "#2e3745";
 export const GREY_10 = "#cfcff5";
+export const GREY_11 = "#f8fafc";
 
 // Text Colors
 export const HEADLINE_TEXT = "#2a2d38";
