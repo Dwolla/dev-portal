@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-import infoIcon from "../../public/images/info-icon-grey.svg";
-import warningIcon from "../../public/images/warning-icon-yellow.svg";
+import infoIcon from "../../assets/images/component-icons/info-icon.svg";
+import warningIcon from "../../assets/images/component-icons/warning-icon.svg";
 import {
   GREY_1,
   GREY_2,

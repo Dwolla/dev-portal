@@ -6,6 +6,7 @@ import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { ORANGE_PRIMARY, GREY_6, GREY_2 } from "../colors";
+import homeIcon from "../../assets/images/component-icons/side-nav/home-nav-icon.svg";
 
 // proptypes
 
@@ -188,6 +189,11 @@ const GroupToggle = styled.div`
   }
 `;
 
+const StyledIcon = styled.img`
+  width: 17px;
+  height: 17px;
+`;
+
 interface DocLinkProps {
   active: boolean;
   children: string;
@@ -261,7 +267,7 @@ function SectionLink(props: SideNavLinkProps) {
         `}
       >
         <div>
-          <img src={props.iconSrc} alt={props.text} />
+          <StyledIcon src={props.iconSrc} alt={props.text} />
         </div>
 
         {props.text}
@@ -312,7 +318,7 @@ export default function SideNav(props: SideNavProps) {
             <SectionLinksWrapper>
               <SectionLink
                 href="/"
-                iconSrc="/images/home-icon.svg"
+                iconSrc={homeIcon}
                 isSection={false}
                 text="Back Home"
               />

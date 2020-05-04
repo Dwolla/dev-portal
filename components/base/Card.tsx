@@ -2,9 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 
 import Badge from "./Badge";
-import newTabIcon from "../../public/images/open-in-new-tab-icon-light-grey.svg";
+import { ReactComponent as NewTabIcon } from "../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
   GREY_2,
+  GREY_4,
   WHITE_PRIMARY,
   HEADLINE_TEXT,
   PARAGRAPH_TEXT,
@@ -25,9 +26,7 @@ type Props = {
 function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
   return (
     <CardStyle className={centerAlign ? "center" : ""}>
-      <IconStyle className={centerAlign ? "center" : ""}>
-        <img src={icon} alt="" />
-      </IconStyle>
+      <StyledIcon src={icon} alt="" className={centerAlign ? "center" : ""} />
 
       {badge && (
         <BadgeStyle>
@@ -37,7 +36,7 @@ function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
 
       {link && (
         <LinkStyle>
-          <img src={newTabIcon} alt="" />
+          <NewTabIcon width={13} />
         </LinkStyle>
       )}
 
@@ -76,7 +75,7 @@ const CardStyle = styled.div`
   }
 `;
 
-const IconStyle = styled.div`
+const StyledIcon = styled.img`
   height: 48px;
   width: 48px;
   &.center {
@@ -96,6 +95,12 @@ const LinkStyle = styled.div`
   position: absolute;
   top: 8px;
   right: 8px;
+
+  svg {
+    g {
+      fill: ${GREY_4};
+    }
+  }
 `;
 
 const TopicStyle = styled.div`

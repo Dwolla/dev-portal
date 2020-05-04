@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import Card from "../Card";
-import icon from "../../public/images/guides-icon-large.svg";
+import icon from "../../assets/images/content-icons/guides-icon.svg";
 
 test("default", () => {
   const tree = renderer

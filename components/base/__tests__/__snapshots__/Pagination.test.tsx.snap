@@ -16,6 +16,7 @@ exports[`Pagination next 1`] = `
       NEXT
       <img
         alt="Next"
+        className="css-a41acm-ArrowIcon eutkdkv3"
         src="test-image-stub"
       />
     </div>
@@ -41,6 +42,7 @@ exports[`Pagination previous 1`] = `
     >
       <img
         alt="Previous"
+        className="css-a41acm-ArrowIcon eutkdkv3"
         src="test-image-stub"
       />
       PREVIOUS

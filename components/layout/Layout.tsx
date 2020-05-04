@@ -18,6 +18,8 @@ import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disabl
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
 import APIStatusBar from "./APIStatusBar";
+import closeIcon from "../../assets/images/component-icons/close.svg";
+import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.png";
 
 export const LEFT_SIDEBAR_PADDING_X = "20px";
 
@@ -152,10 +154,11 @@ export default function Layout({
       <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
         <LogoWrapper>
           <img
-            src="/images/close-icon-orange.svg"
+            src={closeIcon}
             alt=""
             onClick={hideSidebar}
             css={css`
+              width: 14px;
               float: right;
               transform: translate3d(0, 15px, 0);
 
@@ -165,10 +168,7 @@ export default function Layout({
             `}
           />
 
-          <img
-            src="/images/dwolla-developers-logo.png"
-            alt="Dwolla Developers Logo"
-          />
+          <img src={dwollaDevLogo} alt="Dwolla Developers Logo" />
         </LogoWrapper>
 
         <SideNavWrapper>

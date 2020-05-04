@@ -119,14 +119,11 @@ Array [
           <div
             className=" css-qhvpk8-CardStyle eguc8hf0"
           >
-            <div
-              className=" css-aqeaqx-IconStyle eguc8hf1"
-            >
-              <img
-                alt=""
-                src="test-image-stub"
-              />
-            </div>
+            <img
+              alt=""
+              className=" css-142sfdf-StyledIcon eguc8hf1"
+              src="test-image-stub"
+            />
             <div
               className="css-vz2qld-BadgeStyle eguc8hf2"
             >
@@ -160,14 +157,11 @@ Array [
           <div
             className=" css-qhvpk8-CardStyle eguc8hf0"
           >
-            <div
-              className=" css-aqeaqx-IconStyle eguc8hf1"
-            >
-              <img
-                alt=""
-                src="test-image-stub"
-              />
-            </div>
+            <img
+              alt=""
+              className=" css-142sfdf-StyledIcon eguc8hf1"
+              src="test-image-stub"
+            />
             <div
               className="css-vz2qld-BadgeStyle eguc8hf2"
             >
@@ -201,14 +195,11 @@ Array [
           <div
             className=" css-qhvpk8-CardStyle eguc8hf0"
           >
-            <div
-              className=" css-aqeaqx-IconStyle eguc8hf1"
-            >
-              <img
-                alt=""
-                src="test-image-stub"
-              />
-            </div>
+            <img
+              alt=""
+              className=" css-142sfdf-StyledIcon eguc8hf1"
+              src="test-image-stub"
+            />
             <div
               className="css-vz2qld-BadgeStyle eguc8hf2"
             >
