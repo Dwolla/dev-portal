@@ -4,25 +4,21 @@ exports[`Inline CTA 1`] = `
 <div
   className="css-1bf2om8-BoxStyle exsshsf0"
 >
-  <div
-    className="css-1hj5186-IconStyle exsshsf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className="css-1lfxg9z-StyledIcon exsshsf1"
+    src="test-image-stub"
+  />
   <div
     className="css-cj8isa-TextStyle exsshsf2"
   >
     To learn more about how to initiate a Same-Day ACH credit transfer, reference our developer resource article.
   </div>
   <div
-    className="css-6gl40a-ArrowStyle exsshsf3"
+    className="css-iij1gm-ArrowStyle exsshsf3"
   >
-    <img
-      alt="Arrow right"
-      src="test-image-stub"
+    <svg
+      width={13}
     />
   </div>
 </div>

@@ -4,14 +4,11 @@ exports[`default 1`] = `
 <div
   className=" css-qhvpk8-CardStyle eguc8hf0"
 >
-  <div
-    className=" css-aqeaqx-IconStyle eguc8hf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className=" css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
     className=" css-bgc4kb-TopicStyle eguc8hf4"
   >
@@ -29,14 +26,11 @@ exports[`with Badge 1`] = `
 <div
   className=" css-qhvpk8-CardStyle eguc8hf0"
 >
-  <div
-    className=" css-aqeaqx-IconStyle eguc8hf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className=" css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
@@ -63,14 +57,11 @@ exports[`with Center Align 1`] = `
 <div
   className="center css-qhvpk8-CardStyle eguc8hf0"
 >
-  <div
-    className="center css-aqeaqx-IconStyle eguc8hf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className="center css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
     className="center css-bgc4kb-TopicStyle eguc8hf4"
   >
@@ -88,14 +79,11 @@ exports[`with Center Align and Badge 1`] = `
 <div
   className="center css-qhvpk8-CardStyle eguc8hf0"
 >
-  <div
-    className="center css-aqeaqx-IconStyle eguc8hf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className="center css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
@@ -122,20 +110,16 @@ exports[`with Center Align and Link 1`] = `
 <div
   className="center css-qhvpk8-CardStyle eguc8hf0"
 >
+  <img
+    alt=""
+    className="center css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
-    className="center css-aqeaqx-IconStyle eguc8hf1"
+    className="css-hpm16i-LinkStyle eguc8hf3"
   >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
-  <div
-    className="css-kd2whk-LinkStyle eguc8hf3"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
+    <svg
+      width={13}
     />
   </div>
   <div
@@ -155,14 +139,11 @@ exports[`with Center Align, Link and Badge 1`] = `
 <div
   className="center css-qhvpk8-CardStyle eguc8hf0"
 >
-  <div
-    className="center css-aqeaqx-IconStyle eguc8hf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className="center css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
@@ -173,11 +154,10 @@ exports[`with Center Align, Link and Badge 1`] = `
     </div>
   </div>
   <div
-    className="css-kd2whk-LinkStyle eguc8hf3"
+    className="css-hpm16i-LinkStyle eguc8hf3"
   >
-    <img
-      alt=""
-      src="test-image-stub"
+    <svg
+      width={13}
     />
   </div>
   <div
@@ -197,20 +177,16 @@ exports[`with Link 1`] = `
 <div
   className=" css-qhvpk8-CardStyle eguc8hf0"
 >
+  <img
+    alt=""
+    className=" css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
-    className=" css-aqeaqx-IconStyle eguc8hf1"
+    className="css-hpm16i-LinkStyle eguc8hf3"
   >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
-  <div
-    className="css-kd2whk-LinkStyle eguc8hf3"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
+    <svg
+      width={13}
     />
   </div>
   <div
@@ -230,14 +206,11 @@ exports[`with Link and Badge 1`] = `
 <div
   className=" css-qhvpk8-CardStyle eguc8hf0"
 >
-  <div
-    className=" css-aqeaqx-IconStyle eguc8hf1"
-  >
-    <img
-      alt=""
-      src="test-image-stub"
-    />
-  </div>
+  <img
+    alt=""
+    className=" css-142sfdf-StyledIcon eguc8hf1"
+    src="test-image-stub"
+  />
   <div
     className="css-vz2qld-BadgeStyle eguc8hf2"
   >
@@ -248,11 +221,10 @@ exports[`with Link and Badge 1`] = `
     </div>
   </div>
   <div
-    className="css-kd2whk-LinkStyle eguc8hf3"
+    className="css-hpm16i-LinkStyle eguc8hf3"
   >
-    <img
-      alt=""
-      src="test-image-stub"
+    <svg
+      width={13}
     />
   </div>
   <div

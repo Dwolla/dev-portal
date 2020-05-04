@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
-import arrowIcon from "../../public/images/arrow-right-orange.svg";
-import { GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
+import { ReactComponent as ArrowIcon } from "../../assets/images/component-icons/arrow-right.svg";
+import {
+  GREY_2,
+  ORANGE_PRIMARY,
+  WHITE_PRIMARY,
+  PARAGRAPH_TEXT,
+} from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
 
@@ -19,8 +24,10 @@ const BoxStyle = styled.div`
     box-shadow: ${BOX_SHADOW_5};
   }
 `;
-const IconStyle = styled.div`
+const StyledIcon = styled.img`
   margin: 15px 33px 15px 15px;
+  height: 48px;
+  width: 48px;
 `;
 
 const TextStyle = styled.div`
@@ -34,6 +41,14 @@ const TextStyle = styled.div`
 
 const ArrowStyle = styled.div`
   margin: 19px;
+
+  path.arrow-right_svg__point {
+    fill: ${ORANGE_PRIMARY};
+  }
+
+  path.arrow-right_svg__stem {
+    stroke: ${ORANGE_PRIMARY};
+  }
 `;
 
 type Props = {
@@ -44,12 +59,10 @@ type Props = {
 function InlineCTA({ icon, text }: Props) {
   return (
     <BoxStyle>
-      <IconStyle>
-        <img src={icon} alt="" />
-      </IconStyle>
+      <StyledIcon src={icon} alt="" />
       <TextStyle>{text}</TextStyle>
       <ArrowStyle>
-        <img src={arrowIcon} alt="Arrow right" />
+        <ArrowIcon width={13} />
       </ArrowStyle>
     </BoxStyle>
   );

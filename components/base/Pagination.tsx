@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import arrowLeft from "../../public/images/arrow-left-grey.svg";
-import arrowRight from "../../public/images/arrow-right-grey.svg";
+import arrowLeft from "../../assets/images/component-icons/arrow-left.svg";
+import arrowRight from "../../assets/images/component-icons/arrow-right.svg";
 import { GREY_2, GREY_5, GREY_6, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
@@ -51,6 +51,10 @@ const ArrowDiv = styled.div`
   margin-bottom: 11px;
 `;
 
+const ArrowIcon = styled.img`
+  width: 13px;
+`;
+
 // Prop types
 type Props = {
   variant: "next" | "previous";
@@ -68,11 +72,11 @@ function Pagination({ variant, variantText, href, children }: Props) {
           {variant === "next" ? (
             <ArrowDiv>
               {variantText}
-              <img src={arrowRight} alt="Next" />
+              <ArrowIcon src={arrowRight} alt="Next" />
             </ArrowDiv>
           ) : (
             <ArrowDiv>
-              <img src={arrowLeft} alt="Previous" />
+              <ArrowIcon src={arrowLeft} alt="Previous" />
               {variantText}
             </ArrowDiv>
           )}

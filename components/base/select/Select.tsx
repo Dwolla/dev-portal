@@ -1,8 +1,8 @@
 import React from "react";
 import ReactSelect, { components } from "react-select";
-import arrowSelectIcon from "../../../public/images/arrow-select-icon.svg";
-import DoubleArrowSelectIcon from "../../../public/images/double-arrows-select-icon";
-import CheckMarkIcon from "../../../public/images/check-mark-icon";
+import dropdownArrowSingle from "../../../assets/images/component-icons/dropdown-arrow-single.svg";
+import { ReactComponent as DropdownArrowDouble } from "../../../assets/images/component-icons/dropdown-arrow-double.svg";
+import { ReactComponent as CheckMarkIcon } from "../../../assets/images/component-icons/check-mark.svg";
 import {
   StyledDefaultDropdownIcon,
   StyledOptionWrap,
@@ -16,7 +16,7 @@ const DefaultDropdownIndicator = (props: any) => {
   return (
     <components.DropdownIndicator {...props}>
       <StyledDefaultDropdownIcon
-        src={arrowSelectIcon}
+        src={dropdownArrowSingle}
         alt=""
         className={props.selectProps.menuIsOpen ? "menuOpen" : ""}
       />
@@ -27,7 +27,7 @@ const DefaultDropdownIndicator = (props: any) => {
 const CodeDropdownIndicator = (props: any) => {
   return (
     <components.DropdownIndicator {...props}>
-      <DoubleArrowSelectIcon />
+      <DropdownArrowDouble width={7} />
     </components.DropdownIndicator>
   );
 };
@@ -37,7 +37,7 @@ const Option = (props: any) => {
     <StyledOptionWrap>
       {props.isSelected && (
         <StyledSelectedIconWrap>
-          <CheckMarkIcon />
+          <CheckMarkIcon width={10} />
         </StyledSelectedIconWrap>
       )}
       <components.Option {...props} />

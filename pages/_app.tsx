@@ -11,31 +11,36 @@ import fetcher from "../modules/fetcher";
 import { MDXTypographyWrapper } from "../components/base/Typography";
 import groupCodeExamples from "../components/util/groupCodeExamples";
 
+import homeIcon from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
+import guidesIcon from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
+import conceptsIcon from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
+import sdksToolsIcon from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
+
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
 
 const SIDE_NAV_LINKS = [
   {
     href: "/",
-    iconSrc: "/images/home-icon.svg",
+    iconSrc: homeIcon,
     isSection: false,
     text: "Home",
   },
   {
     href: "/docs/guides",
-    iconSrc: "/images/guides-icon.svg",
+    iconSrc: guidesIcon,
     isSection: true,
     text: "Guides",
   },
   {
     href: "/docs/concepts",
-    iconSrc: "/images/concepts-icon.svg",
+    iconSrc: conceptsIcon,
     isSection: true,
     text: "Concepts",
   },
   {
     href: "/sdks-tools",
-    iconSrc: "/images/sdks-tools-icon.svg",
+    iconSrc: sdksToolsIcon,
     isSection: false,
     text: "SDKs & Tools",
   },

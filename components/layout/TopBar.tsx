@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import classnames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import openInNewTabIcon from "../../public/images/open-in-new-tab-icon.svg";
+import openInNewTabIcon from "../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import { GREY_2, GREY_6, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import Button from "../base/Button";
@@ -50,6 +50,8 @@ const StyledLink = styled.a`
 
   > .icon {
     margin-left: 5px;
+    width: 13px;
+    height: 13px;
   }
 
   &.active > .text {
@@ -80,13 +82,7 @@ export function TopBarLink({ href, external, text, active }: TopBarLinkProps) {
         <span className="text">{text}</span>
 
         {external && (
-          <img
-            className="icon"
-            src={openInNewTabIcon}
-            alt="Open in new tab"
-            width={13}
-            height={13}
-          />
+          <img className="icon" src={openInNewTabIcon} alt="Open in new tab" />
         )}
       </StyledLink>
     </Link>

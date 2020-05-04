@@ -2,8 +2,8 @@
 import ReactCollapsible from "react-collapsible";
 import styled from "@emotion/styled";
 import { css, jsx } from "@emotion/core";
-import plusIcon from "../../public/images/plus-circle-icon.svg";
-import minusIcon from "../../public/images/minus-circle-icon.svg";
+import plusIcon from "../../assets/images/component-icons/plus-circle-icon.svg";
+import minusIcon from "../../assets/images/component-icons/minus-circle-icon.svg";
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import { BOX_SHADOW_7 } from "../shadowDepths";
@@ -44,6 +44,7 @@ const StyledTrigger = styled.div`
 
 const ImageStyles = css`
   margin-left: 28px;
+  width: 24px;
 `;
 
 // Prop types

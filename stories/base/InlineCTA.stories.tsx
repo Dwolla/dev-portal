@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
 import InlineCTA from "../../components/base/InlineCTA";
-import guideIcon from "../../public/images/guides-icon-large.svg";
+import guideIcon from "../../assets/images/content-icons/guides-icon.svg";
 
 storiesOf("base|Inline CTA", module)
   .addDecorator(centered)
