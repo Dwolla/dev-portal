@@ -1,0 +1,25 @@
+:root {
+  --GREY_8: #354153;
+  --WHITE_PRIMARY: #ffffff;
+  --ROBOTO: "Roboto", sans-serif;
+}
+
+/* Custom class for styling Tooltip content */
+.tooltip-content {
+  color: var(--WHITE_PRIMARY);
+  font-family: var(--ROBOTO);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+/* Overriding classes from react-tippy component to style Tooltip container */
+.tippy-tooltip {
+  border-radius: 3px;
+  background-color: var(--GREY_8);
+}
+
+.tippy-popper[x-placement^="bottom"] [x-arrow] {
+  border-bottom-color: var(--GREY_8);
+}
