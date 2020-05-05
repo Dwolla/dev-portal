@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: frame-ancestors 'self' https://*.dwolla.com https://*.dwolla.net;
