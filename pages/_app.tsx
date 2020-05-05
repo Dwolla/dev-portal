@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import App, { createUrl } from "next/app";
-import { MDXProvider } from "@mdx-js/react";
 import useSWR from "swr";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
-import { AnchorsSetter, AnchorsProvider } from "../components/util/Anchors";
+import { AnchorsProvider } from "../components/util/Anchors";
 import { LanguageContext } from "../components/util/Contexts";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
-import { MDXTypographyWrapper } from "../components/base/Typography";
-import groupCodeExamples from "../components/util/groupCodeExamples";
 
 import homeIcon from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import guidesIcon from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
@@ -95,24 +92,6 @@ const LANGUAGE_OPTIONS = [
   { value: "raw", label: "Raw" },
 ];
 
-const MDX_COMPONENTS = {
-  wrapper: ({ children }: { children: any }) => (
-    <MDXTypographyWrapper>
-      <AnchorsSetter>
-        {groupCodeExamples({
-          children,
-          into: ({ children: c }: any) => (
-            <>
-              <h3>code examples</h3>
-              {c}
-            </>
-          ),
-        })}
-      </AnchorsSetter>
-    </MDXTypographyWrapper>
-  ),
-};
-
 const AppWithHooks = ({ router, Component, pageProps }: any) => {
   const [isAuthenticated, setAuthenticated] = useState(process.env.isDev);
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
@@ -125,25 +104,23 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
 
   return isAuthenticated ? (
     <AnchorsProvider>
-      <MDXProvider components={MDX_COMPONENTS}>
-        <LanguageContext.Provider
-          value={{
-            selectedLanguage,
-            setSelectedLanguage,
-            languageOptions: LANGUAGE_OPTIONS,
-          }}
+      <LanguageContext.Provider
+        value={{
+          selectedLanguage,
+          setSelectedLanguage,
+          languageOptions: LANGUAGE_OPTIONS,
+        }}
+      >
+        <Layout
+          footerLinks={FOOTER_LINKS}
+          pages={Pages.all()}
+          sideNavLinks={SIDE_NAV_LINKS}
+          topBarProps={TOP_BAR_PROPS}
+          apiStatus={apiStatus}
         >
-          <Layout
-            footerLinks={FOOTER_LINKS}
-            pages={Pages.all()}
-            sideNavLinks={SIDE_NAV_LINKS}
-            topBarProps={TOP_BAR_PROPS}
-            apiStatus={apiStatus}
-          >
-            <Component {...pageProps} url={url} />
-          </Layout>
-        </LanguageContext.Provider>
-      </MDXProvider>
+          <Component {...pageProps} url={url} />
+        </Layout>
+      </LanguageContext.Provider>
     </AnchorsProvider>
   ) : (
     <AuthPage setAuthenticated={setAuthenticated} />

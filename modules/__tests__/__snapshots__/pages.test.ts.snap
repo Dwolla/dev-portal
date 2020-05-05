@@ -57,5 +57,9 @@ Array [
     "bar": "Ipsum",
     "id": "/docs/world",
   },
+  Object {
+    "bar": "Docs",
+    "id": "/docs",
+  },
 ]
 `;

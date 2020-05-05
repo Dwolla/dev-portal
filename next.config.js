@@ -6,8 +6,8 @@ const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 module.exports = (phase) =>
   withImages(
     withMdxEnhanced({
-      // layoutPath: 'layouts',
-      // defaultLayout: true,
+      layoutPath: "layouts",
+      defaultLayout: true,
       // fileExtensions: ['mdx'],
       // remarkPlugins: [],
       // rehypePlugins: [],

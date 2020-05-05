@@ -6,6 +6,7 @@ import arrowRight from "../../assets/images/component-icons/arrow-right.svg";
 import { GREY_2, GREY_5, GREY_6, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
+import { minWidth, BREAKPOINT_MOBILE } from "../breakpoints";
 
 // Styles
 const StyledAnchor = styled.a`
@@ -14,8 +15,9 @@ const StyledAnchor = styled.a`
 
 const Container = styled.div`
   box-sizing: border-box;
+  height: 100%;
   min-height: 107px;
-  width: 200px;
+  max-width: 200px;
   border: 1px solid ${GREY_2};
   border-radius: 5px;
   background-color: ${WHITE_PRIMARY};
@@ -32,9 +34,15 @@ const Container = styled.div`
   }
   &.next {
     text-align: left;
+    margin-left: 15px;
   }
   &.previous {
     text-align: right;
+    margin-right: 15px;
+  }
+
+  @media (${minWidth(BREAKPOINT_MOBILE)}) {
+    width: 200px;
   }
 `;
 

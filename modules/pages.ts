@@ -42,7 +42,7 @@ const Pages = {
   },
 
   under(path: string): Page[] {
-    const normalizedPath = `/${path.replace(/^\//, "").replace(/\/$/, "")}/`;
+    const normalizedPath = `/${path.replace(/^\//, "").replace(/\/$/, "")}`;
     return ALL_PAGES.filter((p) => p.id.startsWith(normalizedPath));
   },
 };
