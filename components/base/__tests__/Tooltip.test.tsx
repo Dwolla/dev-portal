@@ -1,5 +1,10 @@
 import renderer from "react-test-renderer";
-import Tooltip from "../tooltip/Tooltip";
+import Tooltip from "../Tooltip";
+
+// Creating a mock to bypass react-tippy breaking the test
+jest.mock("react-tippy", () => ({
+  Tooltip: jest.fn(({ children }) => <div>{children}</div>),
+}));
 
 test("Tooltip", () => {
   const tree = renderer

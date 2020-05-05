@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Tooltip from "./tooltip/Tooltip";
+import Tooltip from "./Tooltip";
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import { ReactComponent as DownloadIcon } from "../../assets/images/component-icons/download-icon.svg";
 
