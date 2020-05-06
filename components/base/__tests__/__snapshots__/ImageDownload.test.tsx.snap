@@ -21,7 +21,7 @@ exports[`ImageDownload - with filename 1`] = `
     </div>
   </div>
   <div
-    className="css-1t4eqcj-ImageDiv e12x795m3"
+    className="css-1qmoj82-ImageDiv e12x795m3"
   >
     <img
       alt=""
@@ -52,7 +52,7 @@ exports[`ImageDownload - without filename 1`] = `
     </div>
   </div>
   <div
-    className="css-1t4eqcj-ImageDiv e12x795m3"
+    className="css-1qmoj82-ImageDiv e12x795m3"
   >
     <img
       alt=""

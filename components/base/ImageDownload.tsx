@@ -23,6 +23,9 @@ const DownloadIconWrapper = styled.div`
 
 const ImageDiv = styled.div`
   padding: 12px 13px;
+  > img {
+    max-width: 100%;
+  }
 `;
 
 type Props = {
