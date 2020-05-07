@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageDownload - with filename 1`] = `
+<div
+  className="css-482eq7-Container e12x795m0"
+>
+  <div
+    className="css-b3bf84-DownloadDiv e12x795m1"
+  >
+    <div
+      className="css-vuimxk-DownloadIconWrapper e12x795m2"
+    >
+      <div>
+        <a
+          download="test-document-upload-success"
+          href="test-image-stub"
+        >
+          <svg />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-1qmoj82-ImageDiv e12x795m3"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+</div>
+`;
+
+exports[`ImageDownload - without filename 1`] = `
+<div
+  className="css-482eq7-Container e12x795m0"
+>
+  <div
+    className="css-b3bf84-DownloadDiv e12x795m1"
+  >
+    <div
+      className="css-vuimxk-DownloadIconWrapper e12x795m2"
+    >
+      <div>
+        <a
+          download=""
+          href="test-image-stub"
+        >
+          <svg />
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-1qmoj82-ImageDiv e12x795m3"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+</div>
+`;

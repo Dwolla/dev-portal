@@ -20,5 +20,6 @@ module.exports = {
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
     "^.+\\.png$": "<rootDir>/.jest/__mocks__/pngMock.js",
     "^.+\\.svg$": "<rootDir>/.jest/__mocks__/svgMock.js",
+    "^.+\\.css$": "<rootDir>/.jest/__mocks__/cssMock.js",
   },
 };
