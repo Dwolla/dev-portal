@@ -27,7 +27,9 @@ export default (frontMatter) => {
 
     return (
       <>
-        <DefaultMDXWrapper>{content}</DefaultMDXWrapper>
+        <DefaultMDXWrapper frontMatter={frontMatter}>
+          {content}
+        </DefaultMDXWrapper>
 
         {(!!prevPage || !!nextPage) && (
           <StyledPagination>
