@@ -33,45 +33,45 @@ When a business verified Customer needs to be `certified`, Dwolla will return a 
 
 #### Example response
 
-```
+```json
 {
-    "_links": {
-        "self": {
-            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "customer"
-        },
-        "certify-beneficial-ownership": {
-            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/beneficial-ownership",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "beneficial-ownership"
-        }
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
     },
-    "id": "41432759-6d65-42e5-a6be-400ddd103b78",
-    "firstName": "Account",
-    "lastName": "Admin",
-    "email": "accountAdmin@email.com",
-    "type": "business",
-    "status": "document",
-    "created": "2018-05-10T19:59:22.643Z",
-    "address1": "66 Walnut St",
-    "city": "Des Moines",
-    "state": "IA",
-    "postalCode": "50309",
-    "businessName": "Jane Corp",
-    "controller": {
-        "firstName": "Jim",
-        "lastName": "Controller",
-        "title": "CEO",
-        "address": {
-            "address1": "1749 18th st",
-            "address2": "apt 12",
-            "city": "Des Moines",
-            "stateProvinceRegion": "IA",
-            "country": "US",
-            "postalCode": "50266"
-        }
+    "certify-beneficial-ownership": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/beneficial-ownership",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "beneficial-ownership"
     }
+  },
+  "id": "41432759-6d65-42e5-a6be-400ddd103b78",
+  "firstName": "Account",
+  "lastName": "Admin",
+  "email": "accountAdmin@email.com",
+  "type": "business",
+  "status": "document",
+  "created": "2018-05-10T19:59:22.643Z",
+  "address1": "66 Walnut St",
+  "city": "Des Moines",
+  "state": "IA",
+  "postalCode": "50309",
+  "businessName": "Jane Corp",
+  "controller": {
+    "firstName": "Jim",
+    "lastName": "Controller",
+    "title": "CEO",
+    "address": {
+      "address1": "1749 18th st",
+      "address2": "apt 12",
+      "city": "Des Moines",
+      "stateProvinceRegion": "IA",
+      "country": "US",
+      "postalCode": "50266"
+    }
+  }
 }
 ```
 

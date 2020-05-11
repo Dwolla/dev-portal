@@ -12,6 +12,10 @@ Array [
       >
         code example A
       </MockMDXCreateElement>
+    </MockMDXCreateElement>
+    <MockMDXCreateElement
+      originalType="pre"
+    >
       <MockMDXCreateElement
         className="language-java"
         originalType="code"
@@ -35,6 +39,10 @@ Array [
       >
         code example C
       </MockMDXCreateElement>
+    </MockMDXCreateElement>
+    <MockMDXCreateElement
+      originalType="pre"
+    >
       <MockMDXCreateElement
         className="language-java"
         originalType="code"
