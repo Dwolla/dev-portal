@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Next/Back Pagination 1`] = `
+<div
+  className="css-1mty9q7-StyledWrapper emco6ij0"
+>
+  <a
+    className="css-83egvd-StyledAnchor eutkdkv0"
+    href="#prev"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="previous css-bvk2s8-Container eutkdkv1"
+    >
+      <div
+        className="css-195yjlt-ArrowDiv eutkdkv2"
+      >
+        <img
+          alt="Previous"
+          className="css-a41acm-ArrowIcon eutkdkv3"
+          src="test-image-stub"
+        />
+        Previous
+      </div>
+      <span>
+        Previous Title
+      </span>
+    </div>
+  </a>
+  <div />
+  <a
+    className="css-83egvd-StyledAnchor eutkdkv0"
+    href="#next"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="next css-bvk2s8-Container eutkdkv1"
+    >
+      <div
+        className="css-195yjlt-ArrowDiv eutkdkv2"
+      >
+        Next
+        <img
+          alt="Next"
+          className="css-a41acm-ArrowIcon eutkdkv3"
+          src="test-image-stub"
+        />
+      </div>
+      <span>
+        Next Title
+      </span>
+    </div>
+  </a>
+</div>
+`;

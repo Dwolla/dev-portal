@@ -1,12 +1,11 @@
 ---
-# layout: twoColumn
-section: guides
-type: guide
+layout: guides
+title: "Step 2: Create Subscription"
 guide:
-  name: webhooks
-  step: "2"
-title: Webhooks | Create Subscription
-description: Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.
+  step: 2
+meta:
+  title: Webhooks | Create Subscription
+  description: Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.
 ---
 
 # Step 2: Create a webhook subscription
@@ -51,7 +50,7 @@ var requestBody = {
 
 applicationToken
   .post("webhook-subscriptions", requestBody)
-  .then(res => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 ```
 
 ```python
@@ -122,7 +121,7 @@ webhook_subscription.created # => 2015-10-28T16:20:47+00:00
 var webhookSubscriptionUrl =
   "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
 
-applicationToken.get(webhookSubscriptionUrl).then(res => res.body.created); // => '2016-04-20T15:49:50.340Z'
+applicationToken.get(webhookSubscriptionUrl).then((res) => res.body.created); // => '2016-04-20T15:49:50.340Z'
 ```
 
 ```python
@@ -146,8 +145,3 @@ $retrieved = $webhookApi->id('https://api-sandbox.dwolla.com/webhook-subscriptio
 $retrieved->created; # => 2015-10-28T16:20:47+00:00
 ?>
 ```
-
-<nav className="pager-nav">
-  <a href="obtain-authorization.html">Back: Obtain authorization</a>
-  <a href="validating-webhooks.html">Next step: Validating webhooks</a>
-</nav>

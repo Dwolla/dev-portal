@@ -111,6 +111,9 @@ const groupsFrom = (categoryDocs: Page[]) => [
   >),
 ];
 
+const byGuideStep = (a, b) =>
+  a.guide && b.guide ? a.guide.step - b.guide.step : 0;
+
 // components
 
 const Container = styled.div`
@@ -366,7 +369,7 @@ export default function SideNav(props: SideNavProps) {
                             </GroupToggle>
 
                             {groupToggled &&
-                              docs.map((d) => (
+                              docs.sort(byGuideStep).map((d) => (
                                 <DocLink
                                   key={d.id}
                                   grouped
