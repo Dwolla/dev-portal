@@ -178,7 +178,6 @@ var requestBody = {
 appToken
   .post(`${customerUrl}/beneficial-owners`, requestBody)
   .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/beneficial-owners/FC451A7A-AE30-4404-AB95-E3553FCD733F'
-
 ```
 
 ## Check the status of an individual Beneficial Owner
@@ -257,7 +256,7 @@ beneficial_owner.body['status']
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8";
 
-appToken.get(beneficialOwnerUrl).then(res => res.body.verificationStatus); // => 'verified'
+appToken.get(beneficialOwnerUrl).then((res) => res.body.verificationStatus); // => 'verified'
 ```
 
 ## Handling an individual beneficial owner Status
@@ -481,7 +480,7 @@ body.append("documentType", "license");
 
 appToken
   .post(`${beneficialOwnerUrl}/documents`, requestBody)
-  .then(res => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+  .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
 ```
 
 ## Remove and update a Beneficial Owner
