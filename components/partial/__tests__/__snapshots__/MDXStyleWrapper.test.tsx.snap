@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MDXStyleWrapper 1`] = `
+<div
+  className="css-rfwm99-global-global-h1-h2-h3-h4-h5-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles-codeStyles-codeStyles-imageStyles-imageStyles-linkStyles-linkStyles-baseTextStyles-baseTextStyles-listStyles-listStyles-imageStyles-imageStyles-MDXStyleWrapper-MDXStyleWrapper"
+>
+  <h1>
+    This is wrapped in the MDX Style Wrapper
+  </h1>
+</div>
+`;

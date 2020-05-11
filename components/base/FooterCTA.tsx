@@ -15,7 +15,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   @media (${maxWidth(BREAKPOINT_MOBILE)}) {
-    padding: 10px;
+    padding: 20px;
     flex-direction: column;
   }
 `;
@@ -23,10 +23,11 @@ const Container = styled.div`
 const StyledContent = styled.div`
   padding-right: 20px;
   > * {
-    margin: unset;
+    margin: 0;
     margin-bottom: 13px;
   }
   @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+    margin-bottom: 15px;
     padding-right: unset;
     text-align: center;
   }

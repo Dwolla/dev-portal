@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image 1`] = `
+<img
+  alt="image-alt"
+  className="css-1w9f4ul-imageStyles-imageStyles"
+  src="image-src"
+/>
+`;

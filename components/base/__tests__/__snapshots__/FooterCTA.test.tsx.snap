@@ -2,18 +2,18 @@
 
 exports[`FooterCTA 1`] = `
 <div
-  className="css-6ac71t-Container exx89mw0"
+  className="css-15t6xzt-Container exx89mw0"
 >
   <div
-    className="css-14ffo7e-StyledContent exx89mw1"
+    className="css-8ne3cr-StyledContent exx89mw1"
   >
     <h2
-      className="dark css-5nl8lt-global-global-h2"
+      className="dark css-626giu-global-global-h2"
     >
       Test in the Sandbox for free today.
     </h2>
     <p
-      className="dark css-f3ax66-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
+      className="dark css-160hd9d-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
     >
       Use sandbox environment to test API requests.
     </p>
