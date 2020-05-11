@@ -1,17 +1,17 @@
 import { AnchorsSetter } from "../components/util/Anchors";
-import { MDXTypographyWrapper } from "../components/base/Typography";
+import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../components/util/groupCodeExamples";
 import CodeExamples from "../components/partial/code/CodeExamples";
 
 export const DefaultMDXWrapper = ({ children }: { children: any }) => (
-  <MDXTypographyWrapper>
+  <MDXStyleWrapper>
     <AnchorsSetter>
       {groupCodeExamples({
         children,
         into: CodeExamples,
       })}
     </AnchorsSetter>
-  </MDXTypographyWrapper>
+  </MDXStyleWrapper>
 );
 
 export default () => {

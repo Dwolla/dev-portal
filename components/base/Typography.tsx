@@ -14,10 +14,9 @@ import {
   GREY_4,
   GREY_5,
 } from "../colors";
-import { minWidth, BREAKPOINT_IPAD } from "../breakpoints";
 
 // Heading styles
-const headingStyles = {
+export const headingStyles = {
   global: css`
     color: ${HEADLINE_TEXT};
     font-family: ${POPPINS};
@@ -29,24 +28,34 @@ const headingStyles = {
   h1: css`
     font-size: 42px;
     line-height: 52px;
+    margin-top: 0;
+    margin-bottom: 26px;
   `,
   h2: css`
     font-size: 30px;
     line-height: 46px;
+    margin-top: 26px;
+    margin-bottom: 26px;
   `,
   h3: css`
     font-size: 22px;
     line-height: 33px;
+    margin-top: 29px;
+    margin-bottom: 29px;
   `,
   h4: css`
     font-size: 18px;
     line-height: 27px;
+    margin-top: 36px;
+    margin-bottom: 26px;
   `,
   h5: css`
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 1px;
+    margin-top: 36px;
+    margin-bottom: 26px;
   `,
 };
 
@@ -58,6 +67,8 @@ const StyledPreHeader = styled.p`
   font-weight: 500;
   letter-spacing: 1.14px;
   line-height: 21px;
+  margin-top: 0;
+  margin-bottom: 15px;
   &.dark {
     color: ${GREY_4};
   }
@@ -77,15 +88,19 @@ const StyledSubHeader = styled.p`
   font-size: 20px;
   font-weight: 300;
   line-height: 26px;
+  margin-top: 26px;
+  margin-bottom: 26px;
 `;
 
-const paragraphStyles = css`
+export const paragraphStyles = css`
   ${baseTextStyles}
   font-size: 16px;
   line-height: 28px;
+  margin-top: 26px;
+  margin-bottom: 29px;
 `;
 
-const codeStyle = css`
+export const codeStyles = css`
   color: ${PARAGRAPH_TEXT};
   font-family: ${MONACO};
   font-size: 13px;
@@ -100,7 +115,7 @@ const codeStyle = css`
   }
 `;
 
-const linkStyles = css`
+export const linkStyles = css`
   color: ${ORANGE_PRIMARY};
   text-decoration: none;
   &:hover {
@@ -109,11 +124,13 @@ const linkStyles = css`
 `;
 
 // List styles
-const listStyles = css`
+export const listStyles = css`
   ${baseTextStyles}
   font-size: 16px;
   letter-spacing: 0;
   line-height: 28px;
+  margin-top: 26px;
+  margin-bottom: 29px;
   > li {
     margin-bottom: 8px;
   }
@@ -232,7 +249,7 @@ export const BlockQuote = ({ children, isDark }: Props) => (
 );
 
 export const InlineCode = ({ children, isDark }: Props) => (
-  <code css={codeStyle} className={classnames({ dark: isDark })}>
+  <code css={codeStyles} className={classnames({ dark: isDark })}>
     {children}
   </code>
 );
@@ -241,65 +258,4 @@ export const Link = ({ text, href }: LinkProps) => (
   <a css={linkStyles} href={href}>
     {text}
   </a>
-);
-
-export const MDXTypographyWrapper = ({ children }: { children: any }) => (
-  <div
-    css={css`
-      padding: 20px;
-
-      @media (${minWidth(BREAKPOINT_IPAD)}) {
-        padding: 20px 40px;
-      }
-
-      > h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        ${headingStyles.global.styles}
-      }
-
-      > h1 {
-        ${headingStyles.h1.styles}
-      }
-
-      > h2 {
-        ${headingStyles.h2.styles}
-      }
-
-      > h3 {
-        ${headingStyles.h3.styles}
-      }
-
-      > h4 {
-        ${headingStyles.h4.styles}
-      }
-
-      > h5 {
-        ${headingStyles.h5.styles}
-      }
-
-      > p,
-      blockquote {
-        ${paragraphStyles.styles}
-
-        > code {
-          ${codeStyle.styles}
-        }
-      }
-
-      a {
-        ${linkStyles.styles}
-      }
-
-      ol,
-      ul {
-        ${listStyles.styles}
-      }
-    `}
-  >
-    {children}
-  </div>
 );

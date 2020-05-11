@@ -7,7 +7,6 @@ import { AnchorsProvider } from "../components/util/Anchors";
 import { LanguageContext } from "../components/util/Contexts";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
-
 import homeIcon from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import guidesIcon from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
 import conceptsIcon from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
