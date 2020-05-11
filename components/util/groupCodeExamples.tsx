@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { Children, cloneElement } from "react";
 
-const getLanguage = (el) =>
+export const getLanguage = (el) =>
   el.props.originalType === "pre" &&
   (Children.toArray(el.props.children).find(
     (c: any) =>

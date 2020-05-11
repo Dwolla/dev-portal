@@ -1,18 +1,14 @@
 import { AnchorsSetter } from "../components/util/Anchors";
 import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../components/util/groupCodeExamples";
+import CodeExamples from "../components/partial/code/CodeExamples";
 
 export const DefaultMDXWrapper = ({ children }: { children: any }) => (
   <MDXStyleWrapper>
     <AnchorsSetter>
       {groupCodeExamples({
         children,
-        into: ({ children: c }: any) => (
-          <>
-            <h3>code examples</h3>
-            {c}
-          </>
-        ),
+        into: CodeExamples,
       })}
     </AnchorsSetter>
   </MDXStyleWrapper>

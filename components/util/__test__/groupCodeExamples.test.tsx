@@ -30,6 +30,9 @@ test("groupCodeExamples", () => {
           <MockMDXCreateElement originalType="code" className="language-php">
             code example A
           </MockMDXCreateElement>
+        </MockMDXCreateElement>,
+
+        <MockMDXCreateElement originalType="pre">
           <MockMDXCreateElement originalType="code" className="language-java">
             code example B
           </MockMDXCreateElement>
@@ -43,6 +46,9 @@ test("groupCodeExamples", () => {
           <MockMDXCreateElement originalType="code" className="language-php">
             code example C
           </MockMDXCreateElement>
+        </MockMDXCreateElement>,
+
+        <MockMDXCreateElement originalType="pre">
           <MockMDXCreateElement originalType="code" className="language-java">
             code example D
           </MockMDXCreateElement>

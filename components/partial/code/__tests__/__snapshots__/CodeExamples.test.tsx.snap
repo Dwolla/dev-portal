@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CodeExamples 1`] = `
+<div>
+  <div
+    className="css-3m2hsx-SwitcherBar eqe35cp0"
+  >
+    <div
+      className=" css-k377xg-container"
+      onKeyDown={[Function]}
+    >
+      <div
+        className=" css-ypb917-control"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className=" css-86rg1c-ValueContainer"
+        >
+          <div
+            className=" css-gn3biy-singleValue"
+          >
+            PHP
+          </div>
+          <input
+            aria-autocomplete="list"
+            className="css-62g3xt-dummyInput"
+            disabled={false}
+            id="react-select-2-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            tabIndex="0"
+            value=""
+          />
+        </div>
+        <div
+          className=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <span
+            className=" css-43ykx9-indicatorSeparator"
+          />
+          <div
+            aria-hidden="true"
+            className=" css-1hkylt5-indicatorContainer"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <svg
+              width={7}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-a8d8hz-CodeBlock eqe35cp1"
+  >
+    <pre>
+      <code />
+    </pre>
+  </div>
+</div>
+`;
