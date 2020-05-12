@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import classnames from "../../modules/classnames";
 import { GREY_5, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 
@@ -34,10 +33,6 @@ const StyledBadge = styled.div`
 type Props = { text: string; variant?: "default" | "orange" };
 
 function Badge({ text, variant }: Props) {
-  return (
-    <StyledBadge className={classnames({ orange: variant })}>
-      {text}
-    </StyledBadge>
-  );
+  return <StyledBadge className={variant}>{text}</StyledBadge>;
 }
 export default Badge;
