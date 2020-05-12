@@ -5,4 +5,5 @@ import Badge from "../../components/base/Badge";
 
 storiesOf("base|Badge", module)
   .addDecorator(centered)
-  .add("default", () => <Badge text="BADGETEXT" />);
+  .add("default", () => <Badge text="BADGETEXT" />)
+  .add("with variant", () => <Badge text="3" variant="orange" />);

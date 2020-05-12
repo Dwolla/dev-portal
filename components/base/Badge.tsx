@@ -1,13 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { GREY_5, GREY_4 } from "../colors";
+import classnames from "../../modules/classnames";
+import { GREY_5, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
-
-type Props = { text: string };
-
-function Badge({ text }: Props) {
-  return <StyledBadge>{text}</StyledBadge>;
-}
 
 const StyledBadge = styled.div`
   text-transform: uppercase;
@@ -24,6 +19,25 @@ const StyledBadge = styled.div`
   border: 1px solid ${GREY_4};
   border-radius: 10px;
   padding: 2px 5.15px;
+  &.orange {
+    background-color: ${ORANGE_PRIMARY};
+    border-color: ${ORANGE_PRIMARY};
+    border-radius: 15px;
+    color: ${WHITE_PRIMARY};
+    font-size: 13px;
+    letter-spacing: 0;
+    height: 22px;
+    padding: 2px 8px;
+  }
 `;
 
+type Props = { text: string; variant?: "default" | "orange" };
+
+function Badge({ text, variant }: Props) {
+  return (
+    <StyledBadge className={classnames({ orange: variant })}>
+      {text}
+    </StyledBadge>
+  );
+}
 export default Badge;

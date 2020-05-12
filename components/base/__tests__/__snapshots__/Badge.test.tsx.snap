@@ -2,8 +2,16 @@
 
 exports[`Badge 1`] = `
 <div
-  className="css-1ykc0g8-StyledBadge e1w3mjmy0"
+  className=" css-16zxq88-StyledBadge e1w3mjmy0"
 >
   BADGETEXT
+</div>
+`;
+
+exports[`with variant 1`] = `
+<div
+  className="orange css-16zxq88-StyledBadge e1w3mjmy0"
+>
+  3
 </div>
 `;

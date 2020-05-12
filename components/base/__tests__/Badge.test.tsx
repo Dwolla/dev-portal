@@ -6,3 +6,9 @@ test("Badge", () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test("with variant", () => {
+  const tree = renderer.create(<Badge text="3" variant="orange" />).toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
