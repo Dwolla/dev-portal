@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBarPanel 1`] = `
+<div
+  className="css-1a1ddsr-Container efzvwdu0"
+>
+  <div
+    className="css-xkv8j9-StyledTabBar efzvwdu1"
+  >
+    <div
+      className="active css-vcq5hk-TabStyle efzvwdu2"
+      onClick={[Function]}
+    >
+      <img
+        alt="node"
+        className="css-rh2ze1-StyledIcon efzvwdu3"
+        src="test-image-stub"
+      />
+    </div>
+    <div
+      className=" css-vcq5hk-TabStyle efzvwdu2"
+      onClick={[Function]}
+    >
+      <img
+        alt="ruby"
+        className="css-rh2ze1-StyledIcon efzvwdu3"
+        src="test-image-stub"
+      />
+    </div>
+    <div
+      className=" css-vcq5hk-TabStyle efzvwdu2"
+      onClick={[Function]}
+    >
+      <img
+        alt="python"
+        className="css-rh2ze1-StyledIcon efzvwdu3"
+        src="test-image-stub"
+      />
+    </div>
+    <div
+      className=" css-vcq5hk-TabStyle efzvwdu2"
+      onClick={[Function]}
+    >
+      <img
+        alt="php"
+        className="css-rh2ze1-StyledIcon efzvwdu3"
+        src="test-image-stub"
+      />
+    </div>
+    <div
+      className=" css-vcq5hk-TabStyle efzvwdu2"
+      onClick={[Function]}
+    >
+      <img
+        alt="c-sharp"
+        className="css-rh2ze1-StyledIcon efzvwdu3"
+        src="test-image-stub"
+      />
+    </div>
+    <div
+      className=" css-vcq5hk-TabStyle efzvwdu2"
+      onClick={[Function]}
+    >
+      <img
+        alt="kotlin"
+        className="css-rh2ze1-StyledIcon efzvwdu3"
+        src="test-image-stub"
+      />
+    </div>
+  </div>
+  <div
+    className="css-2vq36g-ContentContainer efzvwdu4"
+  >
+    Here's some content related to Node.
+  </div>
+</div>
+`;
