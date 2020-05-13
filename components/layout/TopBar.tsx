@@ -9,7 +9,7 @@ import { POPPINS } from "../typography";
 import Button from "../base/Button";
 import Select from "../base/select/Select";
 import { LanguageContext } from "../util/Contexts";
-import { BREAKPOINT_DESKTOP, minWidth } from "../breakpoints";
+import { breakUp } from "../breakpoints";
 
 export const TOP_BAR_HEIGHT = 68;
 
@@ -116,7 +116,7 @@ const Hamburger = styled.div`
     #000 100%
   );
 
-  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+  @media (${breakUp("lg")}) {
     display: none;
   }
 `;

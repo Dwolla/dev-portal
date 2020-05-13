@@ -2,10 +2,7 @@
 
 exports[`breakpoints 1`] = `
 Object {
-  "BREAKPOINT_DESKTOP": 1024,
-  "BREAKPOINT_IPAD": 768,
-  "BREAKPOINT_MOBILE": 576,
-  "maxWidth": [Function],
-  "minWidth": [Function],
+  "breakDown": [Function],
+  "breakUp": [Function],
 }
 `;

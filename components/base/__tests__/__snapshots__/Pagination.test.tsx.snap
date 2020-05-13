@@ -8,7 +8,7 @@ exports[`Pagination next 1`] = `
   onMouseEnter={[Function]}
 >
   <div
-    className="next css-bvk2s8-Container eutkdkv1"
+    className="next css-1gihvz6-Container eutkdkv1"
   >
     <div
       className="css-195yjlt-ArrowDiv eutkdkv2"
@@ -35,7 +35,7 @@ exports[`Pagination previous 1`] = `
   onMouseEnter={[Function]}
 >
   <div
-    className="previous css-bvk2s8-Container eutkdkv1"
+    className="previous css-1gihvz6-Container eutkdkv1"
   >
     <div
       className="css-195yjlt-ArrowDiv eutkdkv2"
