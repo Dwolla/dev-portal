@@ -1,4 +1,3 @@
-import styled from "@emotion/styled";
 import {
   Children,
   useContext,
@@ -8,59 +7,18 @@ import {
   useEffect,
 } from "react";
 import sortBy from "lodash.sortby";
-import {
-  CODE_BLOCK_PURPLE,
-  CODE_BLOCK_AQUA,
-  GREY_3,
-  PURPLE_DARK,
-  PURPLE_DARKER,
-  GREY_5,
-  CODE_BLOCK_ORANGE,
-} from "../../colors";
 import { getLanguage } from "../../util/groupCodeExamples";
 import { LanguageContext } from "../../util/Contexts";
 import highlight from "../../../modules/highlight";
 import Select from "../../base/select/Select";
-
-const SwitcherBar = styled.div`
-  background-color: ${PURPLE_DARKER};
-  padding: 10px 8px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  display: flex;
-`;
-
-const CodeBlock = styled.div`
-  background-color: ${PURPLE_DARK};
-  overflow-x: scroll;
-  padding: 12px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-
-  > pre {
-    margin: 0;
-
-    > code {
-      color: ${GREY_3};
-
-      .hljs- {
-        &keyword {
-          color: ${CODE_BLOCK_PURPLE};
-        }
-        &string {
-          color: ${CODE_BLOCK_AQUA};
-        }
-        &meta,
-        &comment {
-          color: ${GREY_5};
-        }
-        &symbol {
-          color: ${CODE_BLOCK_ORANGE};
-        }
-      }
-    }
-  }
-`;
+import useCopy from "../../util/useCopy";
+import {
+  CodeBlockBar,
+  BarText,
+  CopyButton,
+  CodeBlock,
+} from "./CodeExamples.styled";
+import { ReactComponent as CopyIcon } from "../../../assets/images/component-icons/copy-icon.svg";
 
 const find = (
   children: JSX.Element | JSX.Element[],
@@ -98,9 +56,11 @@ export default function CodeExamples({
     (l) => ctx.languageOptions.findIndex(({ value }) => value === l)
   );
 
-  const [selectedLanguage, setSelectedLanguage] = useState(
-    getInitialLanguage(exampleLanguages, ctx.selectedLanguage.value)
-  );
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+
+  const activeLanguage =
+    selectedLanguage ||
+    getInitialLanguage(exampleLanguages, ctx.selectedLanguage.value);
 
   // when ctx.selectedLanguage changes, setSelectedLanguage if
   // ctx.selectedLanguage is one of the exampleLanguages
@@ -122,20 +82,21 @@ export default function CodeExamples({
     }
   }, [selectedLanguage]);
 
-  const codeExample: any =
-    find(examples, (e) => getLanguage(e) === selectedLanguage) ||
-    first(examples);
+  const codeBlock: any =
+    find(examples, (e) => getLanguage(e) === activeLanguage) || first(examples);
 
-  const highlightedCode = useMemo(
-    () => highlight(codeStringFrom(codeExample), selectedLanguage),
-    [codeStringFrom(codeExample), selectedLanguage]
+  const codeString = codeStringFrom(codeBlock);
+
+  const codeHtmlHighlighted = useMemo(
+    () => highlight(codeString, activeLanguage),
+    [codeString, activeLanguage]
   );
 
-  const codeExampleHighlighted = cloneElement(codeExample, {
-    children: cloneElement(codeExample.props.children, {
+  const codeBlockHighlighted = cloneElement(codeBlock, {
+    children: cloneElement(codeBlock.props.children, {
       children: null,
       dangerouslySetInnerHTML: {
-        __html: highlightedCode,
+        __html: codeHtmlHighlighted,
       },
     }),
   });
@@ -144,19 +105,31 @@ export default function CodeExamples({
     (l) => getLanguageOptions(l, ctx.languageOptions) || { value: l, label: l }
   );
 
+  const { copied, copy } = useCopy(codeString);
+
+  const onlyOneExample = options.length === 1;
+
   return (
     <div>
-      <SwitcherBar>
-        <Select
-          autoWidth
-          variant="code"
-          options={options}
-          selectedValue={options.find((o) => o.value === selectedLanguage)}
-          setSelectedValue={({ value }) => setSelectedLanguage(value)}
-        />
-      </SwitcherBar>
+      <CodeBlockBar>
+        {onlyOneExample ? (
+          <BarText>{activeLanguage}</BarText>
+        ) : (
+          <Select
+            autoWidth
+            variant="code"
+            options={options}
+            selectedValue={options.find((o) => o.value === activeLanguage)}
+            setSelectedValue={({ value }) => setSelectedLanguage(value)}
+          />
+        )}
 
-      <CodeBlock>{codeExampleHighlighted}</CodeBlock>
+        <CopyButton type="button" onClick={copy} disabled={copied}>
+          {copied ? "copied" : "copy"} <CopyIcon />
+        </CopyButton>
+      </CodeBlockBar>
+
+      <CodeBlock>{codeBlockHighlighted}</CodeBlock>
     </div>
   );
 }

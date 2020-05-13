@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CodeExamples 1`] = `
+exports[`multiple examples 1`] = `
 <div>
   <div
-    className="css-3m2hsx-SwitcherBar eqe35cp0"
+    className="css-10fipge-CodeBlockBar e6sdwpg0"
   >
     <div
       className=" css-k377xg-container"
@@ -54,9 +54,50 @@ exports[`CodeExamples 1`] = `
         </div>
       </div>
     </div>
+    <button
+      className="css-12os3vt-CopyButton e6sdwpg1"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      copy
+       
+      <svg />
+    </button>
   </div>
   <div
-    className="css-a8d8hz-CodeBlock eqe35cp1"
+    className="css-a8d8hz-CodeBlock e6sdwpg3"
+  >
+    <pre>
+      <code />
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`single example 1`] = `
+<div>
+  <div
+    className="css-10fipge-CodeBlockBar e6sdwpg0"
+  >
+    <div
+      className="css-1vovl9e-BarText e6sdwpg2"
+    >
+      javascript
+    </div>
+    <button
+      className="css-12os3vt-CopyButton e6sdwpg1"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      copy
+       
+      <svg />
+    </button>
+  </div>
+  <div
+    className="css-a8d8hz-CodeBlock e6sdwpg3"
   >
     <pre>
       <code />
