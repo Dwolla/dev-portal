@@ -1,0 +1,75 @@
+---
+layout: guides
+title: "Overview"
+group:
+  category: Funding Sources
+  title: Dwolla.js
+guide:
+  step: 0
+  filter: get-building
+meta:
+  title: Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation
+  description: Dwolla.js is a client-side JavaScript library designed to quickly onboard customers, add and verify bank accounts (IAV), and enable on-demand bank transfers.
+---
+
+# Dwolla.js
+
+Dwolla.js is a client-side JavaScript library with the primary function of securely transmitting sensitive data (bank account and routing number) from your application's front-end to Dwolla without the data passing through your server. When you attach a bank account to a Customer, use dwolla.js and let Dwolla reduce your risk of handling sensitive data. Additionally, Dwolla.js includes an added function available as a Dwolla Customer providing the ability to render the instant bank account verification flow within a specified container of your application. However you're using dwolla.js, both server-side and client-side interaction is required.
+
+### Getting Started: Usage and configuration
+
+#### Include dwolla.js
+
+Begin the client-side implementation by including dwolla.js in the HEAD of your HTML page. You can include either the development version(`<script src="https://cdn.dwolla.com/1/dwolla.js"></script>`) or the minified version (`<script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>`) of dwolla.js.
+
+```htmlnoselect
+<head>
+  <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
+</head>
+```
+
+#### Configure
+
+Configuration options are available for utilizing dwolla.js in both our Sandbox and production environments. Configuration of an environment should take place after you have included the dwolla.js library.
+
+```javascriptnoselect
+// Sandbox
+dwolla.configure('sandbox');
+
+// Production
+dwolla.configure('prod');
+```
+
+## Dwolla.js to create a funding source
+
+Using dwolla.js, securely transmit sensitive data (bank account and routing number) to Dwolla without the data passing through your server. This resource guide will walk you through the process of generating a funding sources token, collecting the user's bank account information, and calling a JavaScript function to send this data to Dwolla. When you collect and submit the user's bank account information, dwolla.js has built-in validation that will trigger an error if any of the required fields are invalid.
+
+### dwolla.fundingSources.create()
+
+| Param                 | Type     | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| --------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| funding-sources-token | string   | A funding sources token generated on your server.                                                                                                                                                                                                                                                                                                                                                                                                    |
+| params                | object   | An object containing params to create a funding source. Contains keys: `routingNumber`, `accountNumber`, `type`, and `name`. See example below. <br /> `routingNumber` represents a string value nine digit routing number. <br /> `accountNumber` represents a string value account number. <br /> `type` represents a string value of either `checking` or `savings`. <br /> `name` represents a string value identifying name of the user's bank. |
+| callback              | function | A callback function that handles the response from Dwolla.                                                                                                                                                                                                                                                                                                                                                                                           |
+
+#### Example
+
+```javascriptnoselect
+dwolla.fundingSources.create('1zN400zyPUobbdmeNfhTGH2Jh5JkFREJa9YBI8SLXp0ERXNTMT', {
+  routingNumber: getVal('routingNumber'),
+  accountNumber: getVal('accountNumber'),
+  type: getVal('type'),
+  name: getVal('name')
+}, function(err, res) {
+  console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
+});
+```
+
+---
+
+#### Next steps:
+
+- [Generate Funding Sources Token](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-funding-sources-token)
+- [Create Form](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-form)
+- [Configure and Call Javascript](https://developers.dwolla.com/guides/funding-sources/dwolla-js/configure)
+- [Handle Error Response](https://developers.dwolla.com/guides/funding-sources/dwolla-js/handle-errors)

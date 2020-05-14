@@ -1,0 +1,243 @@
+---
+layout: guides
+title: "Step 1: Create a Customer"
+guide:
+  step: 1
+meta:
+  title: Personal Verified Customers | Dwolla API Documentation
+  description: Learn how to create a Verified personal Customer by passing in the required Know-Your-Customer (KYC) information.
+---
+
+# Personal verified Customer
+
+## Create a personal verified Customer
+
+To create a personal verified Customer, use the [create a Customer](https://docs.dwolla.com/#create-a-customer) endpoint. A personal verified Customer is determined by setting the value of the `type` request parameter to `personal` and including additional fields required for identifying the individual.
+
+## Events
+
+As a developer, you can expect these events to be triggered when a personal verified Customer is successfully created and systematically verified:
+
+1. `customer_created`
+2. `customer_verified`
+
+## Required parameters - personal verified Customer
+
+| Parameter   | Required | Type   | Description                                                                          |
+| ----------- | -------- | ------ | ------------------------------------------------------------------------------------ |
+| firstName   | yes      | string | Individual’s legal first name.                                                       |
+| lastName    | yes      | string | Individual’s legal last name.                                                        |
+| email       | yes      | string | Customer’s email address.                                                            |
+| type        | yes      | string | Type of identity verified Customer. Value of `personal` for individual.              |
+| address1    | yes      | string | Street number, street name of individual’s physical address.                         |
+| address2    | no       | string | Apartment, floor, suite, bldg # of individual’s physical address.                    |
+| city        | yes      | string | City of individual’s physical address.                                               |
+| state       | yes      | string | Two-letter US state or territory abbreviation code of individual’s physical address. |
+| postalCode  | yes      | string | Customer’s US five-digit ZIP or ZIP + 4 code.                                        |
+| dateOfBirth | yes      | string | Customer’s date of birth. Must be 18 years of age with format of `YYYY-MM-DD`.       |
+| ssn         | yes      | string | Last four-digits of individual’s social security number.                             |
+
+Once you submit this request, Dwolla will perform some initial validation to check for formatting issues such as an invalid date of birth, invalid email format, etc. If successful, the response will be an HTTP 201/Created with the URL of the new Customer resource contained in the `Location` header.
+
+### Request and response (view schema in 'raw')
+
+```bash
+POST https://api-sandbox.dwolla.com/customers
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@email.net",
+  "ipAddress": "10.10.10.10",
+  "type": "personal",
+  "address1": "99-99 33rd St",
+  "city": "Some City",
+  "state": "NY",
+  "postalCode": "11101",
+  "dateOfBirth": "1970-01-01",
+  "ssn": "1234"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$newCustomer = $customersApi->create([
+  'firstName' => 'John',
+  'lastName' => 'Doe',
+  'email' => 'jdoe@nomail.net',
+  'type' => 'personal',
+  'address1' => '99-99 33rd St',
+  'city' => 'Some City',
+  'state' => 'NY',
+  'postalCode' => '11101',
+  'dateOfBirth' => '1970-01-01',
+
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+
+  # If the entire SSN is provided,
+  # it will still be accepted
+  'ssn' => '1234'
+]);
+
+$newCustomer; # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :firstName => 'John',
+  :lastName => 'Doe',
+  :email => 'jdoe@nomail.net',
+  :type => 'personal',
+  :address1 => '99-99 33rd St',
+  :city => 'Some City',
+  :state => 'NY',
+  :postalCode => '11101',
+  :dateOfBirth => '1970-01-01',
+
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+
+  # If the entire SSN is provided,
+  # it will still be accepted
+
+  :ssn => '1234'
+}
+
+new_customer = app_token.post "customers", request_body
+new_customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'firstName': 'John',
+  'lastName': 'Doe',
+  'email': 'jdoe@nomail.net',
+  'type': 'personal',
+  'address1': '99-99 33rd St',
+  'city': 'Some City',
+  'state': 'NY',
+  'postalCode': '11101',
+  'dateOfBirth': '1970-01-01',
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+  # If the entire SSN is provided,
+  # it will still be accepted
+  'ssn': '1234'
+}
+
+new_customer = app_token.post('customers', request_body)
+new_customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+```
+
+```javascript
+var requestBody = {
+  firstName: "John",
+  lastName: "Doe",
+  email: "jdoe@nomail.net",
+  type: "personal",
+  address1: "99-99 33rd St",
+  city: "Some City",
+  state: "NY",
+  postalCode: "11101",
+  dateOfBirth: "1970-01-01",
+  // For the first attempt, only the
+  // last 4 digits of SSN required
+  // If the entire SSN is provided,
+  // it will still be accepted
+  ssn: "1234",
+};
+
+appToken
+  .post("customers", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+```
+
+## Check the status of the personal verified Customer
+
+The successful creation of a Customer doesn’t necessarily mean the Customer is verified and eligible to send or receive funds. When a Customer has been successfully verified by Dwolla, their status will be set to `verified`.
+
+Let’s check to see if the Customer was successfully verified or not. We are going to use the location of the Customer resource that was just created, which is in `new_customer`.
+
+```bash
+GET https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "receive": {
+      "href": "https://api-sandbox.dwolla.com/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "edit-form": {
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
+      "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+      "resource-type": "customer"
+    },
+    "edit": {
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "funding-sources": {
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F/funding-sources",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "transfers": {
+      "href": "https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "send": {
+      "href": "https://api-sandbox.dwolla.com/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    }
+  },
+  "id": "FC451A7A-AE30-4404-AB95-E3553FCD733F",
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "jdoe@nomail.net",
+  "type": "personal",
+  "status": "verified",
+  "created": "2016-11-28T19:51:48.050Z",
+  "address1": "99-99 33rd St",
+  "address2": "Apt 8",
+  "city": "Some City",
+  "state": "NY",
+  "postalCode": "11101",
+  "phone": "5554321234"
+}
+```
+
+## Next steps
+
+Congrats! Our Customer was successfully verified!
+
+However, if the Customer was unable to be verified on the initial flow, they will be given a verification status of either retry, kba, document, or suspended. Continue reading for instructions on [handling various Customer verification statuses](https://developers.dwolla.com/guides/customers/verified-personal/handle-verification-statuses) and guidelines for providing additional information to verify these Customers.
+
+---
+
+#### Next Steps:
+
+- [Handling verification statuses](https://developers.dwolla.com/guides/customers/verified-personal/handle-verification-statuses)
+- [Frequently asked questions](https://developers.dwolla.com/guides/customers/verified-personal/frequently-asked-questions)

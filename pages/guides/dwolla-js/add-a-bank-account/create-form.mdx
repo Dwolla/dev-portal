@@ -1,0 +1,53 @@
+---
+layout: guides
+title: "Step 1: Create a form"
+guide:
+  step: 1
+meta:
+  title: Create form for Dwolla.js | Dwolla API Documentation
+  description: Create the form that will be used as inputs for the account and routing number.
+---
+
+# Step 1: Add form to collect bank account information
+
+You'll then add a form to the body of the page where you want to collect the user's bank account information.
+
+```htmlnoselect
+<form>
+  <div>
+    <label>Routing number</label>
+    <input type="text" id="routingNumber" placeholder="273222226" />
+  </div>
+  <div>
+    <label>Account number</label>
+    <input type="text" id="accountNumber" placeholder="Account number" />
+  </div>
+  <div>
+    <label>Bank account name</label>
+    <input type="text" id="name" placeholder="Name" />
+  </div>
+  <div>
+    <select name="type" id="type">
+      <option value="checking">Checking</option>
+      <option value="savings">Savings</option>
+    </select>
+  </div>
+  <div>
+    <input type="submit" value="Add Bank">
+  </div>
+</form>
+
+<div id="logs">
+</div>
+```
+
+---
+
+#### Previous steps:
+
+- [Generate Funding Sources Token](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-funding-sources-token)
+
+#### Next steps:
+
+- [Configure and Call Javascript](https://developers.dwolla.com/guides/funding-sources/dwolla-js/configure)
+- [Handle Error Response](https://developers.dwolla.com/guides/funding-sources/dwolla-js/handle-errors)
