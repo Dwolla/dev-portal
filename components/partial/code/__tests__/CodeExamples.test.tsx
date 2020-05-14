@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import renderer from "react-test-renderer";
 import { createElement } from "react";
 import CodeExamples from "../CodeExamples";
@@ -15,7 +16,7 @@ function MockMDXCreateElement(props: {
   });
 }
 
-test("CodeExamples", () => {
+test("single example", () => {
   const tree = renderer
     .create(
       <LanguageContext.Provider
@@ -30,14 +31,61 @@ test("CodeExamples", () => {
       >
         <CodeExamples>
           <MockMDXCreateElement originalType="pre">
-            <MockMDXCreateElement originalType="code" className="language-php">
-              code example A
+            <MockMDXCreateElement
+              originalType="code"
+              className="language-javascript"
+            >
+              {'const foo = "bar";'}
             </MockMDXCreateElement>
           </MockMDXCreateElement>
+        </CodeExamples>
+      </LanguageContext.Provider>
+    )
+    .toJSON();
 
+  expect(tree).toMatchSnapshot();
+});
+
+test("multiple examples", () => {
+  const tree = renderer
+    .create(
+      <LanguageContext.Provider
+        value={{
+          selectedLanguage: { value: "php", label: "PHP" },
+          setSelectedLanguage: () => {},
+          languageOptions: [
+            { value: "java", label: "Java" },
+            { value: "php", label: "PHP" },
+          ],
+        }}
+      >
+        <CodeExamples>
+          <MockMDXCreateElement originalType="pre">
+            <MockMDXCreateElement
+              originalType="code"
+              className="language-javascript"
+            >
+              {'const foo = "bar";'}
+            </MockMDXCreateElement>
+          </MockMDXCreateElement>
+          <MockMDXCreateElement originalType="pre">
+            <MockMDXCreateElement originalType="code">
+              {"plaintext goes here"}
+            </MockMDXCreateElement>
+          </MockMDXCreateElement>
+          <MockMDXCreateElement originalType="pre">
+            <MockMDXCreateElement originalType="code" className="language-ruby">
+              {'foo = "bar"'}
+            </MockMDXCreateElement>
+          </MockMDXCreateElement>
+          <MockMDXCreateElement originalType="pre">
+            <MockMDXCreateElement originalType="code" className="language-php">
+              {'$foo = "bar"'}
+            </MockMDXCreateElement>
+          </MockMDXCreateElement>
           <MockMDXCreateElement originalType="pre">
             <MockMDXCreateElement originalType="code" className="language-java">
-              code example B
+              {'string foo = "bar"'}
             </MockMDXCreateElement>
           </MockMDXCreateElement>
         </CodeExamples>

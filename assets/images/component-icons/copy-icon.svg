@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 60.1 (101010) - https://sketch.com -->
+    <title>16CF506A-3874-447E-8C3B-D2F1BBCB0422</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Styles-&amp;-Components" transform="translate(-752.000000, -5470.000000)" fill="#CFCFF5">
+            <g id="Code-Block-with-Code" transform="translate(50.000000, 5458.000000)">
+                <g id="Group-2">
+                    <g id="copy-button" transform="translate(698.000000, 8.000000)">
+                        <g id="copy-icon" transform="translate(4.000000, 4.000000)">
+                            <path d="M3,11 L2,11 C1.45,11 1,10.55 1,10 L1,2 C1,1.45 1.45,1 2,1 L10,1 C10.55,1 11,1.45 11,2 L11,3 L12,3 L12,2 C12,0.897 11.103,0 10,0 L2,0 C0.897,0 0,0.897 0,2 L0,10 C0,11.103 0.897,12 2,12 L3,12 L3,11 Z" id="Fill-1"></path>
+                            <path d="M14,4 L6,4 C4.897,4 4,4.897 4,6 L4,14 C4,15.103 4.897,16 6,16 L14,16 C15.103,16 16,15.103 16,14 L16,6 C16,4.897 15.103,4 14,4 M14,5 C14.55,5 15,5.45 15,6 L15,14 C15,14.55 14.55,15 14,15 L6,15 C5.45,15 5,14.55 5,14 L5,6 C5,5.45 5.45,5 6,5 L14,5" id="Fill-3"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
