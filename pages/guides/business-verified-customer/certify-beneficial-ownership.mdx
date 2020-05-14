@@ -39,7 +39,7 @@ When a business verified Customer needs to be `certified`, Dwolla will return a 
 
 #### Example response
 
-```noselect
+```javascript
 {
     "_links": {
         "self": {
@@ -95,7 +95,7 @@ When a business verified Customer needs to be `certified`, Dwolla will return a 
 
 To change the certification status of your business verified Customer account, you will want to POST to the beneficial ownership endpoint. By updating the certification status to `certified`, the Account Admin creating the business verified Customer is indicating that all information is correct. After the Account Admin certifies that the information provided is accurate and the information the Account Admin submitted has been verified through the identity verified process, your business verified Customer is now ready to transact within the Dwolla network.
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc/beneficial-ownership
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -161,8 +161,9 @@ $certifyCustomer = $customersApi->changeOwnershipStatus(['status' => 'certified'
 
 Example for certification is as follows:
 
-```noselect
- "I,____ (name of Account Admin), hereby certify, to the best of my knowledge, that the information provided above is complete and correct."
+```html
+"I,____ (name of Account Admin), hereby certify, to the best of my knowledge,
+that the information provided above is complete and correct."
 ```
 
 ## Handling `recertify` status

@@ -25,7 +25,7 @@ You can check the status of a transfer at any time by [retrieving the transfer v
 
 ##### Example failure link
 
-```noselect
+```javascript
 "failure": {
     "href": "https://api-sandbox.dwolla.com/transfers/a1e58cd8-11ec-e811-8111-bec1f96924ed/failure",
     "type": "application/vnd.dwolla.v1.hal+json",
@@ -39,7 +39,7 @@ If your application is subscribed to webhooks, you’ll receive either the `tran
 
 ##### Request and response (view schema in 'raw')
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY

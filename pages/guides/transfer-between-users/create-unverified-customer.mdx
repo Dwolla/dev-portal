@@ -84,24 +84,6 @@ print($new_customer); # => https://api-sandbox.dwolla.com/customers/247B1BD8-F5A
 ?>
 ```
 
-```java
-CustomersApi cApi = new CustomersApi(a);
-
-CreateCustomer newCustomerData = new CreateCustomer();
-
-myNewCust.setFirstName("Joe");
-myNewCust.setLastName("Buyer");
-myNewCust.setEmail("jbuyer@mail.com");
-
-try {
-    Unit$ r = cApi.create(myNewCust);
-    System.out.println(r.getLocationHeader()); // => https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C
-}
-catch (Exception e) {
-    System.out.println("Something's up!");
-}
-```
-
 When the customer is created, you’ll receive the customer URL in the location header.
 
 **Important**: Provide the IP address of the end-user accessing your application as the ipAddress parameter. This enhances Dwolla’s ability to detect fraud.

@@ -88,7 +88,7 @@ appToken.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => '
 
 Then, you’ll pass this single-use IAV token to the client-side of your application where it will be used in the JavaScript function dwolla.iav.start(). This token will be used to authenticate the request asking Dwolla to render the IAV flow. Before calling this function, you’ll want to include the dwolla.js library in the HEAD of your page.
 
-```htmlnoselect
+```html
 <head>
   <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
 </head>
@@ -96,9 +96,9 @@ Then, you’ll pass this single-use IAV token to the client-side of your applica
 
 Next, you’ll add in a container to the body of your page where you want to render the IAV flow.
 
-```htmlnoselect
+```html
 <div id="mainContainer">
-  <input type="button" id="start" value="Add Bank">
+  <input type="button" id="start" value="Add Bank" />
 </div>
 
 <div id="iavContainer"></div>
@@ -106,7 +106,7 @@ Next, you’ll add in a container to the body of your page where you want to ren
 
 Now that you have dwolla.js initialized on the page and the container created where you’ll render the IAV flow, you’ll create a JavaScript function that responds when clicking the “Add bank” button on your page. Once your Customer clicks “Add Bank”, your application will call dwolla.iav.start() passing in the following arguments: the iavContainer element where IAV will render, a string value of your single-use IAV token, and a callback function that will handle any error or response.
 
-```javascriptnoselect
+```javascript
 <script type="text/javascript">
 $('#start').click(function() {
   var iavToken = '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY';
@@ -134,7 +134,7 @@ You’ll know their bank account was successfully added and verified if you rece
 
 ### Example success callback
 
-```
+```javascript
 {"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}
 ```
 

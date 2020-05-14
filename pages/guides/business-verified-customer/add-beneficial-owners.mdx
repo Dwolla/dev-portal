@@ -72,7 +72,7 @@ As a developer, you can expect these events to be triggered when a beneficial ow
 
 #### Request and Response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8/beneficial-owners
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -203,7 +203,7 @@ Let’s check to see if the Owner was successfully verified or not. We are going
 
 #### Request and response - retrieve a beneficial owner status
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/beneficial-owners/07D59716-EF22-4FE6-98E8-F3190233DFB8
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -278,7 +278,7 @@ An `incomplete` status occurs when a beneficial owner's identity scores are too 
 
 #### Request and Response - update beneficial owner
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -436,7 +436,7 @@ You’ll also get a `beneficial_owner_verification_document_uploaded` event to l
 
 #### Request and Response
 
-```raw
+```bash
 curl -X POST
 \ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
 \ -H "Accept: application/vnd.dwolla.v1.hal+json"
@@ -496,7 +496,7 @@ If an individual beneficial owner wants to update their information, that indivi
 
 #### Request and Response
 
-```raw
+```bash
 DELETE https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY

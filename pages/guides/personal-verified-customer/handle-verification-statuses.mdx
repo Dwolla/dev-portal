@@ -34,7 +34,7 @@ Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, 
 
 A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual's SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes. **Please note:** you need to gather **new** information if the Customer is placed into the `retry` status; simply passing the same information will result in the same insufficient scores. All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
 
-```raw
+```bash
 POST https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -170,7 +170,7 @@ The first step in the KBA flow is to make a request to the Dwolla API to [genera
 
 #### Example request and response
 
-```raw
+```bash
 POST https://api.dwolla.com/customers/33aa88b1-97df-424a-9043-d5f85809858b/kba
 Authorization: Bearer cRahPzURfaIrTKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
 Content-Type: application/json
@@ -215,7 +215,7 @@ Once the KBA ID is created, your application will have a **single attempt** to [
 
 #### Example request and response
 
-```raw
+```bash
 GET https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer cRahPzURfaIrTewKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
@@ -347,7 +347,7 @@ Questions and answers will have their own unique identifiers. Questions and answ
 
 #### Example request and response
 
-```raw
+```bash
 POST https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer cRahPzURfaIrTewKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
@@ -486,7 +486,7 @@ When a Customer is placed in the `document` verification status, Dwolla will ret
 
 ##### Example response
 
-```noselect
+```javascript
 {
     "_links": {
         "document-form": {
@@ -535,7 +535,7 @@ When a Customer is placed in the `document` verification status, Dwolla will ret
 
 To upload a color photo of the document, you’ll initiate a multipart form-data POST request from your backend server to `https://api.dwolla.com/customers/{id}/documents`. The file must be either a .jpg, .jpeg, or .png. Files must be no larger than 10MB in size.
 
-```raw
+```bash
 curl -X POST
 \ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
 \ -H "Accept: application/vnd.dwolla.v1.hal+json"
@@ -590,7 +590,7 @@ document.headers['location'] # => 'https://api.dwolla.com/documents/11fe0bab-39b
 
 If the document was successfully uploaded, the response will be a HTTP 201 Created with the URL of the new document resource contained in the Location header.
 
-```noselect
+```bash
 HTTP/1.1 201 Created
 Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 ```
@@ -621,7 +621,7 @@ A document can fail if, for example, the Customer uploaded the wrong type of doc
 
 ##### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR

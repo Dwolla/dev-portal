@@ -43,7 +43,7 @@ All fields that were required in the initial Customer creation attempt will be r
 
 #### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -249,7 +249,7 @@ When a business verified Customer is placed in the `document` verification statu
 
 #### Example response
 
-```noselect
+```javascript
 {
     "_links": {
         "self": {
@@ -327,7 +327,7 @@ You’ll also get a webhook with a `customer_verification_document_uploaded` eve
 
 #### Request and response
 
-```raw
+```bash
 curl -X POST
 \ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
 \ -H "Accept: application/vnd.dwolla.v1.hal+json"
@@ -379,7 +379,7 @@ appToken.post(`${customerUrl}/documents`, requestBody).then(function(res) {
 
 If the document was successfully uploaded, the response will be a HTTP 201 Created with the URL of the new document resource contained in the Location header.
 
-```raw
+```bash
 HTTP/1.1 201 Created
 Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 ```
@@ -408,7 +408,7 @@ A document can fail if, for example, the Customer uploaded the wrong type of doc
 
 #### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR
