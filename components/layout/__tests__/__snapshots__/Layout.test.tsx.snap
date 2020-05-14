@@ -3,14 +3,14 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className=" css-99ba7r-LeftSidebar eu5n9bq0"
+    className=" css-p9rgcl-LeftSidebar eu5n9bq0"
   >
     <div
       className="css-3xwi1s-LogoWrapper eu5n9bq1"
     >
       <img
         alt=""
-        className="css-5xnblz-Layout-Layout"
+        className="css-1o5w4ty-Layout-Layout"
         onClick={[Function]}
         src="test-image-stub"
       />
@@ -141,7 +141,7 @@ Array [
     </a>
   </div>,
   <div
-    className="css-173gxmw-MainArea eu5n9bq3"
+    className="css-10ow9ob-MainArea eu5n9bq3"
   >
     <div
       className="css-jrlzw3-TopBarWrapper eu5n9bq5"
@@ -245,13 +245,13 @@ Array [
           </button>
         </div>
         <div
-          className="css-ldxdar-Hamburger e1xhgpyy4"
+          className="css-mtvnhp-Hamburger e1xhgpyy4"
           onClick={[Function]}
         />
       </div>
     </div>
     <div
-      className="css-1uiuud6-ContentArea eu5n9bq4"
+      className="css-cwox9s-ContentArea eu5n9bq4"
     >
       <div
         className="css-hr4r9m-ContentWrapper eu5n9bq7"
@@ -261,17 +261,17 @@ Array [
         </div>
       </div>
       <div
-        className="css-f0jn62-OnThisPageWrapper eu5n9bq6"
+        className="css-hsezkm-OnThisPageWrapper eu5n9bq6"
       />
     </div>
     <div
       className="css-cdxnl8-FooterWrapper eu5n9bq8"
     >
       <div
-        className="css-1e12l9h-Container en8mxva0"
+        className="css-wxvhif-Container en8mxva0"
       >
         <div
-          className="css-t8a825-Group en8mxva1"
+          className="css-1tgn4b3-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -334,7 +334,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-t8a825-Group en8mxva1"
+          className="css-1tgn4b3-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -377,7 +377,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-t8a825-Group en8mxva1"
+          className="css-1tgn4b3-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -420,7 +420,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-t8a825-Group en8mxva1"
+          className="css-1tgn4b3-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"
@@ -463,7 +463,7 @@ Array [
           </ul>
         </div>
         <div
-          className="css-t8a825-Group en8mxva1"
+          className="css-1tgn4b3-Group en8mxva1"
         >
           <h3
             className="css-p408ob-Heading en8mxva2"

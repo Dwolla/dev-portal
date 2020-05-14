@@ -2,14 +2,14 @@ import styled from "@emotion/styled";
 import map from "lodash.map";
 import { GREY_2, HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
-import { minWidth, BREAKPOINT_DESKTOP } from "../breakpoints";
+import { breakUp } from "../breakpoints";
 
 const Container = styled.div`
   border-top: 1px solid ${GREY_2};
   display: flex;
   flex-wrap: wrap;
 
-  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+  @media (${breakUp("lg")}) {
     padding: 20px;
   }
 `;
@@ -17,7 +17,7 @@ const Container = styled.div`
 const Group = styled.div`
   padding: 20px;
 
-  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+  @media (${breakUp("lg")}) {
     width: 200px;
   }
 `;

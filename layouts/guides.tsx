@@ -3,12 +3,12 @@ import { DefaultMDXWrapper } from "./index";
 import Pages from "../modules/pages";
 import Pagination from "../components/partial/NextBackPagination";
 import FooterCTA from "../components/base/FooterCTA";
-import { minWidth, BREAKPOINT_IPAD } from "../components/breakpoints";
+import { breakUp } from "../components/breakpoints";
 
 const StyledPagination = styled.div`
   margin: 20px;
 
-  @media (${minWidth(BREAKPOINT_IPAD)}) {
+  @media (${breakUp("md")}) {
     margin: 40px;
   }
 `;

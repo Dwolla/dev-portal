@@ -7,6 +7,7 @@ import FilterTabs from "../base/FilterTabs";
 import CardGrid from "../base/CardGrid";
 import Card from "../base/Card";
 import { slugify } from "../../modules/helpers";
+import { contentIcons } from "../../modules/images.import";
 
 const BannerWrap = styled.div`
   margin: -20px -40px 40px -40px;
@@ -76,7 +77,11 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
           {filteredCards.map((card) => (
             <Link href={card.href} key={`${card.topic}-${card.href}`}>
               <a>
-                <Card {...card} badge={card.category} />
+                <Card
+                  {...card}
+                  badge={card.category}
+                  icon={contentIcons[card.icon].default}
+                />
               </a>
             </Link>
           ))}
