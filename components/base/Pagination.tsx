@@ -6,7 +6,7 @@ import arrowRight from "../../assets/images/component-icons/arrow-right.svg";
 import { GREY_2, GREY_5, GREY_6, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
-import { minWidth, BREAKPOINT_MOBILE } from "../breakpoints";
+import { breakUp } from "../breakpoints";
 
 // Styles
 const StyledAnchor = styled.a`
@@ -41,7 +41,7 @@ const Container = styled.div`
     margin-right: 15px;
   }
 
-  @media (${minWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakUp("sm")}) {
     width: 200px;
   }
 `;

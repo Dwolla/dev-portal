@@ -8,12 +8,7 @@ import classnames from "classnames";
 import { useState } from "react";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
-import {
-  maxWidth,
-  minWidth,
-  BREAKPOINT_DESKTOP,
-  BREAKPOINT_IPAD,
-} from "../breakpoints";
+import { breakDown, breakUp } from "../breakpoints";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import OnThisPage from "./OnThisPage";
@@ -37,7 +32,7 @@ const LeftSidebar = styled.div`
   transform: translate3d(0, -100vh, 0);
   z-index: 9999;
 
-  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+  @media (${breakUp("lg")}) {
     right: 75%;
     transform: translate3d(0, 0, 0);
   }
@@ -61,7 +56,7 @@ const SideNavWrapper = styled.div`
 `;
 
 const MainArea = styled.div`
-  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+  @media (${breakUp("lg")}) {
     margin-left: 25%;
   }
 `;
@@ -69,7 +64,7 @@ const MainArea = styled.div`
 const ContentArea = styled.div`
   display: flex;
 
-  @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+  @media (${breakUp("lg")}) {
     margin-right: 40px;
   }
 `;
@@ -92,7 +87,7 @@ const OnThisPageWrapper = styled.div`
     display: none;
   }
 
-  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+  @media (${breakDown("sm")}) {
     display: none;
   }
 `;
@@ -162,7 +157,7 @@ export default function Layout({
               float: right;
               transform: translate3d(0, 15px, 0);
 
-              @media (${minWidth(BREAKPOINT_DESKTOP)}) {
+              @media (${breakUp("lg")}) {
                 display: none;
               }
             `}

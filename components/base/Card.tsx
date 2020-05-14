@@ -12,7 +12,7 @@ import {
 } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
-import { maxWidth, BREAKPOINT_MOBILE } from "../breakpoints";
+import { breakDown } from "../breakpoints";
 
 type Props = {
   link?: boolean;
@@ -69,7 +69,7 @@ const CardStyle = styled.div`
     padding: 0px;
     position: relative;
     text-align: center;
-    @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+    @media (${breakDown("xs")}) {
       width: 100%;
     }
   }

@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
 import Paginaton from "../../components/base/Pagination";
-import { maxWidth, BREAKPOINT_MOBILE } from "../../components/breakpoints";
+import { breakDown } from "../../components/breakpoints";
 
 // Wrapper div to positiont the pagination links
 const PaginationWrapper = styled.div`
@@ -19,7 +19,8 @@ const PaginationWrapper = styled.div`
     justify-content: center;
   }
   /* Previous and Next boxes are stacked on a smaller screen */
-  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+
+  @media (${breakDown("xs")}) {
     flex-direction: column;
     a {
       margin: 10px 0;

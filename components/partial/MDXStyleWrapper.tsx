@@ -1,5 +1,5 @@
 import { css } from "@emotion/core";
-import { minWidth, BREAKPOINT_IPAD } from "../breakpoints";
+import { breakUp } from "../breakpoints";
 import {
   headingStyles,
   paragraphStyles,
@@ -14,7 +14,7 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
     css={css`
       padding: 20px;
 
-      @media (${minWidth(BREAKPOINT_IPAD)}) {
+      @media (${breakUp("md")}) {
         padding: 20px 40px;
       }
 

@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Select from "./select/Select";
 import { GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
-import { minWidth, maxWidth, BREAKPOINT_MOBILE } from "../breakpoints";
+import { breakUp, breakDown } from "../breakpoints";
 import classnames from "../../modules/classnames";
 import { slugify } from "../../modules/helpers";
 
@@ -13,7 +13,7 @@ const TabsContainerStyle = styled.div`
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 30px;
-  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakDown("xs")}) {
     display: none;
   }
 `;
@@ -43,7 +43,7 @@ export const TabStyle = styled.div`
 const SelectWrapper = styled.div`
   width: 150px;
   padding-bottom: 10px;
-  @media (${minWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakUp("sm")}) {
     display: none;
   }
 `;
