@@ -88,7 +88,7 @@ const LANGUAGE_OPTIONS = [
   { value: "php", label: "PHP" },
   { value: "ruby", label: "Ruby" },
   { value: "python", label: "Python" },
-  { value: "raw", label: "Raw" },
+  { value: "bash", label: "Raw" },
 ];
 
 const AppWithHooks = ({ router, Component, pageProps }: any) => {
