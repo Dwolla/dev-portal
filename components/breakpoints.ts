@@ -1,49 +1,51 @@
+type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+
 // <: extra small devices - portrait phones
-const BREAKPOINT_1 = 576;
+const BREAKPOINT_576 = 576;
 // > <: small devices - landscape phones
-const BREAKPOINT_2 = 768;
+const BREAKPOINT_768 = 768;
 // > <: medium devices - tablets
-const BREAKPOINT_3 = 992;
+const BREAKPOINT_992 = 992;
 // > <: large devices - desktops
-const BREAKPOINT_4 = 1200;
+const BREAKPOINT_1200 = 1200;
 // > <: extra large devices - large desktops, etc.
-const BREAKPOINT_5 = 1600;
+const BREAKPOINT_1600 = 1600;
 // >: extra extra large devices - Big McLargeHuge devices
 
-function breakUpPx(breakpoint) {
-  switch (breakpoint) {
+function breakUpPx(bpt: Breakpoint): number {
+  switch (bpt) {
     case "sm":
-      return BREAKPOINT_1;
+      return BREAKPOINT_576;
     case "md":
-      return BREAKPOINT_2;
+      return BREAKPOINT_768;
     case "lg":
-      return BREAKPOINT_3;
+      return BREAKPOINT_992;
     case "xl":
-      return BREAKPOINT_4;
+      return BREAKPOINT_1200;
     case "xxl":
-      return BREAKPOINT_5;
+      return BREAKPOINT_1600;
     default:
-      return breakpoint;
+      return 0;
   }
 }
 
-function breakDownPx(breakpoint) {
-  switch (breakpoint) {
+function breakDownPx(bpt: Breakpoint): number {
+  switch (bpt) {
     case "xs":
-      return BREAKPOINT_1;
+      return BREAKPOINT_576;
     case "sm":
-      return BREAKPOINT_2;
+      return BREAKPOINT_768;
     case "md":
-      return BREAKPOINT_3;
+      return BREAKPOINT_992;
     case "lg":
-      return BREAKPOINT_4;
+      return BREAKPOINT_1200;
     case "xl":
-      return BREAKPOINT_5;
+      return BREAKPOINT_1600;
     default:
-      return breakpoint;
+      return 0;
   }
 }
 
-export const breakUp = (breakpoint) => `min-width: ${breakUpPx(breakpoint)}px`;
-export const breakDown = (breakpoint) =>
-  `max-width: ${breakDownPx(breakpoint) - 0.02}px`;
+export const breakUp = (bpt: Breakpoint) => `min-width: ${breakUpPx(bpt)}px`;
+export const breakDown = (bpt: Breakpoint) =>
+  `max-width: ${breakDownPx(bpt) - 0.02}px`;
