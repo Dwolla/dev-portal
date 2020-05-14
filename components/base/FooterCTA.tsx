@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Button from "./Button";
 import { PURPLE_DARK } from "../colors";
 import { H2, SubHeader } from "./Typography";
-import { maxWidth, BREAKPOINT_IPAD, BREAKPOINT_MOBILE } from "../breakpoints";
+import { breakDown } from "../breakpoints";
 
 // Styles
 
@@ -14,7 +14,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakDown("xs")}) {
     padding: 20px;
     flex-direction: column;
   }
@@ -26,13 +26,13 @@ const StyledContent = styled.div`
     margin: 0;
     margin-bottom: 13px;
   }
-  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakDown("xs")}) {
     margin-bottom: 15px;
     padding-right: unset;
     text-align: center;
   }
   /* Text sizes decrease in smaller screens */
-  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+  @media (${breakDown("sm")}) {
     > * {
       margin-bottom: 7px;
     }

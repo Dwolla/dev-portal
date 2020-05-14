@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { maxWidth, BREAKPOINT_IPAD, BREAKPOINT_MOBILE } from "../breakpoints";
+import { breakDown } from "../breakpoints";
 
 const StyledGrid = styled.div`
   display: flex;
@@ -9,13 +9,13 @@ const StyledGrid = styled.div`
 const CardWrapper = styled.div`
   width: 25%;
   padding: 15px;
-  @media (${maxWidth(1600)}) {
+  @media (${breakDown("xl")}) {
     width: 33.3%;
   }
-  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+  @media (${breakDown("sm")}) {
     width: 50%;
   }
-  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakDown("xs")}) {
     width: 100%;
   }
 

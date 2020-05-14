@@ -3,7 +3,7 @@ import classnames from "../../modules/classnames";
 import Button from "./Button";
 import { PURPLE_DARK, WHITE_PRIMARY, GREY_4 } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
-import { maxWidth, BREAKPOINT_IPAD, BREAKPOINT_MOBILE } from "../breakpoints";
+import { breakDown } from "../breakpoints";
 
 // Styled Banner component
 const StyledBanner = styled.div`
@@ -34,11 +34,11 @@ const StyledTopic = styled.div`
   font-weight: 200;
   line-height: 52px;
   text-align: center;
-  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+  @media (${breakDown("sm")}) {
     font-size: 30px;
     line-height: 46px;
   }
-  @media (${maxWidth(BREAKPOINT_MOBILE)}) {
+  @media (${breakDown("xs")}) {
     font-size: 22px;
     line-height: 33px;
   }
@@ -54,7 +54,7 @@ const StyledDescription = styled.div`
   &.filters {
     margin-bottom: 52px;
   }
-  @media (${maxWidth(BREAKPOINT_IPAD)}) {
+  @media (${breakDown("sm")}) {
     font-size: 16px;
     line-height: 20px;
   }
