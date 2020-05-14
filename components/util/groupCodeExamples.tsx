@@ -1,15 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 import { Children, cloneElement } from "react";
 
-export const getLanguage = (el) =>
+const getCodeBlock = (el) =>
   el.props.originalType === "pre" &&
-  (Children.toArray(el.props.children).find(
-    (c: any) =>
-      c.props.originalType === "code" &&
-      c.props.className?.startsWith("language-")
-  ) as any)?.props?.className?.replace("language-", "");
+  Children.only(el.props.children).props.originalType === "code"
+    ? Children.only(el.props.children)
+    : null;
 
-const containsCode = (el) => !!getLanguage(el);
+export const getLanguage = (el) =>
+  getCodeBlock(el).props.className?.replace("language-", "") || "plaintext";
 
 export default function groupCodeExamples({
   into: Component,
@@ -22,7 +21,7 @@ export default function groupCodeExamples({
     (acc: any, next: any, i) => {
       if (acc === null) {
         return [
-          containsCode(next) ? (
+          getCodeBlock(next) ? (
             <Component key={i}>{next}</Component>
           ) : (
             cloneElement(next, { key: i })
@@ -33,7 +32,7 @@ export default function groupCodeExamples({
       const [head, last] = [acc.slice(0, acc.length - 1), acc[acc.length - 1]];
 
       const tail =
-        last.type === Component && containsCode(next)
+        last.type === Component && getCodeBlock(next)
           ? [
               cloneElement(last, {
                 children: [...Children.toArray(last.props.children), next],
@@ -41,7 +40,7 @@ export default function groupCodeExamples({
             ]
           : [
               last,
-              containsCode(next) ? (
+              getCodeBlock(next) ? (
                 <Component key={i}>{next}</Component>
               ) : (
                 cloneElement(next, { key: i })
