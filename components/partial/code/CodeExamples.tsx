@@ -11,7 +11,6 @@ import { getLanguage } from "../../util/groupCodeExamples";
 import { LanguageContext } from "../../util/Contexts";
 import highlight from "../../../modules/highlight";
 import Select from "../../base/select/Select";
-import useCopy from "../../util/useCopy";
 import {
   CodeBlockBar,
   BarText,
@@ -19,6 +18,7 @@ import {
   CodeBlock,
 } from "./CodeExamples.styled";
 import { ReactComponent as CopyIcon } from "../../../assets/images/component-icons/copy-icon.svg";
+import useCopy from "../../../hooks/useCopy";
 
 const find = (
   children: JSX.Element | JSX.Element[],
