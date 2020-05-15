@@ -82,6 +82,7 @@ export default function Layout({
   pages,
   sideNavLinks,
   footerLinks,
+  footerLegal,
   topBarProps,
   apiStatus,
 }: {
@@ -89,6 +90,7 @@ export default function Layout({
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;
+  footerLegal: { title: string; description: string };
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
 }) {
@@ -155,7 +157,7 @@ export default function Layout({
         <ContentArea>{children}</ContentArea>
 
         <FooterWrapper>
-          <Footer links={footerLinks} />
+          <Footer links={footerLinks} legal={footerLegal} />
         </FooterWrapper>
       </MainArea>
     </>
