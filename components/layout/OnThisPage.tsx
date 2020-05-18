@@ -105,12 +105,16 @@ const PageTop = styled.div`
 
 type Heading = { key: string; level: number; title: string };
 
+const MAX_ANCHOR_LEVEL = 3;
+
 function OnThisPage({
   topOfPageOffset = TOP_BAR_HEIGHT,
 }: {
   topOfPageOffset?: number;
 }) {
-  const { anchors } = useAnchors();
+  const anchors = useAnchors().anchors.filter(
+    (a) => a.level <= MAX_ANCHOR_LEVEL
+  );
   const [activeAnchor, setActiveAnchor] = useState(null);
 
   useLayoutEffect(() => {
