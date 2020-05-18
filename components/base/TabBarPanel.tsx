@@ -1,62 +1,12 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "../../modules/classnames";
 import { GREY_1, GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
-import { BOX_SHADOW_7 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
-
-// Styles
-const Container = styled.div`
-  max-width: auto;
-  border-radius: 5px;
-  background-color: ${WHITE_PRIMARY};
-  :hover {
-    box-shadow: ${BOX_SHADOW_7};
-  }
-`;
-
-const StyledTabBar = styled.div`
-  box-sizing: border-box;
-  border-radius: 5px 5px 0 0;
-  border-color: ${GREY_2};
-  border-style: solid;
-  border-width: 1px 1px 0 1px;
-  background-color: ${GREY_1};
-  display: flex;
-  flex-wrap: nowrap;
-  /* Tab Bar will scroll on smaller screens */
-  overflow-x: auto;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const TabStyle = styled.div`
-  flex-grow: 1;
-  padding: 15px 20px;
-  border-radius: 5px 5px 0 0;
-  border: 1px solid ${GREY_1};
-  border-bottom: 1px solid ${GREY_2};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &.active {
-    background-color: ${WHITE_PRIMARY};
-    border-color: ${GREY_2};
-    border-style: solid;
-    border-width: 0 1px 0 1px;
-    border-radius: 5px 5px 0 0;
-    padding-top: 16px;
-    :nth-of-type(1) {
-      border-left: unset;
-      padding-left: 21px;
-    }
-    :nth-last-of-type(1) {
-      border-right: unset;
-      padding-right: 21px;
-    }
-  }
-`;
+import "react-tabs/style/react-tabs.css";
 
 const StyledIcon = styled.img`
   max-height: 36px;
@@ -90,25 +40,86 @@ function TabBarPanel({ tabs }: Props) {
   const [activeTab, setActiveTab] = useState(tabs[0]);
 
   return (
-    <Container>
-      <StyledTabBar>
-        {tabs.map((tab) => (
-          <TabStyle
-            className={classnames({ active: tab === activeTab })}
-            key={tab.label}
-            onClick={() => {
-              setActiveTab(tab);
-            }}
-          >
-            <StyledIcon
-              src={tab === activeTab ? tab.iconActive : tab.icon}
-              alt={tab.label}
-            />
-          </TabStyle>
+    <>
+      <Global
+        styles={css`
+          .container {
+            background-color: ${WHITE_PRIMARY};
+          }
+          .tab-list {
+            margin: unset;
+            padding: unset;
+            background-color: ${GREY_1};
+            list-style: none;
+            box-sizing: border-box;
+            border-radius: 5px 5px 0 0;
+            border-color: ${GREY_2};
+            border-style: solid;
+            border-width: 1px 1px 0 1px;
+            display: flex;
+            flex-wrap: nowrap;
+            /* Tab Bar will scroll on smaller screens */
+            overflow-x: auto;
+            &::-webkit-scrollbar {
+              display: none;
+            }
+          }
+          .tab {
+            flex-grow: 1;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            border: 1px solid ${GREY_1};
+            border-bottom: 1px solid ${GREY_2};
+            &.is-active {
+              cursor: default;
+              background-color: ${WHITE_PRIMARY};
+              border-color: ${GREY_2};
+              border-style: solid;
+              border-width: 0 1px 0 1px;
+              border-radius: 5px 5px 0 0;
+              padding-top: 16px;
+              :nth-of-type(1) {
+                border-left: unset;
+                padding-left: 21px;
+              }
+              :nth-last-of-type(1) {
+                border-right: unset;
+                padding-right: 21px;
+              }
+            }
+          }
+        `}
+      ></Global>
+      <Tabs
+        onSelect={(index) => setActiveTab(tabs[index])}
+        className="container"
+      >
+        <TabList className="tab-list">
+          {tabs.map((tab, index) => (
+            <Tab
+              className={classnames(`tab`, {
+                "is-active": tab === activeTab,
+              })}
+              key={index}
+            >
+              <StyledIcon
+                src={tab === activeTab ? tab.iconActive : tab.icon}
+                alt={tab.label}
+              />
+            </Tab>
+          ))}
+        </TabList>
+        {tabs.map((tab, index) => (
+          <TabPanel key={index}>
+            <ContentContainer>{tab.content}</ContentContainer>
+          </TabPanel>
         ))}
-      </StyledTabBar>
-      <ContentContainer>{activeTab.content}</ContentContainer>
-    </Container>
+      </Tabs>
+    </>
   );
 }
 
