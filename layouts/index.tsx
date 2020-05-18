@@ -1,8 +1,19 @@
+import styled from "@emotion/styled";
 import Head from "next/head";
 import { AnchorsSetter } from "../components/util/Anchors";
 import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../components/util/groupCodeExamples";
 import CodeExamples from "../components/partial/code/CodeExamples";
+import OnThisPage from "../components/layout/OnThisPage";
+
+const MDXContainer = styled.div`
+  display: flex;
+`;
+
+const ContentWrapper = styled.div`
+  min-width: 70%;
+  flex-grow: 1;
+`;
 
 type Props = {
   children: any;
@@ -10,7 +21,7 @@ type Props = {
 };
 
 export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
-  <>
+  <MDXContainer>
     {frontMatter.meta && (
       <Head>
         {frontMatter.meta.title && <title>{frontMatter.meta.title}</title>}
@@ -25,15 +36,19 @@ export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
       </Head>
     )}
 
-    <MDXStyleWrapper>
-      <AnchorsSetter>
-        {groupCodeExamples({
-          children,
-          into: CodeExamples,
-        })}
-      </AnchorsSetter>
-    </MDXStyleWrapper>
-  </>
+    <ContentWrapper>
+      <MDXStyleWrapper>
+        <AnchorsSetter>
+          {groupCodeExamples({
+            children,
+            into: CodeExamples,
+          })}
+        </AnchorsSetter>
+      </MDXStyleWrapper>
+    </ContentWrapper>
+
+    <OnThisPage />
+  </MDXContainer>
 );
 
 export default (frontMatter) => {
