@@ -13,6 +13,7 @@ import {
   GREY_3,
   GREY_4,
   GREY_5,
+  GREY_2,
 } from "../colors";
 
 // Heading styles
@@ -133,6 +134,50 @@ export const listStyles = css`
   margin-bottom: 29px;
   > li {
     margin-bottom: 8px;
+  }
+`;
+
+// Table styles
+export const tableStyles = css`
+  border-spacing: 0;
+
+  thead {
+    th {
+      font-family: ${ROBOTO};
+      font-weight: 500;
+      font-size: 13px;
+      color: ${HEADLINE_TEXT};
+      line-height: 17px;
+      padding: 8px 16px;
+    }
+  }
+
+  tbody {
+    tr {
+      box-shadow: 0 0 0 1px ${GREY_2}; /* https://stackoverflow.com/a/48831092 */
+
+      &:nth-of-type(1) {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+      }
+
+      &:nth-of-type(odd) {
+        background: ${GREY_1};
+      }
+    }
+
+    td {
+      font-family: ${ROBOTO};
+      font-size: 14px;
+      line-height: 20px;
+      color: ${PARAGRAPH_TEXT};
+      padding: 10px 16px;
+    }
   }
 `;
 
@@ -259,3 +304,5 @@ export const Link = ({ text, href }: LinkProps) => (
     {text}
   </a>
 );
+
+export const Table = styled.table(tableStyles);

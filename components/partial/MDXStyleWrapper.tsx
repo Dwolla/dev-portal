@@ -6,6 +6,7 @@ import {
   codeStyles,
   linkStyles,
   listStyles,
+  tableStyles,
 } from "../base/Typography";
 import { imageStyles } from "../base/Image";
 
@@ -71,6 +72,10 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
 
       > img {
         ${imageStyles.styles}
+      }
+
+      > table {
+        ${tableStyles.styles}
       }
     `}
   >
