@@ -11,11 +11,32 @@ import {
 } from "../colors";
 import { ROBOTO, POPPINS } from "../typography";
 import { useAnchors } from "../util/Anchors";
+import { TOP_BAR_HEIGHT } from "../../components/layout/TopBar";
+import { breakDown } from "../../components/breakpoints";
 
 const { scrollToTop } = animateScroll;
 
 const Container = styled.div`
-  padding: 20px 40px 20px 0;
+  position: sticky;
+  padding: 20px 0;
+  top: ${({ topOfPageOffset }: { topOfPageOffset: number }) =>
+    topOfPageOffset}px;
+  width: 30%;
+  height: 100%;
+  max-height: calc(
+    100vh -
+      ${({ topOfPageOffset }: { topOfPageOffset: number }) => topOfPageOffset}px
+  );
+  flex-shrink: 0;
+  overflow-y: scroll;
+
+  :empty {
+    display: none;
+  }
+
+  @media (${breakDown("sm")}) {
+    display: none;
+  }
 
   > a {
     display: block;
@@ -84,7 +105,11 @@ const PageTop = styled.div`
 
 type Heading = { key: string; level: number; title: string };
 
-function OnThisPage({ topOfPageOffset }: { topOfPageOffset: number }) {
+function OnThisPage({
+  topOfPageOffset = TOP_BAR_HEIGHT,
+}: {
+  topOfPageOffset?: number;
+}) {
   const { anchors } = useAnchors();
   const [activeAnchor, setActiveAnchor] = useState(null);
 
@@ -97,7 +122,7 @@ function OnThisPage({ topOfPageOffset }: { topOfPageOffset: number }) {
   if (anchors.length === 0) return null;
 
   return (
-    <Container>
+    <Container topOfPageOffset={topOfPageOffset}>
       <Heading>ON THIS PAGE</Heading>
 
       {anchors.map((a) => (

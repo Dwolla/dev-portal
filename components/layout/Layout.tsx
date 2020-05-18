@@ -8,10 +8,9 @@ import classnames from "classnames";
 import { useState } from "react";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
-import { breakDown, breakUp } from "../breakpoints";
-import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
+import { breakUp } from "../breakpoints";
+import TopBar, { TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
-import OnThisPage from "./OnThisPage";
 import APIStatusBar from "./APIStatusBar";
 import closeIcon from "../../assets/images/component-icons/close.svg";
 import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.png";
@@ -62,8 +61,6 @@ const MainArea = styled.div`
 `;
 
 const ContentArea = styled.div`
-  display: flex;
-
   @media (${breakUp("lg")}) {
     margin-right: 40px;
   }
@@ -73,29 +70,6 @@ const TopBarWrapper = styled.div`
   position: sticky;
   top: 0;
   z-index: 99;
-`;
-
-const OnThisPageWrapper = styled.div`
-  position: sticky;
-  top: ${TOP_BAR_HEIGHT}px;
-  max-height: calc(100vh - ${TOP_BAR_HEIGHT}px);
-  width: 30%;
-  flex-shrink: 0;
-  overflow-y: scroll;
-
-  :empty {
-    display: none;
-  }
-
-  @media (${breakDown("sm")}) {
-    display: none;
-  }
-`;
-
-const ContentWrapper = styled.div`
-  overflow: hidden;
-  min-width: 70%;
-  flex-grow: 1;
 `;
 
 const FooterWrapper = styled.div`
@@ -178,13 +152,7 @@ export default function Layout({
           <TopBar {...topBarProps} onHamburgerClick={showSidebar} />
         </TopBarWrapper>
 
-        <ContentArea>
-          <ContentWrapper>{children}</ContentWrapper>
-
-          <OnThisPageWrapper>
-            <OnThisPage topOfPageOffset={TOP_BAR_HEIGHT} />
-          </OnThisPageWrapper>
-        </ContentArea>
+        <ContentArea>{children}</ContentArea>
 
         <FooterWrapper>
           <Footer links={footerLinks} />
