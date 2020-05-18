@@ -1,17 +1,20 @@
 import styled from "@emotion/styled";
 import map from "lodash.map";
-import { GREY_2, HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
+import { HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import logo from "../../assets/images/dwolla-developers-logo.png";
 
 const Container = styled.div`
-  border-top: 1px solid ${GREY_2};
   display: flex;
   flex-wrap: wrap;
 
   @media (${breakUp("md")}) {
     padding: 20px;
+  }
+
+  @media (${breakUp("xxl")}) {
+    max-width: 70%;
   }
 `;
 

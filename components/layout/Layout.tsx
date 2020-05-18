@@ -73,8 +73,13 @@ const TopBarWrapper = styled.div`
 `;
 
 const FooterWrapper = styled.div`
+  border-top: 1px solid ${GREY_2};
   background: ${WHITE_PRIMARY};
   z-index: 9;
+
+  @media (${breakUp("xxl")}) {
+    padding-right: 40px;
+  }
 `;
 
 export default function Layout({
