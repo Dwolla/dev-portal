@@ -27,6 +27,7 @@ const StyledAlertBar = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  flex-shrink: 0;
   height: 24px;
   width: 24px;
 `;
