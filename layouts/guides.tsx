@@ -6,10 +6,14 @@ import FooterCTA from "../components/base/FooterCTA";
 import { breakUp } from "../components/breakpoints";
 
 const StyledPagination = styled.div`
-  margin: 20px;
+  padding: 20px;
 
   @media (${breakUp("md")}) {
-    margin: 40px;
+    padding: 40px;
+  }
+
+  @media (${breakUp("lg")}) {
+    width: 70%;
   }
 `;
 
