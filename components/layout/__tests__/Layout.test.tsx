@@ -28,13 +28,13 @@ const SIDE_NAV_LINKS = [
     text: "Home",
   },
   {
-    href: "/docs/guides",
+    href: "/guides",
     iconSrc: guidesIcon,
     isSection: true,
     text: "Guides",
   },
   {
-    href: "/docs/concepts",
+    href: "/concepts",
     iconSrc: conceptsIcon,
     isSection: true,
     text: "Concepts",

@@ -1,0 +1,57 @@
+---
+layout: guides
+title: "Overview"
+group:
+  category: Funding Sources
+  title: Add a bank using Dwolla.js + IAV
+guide:
+  step: 0
+  filter: get-building
+  icon: guides-icon.svg
+meta:
+  title: Instant Account Verification | Dwolla API Documentation
+  description: Using the client-side Dwolla.js JavaScript library, your application can add and verify a customer's bank account in a matter of seconds.
+---
+
+## Using Dwolla.js for Instant Account Verification (IAV)
+
+For Dwolla API customers, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their customer's bank or credit union account. By calling a separate function `dwolla.iav.start()`, your application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as:
+
+- `stylesheets` - a list of CSS stylesheets for styling the IAV flow
+- `microDeposits` - presents a selection screen for the user to choose the micro-deposit method of bank verification throughout the IAV flow
+- `fallbackToMicroDeposits` - presents a selection screen for the user to fallback to selecting the micro-deposit method of bank verification within the IAV flow
+- `backButton` - displays a back button throughout the IAV flow
+- `subscriber` - a function that can be used by an application to subscribe to state changes throughout the IAV flow
+
+### dwolla.iav.start()
+
+| Parameter | Type     | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| --------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| iav-token | string   | A single use IAV token [generated on your server](https://docs.dwolla.com/#generate-an-iav-token).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| options   | object   | An object containing configurable options. Contains keys: `container`, `stylesheets`, `microDeposits`, `fallbackToMicroDeposits`, `backButton`, and `subscriber`. _See example below_. <br /> `container` represents a string value container element where IAV will render. <br /> `stylesheets` represents an array list of stylesheets to load IAV styles. <br /> `microDeposits` represents a boolean _true_ or _false_ value which determines if the micro-deposit method of bank verification is presented as an option throughout the IAV flow. <br /> `fallbackToMicroDeposits` represents a boolean _true_ or _false_ value which determines if a fallback selection screen appears for choosing an alternative bank verification method. <br /> `backButton` represents a boolean _true_ or _false_ value which determines if a back button is displayed throughout the IAV flow. <br /> `subscriber` is a function that can be used to subscribe to state changes throughout the IAV flow. This function will be called with an object containing a `currentPage` and an optional `error` attribute. |
+| callback  | function | A callback function that handles the response from Dwolla.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+
+#### Example
+
+```javascript
+dwolla.iav.start(
+  "8zN400zyPUobbdmeNfhTGH2Jh5JkFREJa9YBI8SLXp0ERXNTMT",
+  {
+    container: "iavContainer",
+    stylesheets: [
+      "https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext",
+    ],
+    microDeposits: false,
+    fallbackToMicroDeposits: true,
+    backButton: true,
+    subscriber: ({ currentPage, error }) => {
+      console.log("currentPage:", currentPage, "error:", JSON.stringify(error));
+    },
+  },
+  function(err, res) {
+    console.log(
+      "Error: " + JSON.stringify(err) + " -- Response: " + JSON.stringify(res)
+    );
+  }
+);
+```

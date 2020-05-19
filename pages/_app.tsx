@@ -23,13 +23,13 @@ const SIDE_NAV_LINKS = [
     text: "Home",
   },
   {
-    href: "/docs/guides",
+    href: "/guides",
     iconSrc: guidesIcon,
     isSection: true,
     text: "Guides",
   },
   {
-    href: "/docs/concepts",
+    href: "/concepts",
     iconSrc: conceptsIcon,
     isSection: true,
     text: "Concepts",
@@ -43,35 +43,25 @@ const SIDE_NAV_LINKS = [
 ];
 
 const FOOTER_LINKS = {
-  Discover: [
-    { text: "Send", href: "#discover-send" },
-    { text: "Receive", href: "#discover-receive" },
-    { text: "Send & Receive", href: "#discover-send-receive" },
-    { text: "Facilitate", href: "#facilitate" },
-    { text: "Me to Me", href: "#me-to-me" },
+  Dwolla: [
+    { text: "About", href: "https://www.dwolla.com/about/" },
+    { text: "Blog", href: "https://www.dwolla.com/updates/" },
+    { text: "Pricing", href: "https://www.dwolla.com/pricing/" },
+    { text: "Contact Sales", href: "https://www.dwolla.com/contact/" },
+    { text: "Terms of Service", href: "https://www.dwolla.com/legal/tos/" },
+    { text: "Privacy Policy", href: "https://www.dwolla.com/legal/privacy/" },
   ],
-  Concepts: [
-    { text: "Basics", href: "#concepts-basics" },
-    { text: "Essentials", href: "#concepts-essentials" },
-    { text: "Integrations", href: "#concepts-integrations" },
+  Product: [
+    { text: "Resources", href: "https://www.dwolla.com/resources/" },
+    { text: "Features", href: "https://www.dwolla.com/features/" },
+    { text: "Case Studies", href: "https://www.dwolla.com/case-studies/" },
+    { text: "Integrations", href: "https://www.dwolla.com/integrations/" },
   ],
-  Guides: [
-    { text: "Prerequisites", href: "#guides-prerequisites" },
-    { text: "Get Building", href: "#guides-get-building" },
-    { text: "Features", href: "#features" },
-  ],
-  "API Reference": [
-    { text: "Documentation", href: "#api-reference-documentation" },
-    { text: "SDK Support", href: "api-reference-sdk-support" },
-    { text: "What does the Dwolla API do?", href: "#api-reference-what-it-do" },
-  ],
-  "Tools and SDKs": [
-    { text: "Ruby", href: "#tools-and-sdks-ruby" },
-    { text: "Python", href: "#tools-and-sdks-python" },
-    { text: "PHP", href: "#tools-and-sdks-php" },
-    { text: "C#", href: "#tools-and-sdks-csharp" },
-    { text: "Java", href: "#tools-and-sdks-java" },
-    { text: "JavaScript", href: "#tools-and-sdks-javascript" },
+  Developers: [
+    { text: "API Reference", href: "https://docs.dwolla.com/" },
+    { text: "Support Forum", href: "https://discuss.dwolla.com/" },
+    { text: "SDKs and Tools", href: "#sdks-and-tools" },
+    { text: "Github Repos", href: "https://github.com/Dwolla/" },
   ],
 };
 

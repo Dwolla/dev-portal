@@ -51,7 +51,7 @@ Array [
               </a>
               <a
                 className="css-3bamg-SectionLink-SectionLink"
-                href="/docs/guides"
+                href="/guides"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
@@ -66,7 +66,7 @@ Array [
               </a>
               <a
                 className="css-3bamg-SectionLink-SectionLink"
-                href="/docs/concepts"
+                href="/concepts"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >

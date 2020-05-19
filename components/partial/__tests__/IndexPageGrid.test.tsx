@@ -28,7 +28,7 @@ test("IndexPageGrid", () => {
         "Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.",
       icon: "guides-icon.svg",
       category: "Get Building",
-      href: "/docs/guides/send-money",
+      href: "/guides/send-money",
     },
     {
       topic: "Receive Money from your Users",
@@ -36,7 +36,7 @@ test("IndexPageGrid", () => {
         "Accept ACH transfers. Covers both Access API and Transfer integrations.",
       icon: "guides-icon.svg",
       category: "Get Building",
-      href: "/docs/guides/receive-money",
+      href: "/guides/receive-money",
     },
     {
       topic: "Transfer Money Between Users",
@@ -44,7 +44,7 @@ test("IndexPageGrid", () => {
         "Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments. Features Access API integration.",
       icon: "guides-icon.svg",
       category: "Get Building",
-      href: "/docs/guides/transfer-money-between-users/obtain-access-token",
+      href: "/guides/transfer-money-between-users/obtain-access-token",
     },
   ];
 
