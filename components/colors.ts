@@ -16,7 +16,7 @@ export const HEADLINE_TEXT = "#2a2d38";
 export const PARAGRAPH_TEXT = "#6a7282";
 
 // Primary Colors
-export const ORANGE_PRIMARY = "#d9725c";
+export const ORANGE_PRIMARY = "#c2492e";
 export const PURPLE_PRIMARY = "#483d66";
 export const PURPLE_PRIMARY_BUTTON = "#5e4e76";
 export const PURPLE_PRIMARY_HOVER = "#6a5885";

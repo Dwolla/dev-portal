@@ -1,18 +1,30 @@
+import React, { useEffect, useReducer } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { useEffect, useReducer } from "react";
+
 import classnames from "classnames";
 import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import { ORANGE_PRIMARY, GREY_6, GREY_2 } from "../colors";
-import homeIcon from "../../assets/images/component-icons/side-nav/home-nav-icon.svg";
+import {
+  ORANGE_PRIMARY,
+  WHITE_PRIMARY,
+  GREY_1,
+  GREY_2,
+  GREY_6,
+} from "../colors";
+import { POPPINS, ROBOTO } from "../typography";
+import { breakDown } from "../breakpoints";
+import { ReactComponent as BackIcon } from "../../assets/images/component-icons/side-nav/back-nav-icon.svg";
+import { ReactComponent as RightIcon } from "../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
+import caretUp from "../../assets/images/component-icons/caret-up.svg";
+import caretDown from "../../assets/images/component-icons/caret-down.svg";
 
 // proptypes
 
 export interface SideNavLinkProps {
   href: string;
-  iconSrc: string;
+  IconSvg: React.SFC<React.SVGProps<SVGSVGElement>>;
   isSection: boolean;
   text: string;
 }
@@ -140,27 +152,100 @@ const SlidePane = styled.div`
   overflow-y: scroll;
 `;
 
-const StickyTop = styled.div`
+const SectionWrap = styled.div`
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.98);
+  background-color: ${WHITE_PRIMARY};
   z-index: 9;
 `;
 
-const CategoriesNav = styled.ul`
-  margin: 10px 10px 0 24px;
+const SectionIconWrap = styled.div`
+  width: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 7px;
+`;
+
+const SectionCaretWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+
+  @media (${breakDown("md")}) {
+    display: none;
+  }
+`;
+
+type SectionLinkProps = {
+  linkProps: SideNavLinkProps;
+  isActive: boolean;
+};
+
+const SectionLink = ({ linkProps, isActive }: SectionLinkProps) => {
+  const { href, IconSvg, isSection, text } = linkProps;
+
+  return (
+    <Link href={href} passHref>
+      <a
+        className={classnames({ active: isActive })}
+        css={css`
+          display: flex;
+          height: 30px;
+          padding: 0 20px;
+          align-items: center;
+          justify-content: flex-start;
+          font-family: ${POPPINS};
+          font-size: 14px;
+          color: ${GREY_6};
+          text-decoration: none;
+
+          &:hover {
+            background-color: ${GREY_1};
+          }
+
+          &.active {
+            font-weight: 500;
+            color: ${ORANGE_PRIMARY};
+
+            .section-icon {
+              path {
+                fill: ${ORANGE_PRIMARY};
+              }
+            }
+          }
+        `}
+      >
+        <SectionIconWrap>
+          <IconSvg className="section-icon" width={17} height={17} />
+        </SectionIconWrap>
+
+        {text}
+
+        {isSection && (
+          <SectionCaretWrap>
+            <RightIcon width={5} height={10} />
+          </SectionCaretWrap>
+        )}
+      </a>
+    </Link>
+  );
+};
+
+const CategoriesWrap = styled.ul`
+  margin: 10px 0 0 34px;
   padding: 0;
   border-left: 1px solid ${GREY_2};
   z-index: 8;
 `;
 
-const CategoryItem = styled.li`
+const Category = styled.li`
   list-style-type: none;
 `;
 
 const CategoryHeading = styled.div`
   text-transform: uppercase;
-  font-family: Poppins;
+  font-family: ${POPPINS};
   font-weight: 600;
   color: #354153;
   font-size: 11px;
@@ -171,12 +256,15 @@ const groupToggleDocLinkStyles = css`
   margin: 6px 0;
   font-size: 14px;
   line-height: 140%;
-  font-family: Roboto;
+  font-family: ${ROBOTO};
   color: #52627b;
-  padding: 4px 0 4px 10px;
+  padding: 4px 20px 4px 10px;
+  border-left: 1px solid transparent;
+  margin-left: -1px;
 
   &:hover {
-    color: ${ORANGE_PRIMARY};
+    border-left: 1px solid ${GREY_6};
+    background-color: ${GREY_1};
   }
 `;
 
@@ -186,15 +274,10 @@ const GroupToggle = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-
-  > .caret {
-    margin-right: 10px;
-  }
 `;
 
-const StyledIcon = styled.img`
-  width: 17px;
-  height: 17px;
+const GroupCaret = styled.img`
+  max-width: 7px;
 `;
 
 interface DocLinkProps {
@@ -212,19 +295,11 @@ function DocLink(props: DocLinkProps) {
           ${groupToggleDocLinkStyles}
           display: block;
           text-decoration: none;
-          border-left: 1px solid transparent;
-          transform: translateX(-1px);
-
-          &:hover {
-            text-decoration: underline;
-            border-left: 1px solid ${ORANGE_PRIMARY};
-          }
 
           &.active {
             font-weight: 500;
-            border-left: 1px solid ${GREY_6};
-            color: ${GREY_6};
-            text-decoration: none;
+            border-left: 1px solid ${ORANGE_PRIMARY};
+            color: ${ORANGE_PRIMARY};
           }
 
           &.grouped {
@@ -239,54 +314,12 @@ function DocLink(props: DocLinkProps) {
   );
 }
 
-const SectionLinksWrapper = styled.div`
-  padding: 0 20px;
-`;
-
-function SectionLink(props: SideNavLinkProps) {
-  return (
-    <Link href={props.href} passHref>
-      <a
-        css={css`
-          display: flex;
-          height: 30px;
-          align-items: center;
-          justify-content: flex-start;
-          font-family: Poppins;
-          font-size: 14px;
-          color: ${GREY_6};
-          text-decoration: none;
-
-          > div {
-            width: 17px;
-            text-align: center;
-            margin-right: 7px;
-          }
-
-          &:hover {
-            color: ${ORANGE_PRIMARY};
-            text-decoration: underline;
-          }
-        `}
-      >
-        <div>
-          <StyledIcon src={props.iconSrc} alt={props.text} />
-        </div>
-
-        {props.text}
-      </a>
-    </Link>
-  );
-}
-
 export default function SideNav(props: SideNavProps) {
   const { pathname } = useRouter();
-
   const [state, dispatch] = useReducer(reducer, getInitialState(pathname));
-
   const selectedSection = props.links.find(isSelectedSection(pathname));
-
   const selectedSectionHref = selectedSection?.href;
+
   useEffect(() => {
     if (selectedSectionHref) {
       dispatch(setMostRecentSectionHref(selectedSectionHref));
@@ -309,35 +342,45 @@ export default function SideNav(props: SideNavProps) {
     <Container>
       <Slide className={classnames({ selectedSection })}>
         <SlidePane>
-          <SectionLinksWrapper>
+          <SectionWrap>
             {props.links.map((l) => (
-              <SectionLink key={l.href} {...l} />
+              <SectionLink
+                key={l.href}
+                isActive={l.href === pathname}
+                linkProps={l}
+              />
             ))}
-          </SectionLinksWrapper>
+          </SectionWrap>
         </SlidePane>
 
         <SlidePane key={displayedSection?.href}>
-          <StickyTop>
-            <SectionLinksWrapper>
+          <SectionWrap>
+            <SectionLink
+              linkProps={{
+                href: "/",
+                IconSvg: BackIcon,
+                isSection: false,
+                text: "Back",
+              }}
+              isActive={false}
+            />
+
+            {displayedSection && (
               <SectionLink
-                href="/"
-                iconSrc={homeIcon}
-                isSection={false}
-                text="Back Home"
+                linkProps={{ ...displayedSection, isSection: false }}
+                isActive
               />
+            )}
+          </SectionWrap>
 
-              {displayedSection && <SectionLink {...displayedSection} />}
-            </SectionLinksWrapper>
-          </StickyTop>
-
-          <CategoriesNav>
+          <CategoriesWrap>
             {keys(groupedByCategory).map((c) => {
               const categoryDocs = groupedByCategory[c];
 
               const groups = groupsFrom(categoryDocs);
 
               return (
-                <CategoryItem key={c}>
+                <Category key={c}>
                   {c && <CategoryHeading>{c}</CategoryHeading>}
 
                   {groups.map((g) => {
@@ -366,6 +409,12 @@ export default function SideNav(props: SideNavProps) {
                               onClick={() => dispatch(toggleGroup(g))}
                             >
                               {groupTitle(categoryDocs, g)}
+
+                              {groupToggled ? (
+                                <GroupCaret src={caretUp} alt="" />
+                              ) : (
+                                <GroupCaret src={caretDown} alt="" />
+                              )}
                             </GroupToggle>
 
                             {groupToggled &&
@@ -384,10 +433,10 @@ export default function SideNav(props: SideNavProps) {
                       </div>
                     );
                   })}
-                </CategoryItem>
+                </Category>
               );
             })}
-          </CategoriesNav>
+          </CategoriesWrap>
         </SlidePane>
       </Slide>
     </Container>

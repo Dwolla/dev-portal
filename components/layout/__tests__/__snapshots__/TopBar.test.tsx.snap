@@ -5,7 +5,7 @@ exports[`TopBar 1`] = `
   className="css-18kqr8q-Container e1xhgpyy0"
 >
   <a
-    className=" css-mrweef-StyledLink e1xhgpyy3"
+    className=" css-skf8jj-StyledLink e1xhgpyy3"
     href="https://docs.dwolla.com"
     onClick={[Function]}
     onMouseEnter={[Function]}
@@ -23,7 +23,7 @@ exports[`TopBar 1`] = `
     />
   </a>
   <a
-    className="active css-mrweef-StyledLink e1xhgpyy3"
+    className="active css-skf8jj-StyledLink e1xhgpyy3"
     href="/changelog"
     onClick={[Function]}
     onMouseEnter={[Function]}
@@ -35,7 +35,7 @@ exports[`TopBar 1`] = `
     </span>
   </a>
   <a
-    className="active css-mrweef-StyledLink e1xhgpyy3"
+    className="active css-skf8jj-StyledLink e1xhgpyy3"
     href="/manually-active"
     onClick={[Function]}
     onMouseEnter={[Function]}
