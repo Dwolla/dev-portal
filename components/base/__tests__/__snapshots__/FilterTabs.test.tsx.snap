@@ -6,25 +6,25 @@ exports[`FilterTabs 1`] = `
     className="css-18c9go6-TabsContainerStyle efq5uj30"
   >
     <div
-      className="tab is-active css-ptatp0-TabStyle efq5uj31"
+      className="tab is-active css-rdl1v4-TabStyle efq5uj31"
       onClick={[Function]}
     >
       ALL
     </div>
     <div
-      className="tab css-ptatp0-TabStyle efq5uj31"
+      className="tab css-rdl1v4-TabStyle efq5uj31"
       onClick={[Function]}
     >
       GET BUILDING
     </div>
     <div
-      className="tab css-ptatp0-TabStyle efq5uj31"
+      className="tab css-rdl1v4-TabStyle efq5uj31"
       onClick={[Function]}
     >
       PREREQUISITES
     </div>
     <div
-      className="tab css-ptatp0-TabStyle efq5uj31"
+      className="tab css-rdl1v4-TabStyle efq5uj31"
       onClick={[Function]}
     >
       FEATURES

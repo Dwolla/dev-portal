@@ -31,13 +31,13 @@ Array [
             className="css-18c9go6-TabsContainerStyle efq5uj30"
           >
             <div
-              className="tab is-active css-ptatp0-TabStyle efq5uj31"
+              className="tab is-active css-rdl1v4-TabStyle efq5uj31"
               onClick={[Function]}
             >
               All
             </div>
             <div
-              className="tab css-ptatp0-TabStyle efq5uj31"
+              className="tab css-rdl1v4-TabStyle efq5uj31"
               onClick={[Function]}
             >
               Get Building
@@ -128,7 +128,7 @@ Array [
               className="css-vz2qld-BadgeStyle eguc8hf2"
             >
               <div
-                className="css-16zxq88-StyledBadge e1w3mjmy0"
+                className="css-1bdkrme-StyledBadge e1w3mjmy0"
               >
                 Get Building
               </div>
@@ -166,7 +166,7 @@ Array [
               className="css-vz2qld-BadgeStyle eguc8hf2"
             >
               <div
-                className="css-16zxq88-StyledBadge e1w3mjmy0"
+                className="css-1bdkrme-StyledBadge e1w3mjmy0"
               >
                 Get Building
               </div>
@@ -204,7 +204,7 @@ Array [
               className="css-vz2qld-BadgeStyle eguc8hf2"
             >
               <div
-                className="css-16zxq88-StyledBadge e1w3mjmy0"
+                className="css-1bdkrme-StyledBadge e1w3mjmy0"
               >
                 Get Building
               </div>
