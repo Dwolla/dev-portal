@@ -16,7 +16,6 @@ import {
   BlockQuote,
   InlineCode,
   Link,
-  Table,
 } from "../../components/base/Typography";
 import { PURPLE_DARK } from "../../components/colors";
 
@@ -51,51 +50,6 @@ const orderedlList = [
   { id: "2", text: "Ordered list text goes here" },
   { id: "3", text: "Ordered list text goes here" },
 ];
-const tableContents = (
-  <>
-    <thead>
-      <tr>
-        <th align="left">Bank to Dwolla Network Clearing</th>
-        <th align="left">Dwolla Network to bank clearing</th>
-        <th align="left">Time to Dwolla network</th>
-        <th>Time to destination bank</th>
-        <th align="left">
-          Total time to <code>processed</code>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td align="left">Standard</td>
-        <td align="left">Standard</td>
-        <td align="left">3-4 business days</td>
-        <td>1-2 business days</td>
-        <td align="left">4-6 business days</td>
-      </tr>
-      <tr>
-        <td align="left">Standard</td>
-        <td align="left">Same-day</td>
-        <td align="left">3-4 business days</td>
-        <td>0-1 business days</td>
-        <td align="left">3-5 business days</td>
-      </tr>
-      <tr>
-        <td align="left">Next-day</td>
-        <td align="left">Standard</td>
-        <td align="left">1-2 business days</td>
-        <td>1-2 business days</td>
-        <td align="left">2-4 business days</td>
-      </tr>
-      <tr>
-        <td align="left">Next-day</td>
-        <td align="left">Same-day</td>
-        <td align="left">1-2 business days</td>
-        <td>0-1 business days</td>
-        <td align="left">1-3 business days</td>
-      </tr>
-    </tbody>
-  </>
-);
 
 // Stories
 storiesOf("base|Typography", module)
@@ -119,7 +73,6 @@ storiesOf("base|Typography", module)
       <UnorderedList>{unorderedlList}</UnorderedList>
       <OrderedList>{orderedlList}</OrderedList>
       <BlockQuote>{blockquote}</BlockQuote>
-      <Table>{tableContents}</Table>
     </DivStyle>
   ))
   // All variations of Typography in Dark background
