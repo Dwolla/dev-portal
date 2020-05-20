@@ -8,24 +8,24 @@ Array [
   >
     Hello 1
   </h1>,
-  <h1
+  <h2
     id="hello-2"
-    originalType="h1"
+    originalType="h2"
   >
     Hello 2
-  </h1>,
-  <h1
+  </h2>,
+  <h3
     id="hello-3"
-    originalType="h1"
+    originalType="h3"
   >
     Hello 3
-  </h1>,
-  <h1
+  </h3>,
+  <h4
     id="hello-4"
-    originalType="h1"
+    originalType="h4"
   >
     Hello 4
-  </h1>,
+  </h4>,
 ]
 `;
 
