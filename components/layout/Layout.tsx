@@ -73,8 +73,13 @@ const TopBarWrapper = styled.div`
 `;
 
 const FooterWrapper = styled.div`
+  border-top: 1px solid ${GREY_2};
   background: ${WHITE_PRIMARY};
   z-index: 9;
+
+  @media (${breakUp("xxl")}) {
+    padding-right: 40px;
+  }
 `;
 
 export default function Layout({
@@ -82,6 +87,7 @@ export default function Layout({
   pages,
   sideNavLinks,
   footerLinks,
+  footerLegal,
   topBarProps,
   apiStatus,
 }: {
@@ -89,6 +95,7 @@ export default function Layout({
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;
+  footerLegal: { title: string; description: string };
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
 }) {
@@ -155,7 +162,7 @@ export default function Layout({
         <ContentArea>{children}</ContentArea>
 
         <FooterWrapper>
-          <Footer links={footerLinks} />
+          <Footer links={footerLinks} legal={footerLegal} />
         </FooterWrapper>
       </MainArea>
     </>
