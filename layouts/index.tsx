@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 import Head from "next/head";
+import { MDXProvider } from "@mdx-js/react";
 import { AnchorsSetter } from "../components/util/Anchors";
 import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../components/util/groupCodeExamples";
 import CodeExamples from "../components/partial/code/CodeExamples";
 import OnThisPage from "../components/layout/OnThisPage";
+import Table from "../components/base/Table";
 
 const MDXContainer = styled.div`
   display: flex;
@@ -19,6 +21,8 @@ type Props = {
   children: any;
   frontMatter: any;
 };
+
+const MDX_COMPONENTS = { table: Table };
 
 export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
   <MDXContainer>
@@ -36,16 +40,18 @@ export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
       </Head>
     )}
 
-    <ContentWrapper>
-      <MDXStyleWrapper>
-        <AnchorsSetter>
-          {groupCodeExamples({
-            children,
-            into: CodeExamples,
-          })}
-        </AnchorsSetter>
-      </MDXStyleWrapper>
-    </ContentWrapper>
+    <MDXProvider components={MDX_COMPONENTS}>
+      <ContentWrapper>
+        <MDXStyleWrapper>
+          <AnchorsSetter>
+            {groupCodeExamples({
+              children,
+              into: CodeExamples,
+            })}
+          </AnchorsSetter>
+        </MDXStyleWrapper>
+      </ContentWrapper>
+    </MDXProvider>
 
     <OnThisPage />
   </MDXContainer>
