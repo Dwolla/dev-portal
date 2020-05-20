@@ -40,21 +40,31 @@ const StyledTable = styled.div`
   tr:nth-of-type(even) {
     background-color: ${GREY_1};
   }
-  /* Top-left td cell */
-  tr:nth-of-type(2) td:nth-of-type(1) {
-    border-radius: 5px 0 0 0;
-  }
-  /* Top-right td cell */
-  tr:nth-of-type(2) td:nth-last-of-type(1) {
-    border-radius: 0 5px 0 0;
-  }
-  /* Bottom-right td cell */
-  tr:nth-last-of-type(1) td:nth-last-of-type(1) {
-    border-radius: 0 0 5px 0;
-  }
-  /* Bottom-left td cell */
-  tr:nth-last-of-type(1) td:nth-of-type(1) {
-    border-radius: 0 0 0 5px;
+
+  /* td border-radius */
+  tbody {
+    tr {
+      &:nth-of-type(1) {
+        td {
+          &:nth-of-type(1) {
+            border-top-left-radius: 5px;
+          }
+          &:last-of-type {
+            border-top-right-radius: 5px;
+          }
+        }
+      }
+      &:last-of-type {
+        td {
+          &:nth-of-type(1) {
+            border-bottom-left-radius: 5px;
+          }
+          &:last-of-type {
+            border-bottom-right-radius: 5px;
+          }
+        }
+      }
+    }
   }
 `;
 
