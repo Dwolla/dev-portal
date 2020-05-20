@@ -39,5 +39,10 @@ storiesOf("layout|Footer", module).add("default", () => (
         { text: "JavaScript", href: "#tools-and-sdks-javascript" },
       ],
     }}
+    legal={{
+      title: "Financial institutions play an important role in our network.",
+      description:
+        "Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.",
+    }}
   />
 ));

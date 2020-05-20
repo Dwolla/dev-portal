@@ -65,6 +65,12 @@ const FOOTER_LINKS = {
   ],
 };
 
+const FOOTER_LEGAL_COPY = {
+  title: "Financial institutions play an important role in our network.",
+  description:
+    "Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.",
+};
+
 const TOP_BAR_PROPS = {
   button: { text: "Get API Keys" },
   links: [
@@ -102,6 +108,7 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
       >
         <Layout
           footerLinks={FOOTER_LINKS}
+          footerLegal={FOOTER_LEGAL_COPY}
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
           topBarProps={TOP_BAR_PROPS}

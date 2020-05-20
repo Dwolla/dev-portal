@@ -258,275 +258,222 @@ Array [
       </div>
     </div>
     <div
-      className="css-cdxnl8-FooterWrapper eu5n9bq6"
+      className="css-r8zrnm-FooterWrapper eu5n9bq6"
     >
       <div
-        className="css-wxvhif-Container en8mxva0"
+        className="css-157ism8-Container en8mxva0"
       >
         <div
-          className="css-1tgn4b3-Group en8mxva1"
+          className="css-1a8teoz-LogoContainer en8mxva1"
         >
-          <h3
-            className="css-p408ob-Heading en8mxva2"
+          <img
+            alt=""
+            className="css-1ty6c2n-Logo en8mxva2"
+            src="test-image-stub"
+          />
+          <div
+            className="css-1neb9ej-Copyright en8mxva3"
           >
-            Discover
-          </h3>
-          <ul
-            className="css-499foe-List en8mxva3"
-          >
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#discover-send"
-              >
-                Send
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#discover-receive"
-              >
-                Receive
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#discover-send-receive"
-              >
-                Send & Receive
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#facilitate"
-              >
-                Facilitate
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#me-to-me"
-              >
-                Me to Me
-              </a>
-            </li>
-          </ul>
+            2020
+             All Rights Reserved
+          </div>
         </div>
         <div
-          className="css-1tgn4b3-Group en8mxva1"
+          className="css-1g5yeab-LinkContainer en8mxva4"
         >
-          <h3
-            className="css-p408ob-Heading en8mxva2"
+          <div
+            className="css-n2kuza-LinkGroup en8mxva5"
           >
-            Concepts
-          </h3>
-          <ul
-            className="css-499foe-List en8mxva3"
+            <h3
+              className="css-ve8wjm-LinkGroupHeading en8mxva6"
+            >
+              Dwolla
+            </h3>
+            <ul
+              className="css-fqkv27-LinkGroupList en8mxva7"
+            >
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/about/"
+                >
+                  About
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/updates/"
+                >
+                  Blog
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/pricing/"
+                >
+                  Pricing
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/contact/"
+                >
+                  Contact Sales
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/legal/tos/"
+                >
+                  Terms of Service
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/legal/privacy/"
+                >
+                  Privacy Policy
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="css-n2kuza-LinkGroup en8mxva5"
           >
-            <li
-              className="css-52hjeb-Item en8mxva4"
+            <h3
+              className="css-ve8wjm-LinkGroupHeading en8mxva6"
             >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#concepts-basics"
-              >
-                Basics
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
+              Product
+            </h3>
+            <ul
+              className="css-fqkv27-LinkGroupList en8mxva7"
             >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#concepts-essentials"
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
               >
-                Essentials
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/resources/"
+                >
+                  Resources
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/features/"
+                >
+                  Features
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/case-studies/"
+                >
+                  Case Studies
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://www.dwolla.com/integrations/"
+                >
+                  Integrations
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div
+            className="css-n2kuza-LinkGroup en8mxva5"
+          >
+            <h3
+              className="css-ve8wjm-LinkGroupHeading en8mxva6"
             >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#concepts-integrations"
+              Developers
+            </h3>
+            <ul
+              className="css-fqkv27-LinkGroupList en8mxva7"
+            >
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
               >
-                Integrations
-              </a>
-            </li>
-          </ul>
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://docs.dwolla.com/"
+                >
+                  API Reference
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://discuss.dwolla.com/"
+                >
+                  Support Forum
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="#sdks-and-tools"
+                >
+                  SDKs and Tools
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem en8mxva8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink en8mxva9"
+                  href="https://github.com/Dwolla/"
+                >
+                  Github Repos
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div
-          className="css-1tgn4b3-Group en8mxva1"
+          className="css-d46t9b-LegalContainer en8mxva10"
         >
-          <h3
-            className="css-p408ob-Heading en8mxva2"
+          <strong
+            className="css-31ngrj-LegalTitle en8mxva11"
           >
-            Guides
-          </h3>
-          <ul
-            className="css-499foe-List en8mxva3"
+            Financial institutions play an important role in our network.
+          </strong>
+          <p
+            className="css-1rlmt3x-LegalDesc en8mxva12"
           >
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#guides-prerequisites"
-              >
-                Prerequisites
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#guides-get-building"
-              >
-                Get Building
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#features"
-              >
-                Features
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div
-          className="css-1tgn4b3-Group en8mxva1"
-        >
-          <h3
-            className="css-p408ob-Heading en8mxva2"
-          >
-            API Reference
-          </h3>
-          <ul
-            className="css-499foe-List en8mxva3"
-          >
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#api-reference-documentation"
-              >
-                Documentation
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="api-reference-sdk-support"
-              >
-                SDK Support
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#api-reference-what-it-do"
-              >
-                What does the Dwolla API do?
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div
-          className="css-1tgn4b3-Group en8mxva1"
-        >
-          <h3
-            className="css-p408ob-Heading en8mxva2"
-          >
-            Tools and SDKs
-          </h3>
-          <ul
-            className="css-499foe-List en8mxva3"
-          >
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#tools-and-sdks-ruby"
-              >
-                Ruby
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#tools-and-sdks-python"
-              >
-                Python
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#tools-and-sdks-php"
-              >
-                PHP
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#tools-and-sdks-csharp"
-              >
-                C#
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#tools-and-sdks-java"
-              >
-                Java
-              </a>
-            </li>
-            <li
-              className="css-52hjeb-Item en8mxva4"
-            >
-              <a
-                className="css-irwgy-ListLink en8mxva5"
-                href="#tools-and-sdks-javascript"
-              >
-                JavaScript
-              </a>
-            </li>
-          </ul>
+            Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.
+          </p>
         </div>
       </div>
     </div>

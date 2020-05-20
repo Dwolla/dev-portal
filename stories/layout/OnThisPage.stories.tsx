@@ -3,8 +3,10 @@ import { storiesOf } from "@storybook/react";
 import { AnchorsSetter, AnchorsProvider } from "../../components/util/Anchors";
 import OnThisPage from "../../components/layout/OnThisPage";
 
-const Heading = (props: { children: string; originalType: "h1" | "h2" }) =>
-  createElement(props.originalType, props);
+const Heading = (props: {
+  children: string;
+  originalType: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}) => createElement(props.originalType, props);
 
 storiesOf("layout|OnThisPage", module).add("default", () => (
   <AnchorsProvider>
@@ -23,7 +25,7 @@ storiesOf("layout|OnThisPage", module).add("default", () => (
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <Heading originalType="h1">Hello 2</Heading>
+          <Heading originalType="h2">Hello 2</Heading>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&rsquo;s standard dummy
@@ -35,7 +37,7 @@ storiesOf("layout|OnThisPage", module).add("default", () => (
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <Heading originalType="h1">Hello 3</Heading>
+          <Heading originalType="h3">Hello 3</Heading>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&rsquo;s standard dummy
@@ -47,7 +49,7 @@ storiesOf("layout|OnThisPage", module).add("default", () => (
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <Heading originalType="h1">Hello 4</Heading>
+          <Heading originalType="h4">Hello 4</Heading>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&rsquo;s standard dummy
@@ -59,7 +61,7 @@ storiesOf("layout|OnThisPage", module).add("default", () => (
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <Heading originalType="h1">Hello 5</Heading>
+          <Heading originalType="h5">Hello 5</Heading>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&rsquo;s standard dummy
@@ -71,7 +73,7 @@ storiesOf("layout|OnThisPage", module).add("default", () => (
             passages, and more recently with desktop publishing software like
             Aldus PageMaker including versions of Lorem Ipsum.
           </p>
-          <Heading originalType="h1">Hello 6</Heading>
+          <Heading originalType="h6">Hello 6</Heading>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry&rsquo;s standard dummy
