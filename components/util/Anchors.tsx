@@ -48,19 +48,20 @@ export function AnchorsSetter(props) {
 
   const slugger = new GithubSlugger();
 
-  const children = Children.map(props.children, (c) => {
-    if (ANCHOR_EL_TYPES.includes(c.props.originalType)) {
-      const text = childrenToString(c.props.children);
-      const id = slugger.slug(text);
-      const level = ANCHOR_EL_TYPES.indexOf(c.props.originalType) + 1;
-      return (
-        <AnchorData anchor={{ id, text, level }}>
-          {cloneElement(c, { id })}
-        </AnchorData>
-      );
-    }
-    return c;
-  });
+  const children =
+    Children.map(props.children, (c) => {
+      if (ANCHOR_EL_TYPES.includes(c.props.originalType)) {
+        const text = childrenToString(c.props.children);
+        const id = slugger.slug(text);
+        const level = ANCHOR_EL_TYPES.indexOf(c.props.originalType) + 1;
+        return (
+          <AnchorData anchor={{ id, text, level }}>
+            {cloneElement(c, { id })}
+          </AnchorData>
+        );
+      }
+      return c;
+    }) || [];
 
   const anchors = children.reduce(
     (acc, current) =>

@@ -5,7 +5,7 @@ exports[`AlertBar - info 1`] = `
   className="info css-1lx65zb-StyledAlertBar enqryh0"
 >
   <div
-    className="css-lycpbi-ImageWrapper enqryh1"
+    className="css-113bhac-ImageWrapper enqryh1"
   >
     <img
       alt="Info"
@@ -25,7 +25,7 @@ exports[`AlertBar - warning 1`] = `
   className="warning css-1lx65zb-StyledAlertBar enqryh0"
 >
   <div
-    className="css-lycpbi-ImageWrapper enqryh1"
+    className="css-113bhac-ImageWrapper enqryh1"
   >
     <img
       alt="Warning"

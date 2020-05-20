@@ -3,8 +3,10 @@ import { createElement } from "react";
 import OnThisPage from "../OnThisPage";
 import { AnchorsProvider, AnchorsSetter } from "../../util/Anchors";
 
-const Heading = (props: { children: string; originalType: "h1" | "h2" }) =>
-  createElement(props.originalType, props);
+const Heading = (props: {
+  children: string;
+  originalType: "h1" | "h2" | "h3" | "h4";
+}) => createElement(props.originalType, props);
 
 test("with anchors", () => {
   const tree = renderer
@@ -12,9 +14,9 @@ test("with anchors", () => {
       <AnchorsProvider>
         <AnchorsSetter>
           <Heading originalType="h1">Hello 1</Heading>
-          <Heading originalType="h1">Hello 2</Heading>
-          <Heading originalType="h1">Hello 3</Heading>
-          <Heading originalType="h1">Hello 4</Heading>
+          <Heading originalType="h2">Hello 2</Heading>
+          <Heading originalType="h3">Hello 3</Heading>
+          <Heading originalType="h4">Hello 4</Heading>
         </AnchorsSetter>
         <OnThisPage topOfPageOffset={0} />
       </AnchorsProvider>

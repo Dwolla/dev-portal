@@ -30,7 +30,7 @@ exports[`SideNav 1`] = `
         </a>
         <a
           className="css-3bamg-SectionLink-SectionLink"
-          href="/docs/guides"
+          href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
@@ -45,7 +45,7 @@ exports[`SideNav 1`] = `
         </a>
         <a
           className="css-3bamg-SectionLink-SectionLink"
-          href="/docs/concepts"
+          href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >

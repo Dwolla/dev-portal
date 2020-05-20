@@ -16,7 +16,7 @@ function parseFrontMatter(src, filename) {
   return `export const frontMatter = ${stringifyObject({
     ...data,
     __resourcePath: filename.replace(path.join(cwd, "pages/"), ""),
-  })};
+  })};\n
 ${content}`;
 }
 

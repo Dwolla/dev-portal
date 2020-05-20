@@ -1,0 +1,28 @@
+---
+layout: guides
+title: "Overview"
+group:
+  category: Getting Started
+  title: Generate an OAuth Access Token
+guide:
+  step: 0
+  filter: prerequisites
+  icon: guides-icon.svg
+meta:
+  title: Dwolla's OAuth 2.0 | Dwolla API Documentation
+  description: Dwolla uses the OAuth 2 protocol, an authorization framework that enables a third-party application to obtain access to protected resources in the Dwolla API.
+---
+
+# Dwolla OAuth 2.0
+
+Dwolla utilizes the [OAuth 2 protocol](https://oauth.net/2/) to facilitate authorization. OAuth is an authorization framework that enables a third-party application to obtain access to protected resources (Transfers, Funding Sources, etc.) in the Dwolla API. The following guide will walk through Dwolla's implementation of OAuth and how it will be leveraged by your application.
+
+## Creating an application
+
+Before you can get started with making OAuth requests, you’ll need to first register an application with Dwolla by logging in and navigating to the applications page in the Dashboard. Once an application is registered you will obtain your `client_id` and `client_secret` (aka client credentials), which will be used to identify your application when calling the Dwolla API. The Sandbox environment provides you with a created application once you have signed up for an account. Learn more in our [getting started guide](/guides/sandbox-setup). **Remember:** Your client_secret should be kept a secret! Be sure to store your client credentials securely.
+
+## Dwolla's authorization flow
+
+The OAuth 2 protocol defines four main authorization grant types, more commonly referred to as OAuth flows. Dwolla implements one of these flows that third party applications will utilize to obtain authorization.
+
+**Application authorization:** - Using the [client credentials grant flow](/guides/auth/client-credentials-flow), your application will obtain authorization to interact with the API on its own behalf. This is a server-to-server flow with interaction between an application and the Dwolla API; also known as 2-legged OAuth.

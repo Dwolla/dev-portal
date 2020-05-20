@@ -1,0 +1,33 @@
+---
+# layout: twoColumn
+title: "Guides"
+description: "Programmatically send bank transfers with our developer API."
+---
+
+import IndexPageGrid from "../../components/partial/IndexPageGrid";
+import guidesIcon from "../../assets/images/content-icons/guides-icon.svg";
+import Pages from "../../modules/pages";
+
+export const GuideIndexPageGrid = () => {
+  const bannerProps = {
+    icon: guidesIcon,
+    topic: "Guides",
+    description:
+      "Step-by-step instructions to get you set up in the Dwolla API",
+  };
+  const guideOverviewPages = Pages.under("/guides").filter(
+    (guide) => !!guide.guide && guide.guide.step === 0
+  );
+  const guideCards = guideOverviewPages.map((page) => ({
+    topic: page.group.title,
+    description: page.meta.description,
+    icon: page.guide.icon,
+    category: page.guide.filter,
+    href: page.group.id,
+  }));
+  return (
+    <IndexPageGrid unfilteredCards={guideCards} bannerProps={bannerProps} />
+  );
+};
+
+<GuideIndexPageGrid />
