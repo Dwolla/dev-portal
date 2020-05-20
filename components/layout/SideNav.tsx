@@ -1,7 +1,6 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-
 import classnames from "classnames";
 import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
@@ -21,7 +20,6 @@ import caretUp from "../../assets/images/component-icons/caret-up.svg";
 import caretDown from "../../assets/images/component-icons/caret-down.svg";
 
 // proptypes
-
 export interface SideNavLinkProps {
   href: string;
   IconSvg: React.SFC<React.SVGProps<SVGSVGElement>>;
@@ -30,79 +28,27 @@ export interface SideNavLinkProps {
 }
 
 interface SideNavProps {
-  links: SideNavLinkProps[];
+  sectionLinks: SideNavLinkProps[];
   pages: Page[];
 }
 
-// reducer
-
-interface State {
-  toggledGroups: {};
-  mostRecentSectionHref: string;
-}
-
-const getInitialState = (pathname: string): State => {
-  const pathnameGroup = pathname
-    .split("/")
-    .slice(0, -1)
-    .join("/");
-  return {
-    toggledGroups: { [pathnameGroup]: true },
-    mostRecentSectionHref: null,
-  };
-};
-
-const toggleGroup = (groupId: string) => ({
-  type: "groupToggled",
-  payload: { groupId },
-});
-
-const setMostRecentSectionHref = (href: string) => ({
-  type: "mostRecentSectionHrefSet",
-  payload: { href },
-});
-
-type Action =
-  | ReturnType<typeof toggleGroup>
-  | ReturnType<typeof setMostRecentSectionHref>;
-
-// eslint-disable-next-line consistent-return
-const reducer = (state: State, action: Action): State => {
-  // eslint-disable-next-line default-case
-  switch (action.type) {
-    case "groupToggled":
-      return {
-        ...state,
-        toggledGroups: {
-          ...state.toggledGroups,
-          [(action as ReturnType<typeof toggleGroup>).payload.groupId]: !state
-            .toggledGroups[
-            (action as ReturnType<typeof toggleGroup>).payload.groupId
-          ],
-        },
-      };
-    case "mostRecentSectionHrefSet":
-      return {
-        ...state,
-        mostRecentSectionHref: (action as ReturnType<
-          typeof setMostRecentSectionHref
-        >).payload.href,
-      };
-  }
-};
-
 // helpers
-
 const bySection = (section: string) => (d) =>
   section && d.id.indexOf(`${section}/`) === 0;
 
+const getPagesInSection = (pages: Page[], section: SideNavLinkProps) =>
+  pages.filter(bySection(section.href));
+
 const getCategory = (d) => (d.group ? d.group.category : d.category);
 
-const isSelectedSection = (pathname: string) => (l: SideNavLinkProps) =>
-  l.isSection && (pathname === l.href || pathname.startsWith(`${l.href}/`));
-
-const hrefIs = (lastSelectedSectionHref: string) => (l: SideNavLinkProps) =>
-  l.href === lastSelectedSectionHref;
+const findSelectedSection = (
+  sectionLinks: SideNavLinkProps[],
+  pathname: string
+) =>
+  sectionLinks.find(
+    (section) =>
+      pathname === section.href || pathname.startsWith(`${section.href}/`)
+  );
 
 const keys = (o: Record<string, {}>): string[] => {
   const sorted = Object.keys(o).sort();
@@ -127,7 +73,6 @@ const byGuideStep = (a, b) =>
   a.guide && b.guide ? a.guide.step - b.guide.step : 0;
 
 // components
-
 const Container = styled.div`
   height: 100%;
 `;
@@ -139,7 +84,7 @@ const Slide = styled.div`
   transform: translate3d(0, 0, 0);
   transition: transform ease 0.4s;
 
-  &.selectedSection {
+  &.slidIn {
     transform: translate3d(-50%, 0, 0);
   }
 `;
@@ -280,6 +225,42 @@ const GroupCaret = styled.img`
   max-width: 7px;
 `;
 
+type DocGroupProps = {
+  title: string;
+  docs: Page[];
+};
+
+const DocGroup = ({ title, docs }: DocGroupProps) => {
+  const { pathname } = useRouter();
+  const [isExpanded, setIsExpanded] = useState(
+    !!docs.find((d) => d.id === pathname)
+  );
+  useEffect(() => {
+    setIsExpanded(docs.find((d) => d.id === pathname) ? true : isExpanded);
+  }, [pathname]);
+
+  return (
+    <>
+      <GroupToggle onClick={() => setIsExpanded(!isExpanded)}>
+        {title}
+
+        {isExpanded ? (
+          <GroupCaret src={caretUp} alt="" />
+        ) : (
+          <GroupCaret src={caretDown} alt="" />
+        )}
+      </GroupToggle>
+
+      {isExpanded &&
+        docs.sort(byGuideStep).map((d) => (
+          <DocLink key={d.id} grouped href={d.id} active={d.id === pathname}>
+            {d.title}
+          </DocLink>
+        ))}
+    </>
+  );
+};
+
 interface DocLinkProps {
   active: boolean;
   children: string;
@@ -314,36 +295,26 @@ function DocLink(props: DocLinkProps) {
   );
 }
 
-export default function SideNav(props: SideNavProps) {
+const SideNav = ({ sectionLinks, pages }: SideNavProps) => {
   const { pathname } = useRouter();
-  const [state, dispatch] = useReducer(reducer, getInitialState(pathname));
-  const selectedSection = props.links.find(isSelectedSection(pathname));
-  const selectedSectionHref = selectedSection?.href;
-
+  const [activeSection, setActiveSection] = useState(
+    findSelectedSection(sectionLinks, pathname)
+  );
   useEffect(() => {
-    if (selectedSectionHref) {
-      dispatch(setMostRecentSectionHref(selectedSectionHref));
-    }
-  }, [selectedSectionHref]);
+    setActiveSection(findSelectedSection(sectionLinks, pathname));
+  }, [pathname]);
 
-  const mostRecentSection = props.links.find(
-    hrefIs(state.mostRecentSectionHref)
+  const categories = groupby(
+    getPagesInSection(pages, activeSection),
+    getCategory
   );
-
-  const displayedSection = selectedSection || mostRecentSection;
-
-  const sectionDocs = props.pages.filter(
-    bySection(state.mostRecentSectionHref)
-  );
-
-  const groupedByCategory = groupby(sectionDocs, getCategory);
 
   return (
     <Container>
-      <Slide className={classnames({ selectedSection })}>
+      <Slide className={classnames({ slidIn: activeSection.isSection })}>
         <SlidePane>
           <SectionWrap>
-            {props.links.map((l) => (
+            {sectionLinks.map((l) => (
               <SectionLink
                 key={l.href}
                 isActive={l.href === pathname}
@@ -353,7 +324,7 @@ export default function SideNav(props: SideNavProps) {
           </SectionWrap>
         </SlidePane>
 
-        <SlidePane key={displayedSection?.href}>
+        <SlidePane key={activeSection?.href}>
           <SectionWrap>
             <SectionLink
               linkProps={{
@@ -365,18 +336,17 @@ export default function SideNav(props: SideNavProps) {
               isActive={false}
             />
 
-            {displayedSection && (
+            {activeSection && (
               <SectionLink
-                linkProps={{ ...displayedSection, isSection: false }}
+                linkProps={{ ...activeSection, isSection: false }}
                 isActive
               />
             )}
           </SectionWrap>
 
           <CategoriesWrap>
-            {keys(groupedByCategory).map((c) => {
-              const categoryDocs = groupedByCategory[c];
-
+            {keys(categories).map((c) => {
+              const categoryDocs = categories[c];
               const groups = groupsFrom(categoryDocs);
 
               return (
@@ -385,10 +355,7 @@ export default function SideNav(props: SideNavProps) {
 
                   {groups.map((g) => {
                     const docs = categoryDocs.filter(byDocGroup(g));
-
                     const ungroupedGroup = g === null;
-
-                    const groupToggled = state.toggledGroups[g];
 
                     return (
                       <div key={g}>
@@ -404,31 +371,10 @@ export default function SideNav(props: SideNavProps) {
                             </DocLink>
                           ))
                         ) : (
-                          <>
-                            <GroupToggle
-                              onClick={() => dispatch(toggleGroup(g))}
-                            >
-                              {groupTitle(categoryDocs, g)}
-
-                              {groupToggled ? (
-                                <GroupCaret src={caretUp} alt="" />
-                              ) : (
-                                <GroupCaret src={caretDown} alt="" />
-                              )}
-                            </GroupToggle>
-
-                            {groupToggled &&
-                              docs.sort(byGuideStep).map((d) => (
-                                <DocLink
-                                  key={d.id}
-                                  grouped
-                                  href={d.id}
-                                  active={d.id === pathname}
-                                >
-                                  {d.title}
-                                </DocLink>
-                              ))}
-                          </>
+                          <DocGroup
+                            title={groupTitle(categoryDocs, g)}
+                            docs={docs}
+                          />
                         )}
                       </div>
                     );
@@ -441,4 +387,6 @@ export default function SideNav(props: SideNavProps) {
       </Slide>
     </Container>
   );
-}
+};
+
+export default SideNav;

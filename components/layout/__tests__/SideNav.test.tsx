@@ -49,7 +49,7 @@ const SIDE_NAV_LINKS = [
 
 test("SideNav", () => {
   const tree = renderer
-    .create(<SideNav pages={Pages.all()} links={SIDE_NAV_LINKS} />)
+    .create(<SideNav pages={Pages.all()} sectionLinks={SIDE_NAV_LINKS} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

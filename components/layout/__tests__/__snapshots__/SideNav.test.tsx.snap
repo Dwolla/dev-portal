@@ -5,7 +5,7 @@ exports[`SideNav 1`] = `
   className="css-1gqrwdk-Container e10mac9s0"
 >
   <div
-    className=" css-1f0sx94-Slide e10mac9s1"
+    className=" css-1kvqy0s-Slide e10mac9s1"
   >
     <div
       className="css-p3a8sa-SlidePane e10mac9s2"
@@ -31,7 +31,7 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className="css-3bamg-SectionLink-SectionLink"
+          className=" css-1sa1dsx-SectionLink-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -56,7 +56,7 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className="css-3bamg-SectionLink-SectionLink"
+          className=" css-1sa1dsx-SectionLink-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -121,6 +121,23 @@ exports[`SideNav 1`] = `
             />
           </div>
           Back
+        </a>
+        <a
+          className="active css-1sa1dsx-SectionLink-SectionLink"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="css-thlorg-SectionIconWrap e10mac9s4"
+          >
+            <svg
+              className="section-icon"
+              height={17}
+              width={17}
+            />
+          </div>
+          Home
         </a>
       </div>
       <ul
