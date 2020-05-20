@@ -304,14 +304,17 @@ const SideNav = ({ sectionLinks, pages }: SideNavProps) => {
     setActiveSection(findSelectedSection(sectionLinks, pathname));
   }, [pathname]);
 
-  const categories = groupby(
-    getPagesInSection(pages, activeSection),
-    getCategory
-  );
+  const categories = activeSection
+    ? groupby(getPagesInSection(pages, activeSection), getCategory)
+    : {};
 
   return (
     <Container>
-      <Slide className={classnames({ slidIn: activeSection.isSection })}>
+      <Slide
+        className={classnames({
+          slidIn: activeSection && activeSection.isSection,
+        })}
+      >
         <SlidePane>
           <SectionWrap>
             {sectionLinks.map((l) => (
