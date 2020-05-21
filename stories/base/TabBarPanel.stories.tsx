@@ -57,6 +57,7 @@ const content = [
     content: "Here's some content related to Kotlin.",
   },
 ];
+
 storiesOf("base|TabBarPanel", module).add("Default", () => (
   <Container>
     <TabBarPanel tabs={content} />
