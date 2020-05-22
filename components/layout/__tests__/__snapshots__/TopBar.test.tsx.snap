@@ -2,52 +2,61 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-18kqr8q-Container e1xhgpyy0"
+  className="css-16rtae5-Container e1xhgpyy0"
 >
-  <a
-    className=" css-skf8jj-StyledLink e1xhgpyy3"
-    href="https://docs.dwolla.com"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    target="_blank"
-  >
-    <span
-      className="text"
-    >
-      API Docs
-    </span>
-    <img
-      alt="Open in new tab"
-      className="icon"
-      src="test-image-stub"
-    />
-  </a>
-  <a
-    className="active css-skf8jj-StyledLink e1xhgpyy3"
-    href="/changelog"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-  >
-    <span
-      className="text"
-    >
-      Changelog
-    </span>
-  </a>
-  <a
-    className="active css-skf8jj-StyledLink e1xhgpyy3"
-    href="/manually-active"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-  >
-    <span
-      className="text"
-    >
-      Manually Active
-    </span>
-  </a>
+  <img
+    alt=""
+    className="css-15o2exl-StyledLogo e1xhgpyy1"
+    src="test-image-stub"
+  />
   <div
-    className="css-zhv85h-SelectWrapper e1xhgpyy2"
+    className="css-ffwcst-LinksWrapper e1xhgpyy2"
+  >
+    <a
+      className=" css-skf8jj-StyledLink e1xhgpyy5"
+      href="https://docs.dwolla.com"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      target="_blank"
+    >
+      <span
+        className="text"
+      >
+        API Docs
+      </span>
+      <img
+        alt="Open in new tab"
+        className="icon"
+        src="test-image-stub"
+      />
+    </a>
+    <a
+      className="active css-skf8jj-StyledLink e1xhgpyy5"
+      href="/changelog"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <span
+        className="text"
+      >
+        Changelog
+      </span>
+    </a>
+    <a
+      className="active css-skf8jj-StyledLink e1xhgpyy5"
+      href="/manually-active"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <span
+        className="text"
+      >
+        Manually Active
+      </span>
+    </a>
+  </div>
+  <div
+    className="css-zhv85h-SelectWrapper e1xhgpyy4"
   >
     <div
       className=" css-k377xg-container"
@@ -102,14 +111,17 @@ exports[`TopBar 1`] = `
     </div>
   </div>
   <div
-    className="css-1px9jcr-ButtonWrapper e1xhgpyy1"
+    className="css-1as8qu1-ButtonWrapper e1xhgpyy3"
   >
-    <button
-      className="primary standard css-xjnv7x-ButtonStyle e12ysvgk0"
-      type="button"
+    <a
+      className="primary standard css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+      href="https://accounts-sandbox.dwolla.com/login"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      target="_blank"
     >
       Get API Keys
-    </button>
+    </a>
   </div>
 </div>
 `;

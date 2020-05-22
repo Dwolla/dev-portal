@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/core";
+import Link from "next/link";
 import {
   WHITE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
@@ -17,25 +19,28 @@ import { POPPINS } from "../typography";
 
 type Props = {
   text: string;
-  size: "tiny" | "small" | "standard" | "large";
+  size: "tiny" | "small" | "standard" | "large" | "block";
   variant: "primary" | "secondary" | "hollow-light" | "hollow-dark";
   type?: "button" | "submit" | "reset";
+  link?: { href: string; external: boolean };
 };
 
-function Button({ text, size, variant, type = "button" }: Props) {
-  return (
-    <ButtonStyle type={type} className={`${variant} ${size}`}>
+const Button = ({ text, size, variant, type = "button", link }: Props) =>
+  link && link.href ? (
+    <ButtonLink text={text} size={size} variant={variant} link={link} />
+  ) : (
+    <StyledButton type={type} className={`${variant} ${size}`}>
       {text}
-    </ButtonStyle>
+    </StyledButton>
   );
-}
 
-const ButtonStyle = styled.button`
+const buttonStyles = css`
   color: ${WHITE_PRIMARY};
   font-family: ${POPPINS};
   font-style: thin;
   border-radius: 5px;
   cursor: pointer;
+  text-decoration: none;
   :focus {
     outline: 0;
   }
@@ -56,12 +61,20 @@ const ButtonStyle = styled.button`
     padding: 15px 25px;
     font-size: 16px;
   }
+  &.block {
+    padding: 10px 15px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
 
   &.primary {
     background-color: ${PURPLE_PRIMARY_BUTTON};
     border-color: transparent;
 
-    :hover {
+    :hover,
+    :focus {
       background-color: ${PURPLE_PRIMARY_HOVER};
       box-shadow: ${BOX_SHADOW_6};
     }
@@ -74,7 +87,8 @@ const ButtonStyle = styled.button`
     background-color: ${PINK_SECONDARY_BUTTON};
     border-color: transparent;
 
-    :hover {
+    :hover,
+    :focus {
       background-color: ${PINK_SECONDARY_HOVER};
       box-shadow: ${BOX_SHADOW_6};
     }
@@ -86,7 +100,8 @@ const ButtonStyle = styled.button`
   &.hollow-light {
     border: 1px solid ${GREY_4};
     color: ${GREY_9};
-    :hover {
+    :hover,
+    :focus {
       border-color: ${GREY_5};
     }
   }
@@ -94,11 +109,31 @@ const ButtonStyle = styled.button`
     border: 1px solid ${WHITE_PRIMARY};
     color: ${WHITE_PRIMARY};
     background: transparent;
-    :hover {
+    :hover,
+    :focus {
       background-color: ${WHITE_PRIMARY};
       color: ${PURPLE_DARK};
     }
   }
 `;
+
+const StyledButton = styled.button`
+  ${buttonStyles}
+`;
+
+const StyledLink = styled.a`
+  ${buttonStyles}
+`;
+
+const ButtonLink = ({ text, size, variant, link }: Props) => (
+  <Link href={link.href} passHref>
+    <StyledLink
+      target={link.external && "_blank"}
+      className={`${variant} ${size}`}
+    >
+      {text}
+    </StyledLink>
+  </Link>
+);
 
 export default Button;

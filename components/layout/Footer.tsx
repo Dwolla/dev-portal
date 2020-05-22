@@ -3,7 +3,7 @@ import map from "lodash.map";
 import { HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
-import logo from "../../assets/images/dwolla-developers-logo.png";
+import logo from "../../assets/images/dwolla-developers-logo.svg";
 
 const Container = styled.div`
   display: flex;

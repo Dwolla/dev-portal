@@ -47,9 +47,29 @@ const SIDE_NAV_LINKS = [
   },
 ];
 
+const TOP_BAR_PROPS = {
+  button: {
+    text: "Get API Keys",
+    link: {
+      href: "https://accounts-sandbox.dwolla.com/login",
+      external: true,
+    },
+  },
+  links: [
+    { text: "API Docs", href: "https://docs.dwolla.com", external: true },
+    { text: "Changelog", href: "/changelog" },
+  ],
+};
+
 test("SideNav", () => {
   const tree = renderer
-    .create(<SideNav pages={Pages.all()} sectionLinks={SIDE_NAV_LINKS} />)
+    .create(
+      <SideNav
+        pages={Pages.all()}
+        sectionLinks={SIDE_NAV_LINKS}
+        mobileItems={TOP_BAR_PROPS}
+      />
+    )
     .toJSON();
   expect(tree).toMatchSnapshot();
 });
