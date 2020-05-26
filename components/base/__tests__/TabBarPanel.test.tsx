@@ -1,12 +1,12 @@
 import renderer from "react-test-renderer";
 import TabBarPanel from "../TabBarPanel";
-import phpGray from "../../assets/images/content-icons/php-gray.svg";
-import pythonGray from "../../assets/images/content-icons/python-gray.svg";
-import rubyColor from "../../assets/images/content-icons/ruby-color.svg";
-import rubyGray from "../../assets/images/content-icons/ruby-gray.svg";
-import cSharpGray from "../../assets/images/content-icons/c-sharp-gray.svg";
-import kotlinGray from "../../assets/images/content-icons/kotlin-gray.svg";
-import nodeGray from "../../assets/images/content-icons/node-gray.svg";
+import phpGray from "../../assets/images/content-images/content-icons/php-gray.svg";
+import pythonGray from "../../assets/images/content-images/content-icons/python-gray.svg";
+import rubyColor from "../../assets/images/content-images/content-icons/ruby-color.svg";
+import rubyGray from "../../assets/images/content-images/content-icons/ruby-gray.svg";
+import cSharpGray from "../../assets/images/content-images/content-icons/c-sharp-gray.svg";
+import kotlinGray from "../../assets/images/content-images/content-icons/kotlin-gray.svg";
+import nodeGray from "../../assets/images/content-images/content-icons/node-gray.svg";
 
 const content = [
   {

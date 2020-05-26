@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import Banner from "../../components/base/Banner";
 import FilterTabs from "../../components/base/FilterTabs";
-import guideIcon from "../../assets/images/content-icons/guides-icon.svg";
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 // Filters to display as tabs
 const TABS = [
