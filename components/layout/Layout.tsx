@@ -148,7 +148,7 @@ export default function Layout({
         </LogoWrapper>
 
         <SideNavWrapper>
-          <SideNav links={sideNavLinks} pages={pages} />
+          <SideNav sectionLinks={sideNavLinks} pages={pages} />
         </SideNavWrapper>
 
         <APIStatusBar apiStatus={apiStatus} />

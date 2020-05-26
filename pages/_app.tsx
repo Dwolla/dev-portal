@@ -7,10 +7,10 @@ import { AnchorsProvider } from "../components/util/Anchors";
 import { LanguageContext } from "../components/util/Contexts";
 import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
-import homeIcon from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
-import guidesIcon from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
-import conceptsIcon from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
-import sdksToolsIcon from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
+import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
+import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
+import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
+import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
@@ -18,25 +18,25 @@ const STATUS_PAGE_SUMMARY_URL =
 const SIDE_NAV_LINKS = [
   {
     href: "/",
-    iconSrc: homeIcon,
+    IconSvg: HomeIcon,
     isSection: false,
     text: "Home",
   },
   {
     href: "/guides",
-    iconSrc: guidesIcon,
+    IconSvg: GuidesIcon,
     isSection: true,
     text: "Guides",
   },
   {
     href: "/concepts",
-    iconSrc: conceptsIcon,
+    IconSvg: ConceptsIcon,
     isSection: true,
     text: "Concepts",
   },
   {
     href: "/sdks-tools",
-    iconSrc: sdksToolsIcon,
+    IconSvg: SdksToolsIcon,
     isSection: false,
     text: "SDKs & Tools",
   },

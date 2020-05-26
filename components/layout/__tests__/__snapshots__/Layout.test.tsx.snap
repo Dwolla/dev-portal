@@ -26,70 +26,94 @@ Array [
         className="css-1gqrwdk-Container e10mac9s0"
       >
         <div
-          className=" css-1f0sx94-Slide e10mac9s1"
+          className=" css-1kvqy0s-Slide e10mac9s1"
         >
           <div
             className="css-p3a8sa-SlidePane e10mac9s2"
           >
             <div
-              className="css-1klu905-SectionLinksWrapper e10mac9s9"
+              className="css-ir8yxa-SectionWrap e10mac9s3"
             >
               <a
-                className="css-3bamg-SectionLink-SectionLink"
+                className="active css-1sa1dsx-SectionLink-SectionLink"
                 href="/"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
-                <div>
-                  <img
-                    alt="Home"
-                    className="css-1nhdjhw-StyledIcon e10mac9s8"
-                    src="test-image-stub"
+                <div
+                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                >
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
                   />
                 </div>
                 Home
               </a>
               <a
-                className="css-3bamg-SectionLink-SectionLink"
+                className=" css-1sa1dsx-SectionLink-SectionLink"
                 href="/guides"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
-                <div>
-                  <img
-                    alt="Guides"
-                    className="css-1nhdjhw-StyledIcon e10mac9s8"
-                    src="test-image-stub"
+                <div
+                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                >
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
                   />
                 </div>
                 Guides
+                <div
+                  className="css-y8ea5i-SectionCaretWrap e10mac9s5"
+                >
+                  <svg
+                    height={10}
+                    width={5}
+                  />
+                </div>
               </a>
               <a
-                className="css-3bamg-SectionLink-SectionLink"
+                className=" css-1sa1dsx-SectionLink-SectionLink"
                 href="/concepts"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
-                <div>
-                  <img
-                    alt="Concepts"
-                    className="css-1nhdjhw-StyledIcon e10mac9s8"
-                    src="test-image-stub"
+                <div
+                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                >
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
                   />
                 </div>
                 Concepts
+                <div
+                  className="css-y8ea5i-SectionCaretWrap e10mac9s5"
+                >
+                  <svg
+                    height={10}
+                    width={5}
+                  />
+                </div>
               </a>
               <a
-                className="css-3bamg-SectionLink-SectionLink"
+                className=" css-1sa1dsx-SectionLink-SectionLink"
                 href="/sdks-tools"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
-                <div>
-                  <img
-                    alt="SDKs & Tools"
-                    className="css-1nhdjhw-StyledIcon e10mac9s8"
-                    src="test-image-stub"
+                <div
+                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                >
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
                   />
                 </div>
                 SDKs & Tools
@@ -100,30 +124,45 @@ Array [
             className="css-p3a8sa-SlidePane e10mac9s2"
           >
             <div
-              className="css-mhn8j-StickyTop e10mac9s3"
+              className="css-ir8yxa-SectionWrap e10mac9s3"
             >
-              <div
-                className="css-1klu905-SectionLinksWrapper e10mac9s9"
+              <a
+                className=" css-1sa1dsx-SectionLink-SectionLink"
+                href="/"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
               >
-                <a
-                  className="css-3bamg-SectionLink-SectionLink"
-                  href="/"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
+                <div
+                  className="css-thlorg-SectionIconWrap e10mac9s4"
                 >
-                  <div>
-                    <img
-                      alt="Back Home"
-                      className="css-1nhdjhw-StyledIcon e10mac9s8"
-                      src="test-image-stub"
-                    />
-                  </div>
-                  Back Home
-                </a>
-              </div>
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
+                  />
+                </div>
+                Back
+              </a>
+              <a
+                className="active css-1sa1dsx-SectionLink-SectionLink"
+                href="/"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <div
+                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                >
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
+                  />
+                </div>
+                Home
+              </a>
             </div>
             <ul
-              className="css-1ekxq2g-CategoriesNav e10mac9s4"
+              className="css-9j0rf2-CategoriesWrap e10mac9s6"
             />
           </div>
         </div>
@@ -150,7 +189,7 @@ Array [
         className="css-18kqr8q-Container e1xhgpyy0"
       >
         <a
-          className=" css-mrweef-StyledLink e1xhgpyy3"
+          className=" css-skf8jj-StyledLink e1xhgpyy3"
           href="https://docs.dwolla.com"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -168,7 +207,7 @@ Array [
           />
         </a>
         <a
-          className=" css-mrweef-StyledLink e1xhgpyy3"
+          className=" css-skf8jj-StyledLink e1xhgpyy3"
           href="/changelog"
           onClick={[Function]}
           onMouseEnter={[Function]}
