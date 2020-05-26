@@ -112,6 +112,7 @@ Array [
         className="css-wbod5t-CardWrapper e1k3ap261"
       >
         <a
+          className="css-kunpmx-StyledLink e10u28532"
           href="/guides/send-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -150,6 +151,7 @@ Array [
         className="css-wbod5t-CardWrapper e1k3ap261"
       >
         <a
+          className="css-kunpmx-StyledLink e10u28532"
           href="/guides/receive-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -188,6 +190,7 @@ Array [
         className="css-wbod5t-CardWrapper e1k3ap261"
       >
         <a
+          className="css-kunpmx-StyledLink e10u28532"
           href="/guides/transfer-money-between-users/obtain-access-token"
           onClick={[Function]}
           onMouseEnter={[Function]}

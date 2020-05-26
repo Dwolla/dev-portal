@@ -1,5 +1,50 @@
 ---
-title: Concepts
+title: "Concepts"
+description: "Understand the fundamental building blocks of integrating with the Dwolla Platform"
 ---
 
-# Concepts
+import styled from "@emotion/styled";
+import IndexPageGrid from "../../components/partial/IndexPageGrid";
+import FooterCTA from "../../components/base/FooterCTA";
+import conceptsIcon from "../../assets/images/content-images/content-icons/concepts.svg";
+import Pages from "../../modules/pages";
+
+export const ConceptIndexPageGrid = () => {
+  const bannerProps = {
+    icon: conceptsIcon,
+    topic: "Concepts",
+    description:
+      "Understand the fundamental building blocks of integrating with the Dwolla Platform",
+  };
+  const conceptPages = Pages.under("/concepts").filter(
+    (concept) => !!concept.concept
+  );
+  const conceptCards = conceptPages.map((page) => ({
+    topic: page.group.title,
+    description: page.group.description,
+    icon: page.concept.icon,
+    href: page.group.id,
+  }));
+  return (
+    <IndexPageGrid unfilteredCards={conceptCards} bannerProps={bannerProps} />
+  );
+};
+
+export const FooterWrap = styled.div`
+  margin: 40px -40px 0;
+`;
+
+<ConceptIndexPageGrid />
+<FooterWrap>
+  <FooterCTA
+    topic="Test in the Sandbox for free today."
+    description="Use sandbox environment to test API requests."
+    button={{
+      text: "Get API Keys",
+      link: {
+        href: "https://accounts-sandbox.dwolla.com/sign-up",
+        external: true,
+      },
+    }}
+  />
+</FooterWrap>

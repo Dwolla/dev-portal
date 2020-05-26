@@ -20,7 +20,7 @@ export const GuideIndexPageGrid = () => {
   );
   const guideCards = guideOverviewPages.map((page) => ({
     topic: page.group.title,
-    description: page.meta.description,
+    description: page.group.description,
     icon: page.guide.icon,
     category: page.guide.filter,
     href: page.group.id,
