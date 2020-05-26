@@ -75,7 +75,7 @@ type Props = {
 function ExternalCTA({ icon, title, description, href }: Props) {
   return (
     <Link href={href} passHref>
-      <Container>
+      <Container target="_blank">
         <StyledIcon src={icon} alt="" />
         <TextContainer>
           {title && <StyledTitle>{title}</StyledTitle>}

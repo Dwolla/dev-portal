@@ -6,6 +6,7 @@ exports[`External CTA 1`] = `
   href="https://discuss.dwolla.com/"
   onClick={[Function]}
   onMouseEnter={[Function]}
+  target="_blank"
 >
   <img
     alt=""
@@ -42,6 +43,7 @@ exports[`No title 1`] = `
   href="https://discuss.dwolla.com/"
   onClick={[Function]}
   onMouseEnter={[Function]}
+  target="_blank"
 >
   <img
     alt=""
