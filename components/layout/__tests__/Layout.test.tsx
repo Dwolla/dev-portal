@@ -77,7 +77,13 @@ const FOOTER_LEGAL_COPY = {
 };
 
 const TOP_BAR_PROPS = {
-  button: { text: "Get API Keys" },
+  button: {
+    text: "Get API Keys",
+    link: {
+      href: "https://accounts-sandbox.dwolla.com/login",
+      external: true,
+    },
+  },
   links: [
     { text: "API Docs", href: "https://docs.dwolla.com", external: true },
     { text: "Changelog", href: "/changelog" },

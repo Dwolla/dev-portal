@@ -18,11 +18,14 @@ exports[`FooterCTA 1`] = `
       Use sandbox environment to test API requests.
     </p>
   </div>
-  <button
-    className="primary large css-xjnv7x-ButtonStyle e12ysvgk0"
-    type="button"
+  <a
+    className="primary large css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+    href="https://accounts-sandbox.dwolla.com/sign-up"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    target="_blank"
   >
-    Get a Sandbox Account
-  </button>
+    Get API Keys
+  </a>
 </div>
 `;

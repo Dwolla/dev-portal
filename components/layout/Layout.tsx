@@ -8,12 +8,12 @@ import classnames from "classnames";
 import { useState } from "react";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
-import { breakUp } from "../breakpoints";
-import TopBar, { TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
+import { breakUp, breakDown } from "../breakpoints";
+import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
 import closeIcon from "../../assets/images/component-icons/close.svg";
-import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.png";
+import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.svg";
 
 export const LEFT_SIDEBAR_PADDING_X = "20px";
 
@@ -28,16 +28,20 @@ const LeftSidebar = styled.div`
   flex-direction: column;
   justify-content: space-between;
   border-right: 1px solid ${GREY_2};
-  transform: translate3d(0, -100vh, 0);
+  transition: opacity 300ms;
+  opacity: 0;
+  pointer-events: none;
   z-index: 9999;
 
   @media (${breakUp("lg")}) {
     right: 75%;
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    pointer-events: auto;
   }
 
   &.toggled {
-    transform: translate3d(0, 0, 0);
+    opacity: 1;
+    pointer-events: auto;
   }
 `;
 
@@ -45,6 +49,15 @@ const LogoWrapper = styled.div`
   padding: 12px ${LEFT_SIDEBAR_PADDING_X};
   background: white;
   flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (${breakDown("md")}) {
+    border-bottom: 1px solid ${GREY_2};
+    height: ${TOP_BAR_HEIGHT}px;
+    min-height: ${TOP_BAR_HEIGHT}px;
+  }
 `;
 
 const SideNavWrapper = styled.div`
@@ -130,25 +143,40 @@ export default function Layout({
       <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
         <LogoWrapper>
           <img
+            src={dwollaDevLogo}
+            alt="Dwolla Developers Logo"
+            css={css`
+              @media (${breakDown("md")}) {
+                max-height: 100%;
+              }
+
+              @media (${breakDown("xs")}) {
+                max-width: 115px;
+              }
+            `}
+          />
+
+          <img
             src={closeIcon}
             alt=""
             onClick={hideSidebar}
             css={css`
               width: 14px;
-              float: right;
-              transform: translate3d(0, 15px, 0);
+              cursor: pointer;
 
               @media (${breakUp("lg")}) {
                 display: none;
               }
             `}
           />
-
-          <img src={dwollaDevLogo} alt="Dwolla Developers Logo" />
         </LogoWrapper>
 
         <SideNavWrapper>
-          <SideNav sectionLinks={sideNavLinks} pages={pages} />
+          <SideNav
+            sectionLinks={sideNavLinks}
+            pages={pages}
+            mobileItems={topBarProps}
+          />
         </SideNavWrapper>
 
         <APIStatusBar apiStatus={apiStatus} />

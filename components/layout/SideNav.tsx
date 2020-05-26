@@ -6,6 +6,11 @@ import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import {
+  TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
+  TopBarLinkProps as MobileLinkProps, // eslint-disable-line no-unused-vars
+} from "./TopBar";
+import Button from "../base/Button";
+import {
   ORANGE_PRIMARY,
   WHITE_PRIMARY,
   GREY_1,
@@ -13,11 +18,12 @@ import {
   GREY_6,
 } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
-import { breakDown } from "../breakpoints";
+import { breakUp, breakDown } from "../breakpoints";
 import { ReactComponent as BackIcon } from "../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
 import caretUp from "../../assets/images/component-icons/caret-up.svg";
 import caretDown from "../../assets/images/component-icons/caret-down.svg";
+import openInNewTabIcon from "../../assets/images/component-icons/open-in-new-tab-icon.svg";
 
 // proptypes
 export interface SideNavLinkProps {
@@ -30,6 +36,7 @@ export interface SideNavLinkProps {
 interface SideNavProps {
   sectionLinks: SideNavLinkProps[];
   pages: Page[];
+  mobileItems: MobileItemProps;
 }
 
 // helpers
@@ -98,10 +105,20 @@ const SlidePane = styled.div`
 `;
 
 const SectionWrap = styled.div`
+  @media (${breakDown("md")}) {
+    padding-top: 17px;
+  }
+`;
+
+const StickySectionWrap = styled.div`
   position: sticky;
   top: 0;
   background-color: ${WHITE_PRIMARY};
   z-index: 9;
+
+  @media (${breakDown("md")}) {
+    padding-top: 17px;
+  }
 `;
 
 const SectionIconWrap = styled.div`
@@ -145,8 +162,10 @@ const SectionLink = ({ linkProps, isActive }: SectionLinkProps) => {
           color: ${GREY_6};
           text-decoration: none;
 
-          &:hover {
+          &:hover,
+          &:focus {
             background-color: ${GREY_1};
+            outline: none;
           }
 
           &.active {
@@ -207,9 +226,11 @@ const groupToggleDocLinkStyles = css`
   border-left: 1px solid transparent;
   margin-left: -1px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     border-left: 1px solid ${GREY_6};
     background-color: ${GREY_1};
+    outline: none;
   }
 `;
 
@@ -241,7 +262,13 @@ const DocGroup = ({ title, docs }: DocGroupProps) => {
 
   return (
     <>
-      <GroupToggle onClick={() => setIsExpanded(!isExpanded)}>
+      <GroupToggle
+        tabIndex={0}
+        onClick={() => setIsExpanded(!isExpanded)}
+        onKeyPress={(e) =>
+          e.key === "Enter" ? setIsExpanded(!isExpanded) : false
+        } // eslint-disable-line react/jsx-curly-newline
+      >
         {title}
 
         {isExpanded ? (
@@ -295,7 +322,84 @@ function DocLink(props: DocLinkProps) {
   );
 }
 
-const SideNav = ({ sectionLinks, pages }: SideNavProps) => {
+const MobileWrap = styled.div`
+  margin-top: 17px;
+  padding-top: 17px;
+  border-top: 1px solid ${GREY_2};
+
+  @media (${breakUp("lg")}) {
+    display: none;
+  }
+`;
+
+const MobileLink = ({ href, external, text, active }: MobileLinkProps) => {
+  return (
+    <Link href={href} passHref>
+      <a
+        target={external && "_blank"}
+        className={classnames({ active })}
+        css={css`
+          display: flex;
+          height: 30px;
+          padding: 0 20px;
+          align-items: center;
+          justify-content: flex-start;
+          font-family: ${POPPINS};
+          font-size: 14px;
+          color: ${GREY_6};
+          text-decoration: none;
+
+          &:hover {
+            background-color: ${GREY_1};
+          }
+
+          &.active {
+            font-weight: 500;
+            color: ${ORANGE_PRIMARY};
+          }
+
+          .icon {
+            margin-left: 15px;
+            width: 13px;
+            height: 13px;
+          }
+        `}
+      >
+        <span className="text">{text}</span>
+
+        {external && (
+          <img className="icon" src={openInNewTabIcon} alt="Open in new tab" />
+        )}
+      </a>
+    </Link>
+  );
+};
+
+const MobileButtonWrap = styled.div`
+  padding: 17px 20px;
+`;
+
+const MobileItems = ({ links, button }: MobileItemProps) => {
+  const { pathname } = useRouter();
+
+  return (
+    <>
+      {links.map((l) => (
+        <MobileLink
+          key={l.href}
+          {...l}
+          active={l.active || l.href === pathname}
+        />
+      ))}
+
+      <MobileButtonWrap>
+        <Button {...button} size="block" variant="primary" />
+      </MobileButtonWrap>
+    </>
+  );
+};
+
+const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
   const { pathname } = useRouter();
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
@@ -316,36 +420,44 @@ const SideNav = ({ sectionLinks, pages }: SideNavProps) => {
         })}
       >
         <SlidePane>
-          <SectionWrap>
-            {sectionLinks.map((l) => (
-              <SectionLink
-                key={l.href}
-                isActive={l.href === pathname}
-                linkProps={l}
-              />
-            ))}
-          </SectionWrap>
+          {!(activeSection && activeSection.isSection) && (
+            <SectionWrap>
+              {sectionLinks.map((l) => (
+                <SectionLink
+                  key={l.href}
+                  isActive={l.href === pathname}
+                  linkProps={l}
+                />
+              ))}
+            </SectionWrap>
+          )}
+
+          <MobileWrap>
+            <MobileItems {...mobileItems} />
+          </MobileWrap>
         </SlidePane>
 
         <SlidePane key={activeSection?.href}>
-          <SectionWrap>
-            <SectionLink
-              linkProps={{
-                href: "/",
-                IconSvg: BackIcon,
-                isSection: false,
-                text: "Back",
-              }}
-              isActive={false}
-            />
+          <StickySectionWrap>
+            {activeSection && activeSection.isSection && (
+              <>
+                <SectionLink
+                  linkProps={{
+                    href: "/",
+                    IconSvg: BackIcon,
+                    isSection: false,
+                    text: "Back",
+                  }}
+                  isActive={false}
+                />
 
-            {activeSection && (
-              <SectionLink
-                linkProps={{ ...activeSection, isSection: false }}
-                isActive
-              />
+                <SectionLink
+                  linkProps={{ ...activeSection, isSection: false }}
+                  isActive
+                />
+              </>
             )}
-          </SectionWrap>
+          </StickySectionWrap>
 
           <CategoriesWrap>
             {keys(categories).map((c) => {
@@ -386,6 +498,10 @@ const SideNav = ({ sectionLinks, pages }: SideNavProps) => {
               );
             })}
           </CategoriesWrap>
+
+          <MobileWrap>
+            <MobileItems {...mobileItems} />
+          </MobileWrap>
         </SlidePane>
       </Slide>
     </Container>

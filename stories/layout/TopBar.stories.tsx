@@ -40,7 +40,13 @@ storiesOf("layout|TopBar", module)
   .addDecorator(LanguageContextDecorator)
   .add("default", () => (
     <TopBar
-      button={{ text: "Get API Keys" }}
+      button={{
+        text: "Get API Keys",
+        link: {
+          href: "https://accounts-sandbox.dwolla.com/sign-up",
+          external: true,
+        },
+      }}
       links={[
         { text: "API Docs", href: "https://docs.dwolla.com", external: true },
         { text: "Changelog", href: "/changelog" },
@@ -49,7 +55,13 @@ storiesOf("layout|TopBar", module)
   ))
   .add("active link", () => (
     <TopBar
-      button={{ text: "Get API Keys" }}
+      button={{
+        text: "Get API Keys",
+        link: {
+          href: "https://accounts-sandbox.dwolla.com/sign-up",
+          external: true,
+        },
+      }}
       links={[
         { text: "API Docs", href: "https://docs.dwolla.com", external: true },
         { text: "Changelog", href: "/changelog", active: true },
@@ -59,7 +71,13 @@ storiesOf("layout|TopBar", module)
   .add("accessing language selection", () => (
     <>
       <TopBar
-        button={{ text: "Get API Keys" }}
+        button={{
+          text: "Get API Keys",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/sign-up",
+            external: true,
+          },
+        }}
         links={[
           { text: "API Docs", href: "https://docs.dwolla.com", external: true },
           { text: "Changelog", href: "/changelog" },

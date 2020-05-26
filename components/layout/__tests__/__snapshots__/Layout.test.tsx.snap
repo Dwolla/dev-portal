@@ -3,19 +3,20 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className=" css-p9rgcl-LeftSidebar eu5n9bq0"
+    className=" css-78dp3d-LeftSidebar eu5n9bq0"
   >
     <div
-      className="css-3xwi1s-LogoWrapper eu5n9bq1"
+      className="css-wvabyo-LogoWrapper eu5n9bq1"
     >
       <img
-        alt=""
-        className="css-1o5w4ty-Layout-Layout"
-        onClick={[Function]}
+        alt="Dwolla Developers Logo"
+        className="css-1wij0m6-Layout-Layout"
         src="test-image-stub"
       />
       <img
-        alt="Dwolla Developers Logo"
+        alt=""
+        className="css-189x3u4-Layout-Layout"
+        onClick={[Function]}
         src="test-image-stub"
       />
     </div>
@@ -32,16 +33,16 @@ Array [
             className="css-p3a8sa-SlidePane e10mac9s2"
           >
             <div
-              className="css-ir8yxa-SectionWrap e10mac9s3"
+              className="css-kgvw59-SectionWrap e10mac9s3"
             >
               <a
-                className="active css-1sa1dsx-SectionLink-SectionLink"
+                className="active css-kyteuo-SectionLink-SectionLink"
                 href="/"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                  className="css-thlorg-SectionIconWrap e10mac9s5"
                 >
                   <svg
                     className="section-icon"
@@ -52,13 +53,13 @@ Array [
                 Home
               </a>
               <a
-                className=" css-1sa1dsx-SectionLink-SectionLink"
+                className=" css-kyteuo-SectionLink-SectionLink"
                 href="/guides"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                  className="css-thlorg-SectionIconWrap e10mac9s5"
                 >
                   <svg
                     className="section-icon"
@@ -68,7 +69,7 @@ Array [
                 </div>
                 Guides
                 <div
-                  className="css-y8ea5i-SectionCaretWrap e10mac9s5"
+                  className="css-y8ea5i-SectionCaretWrap e10mac9s6"
                 >
                   <svg
                     height={10}
@@ -77,13 +78,13 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-1sa1dsx-SectionLink-SectionLink"
+                className=" css-kyteuo-SectionLink-SectionLink"
                 href="/concepts"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                  className="css-thlorg-SectionIconWrap e10mac9s5"
                 >
                   <svg
                     className="section-icon"
@@ -93,7 +94,7 @@ Array [
                 </div>
                 Concepts
                 <div
-                  className="css-y8ea5i-SectionCaretWrap e10mac9s5"
+                  className="css-y8ea5i-SectionCaretWrap e10mac9s6"
                 >
                   <svg
                     height={10}
@@ -102,13 +103,13 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-1sa1dsx-SectionLink-SectionLink"
+                className=" css-kyteuo-SectionLink-SectionLink"
                 href="/sdks-tools"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
                 <div
-                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                  className="css-thlorg-SectionIconWrap e10mac9s5"
                 >
                   <svg
                     className="section-icon"
@@ -119,51 +120,110 @@ Array [
                 SDKs & Tools
               </a>
             </div>
+            <div
+              className="css-nasyo1-MobileWrap e10mac9s12"
+            >
+              <a
+                className=" css-1twa2js-MobileLink-MobileLink"
+                href="https://docs.dwolla.com"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                target="_blank"
+              >
+                <span
+                  className="text"
+                >
+                  API Docs
+                </span>
+                <img
+                  alt="Open in new tab"
+                  className="icon"
+                  src="test-image-stub"
+                />
+              </a>
+              <a
+                className=" css-1twa2js-MobileLink-MobileLink"
+                href="/changelog"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+              >
+                <span
+                  className="text"
+                >
+                  Changelog
+                </span>
+              </a>
+              <div
+                className="css-vogkcz-MobileButtonWrap e10mac9s13"
+              >
+                <a
+                  className="primary block css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+                  href="https://accounts-sandbox.dwolla.com/login"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  target="_blank"
+                >
+                  Get API Keys
+                </a>
+              </div>
+            </div>
           </div>
           <div
             className="css-p3a8sa-SlidePane e10mac9s2"
           >
             <div
-              className="css-ir8yxa-SectionWrap e10mac9s3"
+              className="css-1ra4fr8-StickySectionWrap e10mac9s4"
+            />
+            <ul
+              className="css-9j0rf2-CategoriesWrap e10mac9s7"
+            />
+            <div
+              className="css-nasyo1-MobileWrap e10mac9s12"
             >
               <a
-                className=" css-1sa1dsx-SectionLink-SectionLink"
-                href="/"
+                className=" css-1twa2js-MobileLink-MobileLink"
+                href="https://docs.dwolla.com"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                target="_blank"
               >
-                <div
-                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                <span
+                  className="text"
                 >
-                  <svg
-                    className="section-icon"
-                    height={17}
-                    width={17}
-                  />
-                </div>
-                Back
+                  API Docs
+                </span>
+                <img
+                  alt="Open in new tab"
+                  className="icon"
+                  src="test-image-stub"
+                />
               </a>
               <a
-                className="active css-1sa1dsx-SectionLink-SectionLink"
-                href="/"
+                className=" css-1twa2js-MobileLink-MobileLink"
+                href="/changelog"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
               >
-                <div
-                  className="css-thlorg-SectionIconWrap e10mac9s4"
+                <span
+                  className="text"
                 >
-                  <svg
-                    className="section-icon"
-                    height={17}
-                    width={17}
-                  />
-                </div>
-                Home
+                  Changelog
+                </span>
               </a>
+              <div
+                className="css-vogkcz-MobileButtonWrap e10mac9s13"
+              >
+                <a
+                  className="primary block css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+                  href="https://accounts-sandbox.dwolla.com/login"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  target="_blank"
+                >
+                  Get API Keys
+                </a>
+              </div>
             </div>
-            <ul
-              className="css-9j0rf2-CategoriesWrap e10mac9s6"
-            />
           </div>
         </div>
       </div>
@@ -186,40 +246,49 @@ Array [
       className="css-jrlzw3-TopBarWrapper eu5n9bq5"
     >
       <div
-        className="css-18kqr8q-Container e1xhgpyy0"
+        className="css-16rtae5-Container e1xhgpyy0"
       >
-        <a
-          className=" css-skf8jj-StyledLink e1xhgpyy3"
-          href="https://docs.dwolla.com"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          target="_blank"
-        >
-          <span
-            className="text"
-          >
-            API Docs
-          </span>
-          <img
-            alt="Open in new tab"
-            className="icon"
-            src="test-image-stub"
-          />
-        </a>
-        <a
-          className=" css-skf8jj-StyledLink e1xhgpyy3"
-          href="/changelog"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <span
-            className="text"
-          >
-            Changelog
-          </span>
-        </a>
+        <img
+          alt=""
+          className="css-15o2exl-StyledLogo e1xhgpyy1"
+          src="test-image-stub"
+        />
         <div
-          className="css-zhv85h-SelectWrapper e1xhgpyy2"
+          className="css-ffwcst-LinksWrapper e1xhgpyy2"
+        >
+          <a
+            className=" css-skf8jj-StyledLink e1xhgpyy5"
+            href="https://docs.dwolla.com"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            target="_blank"
+          >
+            <span
+              className="text"
+            >
+              API Docs
+            </span>
+            <img
+              alt="Open in new tab"
+              className="icon"
+              src="test-image-stub"
+            />
+          </a>
+          <a
+            className=" css-skf8jj-StyledLink e1xhgpyy5"
+            href="/changelog"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <span
+              className="text"
+            >
+              Changelog
+            </span>
+          </a>
+        </div>
+        <div
+          className="css-zhv85h-SelectWrapper e1xhgpyy4"
         >
           <div
             className=" css-k377xg-container"
@@ -274,17 +343,20 @@ Array [
           </div>
         </div>
         <div
-          className="css-1px9jcr-ButtonWrapper e1xhgpyy1"
+          className="css-1as8qu1-ButtonWrapper e1xhgpyy3"
         >
-          <button
-            className="primary standard css-xjnv7x-ButtonStyle e12ysvgk0"
-            type="button"
+          <a
+            className="primary standard css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+            href="https://accounts-sandbox.dwolla.com/login"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+            target="_blank"
           >
             Get API Keys
-          </button>
+          </a>
         </div>
         <div
-          className="css-mtvnhp-Hamburger e1xhgpyy4"
+          className="css-1gc2exo-Hamburger e1xhgpyy6"
           onClick={[Function]}
         />
       </div>

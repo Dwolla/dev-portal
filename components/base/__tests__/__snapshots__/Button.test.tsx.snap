@@ -2,9 +2,21 @@
 
 exports[`Button 1`] = `
 <button
-  className="primary standard css-xjnv7x-ButtonStyle e12ysvgk0"
+  className="primary standard css-1mbgqrf-StyledButton-buttonStyles-buttonStyles e12ysvgk0"
   type="button"
 >
   Button
 </button>
+`;
+
+exports[`Link Button 1`] = `
+<a
+  className="primary standard css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  target="_blank"
+>
+  Button
+</a>
 `;
