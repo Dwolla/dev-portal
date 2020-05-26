@@ -8,6 +8,7 @@ test("External CTA", () => {
       <ExternalCTA
         icon={developerCommunityIcon}
         title="Developer Support"
+        href="https://discuss.dwolla.com/"
         description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
       />
     )
@@ -21,6 +22,7 @@ test("No title", () => {
     .create(
       <ExternalCTA
         icon={developerCommunityIcon}
+        href="https://discuss.dwolla.com/"
         description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
       />
     )

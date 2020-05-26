@@ -10,12 +10,14 @@ storiesOf("base|External CTA", module)
     <ExternalCTA
       icon={developerCommunityIcon}
       title="Developer Support"
+      href="https://discuss.dwolla.com/"
       description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
     />
   ))
   .add("No title", () => (
     <ExternalCTA
       icon={developerCommunityIcon}
+      href="https://discuss.dwolla.com/"
       description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
     />
   ));

@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`External CTA 1`] = `
-<div
-  className="css-bjwdi1-Container evdv0mj0"
+<a
+  className="css-4h6wsz-Container evdv0mj0"
+  href="https://discuss.dwolla.com/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
 >
   <img
     alt=""
@@ -30,12 +33,15 @@ exports[`External CTA 1`] = `
       width={13}
     />
   </div>
-</div>
+</a>
 `;
 
 exports[`No title 1`] = `
-<div
-  className="css-bjwdi1-Container evdv0mj0"
+<a
+  className="css-4h6wsz-Container evdv0mj0"
+  href="https://discuss.dwolla.com/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
 >
   <img
     alt=""
@@ -58,5 +64,5 @@ exports[`No title 1`] = `
       width={13}
     />
   </div>
-</div>
+</a>
 `;
