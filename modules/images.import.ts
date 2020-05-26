@@ -7,7 +7,11 @@ const importAllImagesFromContext = (r) => {
 };
 
 export const contentIcons = importAllImagesFromContext(
-  require.context("../assets/images/content-icons", false, /\.(png|jpe?g|svg)$/)
+  require.context(
+    "../assets/images/content-images/content-icons",
+    false,
+    /\.(png|jpe?g|svg)$/
+  )
 );
 
 export default importAllImagesFromContext;

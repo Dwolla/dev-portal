@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
 import Card from "../../components/base/Card";
 import CardGrid from "../../components/base/CardGrid";
-import guideIcon from "../../assets/images/content-icons/guides-icon.svg";
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 const Container = styled.div`
   padding: 30px;

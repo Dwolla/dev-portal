@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import InlineCTA from "../InlineCTA";
-import guideIcon from "../assets/images/content-icons/guides-icon.svg";
+import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
 
 test("Inline CTA", () => {
   const tree = renderer

@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import Banner from "../Banner";
 import FilterTabs, { TabStyle } from "../FilterTabs";
-import guideIcon from "../../assets/images/content-icons/guides-icon.svg";
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 test("Default Banner", () => {
   const tree = renderer
