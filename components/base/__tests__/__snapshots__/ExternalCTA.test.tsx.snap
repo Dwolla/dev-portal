@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`External CTA 1`] = `
+<a
+  className="css-4h6wsz-Container evdv0mj0"
+  href="https://discuss.dwolla.com/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  target="_blank"
+>
+  <img
+    alt=""
+    className="css-1a99zw-StyledIcon evdv0mj1"
+    src="test-image-stub"
+  />
+  <div
+    className="css-1m6i3g5-TextContainer evdv0mj2"
+  >
+    <div
+      className="css-6x8wkn-StyledTitle evdv0mj3"
+    >
+      Developer Support
+    </div>
+    <div
+      className="css-hn4nzi-StyledDescription evdv0mj4"
+    >
+      Interact with the developer community and Dwolla developer support to find answers to your technical questions.
+    </div>
+  </div>
+  <div
+    className="css-howqhj-StyledNewTab evdv0mj5"
+  >
+    <svg
+      width={13}
+    />
+  </div>
+</a>
+`;
+
+exports[`No title 1`] = `
+<a
+  className="css-4h6wsz-Container evdv0mj0"
+  href="https://discuss.dwolla.com/"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  target="_blank"
+>
+  <img
+    alt=""
+    className="css-1a99zw-StyledIcon evdv0mj1"
+    src="test-image-stub"
+  />
+  <div
+    className="css-1m6i3g5-TextContainer evdv0mj2"
+  >
+    <div
+      className="css-hn4nzi-StyledDescription evdv0mj4"
+    >
+      Interact with the developer community and Dwolla developer support to find answers to your technical questions.
+    </div>
+  </div>
+  <div
+    className="css-howqhj-StyledNewTab evdv0mj5"
+  >
+    <svg
+      width={13}
+    />
+  </div>
+</a>
+`;
