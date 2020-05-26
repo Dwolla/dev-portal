@@ -50,6 +50,10 @@ const StyledContent = styled.div`
 // Props
 type ButtonProps = {
   text: string;
+  link?: {
+    href: string;
+    external: boolean;
+  };
 };
 type Props = { topic: string; description: string; button?: ButtonProps };
 

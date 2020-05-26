@@ -26,4 +26,12 @@ storiesOf("base|Button", module)
   ))
   .add("Hollow-dark Standard", () => (
     <Button text="Button" size="standard" variant="hollow-dark" />
+  ))
+  .add("Link Button", () => (
+    <Button
+      text="Link"
+      size="standard"
+      variant="primary"
+      link={{ href: "https://www.dwolla.com", external: true }}
+    />
   ));

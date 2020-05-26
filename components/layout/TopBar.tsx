@@ -9,7 +9,8 @@ import { POPPINS } from "../typography";
 import Button from "../base/Button";
 import Select from "../base/select/Select";
 import { LanguageContext } from "../util/Contexts";
-import { breakUp } from "../breakpoints";
+import { breakUp, breakDown } from "../breakpoints";
+import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.svg";
 
 export const TOP_BAR_HEIGHT = 68;
 
@@ -20,11 +21,39 @@ const Container = styled.div`
   border-bottom: 1px solid ${GREY_2};
   background: rgba(255, 255, 255, 0.98);
   padding: 0 20px;
+
+  @media (${breakDown("md")}) {
+    padding: 12px 20px;
+  }
+`;
+
+const StyledLogo = styled.img`
+  max-height: 100%;
+
+  @media (${breakUp("lg")}) {
+    display: none;
+  }
+
+  @media (${breakDown("xs")}) {
+    max-width: 115px;
+  }
+`;
+
+const LinksWrapper = styled.div`
+  height: 100%;
+
+  @media (${breakDown("md")}) {
+    display: none;
+  }
 `;
 
 const ButtonWrapper = styled.div`
   margin-left: auto;
   padding-right: 20px;
+
+  @media (${breakDown("md")}) {
+    display: none;
+  }
 `;
 
 const SelectWrapper = styled.div`
@@ -64,7 +93,7 @@ const StyledLink = styled.a`
   }
 `;
 
-type TopBarLinkProps = {
+export type TopBarLinkProps = {
   href: string;
   external?: boolean;
   text: string;
@@ -91,6 +120,10 @@ export function TopBarLink({ href, external, text, active }: TopBarLinkProps) {
 
 export type TopBarButtonProps = {
   text: string;
+  link: {
+    href: string;
+    external: boolean;
+  };
 };
 
 export type TopBarProps = {
@@ -102,6 +135,8 @@ export type TopBarProps = {
 const Hamburger = styled.div`
   width: 15px;
   height: 12px;
+  margin-left: auto;
+  cursor: pointer;
   background-image: linear-gradient(
     to bottom,
     #000,
@@ -134,13 +169,17 @@ export default function TopBar({
 
   return (
     <Container>
-      {links.map((l) => (
-        <TopBarLink
-          key={l.href}
-          {...l}
-          active={l.active || l.href === router?.pathname}
-        />
-      ))}
+      <StyledLogo src={dwollaDevLogo} alt="" />
+
+      <LinksWrapper>
+        {links.map((l) => (
+          <TopBarLink
+            key={l.href}
+            {...l}
+            active={l.active || l.href === router?.pathname}
+          />
+        ))}
+      </LinksWrapper>
 
       <SelectWrapper>
         <Select

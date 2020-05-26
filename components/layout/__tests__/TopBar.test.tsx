@@ -17,7 +17,13 @@ test("TopBar", () => {
   const tree = renderer
     .create(
       <TopBar
-        button={{ text: "Get API Keys" }}
+        button={{
+          text: "Get API Keys",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/login",
+            external: true,
+          },
+        }}
         links={[
           { text: "API Docs", href: "https://docs.dwolla.com", external: true },
           { text: "Changelog", href: "/changelog" },
