@@ -1,20 +1,47 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useState } from "react";
-// import Link from "next/link";
-import { Tab, Tabs, TabList } from "react-tabs";
-import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
-import { WHITE_PRIMARY } from "../colors";
+import { GREY_2, WHITE_PRIMARY } from "../colors";
 
 // Styles
-
-const StyledIcon = styled.img`
-  /* max-height: 90px; */
+const Container = styled.div`
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid ${GREY_2};
+  border-radius: 5px;
+  background-color: ${WHITE_PRIMARY};
 `;
 
-// const StyledLink = styled.a`
-//   text-decoration: none;
-// `;
+const StyledTabList = styled.ul`
+  height: 100%;
+  list-style-type: none;
+  padding: unset;
+  margin: unset;
+  border-radius: 5px;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  /* Tab Bar will scroll on smaller screens */
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  > :nth-of-type(1) {
+    padding-left: 40px;
+  }
+  > :nth-last-of-type(1) {
+    padding-right: 40px;
+  }
+`;
+
+const StyledLink = styled.a`
+  text-decoration: none;
+  flex-grow: 1;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
 // Props
 type TabProps = {
@@ -28,70 +55,34 @@ type Props = {
   tabs: TabProps[];
 };
 
-function FooterCTA({ tabs }: Props) {
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+function LogoLinks({ tabs }: Props) {
+  const [activeTab, setActiveTab] = useState(null);
   return (
-    <>
-      <Global
-        styles={css`
-          .container {
-            height: 120px;
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid #eaedf3;
-            border-radius: 5px;
-            background-color: ${WHITE_PRIMARY};
-          }
-          .tab-list {
-            height: 100%;
-            %border-radius: 5px;
-            margin: unset;
-            padding: unset;
-            list-style: none;
-            display: flex;
-            align-content: stretch;
-            flex-wrap: nowrap;
-            /* Tab Bar will scroll on smaller screens */
-            overflow-x: auto;
-            &::-webkit-scrollbar {
-              display: none;
-            }
-          }
-          .tab {
-            flex-grow: 1;
-            padding: 15px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-          }
-          .react-tabs__tab--selected {
-            background-color: inherit;
-          }
-        `}
-      ></Global>
-      <Tabs
-        className="container"
-        onSelect={(index) => setActiveTab(tabs[index])}
-      >
-        <TabList className="tab-list">
-          {tabs.map((tab, index) => (
-            // <Link href={tab.href} key={`${tab.label}-${tab.href}`}>
-            // <a>
-            <Tab className="tab" key={index}>
-              <StyledIcon
+    <Container>
+      <StyledTabList>
+        {tabs.map((tab, index) => (
+          <StyledLink
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            href={tab.href}
+            rel="noopener noreferrer"
+            target="_blank"
+            onMouseEnter={() => setActiveTab(tab)}
+            onMouseLeave={() => setActiveTab(null)}
+            onFocus={() => setActiveTab(tab)}
+            onBlur={() => setActiveTab(null)}
+          >
+            <li>
+              <img
                 src={tab === activeTab ? tab.iconActive : tab.icon}
-                onMouseEnter={() => setActiveTab(tab)}
                 alt={tab.label}
               />
-            </Tab>
-            // </a>
-            // </Link>
-          ))}
-        </TabList>
-      </Tabs>
-    </>
+            </li>
+          </StyledLink>
+        ))}
+      </StyledTabList>
+    </Container>
   );
 }
 
-export default FooterCTA;
+export default LogoLinks;
