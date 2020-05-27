@@ -20,10 +20,10 @@ export const ConceptIndexPageGrid = () => {
     (concept) => !!concept.concept
   );
   const conceptCards = conceptPages.map((page) => ({
-    topic: page.group.title,
-    description: page.group.description,
+    topic: page.title,
+    description: page.description,
     icon: page.concept.icon,
-    href: page.group.id,
+    href: page.id,
   }));
   return (
     <IndexPageGrid unfilteredCards={conceptCards} bannerProps={bannerProps} />
