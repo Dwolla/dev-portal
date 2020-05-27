@@ -56,7 +56,9 @@ type Props = {
 };
 
 function LogoLinks({ tabs }: Props) {
-  const [activeTab, setActiveTab] = useState(null);
+  const [hoverTab, setHoverTab] = useState(null);
+  const [focusTab, setFocusTab] = useState(null);
+
   return (
     <Container>
       <StyledTabList>
@@ -67,14 +69,18 @@ function LogoLinks({ tabs }: Props) {
             href={tab.href}
             rel="noopener noreferrer"
             target="_blank"
-            onMouseEnter={() => setActiveTab(tab)}
-            onMouseLeave={() => setActiveTab(null)}
-            onFocus={() => setActiveTab(tab)}
-            onBlur={() => setActiveTab(null)}
+            onMouseEnter={() => setHoverTab(tab)}
+            onMouseLeave={() => setHoverTab(null)}
+            onFocus={() => setFocusTab(tab)}
+            onBlur={() => setFocusTab(null)}
           >
             <li>
               <img
-                src={tab === activeTab ? tab.iconActive : tab.icon}
+                src={
+                  tab === hoverTab || tab === focusTab
+                    ? tab.iconActive
+                    : tab.icon
+                }
                 alt={tab.label}
               />
             </li>
