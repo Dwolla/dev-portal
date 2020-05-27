@@ -38,6 +38,7 @@ type Props = {
 
 function TabBarPanel({ tabs }: Props) {
   const [activeTab, setActiveTab] = useState(tabs[0]);
+  const [hoverTab, setHoverTab] = useState(null);
 
   return (
     <>
@@ -105,9 +106,15 @@ function TabBarPanel({ tabs }: Props) {
                 "is-active": tab === activeTab,
               })}
               key={index}
+              onMouseEnter={() => setHoverTab(tab)}
+              onMouseLeave={() => setHoverTab(null)}
             >
               <StyledIcon
-                src={tab === activeTab ? tab.iconActive : tab.icon}
+                src={
+                  tab === activeTab || tab === hoverTab
+                    ? tab.iconActive
+                    : tab.icon
+                }
                 alt={tab.label}
               />
             </Tab>

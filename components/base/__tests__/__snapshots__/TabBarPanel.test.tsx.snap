@@ -17,6 +17,8 @@ exports[`TabBarPanel 1`] = `
       aria-selected="true"
       className="tab is-active react-tabs__tab--selected"
       id="react-tabs-0"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       role="tab"
       tabIndex="0"
     >
@@ -32,6 +34,8 @@ exports[`TabBarPanel 1`] = `
       aria-selected="false"
       className="tab"
       id="react-tabs-2"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       role="tab"
       tabIndex={null}
     >
@@ -47,6 +51,8 @@ exports[`TabBarPanel 1`] = `
       aria-selected="false"
       className="tab"
       id="react-tabs-4"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       role="tab"
       tabIndex={null}
     >
@@ -62,6 +68,8 @@ exports[`TabBarPanel 1`] = `
       aria-selected="false"
       className="tab"
       id="react-tabs-6"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       role="tab"
       tabIndex={null}
     >
@@ -77,6 +85,8 @@ exports[`TabBarPanel 1`] = `
       aria-selected="false"
       className="tab"
       id="react-tabs-8"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       role="tab"
       tabIndex={null}
     >
@@ -92,6 +102,8 @@ exports[`TabBarPanel 1`] = `
       aria-selected="false"
       className="tab"
       id="react-tabs-10"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
       role="tab"
       tabIndex={null}
     >

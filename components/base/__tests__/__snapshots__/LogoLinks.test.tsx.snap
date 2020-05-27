@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogoLinks 1`] = `
+<div
+  className="css-1w40n55-Container e12mau650"
+>
+  <ul
+    className="css-1qwgtli-StyledTabList e12mau651"
+  >
+    <a
+      className="css-1wymnmd-StyledLink e12mau652"
+      href="https://github.com/Dwolla/dwolla-v2-node"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <li>
+        <img
+          alt="node"
+          src="test-image-stub"
+        />
+      </li>
+    </a>
+    <a
+      className="css-1wymnmd-StyledLink e12mau652"
+      href="https://github.com/Dwolla/dwolla-v2-ruby"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <li>
+        <img
+          alt="ruby"
+          src="test-image-stub"
+        />
+      </li>
+    </a>
+    <a
+      className="css-1wymnmd-StyledLink e12mau652"
+      href="https://github.com/Dwolla/dwolla-v2-python"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <li>
+        <img
+          alt="python"
+          src="test-image-stub"
+        />
+      </li>
+    </a>
+    <a
+      className="css-1wymnmd-StyledLink e12mau652"
+      href="https://github.com/Dwolla/dwolla-swagger-php"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <li>
+        <img
+          alt="php"
+          src="test-image-stub"
+        />
+      </li>
+    </a>
+    <a
+      className="css-1wymnmd-StyledLink e12mau652"
+      href="https://github.com/Dwolla/dwolla-v2-csharp"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <li>
+        <img
+          alt="c-sharp"
+          src="test-image-stub"
+        />
+      </li>
+    </a>
+    <a
+      className="css-1wymnmd-StyledLink e12mau652"
+      href="https://github.com/Dwolla/dwolla-v2-kotlin"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <li>
+        <img
+          alt="kotlin"
+          src="test-image-stub"
+        />
+      </li>
+    </a>
+  </ul>
+</div>
+`;
