@@ -65,8 +65,7 @@ const CardStyle = styled.div`
   &.center {
     max-width: none;
     height: auto;
-    width: 656px;
-    padding: 0px;
+    padding: 0 30px;
     position: relative;
     text-align: center;
     @media (${breakDown("xs")}) {
