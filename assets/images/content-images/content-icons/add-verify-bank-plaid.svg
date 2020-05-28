@@ -1,0 +1,20 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #d9725c;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <title>icon-add-verify-bank-plaid-48x48</title>
+  <polyline class="cls-1" points="42 6 46 19 18 46 6 42 42 6 30 2 2 30"/>
+  <g>
+    <polyline class="cls-1" points="6 6 2 19 30 46 42 42"/>
+    <polygon class="cls-1" points="6 6 42 42 46 30 18 2 6 6"/>
+  </g>
+  <line class="cls-1" x1="6" y1="42" x2="2" y2="30"/>
+</svg>

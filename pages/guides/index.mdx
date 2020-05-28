@@ -5,7 +5,7 @@ description: "Programmatically send bank transfers with our developer API."
 ---
 
 import IndexPageGrid from "../../components/partial/IndexPageGrid";
-import guidesIcon from "../../assets/images/content-icons/guides-icon.svg";
+import guidesIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 import Pages from "../../modules/pages";
 
 export const GuideIndexPageGrid = () => {
@@ -13,14 +13,14 @@ export const GuideIndexPageGrid = () => {
     icon: guidesIcon,
     topic: "Guides",
     description:
-      "Step-by-step instructions to get you set up in the Dwolla API",
+      "Step-by-step walkthroughs ensure your application is built to best practices",
   };
   const guideOverviewPages = Pages.under("/guides").filter(
     (guide) => !!guide.guide && guide.guide.step === 0
   );
   const guideCards = guideOverviewPages.map((page) => ({
     topic: page.group.title,
-    description: page.meta.description,
+    description: page.group.description,
     icon: page.guide.icon,
     category: page.guide.filter,
     href: page.group.id,
