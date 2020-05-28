@@ -2,7 +2,7 @@
 
 exports[`Banner - no icon 1`] = `
 <div
-  className=" css-1cx8r1g-StyledBanner eyaavg40"
+  className=" css-1w3gvwd-StyledBanner eyaavg40"
 >
   <div
     className="css-1ctbztb-StyledTopic eyaavg42"
@@ -19,7 +19,7 @@ exports[`Banner - no icon 1`] = `
 
 exports[`Banner - with Button 1`] = `
 <div
-  className=" css-1cx8r1g-StyledBanner eyaavg40"
+  className=" css-1w3gvwd-StyledBanner eyaavg40"
 >
   <div
     className="css-1ctbztb-StyledTopic eyaavg42"
@@ -31,18 +31,21 @@ exports[`Banner - with Button 1`] = `
   >
     Step-by-step instructions to get you set up in the Dwolla API
   </div>
-  <button
-    className="primary standard css-1mbgqrf-StyledButton-buttonStyles-buttonStyles e12ysvgk0"
-    type="button"
+  <a
+    className="primary large css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+    href="https://accounts-sandbox.dwolla.com/login"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    target="_blank"
   >
     Discover the Possibilities
-  </button>
+  </a>
 </div>
 `;
 
 exports[`Banner - with Filters 1`] = `
 <div
-  className="filters css-1cx8r1g-StyledBanner eyaavg40"
+  className="filters css-1w3gvwd-StyledBanner eyaavg40"
 >
   <img
     alt=""
@@ -153,7 +156,7 @@ exports[`Banner - with Filters 1`] = `
 
 exports[`Default Banner 1`] = `
 <div
-  className=" css-1cx8r1g-StyledBanner eyaavg40"
+  className=" css-1w3gvwd-StyledBanner eyaavg40"
 >
   <img
     alt=""

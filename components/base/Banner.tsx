@@ -95,7 +95,7 @@ function Banner({ icon, topic, description, button, filterTabs }: Props) {
       <StyledDescription className={classnames({ filters: filterTabs })}>
         {description}
       </StyledDescription>
-      {button && <Button {...button} size="standard" variant="primary" />}
+      {button && <Button {...button} size="large" variant="primary" />}
       {filterTabs && <StyledFilter>{filterTabs}</StyledFilter>}
     </StyledBanner>
   );
