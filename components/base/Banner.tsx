@@ -7,7 +7,7 @@ import { breakDown } from "../breakpoints";
 
 // Styled Banner component
 const StyledBanner = styled.div`
-  height: 304px;
+  height: 100%;
   background-color: ${PURPLE_DARK};
   padding: 40px;
   display: flex;
@@ -71,6 +71,10 @@ const StyledFilter = styled.div`
 // Button props
 export type ButtonProps = {
   text: string;
+  link: {
+    href: string;
+    external: boolean;
+  };
 };
 
 // Prop Types
