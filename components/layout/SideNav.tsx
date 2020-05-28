@@ -6,6 +6,7 @@ import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import sortBy from "lodash.sortby";
+import uniqBy from "lodash.uniqby";
 import {
   TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
   TopBarLinkProps as MobileLinkProps, // eslint-disable-line no-unused-vars
@@ -67,16 +68,13 @@ const keys = (o: Record<string, {}>): string[] => {
 };
 
 const byDocGroup = (g: string) => (d: Page) =>
-  (!d.group && g === null) || (d.group && d.group.id === g);
+  (!d.group && typeof g === "undefined") || (d.group && d.group.id === g);
 
-const groupTitle = (docs, group) =>
-  docs.find((d) => d.group && d.group.id === group).group.title;
-
-const groupsFrom = (categoryDocs: Page[]) => [
-  ...(new Set(categoryDocs.map((d) => (d.group ? d.group.id : null))) as Set<
-    string
-  >),
-];
+const groupsFrom = (categoryDocs: Page[]): PageGroup[] =>
+  uniqBy(
+    categoryDocs.map((c) => c.group),
+    (g) => g?.id
+  );
 
 const byGuideStep = (a, b) =>
   a.guide && b.guide ? a.guide.step - b.guide.step : 0;
@@ -86,7 +84,7 @@ const sortCategories = (sectionHref: string, categories: string[]) => {
   return sortBy(categories, (c) => categoryOrder.indexOf(c));
 };
 
-const sortByWeight = (docs: Page[]) => sortBy(docs, (d: Page) => d.weight);
+const sortByWeight = (items) => sortBy(items, (i) => i?.weight);
 
 // components
 const Container = styled.div`
@@ -475,16 +473,16 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
 
               return (
                 <Category key={c}>
-                  {c && <CategoryHeading>{c}</CategoryHeading>}
+                  {c !== "undefined" && <CategoryHeading>{c}</CategoryHeading>}
 
-                  {groups.map((g) => {
-                    const docs = categoryDocs.filter(byDocGroup(g));
-                    const ungroupedGroup = g === null;
+                  {sortByWeight(groups).map((g?: PageGroup) => {
+                    const docs = categoryDocs.filter(byDocGroup(g?.id));
+                    const ungroupedGroup = typeof g === "undefined";
 
                     return (
-                      <div key={g}>
+                      <div key={g?.id}>
                         {ungroupedGroup ? (
-                          sortByWeight(docs).map((d) => (
+                          sortByWeight(docs).map((d: Page) => (
                             <DocLink
                               key={d.id}
                               grouped={false}
@@ -495,10 +493,7 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                             </DocLink>
                           ))
                         ) : (
-                          <DocGroup
-                            title={groupTitle(categoryDocs, g)}
-                            docs={docs}
-                          />
+                          <DocGroup title={g?.title} docs={docs} />
                         )}
                       </div>
                     );
