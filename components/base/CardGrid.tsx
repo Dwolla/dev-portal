@@ -5,6 +5,9 @@ const StyledGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin: -15px;
+  &.center {
+    justify-content: center;
+  }
 `;
 const CardWrapper = styled.div`
   width: 25%;
@@ -25,10 +28,11 @@ const CardWrapper = styled.div`
 `;
 type Props = {
   children: JSX.Element[];
+  variant?: "default" | "center";
 };
-export default function CardGrid({ children }: Props) {
+export default function CardGrid({ children, variant }: Props) {
   return (
-    <StyledGrid>
+    <StyledGrid className={variant}>
       {children.map((item, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <CardWrapper key={index}>{item}</CardWrapper>

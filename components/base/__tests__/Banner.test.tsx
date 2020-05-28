@@ -36,7 +36,13 @@ test("Banner - with Button", () => {
       <Banner
         topic="Comprehensive API documentation for developers and businesses."
         description="Step-by-step instructions to get you set up in the Dwolla API"
-        button={{ text: "Discover the Possibilities" }}
+        button={{
+          text: "Discover the Possibilities",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/login",
+            external: true,
+          },
+        }}
       />
     )
     .toJSON();

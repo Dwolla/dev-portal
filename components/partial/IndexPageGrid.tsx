@@ -11,6 +11,7 @@ import { contentIcons } from "../../modules/images.import";
 
 const BannerWrap = styled.div`
   margin: -20px -40px 40px -40px;
+  height: 304px;
 `;
 
 const CardGridWrap = styled.div`

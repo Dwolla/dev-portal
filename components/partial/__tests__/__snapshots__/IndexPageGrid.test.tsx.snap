@@ -3,10 +3,10 @@
 exports[`IndexPageGrid 1`] = `
 Array [
   <div
-    className="css-14oiyjc-BannerWrap e10u28530"
+    className="css-q48buj-BannerWrap e10u28530"
   >
     <div
-      className="filters css-1cx8r1g-StyledBanner eyaavg40"
+      className="filters css-1w3gvwd-StyledBanner eyaavg40"
     >
       <img
         alt=""
@@ -106,7 +106,7 @@ Array [
     className="css-1ujvi4q-CardGridWrap e10u28531"
   >
     <div
-      className="css-1vq1bk2-StyledGrid e1k3ap260"
+      className="css-1nr538h-StyledGrid e1k3ap260"
     >
       <div
         className="css-wbod5t-CardWrapper e1k3ap261"

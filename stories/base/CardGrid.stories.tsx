@@ -11,7 +11,7 @@ const Container = styled.div`
 
 storiesOf("base|CardGrid", module).add("default", () => (
   <Container>
-    <CardGrid>
+    <CardGrid variant="default">
       <Card
         icon={guideIcon}
         topic="This is the Topic"
