@@ -5,6 +5,7 @@ description: "From ideation, to implementation, and beyond, the Dwolla API is yo
 
 import Link from "next/link";
 import styled from "@emotion/styled";
+import CardGrid from "../components/base/CardGrid";
 import Card from "../components/base/Card";
 import ExternalCTA from "../components/base/ExternalCTA";
 import Banner from "../components/base/Banner";
@@ -47,12 +48,13 @@ export const BannerWrapper = styled.div`
 
 export const ContentContainer = styled.div`
   padding: 60px;
+  > h3 {
+    margin: unset;
+    margin: 60px 0px 17px 0px;
+  }
 `;
 
-export const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 30px;
+export const CardGridWrapper = styled.div`
   margin-top: -110px;
   padding-bottom: 60px;
 `;
@@ -159,38 +161,40 @@ export default function HomePage() {
         />
       </BannerWrapper>
       <ContentContainer>
-        <CardGrid>
-          <Link href="/guides" key="Guides" passHref>
-            <StyledLink>
+        <CardGridWrapper>
+          <CardGrid>
+            <Link href="/guides" key="Guides" passHref>
+              <StyledLink>
+                <Card
+                  icon={guideIcon}
+                  topic="Guides"
+                  description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
+                />
+              </StyledLink>
+            </Link>
+            <Link href="/concepts" key="Concepts" passHref>
+              <StyledLink>
+                <Card
+                  icon={conceptIcon}
+                  topic="Concepts"
+                  description="Transform your use case to business and functional requirements."
+                />
+              </StyledLink>
+            </Link>
+            <StyledLink
+              href="https://docs.dwolla.com/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <Card
-                icon={guideIcon}
-                topic="Guides"
-                description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
+                icon={apiReferenceIcon}
+                link
+                topic="API Reference"
+                description="View details for all of Dwolla’s API endpoints with a complete reference"
               />
             </StyledLink>
-          </Link>
-          <Link href="/concepts" key="Concepts" passHref>
-            <StyledLink>
-              <Card
-                icon={conceptIcon}
-                topic="Concepts"
-                description="Transform your use case to business and functional requirements."
-              />
-            </StyledLink>
-          </Link>
-          <StyledLink
-            href="https://docs.dwolla.com/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Card
-              icon={apiReferenceIcon}
-              link
-              topic="API Reference"
-              description="View details for all of Dwolla’s API endpoints with a complete reference"
-            />
-          </StyledLink>
-        </CardGrid>
+          </CardGrid>
+        </CardGridWrapper>
         <ExternalCTA
           icon={developerCommunityIcon}
           title="Developer Support"
