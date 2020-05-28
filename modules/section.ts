@@ -10,7 +10,7 @@ const Section = {
     );
 
     // eslint-disable-next-line camelcase
-    return sections.sections[s]?.categories;
+    return sections.sections[s]?.categories || [];
   },
 };
 
