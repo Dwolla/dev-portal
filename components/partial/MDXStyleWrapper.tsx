@@ -60,7 +60,7 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
         }
       }
 
-      a {
+      a:not([class]) {
         ${linkStyles.styles}
       }
 

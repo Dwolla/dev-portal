@@ -17,11 +17,15 @@ const CardGridWrap = styled.div`
   margin-bottom: 20px;
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 type CardType = {
   topic: string;
   description: string;
   icon: string;
-  category: string;
+  category?: string;
   href: string;
 };
 type Props = {
@@ -37,7 +41,11 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
   const router = useRouter();
   const filters: any = [
     { value: null, label: "All" },
-    ...new Set(unfilteredCards.map((card) => card.category)),
+    ...new Set(
+      unfilteredCards
+        .filter((card) => !!card.category)
+        .map((card) => card.category)
+    ),
   ];
   const filteredCards = unfilteredCards.filter(
     (card) =>
@@ -61,13 +69,17 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
         <Banner
           {...bannerProps}
           filterTabs={
-            <FilterTabs
-              tabs={filters}
-              filter={
-                router.query.filter ? router.query.filter.toString() : null
-              }
-              setFilter={setFilter}
-            />
+            filters.length > 1 ? (
+              <FilterTabs
+                tabs={filters}
+                filter={
+                  router.query.filter ? router.query.filter.toString() : null
+                }
+                setFilter={setFilter}
+              />
+            ) : (
+              <></>
+            )
           }
         />
       </BannerWrap>
@@ -75,14 +87,14 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
       <CardGridWrap>
         <CardGrid>
           {filteredCards.map((card) => (
-            <Link href={card.href} key={`${card.topic}-${card.href}`}>
-              <a>
+            <Link href={card.href} key={`${card.topic}-${card.href}`} passHref>
+              <StyledLink>
                 <Card
                   {...card}
                   badge={card.category}
                   icon={contentIcons[card.icon].default}
                 />
-              </a>
+              </StyledLink>
             </Link>
           ))}
         </CardGrid>
