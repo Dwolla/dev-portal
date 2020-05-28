@@ -1,7 +1,7 @@
 type PageGroup = {
   id: string;
-  category: string;
   title: string;
+  category?: string;
 };
 
 type Guide = {
@@ -21,4 +21,5 @@ type Page = {
   group?: PageGroup;
   guide?: Guide;
   meta: Meta;
+  weight?: number;
 };

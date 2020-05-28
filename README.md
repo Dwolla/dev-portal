@@ -53,6 +53,10 @@ Page content
 <MyComponent />
 ```
 
+#### Sections
+
+`_section.yml`
+
 [mdx]: https://mdxjs.com
 [nextjs]: https://nextjs.org
 [nextjs-pages]: https://nextjs.org/docs/basic-features/pages

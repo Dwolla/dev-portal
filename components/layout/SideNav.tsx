@@ -5,6 +5,7 @@ import classnames from "classnames";
 import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
+import sortBy from "lodash.sortby";
 import {
   TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
   TopBarLinkProps as MobileLinkProps, // eslint-disable-line no-unused-vars
@@ -24,6 +25,7 @@ import { ReactComponent as RightIcon } from "../../assets/images/component-icons
 import caretUp from "../../assets/images/component-icons/caret-up.svg";
 import caretDown from "../../assets/images/component-icons/caret-down.svg";
 import openInNewTabIcon from "../../assets/images/component-icons/open-in-new-tab-icon.svg";
+import Section from "../../modules/section";
 
 // proptypes
 export interface SideNavLinkProps {
@@ -78,6 +80,13 @@ const groupsFrom = (categoryDocs: Page[]) => [
 
 const byGuideStep = (a, b) =>
   a.guide && b.guide ? a.guide.step - b.guide.step : 0;
+
+const sortCategories = (sectionHref: string, categories: string[]) => {
+  const categoryOrder = Section.categories(sectionHref);
+  return sortBy(categories, (c) => categoryOrder.indexOf(c));
+};
+
+const sortByWeight = (docs: Page[]) => sortBy(docs, (d: Page) => d.weight);
 
 // components
 const Container = styled.div`
@@ -460,7 +469,7 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
           </StickySectionWrap>
 
           <CategoriesWrap>
-            {keys(categories).map((c) => {
+            {sortCategories(activeSection.href, keys(categories)).map((c) => {
               const categoryDocs = categories[c];
               const groups = groupsFrom(categoryDocs);
 
@@ -475,7 +484,7 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                     return (
                       <div key={g}>
                         {ungroupedGroup ? (
-                          docs.map((d) => (
+                          sortByWeight(docs).map((d) => (
                             <DocLink
                               key={d.id}
                               grouped={false}
