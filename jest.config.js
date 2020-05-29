@@ -18,7 +18,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-    "^.+\\.png$": "<rootDir>/.jest/__mocks__/pngMock.js",
+    "^.+\\.(png|gif|jpg)$": "<rootDir>/.jest/__mocks__/imageMock.js",
     "^.+\\.svg$": "<rootDir>/.jest/__mocks__/svgMock.js",
     "^.+\\.css$": "<rootDir>/.jest/__mocks__/cssMock.js",
   },
