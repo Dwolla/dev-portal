@@ -94,7 +94,7 @@ const LANGUAGE_OPTIONS = [
 ];
 
 const AppWithHooks = ({ router, Component, pageProps }: any) => {
-  const [isAuthenticated, setAuthenticated] = useState(process.env.isDev);
+  const [isAuthenticated, setAuthenticated] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
 
   const url = createUrl(router);
