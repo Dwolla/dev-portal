@@ -8,8 +8,8 @@ meta:
   description: Handle JavaScript callback for success and error responses for Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
-import Image from "../../../components/base/Image";
-import iavSelectAccount from "../../../assets/images/content-images/iav-select-account.png";
+import Image from "../../../../components/base/Image";
+import iavSelectAccount from "../../../../assets/images/content-images/iav-select-account.png";
 
 # Step 4: Callback function - handling the error or response
 
@@ -21,8 +21,14 @@ You’ll know their bank account was successfully added and verified if you rece
 
 ### Example success callback
 
-```noselect
-{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}
+```json
+{
+  "_links": {
+    "funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
+    }
+  }
+}
 ```
 
 ## Handling IAV errors

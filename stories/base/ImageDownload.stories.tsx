@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
 import ImageDownload from "../../components/base/ImageDownload";
-import imageFail from "../../assets/images/content-images/-upload-fail.png";
+import imageFail from "../../assets/images/content-images/test-document-upload-fail.png";
 import imageSuccess from "../../assets/images/content-images/test-document-upload-success.png";
 
 storiesOf("base|ImageDownload", module)

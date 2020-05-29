@@ -24,6 +24,8 @@ hljs.registerLanguage(
 
 hljs.registerLanguage("html", require("highlight.js/lib/languages/xml"));
 
+hljs.registerLanguage("css", require("highlight.js/lib/languages/css"));
+
 export default function highlight(code: string, language: string) {
   return hljs.highlight(language, code).value;
 }

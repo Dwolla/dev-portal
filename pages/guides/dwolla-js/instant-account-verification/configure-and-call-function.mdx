@@ -8,8 +8,8 @@ meta:
   description: Configure and call function for initiating Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
-import Image from "../../../components/base/Image";
-import microDepositsFallback from "../../../assets/images/content-images/microdeposits-fallback.png";
+import Image from "../../../../components/base/Image";
+import microDepositsFallback from "../../../../assets/images/content-images/microdeposits-fallback.png";
 
 # Step 3: Configure and call function
 
@@ -64,19 +64,19 @@ By default, a back button will **not** be displayed throughout the IAV flow. If 
 
 An optional `subscriber` function can be used if your application is wanting to receive additional information on where the user is within the IAV flow, as well as if a user-facing message was presented to the user. `subscriber` is a function that will be called with an object containing a `currentPage` and an optional `error` attribute. `currentPage` will be a string value that identifies what page the user is on in the IAV flow. If an error occurs, the `error` attribute will be returned along with `currentPage`. `error` will be a JSON object, which includes a top-level error `code` and a `message` (similar to [common errors](https://docs.dwolla.com/#errors) in the API). Reference the following table for possible values:
 
-| Attribute   | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| :---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| currentPage | `BankSearch` <br> `BankLogin` <br> `MFA` <br> `SelectAccount` <br> `SuccessIAV` <br> `SelectVerificationMethod` <br> `SubmitBankAccountDetails` <br> `SuccessMicroDeposits`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| error       | **code** and **message**: <br> `InvalidLogin` - "Please make sure your login or security information is correct." <br> `AccountNotFound` - "Sorry, we’re unable to find your {BANK NAME} account. Please try again or use a different account." <br> `UnsupportedSite` - "Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution." <br> `AlreadyLoggedIn` - "If you're currently logged in to your {BANK NAME} account, please log out and try again." <br> `VisitSite` - "We’re unable to process your information because the {BANK NAME} site is currently requiring additional action from you. Please resolve this, then try again." <br> `UnavailableSite` - "Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later." |
+| Attribute   | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| :---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| currentPage | `BankSearch` <br /> `BankLogin` <br /> `MFA` <br /> `SelectAccount` <br /> `SuccessIAV` <br /> `SelectVerificationMethod` <br /> `SubmitBankAccountDetails` <br /> `SuccessMicroDeposits`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| error       | **code** and **message**: <br /> `InvalidLogin` - "Please make sure your login or security information is correct." <br /> `AccountNotFound` - "Sorry, we’re unable to find your {BANK NAME} account. Please try again or use a different account." <br /> `UnsupportedSite` - "Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution." <br /> `AlreadyLoggedIn` - "If you're currently logged in to your {BANK NAME} account, please log out and try again." <br /> `VisitSite` - "We’re unable to process your information because the {BANK NAME} site is currently requiring additional action from you. Please resolve this, then try again." <br /> `UnavailableSite` - "Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later." |
 
 ##### **Example subscriber callback**
 
-```noselect
+```json
 {
-  "currentPage":"BankLogin",
-  "error":{
-    "code":"InvalidLogin",
-    "message":"Please make sure your login or security information is correct."
+  "currentPage": "BankLogin",
+  "error": {
+    "code": "InvalidLogin",
+    "message": "Please make sure your login or security information is correct."
   }
 }
 ```
@@ -95,7 +95,7 @@ Dwolla provides a list of CSS classes available for styling certain elements of 
 
 #### List of CSS classes
 
-```cssnoselect
+```css
 /* Available css classes for customization*/
 .dwolla-iav-text-box,
 .dwolla-iav-button,
