@@ -262,7 +262,13 @@ print($fundingSources->_embedded) # => PHP associative array of _embedded conten
 
 When the list of funding sources is successfully retrieved, you will receive a `200` HTTP response with the details for the funding sources. After retrieving the funding sources, we recommend storing the full URL for future use as it will be referenced when creating the transfer to this user’s bank account.
 
-<nav class="pager-nav">
-  <a href="create-funding-source.html">Back: Add funding source</a>
-  <a href="create-transfer.html">Next: Create a transfer</a>
-</nav>
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/add-funding-source"
+></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/create-transfer"
+></Paginaton>

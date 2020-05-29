@@ -8,7 +8,7 @@ meta:
   description: Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
-# Step 1: Generate a funding sources token
+# Step 2: Generate a funding sources token
 
 Before calling a function within dwolla.js to add a new funding source, you need to generate a funding sources token. Your server initiates a POST request to Dwolla, specifying for which Dwolla account or Dwolla API Customer you want to add a bank account. Dwolla will respond with a funding sources `token` that expires in an hour. This token will be sent to the client and used to authenticate the HTTP request asking Dwolla to add a new funding source.
 
@@ -67,8 +67,13 @@ $fsToken->token; # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
 
 ---
 
-#### Next steps:
-
-- [Create Form](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-form)
-- [Configure and Call Javascript](https://developers.dwolla.com/guides/funding-sources/dwolla-js/configure)
-- [Handle Error Response](https://developers.dwolla.com/guides/funding-sources/dwolla-js/handle-errors)
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/create-form"
+></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/configure-and-call-function"
+></Paginaton>

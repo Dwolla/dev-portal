@@ -82,7 +82,8 @@ appToken.get(transferUrl).then((res) => res.body.status); // => 'pending'
 
 That’s it! You’ve successfully transferred money from Joe Buyer to Jane Merchant. Please continue to the Webhooks guide for information on implementing notifications for your customers about the transfer.
 
-<nav className="pager-nav">
-  <a href="create-transfer.html">Back: Overview</a>
-  <a href="/guides/webhooks">Next guide: Webhooks</a>
-</nav>
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/create-transfer"
+></Paginaton>

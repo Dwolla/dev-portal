@@ -14,13 +14,21 @@ meta:
   description: Send money online between banks that belong to a single custoemr by utilizing our open bank transfer API.
 ---
 
+import Image from "../../../components/base/Image";
+import fundsFlowMeToMe from "../../../assets/images/content-images/funds-flow-me-to-me.gif";
+
 # Me-to-Me
 
 ## Overview
 
 This guide is designed to get you up and running quickly through creating a bank to bank transfer between a verified Customer’s two bank accounts. In this guide we’ll cover the basics of integrating this payment flow by walking through the steps needed to onboard your end-user as a verified Customer and create the bank to bank transfer.
 
-<img src="/images/funds_flow_me-to-me.gif" width="75%" height="75%" />
+<Image
+  src={fundsFlowMeToMe}
+  alt="Funds Flow Me-to-Me"
+  width="75%"
+  height="75%"
+/>
 
 In this quickstart guide, you’ll learn the key concepts involved with sending money between a Customer’s bank accounts.
 
@@ -31,14 +39,16 @@ In this quickstart guide, you’ll learn the key concepts involved with sending 
 
 ## Before you begin
 
-We encourage you to create a sandbox account, if you haven’t already. This will allow you to follow along with the steps outlined in this guide. [Check out our Sandbox setup guide to learn more](https://developers.dwolla.com/guides/sandbox-setup/).
+We encourage you to create a sandbox account, if you haven’t already. This will allow you to follow along with the steps outlined in this guide. [Check out our Sandbox setup guide to learn more](/concepts/sandbox).
 
-After creating a sandbox account, you’ll obtain your API Key and Secret, which are used to obtain an OAuth access token. An access token is required in order to authenticate against the Dwolla API. Learn more about how to [obtain an access token in our guide](https://developers.dwolla.com/guides/authorization/).
+After creating a sandbox account, you’ll obtain your API Key and Secret, which are used to obtain an OAuth access token. An access token is required in order to authenticate against the Dwolla API. Learn more about how to [obtain an access token in our guide](/guides/auth/).
 
-Lastly, in this sandbox walkthrough, we recommend having an active webhook subscription. This will help notify your application of various events that occur within Dwolla. [Check out our guide to learn more](https://developers.dwolla.com/guides/webhooks/create-subscription/).
+Lastly, in this sandbox walkthrough, we recommend having an active webhook subscription. This will help notify your application of various events that occur within Dwolla. [Check out our guide to learn more](/guides/webhoooks/create-subscription).
 
 **Let’s get started!**
 
-<nav class="pager-nav">
-  <a href="create-customer.html">Next: Customer onboarding</a>
-</nav>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/create-a-customer"
+></Paginaton>

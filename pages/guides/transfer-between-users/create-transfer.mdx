@@ -132,7 +132,13 @@ print($xfer); # => https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-8
 ?>
 ```
 
-<nav className="pager-nav">
-  <a href="attach-verified-bank.html">Back: Attach a verified funding source</a>
-  <a href="check-transfer.html">Next step: Check the status of your transfer</a>
-</nav>
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/create-verified-funding-source"
+></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/retrieve-transfer-status"
+></Paginaton>

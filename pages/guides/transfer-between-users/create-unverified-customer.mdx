@@ -90,11 +90,13 @@ When the customer is created, you’ll receive the customer URL in the location 
 
 When the customer is created, you’ll receive the customer URL in the Location header.
 
-<nav className="pager-nav">
-  <a href="./attach-unverified-bank.html">
-    Back: Attach an unverified funding source
-  </a>
-  <a href="attach-verified-bank.html">
-    Next step: Attach a verified funding source
-  </a>
-</nav>
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/create-unverified-funding-source"
+></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/create-verified-funding-source"
+></Paginaton>

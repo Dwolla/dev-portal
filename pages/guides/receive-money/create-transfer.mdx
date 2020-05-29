@@ -8,6 +8,10 @@ meta:
   description: Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+import Image from "../../../components/base/Image";
+import processBankTransfers from "../../../assets/images/content-images/process-bank-transfers.png";
+
 # Step 4: Initiating a Transfer
 
 ## Identify Source and Destination For Transfer
@@ -28,18 +32,17 @@ To initiate a transfer, we will need to specify the source and destination fundi
 | \_links   | yes      | object | A \_links JSON object describing the desired source and destination of a transfer. [Reference the Source and Destination object](https://docs.dwolla.com/#source-and-destination-types) to learn more about possible values for source and destination. |
 | amount    | yes      | object | An amount JSON object. [Reference the amount JSON object](https://docs.dwolla.com/#amount-json-object) to learn more.                                                                                                                                   |
 
-<ol class="alerts">
-  <li class="alert icon-alert-alert">
-    Within a transfer request, Dwolla supports additional optional parameters.
-    These can range from a <code>facilitator-fee</code> to collect a portion of
-    the transfer amount that is sent to your Dwolla account, or
-    <code>correlationId</code> to help correlate transfers from end-to-end. For more
-    information on all available transfer request parameters, check out our
-    <a href="https://docs.dwolla.com/#initiate-a-transfer">
-      API reference documentation.
-    </a>
-  </li>
-</ol>
+<AlertBar variation="info">
+  Within a transfer request, Dwolla supports additional optional parameters.
+  These can range from <code>clearing</code> to specify the processing timing
+  for the transfer, or <code>correlationId</code> to help correlate transfers
+  from end-to-end. The object <code>facilitator-fee</code> isn't supported for
+  this funds flow. For more information on all available transfer request
+  parameters, check out our
+  <a href="https://docs.dwolla.com/#initiate-a-transfer">
+    API reference documentation.
+  </a>
+</AlertBar>
 
 #### Request and response (view schema in ‘raw’)
 
@@ -169,17 +172,17 @@ When the transfer is created, you will receive a `201` HTTP response with an emp
 ## Step 4B: Handle Webhooks
 
 A single API call to create a payment transfer can trigger several transfer-related webhook events. The number of webhooks and type of webhook events can vary depending on the Customer type(s) involved in the transfer, as well as the source and destination for the funds transfer.
-For more information on which webhooks will be fired for a given section of a transfer, refer to our [Developer Resource Article](https://developers.dwolla.com/articles/webhooks/event-topics).
+For more information on which webhooks will be fired for a given section of a transfer, refer to our [Developer Resource Article](concepts/webhook-events).
 
 ## Step 4C: Simulate Payment Processing
 
 To simulate paymentACH processing in the Dwolla Sandbox environment, navigate to the Sandbox Dashboard. From here, you will want to click the “Process Bank Transfers” button on the top of the screen. Your Sandbox transfer will be moved out of a `pending` status and moved to a `processed` status.
 
-<img src="/images/process-bank-transfers.png" />
+<Image src={processBankTransfers} alt="process bank transfers" />
 
 **Production payment processing timing**
 
-While ACHfunds transfer processing can be simulated at any time in the sandbox, behavior will vary in production depending on what transfer clearing options you specify. Refer to our developer resource article to [learn more on transfer timing](https://developers.dwolla.com/articles/transfers/processing-times) in production.
+While ACHfunds transfer processing can be simulated at any time in the sandbox, behavior will vary in production depending on what transfer clearing options you specify. Refer to our developer resource article to [learn more on transfer timing](/concepts/transfer-processing-times) in production.
 
 ## Step 4D: Verify Status of Transfer
 
@@ -228,6 +231,8 @@ Since ACH transactions in production can take a few days to complete, webhooks a
 }
 ```
 
-<nav class="pager-nav">
-  <a href="retrieve-funding-source.html">Back: Retrieve Funding Sources</a>
-</nav>
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/retrieve-funding-source"
+></Paginaton>

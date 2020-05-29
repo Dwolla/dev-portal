@@ -16,7 +16,7 @@ meta:
 
 # Business Customer Verification
 
-This article will walk through the identity verification process for [business verified Customers](https://developers.dwolla.com/articles/customers) within the Dwolla API.
+This article will walk through the identity verification process for [business verified Customers](/concepts/customer-types) within the Dwolla API.
 
 ## The basics
 
@@ -43,40 +43,10 @@ A business verified Customer represents a business that intends to send or recei
 | **LLCs**                         | _llc_                     | Yes (if owns 25% or more)                   | Yes                                                    |
 | **Partnerships, LP's, LLP's**    | _partnership_             | Yes (if owns 25% or more)                   | Yes                                                    |
 
-## Steps for onboarding a Business verified Customer
-
-Reference the steps below for guidance on getting your business verified Customer in a transaction-eligible state.
-
-1. [**Creating business verified Customer**](https://developers.dwolla.com/guides/customers/verified-business/create-a-customer)
-
-- Create the Customer record
-- Check the status of the business and Controller
-
-2. [**Handling business verified Customer statuses**](https://developers.dwolla.com/guides/customers/verified-business/handle-verification-statuses)
-
-- Handle `retry`, `document`, and `suspended` statuses
-
-3. [**Adding beneficial owner(s)**](https://developers.dwolla.com/guides/customers/verified-business/add-beneficial-owners)
-
-- Determine if you need to add a beneficial owner to your Customer
-- Add a beneficial owner(s) to the Customer
-- Handle `incomplete` and `document` statuses
-
-4. [**Certifying beneficial owner(s) information**](https://developers.dwolla.com/guides/customers/verified-business/certify-beneficial-ownership)
-
-- Determine if you need to certify beneficial ownership for your Customer
-- Certify beneficial ownership
-
-5. [**Frequently asked questions**](https://developers.dwolla.com/guides/customers/verified-business/frequently-asked-questions)
-
-- A reference article to answer common questions about business verified Customers
-
 ---
 
-#### Next steps:
-
-- [Creating business verified Customer](https://developers.dwolla.com/guides/customers/verified-business/create-a-customer)
-- [Handling business verified Customer statuses](https://developers.dwolla.com/guides/customers/verified-business/handle-verification-statuses)
-- [Adding beneficial owners](https://developers.dwolla.com/guides/customers/verified-business/add-beneficial-owners)
-- [Certifying beneficial owner(s)](https://developers.dwolla.com/guides/customers/verified-business/certify-beneficial-ownership)
-- [Frequently Asked Questions](https://developers.dwolla.com/guides/customers/verified-business/frequently-asked-questions)
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/create-a-customer"
+></Paginaton>

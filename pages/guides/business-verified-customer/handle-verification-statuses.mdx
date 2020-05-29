@@ -8,13 +8,22 @@ meta:
   description: Identify the various statuses of Verified Customer creation, including retry, document and suspended.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Step 2: Handling Business Verified Customer Statuses
 
 ## The basics
 
 You have successfully created a business verified Customer; however, there are cases where Dwolla will need more information to fully verify the identity of the Controller and/or Business. Read on to learn more.
 
-**If your Business and Controller are already identity verified,** you can skip to the [next step--adding beneficial owners](/resources/business-verified-customer/adding-beneficial-owners.html) to continue with your business verified Customer onboarding.
+<AlertBar variation="info">
+  If your Business and Controller are already identity verified, you can skip to
+  the next step{" "}
+  <a href="/guides/business-verified-customer/add-beneficial-owners">
+    adding beneficial owners
+  </a>{" "}
+  to continue with your business verified Customer onboarding.
+</AlertBar>
 
 ## Verification statuses and corresponding events
 
@@ -31,13 +40,11 @@ As a developer, you will want to handle the various Customer statuses that can b
 
 A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the Controller’s SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
 
-<ol class="alerts">
-  <li class="alert icon-alert-alert">
-    You need to gather new information if the Customer is placed into the retry
-    status; simply passing the same information will result in the same
-    insufficient scores.
-  </li>
-</ol>
+<AlertBar variation="info">
+  You need to gather new information if the Customer is placed into the retry
+  status; simply passing the same information will result in the same
+  insufficient scores.
+</AlertBar>
 
 All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
 
@@ -388,7 +395,7 @@ Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275af
 
 Once created, the document will be reviewed by Dwolla. When our team has made a decision to approve or reject, which may take up to 1-2 business days, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
 
-If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](/resources/business-verified-customer/handling-controller-and-customer-statuses.html#document-types) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
+If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](#document-types) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
 
 If the document was found to be fraudulent or doesn’t match the identity of the Customer, the Customer will be suspended.
 
@@ -481,18 +488,17 @@ If the Customer is `suspended`, there’s no further action you can take to corr
 
 ## Next steps: Beneficial Owners
 
-The successful creation of a business verified Customer and Controller doesn’t necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you.
-
-To learn how to add beneficial owner(s) to your Customer, read on to our [next article](/resources/business-verified-customer/adding-beneficial-owners.html).
+The successful creation of a business verified Customer and Controller doesn’t necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you. To learn how to add beneficial owner(s) to your Customer, read on in our next article.
 
 ---
 
-#### Next steps
-
-- [Adding beneficial owner(s)](/resources/business-verified-customer/adding-beneficial-owners.html)
-- [Certifying beneficial owner(s)](/resources/business-verified-customer/handling-beneficial-owner-certification.html)
-- [Frequently Asked Questions](/resources/business-verified-customer/frequently-asked-questions.html)
-
-#### Review previous steps
-
-- [Creating business verified Customer](/resources/business-verified-customer/create-business-verified-customers.html)
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/create-a-customer"
+></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/add-beneficial-owners"
+></Paginaton>

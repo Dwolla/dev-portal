@@ -4,11 +4,13 @@ title: "Customer Types"
 description: Understanding and selecting the appropriate Customer type is the first step to a successful payment integration.
 category: Customers
 concept:
-  icon: "concepts.svg"
+  icon: "customer-types.svg"
 meta:
   title: Customer Types | Dwolla API Documentation
   description: Determining your Customer type is the first step to a successful integration.
 ---
+
+import AlertBar from "../../components/base/AlertBar";
 
 # Customer types
 
@@ -33,7 +35,7 @@ There are two types of verified Customer types your Customer can sign up as: `Pe
 
 ### Personal verified Customer
 
-Personal verified Customers have the advantage of fitting all funds flows, as they can both send and receive funds. This Customer type can also hold a balance. The individual will need to go through CIP verification prior to being able to send funds to or from their bank. CIP verification involves passing Customer data to verify them, including their name, date of birth, and last four digits of their social security number. For more information about verifying this Customer type in our [Customer verification article](/resources/personal-verified-customer/create-personal-verified-customers.html).
+Personal verified Customers have the advantage of fitting all funds flows, as they can both send and receive funds. This Customer type can also hold a balance. The individual will need to go through CIP verification prior to being able to send funds to or from their bank. CIP verification involves passing Customer data to verify them, including their name, date of birth, and last four digits of their social security number. For more information about verifying this Customer type in our [Customer verification guide](/guides/personal-verified-customer/create-a-customer).
 
 With a per-transaction limit of \$5,000, this Customer type is able to interact with Dwolla and your application seamlessly.
 
@@ -47,11 +49,11 @@ Business verified Customers are unique in their sign up flow, as they need multi
 
 Business verified Customers will need an Account Admin to signup the company during the onboarding process. This Account Admin is not identity verified. To become fully verified, a controller and/or a beneficial owner may need to be identity verified. A controller is any natural individual who holds significant responsibilities to control, manage, or direct a company or other corporate entity (i.e. CEO, CFO, General Partner, President, etc). A company may have more than one controller, but only one controller’s information must be collected. A beneficial owner is any natural person who, directly or indirectly, owns 25% or more of the equity interests of the company.
 
-The Controller will need to provide information to be fully identity verified. This includes their last four SSN and date of birth for identity verification purposes. For certain business types, a business’ EIN will also need to be provided as part of the CIP process. For more information about adding a controller, check out our [business verified Customer creation article](https://developers.dwolla.com/resources/business-verified-customer/create-business-verified-customers.html).
+The Controller will need to provide information to be fully identity verified. This includes their last four SSN and date of birth for identity verification purposes. For certain business types, a business’ EIN will also need to be provided as part of the CIP process. For more information about adding a controller, check out our [business verified Customer creation article](/guides/business-verified-customer/create-a-customer).
 
-Certain business types may also need to add and certify beneficial ownership. You can find more information about adding beneficial owners in our [developer resource article](https://developers.dwolla.com/resources/business-verified-customer/adding-beneficial-owners.html). To learn more about certifying beneficial ownership, [check out our certification article](https://developers.dwolla.com/resources/business-verified-customer/handling-beneficial-owner-certification.html).
+Certain business types may also need to add and certify beneficial ownership. You can find more information about adding beneficial owners in our [developer resource article](/guides/business-verified-customer/adding-beneficial-owners). To learn more about certifying beneficial ownership, [check out our certification article](/guides/business-verified-customer/certify-beneficial-ownership).
 
-For a full series of articles that goes in depth on business verified Customers, take a look at our [Customer verification article](https://developers.dwolla.com/resources/business-verified-customer.html). This series of articles also goes into detail on the identity verification process for controllers and beneficial owners.
+For a full series of articles that goes in depth on business verified Customers, take a look at our [Customer verification article](/guides/business-verified-customer). This series of articles also goes into detail on the identity verification process for controllers and beneficial owners.
 
 ## Unverified Customer
 
@@ -65,10 +67,8 @@ As this Customer is not CIP verified, they will only be able to transact with ve
 
 Receive-only Users are restricted to payouts only funds flow. This user type maintains limited functionality in the API and is only eligible to receive transfers to an attached bank account. This user type can only interact with verified Customers and a Dwolla Master Account.
 
-<ol class="alerts">
-  <li class="alert icon-alert-info">
-    Receive-only Users cannot send funds back. If you need this user to send
-    funds back for any reason, you may need to resolve this outside of the
-    Dwolla network.
-  </li>
-</ol>
+<AlertBar variation="info">
+  Receive-only Users cannot send funds back. If you need this user to send funds
+  back for any reason, you may need to resolve this outside of the Dwolla
+  network.
+</AlertBar>

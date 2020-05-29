@@ -8,6 +8,8 @@ meta:
   description: Create a Customer in the Dwolla API to send funds between their bank accounts.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Step 1: Creating your Customer
 
 ## Choose the Customer Type for Your Funds Flow
@@ -17,7 +19,7 @@ Before your end-user can send or receive funds to their connected bank account, 
 - Verified Personal Customers
 - Verified Business Customers
 
-To learn more on the differences between personal and business verified Customers and the capabilities of each, [check out our developer resource article.](https://developers.dwolla.com/articles/customers)
+To learn more on the differences between personal and business verified Customers and the capabilities of each, [check out our developer resource article.](/concepts/customer-types)
 
 **A note on verified Customers:**
 
@@ -172,12 +174,10 @@ appToken
 
 When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating webhooks that are triggered for the user in the Dwolla system.
 
-<ol class="alerts">
-  <li class="alert icon-alert-alert">
-    Provide the IP address of the end-user accessing your application as the
-    `ipAddress` parameter. This enhances fraud detection and tracking.
-  </li>
-</ol>
+<AlertBar variation="info">
+  Providing the IP address of the end-user accessing your application as the
+  <code>ipAddress</code> parameter. This enhances fraud detection and tracking.
+</AlertBar>
 
 ## Step 1B: Handle Webhooks
 
@@ -191,13 +191,15 @@ Not all Customers will have a `verified` status upon initial Customer creation. 
 
 ### Balance Funding Source
 
-On successful Customer verification, Dwolla will also create a [Balance Funding Source](https://developers.dwolla.com/articles/funding-sources/balance-funding-sources) for this Customer.
+On successful Customer verification, Dwolla will also create a [Balance Funding Source](/concepts/balance-funding-source) for this Customer.
 
 **A Note on the Balance Funding Source**
 
 There are two types of Funding Sources available within the Dwolla Platform which include a bank or a balance. A bank account is commonly used as the source or destination for ACH transfers. A `balance` is a Funding Source that can be utilized like a “wallet” for holding a stored value of funds. The Dwolla balance is made available for Customers that have fully `verified` their identity within Dwolla.
 
-<nav class="pager-nav">
-  <a href="./">Back: Overview</a>
-  <a href="create-funding-source.html">Next: Add funding source</a>
-</nav>
+<Paginaton variant="previous" variantText="PREVIOUS" href="./"></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/add-funding-sources"
+></Paginaton>

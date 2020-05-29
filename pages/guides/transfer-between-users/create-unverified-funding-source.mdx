@@ -92,9 +92,13 @@ print($new_fs); # => https://api-sandbox.dwolla.com/funding-sources/375c6781-2a1
 
 The created funding source URL is returned in the Location header.
 
-<nav className="pager-nav">
-  <a href="./create-verified-customer.html">Back: Create a verified customer</a>
-  <a href="create-unverified-customer.html">
-    Next step: Create an unverified customer
-  </a>
-</nav>
+<Paginaton
+  variant="previous"
+  variantText="PREVIOUS"
+  href="/create-verified-customer"
+></Paginaton>
+<Paginaton
+  variant="next"
+  variantText="NEXT"
+  href="/create-unverified-customer"
+></Paginaton>
