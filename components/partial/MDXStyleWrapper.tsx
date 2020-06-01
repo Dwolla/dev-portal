@@ -25,6 +25,10 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
       h5,
       h6 {
         ${headingStyles.global.styles}
+        code {
+          ${codeStyles.styles}
+          font-size: inherit;
+        }
       }
 
       > h1 {
@@ -60,6 +64,14 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
         }
       }
 
+      > table,
+      th,
+      td {
+        code {
+          ${codeStyles.styles}
+        }
+      }
+
       a:not([class]) {
         ${linkStyles.styles}
       }
@@ -67,6 +79,9 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
       ol,
       ul {
         ${listStyles.styles}
+        code {
+          ${codeStyles.styles}
+        }
       }
 
       > img {
