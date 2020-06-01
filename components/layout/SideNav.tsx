@@ -445,9 +445,9 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
         </SlidePane>
 
         <SlidePane key={activeSection?.href}>
-          <StickySectionWrap>
-            {activeSection && activeSection.isSection && (
-              <>
+          {activeSection && activeSection.isSection && (
+            <>
+              <StickySectionWrap>
                 <SectionLink
                   linkProps={{
                     href: "/",
@@ -462,50 +462,54 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                   linkProps={{ ...activeSection, isSection: false }}
                   isActive
                 />
-              </>
-            )}
-          </StickySectionWrap>
+              </StickySectionWrap>
 
-          <CategoriesWrap>
-            {sortCategories(activeSection.href, keys(categories)).map((c) => {
-              const categoryDocs = categories[c];
-              const groups = groupsFrom(categoryDocs);
-
-              return (
-                <Category key={c}>
-                  {c !== "undefined" && <CategoryHeading>{c}</CategoryHeading>}
-
-                  {sortByWeight(groups).map((g?: PageGroup) => {
-                    const docs = categoryDocs.filter(byDocGroup(g?.id));
-                    const ungroupedGroup = typeof g === "undefined";
+              <CategoriesWrap>
+                {sortCategories(activeSection.href, keys(categories)).map(
+                  (c) => {
+                    const categoryDocs = categories[c];
+                    const groups = groupsFrom(categoryDocs);
 
                     return (
-                      <div key={g?.id}>
-                        {ungroupedGroup ? (
-                          sortByWeight(docs).map((d: Page) => (
-                            <DocLink
-                              key={d.id}
-                              grouped={false}
-                              href={d.id}
-                              active={d.id === pathname}
-                            >
-                              {d.title}
-                            </DocLink>
-                          ))
-                        ) : (
-                          <DocGroup title={g?.title} docs={docs} />
+                      <Category key={c}>
+                        {c !== "undefined" && (
+                          <CategoryHeading>{c}</CategoryHeading>
                         )}
-                      </div>
-                    );
-                  })}
-                </Category>
-              );
-            })}
-          </CategoriesWrap>
 
-          <MobileWrap>
-            <MobileItems {...mobileItems} />
-          </MobileWrap>
+                        {sortByWeight(groups).map((g?: PageGroup) => {
+                          const docs = categoryDocs.filter(byDocGroup(g?.id));
+                          const ungroupedGroup = typeof g === "undefined";
+
+                          return (
+                            <div key={g?.id}>
+                              {ungroupedGroup ? (
+                                sortByWeight(docs).map((d: Page) => (
+                                  <DocLink
+                                    key={d.id}
+                                    grouped={false}
+                                    href={d.id}
+                                    active={d.id === pathname}
+                                  >
+                                    {d.title}
+                                  </DocLink>
+                                ))
+                              ) : (
+                                <DocGroup title={g?.title} docs={docs} />
+                              )}
+                            </div>
+                          );
+                        })}
+                      </Category>
+                    );
+                  }
+                )}
+              </CategoriesWrap>
+
+              <MobileWrap>
+                <MobileItems {...mobileItems} />
+              </MobileWrap>
+            </>
+          )}
         </SlidePane>
       </Slide>
     </Container>

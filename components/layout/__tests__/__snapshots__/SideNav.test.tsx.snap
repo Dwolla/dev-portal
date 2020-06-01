@@ -148,61 +148,7 @@ exports[`SideNav 1`] = `
     </div>
     <div
       className="css-p3a8sa-SlidePane e10mac9s2"
-    >
-      <div
-        className="css-1ra4fr8-StickySectionWrap e10mac9s4"
-      />
-      <ul
-        className="css-9j0rf2-CategoriesWrap e10mac9s7"
-      />
-      <div
-        className="css-nasyo1-MobileWrap e10mac9s12"
-      >
-        <a
-          className=" css-1twa2js-MobileLink-MobileLink"
-          href="https://docs.dwolla.com"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          target="_blank"
-        >
-          <span
-            className="text"
-          >
-            API Docs
-          </span>
-          <img
-            alt="Open in new tab"
-            className="icon"
-            src="test-image-stub"
-          />
-        </a>
-        <a
-          className=" css-1twa2js-MobileLink-MobileLink"
-          href="/changelog"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <span
-            className="text"
-          >
-            Changelog
-          </span>
-        </a>
-        <div
-          className="css-vogkcz-MobileButtonWrap e10mac9s13"
-        >
-          <a
-            className="primary block css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
-            href="https://accounts-sandbox.dwolla.com/login"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-            target="_blank"
-          >
-            Get API Keys
-          </a>
-        </div>
-      </div>
-    </div>
+    />
   </div>
 </div>
 `;
