@@ -3128,6 +3128,25 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.4.tgz#38fd73ddfd9b55abb1e1b2ed578cb55bd7b7d339"
   integrity sha512-8+KAKzEvSUdeo+kmqnKrqgeE+LcA0tjYWFY7RPProVYwnqDjukzO+3b6dLD56rYX5TdWejnEOLJYOIeh4CXKuA==
 
+"@types/lodash.sortby@^4.7.6":
+  version "4.7.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.sortby/-/lodash.sortby-4.7.6.tgz#eed689835f274b553db4ae16a4a23f58b79618a1"
+  integrity sha512-EnvAOmKvEg7gdYpYrS6+fVFPw5dL9rBnJi3vcKI7wqWQcLJVF/KRXK9dH29HjGNVvFUj0s9prRP3J8jEGnGKDw==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.uniqby@^4.7.6":
+  version "4.7.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.uniqby/-/lodash.uniqby-4.7.6.tgz#672827a701403f07904fe37f0721ae92abfa80e8"
+  integrity sha512-9wBhrm1y6asW50Joj6tsySCNUgzK2tCqL7vtKIej0E9RyeBFdcte7fxUosmFuMoOU0eHqOMK76kCCrK99jxHgg==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.153"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.153.tgz#5cb7dded0649f1df97938ac5ffc4f134e9e9df98"
+  integrity sha512-lYniGRiRfZf2gGAR9cfRC3Pi5+Q1ziJCKqPmjZocigrSJUVPWf7st1BtSJ8JOeK0FLXVndQ1IjUjTco9CXGo/Q==
+
 "@types/mdast@^3.0.0":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/mdast/-/mdast-3.0.3.tgz#2d7d671b1cd1ea3deb306ea75036c2a0407d2deb"
@@ -9023,6 +9042,15 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
+js-yaml-loader@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/js-yaml-loader/-/js-yaml-loader-1.2.2.tgz#2c15f93915617acd19676d648945fa3003f8629b"
+  integrity sha512-H+NeuNrG6uOs/WMjna2SjkaCw13rMWiT/D7l9+9x5n8aq88BDsh2sRmdfxckWPIHtViYHWRG6XiCKYvS1dfyLg==
+  dependencies:
+    js-yaml "^3.13.1"
+    loader-utils "^1.2.3"
+    un-eval "^1.2.0"
+
 js-yaml@^3.11.0, js-yaml@^3.13.1:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"
@@ -9518,6 +9546,11 @@ lodash.uniq@4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
+
+lodash.uniqby@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/lodash.uniqby/-/lodash.uniqby-4.7.0.tgz#d99c07a669e9e6d24e1362dfe266c67616af1302"
+  integrity sha1-2ZwHpmnp5tJOE2Lf4mbGdhavEwI=
 
 lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.4:
   version "4.17.15"
@@ -10066,6 +10099,13 @@ next-mdx-enhanced@^2.4.0:
     loader-utils "^1.2.3"
     prebuild-webpack-plugin "1.1.0"
     stringify-object "^3.3.0"
+
+next-plugin-yaml@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/next-plugin-yaml/-/next-plugin-yaml-1.0.1.tgz#90e96637dfa445806fc44d1df3506c0f1446246a"
+  integrity sha512-k13wbpN33wTgrgWUBiXPtObXO94JOEiwvYKJ3X0JrBz2yaW24EfNaVqHwA0dwhsn9PyPIKhPhgsu3bhJsNs+cQ==
+  dependencies:
+    js-yaml-loader "^1.2.2"
 
 next-tick@~1.0.0:
   version "1.0.0"
@@ -13692,6 +13732,11 @@ typescript@^3.7.5:
   version "3.9.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
   integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
+
+un-eval@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/un-eval/-/un-eval-1.2.0.tgz#22a95c650334d59d21697efae32612218ecad65f"
+  integrity sha512-Wlj/pum6dQtGTPD/lclDtoVPkSfpjPfy1dwnnKw/sZP5DpBH9fLhBgQfsqNhe5/gS1D+vkZUuB771NRMUPA5CA==
 
 unfetch@4.1.0, unfetch@^4.0.0, unfetch@^4.1.0:
   version "4.1.0"

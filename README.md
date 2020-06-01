@@ -53,6 +53,20 @@ Page content
 <MyComponent />
 ```
 
+#### Sections
+
+Categories can be ordered in the side nav by creating a `_section.yml` file in a section's root directory (e.g. `pages/guides/_section.yml`).
+
+```yaml
+categories:
+  - "Getting Started"
+  - "Customers"
+  - "Funding Sources"
+  - "Webhooks"
+```
+
+![doc concepts](/doc-concepts.png)
+
 [mdx]: https://mdxjs.com
 [nextjs]: https://nextjs.org
 [nextjs-pages]: https://nextjs.org/docs/basic-features/pages
