@@ -8,7 +8,9 @@ meta:
   description: Create a Customer in the Dwolla API to send funds to their bank account.
 ---
 
-# Step 2: Create a Verified Customer
+import AlertBar from "../../../components/base/AlertBar";
+
+# Step 1: Create a Verified Customer
 
 First, we’ll create a `Verified Customer` for Jane Merchant.
 
@@ -140,11 +142,14 @@ appToken
 
 When the customer is created, you’ll receive the customer URL in the location header.
 
-**Important:** There are various reasons a Verified Customer will result in a status other than `verified` which you will want to account for after the Customer is created. Reference the Customer verification resource article for more information on [handling verification statuses](/guides/business-verified-customer/handle-verification-statuses).
-
-<Paginaton variant="previous" variantText="PREVIOUS" href="./"></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/create-unverified-funding-source"
-></Paginaton>
+<AlertBar variation="warning">
+  There are various reasons a Verified Customer will result in a status other
+  than <code>verified</code> which you will want to account for after the
+  Customer is created. Reference the Customer verification resource article for
+  more information on{" "}
+  <a href="/guides/business-verified-customer/handle-verification-statuses">
+    {" "}
+    handling verification statuses
+  </a>
+  .
+</AlertBar>

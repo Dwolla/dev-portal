@@ -1,8 +1,8 @@
 ---
 layout: guides
-title: "Step 4: Process Webhooks"
+title: "Step 3: Process Webhooks"
 guide:
-  step: 4
+  step: 3
 meta:
   title: Webhooks | Process Webhooks
   description: Process webhooks for payments within your application by utilizing our open API with no per transaction fees.
@@ -12,9 +12,9 @@ meta:
 
 Let's assume that you have a webhook subscription and Dwolla has just delivered the following payload to your specified endpoint:
 
-##### Sample Payload
+##### Webhook payload example
 
-```javascript
+```json
 {
   "id": "cac95329-9fa5-42f1-a4fc-c08af7b868fb",
   "resourceId": "cdb5f11f-62df-e611-80ee-0aa34a9b2388",
@@ -60,9 +60,3 @@ end
 Let's recap. From the event we can retrieve the `transfer` and then take a look at the `_links` object and retrieve the `customers` that need to be notified. From here, you can make a call to `customers/{id}` to retrieve their e-mail addresses (or to your own database) so that you can send your notification message.
 
 That's it! You’ve learned the basics of webhooks.
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/validating-webhook"
-></Paginaton>

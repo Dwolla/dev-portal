@@ -8,6 +8,9 @@ meta:
   description: Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.
 ---
 
+import Image from "../../../components/base/Image";
+import processBankTransfers from "../../../assets/images/content-images/process-bank-transfers.png";
+
 # Step 4: Initiating a transfer
 
 Now that our user is onboarded and their funding source has been created, we’re ready to create a transfer to their bank account. In order to create the transfer, we’ll need Funding Source links that represent both the source and destination bank accounts. Your customer’s funding source URL should be stored from the previous step and retrieved on demand when creating the transfer.
@@ -160,7 +163,7 @@ For more information on which webhooks will be fired, refer to our [API Referenc
 
 To simulate ACH processing in the Dwolla Sandbox environment, navigate to the Sandbox Dashboard. From here, you will want to click the “Process Bank Transfers” button on the top of the screen. Your Sandbox transfer will be moved out of a `pending` status and moved to a `processed` status.
 
-<img src="/assets/images/content-images/process-bank-transfers.png" />
+<Image src={processBankTransfers} alt="process bank transfers" />
 
 ## Step 4D: Verify Status of Transfer
 
@@ -245,9 +248,3 @@ print($transfer->status); # => "processed"
 ```
 
 That’s it! You’ve successfully transferred money to a recipient. Please continue to the Webhooks guide for information on implementing notifications for your customers about the status of the transfer.
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/retrieve-funding-source"
-></Paginaton>

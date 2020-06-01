@@ -8,7 +8,7 @@ meta:
   description: Check the status of a transfer to determine the if the transfer was successful or identify issues.
 ---
 
-# Step 7: Check the status of your transfer
+# Step 6: Retrieve the status of your transfer
 
 You can check the status of the newly created transfer by retrieving the transfer by its URL.
 
@@ -81,9 +81,3 @@ appToken.get(transferUrl).then((res) => res.body.status); // => 'pending'
 ```
 
 That’s it! You’ve successfully transferred money from Joe Buyer to Jane Merchant. Please continue to the Webhooks guide for information on implementing notifications for your customers about the transfer.
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-transfer"
-></Paginaton>

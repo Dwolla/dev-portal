@@ -8,7 +8,7 @@ meta:
   description: Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.
 ---
 
-# Step 6: Create a transfer
+# Step 5: Create a transfer
 
 [Create a transfer](https://docs.dwolla.com/#transfers) by specifying Joe Buyer’s funding source as the source and Jane Merchant’s funding source as the destination.
 
@@ -131,14 +131,3 @@ $myAccount = $transferApi->create($transfer_request);
 print($xfer); # => https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ?>
 ```
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-verified-funding-source"
-></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/retrieve-transfer-status"
-></Paginaton>

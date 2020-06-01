@@ -23,12 +23,3 @@ Plaid Link is handled completely on the client-side using JavaScript. Set up Lin
 Plaid Link handles the entire onboarding flow securely and quickly, but does not actually retrieve data for the selected financial institution. Instead, the Link module returns a `public_token` and an `account_id` (an id representing a user selected account at their FI) via a callback.
 
 This public token, along with the account id must be exchanged for a Plaid `access_token` by your back-end server making a call to the Plaid API. Finally, you’ll send the `access_token` and `account_id` to the Plaid API in exchange for a Dwolla `processor_token` which will be sent to the Dwolla API in the next step.
-
----
-
-<Paginaton variant="previous" variantText="PREVIOUS" href="./"></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/create-funding-source"
-></Paginaton>

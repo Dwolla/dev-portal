@@ -8,6 +8,8 @@ meta:
   description: Add a bank funding source to a Customer to initiate a pay-out transfer.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Step 2: Adding a Funding Source
 
 After creating our receive-only User, the next step is to attach a bank funding source. This will be the funding source where they will receive funds.
@@ -28,16 +30,15 @@ There are three ways of adding a bank to a Customer with the Dwolla API. A simpl
 
 In this step, we will be adding a bank account to our receive-only user by collecting their bank details within a form on our application. After initial validation of the form fields, the user’s bank details will be submitted to our back-end server where the API request is made to Dwolla to add a bank account.
 
-<ol class="alerts">
-  <li class="alert icon-alert-alert">
-    For more information on securely submitting a user’s bank details directly
-    to Dwolla from the client-side of your application, reference our{" "}
-    <a href="/resources/dwolla-js/add-a-bank-account.html">
-      helper library dwolla.js
-    </a>
-    .
-  </li>
-</ol>
+<AlertBar variation="info">
+  For more information on securely submitting a user’s bank details directly to
+  Dwolla from the client-side of your application, reference our{" "}
+  <a href="/resources/dwolla-js/add-a-bank-account.html">
+    {" "}
+    helper library dwolla.js{" "}
+  </a>
+  .
+</AlertBar>
 
 #### Request Parameters - Create a Funding Source
 
@@ -47,6 +48,8 @@ In this step, we will be adding a bank account to our receive-only user by colle
 | accountNumber   | yes       | string | The bank account number                                                  |
 | bankAccountType | yes       | string | Type of bank account: `checking` or `savings`                            |
 | name            | yes       | string | Arbitrary nickname for the funding source. Must be 50 characters or less |
+
+<br />
 
 ```bash
 POST https://api.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747/funding-sources
@@ -131,14 +134,3 @@ When the funding source is created, you will receive a `201` HTTP response with 
 ## Step 2B: Handle Webhooks
 
 If you have an active webhook subscription (required in production & optional in Sandbox), you will receive the `customer_funding_source_created` webhook immediately after the resource has been created.
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-a-customer"
-></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/retrieve-funding-source"
-></Paginaton>

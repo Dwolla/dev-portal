@@ -10,6 +10,7 @@ meta:
 
 import Image from "../../../../components/base/Image";
 import microDepositsFallback from "../../../../assets/images/content-images/microdeposits-fallback.png";
+import Button from "../../../../components/base/Button";
 
 # Step 3: Configure and call function
 
@@ -85,13 +86,15 @@ An optional `subscriber` function can be used if your application is wanting to 
 
 Dwolla provides a list of CSS classes available for styling certain elements of the IAV flow. These elements can be easily customized to match the look and feel of your application, and are included within the `options` JavaScript object of the function dwolla.iav.start(). You can specify one or many stylesheets as a list within the `stylesheets` attribute. By default, the elements within your specified container are responsive to any change in screen size.
 
-<a
-  href="https://www.dwolla.com/dwollajs-bank-verification"
-  target="_blank"
-  class="btn secondary medium"
->
-  Demo Dwolla.js
-</a>
+<Button
+  text="Demo Dwolla.js"
+  size="standard"
+  variant="secondary"
+  link={{
+    href: "https://www.dwolla.com/dwollajs-bank-verification",
+    external: true,
+  }}
+/>
 
 #### List of CSS classes
 
@@ -116,16 +119,3 @@ Dwolla provides a list of CSS classes available for styling certain elements of 
 .dwolla-iav-radio-hover,
 .dwolla-iav-radio-selected
 ```
-
----
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-token"
-></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/handle-response"
-></Paginaton>

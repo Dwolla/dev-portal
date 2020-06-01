@@ -30,7 +30,7 @@ Since you are utilizing a `me-to-me` funds flow, you will need to know that ther
 
 ## Step 4A: Initiate a Transfer
 
-To initiate a transfer, we will need to specify the source and destination funding source URLs in the \_links parameter.
+To initiate a transfer, we will need to specify the source and destination funding source URLs in the `_links` parameter.
 
 #### Request Parameters
 
@@ -45,9 +45,10 @@ To initiate a transfer, we will need to specify the source and destination fundi
   for the transfer, or <code>correlationId</code> to help correlate transfers
   from end-to-end. The object <code>facilitator-fee</code> isn't supported for
   this funds flow. For more information on all available transfer request
-  parameters, check out our
+  parameters, check out our{" "}
   <a href="https://docs.dwolla.com/#initiate-a-transfer">
-    API reference documentation.
+    {" "}
+    API reference documentation.{" "}
   </a>
 </AlertBar>
 
@@ -271,9 +272,3 @@ Since ACH transfers in production can take a few days to complete, webhooks are 
     "individualAchId": "IQKBPJAY"
 }
 ```
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/retrieve-funding-sources"
-></Paginaton>

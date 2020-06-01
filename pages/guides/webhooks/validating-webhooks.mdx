@@ -1,8 +1,8 @@
 ---
 layout: guides
-title: "Step 3: Validating Webhooks"
+title: "Step 2: Validating Webhooks"
 guide:
-  step: 3
+  step: 2
 meta:
   title: Webhooks | Validating Webhooks
   description: Validating webhooks for payments within your application by utilizing our open API with no per transaction fees.
@@ -12,11 +12,11 @@ meta:
 
 Assume that your integration is an online marketplace, and that a customer just placed an order on your site. A few days after the customer initiated their payment, your application receives this webhook.
 
-The `topic` field of an event holds [a description](http://docs.dwolla.com/#events) of the event, which is similar the subject of an e-mail message. The `webhook` itself contains \_links to the resource impacted by the event that can be used to retrieve more information about the webhook you have received.
+The `topic` field of an event holds [a description](http://docs.dwolla.com/#events) of the event, which is similar the subject of an e-mail message. The `webhook` itself contains `_links` to the resource impacted by the event that can be used to retrieve more information about the webhook you have received.
 
-##### JSON
+##### Webhook payload example
 
-```javascript
+```json
 {
   "id": "cac95329-9fa5-42f1-a4fc-c08af7b868fb",
   "resourceId": "cdb5f11f-62df-e611-80ee-0aa34a9b2388",
@@ -113,14 +113,3 @@ unless check_db.length() == 0
     # do something
 end
 ```
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-subscription"
-></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/process-webhooks"
-></Paginaton>

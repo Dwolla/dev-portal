@@ -14,6 +14,9 @@ meta:
   description: Use the Dwolla API to send money to your users' bank accounts with pay-out transfers.
 ---
 
+import Image from "../../../components/base/Image";
+import fundsFlowSend from "../../../assets/images/content-images/funds-flow-send.gif";
+
 # Send money to your users
 
 ### Overview
@@ -22,8 +25,9 @@ This guide is designed to get you up and running quickly through creating a one-
 
 If your use case involves sending many payments in a single batch, it’s recommended that you leverage our [Mass Payment API](https://docs.dwolla.com/#mass-payments) which allows you to send up to 5000 payments with a single API request.
 
-<img
-  src="/assets/images/content-images/funds-flow-send.gif"
+<Image
+  src={fundsFlowSend}
+  alt="Funds Flow Receive Money"
   width="75%"
   height="75%"
 />
@@ -46,9 +50,3 @@ After creating a sandbox account, you’ll obtain your API Key and Secret, which
 Lastly, in this sandbox walkthrough, we recommend having an active webhook subscription. This will help notify your application of various events that occur within Dwolla. [Check out our guide to learn more](/guides/webhooks/).
 
 **Let’s get started!**
-
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/create-a-customer"
-></Paginaton>

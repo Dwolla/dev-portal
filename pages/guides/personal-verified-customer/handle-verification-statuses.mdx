@@ -34,7 +34,16 @@ Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, 
 
 ## Handling status: `retry`
 
-A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual's SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes. **Please note:** you need to gather **new** information if the Customer is placed into the `retry` status; simply passing the same information will result in the same insufficient scores. All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
+A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual's SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
+
+<AlertBar variation="warning">
+  You need to gather **new** information if the Customer is placed into the
+  `retry` status; simply passing the same information will result in the same
+  insufficient scores. All fields that were required in the initial Customer
+  creation attempt will be required in the retry attempt, along with the full
+  9-digit SSN.
+</AlertBar>
+<br />
 
 ```bash
 POST https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1
@@ -691,16 +700,3 @@ print($retrieved->failureReason); # => "ScanNotReadable"
 ## Handling status: suspended
 
 If the Customer is `suspended`, there’s no further action you can take to correct this using the API. You’ll need to contact support@dwolla.com or your account manager for assistance.
-
----
-
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-a-customer"
-></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/frequently-asked-questions"
-></Paginaton>

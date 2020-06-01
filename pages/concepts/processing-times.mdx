@@ -16,7 +16,7 @@ import achTransferTimeline from "../../assets/images/content-images/ach-transfer
 import achNextDay from "../../assets/images/content-images/ach-next-day.png";
 import achSameDay from "../../assets/images/content-images/ach-same-day.png";
 
-# Bank transfer workflow
+# Transfer Processing Times
 
 ## Bank-to-Bank Transfers
 
@@ -37,7 +37,7 @@ Transfers into the Dwolla network from a bank, including transfers that pass thr
 
 ##### ACH Payment In - Standard clearing
 
-Standard transfers from a bank to the Dwolla network will take 3-4 business days to settle. ACH is known as a next-business day settlement system, however, to account for ACH returns and processing delays by financial institutions the processing timeline is extended. With this ACH processing, funds being held for a few days which allows for checks on common return codes; including insufficient funds, and basic checks for valid bank accounts. If during ACH processing a failure is discovered as funds are held, the transfer will fail and be marked with a return code. To learn more about the various ACH return codes that can be returned systematically on a transfer failure, take a look at our [transfer failures developer resource article.](https://developers.dwolla.com/resources/bank-transfer-workflow/transfer-failures.html)
+Standard transfers from a bank to the Dwolla network will take 3-4 business days to settle. ACH is known as a next-business day settlement system, however, to account for ACH returns and processing delays by financial institutions the processing timeline is extended. With this ACH processing, funds being held for a few days which allows for checks on common return codes; including insufficient funds, and basic checks for valid bank accounts. If during ACH processing a failure is discovered as funds are held, the transfer will fail and be marked with a return code. To learn more about the various ACH return codes that can be returned systematically on a transfer failure, take a look at our [transfer failures](https://developers.dwolla.com/concepts/transfer-failures.html) developer resource article.
 
 ##### ACH Payment In - Next-Day clearing
 
@@ -66,26 +66,26 @@ Upgrading exports out of the Dwolla Network to a bank using `Same-day` clearing 
 
 ### Clearing example
 
-In this bank-to-bank transfer example we have `next-day` enabled, but we want to slow the transfer clearing into the Dwolla network back to `standard`. However, we feel comfortable letting this transfer export out of the Dwolla Network with `same-day` clearing to the destination bank.
+In this bank-to-bank transfer request example we have `next-day` enabled, but we want to slow the transfer clearing into the Dwolla network back to `standard`. However, we feel comfortable letting this transfer export out of the Dwolla Network with `same-day` clearing to the destination bank.
 
-```javascript
+```json
 {
-    "_links": {
-        "source": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/9615fc1d-8855-4ac2-ab11-e5469c66c8e8"
-        },
-        "destination": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/b2d83ee5-5834-4cb7-9820-98149aff5063"
-        }
+  "_links": {
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/9615fc1d-8855-4ac2-ab11-e5469c66c8e8"
     },
-    "amount": {
-        "currency": "USD",
-        "value": "10.00"
-    },
-    "clearing": {
-        "source": "standard",
-        "destination": "next-available"
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/b2d83ee5-5834-4cb7-9820-98149aff5063"
     }
+  },
+  "amount": {
+    "currency": "USD",
+    "value": "10.00"
+  },
+  "clearing": {
+    "source": "standard",
+    "destination": "next-available"
+  }
 }
 ```
 

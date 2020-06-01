@@ -16,8 +16,6 @@ import iavSavingsAccount from "../../../assets/images/content-images/iav-savings
 
 Within Dwolla, the sending party must always [verify their bank account](/guides/dwolla-js/instant-account-verification) in order to be eligible to create a transfer.
 
-<!-- Need a new link -->
-
 ## Bank Addition and Verification methods
 
 There are three ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
@@ -138,8 +136,14 @@ You’ll know the bank account was successfully added and verified if you receiv
 
 ### Example success callback
 
-```javascript
-{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"}}}
+```json
+{
+  "_links": {
+    "funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
+    }
+  }
+}
 ```
 
 ## Step 2B: Handle Webhooks
@@ -159,13 +163,3 @@ You will want to repeat these steps and add the `savings` account.
   width="75%"
   height="75%"
 />
-<Paginaton
-  variant="previous"
-  variantText="PREVIOUS"
-  href="/create-a-customer"
-></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/retrieve-funding-sources"
-></Paginaton>

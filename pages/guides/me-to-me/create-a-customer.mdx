@@ -21,9 +21,14 @@ Before your end-user can send or receive funds to their connected bank account, 
 
 To learn more on the differences between personal and business verified Customers and the capabilities of each, [check out our developer resource article.](/concepts/customer-types)
 
-**A note on verified Customers:**
-
-Verified Customers must go through the identity verification process and have a `verified` status in order to be eligible to transact. In order to verify the identity of the individual or business creating a Dwolla Customer account, you will need to pass information including, but not limited to, social security number (ssn), address, date of birth, and/or Employer Identification Number (EIN).
+<AlertBar variation="info">
+  Verified Customers must go through the identity verification process and have
+  a <code>verified</code> status in order to be eligible to transact. In order
+  to verify the identity of the individual or business creating a Dwolla
+  Customer account, you will need to pass information including, but not limited
+  to, social security number (ssn), address, date of birth, and/or Employer
+  Identification Number (EIN).
+</AlertBar>
 
 ## Step 1A. Create the Customer
 
@@ -31,21 +36,19 @@ While both the Personal and Business verified Customer types are valid in this f
 
 #### Request Parameters - Personal Verified Customer
 
-| Parameter   | Required | Type   | Description                                                                                                                            |
-| ----------- | -------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| firstName   | yes      | string | An individual Customer’s first name                                                                                                    |
-| lastName    | yes      | string | An individual Customer’s last name                                                                                                     |
-| email       | yes      | string | Customer’s email address                                                                                                               |
-| ipAddress   | no       | string | Customer’s IP address                                                                                                                  |
-| type        | yes      | string | The Verified Customer type–set to personal if creating a verified personal Customer                                                    |
-| address1    | yes      | string | First line of the street address of the Customer’s permanent residence–must be 50 characters or less. Note: PO Boxes are not allowed.  |
-| address2    | no       | string | Second line of the street address of the Customer’s permanent residence–must be 50 characters or less. Note: PO Boxes are not allowed. |
-| city        | yes      | string | City of Customer’s permanent residence                                                                                                 |
-| state       | yes      | string | Two letter abbreviation of the state in which the Customer resides (e.g. CA)                                                           |
-| postalCode  | yes      | string | Postal code of Customer’s permanent residence. US five-digit ZIP or ZIP + 4 code (e.g. 50314)                                          |
-| dateOfBirth | yes      | string | Customer’s date of birth in YYYY-MM-DD format–must be 18 years or older                                                                |
-| ssn         | yes      | string | Last four digits of the Customer’s Social Security Number                                                                              |
-| phone       | no       | string | Customer’s 10 digit phone number–no hyphens or other separators (e.g. 3334447777)                                                      |
+| Parameter   | Required | Type   | Description                                                                          |
+| ----------- | -------- | ------ | ------------------------------------------------------------------------------------ |
+| firstName   | yes      | string | Individual’s legal first name.                                                       |
+| lastName    | yes      | string | Individual’s legal last name.                                                        |
+| email       | yes      | string | Customer’s email address.                                                            |
+| type        | yes      | string | Type of identity verified Customer. Value of `personal` for individual.              |
+| address1    | yes      | string | Street number, street name of individual’s physical address.                         |
+| address2    | no       | string | Apartment, floor, suite, bldg # of individual’s physical address.                    |
+| city        | yes      | string | City of individual’s physical address.                                               |
+| state       | yes      | string | Two-letter US state or territory abbreviation code of individual’s physical address. |
+| postalCode  | yes      | string | Customer’s US five-digit ZIP or ZIP + 4 code.                                        |
+| dateOfBirth | yes      | string | Customer’s date of birth. Must be 18 years of age with format of `YYYY-MM-DD`.       |
+| ssn         | yes      | string | Last four-digits of individual’s social security number.                             |
 
 #### Request and response (view schema in ‘raw’)
 
@@ -176,7 +179,7 @@ When the Customer is successfully created on your application, you will receive 
 
 <AlertBar variation="info">
   Providing the IP address of the end-user accessing your application as the
-  <code>ipAddress</code> parameter. This enhances fraud detection and tracking.
+  <code> ipAddress</code> parameter. This enhances fraud detection and tracking.
 </AlertBar>
 
 ## Step 1B: Handle Webhooks
@@ -193,13 +196,11 @@ Not all Customers will have a `verified` status upon initial Customer creation. 
 
 On successful Customer verification, Dwolla will also create a [Balance Funding Source](/concepts/balance-funding-source) for this Customer.
 
-**A Note on the Balance Funding Source**
-
-There are two types of Funding Sources available within the Dwolla Platform which include a bank or a balance. A bank account is commonly used as the source or destination for ACH transfers. A `balance` is a Funding Source that can be utilized like a “wallet” for holding a stored value of funds. The Dwolla balance is made available for Customers that have fully `verified` their identity within Dwolla.
-
-<Paginaton variant="previous" variantText="PREVIOUS" href="./"></Paginaton>
-<Paginaton
-  variant="next"
-  variantText="NEXT"
-  href="/add-funding-sources"
-></Paginaton>
+<AlertBar variation="info">
+  There are two types of Funding Sources available within the Dwolla Platform
+  which include a bank or a balance. A bank account is commonly used as the
+  source or destination for ACH transfers. A <code> balance</code> is a Funding
+  Source that can be utilized like a “wallet” for holding a stored value of
+  funds. The Dwolla balance is made available for Customers that have fully{" "}
+  <code> verified</code> their identity within Dwolla.
+</AlertBar>
