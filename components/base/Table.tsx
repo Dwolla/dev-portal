@@ -21,6 +21,7 @@ const StyledTable = styled.div`
     font-weight: 500;
     line-height: 17px;
     padding: 11px 21px;
+    text-align: left;
   }
   td {
     color: ${PARAGRAPH_TEXT};
