@@ -10,6 +10,8 @@ meta:
   description: Utilize Dwolla's integration with Sift to identify fraudulent activity.
 ---
 
+import AlertBar from "../../components/base/AlertBar";
+
 # Sift Integration
 
 As part of Dwolla’s [API](https://www.dwolla.com/platform), you can choose to implement Sift’s machine learning model for [real-time ACH fraud monitoring](https://www.dwolla.com/ach/automated-ach-fraud-monitoring).
@@ -24,7 +26,15 @@ Often, we see customers choosing to use [Sift](https://sift.com/) in order to be
 - Visit `Integrations` under your account settings, or visit [https://dashboard.dwolla.com/account/integrations](https://dashboard.dwolla.com/account/integrations)
 - Toggle to turn Sift on, and enter your Sift Key
 
-**It is important to note** that your integration with Sift will involve the placement of [Sift JavaScript](https://sift.com/developers/docs/curl/javascript-api) within your application. Dwolla is unable to perform this code placement on your behalf, as the Sift JavaScript implementation occurs within your application.
+<AlertBar variation="warning">
+  your integration with Sift will involve the placement of{" "}
+  <a href="https://sift.com/developers/docs/curl/javascript-api">
+    Sift JavaScript
+  </a>{" "}
+  within your application. Dwolla is unable to perform this code placement on
+  your behalf, as the Sift JavaScript implementation occurs within your
+  application.
+</AlertBar>
 
 As outlined in the bullet points above, first you’ll insert your Sift JavaScript within your application. Subsequently, you will copy and paste your Sift API key within the Integrations section under `Account` in the Dwolla API Dashboard. **Then you are all set!**
 

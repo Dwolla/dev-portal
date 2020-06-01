@@ -1,28 +1,14 @@
 ---
 layout: guides
-title: "Overview"
+title: "Step 3: Configure and call function"
+guide:
+  step: 3
 meta:
-  title: Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation
-  description: Dwolla.js is a client-side JavaScript library designed to quickly onboard customers, add and verify bank accounts (IAV), and enable on-demand bank transfers.
+  title: Configure and Call Dwolla.js | Dwolla API Documentation
+  description: Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
-# Dwolla.js
-
-Dwolla.js is a client-side JavaScript library with the primary function of securely transmitting sensitive data (bank account and routing number) from your application's front-end to Dwolla without the data passing through your server. When you attach a bank account to a Customer, use dwolla.js and let Dwolla reduce your risk of handling sensitive data. Additionally, Dwolla.js includes an added function available as a Dwolla Customer providing the ability to render the instant bank account verification flow within a specified container of your application. However you're using dwolla.js, both server-side and client-side interaction is required.
-
-### Getting Started: Usage and configuration
-
-#### Include dwolla.js
-
-Begin the client-side implementation by including dwolla.js in the HEAD of your HTML page. You can include either the development version(`<script src="https://cdn.dwolla.com/1/dwolla.js"></script>`) or the minified version (`<script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>`) of dwolla.js.
-
-```html
-<head>
-  <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
-</head>
-```
-
-#### Configure
+# Step 3: Configure and call function
 
 Configuration options are available for utilizing dwolla.js in both our Sandbox and production environments. Configuration of an environment should take place after you have included the dwolla.js library.
 
@@ -33,10 +19,6 @@ dwolla.configure("sandbox");
 // Production
 dwolla.configure("prod");
 ```
-
-## Dwolla.js to create a funding source
-
-Using dwolla.js, securely transmit sensitive data (bank account and routing number) to Dwolla without the data passing through your server. This resource guide will walk you through the process of generating a funding sources token, collecting the user's bank account information, and calling a JavaScript function to send this data to Dwolla. When you collect and submit the user's bank account information, dwolla.js has built-in validation that will trigger an error if any of the required fields are invalid.
 
 ### dwolla.fundingSources.create()
 
@@ -65,11 +47,34 @@ dwolla.fundingSources.create(
 );
 ```
 
----
+## Call JavaScript function to create a new funding source
 
-#### Next steps:
+Assuming `dwolla.js` is already included and configured on your page, you will create the function that will call `dwolla.fundingSources.create()`. For this example, jQuery is used to call the function that creates a funding source when the user clicks the "Add Bank" button on your page. To test in the sandbox environment, use the `dwolla.configure()` helper function and pass in the value of `sandbox`.
 
-- [Generate Funding Sources Token](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-funding-sources-token)
-- [Create Form](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-form)
-- [Configure and Call Javascript](https://developers.dwolla.com/guides/funding-sources/dwolla-js/configure)
-- [Handle Error Response](https://developers.dwolla.com/guides/funding-sources/dwolla-js/handle-errors)
+In our example, `dwolla.fundingSources.create()` takes three arguments: a string value of the funding sources token, JavaScript object containing bank account information entered by the user, and a callback function that will handle any error or response.
+
+```javascript
+$("form").on("submit", function() {
+  dwolla.configure("sandbox");
+  var token = "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg";
+  var bankInfo = {
+    routingNumber: $("routingNumber").val(),
+    accountNumber: $("accountNumber").val(),
+    type: $("type").val(),
+    name: $("name").val(),
+  };
+  dwolla.fundingSources.create(token, bankInfo, callback);
+  return false;
+});
+
+function callback(err, res) {
+  var $div = $("<div />");
+  var logValue = {
+    error: err,
+    response: res,
+  };
+  $div.text(JSON.stringify(logValue));
+  console.log(logValue);
+  $("#logs").append($div);
+}
+```

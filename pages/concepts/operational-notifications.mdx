@@ -4,11 +4,14 @@ title: "Operational Notifications"
 description: Understand what Dwolla events are tied to notifications that are sent to your end users. Preview the customizable email templates here.
 category: Features
 concept:
-  icon: "concepts.svg"
+  icon: "operational-notifications.svg"
 meta:
   title: Dwolla operational notifications | Dwolla API Documentation
   description: Tie Dwolla events to email notifications sent to your users. Preview what the operational notifications will look like.
 ---
+
+import Image from "../../components/base/Image";
+import emailTemplate from "../../assets/images/content-images/email-template.png";
 
 # Operational Notifications
 
@@ -32,20 +35,22 @@ A full list of events are listed below. Please review to ensure you know when yo
 
 When configuring Operational Notifications, there are several items that can be customized to your business. Below is a list of the items that you can currently customize:
 
-| Item                   | Required?   | Description                                                                                                                                                                                                                                                                            |
-| ---------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Account Name           | Yes         | The name that will display in the From section, defaults to the name on your Dwolla account or specified DBA name. Example: Your Business Name                                                                                                                                         |
-| From Email Address     | Yes         | The email address that will display in the From address, only the local-part can be customized. Example: yourbusinessname@dwolla.com                                                                                                                                                   |
-| Reply-to Email Address | Yes         | The email address your company will specify to receive replies. Example: support@yourbusinessname.com                                                                                                                                                                                  |
-| Logo                   | No          | The branded image for your company, to be displayed at the top of the email content. The upload file format must be: .jpg, .png, or .gif. The max file size is 10 MB. The recommended width is 135 pixels.                                                                             |
-| Logo Link              | No          | The link that when the logo is clicked on, will redirect the receiver. Example: www.yourbusinessname.com                                                                                                                                                                               |
-| Support Address        | Yes         | The physical address that will display in the email footer, defaulted to the address on the account. Example: 123 Main Street, Des Moines, IA 50309                                                                                                                                    |
-| Support phone          | Conditional | An optional item. Required if a Support email isn't provided. The phone number that will show up in the support section, defaulted to the account phone number. Example: "If you have any questions or concerns please contact support at 555-555-5555."                               |
-| Support Email Address  | Conditional | An optional item. Required if a Support phone isn't provided. The email address that will show up in the support section, optional and defaults to the account email address. Example: "If you have any questions or concerns please contact support at support@yourbusinessname.com." |
+| Item                       | Required?   | Description                                                                                                                                                                                                                                                                                      |
+| -------------------------- | ----------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Account Name**           | Yes         | The name that will display in the **From** section, defaults to the name on your Dwolla account or specified DBA name.<br /> Example: `Your Business Name`                                                                                                                                       |
+| **From Email Address**     | Yes         | The email address that will display in the [From] address, only the local-part can be customized.<br /> Example: `yourbusinessname@dwolla.com`                                                                                                                                                   |
+| **Reply-to Email Address** | Yes         | The email address your company will specify to receive replies.<br /> Example: `support@yourbusinessname.com`                                                                                                                                                                                    |
+| **Logo**                   | No          | The branded image for your company, to be displayed at the top of the email content. The upload file format must be: .jpg, .png, or .gif. The max file size is 10 MB. The recommended width is 135 pixels.                                                                                       |
+| **Logo Link**              | No          | The link that when the logo is clicked on, will redirect the receiver.<br /> Example: `www.yourbusinessname.com`                                                                                                                                                                                 |
+| **Support Address**        | Yes         | The physical address that will display in the email footer, defaulted to the address on the account.<br /> Example: `123 Main Street, Des Moines, IA 50309`                                                                                                                                      |
+| **Support phone**          | Conditional | An optional item. Required if a `Support email` isn't provided. The phone number that will show up in the support section, defaulted to the account phone number.<br /> Example: `"If you have any questions or concerns please contact support at 555-555-5555."`                               |
+| **Support Email Address**  | Conditional | An optional item. Required if a `Support phone` isn't provided. The email address that will show up in the support section, optional and defaults to the account email address.<br /> Example: `"If you have any questions or concerns please contact support at support@yourbusinessname.com."` |
 
 #### Example Email Template
 
 An example email template is shown below for a payment initiated email. At the present time, only the information listed in the customization section can be edited. Emails are viewable within the Dwolla Dashboard upon delivery attempt to your customers.
+
+<Image src={emailTemplate} alt="Operational Notifications email template" />
 
 ## List of Emails by Type
 

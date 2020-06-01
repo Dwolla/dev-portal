@@ -8,13 +8,22 @@ meta:
   description: Identify the various statuses of Verified Customer creation, including retry, document and suspended.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Step 2: Handling Business Verified Customer Statuses
 
 ## The basics
 
 You have successfully created a business verified Customer; however, there are cases where Dwolla will need more information to fully verify the identity of the Controller and/or Business. Read on to learn more.
 
-**If your Business and Controller are already identity verified,** you can skip to the [next step--adding beneficial owners](/resources/business-verified-customer/adding-beneficial-owners.html) to continue with your business verified Customer onboarding.
+<AlertBar variation="info">
+  If your Business and Controller are already identity verified, you can skip to
+  the next step{" "}
+  <a href="/guides/business-verified-customer/add-beneficial-owners">
+    adding beneficial owners
+  </a>{" "}
+  to continue with your business verified Customer onboarding.
+</AlertBar>
 
 ## Verification statuses and corresponding events
 
@@ -31,13 +40,11 @@ As a developer, you will want to handle the various Customer statuses that can b
 
 A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the Controller’s SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
 
-<ol class="alerts">
-  <li class="alert icon-alert-alert">
-    You need to gather new information if the Customer is placed into the retry
-    status; simply passing the same information will result in the same
-    insufficient scores.
-  </li>
-</ol>
+<AlertBar variation="warning">
+  You need to gather new information if the Customer is placed into the retry
+  status; simply passing the same information will result in the same
+  insufficient scores.
+</AlertBar>
 
 All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
 
@@ -249,52 +256,52 @@ When a business verified Customer is placed in the `document` verification statu
 
 #### Example response
 
-```javascript
+```json
 {
-    "_links": {
-        "self": {
-            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "customer"
-        },
-        "document-form": {
-            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
-            "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
-            "resource-type": "document"
-        },
-        "verify-business-with-document": {
-            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "document"
-        }
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
     },
-    "id": "41432759-6d65-42e5-a6be-400ddd103b78",
-    "firstName": "Account",
-    "lastName": "Admin",
-    "email": "accountAdmin@email.com",
-    "type": "business",
-    "status": "document",
-    "created": "2018-05-10T19:59:22.643Z",
-    "address1": "66 Walnut St",
-    "city": "Des Moines",
-    "state": "IA",
-    "postalCode": "50309",
-    "businessName": "Jane Corp",
-    "controller": {
-        "firstName": "document",
-        "lastName": "Controller",
-        "title": "CEO",
-        "address": {
-            "address1": "1749 18th st",
-            "address2": "apt 12",
-            "city": "Des Moines",
-            "stateProvinceRegion": "IA",
-            "country": "US",
-            "postalCode": "50266"
-        }
+    "document-form": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
+      "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+      "resource-type": "document"
     },
-    "businessClassification": "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
-    "businessType": "llc"
+    "verify-business-with-document": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "document"
+    }
+  },
+  "id": "41432759-6d65-42e5-a6be-400ddd103b78",
+  "firstName": "Account",
+  "lastName": "Admin",
+  "email": "accountAdmin@email.com",
+  "type": "business",
+  "status": "document",
+  "created": "2018-05-10T19:59:22.643Z",
+  "address1": "66 Walnut St",
+  "city": "Des Moines",
+  "state": "IA",
+  "postalCode": "50309",
+  "businessName": "Jane Corp",
+  "controller": {
+    "firstName": "document",
+    "lastName": "Controller",
+    "title": "CEO",
+    "address": {
+      "address1": "1749 18th st",
+      "address2": "apt 12",
+      "city": "Des Moines",
+      "stateProvinceRegion": "IA",
+      "country": "US",
+      "postalCode": "50266"
+    }
+  },
+  "businessClassification": "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
+  "businessType": "llc"
 }
 ```
 
@@ -388,7 +395,7 @@ Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275af
 
 Once created, the document will be reviewed by Dwolla. When our team has made a decision to approve or reject, which may take up to 1-2 business days, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
 
-If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](/resources/business-verified-customer/handling-controller-and-customer-statuses.html#document-types) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
+If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](#document-types) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
 
 If the document was found to be fraudulent or doesn’t match the identity of the Customer, the Customer will be suspended.
 
@@ -396,15 +403,15 @@ If the document was found to be fraudulent or doesn’t match the identity of th
 
 A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned :
 
-| Failure reason                      | Description                                                            |
-| ----------------------------------- | ---------------------------------------------------------------------- |
-| <code>ScanNotReadable</code>        | Image blurry, too dark, or obscured by glare                           |
-| <code>ScanNotUploaded</code>        | Scan not uploaded                                                      |
-| <code>ScanIdExpired</code>          | ID is expired                                                          |
-| <code>ScanIdTypeNotSupported</code> | ID may be a military ID, firearm license, or other unsupported ID type |
-| <code>ScanNameMismatch</code>       | Name mismatch                                                          |
-| <code>ScanDobMismatch</code>        | Date of birth mismatch                                                 |
-| <code>ScanFailedOther</code>        | ID may be fraudulent or a generic example ID image                     |
+| Failure reason           | Description                                                            |
+| ------------------------ | ---------------------------------------------------------------------- |
+| `ScanNotReadable`        | Image blurry, too dark, or obscured by glare                           |
+| `ScanNotUploaded`        | Scan not uploaded                                                      |
+| `ScanIdExpired`          | ID is expired                                                          |
+| `ScanIdTypeNotSupported` | ID may be a military ID, firearm license, or other unsupported ID type |
+| `ScanNameMismatch`       | Name mismatch                                                          |
+| `ScanDobMismatch`        | Date of birth mismatch                                                 |
+| `ScanFailedOther`        | ID may be fraudulent or a generic example ID image                     |
 
 #### Request and response
 
@@ -481,18 +488,4 @@ If the Customer is `suspended`, there’s no further action you can take to corr
 
 ## Next steps: Beneficial Owners
 
-The successful creation of a business verified Customer and Controller doesn’t necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you.
-
-To learn how to add beneficial owner(s) to your Customer, read on to our [next article](/resources/business-verified-customer/adding-beneficial-owners.html).
-
----
-
-#### Next steps
-
-- [Adding beneficial owner(s)](/resources/business-verified-customer/adding-beneficial-owners.html)
-- [Certifying beneficial owner(s)](/resources/business-verified-customer/handling-beneficial-owner-certification.html)
-- [Frequently Asked Questions](/resources/business-verified-customer/frequently-asked-questions.html)
-
-#### Review previous steps
-
-- [Creating business verified Customer](/resources/business-verified-customer/create-business-verified-customers.html)
+The successful creation of a business verified Customer and Controller doesn’t necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you. To learn how to add beneficial owner(s) to your Customer, read on in our next article.

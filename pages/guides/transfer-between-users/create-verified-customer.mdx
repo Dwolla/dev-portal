@@ -8,11 +8,13 @@ meta:
   description: Create a Customer in the Dwolla API to send funds to their bank account.
 ---
 
-# Step 2: Create a Verified Customer
+import AlertBar from "../../../components/base/AlertBar";
+
+# Step 1: Create a Verified Customer
 
 First, we’ll create a `Verified Customer` for Jane Merchant.
 
-There are two types of verified Customers you can create; [Personal Verified Customers](https://developers.dwolla.com/guides/customers/verified-personal) and [Business Verified Customers.](https://developers.dwolla.com/guides/customers/verified-business) In this example, we use [business verified customers](https://developers.dwolla.com/resources/business-verified-customer.html) (sole proprietorship) to represent the merchant who will be receiving funds.
+There are two types of verified Customers you can create; [Personal Verified Customers](/guides/personal-verified-customer) and [Business Verified Customers.](/guides/business-verified-customer) In this example, we use [business verified customers](/guides/business-verified-customer) (sole proprietorship) to represent the merchant who will be receiving funds.
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers
@@ -140,11 +142,14 @@ appToken
 
 When the customer is created, you’ll receive the customer URL in the location header.
 
-**Important:** There are various reasons a Verified Customer will result in a status other than `verified` which you will want to account for after the Customer is created. Reference the Customer verification resource article for more information on [handling verification statuses](https://developers.dwolla.com/guides/customers/verified-business/handle-verification-statuses).
-
-<nav class="pager-nav">
-  <a href="obtain-access-token.html">Back: Obtain an access token</a>
-  <a href="add-unverified-funding-source.html">
-    Next: Attach an unverified funding source
+<AlertBar variation="warning">
+  There are various reasons a Verified Customer will result in a status other
+  than <code>verified</code> which you will want to account for after the
+  Customer is created. Reference the Customer verification resource article for
+  more information on{" "}
+  <a href="/guides/business-verified-customer/handle-verification-statuses">
+    {" "}
+    handling verification statuses
   </a>
-</nav>
+  .
+</AlertBar>

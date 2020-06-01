@@ -8,6 +8,8 @@ meta:
   description: Identify the various statuses of Verified Customer creation, including retry, document and suspended.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Handling verification statuses
 
 After successfully creating a personal identity-verified `Customer`, they will immediately be given a status. There are various reasons a Customer status can be something other than `verified`; you will want to account for this after the Customer is created.
@@ -28,11 +30,20 @@ It is recommended to have an active [webhook subscription](https://docs.dwolla.c
 
 ### Testing verification statuses in Sandbox
 
-Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://docs.dwolla.com/#update-a-customer) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](https://developers.dwolla.com/resources/testing.html#simulate-document-upload-approved-and-failed-events) resource article.
+Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://docs.dwolla.com/#update-a-customer) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](/concepts/sandbox) resource article.
 
 ## Handling status: `retry`
 
-A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual's SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes. **Please note:** you need to gather **new** information if the Customer is placed into the `retry` status; simply passing the same information will result in the same insufficient scores. All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
+A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the individual's SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
+
+<AlertBar variation="warning">
+  You need to gather **new** information if the Customer is placed into the
+  `retry` status; simply passing the same information will result in the same
+  insufficient scores. All fields that were required in the initial Customer
+  creation attempt will be required in the retry attempt, along with the full
+  9-digit SSN.
+</AlertBar>
+<br />
 
 ```bash
 POST https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1
@@ -154,15 +165,13 @@ Check the Customer’s status again. The Customer will either be in the `verifie
 
 A `KBA` status occurs when a Customer’s identity scores are too low after the `retry` verification attempt. Knowledge based authentication (KBA), is used to identify end users by asking them to answer specific security questions about themselves pulled from a set of known data. These questions are also known as “out of wallet” questions which are dynamically generated on the spot. The Customer must answer at least three out of four (total) questions correctly in order to pass verification, which translates to a score of 75%. If the end user fails to pass KBA verification, they will be placed in a `document` status. The KBA flow is a three step process which includes: initiating the KBA session, retrieving the question set and answering the question set.
 
-> [Learn more](https://developers.dwolla.com/resources/testing.html) on testing KBA in the sandbox environment.
+> [Learn more](/concepts/sandbox) on testing KBA in the sandbox environment.
 
-<ol class="alerts">
-  <li class="alert icon-alert-info">
-    This section outlines a premium feature for the Dwolla API. Please contact
-    Sales or your account manager for more information on enabling KBA
-    functionality.
-  </li>
-</ol>
+<AlertBar variation="info">
+  This section outlines a premium feature for the Dwolla API. Please contact
+  Sales or your account manager for more information on enabling KBA
+  functionality.
+</AlertBar>
 
 ### Initiating the KBA session
 
@@ -601,7 +610,7 @@ You’ll also get a webhook with a `customer_verification_document_uploaded` eve
 
 Once created, the document will be reviewed by Dwolla. When our team has made a decision, which may take up to 1-2 business days to approve or reject, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
 
-If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](https://developers.dwolla.com/resources/personal-verified-customer/handling-verification-statuses-personal.html#handling-status-document) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
+If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](#handling-status-document) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
 
 If the document was found to be fraudulent or doesn’t match the identity of the Customer, the Customer will be suspended.
 
@@ -691,13 +700,3 @@ print($retrieved->failureReason); # => "ScanNotReadable"
 ## Handling status: suspended
 
 If the Customer is `suspended`, there’s no further action you can take to correct this using the API. You’ll need to contact support@dwolla.com or your account manager for assistance.
-
----
-
-#### Next steps:
-
-- [Frequently asked questions](/resources/personal-verified-customer/frequently-asked-questions.html) for personal verified Customers
-
-#### View previous steps:
-
-- [Personal verified Customers](/resources/personal-verified-customer/create-personal-verified-customers.html) creation and verification.

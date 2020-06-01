@@ -14,6 +14,9 @@ meta:
   description: Use the Dwolla API to send money to your users' bank accounts with pay-out transfers.
 ---
 
+import Image from "../../../components/base/Image";
+import fundsFlowSend from "../../../assets/images/content-images/funds-flow-send.gif";
+
 # Send money to your users
 
 ### Overview
@@ -22,8 +25,9 @@ This guide is designed to get you up and running quickly through creating a one-
 
 If your use case involves sending many payments in a single batch, it’s recommended that you leverage our [Mass Payment API](https://docs.dwolla.com/#mass-payments) which allows you to send up to 5000 payments with a single API request.
 
-<img
-  src="/assets/images/content-images/funds-flow-send.gif"
+<Image
+  src={fundsFlowSend}
+  alt="Funds Flow Receive Money"
   width="75%"
   height="75%"
 />
@@ -39,16 +43,10 @@ In this quickstart guide, you’ll learn the key concepts involved with sending 
 
 ## Before you begin
 
-We encourage you to create a sandbox account, if you haven’t already. This will allow you to follow along with the steps outlined in this guide. [Check out our Sandbox setup guide to learn more](/guides/sandbox-setup/).
+We encourage you to create a sandbox account, if you haven’t already. This will allow you to follow along with the steps outlined in this guide. [Check out our Sandbox setup guide to learn more](/concepts/sandbox/).
 
 After creating a sandbox account, you’ll obtain your API Key and Secret, which are used to obtain an OAuth access token. An access token is required in order to authenticate against the Dwolla API. Learn more about how to [obtain an access token in our guide](/guides/auth/).
 
 Lastly, in this sandbox walkthrough, we recommend having an active webhook subscription. This will help notify your application of various events that occur within Dwolla. [Check out our guide to learn more](/guides/webhooks/).
 
 **Let’s get started!**
-
-<PaginationWrapper className="center">
-  <Paginaton variant="next" variantText="NEXT" href="/add-funding-source">
-    Step 2: Adding a funding source
-  </Paginaton>
-</PaginationWrapper>

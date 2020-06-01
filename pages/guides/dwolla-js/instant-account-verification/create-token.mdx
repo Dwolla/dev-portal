@@ -8,67 +8,54 @@ meta:
   description: Create an Instant Account Verification token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
-# Step 1: Generate a funding sources token
-
-Before calling a function within dwolla.js to add a new funding source, you need to generate a funding sources token. Your server initiates a POST request to Dwolla, specifying for which Dwolla account or Dwolla API Customer you want to add a bank account. Dwolla will respond with a funding sources `token` that expires in an hour. This token will be sent to the client and used to authenticate the HTTP request asking Dwolla to add a new funding source.
+# Step 2: Generate a single-use IAV token for your Customer (view schema in ‘raw’)
 
 ```bash
-curl -X POST
-\ -H "Content-Type: application/vnd.dwolla.v1.hal+json"
-\ -H "Accept: application/vnd.dwolla.v1.hal+json"
-\ -H "Authorization: Bearer qe634nV7dIYpYDf3VGZPciziPU2BCboUZ7G7EG8XEyGswKkBV5"
-\ "https://api-sandbox.dwolla.com/customers/28138609-30FF-4607-B28C-4A3872F8FD4A/funding-sources-token"
+POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/iav-token
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 HTTP/1.1 200 OK
+
 {
-  "_links": {
-    "self": {
-      "href": "https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a/funding-sources-token"
-    }
-  },
-  "token": "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
+ "_links": {
+   "self": {
+     "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/iav-token"
+   }
+ },
+ "token": "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
 }
-```
-
-```ruby
-customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
-
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-customer = app_token.post "#{customer_url}/funding-sources-token"
-customer.token # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
-```
-
-```javascript
-// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var customerUrl =
-  "https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a";
-
-appToken.post(`${customerUrl}/funding-sources-token`).then(function(res) {
-  res.body.token; // => 'Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg'
-});
-```
-
-```python
-customer_url = 'https://api.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a'
-customers_api = dwollaswagger.CustomersApi(client)
-
-token = customers_api.create_funding_sources_token_for_customer(customer_url)
-print token['token'] # => 'Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg'
 ```
 
 ```php
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
-$fsToken = $customersApi->createFundingSourcesTokenForCustomer("https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a");
-$fsToken->token; # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
+$fsToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C");
+$fsToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 ?>
 ```
 
----
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
 
-#### Next steps:
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer = app_token.post "#{customer_url}/iav-token"
+customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+```
 
-- [Create Form](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-form)
-- [Configure and Call Javascript](https://developers.dwolla.com/guides/funding-sources/dwolla-js/configure)
-- [Handle Error Response](https://developers.dwolla.com/guides/funding-sources/dwolla-js/handle-errors)
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
+
+app_token.post('%s/iav-token' % customer_url)
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C";
+
+appToken.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+```

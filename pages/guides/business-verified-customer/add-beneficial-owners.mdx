@@ -8,11 +8,23 @@ meta:
   description: Conditionally required, create a beneficial owner to a verified business Customer to advance them to a transactable state.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Step 3: Adding Beneficial Owner(s)
 
 ## The Basics
 
 To help the government fight financial crime, the existing United States Federal customer due diligence rules were amended to clarify and strengthen [customer due diligence requirements.](https://www.federalregister.gov/documents/2016/05/11/2016-10567/customer-due-diligence-requirements-for-financial-institutions#footnote-44-p29407) The customer due diligence rule imposes a requirement for verifying the identity of beneficial owner(s) of Dwolla’s partners and users that are not natural persons. These legal entities can be abused to disguise involvement in terrorist financing, money laundering, tax evasion, corruption, fraud, and other financial crimes. Requiring the disclosure of key individuals who ultimately own or control a legal entity (i.e., the beneficial owners) helps law enforcement investigate and prosecute these crimes.
+
+<AlertBar variation="info">
+  If your business is exempt or if there is no individual with at least 25%
+  ownership, your Customer can go straight to
+  <a href="/guides/business-verified-customer/certify-beneficial-ownership">
+    {" "}
+    certifying{" "}
+  </a>
+  that there are no beneficial owners
+</AlertBar>
 
 ### How do I know what business structure is required to add Beneficial Owners?
 
@@ -26,8 +38,6 @@ To help the government fight financial crime, the existing United States Federal
 | Non-profits                               | No (exempt)                                    |
 | LLCs                                      | Yes (if owns 25% or more)                      |
 | Partnerships, LP's, LLP's                 | Yes (if owns 25% or more)                      |
-
-**If your business is exempt or if there is no individual with at least 25% ownership,** your Customer can [go straight to certifying that there is no beneficial owner](/resources/business-verified-customer/handling-beneficial-owner-certification.html).
 
 ## Create a beneficial owner for a Business Verified Customer
 
@@ -274,7 +284,13 @@ Congrats! You have created a beneficial owner for a business verified Customer, 
 
 An `incomplete` status occurs when a beneficial owner's identity scores are too low during the initial verification attempt. Dwolla will trigger a `customer_beneficial_owner_reverification_needed` event which notifies your application to prompt the Customer to [submit another identity verification attempt](https://docs.dwolla.com/#update-a-beneficial-owner) for the beneficial owner. The second attempt will give our identity vendor more accurate information in an attempt to receive a sufficient score to approve the beneficial owner. The Customer will only have one opportunity to correct any mistakes.
 
-**Please note:** you need to gather new information if the beneficial owner is placed into the `incomplete` status; simply passing the same information will result in the same insufficient scores. All fields that were required in the initial beneficial owner creation attempt will be required in the `incomplete` attempt.
+<AlertBar variation="info">
+  You need to gather new information if the beneficial owner is placed into the
+  <code>incomplete</code> status; simply passing the same information will result
+  in the same insufficient scores. All fields that were required in the initial beneficial
+  owner creation attempt will be required in the <code>incomplete</code>
+  attempt.
+</AlertBar>
 
 #### Request and Response - update beneficial owner
 
@@ -563,15 +579,3 @@ After removal of a Beneficial Owner, they can be re-added and go through the ver
 The successful creation and verification of a beneficial owner doesn’t necessarily mean the business verified Customer is verified and ready to send or receive funds. The final step in creating a business verified Customer is to certify that all information provided is correct. Read on to view the procedures on how to certify your owners.
 
 To learn how to certify beneficial owners to your Customer, read on to our next article.
-
----
-
-#### Next steps
-
-- [Certifying beneficial owners](/resources/business-verified-customer/handling-beneficial-owner-certification.html)
-- [Frequently Asked Questions](/resources/business-verified-customer/frequently-asked-questions.html)
-
-#### Review previous steps
-
-- [Creating business verified Customer](/resources/business-verified-customer/create-business-verified-customers.html)
-- [Handling business verified Customer statuses](/resources/business-verified-customer/handling-controller-and-customer-statuses.html)

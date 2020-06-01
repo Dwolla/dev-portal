@@ -14,6 +14,10 @@ meta:
   description: Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+import Image from "../../../components/base/Image";
+import fundsFlowFacilitate from "../../../assets/images/content-images/funds-flow-facilitate.gif";
+
 # Overview: Transfer money between your users
 
 The most common scenario for this guide is to facilitate marketplace or peer-to-peer transfers between your customers.
@@ -26,9 +30,16 @@ In this guide, we’ll cover the key points of transferring money:
 - Associate an unverified funding source (bank or credit union account) with recipient
 - Transfer funds from the sender’s funding source to the recipient’s funding source
 
+<Image
+  src={fundsFlowFacilitate}
+  alt="Funds Flow Facilitate Transfers"
+  width="75%"
+  height="75%"
+/>
+
 ## Before you begin
 
-You need to have a [Sandbox account](/guides/sandbox-setup) already set up.
+You need to have a [Sandbox account](/concepts/sandbox) already set up.
 
 ## Verified and Unverified Customers
 
@@ -39,6 +50,12 @@ Here are some rules to keep in mind:
 
 In this guide, we’ll create two Customers: one to represent a seller and one to represent a buyer. In this scenario, the seller, Jane Merchant, is a `Verified Customer` with an unverified funding source. The buyer, Joe Buyer, is an `Unverified Customer` with a verified funding source.
 
-**Please note:** This is a suggested approach and there are other ways you can implement your marketplace transfers. For instance, both the sender and the receiver (or buyer and seller) could be `Verified Customers`, and both could have verified funding sources. Or, you could have the sender undergo identity verification but not the recipient.
+<AlertBar variation="info">
+  This is a suggested approach and there are other ways you can implement your
+  marketplace transfers. For instance, both the sender and the receiver (or
+  buyer and seller) could be <code>Verified Customers</code>, and both could
+  have verified funding sources. Or, you could have the sender undergo identity
+  verification but not the recipient.
+</AlertBar>
 
-Looking to learn more about each Customer type and how it relates to your funds flow? Take a look at our [Customer types](/concepts/account-types) article for more information.
+Looking to learn more about each Customer type and how it relates to your funds flow? Take a look at our [Customer types](/concepts/customer-types) article for more information.

@@ -8,6 +8,8 @@ meta:
   description: Create a Customer with the Dwolla API for use in sending funds to their bank account with pay-out transfers.
 ---
 
+import AlertBar from "../../../components/base/AlertBar";
+
 # Step 1: Create recipients using the Dwolla API
 
 ## Choose the Customer Type for your Recipient
@@ -17,6 +19,11 @@ Before your end user can receive funds to their connected bank account, they mus
 ## Step 1A. Create the Customer
 
 While you can use any Customer type for this funds flow, we will be creating a `receive-only` user in this guide, as it offers a lightweight onboarding experience for users. Just as the name implies, receive-only users are only eligible to receive funds into their attached bank account.
+
+<AlertBar variation="info">
+  providing the IP address of the end-user accessing your application as the
+  <code>ipAddress</code> parameter. This enhances fraud detection and tracking.
+</AlertBar>
 
 #### Request Parameters - Receive-only User
 
@@ -28,6 +35,8 @@ While you can use any Customer type for this funds flow, we will be creating a `
 | type         | yes       | string | Value of `receive-only`                                                 |
 | businessName | no        | string | Customer's registered business name (optional if not a business entity) |
 | ipAddress    | no        | string | Customer's IP address                                                   |
+
+<br />
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers
@@ -104,20 +113,8 @@ print($customer); # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4
 ?>
 ```
 
-<ol class="alerts">
-  <li class="alert icon-alert-alert">
-    Provide the IP address of the end-user accessing your application as the
-    `ipAddress` parameter. This enhances fraud detection and tracking.
-  </li>
-</ol>
-
 When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating webhooks that are triggered for the user in the Dwolla system.
 
 ## Step 1B. Handle Webhooks
 
-If you have an active [webhook subscription](/guides/webhooks/create-subscription/subscribe-to-webhooks), you will receive the `customer_created` webhook immediately after the resource has been created.
-
-<nav class="pager-nav">
-  <a href="./">Back: Overview</a>
-  <a href="add-funding-source.html">Next: Add funding source</a>
-</nav>
+If you have an active [webhook subscription](/guides/webhooks/create-subscription), you will receive the `customer_created` webhook immediately after the resource has been created.

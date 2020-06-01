@@ -1,0 +1,121 @@
+---
+layout: guides
+title: "Step 3: Configure and call function"
+guide:
+  step: 3
+meta:
+  title: Configure and Call Dwolla.js | Dwolla API Documentation
+  description: Configure and call function for initiating Dwolla.js, a powerful and secure bank account verification tool.
+---
+
+import Image from "../../../../components/base/Image";
+import microDepositsFallback from "../../../../assets/images/content-images/microdeposits-fallback.png";
+import Button from "../../../../components/base/Button";
+
+# Step 3: Configure and call function
+
+Configuration options are available for utilizing dwolla.js in both our Sandbox and production environments. Configuration of an environment should take place after you have included the dwolla.js library.
+
+```javascript
+// Sandbox
+dwolla.configure("sandbox");
+
+// Production
+dwolla.configure("prod");
+```
+
+Now that you have dwolla.js initialized on the page and the container created where you’ll render the IAV flow, you’ll create a JavaScript function that responds when clicking the “Add bank” button on your page. Once your Customer clicks “Add Bank”, your application will call dwolla.iav.start() passing in the following arguments: the iavContainer element where IAV will render, a string value of your single-use IAV token, and a callback function that will handle any error or response.
+
+```javascript
+<script type="text/javascript">
+$('#start').click(function() {
+  var iavToken = '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY';
+  dwolla.configure('sandbox');
+  dwolla.iav.start(iavToken, {
+          container: 'iavContainer',
+          stylesheets: [
+            'https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
+          ],
+          microDeposits: 'true',
+          fallbackToMicroDeposits: (fallbackToMicroDeposits.value === 'true')
+        }, function(err, res) {
+    console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
+  });
+});
+</script>
+```
+
+## Options and customization
+
+#### `microDeposits`
+
+Your application can present the micro-deposit method of bank verification throughout the IAV flow by setting the `microDeposits` option to _true_. This option gives the user the ability to initially select either the micro-deposit method of bank verification or IAV, as well as fallback to selecting the micro-deposit method of bank verification if un-successful connecting a bank through the IAV flow.
+
+<Image src={microDepositsFallback} alt="Micro-deposit fallback" />
+
+#### `fallbackToMicroDeposits`
+
+If your application sets the `fallbackToMicroDeposits` option to _true_, a fallback selection screen will appear after **two** failed attempts if there was an issue with connecting a bank using IAV. This selection screen asks the user to choose from either the traditional micro-deposit method of bank verification or re-attempt the IAV flow choosing a different financial institution.
+
+#### `backButton`
+
+By default, a back button will **not** be displayed throughout the IAV flow. If your application sets the `backButton` option to _true_, a back button will appear in the lower left corner of the container throughout the IAV flow.
+
+#### `subscriber`
+
+An optional `subscriber` function can be used if your application is wanting to receive additional information on where the user is within the IAV flow, as well as if a user-facing message was presented to the user. `subscriber` is a function that will be called with an object containing a `currentPage` and an optional `error` attribute. `currentPage` will be a string value that identifies what page the user is on in the IAV flow. If an error occurs, the `error` attribute will be returned along with `currentPage`. `error` will be a JSON object, which includes a top-level error `code` and a `message` (similar to [common errors](https://docs.dwolla.com/#errors) in the API). Reference the following table for possible values:
+
+| Attribute   | Value                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| :---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| currentPage | `BankSearch` <br /> `BankLogin` <br /> `MFA` <br /> `SelectAccount` <br /> `SuccessIAV` <br /> `SelectVerificationMethod` <br /> `SubmitBankAccountDetails` <br /> `SuccessMicroDeposits`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| error       | **code** and **message**: <br /> `InvalidLogin` - "Please make sure your login or security information is correct." <br /> `AccountNotFound` - "Sorry, we’re unable to find your {BANK NAME} account. Please try again or use a different account." <br /> `UnsupportedSite` - "Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution." <br /> `AlreadyLoggedIn` - "If you're currently logged in to your {BANK NAME} account, please log out and try again." <br /> `VisitSite` - "We’re unable to process your information because the {BANK NAME} site is currently requiring additional action from you. Please resolve this, then try again." <br /> `UnavailableSite` - "Sorry, there seem to be some technical difficulties while attempting to process your information. Please try again later." |
+
+##### **Example subscriber callback**
+
+```json
+{
+  "currentPage": "BankLogin",
+  "error": {
+    "code": "InvalidLogin",
+    "message": "Please make sure your login or security information is correct."
+  }
+}
+```
+
+#### `stylesheets`
+
+Dwolla provides a list of CSS classes available for styling certain elements of the IAV flow. These elements can be easily customized to match the look and feel of your application, and are included within the `options` JavaScript object of the function dwolla.iav.start(). You can specify one or many stylesheets as a list within the `stylesheets` attribute. By default, the elements within your specified container are responsive to any change in screen size.
+
+<Button
+  text="Demo Dwolla.js"
+  size="standard"
+  variant="secondary"
+  link={{
+    href: "https://www.dwolla.com/dwollajs-bank-verification",
+    external: true,
+  }}
+/>
+
+#### List of CSS classes
+
+```css
+/* Available css classes for customization*/
+.dwolla-iav-text-box,
+.dwolla-iav-button,
+.dwolla-iav-header,
+.dwolla-iav-text,
+.dwolla-iav-link,
+.dwolla-iav-error,
+.dwolla-iav-label,
+.dwolla-iav-header,
+.dwolla-iav-text-box,
+.dwolla-iav-text-box:focus,
+.dwolla-iav-link,
+.dwolla-iav-link:hover,
+.dwolla-iav-button,
+.dwolla-iav-button:hover,
+.dwolla-iav-button:active,
+.dwolla-iav-check-image,
+.dwolla-iav-radio-hover,
+.dwolla-iav-radio-selected
+```

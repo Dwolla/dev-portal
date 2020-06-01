@@ -1,6 +1,6 @@
 ---
 layout: guides
-title: "Step 1: Create a Customer"
+title: "Step 1: Create a Business Verified Customer"
 guide:
   step: 1
 meta:
@@ -16,25 +16,20 @@ Creating a business verified Customer will require you to provide information ab
 
 ### How do I know what `businessType` to sign up as?
 
-| My Customer's business structure... | ...will sign up in Dwolla as `businessType =` | Is a Controller required? |
-| ----------------------------------- | --------------------------------------------- | ------------------------- |
-| Sole proprietorships                | `soleProprietorship`                          | No                        |
-| Unincorporated association          | `soleProprietorship`                          | No                        |
-| Trust                               | `soleProprietorship`                          | No                        |
-| Corporation                         | `corporation`                                 | Yes                       |
-| Publicly traded corporations        | `corporation`                                 | Yes                       |
-| Non-profits                         | `corporation` or `llc`                        | Yes                       |
-| LLCs                                | `llc`                                         | Yes                       |
-| Partnerships, LP's, LLP's           | `partnership`                                 | Yes                       |
+| My Customer's business structure | Dwolla businessType values | Controller required? |
+| -------------------------------- | -------------------------- | -------------------- |
+| Sole proprietorships             | `soleProprietorship`       | No                   |
+| Unincorporated association       | `soleProprietorship`       | No                   |
+| Trust                            | `soleProprietorship`       | No                   |
+| Corporation                      | `corporation`              | Yes                  |
+| Publicly traded corporations     | `corporation`              | Yes                  |
+| Non-profits                      | `corporation` or `llc`     | Yes                  |
+| LLCs                             | `llc`                      | Yes                  |
+| Partnerships, LP's, LLP's        | `partnership`              | Yes                  |
 
 There are two types of business verified Customers that you can create, based on if they are required to add information on the Controller or not.
 
-- **Quick-link** - [Create a business verified Customer with no Controller](/resources/business-verified-customer/create-business-verified-customers.html#request-parameters-create-a-business-verified-customer-with-no-controller)
-- **Quick link** - [Create a business verified Customer and Controller](/resources/business-verified-customer/create-business-verified-customers.html#request-parameters-create-a-business-verified-customer-and-controller)
-
-## Create a Business Verified Customer
-
-### Request Parameters - Create a business verified Customer with no Controller
+## Create a business verified Customer with no Controller
 
 Follow these steps to create a business verified Customer where `"businessType": "soleProprietorship"`
 
@@ -200,9 +195,7 @@ appToken
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
 
-## Create a Business Verified Customer
-
-### Request Parameters - Create a business verified Customer and controller
+## Create a business verified Customer with controller
 
 #### Events
 
@@ -220,6 +213,8 @@ As a developer, you can expect these events to be triggered when a business veri
 | **LLC**         | Identity verified | Identity verified | Not identity verified |
 
 For all other `businessType`'s other than `soleProprietorship`, your Customer will need to provide more information for verification. In order to create a business verified Customer with a controller, Dwolla requires information on an account admin, the business, and the controller. Your business verified Customer account admin will act as the agent signing up on behalf of the business. When going through the Customer creation flow, your business verified Customer account admin will only need information on one controller to successfully complete the signup flow.
+
+### Corporation, partnership, llc - Request parameters
 
 | Parameter              | Required    | Type   | Description                                                                                                                                                                                                 |
 | ---------------------- | ----------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -244,15 +239,15 @@ For all other `businessType`'s other than `soleProprietorship`, your Customer wi
 
 ### Controller JSON object
 
-| Parameter   | Required    | Type   | Description                                                                                                                                                                                                                                                     |
-| ----------- | ----------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| firstName   | yes         | string | The legal first name of the controller.                                                                                                                                                                                                                         |
-| lastName    | yes         | string | The legal last name of the controller.                                                                                                                                                                                                                          |
-| title       | yes         | string | Job title of the Customer’s Controller. e.g. Chief Financial Officer                                                                                                                                                                                            |
-| dateOfBirth | yes         | string | The date of birth of the controller. Formatted in YYYY-MM-DD format. Must be 18 years or older.                                                                                                                                                                 |
-| ssn         | conditional | string | Last four-digits of Controller’s social security number. Required for Controllers who reside in the United States.                                                                                                                                              |
-| address     | yes         | object | A controller address JSON object. Full address of the controller's physical address. [See below](/resources/business-verified-customer/create-business-verified-customers.html#controller-address-json-object)                                                  |
-| passport    | conditional | object | An optional controller's passport JSON object. Required for non-US individuals. Includes passport identification number and country. [See below](/resources/business-verified-customer/create-business-verified-customers.html#controller-passport-json-object) |
+| Parameter   | Required    | Type   | Description                                                                                                                                                                        |
+| ----------- | ----------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| firstName   | yes         | string | The legal first name of the controller.                                                                                                                                            |
+| lastName    | yes         | string | The legal last name of the controller.                                                                                                                                             |
+| title       | yes         | string | Job title of the Customer’s Controller. e.g. Chief Financial Officer                                                                                                               |
+| dateOfBirth | yes         | string | The date of birth of the controller. Formatted in YYYY-MM-DD format. Must be 18 years or older.                                                                                    |
+| ssn         | conditional | string | Last four-digits of Controller’s social security number. Required for Controllers who reside in the United States.                                                                 |
+| address     | yes         | object | A controller address JSON object. Full address of the controller's physical address. [See below](#controller-address-json-object)                                                  |
+| passport    | conditional | object | An optional controller's passport JSON object. Required for non-US individuals. Includes passport identification number and country. [See below](#controller-passport-json-object) |
 
 ### Controller address JSON object
 
@@ -592,13 +587,4 @@ var customerUrl =
 appToken.get(customerUrl).then((res) => res.body.status); // => 'verified'
 ```
 
-You will want to ensure that both your Controller and your Business have been verified, as the Customer will be unable to send or receive funds until then. If the Customer is in `retry` or `document`, head to our next article to learn how to handle these statuses.
-
----
-
-#### Next steps
-
-- [Handling business verified Customer statuses](/resources/business-verified-customer/handling-controller-and-customer-statuses.html)
-- [Adding beneficial owner(s)](/resources/business-verified-customer/adding-beneficial-owners.html)
-- [Certifying beneficial owner(s)](/resources/business-verified-customer/handling-beneficial-owner-certification.html)
-- [Frequently Asked Questions](/resources/business-verified-customer/frequently-asked-questions.html)
+You will want to ensure that both your Controller and your Business have been verified, as the Customer will be unable to send or receive funds until then. If the Customer is in `retry` or `document` status, head to our next article to learn how to handle these statuses.

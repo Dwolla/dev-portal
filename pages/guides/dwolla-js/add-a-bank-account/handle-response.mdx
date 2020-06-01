@@ -1,0 +1,52 @@
+---
+layout: guides
+title: "Step 4: Handle JavaScript callback"
+guide:
+  step: 4
+meta:
+  title: Handle Dwolla.js callback | Dwolla API Documentation
+  description: Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.
+---
+
+# Step 4: Callback function - handling the error or response
+
+The callback function (err, res) allows you to determine if there is an error with the request (e.g. `Routing number invalid.`) or if the response was successful. In the example above, we are displaying any error or response within a `logs` container on our page.
+
+If there is an error: Display the error to the user to have them correct any fields, and have them re-attempt to add their bank.
+
+##### Example:
+
+```json
+{
+  "error": {
+    "code": "ValidationError",
+    "message": "Validation error(s) present. See embedded errors list for more details.",
+    "_embedded": {
+      "errors": [
+        {
+          "code": "Invalid",
+          "message": "Routing number invalid.",
+          "path": "/routingNumber"
+        }
+      ]
+    }
+  }
+}
+```
+
+If successful: You will receive a JSON response that includes a link to the newly attached funding source.
+
+##### Example:
+
+```json
+{
+  "error": null,
+  "response": {
+    "_links": {
+      "funding-source": {
+        "href": "https://api-sandbox.dwolla.com/funding-sources/746d5c93-acb9-4826-a9c1-78ecf16401a6"
+      }
+    }
+  }
+}
+```

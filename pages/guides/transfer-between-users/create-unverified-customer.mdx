@@ -8,7 +8,7 @@ meta:
   description: Create a Customer with the Dwolla API to allow Customers to send funds from their bank account.
 ---
 
-# Step 4: Creating an Unverified Customer
+# Step 3: Creating an Unverified Customer
 
 Now that we’ve created a customer for Jane Merchant and associated a funding source, we’ll do the same for Joe Buyer, but this time we’ll create an `Unverified Customer`, and a verified funding source which is capable of sending money.
 
@@ -89,12 +89,3 @@ When the customer is created, you’ll receive the customer URL in the location 
 **Important**: Provide the IP address of the end-user accessing your application as the ipAddress parameter. This enhances Dwolla’s ability to detect fraud.
 
 When the customer is created, you’ll receive the customer URL in the Location header.
-
-<nav className="pager-nav">
-  <a href="./attach-unverified-bank.html">
-    Back: Attach an unverified funding source
-  </a>
-  <a href="attach-verified-bank.html">
-    Next step: Attach a verified funding source
-  </a>
-</nav>

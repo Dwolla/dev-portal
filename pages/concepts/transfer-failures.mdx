@@ -4,15 +4,15 @@ title: "Transfer Failures"
 description: Familiarize yourself with the unhappy path of transfers and build resilient practices to mitigate ACH returns. Learn about returns, why they happen and recommended actions your application can take based on the return code.
 category: Transfers
 concept:
-  icon: "concepts.svg"
+  icon: "transfer-failures.svg"
 meta:
   title: ACH Transfer Failures | Dwolla API Documentation
   description: When a transfer of funds fails, it is assigned 1 of 80 ACH return codes. You can check the status of a transfer and find its return code via the Dwolla API.
 ---
 
-# Bank transfer workflow
+import AlertBar from "../../components/base/AlertBar";
 
-## Transfer failures
+# Transfer failures
 
 There are several reasons bank transfers can fail, a few of which are outlined below. When a transfer fails it is usually a result of an ACH failure which is assigned an ACH return code after being rejected from the financial institution. A few common failure examples include:
 
@@ -22,16 +22,16 @@ There are several reasons bank transfers can fail, a few of which are outlined b
 
 ### Retrieving the transfer
 
-You can check the status of a transfer at any time by [retrieving the transfer via the API.](https://docs.dwolla.com/#retrieve-a-transfer) When a bank transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docs.dwolla.com/#retrieve-a-transfer-failure-reason) in the next step.
+You can check the status of a transfer at any time by [retrieving the transfer via the API](https://docs.dwolla.com/#retrieve-a-transfer). When a bank transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docs.dwolla.com/#retrieve-a-transfer-failure-reason) in the next step.
 
 ##### Example failure link
 
-```javascript
+```json
 "failure": {
     "href": "https://api-sandbox.dwolla.com/transfers/a1e58cd8-11ec-e811-8111-bec1f96924ed/failure",
     "type": "application/vnd.dwolla.v1.hal+json",
     "resource-type": "failure"
-},
+}
 ```
 
 ### Retrieving the reason for a failed bank transfer
@@ -120,7 +120,7 @@ When a bank transfer failure occurs there is a subset of systematic actions Dwol
 | --------------------- | -------------------------------------------------------- | ------------------------------------ |
 | None                  | No action taken against the Customer bank funding source | N/A                                  |
 | Unverified            | A Customer's bank has been unverified, but not removed   | `customer_funding_source_unverified` |
-| Removed               | A Customer's bank has been removed                       | `customer_funding_source_removed`    |
+| Removed               | A Customer's bank has been removed                       | `customer_funding_source_removed`    | `customer_funding_source_removed` |
 
 ### Why does Dwolla automatically take these actions?
 
@@ -130,20 +130,27 @@ Being able to catch and take action errors can be beneficial on many levels. For
 
 Below is a table of the most common return codes we see involved in transactions. For a full list of return codes, you can check out the ACH return code [list on our blog](https://www.dwolla.com/ach/ach-return-codes/).
 
-**Note:** As a best practice, we recommend handling any systematic actions that trigger webhooks as a result of a transfer failure rather than relying on the specific actions as referenced below. We do not recommend building a workflow around each individual return code in the table below. This table solely meant to be a reference for you to be aware of actions Dwolla may take on common transfer failures.
+<AlertBar variation="info">
+  As a best practice, we recommend handling any systematic actions that trigger
+  webhooks as a result of a transfer failure rather than relying on the specific
+  actions as referenced below. We do not recommend building a workflow around
+  each individual return code in the table below. This table solely meant to be
+  a reference for you to be aware of actions Dwolla may take on common transfer
+  failures.
+</AlertBar>
 
-| Return Code | Reason for Return & Description                                                                                                                                                                                                                                                                              | Return Timeframe | Deactivated or Suspended | Funding Source Removed |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- | ------------------------ | ---------------------- |
-| R01         | **Insufficient Funds** Available balance is not sufficient to cover the dollar value of the debit entry.                                                                                                                                                                                                     | 2 banking days   | No                       | No                     |
-| R02         | **Bank Account Closed** Previously active account has been closed.                                                                                                                                                                                                                                           | 2 banking days   | No                       | Yes                    |
-| R03         | **No Account/Unable to Locate Account** Account number structure is valid, but doesn’t match individual identified in entry or is not an open account.                                                                                                                                                       | 2 banking days   | No                       | Yes                    |
-| R04         | **Invalid Bank Account Number Structure** Account number structure is not valid.                                                                                                                                                                                                                             | 2 banking days   | No                       | Yes                    |
-| R05         | **Unauthorized debit to consumer account** A debit entry was transmitted to a consumer account that was not authorized by the Receiver. _Written Statement is required._                                                                                                                                     | 60 calendar days | Yes                      | Yes                    |
-| R07         | **Authorization Revoked by Customer** Consumer who previously authorized entries has revoked authorization with the Originator. Written Statement is required.                                                                                                                                               | 60 calendar days | Yes                      | Yes                    |
-| R08         | **Payment Stopped** The Receiver has requested the stop payment of a specific ACH debit entry.                                                                                                                                                                                                               | 2 banking days   | Yes                      | Yes                    |
-| R09         | **Uncollected Funds** Sufficient balance exists, but value of uncollected items brings available balance below amount of debit entry.                                                                                                                                                                        | 2 banking days   | No                       | No                     |
-| R10         | **Customer Advises Originator is Not Known to Receiver and/or Originator is Not Authorized by Receiver to Debit Receiver’s Account** Receiver has no relationship with the Originator or has not authorized the Originator to debit the account. _Written Statement is required._                            | 60 calendar days | Yes                      | Yes                    |
-| R11         | **Customer Advises Entry Not in Accordance with the Terms of the Authorization.** The debit entry was inaccurate or improperly initiated. Other reasons include source document was ineligible, notice was not provided to the receive or amount was inaccurately obtained. _Written statement is required._ | 60 calendar days | Yes                      | Yes                    |
-| R16         | **Bank Account Frozen** Funds unavailable due to action by the RDFI or legal action.                                                                                                                                                                                                                         | 2 banking days   | Yes                      | Yes                    |
-| R20         | **Non-Transaction Account** RDFI policies/regulations restrict activity to account.                                                                                                                                                                                                                          | 2 banking days   | Yes                      | Yes                    |
-| R29         | **Corporate Customer Advises Not Authorized** Receiver has notified RDFI that corporate debit entry transmitted to a corporate account is not authorized.                                                                                                                                                    | 2 banking days   | Yes                      | Yes                    |
+| Return Code | Reason for Return & Description                                                                                                                                                                                                                                                                                     | Return Timeframe | Deactivated or Suspended | Funding Source Removed |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------------------------ | ---------------------- |
+| R01         | **Insufficient Funds** <br /> Available balance is not sufficient to cover the dollar value of the debit entry.                                                                                                                                                                                                     | 2 banking days   | No                       | No                     |
+| R02         | **Bank Account Closed** <br /> Previously active account has been closed.                                                                                                                                                                                                                                           | 2 banking days   | No                       | Yes                    |
+| R03         | **No Account/Unable to Locate Account** <br /> Account number structure is valid, but doesn’t match individual identified in entry or is not an open account.                                                                                                                                                       | 2 banking days   | No                       | Yes                    |
+| R04         | **Invalid Bank Account Number Structure** <br /> Account number structure is not valid.                                                                                                                                                                                                                             | 2 banking days   | No                       | Yes                    |
+| R05         | **Unauthorized debit to consumer account** <br /> A debit entry was transmitted to a consumer account that was not authorized by the Receiver. _Written Statement is required._                                                                                                                                     | 60 calendar days | Yes                      | Yes                    |
+| R07         | **Authorization Revoked by Customer** <br /> Consumer who previously authorized entries has revoked authorization with the Originator. Written Statement is required.                                                                                                                                               | 60 calendar days | Yes                      | Yes                    |
+| R08         | **Payment Stopped** <br /> The Receiver has requested the stop payment of a specific ACH debit entry.                                                                                                                                                                                                               | 2 banking days   | Yes                      | Yes                    |
+| R09         | **Uncollected Funds** <br /> Sufficient balance exists, but value of uncollected items brings available balance below amount of debit entry.                                                                                                                                                                        | 2 banking days   | No                       | No                     |
+| R10         | **Customer Advises Originator is Not Known to Receiver and/or Originator is Not Authorized by Receiver to Debit Receiver’s Account** <br /> Receiver has no relationship with the Originator or has not authorized the Originator to debit the account. _Written Statement is required._                            | 60 calendar days | Yes                      | Yes                    |
+| R11         | **Customer Advises Entry Not in Accordance with the Terms of the Authorization.** <br /> The debit entry was inaccurate or improperly initiated. Other reasons include source document was ineligible, notice was not provided to the receive or amount was inaccurately obtained. _Written statement is required._ | 60 calendar days | Yes                      | Yes                    |
+| R16         | **Bank Account Frozen** <br /> Funds unavailable due to action by the RDFI or legal action.                                                                                                                                                                                                                         | 2 banking days   | Yes                      | Yes                    |
+| R20         | **Non-Transaction Account** <br /> RDFI policies/regulations restrict activity to account.                                                                                                                                                                                                                          | 2 banking days   | Yes                      | Yes                    |
+| R29         | **Corporate Customer Advises Not Authorized** <br /> Receiver has notified RDFI that corporate debit entry transmitted to a corporate account is not authorized.                                                                                                                                                    | 2 banking days   | Yes                      | Yes                    |

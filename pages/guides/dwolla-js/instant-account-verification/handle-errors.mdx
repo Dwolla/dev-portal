@@ -8,19 +8,47 @@ meta:
   description: Handle JavaScript callback for success and error responses for Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
+import Image from "../../../../components/base/Image";
+import iavSelectAccount from "../../../../assets/images/content-images/iav-select-account.png";
+
 # Step 4: Callback function - handling the error or response
 
-The callback function (err, res) allows you to determine if there is an error with the request (e.g. `Routing number invalid.`) or if the response was successful. In the example above, we are displaying any error or response within a `logs` container on our page.
+The Customer will complete the IAV flow by authenticating with their online banking credentials. You’ll know their bank account was successfully added and verified if you receive a JSON response in your callback that includes a link to the newly created funding source.
 
-- If there is an error: Display the error to the user to have them correct any fields, and have them re-attempt to add their bank.
-  - Example: `{"error":{"code":"ValidationError","message":"Validation error(s) present. See embedded errors list for more details.","_embedded":{"errors":[{"code":"Invalid","message":"Routing number invalid.","path":"/routingNumber"}]}}}`
-- If successful: You will receive a JSON response that includes a link to the newly attached funding source.
-  - Example: `{"error":null,"response":{"_links":{"funding-source":{"href":"https://api-sandbox.dwolla.com/funding-sources/746d5c93-acb9-4826-a9c1-78ecf16401a6"}}}}`
+<Image src={iavSelectAccount} alt="IAV select account screen" />
 
----
+You’ll know their bank account was successfully added and verified if you receive a JSON response in your callback that includes a link to the newly created funding source.
 
-#### Previous steps:
+### Example success callback
 
-- [Generate Funding Sources Token](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-funding-sources-token)
-- [Create Form](https://developers.dwolla.com/guides/funding-sources/dwolla-js/create-form)
-- [Configure and Call Javascript](https://developers.dwolla.com/guides/funding-sources/dwolla-js/configure)
+```json
+{
+  "_links": {
+    "funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/80275e83-1f9d-4bf7-8816-2ddcd5ffc197"
+    }
+  }
+}
+```
+
+## Handling IAV errors
+
+IAV related errors are returned either as user-facing messages within the IAV flow, or triggered through the dwolla.js callback. User-facing messages are displayed in red text at the top of the bank login screen informing the user there was an issue with connecting the associated bank account. Error callbacks will trigger letting your app know of errors that can't be fixed by the user within the flow.
+
+Error callbacks will contain a similar JSON error response body as [common errors](https://docs.dwolla.com/#errors) in the API, which includes a top-level error `code` and a `message`. Reference the following list of error callbacks:
+
+| Code             | Message                                                                                                                                                            | Description                                                                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| UnexpectedPage   | IAV navigated to an unexpected page and was cancelled.                                                                                                             | A Dwolla related error occurred.                                                                                                            |
+| InvalidIavToken  | Invalid IAV token.                                                                                                                                                 | An IAV token has already been used or has exceeded its expiration time of 1 hour.                                                           |
+| UnsupportedBank  | Sorry, that financial institution is not supported. If possible, please choose a different one or an alternative method for connecting your financial institution. | The customer's bank is not supported by the IAV flow.                                                                                       |
+| RateLimitReached | Sorry, we’re having trouble logging into your account. Please try a different account.                                                                             | The customer exceeded the max number of two IAV attempts with the same bank. The customer must wait 30 minutes in order to re-authenticate. |
+
+#### **Example error callback**
+
+```json
+{
+  "code": "RateLimitReached",
+  "message": "Sorry, we’re having trouble logging into your account. Please try a different account."
+}
+```
