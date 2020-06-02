@@ -12,7 +12,14 @@ test("default", () => {
 
 test("with Link", () => {
   const tree = renderer
-    .create(<Card link icon={icon} topic="topic" description="Description" />)
+    .create(
+      <Card
+        link={{ href: "https://www.dwolla.com", external: true }}
+        icon={icon}
+        topic="topic"
+        description="Description"
+      />
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
@@ -37,7 +44,7 @@ test("with Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link
+        link={{ href: "https://www.dwolla.com", external: true }}
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
@@ -63,7 +70,7 @@ test("with Center Align and Link", () => {
   const tree = renderer
     .create(
       <Card
-        link
+        link={{ href: "https://www.dwolla.com", external: true }}
         centerAlign
         icon={icon}
         topic="topic"
@@ -95,7 +102,7 @@ test("with Center Align, Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link
+        link={{ href: "https://www.dwolla.com", external: true }}
         centerAlign
         badge="BADGETEXT"
         icon={icon}

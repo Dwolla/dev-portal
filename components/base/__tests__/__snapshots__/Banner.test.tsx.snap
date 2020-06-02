@@ -32,7 +32,7 @@ exports[`Banner - with Button 1`] = `
     Step-by-step instructions to get you set up in the Dwolla API
   </div>
   <a
-    className="primary large css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+    className="primary large css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
     href="https://accounts-sandbox.dwolla.com/login"
     onClick={[Function]}
     onMouseEnter={[Function]}

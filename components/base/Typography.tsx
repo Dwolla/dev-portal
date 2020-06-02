@@ -117,6 +117,7 @@ export const codeStyles = css`
 
 export const linkStyles = css`
   color: ${ORANGE_PRIMARY};
+  cursor: pointer;
   text-decoration: none;
   &:hover {
     text-decoration: underline;

@@ -5,9 +5,7 @@ import FooterCTA from "../components/base/FooterCTA";
 import { breakUp } from "../components/breakpoints";
 import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community.svg";
 
-const StyledCTA = styled.a`
-  display: block;
-  text-decoration: none;
+const CardWrap = styled.div`
   padding: 0 20px 20px;
 
   @media (${breakUp("md")}) {
@@ -24,15 +22,15 @@ export default (frontMatter) => {
           {content}
         </DefaultMDXWrapper>
 
-        <StyledCTA href="https://discuss.dwolla.com/" target="_blank">
+        <CardWrap>
           <Card
             icon={developerCommunityIcon}
             topic="Still haven’t found what you are looking for?"
             description="Ask the community."
-            link
+            link={{ href: "https://discuss.dwolla.com/", external: true }}
             centerAlign
           />
-        </StyledCTA>
+        </CardWrap>
 
         <FooterCTA
           topic="Test in the Sandbox for free today."

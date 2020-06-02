@@ -8,18 +8,18 @@ exports[`FooterCTA 1`] = `
     className="css-16d8gvv-StyledContent exx89mw1"
   >
     <h2
-      className="dark css-626giu-global-global-h2"
+      className="dark css-hbtz3d-global-global-h2"
     >
       Test in the Sandbox for free today.
     </h2>
     <p
-      className="dark css-160hd9d-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
+      className="dark css-od7pwh-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
     >
       Use sandbox environment to test API requests.
     </p>
   </div>
   <a
-    className="primary large css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+    className="primary large css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
     href="https://accounts-sandbox.dwolla.com/sign-up"
     onClick={[Function]}
     onMouseEnter={[Function]}

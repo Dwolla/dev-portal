@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-
+import Link from "next/link";
 import Badge from "./Badge";
 import { ReactComponent as NewTabIcon } from "../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
@@ -15,7 +15,7 @@ import { ROBOTO, POPPINS } from "../typography";
 import { breakDown } from "../breakpoints";
 
 type Props = {
-  link?: boolean;
+  link?: { href?: string; external?: boolean };
   centerAlign?: boolean;
   icon: string;
   badge?: string;
@@ -23,31 +23,50 @@ type Props = {
   description: string;
 };
 
-function Card({ description, badge, centerAlign, icon, link, topic }: Props) {
-  return (
-    <CardStyle className={centerAlign ? "center" : ""}>
-      <StyledIcon src={icon} alt="" className={centerAlign ? "center" : ""} />
+const CoreCard = ({
+  description,
+  badge,
+  centerAlign,
+  icon,
+  link,
+  topic,
+}: Props) => (
+  <CardStyle className={centerAlign ? "center" : ""}>
+    <StyledIcon src={icon} alt="" className={centerAlign ? "center" : ""} />
 
-      {badge && (
-        <BadgeStyle>
-          <Badge text={badge} />
-        </BadgeStyle>
-      )}
+    {badge && (
+      <BadgeStyle>
+        <Badge text={badge} />
+      </BadgeStyle>
+    )}
 
-      {link && (
-        <LinkStyle>
-          <NewTabIcon width={13} />
-        </LinkStyle>
-      )}
+    {link && link.external && (
+      <LinkIconStyle>
+        <NewTabIcon width={13} />
+      </LinkIconStyle>
+    )}
 
-      <TopicStyle className={centerAlign ? "center" : ""}>{topic}</TopicStyle>
+    <TopicStyle className={centerAlign ? "center" : ""}>{topic}</TopicStyle>
 
-      <DescriptionStyle className={centerAlign ? "center" : ""}>
-        {description}
-      </DescriptionStyle>
-    </CardStyle>
+    <DescriptionStyle className={centerAlign ? "center" : ""}>
+      {description}
+    </DescriptionStyle>
+  </CardStyle>
+);
+
+const Card = ({ link, ...rest }: Props) =>
+  link && link.href ? (
+    <Link href={link.href} passHref>
+      <StyledLink
+        target={link.external && "_blank"}
+        rel={link.external && "noopener noreferrer"}
+      >
+        <CoreCard link={link} {...rest} />
+      </StyledLink>
+    </Link>
+  ) : (
+    <CoreCard link={link} {...rest} />
   );
-}
 
 const CardStyle = styled.div`
   height: 100%;
@@ -74,6 +93,10 @@ const CardStyle = styled.div`
   }
 `;
 
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+
 const StyledIcon = styled.img`
   height: 48px;
   width: 48px;
@@ -90,7 +113,7 @@ const BadgeStyle = styled.div`
   right: 30px;
 `;
 
-const LinkStyle = styled.div`
+const LinkIconStyle = styled.div`
   position: absolute;
   top: 8px;
   right: 8px;

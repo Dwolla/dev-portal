@@ -163,36 +163,24 @@ export default function HomePage() {
       <ContentContainer>
         <CardGridWrapper>
           <CardGrid variant="center">
-            <Link href="/guides" key="Guides" passHref>
-              <StyledLink>
-                <Card
-                  icon={guideIcon}
-                  topic="Guides"
-                  description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
-                />
-              </StyledLink>
-            </Link>
-            <Link href="/concepts" key="Concepts" passHref>
-              <StyledLink>
-                <Card
-                  icon={conceptIcon}
-                  topic="Concepts"
-                  description="Transform your use case to business and functional requirements."
-                />
-              </StyledLink>
-            </Link>
-            <StyledLink
-              href="https://docs.dwolla.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Card
-                icon={apiReferenceIcon}
-                link
-                topic="API Reference"
-                description="View details for all of Dwolla’s API endpoints with a complete reference"
-              />
-            </StyledLink>
+            <Card
+              icon={guideIcon}
+              topic="Guides"
+              description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
+              link={{ href: "/guides" }}
+            />
+            <Card
+              icon={conceptIcon}
+              topic="Concepts"
+              description="Transform your use case to business and functional requirements."
+              link={{ href: "/concepts" }}
+            />
+            <Card
+              icon={apiReferenceIcon}
+              topic="API Reference"
+              description="View details for all of Dwolla’s API endpoints with a complete reference"
+              link={{ href: "https://docs.dwolla.com/", external: true }}
+            />
           </CardGrid>
         </CardGridWrapper>
         <ExternalCTA

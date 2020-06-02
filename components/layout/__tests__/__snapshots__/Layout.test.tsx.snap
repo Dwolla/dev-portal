@@ -157,7 +157,7 @@ Array [
                 className="css-vogkcz-MobileButtonWrap e10mac9s13"
               >
                 <a
-                  className="primary block css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+                  className="primary block css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
                   href="https://accounts-sandbox.dwolla.com/login"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -292,7 +292,7 @@ Array [
           className="css-1as8qu1-ButtonWrapper e1xhgpyy3"
         >
           <a
-            className="primary standard css-1e7u6fh-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+            className="primary standard css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
             href="https://accounts-sandbox.dwolla.com/login"
             onClick={[Function]}
             onMouseEnter={[Function]}
