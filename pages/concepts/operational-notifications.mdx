@@ -55,3 +55,503 @@ An example email template is shown below for a payment initiated email. At the p
 ## List of Emails by Type
 
 Dwolla will systematically deliver emails for a subset of events existing in the API. As API enhancements are made, Dwolla may add new emails at any point in the future.
+
+## Customer account Emails
+
+### Customers
+
+##### Email Topic Name
+
+customer_created
+
+##### Email Subject and Body
+
+**Subject:** Account Created
+
+```plaintext
+Hello {CustomerName},
+
+Congrats! Your {AccountName} account was successfully created.
+
+By creating a {AccountName} account you have also agreed to the Dwolla Terms of Service and Privacy Policy,
+and opened a Dwolla account.
+```
+
+##### Email Topic Name
+
+customer_verified
+
+##### Email Subject and Body
+
+**Subject:** Account Verified
+
+```plaintext
+Hello {CustomerName},
+
+Your account has been successfully verified!
+```
+
+##### Email Topic Name
+
+customer_suspended
+
+##### Email Subject and Body
+
+**Subject:** Account Suspended
+
+```plaintext
+Hello {CustomerName},
+
+Your account has been suspended.
+```
+
+##### Email Topic Name
+
+customer_verification_document_needed
+
+##### Email Subject and Body
+
+**Subject:** Verification Document Required
+
+```plaintext
+Hello {CustomerName},
+
+Additional documentation is required to verify your account. Please login to upload a document.
+```
+
+##### Email Topic Name
+
+customer_verification_document_uploaded
+
+##### Email Subject and Body
+
+**Subject:** Verification Document Uploaded
+
+```plaintext
+Hello {CustomerName},
+
+Your document was successfully uploaded. You will receive another email when the document has been reviewed.
+It will either be approved or rejected.
+```
+
+##### Email Topic Name
+
+customer_verification_document_approved
+
+##### Email Subject and Body
+
+**Subject:** Verification Document Approved
+
+```plaintext
+Hello {CustomerName},
+
+The document you uploaded for account verification was approved.
+```
+
+##### Email Topic Name
+
+customer_verification_document_failed
+
+##### Email Subject and Body
+
+**Subject:** Verification Document Failed
+
+```plaintext
+Hello {CustomerName},
+
+A document you uploaded for account verification was rejected. Please login to your account and upload another document.
+```
+
+##### Email Topic Name
+
+customer_reverification_needed
+
+##### Email Subject and Body
+
+**Subject:** Verification Required
+
+```plaintext
+Hello {CustomerName},
+
+Thank you for choosing {AccountName}. While you have started to create an account, more information is needed in order
+to verify your account. Please visit the {AccountName} application to complete your account registration.
+```
+
+### Funding Sources
+
+##### Email Topic Name
+
+customer_funding_source_added
+
+##### Email Subject and Body
+
+**Subject:** Funding Source Added
+
+```plaintext
+Hello {CustomerName},
+
+"{BankAccountNickName}" was added to your {AccountName} account. Here are the details:
+
+Bank Name: {FinancialInstitutionName}
+Account: {BankAccountNickName}
+Date: {Timestamp}
+
+{#OnDemandAuthPresent}
+  You've agreed that future payments initiated through {AccountName}'s application will be processed by the
+  Dwolla payment system using the bank account identified above and, if you want to cancel this, please
+  contact support at {SupportEmail} or {#SupportPhone}.
+{/OnDemandAuthPresent}
+```
+
+##### Email Topic Name
+
+customer_funding_source_verified
+
+##### Email Subject and Body
+
+**Subject:** Funding Source Verified
+
+```plaintext
+Hello {CustomerName},
+
+"{BankAccountNickName}" was verified on {Timestamp}.
+```
+
+##### Email Topic Name
+
+customer_funding_source_removed
+
+##### Email Subject and Body
+
+**Subject:** Funding Source Removed
+
+```plaintext
+Hello {CustomerName},
+
+"{BankAccountNickName}" was removed from your {AccountName} account on {Timestamp}.
+```
+
+##### Email Topic Name
+
+customer_microdeposits_added
+
+##### Email Subject and Body
+
+**Subject:** Micro-deposits Initiated
+
+```plaintext
+Hello {CustomerName},
+
+Two micro-deposits were initiated to your bank account. Here are the details:
+
+Bank Name: {FinancialInstitutionName}
+Account: {BankAccountNickName}
+Date: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_microdeposits_completed
+
+##### Email Subject and Body
+
+**Subject:** Micro-deposits Completed
+
+```plaintext
+Hello {CustomerName},
+
+Two micro-deposits were successfully processed. Here are the details:
+
+Bank Name: {FinancialInstitutionName}
+Account: {BankAccountNickName}
+Date: {Timestamp}
+
+Please check your bank account for two, less than $.20, micro-deposit amounts.
+You can complete the verification process within the {AccountName} application.
+```
+
+##### Email Topic Name
+
+customer_microdeposits_failed
+
+##### Email Subject and Body
+
+**Subject:** Micro-deposits Failed
+
+```plaintext
+Hello {CustomerName},
+
+The transfer of two micro-deposits sent to your bank account failed. Here are the details:
+
+Bank Name: {FinancialInstitutionName}
+Account: {BankAccountNickName}
+Date: {Timestamp}
+```
+
+### Transfers
+
+##### Email Topic Name
+
+customer_money_sent
+
+##### Email Subject and Body
+
+**Subject:** Payment Initiated
+
+```plaintext
+Hello {CustomerName},
+
+A payment was initiated to {OtherPartyName}. Here are the details of this payment:
+
+Source: {FundingSource}
+Recipient: {OtherPartyName}
+Amount: {Amount}
+Date Initiated: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_sent_failed
+
+##### Email Subject and Body
+
+**Subject:** Payment Unsuccessful
+
+```plaintext
+Hello {CustomerName},
+
+Your payment to {OtherPartyName} was unsuccessful. Here are the details of this payment:
+
+Source: {FundingSource}
+Recipient: {OtherPartyName}
+Amount: {Amount}
+Date Failed: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_sent_cancelled
+
+##### Email Subject and Body
+
+**Subject:** Payment Cancelled
+
+```plaintext
+Hello {CustomerName},
+
+Your payment to {OtherPartyName} was cancelled. Here are the details of this payment:
+
+Source: {FundingSource}
+Recipient: {OtherPartyName}
+Amount: {Amount}
+Date Cancelled: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_received
+
+##### Email Subject and Body
+
+**Subject:** Payment Pending
+
+```plaintext
+Hello {CustomerName},
+
+A payment was initiated from {OtherPartyName}. Here are the details of this payment:
+
+Source: {OtherPartyName}
+Destination: {FundingSource}
+Amount: {Amount}
+Date Initiated: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_received_completed
+
+##### Email Subject and Body
+
+**Subject:** Payment Successful
+
+```plaintext
+Hello {CustomerName},
+
+A payment from {OtherPartyName} has completed. Here are the details of this payment:
+
+Source: {OtherPartyName}
+Destination: {FundingSource}
+Amount: {Amount}
+Date Completed: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_received_cancelled
+
+##### Email Subject and Body
+
+**Subject:** Payment Cancelled
+
+```plaintext
+Hello {CustomerName},
+
+A payment from {OtherPartyName} was cancelled. Here are the details of this payment:
+
+Source: {OtherPartyName}
+Destination: {FundingSource}
+Amount: {Amount}
+Date Cancelled: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_received_failed
+
+##### Email Subject and Body
+
+**Subject:** Payment Unsuccessful
+
+```plaintext
+Hello {CustomerName},
+
+A payment from {OtherPartyName} was unsuccessful. Here are the details of this payment:
+
+Source: {OtherPartyName}
+Destination: {FundingSource}
+Amount: {Amount}
+Date Failed: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_added
+
+##### Email Subject and Body
+
+**Subject:** Money Added
+
+```
+Hello {CustomerName},
+
+An ACH transfer was initiated into your {AccountName} balance. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Initiated: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_add_completed
+
+##### Email Subject and Body
+
+**Subject:** Add to Balance Completed
+
+```plaintext
+Hello {CustomerName},
+
+An ACH transfer into your {AccountName} balance has cleared. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Cleared: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_add_cancelled
+
+##### Email Subject and Body
+
+**Subject:** Add to Balance Cancelled
+
+```plaintext
+Hello {CustomerName},
+
+An ACH transfer into your {AccountName} balance was cancelled. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Cancelled: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_add_failed
+
+##### Email Subject and Body
+
+**Subject:** Add to Balance Failed
+
+```plaintext
+Hello {CustomerName},
+
+An ACH transfer failed to clear into your {AccountName} balance. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Failed: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_withdrawn
+
+##### Email Subject and Body
+
+**Subject:** Money Withdrawn
+
+```plaintext
+Hello {CustomerName},
+
+An ACH transfer was initiated out of your {AccountName} balance. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Initiated: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_withdrawal_cancelled
+
+##### Email Subject and Body
+
+**Subject:** Withdrawal Cancelled
+
+```plaintext
+Hello {CustomerName},
+
+An ACH transfer out of your {AccountName} balance was cancelled. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Cancelled: {Timestamp}
+```
+
+##### Email Topic Name
+
+customer_money_withdrawal_failed
+
+##### Email Subject and Body
+
+**Subject:** Withdrawal Failure
+
+```plaintext
+Hello {CustomerName},
+
+An ACH transfer out of your {AccountName} balance was unsuccessful. Here are the details of this payment:
+
+Source: {FundingSource}
+Destination: {Destination}
+Amount: {Amount}
+Date Failed: {Timestamp}
+```
