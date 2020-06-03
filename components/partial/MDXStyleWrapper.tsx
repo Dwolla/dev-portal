@@ -87,6 +87,12 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
       > img {
         ${imageStyles.styles}
       }
+
+      span {
+        code {
+          ${codeStyles.styles}
+        }
+      }
     `}
   >
     {children}

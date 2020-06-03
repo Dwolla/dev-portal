@@ -32,6 +32,9 @@ const CollapsibleWrapper = styled.div`
       margin: unset;
     }
   }
+  span:focus {
+    outline: none;
+  }
 `;
 
 const StyledTrigger = styled.div`
@@ -76,6 +79,7 @@ function Collapsible({ triggerText, children }: Props) {
         trigger={closedTrigger}
         triggerWhenOpen={openTrigger}
         transitionTime={transitionTime}
+        tabIndex={0}
       >
         {children}
       </ReactCollapsible>
