@@ -1,15 +1,9 @@
-import {
-  Children,
-  useContext,
-  cloneElement,
-  useMemo,
-  useState,
-  useEffect,
-} from "react";
+import { Children, useContext, useMemo, useState, useEffect } from "react";
 import sortBy from "lodash.sortby";
 import { getLanguage } from "../../util/groupCodeExamples";
 import { LanguageContext } from "../../util/Contexts";
-import highlight from "../../../modules/highlight";
+// eslint-disable-next-line no-unused-vars
+import highlight, { Language } from "../../../modules/highlight";
 import Select from "../../base/select/Select";
 import {
   CodeBlockBar,
@@ -19,14 +13,6 @@ import {
 } from "./CodeExamples.styled";
 import { ReactComponent as CopyIcon } from "../../../assets/images/component-icons/copy-icon.svg";
 import useCopy from "../../../hooks/useCopy";
-
-const find = (
-  children: JSX.Element | JSX.Element[],
-  fn: (child: JSX.Element) => boolean
-) => Children.toArray(children).find(fn);
-
-const first = (children: JSX.Element | JSX.Element[]) =>
-  Children.toArray(children)[0];
 
 const getInitialLanguage = (
   exampleLanguages: string[],
@@ -44,15 +30,31 @@ const getLanguageOptions = (language: string, ctxLanguageOptions) =>
 const codeStringFrom = (codeExample: any): any =>
   Children.only(codeExample.props.children).props.children;
 
+type CodeExampleProps = { language: Language; children: string };
+
+// eslint-disable-next-line no-unused-vars
+export const CodeExample = (props: CodeExampleProps) => null;
+
+const toCodeExampleProps = (child): CodeExampleProps => {
+  if (child.type === CodeExample || child.props.mdxType === "CodeExample") {
+    return child.props;
+  }
+  return { language: getLanguage(child), children: codeStringFrom(child) };
+};
+
 export default function CodeExamples({
-  children: examples,
+  children,
 }: {
   children: JSX.Element | JSX.Element[];
 }) {
+  const examples: CodeExampleProps[] = Children.toArray(children).map(
+    toCodeExampleProps
+  );
+
   const ctx = useContext(LanguageContext);
 
   const exampleLanguages: string[] = sortBy(
-    Children.map(examples, getLanguage),
+    examples.map((e) => e.language),
     (l) => ctx.languageOptions.findIndex(({ value }) => value === l)
   );
 
@@ -82,24 +84,13 @@ export default function CodeExamples({
     }
   }, [selectedLanguage]);
 
-  const codeBlock: any =
-    find(examples, (e) => getLanguage(e) === activeLanguage) || first(examples);
-
-  const codeString = codeStringFrom(codeBlock);
+  const { children: codeString, language: codeLanguage } =
+    examples.find((e) => e.language === activeLanguage) || examples[0];
 
   const codeHtmlHighlighted = useMemo(
-    () => highlight(codeString, activeLanguage),
-    [codeString, activeLanguage]
+    () => highlight(codeString, codeLanguage),
+    [codeString, codeLanguage]
   );
-
-  const codeBlockHighlighted = cloneElement(codeBlock, {
-    children: cloneElement(codeBlock.props.children, {
-      children: null,
-      dangerouslySetInnerHTML: {
-        __html: codeHtmlHighlighted,
-      },
-    }),
-  });
 
   const options = exampleLanguages.map(
     (l) => getLanguageOptions(l, ctx.languageOptions) || { value: l, label: l }
@@ -129,7 +120,17 @@ export default function CodeExamples({
         </CopyButton>
       </CodeBlockBar>
 
-      <CodeBlock>{codeBlockHighlighted}</CodeBlock>
+      <CodeBlock>
+        <pre>
+          <code
+            className={`language-${activeLanguage}`}
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: codeHtmlHighlighted,
+            }}
+          />
+        </pre>
+      </CodeBlock>
     </div>
   );
 }

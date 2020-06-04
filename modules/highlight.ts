@@ -1,31 +1,48 @@
 import hljs from "highlight.js/lib/core";
 
-hljs.registerLanguage(
+export type Language =
+  | "javascript"
+  | "ruby"
+  | "php"
+  | "python"
+  | "json"
+  | "bash"
+  | "raw"
+  | "plaintext"
+  | "html"
+  | "kotlin"
+  | "xml";
+
+const registerLanguage = (language: Language, hljsLanguage: any) =>
+  hljs.registerLanguage(language, hljsLanguage);
+
+registerLanguage(
   "javascript",
   require("highlight.js/lib/languages/javascript")
 );
 
-hljs.registerLanguage("ruby", require("highlight.js/lib/languages/ruby"));
+registerLanguage("ruby", require("highlight.js/lib/languages/ruby"));
 
-hljs.registerLanguage("php", require("highlight.js/lib/languages/php"));
+registerLanguage("php", require("highlight.js/lib/languages/php"));
 
-hljs.registerLanguage("python", require("highlight.js/lib/languages/python"));
+registerLanguage("python", require("highlight.js/lib/languages/python"));
 
-hljs.registerLanguage("json", require("highlight.js/lib/languages/json"));
+registerLanguage("kotlin", require("highlight.js/lib/languages/kotlin"));
 
-hljs.registerLanguage("bash", require("highlight.js/lib/languages/bash"));
+registerLanguage("json", require("highlight.js/lib/languages/json"));
 
-hljs.registerLanguage("raw", require("highlight.js/lib/languages/bash"));
+registerLanguage("bash", require("highlight.js/lib/languages/bash"));
 
-hljs.registerLanguage(
-  "plaintext",
-  require("highlight.js/lib/languages/plaintext")
-);
+registerLanguage("raw", require("highlight.js/lib/languages/bash"));
 
-hljs.registerLanguage("html", require("highlight.js/lib/languages/xml"));
+registerLanguage("plaintext", require("highlight.js/lib/languages/plaintext"));
+
+registerLanguage("html", require("highlight.js/lib/languages/xml"));
+
+registerLanguage("xml", require("highlight.js/lib/languages/xml"));
 
 hljs.registerLanguage("css", require("highlight.js/lib/languages/css"));
 
 export default function highlight(code: string, language: string) {
-  return hljs.highlight(language, code).value;
+  return hljs.highlight(language || "plaintext", code).value;
 }
