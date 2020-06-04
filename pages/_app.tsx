@@ -11,6 +11,7 @@ import { ReactComponent as HomeIcon } from "../assets/images/component-icons/sid
 import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
+import "react-tippy/dist/tippy.css";
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";

@@ -8,11 +8,17 @@ meta:
   description: Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.
 ---
 
-### Verify micro-deposits
+import AlertBar from "../../../components/base/AlertBar";
+
+## Verify micro-deposits
 
 In the Dwolla production environment, you must wait until the micro-deposits actually post to the customer’s bank account before the account can be verified, which can take 1-2 business days. A `microdeposits_completed` event will be triggered once micro-deposits have successfully posted to the bank. Once micro-deposits have completed, a `verify-micro-deposits` link relation will return on the funding source letting your application know the funding source can be verified.
 
-**Note**: In the Sandbox environment, any amount **below** \$0.10 will allow you to verify the account immediately.
+<AlertBar variation="info">
+  In the Sandbox environment, any amount below $0.10 will allow you to verify
+  the account immediately.
+</AlertBar>
+<br />
 
 ```bash
 POST /funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits

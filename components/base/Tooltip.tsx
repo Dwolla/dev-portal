@@ -1,6 +1,5 @@
 import React from "react";
 import { css, Global } from "@emotion/core";
-import "react-tippy/dist/tippy.css";
 import { Tooltip as ReactTooltip } from "react-tippy";
 import { WHITE_PRIMARY, GREY_8 } from "../colors";
 import { ROBOTO } from "../typography";

@@ -189,7 +189,7 @@ To simulate bank transfer processing in the Dwolla Sandbox environment, navigate
 
 **Production bank transfer processing timing**
 
-While pending bank transfers can be processed at any time in the Sandbox, behavior will vary in production depending on if your application has access to expedited transfers versus standard ACH transfer times. Refer to our [developer resource article](concepts/transfer-processing-times) to learn more on transfer timing in production.
+While pending bank transfers can be processed at any time in the Sandbox, behavior will vary in production depending on if your application has access to expedited transfers versus standard ACH transfer times. Refer to our [developer resource article](/concepts/transfer-processing-times) to learn more on transfer timing in production.
 
 ## Step 4D: Handle Webhooks
 
@@ -201,74 +201,74 @@ Since ACH transfers in production can take a few days to complete, webhooks are 
 
 #### Example response for the first part of the transfer
 
-```javascript
+```json
 {
-    "_links": {
-        "self": {
-            "href": "https://api-sandbox.dwolla.com/transfers/81643da1-b1b3-e911-811b-f08aa77f5aa3",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "transfer"
-        },
-        "source": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "funding-source"
-        },
-        "destination": {
-            "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "customer"
-        },
-        "funded-transfer": {
-            "href": "https://api-sandbox.dwolla.com/transfers/a00ff82d-73b4-e911-811b-f08aa77f5aa3",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "transfer"
-        }
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/transfers/81643da1-b1b3-e911-811b-f08aa77f5aa3",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
     },
-    "id": "81643da1-b1b3-e911-811b-f08aa77f5aa3",
-    "created": "2019-08-01T15:32:05.620Z",
-    "status": "processed",
-    "amount": {
-        "value": "225.00",
-        "currency": "USD"
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
     },
-    "individualAchId": "IQ8M922R"
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "funded-transfer": {
+      "href": "https://api-sandbox.dwolla.com/transfers/a00ff82d-73b4-e911-811b-f08aa77f5aa3",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    }
+  },
+  "id": "81643da1-b1b3-e911-811b-f08aa77f5aa3",
+  "created": "2019-08-01T15:32:05.620Z",
+  "status": "processed",
+  "amount": {
+    "value": "225.00",
+    "currency": "USD"
+  },
+  "individualAchId": "IQ8M922R"
 }
 ```
 
 #### Example response for the second part of the transfer
 
-```javascript
+```json
 {
-    "_links": {
-        "self": {
-            "href": "https://api-sandbox.dwolla.com/transfers/a00ff82d-73b4-e911-811b-f08aa77f5aa3",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "transfer"
-        },
-        "source": {
-            "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "customer"
-        },
-        "destination": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/3152c22b-3d72-442d-a83b-e575df3a043e",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "funding-source"
-        },
-        "funding-transfer": {
-            "href": "https://api-sandbox.dwolla.com/transfers/81643da1-b1b3-e911-811b-f08aa77f5aa3",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "transfer"
-        }
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/transfers/a00ff82d-73b4-e911-811b-f08aa77f5aa3",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
     },
-    "id": "a00ff82d-73b4-e911-811b-f08aa77f5aa3",
-    "created": "2019-08-01T15:44:06.290Z",
-    "status": "processed",
-    "amount": {
-        "value": "225.00",
-        "currency": "USD"
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
     },
-    "individualAchId": "IQKBPJAY"
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/3152c22b-3d72-442d-a83b-e575df3a043e",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "funding-transfer": {
+      "href": "https://api-sandbox.dwolla.com/transfers/81643da1-b1b3-e911-811b-f08aa77f5aa3",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    }
+  },
+  "id": "a00ff82d-73b4-e911-811b-f08aa77f5aa3",
+  "created": "2019-08-01T15:44:06.290Z",
+  "status": "processed",
+  "amount": {
+    "value": "225.00",
+    "currency": "USD"
+  },
+  "individualAchId": "IQKBPJAY"
 }
 ```
