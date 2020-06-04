@@ -6,16 +6,16 @@ exports[`default 1`] = `
 >
   <img
     alt=""
-    className=" css-142sfdf-StyledIcon eguc8hf1"
+    className=" css-142sfdf-StyledIcon eguc8hf2"
     src="test-image-stub"
   />
   <div
-    className=" css-bgc4kb-TopicStyle eguc8hf4"
+    className=" css-bgc4kb-TopicStyle eguc8hf5"
   >
     topic
   </div>
   <div
-    className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+    className=" css-mk6kj1-DescriptionStyle eguc8hf6"
   >
     Description
   </div>
@@ -28,11 +28,11 @@ exports[`with Badge 1`] = `
 >
   <img
     alt=""
-    className=" css-142sfdf-StyledIcon eguc8hf1"
+    className=" css-142sfdf-StyledIcon eguc8hf2"
     src="test-image-stub"
   />
   <div
-    className="css-vz2qld-BadgeStyle eguc8hf2"
+    className="css-vz2qld-BadgeStyle eguc8hf3"
   >
     <div
       className="css-1bdkrme-StyledBadge e1w3mjmy0"
@@ -41,12 +41,12 @@ exports[`with Badge 1`] = `
     </div>
   </div>
   <div
-    className=" css-bgc4kb-TopicStyle eguc8hf4"
+    className=" css-bgc4kb-TopicStyle eguc8hf5"
   >
     topic
   </div>
   <div
-    className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+    className=" css-mk6kj1-DescriptionStyle eguc8hf6"
   >
     Description
   </div>
@@ -59,16 +59,16 @@ exports[`with Center Align 1`] = `
 >
   <img
     alt=""
-    className="center css-142sfdf-StyledIcon eguc8hf1"
+    className="center css-142sfdf-StyledIcon eguc8hf2"
     src="test-image-stub"
   />
   <div
-    className="center css-bgc4kb-TopicStyle eguc8hf4"
+    className="center css-bgc4kb-TopicStyle eguc8hf5"
   >
     topic
   </div>
   <div
-    className="center css-mk6kj1-DescriptionStyle eguc8hf5"
+    className="center css-mk6kj1-DescriptionStyle eguc8hf6"
   >
     Description
   </div>
@@ -81,11 +81,11 @@ exports[`with Center Align and Badge 1`] = `
 >
   <img
     alt=""
-    className="center css-142sfdf-StyledIcon eguc8hf1"
+    className="center css-142sfdf-StyledIcon eguc8hf2"
     src="test-image-stub"
   />
   <div
-    className="css-vz2qld-BadgeStyle eguc8hf2"
+    className="css-vz2qld-BadgeStyle eguc8hf3"
   >
     <div
       className="css-1bdkrme-StyledBadge e1w3mjmy0"
@@ -94,12 +94,12 @@ exports[`with Center Align and Badge 1`] = `
     </div>
   </div>
   <div
-    className="center css-bgc4kb-TopicStyle eguc8hf4"
+    className="center css-bgc4kb-TopicStyle eguc8hf5"
   >
     topic
   </div>
   <div
-    className="center css-mk6kj1-DescriptionStyle eguc8hf5"
+    className="center css-mk6kj1-DescriptionStyle eguc8hf6"
   >
     Description
   </div>
@@ -107,135 +107,171 @@ exports[`with Center Align and Badge 1`] = `
 `;
 
 exports[`with Center Align and Link 1`] = `
-<div
-  className="center css-1mrozmg-CardStyle eguc8hf0"
+<a
+  className="css-kunpmx-StyledLink eguc8hf1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
 >
-  <img
-    alt=""
-    className="center css-142sfdf-StyledIcon eguc8hf1"
-    src="test-image-stub"
-  />
   <div
-    className="css-hpm16i-LinkStyle eguc8hf3"
+    className="center css-1mrozmg-CardStyle eguc8hf0"
   >
-    <svg
-      width={13}
+    <img
+      alt=""
+      className="center css-142sfdf-StyledIcon eguc8hf2"
+      src="test-image-stub"
     />
+    <div
+      className="css-17etk8v-LinkIconStyle eguc8hf4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className="center css-bgc4kb-TopicStyle eguc8hf5"
+    >
+      topic
+    </div>
+    <div
+      className="center css-mk6kj1-DescriptionStyle eguc8hf6"
+    >
+      Description
+    </div>
   </div>
-  <div
-    className="center css-bgc4kb-TopicStyle eguc8hf4"
-  >
-    topic
-  </div>
-  <div
-    className="center css-mk6kj1-DescriptionStyle eguc8hf5"
-  >
-    Description
-  </div>
-</div>
+</a>
 `;
 
 exports[`with Center Align, Link and Badge 1`] = `
-<div
-  className="center css-1mrozmg-CardStyle eguc8hf0"
+<a
+  className="css-kunpmx-StyledLink eguc8hf1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
 >
-  <img
-    alt=""
-    className="center css-142sfdf-StyledIcon eguc8hf1"
-    src="test-image-stub"
-  />
   <div
-    className="css-vz2qld-BadgeStyle eguc8hf2"
+    className="center css-1mrozmg-CardStyle eguc8hf0"
   >
+    <img
+      alt=""
+      className="center css-142sfdf-StyledIcon eguc8hf2"
+      src="test-image-stub"
+    />
     <div
-      className="css-1bdkrme-StyledBadge e1w3mjmy0"
+      className="css-vz2qld-BadgeStyle eguc8hf3"
     >
-      BADGETEXT
+      <div
+        className="css-1bdkrme-StyledBadge e1w3mjmy0"
+      >
+        BADGETEXT
+      </div>
+    </div>
+    <div
+      className="css-17etk8v-LinkIconStyle eguc8hf4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className="center css-bgc4kb-TopicStyle eguc8hf5"
+    >
+      topic
+    </div>
+    <div
+      className="center css-mk6kj1-DescriptionStyle eguc8hf6"
+    >
+      Description
     </div>
   </div>
-  <div
-    className="css-hpm16i-LinkStyle eguc8hf3"
-  >
-    <svg
-      width={13}
-    />
-  </div>
-  <div
-    className="center css-bgc4kb-TopicStyle eguc8hf4"
-  >
-    topic
-  </div>
-  <div
-    className="center css-mk6kj1-DescriptionStyle eguc8hf5"
-  >
-    Description
-  </div>
-</div>
+</a>
 `;
 
 exports[`with Link 1`] = `
-<div
-  className=" css-1mrozmg-CardStyle eguc8hf0"
+<a
+  className="css-kunpmx-StyledLink eguc8hf1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
 >
-  <img
-    alt=""
-    className=" css-142sfdf-StyledIcon eguc8hf1"
-    src="test-image-stub"
-  />
   <div
-    className="css-hpm16i-LinkStyle eguc8hf3"
+    className=" css-1mrozmg-CardStyle eguc8hf0"
   >
-    <svg
-      width={13}
+    <img
+      alt=""
+      className=" css-142sfdf-StyledIcon eguc8hf2"
+      src="test-image-stub"
     />
+    <div
+      className="css-17etk8v-LinkIconStyle eguc8hf4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className=" css-bgc4kb-TopicStyle eguc8hf5"
+    >
+      topic
+    </div>
+    <div
+      className=" css-mk6kj1-DescriptionStyle eguc8hf6"
+    >
+      Description
+    </div>
   </div>
-  <div
-    className=" css-bgc4kb-TopicStyle eguc8hf4"
-  >
-    topic
-  </div>
-  <div
-    className=" css-mk6kj1-DescriptionStyle eguc8hf5"
-  >
-    Description
-  </div>
-</div>
+</a>
 `;
 
 exports[`with Link and Badge 1`] = `
-<div
-  className=" css-1mrozmg-CardStyle eguc8hf0"
+<a
+  className="css-kunpmx-StyledLink eguc8hf1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
 >
-  <img
-    alt=""
-    className=" css-142sfdf-StyledIcon eguc8hf1"
-    src="test-image-stub"
-  />
   <div
-    className="css-vz2qld-BadgeStyle eguc8hf2"
+    className=" css-1mrozmg-CardStyle eguc8hf0"
   >
+    <img
+      alt=""
+      className=" css-142sfdf-StyledIcon eguc8hf2"
+      src="test-image-stub"
+    />
     <div
-      className="css-1bdkrme-StyledBadge e1w3mjmy0"
+      className="css-vz2qld-BadgeStyle eguc8hf3"
     >
-      BADGETEXT
+      <div
+        className="css-1bdkrme-StyledBadge e1w3mjmy0"
+      >
+        BADGETEXT
+      </div>
+    </div>
+    <div
+      className="css-17etk8v-LinkIconStyle eguc8hf4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className=" css-bgc4kb-TopicStyle eguc8hf5"
+    >
+      topic
+    </div>
+    <div
+      className=" css-mk6kj1-DescriptionStyle eguc8hf6"
+    >
+      Description
     </div>
   </div>
-  <div
-    className="css-hpm16i-LinkStyle eguc8hf3"
-  >
-    <svg
-      width={13}
-    />
-  </div>
-  <div
-    className=" css-bgc4kb-TopicStyle eguc8hf4"
-  >
-    topic
-  </div>
-  <div
-    className=" css-mk6kj1-DescriptionStyle eguc8hf5"
-  >
-    Description
-  </div>
-</div>
+</a>
 `;

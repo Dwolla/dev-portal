@@ -109,10 +109,10 @@ Array [
       className="css-1nr538h-StyledGrid e1k3ap260"
     >
       <div
-        className="css-wbod5t-CardWrapper e1k3ap261"
+        className="css-1opn9ux-CardWrapper e1k3ap261"
       >
         <a
-          className="css-kunpmx-StyledLink e10u28532"
+          className="css-kunpmx-StyledLink eguc8hf1"
           href="/guides/send-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -122,11 +122,11 @@ Array [
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon eguc8hf1"
+              className=" css-142sfdf-StyledIcon eguc8hf2"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-vz2qld-BadgeStyle eguc8hf2"
+              className="css-vz2qld-BadgeStyle eguc8hf3"
             >
               <div
                 className="css-1bdkrme-StyledBadge e1w3mjmy0"
@@ -135,12 +135,12 @@ Array [
               </div>
             </div>
             <div
-              className=" css-bgc4kb-TopicStyle eguc8hf4"
+              className=" css-bgc4kb-TopicStyle eguc8hf5"
             >
               Send Money to your Users
             </div>
             <div
-              className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+              className=" css-mk6kj1-DescriptionStyle eguc8hf6"
             >
               Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.
             </div>
@@ -148,10 +148,10 @@ Array [
         </a>
       </div>
       <div
-        className="css-wbod5t-CardWrapper e1k3ap261"
+        className="css-1opn9ux-CardWrapper e1k3ap261"
       >
         <a
-          className="css-kunpmx-StyledLink e10u28532"
+          className="css-kunpmx-StyledLink eguc8hf1"
           href="/guides/receive-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -161,11 +161,11 @@ Array [
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon eguc8hf1"
+              className=" css-142sfdf-StyledIcon eguc8hf2"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-vz2qld-BadgeStyle eguc8hf2"
+              className="css-vz2qld-BadgeStyle eguc8hf3"
             >
               <div
                 className="css-1bdkrme-StyledBadge e1w3mjmy0"
@@ -174,12 +174,12 @@ Array [
               </div>
             </div>
             <div
-              className=" css-bgc4kb-TopicStyle eguc8hf4"
+              className=" css-bgc4kb-TopicStyle eguc8hf5"
             >
               Receive Money from your Users
             </div>
             <div
-              className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+              className=" css-mk6kj1-DescriptionStyle eguc8hf6"
             >
               Accept ACH transfers. Covers both Access API and Transfer integrations.
             </div>
@@ -187,10 +187,10 @@ Array [
         </a>
       </div>
       <div
-        className="css-wbod5t-CardWrapper e1k3ap261"
+        className="css-1opn9ux-CardWrapper e1k3ap261"
       >
         <a
-          className="css-kunpmx-StyledLink e10u28532"
+          className="css-kunpmx-StyledLink eguc8hf1"
           href="/guides/transfer-money-between-users/obtain-access-token"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -200,11 +200,11 @@ Array [
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon eguc8hf1"
+              className=" css-142sfdf-StyledIcon eguc8hf2"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-vz2qld-BadgeStyle eguc8hf2"
+              className="css-vz2qld-BadgeStyle eguc8hf3"
             >
               <div
                 className="css-1bdkrme-StyledBadge e1w3mjmy0"
@@ -213,12 +213,12 @@ Array [
               </div>
             </div>
             <div
-              className=" css-bgc4kb-TopicStyle eguc8hf4"
+              className=" css-bgc4kb-TopicStyle eguc8hf5"
             >
               Transfer Money Between Users
             </div>
             <div
-              className=" css-mk6kj1-DescriptionStyle eguc8hf5"
+              className=" css-mk6kj1-DescriptionStyle eguc8hf6"
             >
               Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments. Features Access API integration.
             </div>

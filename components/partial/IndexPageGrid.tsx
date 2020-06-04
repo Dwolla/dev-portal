@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Banner from "../base/Banner";
 import FilterTabs from "../base/FilterTabs";
 import CardGrid from "../base/CardGrid";
@@ -16,10 +15,6 @@ const BannerWrap = styled.div`
 
 const CardGridWrap = styled.div`
   margin-bottom: 20px;
-`;
-
-const StyledLink = styled.a`
-  text-decoration: none;
 `;
 
 type CardType = {
@@ -88,15 +83,13 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
       <CardGridWrap>
         <CardGrid>
           {filteredCards.map((card) => (
-            <Link href={card.href} key={`${card.topic}-${card.href}`} passHref>
-              <StyledLink>
-                <Card
-                  {...card}
-                  badge={card.category}
-                  icon={contentIcons[card.icon].default}
-                />
-              </StyledLink>
-            </Link>
+            <Card
+              {...card}
+              badge={card.category}
+              icon={contentIcons[card.icon].default}
+              link={{ href: card.href }}
+              key={`${card.topic}-${card.href}`}
+            />
           ))}
         </CardGrid>
       </CardGridWrap>
