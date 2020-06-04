@@ -2,7 +2,7 @@
 
 exports[`Collapsible list 1`] = `
 <div
-  className="css-zzd91j-CollapsibleWrapper exlpbrg0"
+  className="css-5nsske-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -12,7 +12,7 @@ exports[`Collapsible list 1`] = `
       onClick={[Function]}
       onKeyPress={[Function]}
       style={null}
-      tabIndex={null}
+      tabIndex={0}
     >
       <div
         className="css-icu0je-StyledTrigger exlpbrg1"
@@ -65,7 +65,7 @@ exports[`Collapsible list 1`] = `
 
 exports[`Collapsible paragraph 1`] = `
 <div
-  className="css-zzd91j-CollapsibleWrapper exlpbrg0"
+  className="css-5nsske-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -75,7 +75,7 @@ exports[`Collapsible paragraph 1`] = `
       onClick={[Function]}
       onKeyPress={[Function]}
       style={null}
-      tabIndex={null}
+      tabIndex={0}
     >
       <div
         className="css-icu0je-StyledTrigger exlpbrg1"

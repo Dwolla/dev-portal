@@ -64,6 +64,12 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
         }
       }
 
+      p {
+        code {
+          ${codeStyles.styles}
+        }
+      }
+
       > table,
       th,
       td {
@@ -86,6 +92,12 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
 
       > img {
         ${imageStyles.styles}
+      }
+
+      span {
+        code {
+          ${codeStyles.styles}
+        }
       }
     `}
   >
