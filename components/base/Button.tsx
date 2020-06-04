@@ -22,7 +22,7 @@ type Props = {
   size: "tiny" | "small" | "standard" | "large" | "block";
   variant: "primary" | "secondary" | "hollow-light" | "hollow-dark";
   type?: "button" | "submit" | "reset";
-  link?: { href: string; external: boolean };
+  link?: { href: string; external?: boolean };
 };
 
 const Button = ({ text, size, variant, type = "button", link }: Props) =>
@@ -123,6 +123,7 @@ const StyledButton = styled.button`
 
 const StyledLink = styled.a`
   ${buttonStyles}
+  display: inline-block;
 `;
 
 const ButtonLink = ({ text, size, variant, link }: Props) => (

@@ -4,8 +4,8 @@ import styled from "@emotion/styled";
 import { css, jsx } from "@emotion/core";
 import plusIcon from "../../assets/images/component-icons/plus-circle-icon.svg";
 import minusIcon from "../../assets/images/component-icons/minus-circle-icon.svg";
-import { GREY_2, WHITE_PRIMARY } from "../colors";
-import { POPPINS } from "../typography";
+import { GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
+import { POPPINS, ROBOTO } from "../typography";
 import { BOX_SHADOW_7 } from "../shadowDepths";
 
 // Styles
@@ -28,9 +28,17 @@ const CollapsibleWrapper = styled.div`
   /* Content element for react-collapsible https://www.npmjs.com/package/react-collapsible#collapsible__contentinner */
   .Collapsible__contentInner {
     margin: 0px 70px 25px 30px;
-    > * {
+    * {
       margin: unset;
     }
+    color: ${PARAGRAPH_TEXT};
+    font-family: ${ROBOTO};
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 28px;
+  }
+  span:focus {
+    outline: none;
   }
 `;
 
@@ -76,6 +84,7 @@ function Collapsible({ triggerText, children }: Props) {
         trigger={closedTrigger}
         triggerWhenOpen={openTrigger}
         transitionTime={transitionTime}
+        tabIndex={0}
       >
         {children}
       </ReactCollapsible>
