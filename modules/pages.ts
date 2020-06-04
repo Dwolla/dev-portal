@@ -21,10 +21,7 @@ const ALL_PAGES: Page[] = pages
       ];
     }
 
-    const thisPageGroupId = thisPage.id
-      .split("/")
-      .slice(0, -1)
-      .join("/");
+    const thisPageGroupId = thisPage.id.split("/").slice(0, -1).join("/");
 
     const groupPage = all.find((p) => p.id === thisPageGroupId);
 

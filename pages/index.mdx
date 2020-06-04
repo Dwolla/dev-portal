@@ -12,10 +12,13 @@ import Banner from "../components/base/Banner";
 import LogoLinks from "../components/base/LogoLinks";
 import FooterCTA from "../components/base/FooterCTA";
 import IFrame from "../components/base/IFrame";
+import { H3 } from "../components/base/Typography";
+import { HEADLINE_TEXT } from "../components/colors";
 import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../assets/images/content-images/content-icons/concepts-icon.svg";
 import apiReferenceIcon from "../assets/images/content-images/content-icons/api-reference-icon.svg";
 import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community-icon.svg";
+import { ReactComponent as CaretRightIcon } from "../assets/images/component-icons/caret-right.svg";
 // Language logos in gray and in color
 import phpColor from "../assets/images/content-images/content-icons/language-logos/php-logo.svg";
 import phpGray from "../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
@@ -40,7 +43,6 @@ import siftColor from "../assets/images/content-images/content-icons/partner-log
 import siftGray from "../assets/images/content-images/content-icons/partner-logos/sift-logo-gray.svg";
 import slackColor from "../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
 import slackGray from "../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
-import { H3 } from "../components/base/Typography";
 
 export const BannerWrapper = styled.div`
   height: 378px;
@@ -61,6 +63,15 @@ export const CardGridWrapper = styled.div`
 
 export const StyledLink = styled.a`
   text-decoration: none;
+  color: ${HEADLINE_TEXT};
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    text-decoration: underline;
+  }
+  > svg {
+    margin-left: 5px;
+  }
 `;
 
 export const LogoLinksWrapper = styled.div`
@@ -163,36 +174,24 @@ export default function HomePage() {
       <ContentContainer>
         <CardGridWrapper>
           <CardGrid variant="center">
-            <Link href="/guides" key="Guides" passHref>
-              <StyledLink>
-                <Card
-                  icon={guideIcon}
-                  topic="Guides"
-                  description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
-                />
-              </StyledLink>
-            </Link>
-            <Link href="/concepts" key="Concepts" passHref>
-              <StyledLink>
-                <Card
-                  icon={conceptIcon}
-                  topic="Concepts"
-                  description="Transform your use case to business and functional requirements."
-                />
-              </StyledLink>
-            </Link>
-            <StyledLink
-              href="https://docs.dwolla.com/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <Card
-                icon={apiReferenceIcon}
-                link
-                topic="API Reference"
-                description="View details for all of Dwolla’s API endpoints with a complete reference"
-              />
-            </StyledLink>
+            <Card
+              icon={guideIcon}
+              topic="Guides"
+              description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
+              link={{ href: "/guides" }}
+            />
+            <Card
+              icon={conceptIcon}
+              topic="Concepts"
+              description="Transform your use case to business and functional requirements."
+              link={{ href: "/concepts" }}
+            />
+            <Card
+              icon={apiReferenceIcon}
+              topic="API Reference"
+              description="View details for all of Dwolla’s API endpoints with a complete reference"
+              link={{ href: "https://docs.dwolla.com/", external: true }}
+            />
           </CardGrid>
         </CardGridWrapper>
         <ExternalCTA
@@ -201,11 +200,25 @@ export default function HomePage() {
           description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
           href="https://discuss.dwolla.com/"
         />
-        <H3>SDKs &amp; Tools</H3>
+        <H3>
+          <Link href="/sdks-tools" passHref>
+            <StyledLink>
+              SDKs &amp; Tools
+              <CaretRightIcon height={11} />
+            </StyledLink>
+          </Link>
+        </H3>
         <LogoLinksWrapper>
           <LogoLinks tabs={languageContent} />
         </LogoLinksWrapper>
-        <H3>Integrate With Other Platforms</H3>
+        <H3>
+          <Link href="/integrations" passHref>
+            <StyledLink>
+              Integrate With Other Platforms
+              <CaretRightIcon height={11} />
+            </StyledLink>
+          </Link>
+        </H3>
         <LogoLinksWrapper>
           <LogoLinks tabs={partnerContent} />
         </LogoLinksWrapper>
