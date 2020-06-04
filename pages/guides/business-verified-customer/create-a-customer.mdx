@@ -1,6 +1,6 @@
 ---
 layout: guides
-title: "Step 1: Create a Business Verified Customer"
+title: "Step 1: Create a business Verified Customer"
 guide:
   step: 1
 meta:
@@ -8,7 +8,7 @@ meta:
   description: Learn how to create a Verified business Customer by passing in the required Know-Your-Customer (KYC) information.
 ---
 
-# Step 1: Creating Business Verified Customers
+# Step 1: Creating a Business Verified Customer
 
 ## The basics
 
@@ -587,4 +587,4 @@ var customerUrl =
 appToken.get(customerUrl).then((res) => res.body.status); // => 'verified'
 ```
 
-You will want to ensure that both your Controller and your Business have been verified, as the Customer will be unable to send or receive funds until then. If the Customer is in `retry` or `document` status, head to our next article to learn how to handle these statuses.
+You will want to ensure that both your Controller and your Business have been verified, as the Customer will be unable to send or receive funds until then. If the Customer is in `retry` or `document` status, head to the next step to learn how to handle these statuses.

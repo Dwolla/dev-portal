@@ -17,7 +17,7 @@ import emailTemplate from "../../assets/images/content-images/email-template.png
 
 When using Dwolla’s white-label API, your application is responsible for all interactions to your end users. You decide how to customize the payments experience end-to-end, which includes taking on the required delivery of notifications to end users for their account and payment activity. By default, Dwolla provides functionality via Operational Notifications and sends email notifications to your end users on your behalf. When actions occur within the Dwolla Network on a resource (Customers, Transfers, etc.), events are created to record those changes. Dwolla systematically delivers an email using the email address tied to the [creation of a Customer](https://docs.dwolla.com/#customers) when an applicable event occurs.
 
-## Operational Notification Events
+## Operational notification events
 
 Email notifications are sent to your end users when they complete the activities focused on the following key functions in your application (powered by the Dwolla Platform) or via the Dwolla Dashboard:
 
@@ -46,25 +46,25 @@ When configuring Operational Notifications, there are several items that can be 
 | **Support phone**          | Conditional | An optional item. Required if a `Support email` isn't provided. The phone number that will show up in the support section, defaulted to the account phone number.<br /> Example: `"If you have any questions or concerns please contact support at 555-555-5555."`                               |
 | **Support Email Address**  | Conditional | An optional item. Required if a `Support phone` isn't provided. The email address that will show up in the support section, optional and defaults to the account email address.<br /> Example: `"If you have any questions or concerns please contact support at support@yourbusinessname.com."` |
 
-#### Example Email Template
+#### Example email template
 
 An example email template is shown below for a payment initiated email. At the present time, only the information listed in the customization section can be edited. Emails are viewable within the Dwolla Dashboard upon delivery attempt to your customers.
 
 <Image src={emailTemplate} alt="Operational Notifications email template" />
 
-## List of Emails by Type
+## List of emails by type
 
 Dwolla will systematically deliver emails for a subset of events existing in the API. As API enhancements are made, Dwolla may add new emails at any point in the future.
 
-## Customer account Emails
+## Customer account emails
 
 ### Customers
 
-##### Email Topic Name
+##### Email topic Name
 
 customer_created
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Account Created
 
@@ -77,11 +77,11 @@ By creating a {AccountName} account you have also agreed to the Dwolla Terms of 
 and opened a Dwolla account.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_verified
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Account Verified
 
@@ -91,11 +91,11 @@ Hello {CustomerName},
 Your account has been successfully verified!
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_suspended
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Account Suspended
 
@@ -105,11 +105,11 @@ Hello {CustomerName},
 Your account has been suspended.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_verification_document_needed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Verification Document Required
 
@@ -119,11 +119,11 @@ Hello {CustomerName},
 Additional documentation is required to verify your account. Please login to upload a document.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_verification_document_uploaded
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Verification Document Uploaded
 
@@ -134,11 +134,11 @@ Your document was successfully uploaded. You will receive another email when the
 It will either be approved or rejected.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_verification_document_approved
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Verification Document Approved
 
@@ -148,11 +148,11 @@ Hello {CustomerName},
 The document you uploaded for account verification was approved.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_verification_document_failed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Verification Document Failed
 
@@ -162,11 +162,11 @@ Hello {CustomerName},
 A document you uploaded for account verification was rejected. Please login to your account and upload another document.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_reverification_needed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Verification Required
 
@@ -177,13 +177,13 @@ Thank you for choosing {AccountName}. While you have started to create an accoun
 to verify your account. Please visit the {AccountName} application to complete your account registration.
 ```
 
-### Funding Sources
+### Funding sources
 
-##### Email Topic Name
+##### Email topic name
 
 customer_funding_source_added
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Funding Source Added
 
@@ -203,11 +203,11 @@ Date: {Timestamp}
 {/OnDemandAuthPresent}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_funding_source_verified
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Funding Source Verified
 
@@ -217,11 +217,11 @@ Hello {CustomerName},
 "{BankAccountNickName}" was verified on {Timestamp}.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_funding_source_removed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Funding Source Removed
 
@@ -231,11 +231,11 @@ Hello {CustomerName},
 "{BankAccountNickName}" was removed from your {AccountName} account on {Timestamp}.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_microdeposits_added
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Micro-deposits Initiated
 
@@ -249,11 +249,11 @@ Account: {BankAccountNickName}
 Date: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_microdeposits_completed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Micro-deposits Completed
 
@@ -270,11 +270,11 @@ Please check your bank account for two, less than $.20, micro-deposit amounts.
 You can complete the verification process within the {AccountName} application.
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_microdeposits_failed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Micro-deposits Failed
 
@@ -290,11 +290,11 @@ Date: {Timestamp}
 
 ### Transfers
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_sent
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Initiated
 
@@ -309,11 +309,11 @@ Amount: {Amount}
 Date Initiated: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_sent_failed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Unsuccessful
 
@@ -328,11 +328,11 @@ Amount: {Amount}
 Date Failed: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_sent_cancelled
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Cancelled
 
@@ -347,11 +347,11 @@ Amount: {Amount}
 Date Cancelled: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_received
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Pending
 
@@ -366,11 +366,11 @@ Amount: {Amount}
 Date Initiated: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_received_completed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Successful
 
@@ -385,11 +385,11 @@ Amount: {Amount}
 Date Completed: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_received_cancelled
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Cancelled
 
@@ -404,11 +404,11 @@ Amount: {Amount}
 Date Cancelled: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_received_failed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Payment Unsuccessful
 
@@ -423,7 +423,7 @@ Amount: {Amount}
 Date Failed: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_added
 
@@ -442,11 +442,11 @@ Amount: {Amount}
 Date Initiated: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_add_completed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Add to Balance Completed
 
@@ -461,11 +461,11 @@ Amount: {Amount}
 Date Cleared: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_add_cancelled
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Add to Balance Cancelled
 
@@ -480,11 +480,11 @@ Amount: {Amount}
 Date Cancelled: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_add_failed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Add to Balance Failed
 
@@ -499,11 +499,11 @@ Amount: {Amount}
 Date Failed: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_withdrawn
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Money Withdrawn
 
@@ -518,11 +518,11 @@ Amount: {Amount}
 Date Initiated: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_withdrawal_cancelled
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Withdrawal Cancelled
 
@@ -537,11 +537,11 @@ Amount: {Amount}
 Date Cancelled: {Timestamp}
 ```
 
-##### Email Topic Name
+##### Email topic name
 
 customer_money_withdrawal_failed
 
-##### Email Subject and Body
+##### Email subject and body
 
 **Subject:** Withdrawal Failure
 

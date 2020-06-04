@@ -44,7 +44,7 @@ The Sandbox environment is a complete replica of the Dwolla production environme
 
 Unlike transfers that are sourced from a Dwolla balance, which are processed instantaneously, bank-sourced transfers exist in the pending state for a few business days until they are `processed`, `failed`, or `cancelled`.
 
-The Sandbox environment does not replicate any ACH processes, so a `pending` transfer will not clear or fail automatically after a few business days as it would in production. It will simply remain in the `pending` state indefinitely. Reference our [testing resource article](/resources/testing.html) for more information on how-to simulate bank transfer processing in the Sandbox environment.
+The Sandbox environment does not replicate any ACH processes, so a `pending` transfer will not clear or fail automatically after a few business days as it would in production. It will simply remain in the `pending` state indefinitely. Reference the [testing transfers](#testing-transfers) section for more information on how-to simulate bank transfer processing in the Sandbox environment.
 
 ### Sandbox account setup
 
@@ -79,17 +79,17 @@ The [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) allows you to mana
 
 ##### Simulate identity verification statuses
 
-There are various reasons a Verified Customer may have a status other than `verified` after the initial Customer creation. You will want your app to be prepared to handle these alternative statuses.
+There are various reasons a [Verified Customer](/concepts/customer-types#verified-customer) may have a status other than `verified` after the initial Customer creation. You will want your app to be prepared to handle these alternative statuses.
 
 In production, Dwolla will place the Verified Customer in either the `retry`, `kba`, `document`, `verified`, or `suspended` state of verification after an initial identity verification check.
 
-**For personal verified Customers**, reference the resource article on [customer verification](/guies/personal-verified-customer/handling-verification-statuses) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status.
+**For personal Verified Customers**, reference the guide on [customer verification](/guies/personal-verified-customer/handling-verification-statuses) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status.
 
-**For business verified Customers**, reference the resource article on [customer verification](/guides/business-verified-customer/create-a-customer) article that goes over information on properly verifying your Controllers and Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `document`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status.
+**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `document`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status.
 
 ##### Simulate KBA verified and failed events
 
-If a Personal Verified Customer isn’t systematically identity-verified after their second attempt to retry their information, the Customer may be placed in a `kba` status and will be required to successfully answer at least three out of four knowledge based authentication(KBA) questions in order to pass verification.
+If a Personal Verified Customer isn’t systematically identity-verified after their second attempt to retry their information, the Customer may be placed in a `kba` status and will be required to successfully answer at least three out of four knowledge based authentication (KBA) questions in order to pass verification.
 
 To simulate the `customer_kba_verification_passed` event as the result of KBA success in Sandbox, answer all four questions with either “None of the above” or “I have never been associated with this vehicle”. As a result, the Customer will be placed in a verified status and the `customer_verified` event is triggered.
 
@@ -97,12 +97,12 @@ To simulate the `customer_kba_verification_failed` event as the result of KBA fa
 
 ##### Simulate document upload approved and failed events
 
-If a Verified Customer isn't systematically identity-verified, the Customer may be placed in a `document` status and will require an identifying document to be uploaded and reviewed. Reference either the [personal customer verification](/guides/personal-verified-customer/handle-verification-statuses#document-types) or [business customer verification](/guides/business-verified-customer/handle-verification-statuses#document-types) guides for acceptable forms of identifying documents for `Verified Customers`.
+If a Verified Customer isn't systematically identity-verified, the Customer may be placed in a `document` status and will require an identifying document to be uploaded and reviewed. Reference either the [personal customer verification](/guides/personal-verified-customer/handle-verification-statuses#document-types) or [business customer verification](/guides/business-verified-customer/handle-verification-statuses#document-types) guide for acceptable forms of identifying documents for `Verified Customers`.
 
 Since the document review process requires interaction from Dwolla, sample test documents can be uploaded in the Sandbox environment to simulate the `customer_verification_document_approved` and `customer_verification_document_failed` events.
 
 <AlertBar variation="info">
-  When uploading a test image, make sure to keep the size, format, and name of
+  When downloading a test image, make sure to keep the size, format, and name of
   the image the same.
 </AlertBar>
 
@@ -151,11 +151,11 @@ To help you test error scenarios, a flag and an option can be used in the first 
 
 #### Test micro-deposit verification
 
-If your application leverages the micro-deposit method of bank verification, Dwolla will transfer two deposits of less than $0.10 to your customer's linked bank or credit union account after calling the API to initiate micro-deposits. Since the Sandbox environment doesn't replicate any bank transfer processes, any two amounts **below** $`0.10` will allow you to verify the funding source immediately.
+If your application leverages the micro-deposit method of bank verification, Dwolla will transfer two deposits of less than \$`0.10` to your customer's linked bank or credit union account after calling the API to initiate micro-deposits. Since the Sandbox environment doesn't replicate any bank transfer processes, any two amounts **below** \$`0.10` will allow you to verify the funding source immediately.
 
 #### Test micro-deposit failed verification attempts
 
-When verifying a funding source using the micro-deposit method of bank verification, users are allowed **three attempts** to correctly input the two posted micro-deposit amounts. If the user fails to verify the two posted amounts on the third attempt, an event will be triggered and the funding source will not be verified using those micro-deposit amounts. To simulate the `microdeposits_maxattempts` or `customer_microdeposits_maxattempts` events in the Sandbox, use the amounts `0.09` and `0.09` when calling the API to verify micro-deposits. Reference the [micro-deposit verification resource article](https://developers.dwolla.com/resources/funding-source-verification/micro-deposit-verification.html) for more information on handling failed verification attempts.
+When verifying a funding source using the micro-deposit method of bank verification, users are allowed **three attempts** to correctly input the two posted micro-deposit amounts. If the user fails to verify the two posted amounts on the third attempt, an event will be triggered and the funding source will not be verified using those micro-deposit amounts. To simulate the `microdeposits_maxattempts` or `customer_microdeposits_maxattempts` events in the Sandbox, use the amounts `0.09` and `0.09` when calling the API to verify micro-deposits. Reference the [micro-deposit verification](/guides/micro-deposit-verification/verify-micro-deposits#handle-failed-verification-attempts) guide for more information on handling failed verification attempts.
 
 ### Testing Transfers
 
@@ -176,8 +176,8 @@ There are two options available for processing or failing bank transfers in the 
   <a href="https://docs.dwolla.com/#webhook-subscriptions">
     subscribed to webhooks
   </a>
-  , notifications will be sent, including all transfer or micro-deposit related
-  events, letting your application know that transfers have processed or failed.
+  , notifications will be sent, including all transfer or micro-deposit related events,
+  letting your application know that transfers have processed or failed.
 </AlertBar>
 
 ##### Sandbox simulations request and response

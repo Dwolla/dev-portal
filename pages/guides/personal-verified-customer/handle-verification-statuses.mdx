@@ -1,6 +1,6 @@
 ---
 layout: guides
-title: "Step 2: Handling Verification Statuses"
+title: "Step 2: Handling verification statuses"
 guide:
   step: 2
 meta:
@@ -163,9 +163,7 @@ Check the Customer’s status again. The Customer will either be in the `verifie
 
 ## Handling status: `kba`
 
-A `KBA` status occurs when a Customer’s identity scores are too low after the `retry` verification attempt. Knowledge based authentication (KBA), is used to identify end users by asking them to answer specific security questions about themselves pulled from a set of known data. These questions are also known as “out of wallet” questions which are dynamically generated on the spot. The Customer must answer at least three out of four (total) questions correctly in order to pass verification, which translates to a score of 75%. If the end user fails to pass KBA verification, they will be placed in a `document` status. The KBA flow is a three step process which includes: initiating the KBA session, retrieving the question set and answering the question set.
-
-> [Learn more](/concepts/sandbox) on testing KBA in the sandbox environment.
+A `KBA` status occurs when a Customer’s identity scores are too low after the `retry` verification attempt. Knowledge based authentication (KBA), is used to identify end users by asking them to answer specific security questions about themselves pulled from a set of known data. These questions are also known as “out of wallet” questions which are dynamically generated on the spot. The Customer must answer at least three out of four (total) questions correctly in order to pass verification, which translates to a score of 75%. If the end user fails to pass KBA verification, they will be placed in a `document` status. The KBA flow is a three step process which includes: initiating the KBA session, retrieving the question set and answering the question set. [Learn more on testing KBA](/concepts/sandbox#testing-customers) in the sandbox environment.
 
 <AlertBar variation="info">
   This section outlines a premium feature for the Dwolla API. Please contact
@@ -495,48 +493,47 @@ When a Customer is placed in the `document` verification status, Dwolla will ret
 
 ##### Example response
 
-```javascript
+```json
 {
-    "_links": {
-        "document-form": {
-
-            "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/documents",
-            "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
-            "resource-type": "document"
-        },
-        "self": {
-            "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "customer"
-        },
-        "funding-sources": {
-            "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/funding-sources",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "funding-source"
-        },
-        "transfers": {
-            "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/transfers",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "transfer"
-        },
-        "verify-with-document": {
-            "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/documents",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "document"
-        }
+  "_links": {
+    "document-form": {
+      "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/documents",
+      "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+      "resource-type": "document"
     },
-    "id": "64dd2beb-fe56-4cdc-80dd-82a3d7f5b921",
-    "firstName": "document",
-    "lastName": "doctest",
-    "email": "docTest@email.com",
-    "type": "personal",
-    "status": "document",
-    "created": "2017-08-31T14:28:11.047Z",
-    "address1": "99-99 33rd St",
-    "address2": "Apt 8",
-    "city": "Some City",
-    "state": "NY",
-    "postalCode": "11101"
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "funding-sources": {
+      "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/funding-sources",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "transfers": {
+      "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "verify-with-document": {
+      "href": "https://api-sandbox.dwolla.com/customers/64dd2beb-fe56-4cdc-80dd-82a3d7f5b921/documents",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "document"
+    }
+  },
+  "id": "64dd2beb-fe56-4cdc-80dd-82a3d7f5b921",
+  "firstName": "document",
+  "lastName": "doctest",
+  "email": "docTest@email.com",
+  "type": "personal",
+  "status": "document",
+  "created": "2017-08-31T14:28:11.047Z",
+  "address1": "99-99 33rd St",
+  "address2": "Apt 8",
+  "city": "Some City",
+  "state": "NY",
+  "postalCode": "11101"
 }
 ```
 

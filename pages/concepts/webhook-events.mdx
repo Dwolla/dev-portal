@@ -28,7 +28,7 @@ When your webhook subscription is configured, events will be created and sent as
 
 ## Webhook headers
 
-There are a few HTTP headers that are useful for your application when consuming the webhook request. `x-dwolla-topic` lets your app know, at a high level, the type of event being sent in the payload. `x-request-signature-sha256` contains a HMAC SHA256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [validated](/guides/webhooks/create-subscription/validating-webhooks) prior to parsing the webhook payload.
+There are a few HTTP headers that are useful for your application when consuming the webhook request. `x-dwolla-topic` lets your app know, at a high level, the type of event being sent in the payload. `x-request-signature-sha256` contains a HMAC SHA256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [validated](/guides/webhooks/validating-webhooks) prior to parsing the webhook payload.
 
 - `x-dwolla-topic` - customer_created
 - `x-request-signature-sha-256` - ed551cfb4acb48d31e14886bffa33aa417dfa4a3d3778f6141a7f7f92ee64861
@@ -45,7 +45,7 @@ All webhook payloads will include an Event object which will follow the same for
 | topic      | Type of action that occurred with Dwolla.                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | resourceId | Unique Id of the resource that triggered the Event.                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
-### Example Webhook payload
+### Example webhook payload
 
 ```json
 {
@@ -83,10 +83,10 @@ Webhooks are available for the list of Events shown below. As API enhancements a
 
 <AlertBar variation="info">
   The Event topic for all events triggered for your end-users that are created
-  as Customers will be prepended with `customer_*`. Events that represent
-  actions being triggered on your primary Dwolla Account are not shown below.
-  Refer to the <a href="https://docs.dwolla.com/#events">API docs</a> for the
-  complete list of Events.
+  as Customers will be prepended with <code>customer_*</code>. Events that
+  represent actions being triggered on your primary Dwolla Account are not shown
+  below. Refer to the <a href="https://docs.dwolla.com/#events">API docs</a> for
+  the complete list of Events.
 </AlertBar>
 
 ### Customers

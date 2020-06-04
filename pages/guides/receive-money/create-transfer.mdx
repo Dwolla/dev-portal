@@ -32,13 +32,14 @@ To initiate a transfer, we will need to specify the source and destination fundi
 | \_links   | yes      | object | A \_links JSON object describing the desired source and destination of a transfer. [Reference the Source and Destination object](https://docs.dwolla.com/#source-and-destination-types) to learn more about possible values for source and destination. |
 | amount    | yes      | object | An amount JSON object. [Reference the amount JSON object](https://docs.dwolla.com/#amount-json-object) to learn more.                                                                                                                                   |
 
+<br />
 <AlertBar variation="info">
   Within a transfer request, Dwolla supports additional optional parameters.
   These can range from <code>clearing</code> to specify the processing timing
   for the transfer, or <code>correlationId</code> to help correlate transfers
   from end-to-end. The object <code>facilitator-fee</code> isn't supported for
   this funds flow. For more information on all available transfer request
-  parameters, check out our
+  parameters, check out our{" "}
   <a href="https://docs.dwolla.com/#initiate-a-transfer">
     API reference documentation.
   </a>
@@ -172,7 +173,7 @@ When the transfer is created, you will receive a `201` HTTP response with an emp
 ## Step 4B: Handle Webhooks
 
 A single API call to create a payment transfer can trigger several transfer-related webhook events. The number of webhooks and type of webhook events can vary depending on the Customer type(s) involved in the transfer, as well as the source and destination for the funds transfer.
-For more information on which webhooks will be fired for a given section of a transfer, refer to our [Developer Resource Article](concepts/webhook-events).
+For more information on which webhooks will be fired for a given section of a transfer, refer to our [Developer Resource Article](/concepts/webhook-events).
 
 ## Step 4C: Simulate Payment Processing
 
