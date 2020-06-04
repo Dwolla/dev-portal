@@ -2,7 +2,7 @@
 
 exports[`Collapsible list 1`] = `
 <div
-  className="css-1rsvtx1-CollapsibleWrapper exlpbrg0"
+  className="css-5nsske-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"
@@ -65,7 +65,7 @@ exports[`Collapsible list 1`] = `
 
 exports[`Collapsible paragraph 1`] = `
 <div
-  className="css-1rsvtx1-CollapsibleWrapper exlpbrg0"
+  className="css-5nsske-CollapsibleWrapper exlpbrg0"
 >
   <div
     className="Collapsible"

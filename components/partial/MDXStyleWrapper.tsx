@@ -64,6 +64,12 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
         }
       }
 
+      p {
+        code {
+          ${codeStyles.styles}
+        }
+      }
+
       > table,
       th,
       td {
