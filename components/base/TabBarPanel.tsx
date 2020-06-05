@@ -6,7 +6,6 @@ import styled from "@emotion/styled";
 import classnames from "../../modules/classnames";
 import { GREY_1, GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
 import { ROBOTO } from "../typography";
-import "react-tabs/style/react-tabs.css";
 
 const StyledIcon = styled.img`
   max-height: 36px;

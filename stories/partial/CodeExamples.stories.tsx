@@ -1,7 +1,9 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import { storiesOf } from "@storybook/react";
 import { createElement } from "react";
-import CodeExamples from "../../components/partial/code/CodeExamples";
+import CodeExamples, {
+  CodeExample,
+} from "../../components/partial/code/CodeExamples";
 import { LanguageContext } from "../../components/util/Contexts";
 
 function MockMDXCreateElement({
@@ -44,29 +46,26 @@ storiesOf("partial|CodeExamples", module)
   ))
   .add("multiple examples", () => (
     <CodeExamples>
-      <MockMDXCreateElement originalType="pre">
-        <MockMDXCreateElement
-          originalType="code"
-          className="language-javascript"
-        >
-          {'const foo = "bar";'}
-        </MockMDXCreateElement>
-      </MockMDXCreateElement>
+      <CodeExample language="javascript">{'const foo = "bar";'}</CodeExample>
+
       <MockMDXCreateElement originalType="pre">
         <MockMDXCreateElement originalType="code">
           {"plaintext goes here"}
         </MockMDXCreateElement>
       </MockMDXCreateElement>
+
       <MockMDXCreateElement originalType="pre">
         <MockMDXCreateElement originalType="code" className="language-ruby">
           {'foo = "bar"'}
         </MockMDXCreateElement>
       </MockMDXCreateElement>
+
       <MockMDXCreateElement originalType="pre">
         <MockMDXCreateElement originalType="code" className="language-php">
           {'$foo = "bar"'}
         </MockMDXCreateElement>
       </MockMDXCreateElement>
+
       <MockMDXCreateElement originalType="pre">
         <MockMDXCreateElement originalType="code" className="language-java">
           {'string foo = "bar"'}

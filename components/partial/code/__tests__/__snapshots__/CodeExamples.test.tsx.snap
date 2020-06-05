@@ -66,10 +66,17 @@ exports[`multiple examples 1`] = `
     </button>
   </div>
   <div
-    className="css-a8d8hz-CodeBlock e6sdwpg3"
+    className="css-1n6k321-CodeBlock e6sdwpg3"
   >
     <pre>
-      <code />
+      <code
+        className="language-php"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "$foo = <span class=\\"hljs-string\\">\\"bar\\"</span>",
+          }
+        }
+      />
     </pre>
   </div>
 </div>
@@ -97,10 +104,17 @@ exports[`single example 1`] = `
     </button>
   </div>
   <div
-    className="css-a8d8hz-CodeBlock e6sdwpg3"
+    className="css-1n6k321-CodeBlock e6sdwpg3"
   >
     <pre>
-      <code />
+      <code
+        className="language-javascript"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span class=\\"hljs-keyword\\">const</span> foo = <span class=\\"hljs-string\\">\\"bar\\"</span>;",
+          }
+        }
+      />
     </pre>
   </div>
 </div>

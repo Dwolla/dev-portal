@@ -82,8 +82,8 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
         ${linkStyles.styles}
       }
 
-      ol,
-      ul {
+      > ol,
+      > ul {
         ${listStyles.styles}
         code {
           ${codeStyles.styles}
