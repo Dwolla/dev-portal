@@ -62,7 +62,7 @@ const FOOTER_LINKS = {
   Developers: [
     { text: "API Reference", href: "https://docs.dwolla.com/" },
     { text: "Support Forum", href: "https://discuss.dwolla.com/" },
-    { text: "SDKs & Tools", href: "/sdks-tools" },
+    { text: "SDKs & Tools", href: "/sdks-tools" }, //
     { text: "Github Repos", href: "https://github.com/Dwolla/" },
   ],
 };
