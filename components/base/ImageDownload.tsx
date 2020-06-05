@@ -5,6 +5,7 @@ import { GREY_2, WHITE_PRIMARY } from "../colors";
 import { ReactComponent as DownloadIcon } from "../../assets/images/component-icons/download-icon.svg";
 
 const Container = styled.div`
+  display: inline-block;
   box-sizing: border-box;
   border: 1px solid ${GREY_2};
   background-color: ${WHITE_PRIMARY};
