@@ -1,4 +1,209 @@
 ---
 ---
 
-SDKs & Tools
+import phpColor from "../assets/images/content-images/content-icons/language-logos/php-logo.svg";
+import phpGray from "../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
+import pythonColor from "../assets/images/content-images/content-icons/language-logos/python-logo.svg";
+import pythonGray from "../assets/images/content-images/content-icons/language-logos/python-logo-gray.svg";
+import rubyColor from "../assets/images/content-images/content-icons/language-logos/ruby-logo.svg";
+import rubyGray from "../assets/images/content-images/content-icons/language-logos/ruby-logo-gray.svg";
+import cSharpColor from "../assets/images/content-images/content-icons/language-logos/c-sharp-logo.svg";
+import cSharpGray from "../assets/images/content-images/content-icons/language-logos/c-sharp-logo-gray.svg";
+import kotlinColor from "../assets/images/content-images/content-icons/language-logos/kotlin-logo.svg";
+import kotlinGray from "../assets/images/content-images/content-icons/language-logos/kotlin-logo-gray.svg";
+import nodeColor from "../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
+import nodeGray from "../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
+import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
+import sqsMvIcon from "../assets/images/content-images/content-icons/tools/sqs-mv.svg";
+import webhookProvisionerIcon from "../assets/images/content-images/content-icons/tools/webhook-provisioner.svg";
+import webhookReceiverIcon from "../assets/images/content-images/content-icons/tools/webhook-receiver.svg";
+import webhookHandlerIcon from "../assets/images/content-images/content-icons/tools/webhook-handler.svg";
+import postmanIcon from "../assets/images/content-images/content-icons/tools/postman.svg";
+
+# SDKs & Tools
+
+Choose from a collection of client libraries and tools to get up and running quickly in a variety of languages.
+
+<TabBarPanel
+  tabs={[
+    {
+      label: "node",
+      icon: nodeGray,
+      iconActive: nodeColor,
+      content: <>
+        <p>Run:</p>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {`npm install dwolla-v2`}
+          </CodeExample>
+        </CodeExamples>
+        <p>or:</p>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {`yarn add dwolla-v2`}
+          </CodeExample>
+        </CodeExamples>
+        <p>Check out the <a href="https://docs.dwolla.com" target="_blank">API docs</a>, or see the source on <a href="https://github.com/Dwolla/dwolla-v2-node" target="_blank">GitHub</a>.</p>
+      </>
+    },
+    {
+      label: "ruby",
+      icon: rubyGray,
+      iconActive: rubyColor,
+      content: <>
+        <p>Add the following to your <code>Gemfile</code>:</p>
+        <CodeExamples>
+          <CodeExample language="ruby">
+            {'gem "dwolla_v2", "~> 3.0"'}
+          </CodeExample>
+        </CodeExamples>
+        <p>Then run:</p>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {'bundle'}
+          </CodeExample>
+        </CodeExamples>
+        <p>Or run:</p>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {'gem install dwolla_v2'}
+          </CodeExample>
+        </CodeExamples>
+        <p>Check out the <a href="https://docs.dwolla.com" target="_blank">API docs</a>, or see the source on <a href="https://github.com/Dwolla/dwolla-v2-ruby" target="_blank">GitHub</a>.</p>
+      </>,
+    },
+    {
+      label: "python",
+      icon: pythonGray,
+      iconActive: pythonColor,
+      content: <>
+        <p>Add the following to your <code>requirements.txt</code>:</p>
+        <CodeExamples>
+          <CodeExample language="plaintext">
+            {'dwollav2>=2.0.0'}
+          </CodeExample>
+        </CodeExamples>
+        <p>Or run:</p>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {'pip install dwollav2'}
+          </CodeExample>
+        </CodeExamples>
+        <p>Check out the <a href="https://docs.dwolla.com" target="_blank">API docs</a>, or see the source on <a href="https://github.com/Dwolla/dwolla-v2-python" target="_blank">GitHub</a>.</p>
+      </>,
+    },
+    {
+      label: "php",
+      icon: phpGray,
+      iconActive: phpColor,
+      content: <>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {`composer require dwolla/dwollaswagger
+composer install`}
+          </CodeExample>
+        </CodeExamples>
+        <p>Check out the <a href="https://docs.dwolla.com" target="_blank">API docs</a>, or see the source on <a href="https://github.com/Dwolla/dwolla-swagger-php" target="_blank">GitHub</a>.</p>
+      </>,
+    },
+    {
+      label: "c-sharp",
+      icon: cSharpGray,
+      iconActive: cSharpColor,
+      content: <>
+        <CodeExamples>
+          <CodeExample language="bash">
+            {`Install-Package Dwolla.Client`}
+          </CodeExample>
+        </CodeExamples>
+        <p>Check out the <a href="https://docs.dwolla.com" target="_blank">API docs</a>, or see the source on <a href="https://github.com/Dwolla/dwolla-v2-csharp" target="_blank">GitHub</a>.</p>
+      </>,
+    },
+    {
+      label: "kotlin",
+      icon: kotlinGray,
+      iconActive: kotlinColor,
+      content: <>
+        <p><code>Maven</code> - Add the following to your project&rsquo;s POM:</p>
+        <CodeExamples>
+          <CodeExample language="xml">
+            {`<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.github.Dwolla</groupId>
+  <artifactId>dwolla-v2-kotlin</artifactId>
+  <version>0.1</version>
+</dependency>`}
+          </CodeExample>
+        </CodeExamples>
+        <p><code>Gradle</code> - Add the following to your project&rsquo;s build file:</p>
+        <CodeExamples>
+          <CodeExample language="kotlin">
+            {`repositories \{
+  // ...
+  maven(url = "https://jitpack.io") \{
+    name = "jitpack"
+  \}
+\}\n
+dependencies \{
+  implementation("com.github.Dwolla:dwolla-v2-kotlin:0.1.0")
+\}`}
+          </CodeExample>
+        </CodeExamples>
+        <p>Check out the <a href="https://docs.dwolla.com" target="_blank">API docs</a>, or see the source on <a href="https://github.com/Dwolla/dwolla-v2-kotlin" target="_blank">GitHub</a>.</p>
+      </>,
+    },
+  ]}
+/>
+
+<br />
+<br />
+
+# Tools
+
+<CardGrid variant="default" maxColumns={3}>
+  <Card
+    icon={webhookProvisionerIcon}
+    link={{
+      href: "https://github.com/Dwolla/webhook-provisioner",
+      external: true,
+    }}
+    topic="Webhook Provisioner"
+    description="Lambda functions to create, update, and delete partner-specific webhook SQS queues and Lambda handlers using code from webhook-handler."
+  />
+  <Card
+    icon={webhookHandlerIcon}
+    link={{ href: "https://github.com/Dwolla/webhook-handler", external: true }}
+    topic="Webhook Handler"
+    description="An AWS Lambda function that POSTs Dwolla webhook Events to partner APIs and sends the result to SQS."
+  />
+  <Card
+    icon={webhookReceiverIcon}
+    link={{
+      href: "https://github.com/Dwolla/webhook-receiver",
+      external: true,
+    }}
+    topic="Webhook Receiver"
+    description="This sample app shows how to create a Dwolla Webhook Subscription and verify its signature."
+  />
+  <Card
+    icon={sqsMvIcon}
+    link={{ href: "https://github.com/Dwolla/sqs-mv", external: true }}
+    topic="SQS-MV"
+    description="An AWS Lambda function that moves SQS messages from one queue to another."
+  />
+  <Card
+    icon={postmanIcon}
+    link={{
+      href: "https://app.getpostman.com/run-collection/e946a89ed19313cce582",
+      external: true,
+    }}
+    topic="Postman Collection"
+    description="All individual Dwolla requests grouped into a single Postman collection for testing."
+  />
+</CardGrid>

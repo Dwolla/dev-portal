@@ -2,7 +2,7 @@
 
 exports[`ImageDownload - with filename 1`] = `
 <div
-  className="css-482eq7-Container e12x795m0"
+  className="css-f3q0l2-Container e12x795m0"
 >
   <div
     className="css-b3bf84-DownloadDiv e12x795m1"
@@ -33,7 +33,7 @@ exports[`ImageDownload - with filename 1`] = `
 
 exports[`ImageDownload - without filename 1`] = `
 <div
-  className="css-482eq7-Container e12x795m0"
+  className="css-f3q0l2-Container e12x795m0"
 >
   <div
     className="css-b3bf84-DownloadDiv e12x795m1"

@@ -8,7 +8,7 @@ const getCodeBlock = (el) =>
     : null;
 
 export const getLanguage = (el) =>
-  getCodeBlock(el).props.className?.replace("language-", "") || "plaintext";
+  getCodeBlock(el).props.className?.replace("language-", "");
 
 export default function groupCodeExamples({
   into: Component,

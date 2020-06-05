@@ -11,6 +11,9 @@ import {
   CODE_BLOCK_AQUA,
   CODE_BLOCK_ORANGE,
   GREY_4,
+  CODE_BLOCK_GREEN_BROWN,
+  CODE_BLOCK_GREEN,
+  CODE_BLOCK_YELLOW,
 } from "../../colors";
 import { POPPINS } from "../../typography";
 
@@ -89,6 +92,15 @@ export const CodeBlock = styled.div`
         }
         &symbol {
           color: ${CODE_BLOCK_ORANGE};
+        }
+        &name {
+          color: ${CODE_BLOCK_GREEN};
+        }
+        &tag {
+          color: ${CODE_BLOCK_GREEN_BROWN};
+        }
+        &attr {
+          color: ${CODE_BLOCK_YELLOW};
         }
       }
     }
