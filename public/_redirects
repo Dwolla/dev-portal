@@ -50,7 +50,7 @@
 /resources/balance-funding-source.html    /concepts/balance-funding-source
 /resources/bank-transfer-workflow/processing-times.html    /concepts/transfer-processing-times
 /resources/same-day-ach.html    /concepts/same-day-ach
-https://developers.dwolla.com/resources/bank-transfer-workflow/transfer-failures.html    /concepts/transfer-failures
+/resources/bank-transfer-workflow/transfer-failures.html    /concepts/transfer-failures
 /resources/webhook-events.html    /concepts/webhook-events
 /resources/operational-notifications.html    /concepts/operational-notifications
 /resources/facilitator-fee.html    /concepts/facilitator-fee
