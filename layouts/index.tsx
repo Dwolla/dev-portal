@@ -4,9 +4,15 @@ import { MDXProvider } from "@mdx-js/react";
 import { AnchorsSetter } from "../components/util/Anchors";
 import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../components/util/groupCodeExamples";
-import CodeExamples from "../components/partial/code/CodeExamples";
+import CodeExamples, {
+  CodeExample,
+} from "../components/partial/code/CodeExamples";
 import OnThisPage from "../components/layout/OnThisPage";
 import Table from "../components/base/Table";
+import TabBarPanel from "../components/base/TabBarPanel";
+import { InlineCode } from "../components/base/Typography";
+import CardGrid from "../components/base/CardGrid";
+import Card from "../components/base/Card";
 
 const MDXContainer = styled.div`
   display: flex;
@@ -22,7 +28,16 @@ type Props = {
   frontMatter: any;
 };
 
-const MDX_COMPONENTS = { table: Table };
+const MDX_COMPONENTS = {
+  table: Table,
+  TabBarPanel,
+  CodeExamples,
+  CodeExample,
+  InlineCode,
+  CardGrid,
+  Card,
+  code: InlineCode,
+};
 
 export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
   <MDXContainer>
