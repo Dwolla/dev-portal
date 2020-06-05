@@ -1,6 +1,6 @@
 ---
 layout: guides
-title: "Step 3: Retrieve funding ources"
+title: "Step 3: Retrieve funding sources"
 guide:
   step: 3
 meta:
@@ -269,9 +269,11 @@ funding_sources._embedded['funding-sources'][0].name # => "ABC Bank Checking"
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254";
 
-appToken.get(`${accountUrl}/funding-sources?removed=false`).then(function(res) {
-  res.body._embedded["funding-sources"][0].name; // => 'ABC Bank Checking'
-});
+appToken
+  .get(`${accountUrl}/funding-sources?removed=false`)
+  .then(function (res) {
+    res.body._embedded["funding-sources"][0].name; // => 'ABC Bank Checking'
+  });
 ```
 
 ```python
