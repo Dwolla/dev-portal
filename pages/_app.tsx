@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import App, { createUrl } from "next/app";
 import useSWR from "swr";
+import TagManager from "react-gtm-module";
 import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
 import { AnchorsProvider } from "../components/util/Anchors";
@@ -13,6 +14,26 @@ import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
+
+const GoogleTagManager = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      TagManager.initialize({ gtmId: "GTM-WRT5LD6" });
+    }
+  }, []);
+
+  return (
+    <noscript>
+      <iframe
+        title="google-tag-manager"
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WRT5LD6"
+        height="0"
+        width="0"
+        style={{ display: "none", visibility: "hidden" }}
+      ></iframe>
+    </noscript>
+  );
+};
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
@@ -135,11 +156,14 @@ export default class MyApp extends App {
   render() {
     const { router, Component, pageProps } = this.props;
     return (
-      <AppWithHooks
-        router={router}
-        Component={Component}
-        pageProps={pageProps}
-      />
+      <>
+        <GoogleTagManager />
+        <AppWithHooks
+          router={router}
+          Component={Component}
+          pageProps={pageProps}
+        />
+      </>
     );
   }
 }
