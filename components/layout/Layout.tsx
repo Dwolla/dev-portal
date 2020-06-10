@@ -6,6 +6,7 @@ import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import { useState } from "react";
+import Link from "next/link";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
@@ -142,19 +143,23 @@ export default function Layout({
 
       <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
         <LogoWrapper>
-          <img
-            src={dwollaDevLogo}
-            alt="Dwolla Developers Logo"
-            css={css`
-              @media (${breakDown("md")}) {
-                max-height: 100%;
-              }
+          <Link href="/">
+            <a>
+              <img
+                src={dwollaDevLogo}
+                alt="Dwolla Developers Logo"
+                css={css`
+                  @media (${breakDown("md")}) {
+                    max-height: 100%;
+                  }
 
-              @media (${breakDown("xs")}) {
-                max-width: 115px;
-              }
-            `}
-          />
+                  @media (${breakDown("xs")}) {
+                    max-width: 115px;
+                  }
+                `}
+              />
+            </a>
+          </Link>
 
           <img
             src={closeIcon}
