@@ -14,6 +14,7 @@ import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
+import useTrackPageViews from "../hooks/useTrackPageViews";
 
 const GoogleTagManager = () => {
   useEffect(() => {
@@ -125,6 +126,8 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
   const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
     refreshInterval: 60000,
   }).data?.status;
+
+  useTrackPageViews(url.pathname);
 
   return isAuthenticated ? (
     <AnchorsProvider>

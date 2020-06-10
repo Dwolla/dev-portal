@@ -11,6 +11,7 @@ import Select from "../base/select/Select";
 import { LanguageContext } from "../util/Contexts";
 import { breakUp, breakDown } from "../breakpoints";
 import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.svg";
+import ga from "../../modules/ga";
 
 export const TOP_BAR_HEIGHT = 68;
 
@@ -185,7 +186,10 @@ export default function TopBar({
         <Select
           options={languageOptions}
           selectedValue={selectedLanguage}
-          setSelectedValue={setSelectedLanguage}
+          setSelectedValue={(language) => {
+            setSelectedLanguage(language);
+            ga("global language select", "language change", language.value);
+          }}
           autoWidth
         />
       </SelectWrapper>

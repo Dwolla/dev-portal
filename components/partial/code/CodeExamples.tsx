@@ -13,6 +13,7 @@ import {
 } from "./CodeExamples.styled";
 import { ReactComponent as CopyIcon } from "../../../assets/images/component-icons/copy-icon.svg";
 import useCopy from "../../../hooks/useCopy";
+import ga from "../../../modules/ga";
 
 const getInitialLanguage = (
   exampleLanguages: string[],
@@ -111,7 +112,10 @@ export default function CodeExamples({
             variant="code"
             options={options}
             selectedValue={options.find((o) => o.value === activeLanguage)}
-            setSelectedValue={({ value }) => setSelectedLanguage(value)}
+            setSelectedValue={({ value }) => {
+              setSelectedLanguage(value);
+              ga("code sample", "language change", value);
+            }}
           />
         )}
 
