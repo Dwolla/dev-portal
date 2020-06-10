@@ -1,55 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination next 1`] = `
-<a
-  className="css-83egvd-StyledAnchor eutkdkv0"
-  href="#"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+<div
+  className="next css-88mn7o-Container eutkdkv0"
 >
-  <div
-    className="next css-1gihvz6-Container eutkdkv1"
+  <a
+    className="css-83egvd-StyledAnchor eutkdkv1"
+    href="#"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
-      className="css-195yjlt-ArrowDiv eutkdkv2"
+      className="css-fzu6l2-Card eutkdkv2"
     >
-      NEXT
-      <img
-        alt="Next"
-        className="css-a41acm-ArrowIcon eutkdkv3"
-        src="test-image-stub"
-      />
+      <div
+        className="css-195yjlt-ArrowDiv eutkdkv3"
+      >
+        NEXT
+        <img
+          alt="Next"
+          className="css-a41acm-ArrowIcon eutkdkv4"
+          src="test-image-stub"
+        />
+      </div>
+      <span>
+        Step 2: Add a funding source
+      </span>
     </div>
-    <span>
-      Step 2: Add a funding source
-    </span>
-  </div>
-</a>
+  </a>
+</div>
 `;
 
 exports[`Pagination previous 1`] = `
-<a
-  className="css-83egvd-StyledAnchor eutkdkv0"
-  href="#"
-  onClick={[Function]}
-  onMouseEnter={[Function]}
+<div
+  className="previous css-88mn7o-Container eutkdkv0"
 >
-  <div
-    className="previous css-1gihvz6-Container eutkdkv1"
+  <a
+    className="css-83egvd-StyledAnchor eutkdkv1"
+    href="#"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
   >
     <div
-      className="css-195yjlt-ArrowDiv eutkdkv2"
+      className="css-fzu6l2-Card eutkdkv2"
     >
-      <img
-        alt="Previous"
-        className="css-a41acm-ArrowIcon eutkdkv3"
-        src="test-image-stub"
-      />
-      PREVIOUS
+      <div
+        className="css-195yjlt-ArrowDiv eutkdkv3"
+      >
+        <img
+          alt="Previous"
+          className="css-a41acm-ArrowIcon eutkdkv4"
+          src="test-image-stub"
+        />
+        PREVIOUS
+      </div>
+      <span>
+        Step 1: Creating Business Verified Customers
+      </span>
     </div>
-    <span>
-      Step 1: Creating Business Verified Customers
-    </span>
-  </div>
-</a>
+  </a>
+</div>
 `;

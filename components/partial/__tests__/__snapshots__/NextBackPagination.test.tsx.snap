@@ -4,54 +4,62 @@ exports[`Next/Back Pagination 1`] = `
 <div
   className="css-1mty9q7-StyledWrapper emco6ij0"
 >
-  <a
-    className="css-83egvd-StyledAnchor eutkdkv0"
-    href="#prev"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
+  <div
+    className="previous css-88mn7o-Container eutkdkv0"
   >
-    <div
-      className="previous css-1gihvz6-Container eutkdkv1"
+    <a
+      className="css-83egvd-StyledAnchor eutkdkv1"
+      href="#prev"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
       <div
-        className="css-195yjlt-ArrowDiv eutkdkv2"
+        className="css-fzu6l2-Card eutkdkv2"
       >
-        <img
-          alt="Previous"
-          className="css-a41acm-ArrowIcon eutkdkv3"
-          src="test-image-stub"
-        />
-        Previous
+        <div
+          className="css-195yjlt-ArrowDiv eutkdkv3"
+        >
+          <img
+            alt="Previous"
+            className="css-a41acm-ArrowIcon eutkdkv4"
+            src="test-image-stub"
+          />
+          Previous
+        </div>
+        <span>
+          Previous Title
+        </span>
       </div>
-      <span>
-        Previous Title
-      </span>
-    </div>
-  </a>
+    </a>
+  </div>
   <div />
-  <a
-    className="css-83egvd-StyledAnchor eutkdkv0"
-    href="#next"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
+  <div
+    className="next css-88mn7o-Container eutkdkv0"
   >
-    <div
-      className="next css-1gihvz6-Container eutkdkv1"
+    <a
+      className="css-83egvd-StyledAnchor eutkdkv1"
+      href="#next"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
     >
       <div
-        className="css-195yjlt-ArrowDiv eutkdkv2"
+        className="css-fzu6l2-Card eutkdkv2"
       >
-        Next
-        <img
-          alt="Next"
-          className="css-a41acm-ArrowIcon eutkdkv3"
-          src="test-image-stub"
-        />
+        <div
+          className="css-195yjlt-ArrowDiv eutkdkv3"
+        >
+          Next
+          <img
+            alt="Next"
+            className="css-a41acm-ArrowIcon eutkdkv4"
+            src="test-image-stub"
+          />
+        </div>
+        <span>
+          Next Title
+        </span>
       </div>
-      <span>
-        Next Title
-      </span>
-    </div>
-  </a>
+    </a>
+  </div>
 </div>
 `;

@@ -7,10 +7,15 @@ import CardGrid from "../base/CardGrid";
 import Card from "../base/Card";
 import { slugify } from "../../modules/helpers";
 import { contentIcons } from "../../modules/images.import";
+import { breakDown } from "../breakpoints";
 
 const BannerWrap = styled.div`
   margin: -20px -40px 40px -40px;
   height: 304px;
+
+  @media (${breakDown("sm")}) {
+    margin: -20px -20px 20px -20px;
+  }
 `;
 
 const CardGridWrap = styled.div`

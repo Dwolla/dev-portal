@@ -88,13 +88,17 @@ const sortByWeight = (items) => sortBy(items, (i) => i?.weight);
 
 // components
 const Container = styled.div`
-  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 const Slide = styled.div`
+  flex-grow: 1;
   display: flex;
+  overflow: hidden;
   width: 200%;
-  height: 100%;
   transform: translate3d(0, 0, 0);
   transition: transform ease 0.4s;
 
@@ -104,11 +108,11 @@ const Slide = styled.div`
 `;
 
 const SlidePane = styled.div`
+  align-self: stretch;
   flex: 1 1 auto;
-  height: 100%;
   width: 50%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 `;
 
 const SectionWrap = styled.div`
@@ -444,7 +448,7 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
           </MobileWrap>
         </SlidePane>
 
-        <SlidePane key={activeSection?.href}>
+        <SlidePane key={activeSection?.href} id="body-scroll-lock-side-nav">
           {activeSection && activeSection.isSection && (
             <>
               <StickySectionWrap>

@@ -12,6 +12,7 @@ const StyledBanner = styled.div`
   padding: 40px;
   display: flex;
   flex-direction: column;
+  justify-content: space-around; /* Supporting Legacy Edge */
   justify-content: space-evenly;
   align-items: center;
   position: relative;

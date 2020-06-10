@@ -5,8 +5,13 @@ import Head from "next/head";
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
@@ -24,7 +29,7 @@ const LeftSidebar = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -65,7 +70,8 @@ const SideNavWrapper = styled.div`
   flex-grow: 1;
   overflow: hidden;
   background: white;
-  padding-bottom: 60px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const MainArea = styled.div`
@@ -114,6 +120,18 @@ export default function Layout({
   apiStatus: APIStatus;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
+
+  useEffect(() => {
+    if (document) {
+      enableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
+      if (sidebarToggled) {
+        disableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
+      }
+    }
+    return () => {
+      clearAllBodyScrollLocks();
+    };
+  }, [sidebarToggled]);
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);

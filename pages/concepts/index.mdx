@@ -6,6 +6,7 @@ description: "Understand the fundamental building blocks of integrating with the
 import styled from "@emotion/styled";
 import IndexPageGrid from "../../components/partial/IndexPageGrid";
 import FooterCTA from "../../components/base/FooterCTA";
+import { breakDown } from "../../components/breakpoints";
 import conceptsIcon from "../../assets/images/content-images/content-icons/concepts.svg";
 import Pages from "../../modules/pages";
 
@@ -32,6 +33,9 @@ export const ConceptIndexPageGrid = () => {
 
 export const FooterWrap = styled.div`
   margin: 40px -40px 0;
+  @media (${breakDown("sm")}) {
+    margin: 20px -20px 0;
+  }
 `;
 
 <ConceptIndexPageGrid />
