@@ -2,11 +2,17 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ROBOTO } from "../typography";
 import { HEADLINE_TEXT, PARAGRAPH_TEXT, GREY_1, GREY_2 } from "../colors";
+import { breakUp } from "../breakpoints";
 
 // Styles for Table
 const StyledTable = styled.div`
   overflow-x: scroll;
   white-space: nowrap;
+  /* This allows text within cells to wrap around on larger screens */
+  @media (${breakUp("lg")}) {
+    white-space: unset;
+  }
+
   table {
     /* Separate borders to selectively apply border radius */
     width: 100%;
@@ -35,6 +41,10 @@ const StyledTable = styled.div`
     }
     :nth-last-of-type(1) {
       border-right: 1px solid ${GREY_2};
+      /* This ensures the last column width doesn't shrink to a point where the text wraps around each word */
+      @media (${breakUp("lg")}) {
+        min-width: 20ch;
+      }
     }
   }
   /* Applying background-color to alternate rows  */
