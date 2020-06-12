@@ -6,7 +6,6 @@ import Layout from "../components/layout/Layout";
 import Pages from "../modules/pages";
 import { AnchorsProvider } from "../components/util/Anchors";
 import { LanguageContext } from "../components/util/Contexts";
-import AuthPage from "../components/AuthPage";
 import fetcher from "../modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
@@ -118,7 +117,6 @@ const LANGUAGE_OPTIONS = [
 ];
 
 const AppWithHooks = ({ router, Component, pageProps }: any) => {
-  const [isAuthenticated, setAuthenticated] = useState(true);
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
 
   const url = createUrl(router);
@@ -129,7 +127,7 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
 
   useTrackPageViews(url.pathname);
 
-  return isAuthenticated ? (
+  return (
     <AnchorsProvider>
       <LanguageContext.Provider
         value={{
@@ -150,8 +148,6 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
         </Layout>
       </LanguageContext.Provider>
     </AnchorsProvider>
-  ) : (
-    <AuthPage setAuthenticated={setAuthenticated} />
   );
 };
 
