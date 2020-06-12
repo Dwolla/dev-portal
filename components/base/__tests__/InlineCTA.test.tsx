@@ -7,7 +7,8 @@ test("Inline CTA", () => {
     .create(
       <InlineCTA
         icon={guideIcon}
-        text="To learn more about how to initiate a Same-Day ACH credit transfer, reference our developer resource article."
+        text="For more information on creating a Verified Personal Customer, reference our step by step guide."
+        href="https://developers.dwolla.com/guides/personal-verified-customer"
       />
     )
     .toJSON();

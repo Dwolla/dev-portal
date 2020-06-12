@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 import { ReactComponent as ArrowIcon } from "../../assets/images/component-icons/arrow-right.svg";
 import {
   GREY_2,
@@ -10,7 +11,11 @@ import {
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
 
-const BoxStyle = styled.div`
+const StyledLink = styled.a`
+  text-decoration: none;
+`;
+const Container = styled.div`
+  text-decoration: none;
   max-width: 656px;
   box-sizing: border-box;
   border: 1px solid ${GREY_2};
@@ -19,7 +24,6 @@ const BoxStyle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
   :hover {
     box-shadow: ${BOX_SHADOW_5};
   }
@@ -54,17 +58,22 @@ const ArrowStyle = styled.div`
 type Props = {
   icon: string;
   text: string;
+  href: string;
 };
 
-function InlineCTA({ icon, text }: Props) {
+function InlineCTA({ icon, text, href }: Props) {
   return (
-    <BoxStyle>
-      <StyledIcon src={icon} alt="" />
-      <TextStyle>{text}</TextStyle>
-      <ArrowStyle>
-        <ArrowIcon width={13} />
-      </ArrowStyle>
-    </BoxStyle>
+    <Link href={href} passHref>
+      <StyledLink>
+        <Container>
+          <StyledIcon src={icon} alt="" />
+          <TextStyle>{text}</TextStyle>
+          <ArrowStyle>
+            <ArrowIcon width={13} />
+          </ArrowStyle>
+        </Container>
+      </StyledLink>
+    </Link>
   );
 }
 
