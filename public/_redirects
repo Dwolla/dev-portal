@@ -46,6 +46,7 @@
 /resources/testing.html    /guides/sandbox
 /resources/    /concepts
 /resources/account-types.html    /concepts/customer-types
+/resources/customer-verification.html    /concepts/customer-types
 /resources/funding-source-verification.html    /guides/dwolla-js/instant-account-verification
 /resources/balance-funding-source.html    /concepts/balance-funding-source
 /resources/bank-transfer-workflow/processing-times.html    /concepts/transfer-processing-times
