@@ -28,7 +28,7 @@ const Container = styled.div`
       ${({ topOfPageOffset }: { topOfPageOffset: number }) => topOfPageOffset}px
   );
   flex-shrink: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   :empty {
     display: none;

@@ -2,7 +2,7 @@
 
 exports[`Banner - no icon 1`] = `
 <div
-  className=" css-1w3gvwd-StyledBanner eyaavg40"
+  className=" css-yutizr-StyledBanner eyaavg40"
 >
   <div
     className="css-1ctbztb-StyledTopic eyaavg42"
@@ -19,7 +19,7 @@ exports[`Banner - no icon 1`] = `
 
 exports[`Banner - with Button 1`] = `
 <div
-  className=" css-1w3gvwd-StyledBanner eyaavg40"
+  className=" css-yutizr-StyledBanner eyaavg40"
 >
   <div
     className="css-1ctbztb-StyledTopic eyaavg42"
@@ -45,7 +45,7 @@ exports[`Banner - with Button 1`] = `
 
 exports[`Banner - with Filters 1`] = `
 <div
-  className="filters css-1w3gvwd-StyledBanner eyaavg40"
+  className="filters css-yutizr-StyledBanner eyaavg40"
 >
   <img
     alt=""
@@ -156,7 +156,7 @@ exports[`Banner - with Filters 1`] = `
 
 exports[`Default Banner 1`] = `
 <div
-  className=" css-1w3gvwd-StyledBanner eyaavg40"
+  className=" css-yutizr-StyledBanner eyaavg40"
 >
   <img
     alt=""

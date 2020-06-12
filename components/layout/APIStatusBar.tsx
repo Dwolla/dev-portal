@@ -11,10 +11,7 @@ import {
 
 const ContainerLink = styled.a`
   background: rgba(255, 255, 255, 0.98);
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   font-size: 12px;

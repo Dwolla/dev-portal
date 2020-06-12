@@ -48,6 +48,7 @@ exports[`multiple examples 1`] = `
             onTouchEnd={[Function]}
           >
             <svg
+              height={12}
               width={7}
             />
           </div>

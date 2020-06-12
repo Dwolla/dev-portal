@@ -27,7 +27,7 @@ const DefaultDropdownIndicator = (props: any) => {
 const CodeDropdownIndicator = (props: any) => {
   return (
     <components.DropdownIndicator {...props}>
-      <DropdownArrowDouble width={7} />
+      <DropdownArrowDouble width={7} height={12} />
     </components.DropdownIndicator>
   );
 };

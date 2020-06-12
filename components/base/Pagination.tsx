@@ -9,11 +9,22 @@ import { ROBOTO, POPPINS } from "../typography";
 import { breakUp } from "../breakpoints";
 
 // Styles
+const Container = styled.div`
+  &.next {
+    text-align: left;
+    margin-left: 15px;
+  }
+  &.previous {
+    text-align: right;
+    margin-right: 15px;
+  }
+`;
+
 const StyledAnchor = styled.a`
   text-decoration: none;
 `;
 
-const Container = styled.div`
+const Card = styled.div`
   box-sizing: border-box;
   height: 100%;
   min-height: 107px;
@@ -31,14 +42,6 @@ const Container = styled.div`
   }
   :hover {
     box-shadow: ${BOX_SHADOW_5};
-  }
-  &.next {
-    text-align: left;
-    margin-left: 15px;
-  }
-  &.previous {
-    text-align: right;
-    margin-right: 15px;
   }
 
   @media (${breakUp("sm")}) {
@@ -74,24 +77,26 @@ type Props = {
 // Pagination component
 function Pagination({ variant, variantText, href, children }: Props) {
   return (
-    <Link href={href} passHref>
-      <StyledAnchor>
-        <Container className={variant}>
-          {variant === "next" ? (
-            <ArrowDiv>
-              {variantText}
-              <ArrowIcon src={arrowRight} alt="Next" />
-            </ArrowDiv>
-          ) : (
-            <ArrowDiv>
-              <ArrowIcon src={arrowLeft} alt="Previous" />
-              {variantText}
-            </ArrowDiv>
-          )}
-          <span>{children}</span>
-        </Container>
-      </StyledAnchor>
-    </Link>
+    <Container className={variant}>
+      <Link href={href} passHref>
+        <StyledAnchor>
+          <Card>
+            {variant === "next" ? (
+              <ArrowDiv>
+                {variantText}
+                <ArrowIcon src={arrowRight} alt="Next" />
+              </ArrowDiv>
+            ) : (
+              <ArrowDiv>
+                <ArrowIcon src={arrowLeft} alt="Previous" />
+                {variantText}
+              </ArrowDiv>
+            )}
+            <span>{children}</span>
+          </Card>
+        </StyledAnchor>
+      </Link>
+    </Container>
   );
 }
 export default Pagination;

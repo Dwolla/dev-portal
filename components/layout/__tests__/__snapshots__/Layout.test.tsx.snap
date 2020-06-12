@@ -3,7 +3,7 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className=" css-78dp3d-LeftSidebar eu5n9bq0"
+    className=" css-1e2mt3q-LeftSidebar eu5n9bq0"
   >
     <div
       className="css-wvabyo-LogoWrapper eu5n9bq1"
@@ -27,16 +27,16 @@ Array [
       />
     </div>
     <div
-      className="css-11xrmrt-SideNavWrapper eu5n9bq2"
+      className="css-1exhr1v-SideNavWrapper eu5n9bq2"
     >
       <div
-        className="css-1gqrwdk-Container e10mac9s0"
+        className="css-qvalgq-Container e10mac9s0"
       >
         <div
-          className=" css-1kvqy0s-Slide e10mac9s1"
+          className=" css-vt0ald-Slide e10mac9s1"
         >
           <div
-            className="css-p3a8sa-SlidePane e10mac9s2"
+            className="css-1p7u3h5-SlidePane e10mac9s2"
           >
             <div
               className="css-kgvw59-SectionWrap e10mac9s3"
@@ -175,13 +175,14 @@ Array [
             </div>
           </div>
           <div
-            className="css-p3a8sa-SlidePane e10mac9s2"
+            className="css-1p7u3h5-SlidePane e10mac9s2"
+            id="body-scroll-lock-side-nav"
           />
         </div>
       </div>
     </div>
     <a
-      className="css-8aopii-ContainerLink e1nkb8hi0"
+      className="css-35uqic-ContainerLink e1nkb8hi0"
       href="https://status.dwolla.com"
       target="_blank"
     >

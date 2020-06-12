@@ -44,6 +44,7 @@ exports[`AutoWidth Code Block Select 1`] = `
         onTouchEnd={[Function]}
       >
         <svg
+          height={12}
           width={7}
         />
       </div>
@@ -150,6 +151,7 @@ exports[`Code Block Select 1`] = `
         onTouchEnd={[Function]}
       >
         <svg
+          height={12}
           width={7}
         />
       </div>
