@@ -12,6 +12,7 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
+import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
 import { GREY_2, WHITE_PRIMARY } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
@@ -136,6 +137,8 @@ export default function Layout({
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
 
+  const router = useRouter();
+
   return (
     <>
       <Global
@@ -157,6 +160,7 @@ export default function Layout({
           href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
           rel="stylesheet"
         ></link>
+        <link rel="canonical" href={router?.pathname} />
       </Head>
 
       <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
