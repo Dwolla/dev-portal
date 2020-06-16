@@ -36,8 +36,6 @@ While you can use any Customer type for this funds flow, we will be creating a `
 | businessName | no        | string | Customer's registered business name (optional if not a business entity) |
 | ipAddress    | no        | string | Customer's IP address                                                   |
 
-<br />
-
 ```bash
 POST https://api-sandbox.dwolla.com/customers
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -78,7 +76,7 @@ var requestBody = {
   ipAddress: "99.99.99.99",
 };
 
-appToken.post("customers", requestBody).then(function(res) {
+appToken.post("customers", requestBody).then(function (res) {
   res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 });
 ```
