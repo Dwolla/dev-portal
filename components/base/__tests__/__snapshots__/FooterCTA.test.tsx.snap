@@ -8,12 +8,12 @@ exports[`FooterCTA 1`] = `
     className="css-16d8gvv-StyledContent exx89mw1"
   >
     <h2
-      className="dark css-hbtz3d-global-global-h2"
+      className="dark css-s1wtpx-global-global-h2"
     >
       Test in the Sandbox for free today.
     </h2>
     <p
-      className="dark css-od7pwh-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
+      className="dark css-s62xwb-StyledSubHeader-baseTextStyles-baseTextStyles e1i8011f1"
     >
       Use sandbox environment to test API requests.
     </p>
