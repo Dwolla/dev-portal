@@ -7,24 +7,37 @@ import { breakDown } from "../breakpoints";
 
 // Styled Banner component
 const StyledBanner = styled.div`
-  height: 100%;
   background-color: ${PURPLE_DARK};
   padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around; /* Supporting Legacy Edge */
-  justify-content: space-evenly;
   align-items: center;
   position: relative;
   width: 100%;
+
+  &.overlapped {
+    padding-bottom: 75px;
+  }
+
   &.filters {
-    padding-bottom: 0px;
+    padding-bottom: 70px;
+  }
+`;
+
+const BannerContentWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > *:last-child {
+    margin-bottom: 0;
   }
 `;
 
 const StyledIcon = styled.img`
   height: 46px;
   width: 42px;
+  margin-bottom: 20px;
 `;
 
 const StyledTopic = styled.div`
@@ -35,10 +48,13 @@ const StyledTopic = styled.div`
   font-weight: 200;
   line-height: 52px;
   text-align: center;
+  margin-bottom: 20px;
+
   @media (${breakDown("sm")}) {
     font-size: 30px;
     line-height: 46px;
   }
+
   @media (${breakDown("xs")}) {
     font-size: 22px;
     line-height: 33px;
@@ -52,9 +68,8 @@ const StyledDescription = styled.div`
   font-weight: 300;
   line-height: 26px;
   text-align: center;
-  &.filters {
-    margin-bottom: 52px;
-  }
+  margin-bottom: 30px;
+
   @media (${breakDown("sm")}) {
     font-size: 16px;
     line-height: 20px;
@@ -63,8 +78,6 @@ const StyledDescription = styled.div`
 
 const StyledFilter = styled.div`
   text-transform: uppercase;
-  margin-top: 52px;
-  margin-bottom: 0px;
   position: absolute;
   bottom: 0;
 `;
@@ -85,18 +98,26 @@ type Props = {
   description: string;
   button?: ButtonProps;
   filterTabs?: JSX.Element;
+  variant?: "default" | "overlapped";
 };
 
 // Banner component
-function Banner({ icon, topic, description, button, filterTabs }: Props) {
+function Banner({
+  icon,
+  topic,
+  description,
+  button,
+  filterTabs,
+  variant = "default",
+}: Props) {
   return (
-    <StyledBanner className={classnames({ filters: filterTabs })}>
-      {icon && <StyledIcon src={icon} alt="" />}
-      <StyledTopic>{topic}</StyledTopic>
-      <StyledDescription className={classnames({ filters: filterTabs })}>
-        {description}
-      </StyledDescription>
-      {button && <Button {...button} size="large" variant="primary" />}
+    <StyledBanner className={classnames({ filters: filterTabs }, variant)}>
+      <BannerContentWrap>
+        {icon && <StyledIcon src={icon} alt="" />}
+        <StyledTopic>{topic}</StyledTopic>
+        <StyledDescription>{description}</StyledDescription>
+        {button && <Button {...button} size="large" variant="primary" />}
+      </BannerContentWrap>
       {filterTabs && <StyledFilter>{filterTabs}</StyledFilter>}
     </StyledBanner>
   );

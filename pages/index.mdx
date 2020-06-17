@@ -48,10 +48,6 @@ import siftGray from "../assets/images/content-images/content-icons/partner-logo
 import slackColor from "../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
 import slackGray from "../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
 
-export const BannerWrapper = styled.div`
-  height: 378px;
-`;
-
 export const ContentContainer = styled.div`
   padding: 60px;
   > h3 {
@@ -168,19 +164,18 @@ export const partnerContent = [
 export default function HomePage() {
   return (
     <>
-      <BannerWrapper>
-        <Banner
-          topic="Integrate with Dwolla and move money smarter."
-          description="From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
-          button={{
-            text: "Get a Sandbox Account",
-            link: {
-              href: "https://accounts-sandbox.dwolla.com/sign-up",
-              external: true,
-            },
-          }}
-        />
-      </BannerWrapper>
+      <Banner
+        topic="Integrate with Dwolla and move money smarter."
+        description="From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
+        button={{
+          text: "Get a Sandbox Account",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/sign-up",
+            external: true,
+          },
+        }}
+        variant="overlapped"
+      />
       <ContentContainer>
         <CardGridWrapper>
           <CardGrid variant="center">

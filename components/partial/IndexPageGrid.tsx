@@ -11,7 +11,6 @@ import { breakDown } from "../breakpoints";
 
 const BannerWrap = styled.div`
   margin: -20px -40px 40px -40px;
-  height: 304px;
 
   @media (${breakDown("sm")}) {
     margin: -20px -20px 20px -20px;
@@ -78,9 +77,7 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
                 }
                 setFilter={setFilter}
               />
-            ) : (
-              <></>
-            )
+            ) : null
           }
         />
       </BannerWrap>

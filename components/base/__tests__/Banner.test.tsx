@@ -50,6 +50,27 @@ test("Banner - with Button", () => {
   expect(tree).toMatchSnapshot();
 });
 
+test("Banner - with Extra Padding for Overlapping Cards", () => {
+  const tree = renderer
+    .create(
+      <Banner
+        topic="Comprehensive API documentation for developers and businesses."
+        description="Step-by-step instructions to get you set up in the Dwolla API"
+        button={{
+          text: "Discover the Possibilities",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/login",
+            external: true,
+          },
+        }}
+        variant="overlapped"
+      />
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
 const TABS = [
   { value: "all", label: "ALL" },
   { value: "get-building", label: "GET BUILDING" },
