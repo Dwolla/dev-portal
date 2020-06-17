@@ -8,6 +8,7 @@ import {
   listStyles,
 } from "../base/Typography";
 import { imageStyles } from "../base/Image";
+import { GREY_5 } from "../colors";
 
 const MDXStyleWrapper = ({ children }: { children: any }) => (
   <div
@@ -33,6 +34,10 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
 
       > h1 {
         ${headingStyles.h1.styles}
+
+        &:first-of-type > a {
+          display: none;
+        }
       }
 
       > h2 {
@@ -80,6 +85,25 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
 
       a:not([class]) {
         ${linkStyles.styles}
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        > a {
+          color: ${GREY_5} !important;
+        }
+
+        &:not(:hover) {
+          > a {
+            @media (hover: hover) {
+              display: none;
+            }
+          }
+        }
       }
 
       > ol,

@@ -3252,6 +3252,11 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
+"@types/scroll-to-element@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/scroll-to-element/-/scroll-to-element-2.0.0.tgz#caa1e37747db5cf8023b1283b8449a5560c0be4f"
+  integrity sha512-MyhKHHONq0jP4e44PVbic8xrjjawsn7Rp+cijvL7K/I6Hi0KWvD98SB1muqjtIkxoopOPdUqL+DGE67JqNkPsQ==
+
 "@types/source-list-map@*":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
