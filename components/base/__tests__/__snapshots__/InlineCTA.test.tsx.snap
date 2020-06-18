@@ -1,25 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Inline CTA 1`] = `
-<div
-  className="css-1bf2om8-BoxStyle exsshsf0"
+<a
+  className="css-kunpmx-StyledLink exsshsf0"
+  href="https://developers.dwolla.com/guides/personal-verified-customer"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
 >
-  <img
-    alt=""
-    className="css-1lfxg9z-StyledIcon exsshsf1"
-    src="test-image-stub"
-  />
   <div
-    className="css-cj8isa-TextStyle exsshsf2"
+    className="css-l9xmrb-Container exsshsf1"
   >
-    To learn more about how to initiate a Same-Day ACH credit transfer, reference our developer resource article.
-  </div>
-  <div
-    className="css-1qk15us-ArrowStyle exsshsf3"
-  >
-    <svg
-      width={13}
+    <img
+      alt=""
+      className="css-1lfxg9z-StyledIcon exsshsf2"
+      src="test-image-stub"
     />
+    <div
+      className="css-cj8isa-TextStyle exsshsf3"
+    >
+      For more information on creating a Verified Personal Customer, reference our step by step guide.
+    </div>
+    <div
+      className="css-1qk15us-ArrowStyle exsshsf4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
   </div>
-</div>
+</a>
 `;
