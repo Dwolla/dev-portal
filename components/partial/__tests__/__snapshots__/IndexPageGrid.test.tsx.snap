@@ -3,28 +3,32 @@
 exports[`IndexPageGrid 1`] = `
 Array [
   <div
-    className="css-13kv9lr-BannerWrap e10u28530"
+    className="css-h63dfz-BannerWrap e10u28530"
   >
     <div
-      className="filters css-yutizr-StyledBanner eyaavg40"
+      className="filters default css-qc8b1t-StyledBanner eyaavg40"
     >
-      <img
-        alt=""
-        className="css-wrcaoo-StyledIcon eyaavg41"
-        src="guides-icon.svg"
-      />
       <div
-        className="css-1ctbztb-StyledTopic eyaavg42"
+        className="css-2ux9ul-BannerContentWrap eyaavg41"
       >
-        Guides
+        <img
+          alt=""
+          className="css-dt0gsi-StyledIcon eyaavg42"
+          src="guides-icon.svg"
+        />
+        <div
+          className="css-izwvz-StyledTopic eyaavg43"
+        >
+          Guides
+        </div>
+        <div
+          className="css-wbadgb-StyledDescription eyaavg44"
+        >
+          Step-by-step instructions to get you set up in the Dwolla API
+        </div>
       </div>
       <div
-        className="filters css-qmg3be-StyledDescription eyaavg43"
-      >
-        Step-by-step instructions to get you set up in the Dwolla API
-      </div>
-      <div
-        className="css-5t23wi-StyledFilter eyaavg44"
+        className="css-1wmc1h7-StyledFilter eyaavg45"
       >
         <div>
           <div
