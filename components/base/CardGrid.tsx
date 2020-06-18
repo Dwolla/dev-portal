@@ -6,7 +6,8 @@ const StyledGrid = styled.div`
   flex-wrap: wrap;
   margin: -15px;
 
-  &.center {
+  &.center,
+  &.home {
     justify-content: center;
   }
 `;
@@ -29,11 +30,20 @@ const CardWrapper = styled.div`
   a:hover {
     text-decoration: none;
   }
+
+  &.home {
+    @media (${breakDown("lg")}) {
+      width: 33.3%;
+    }
+    @media (${breakDown("sm")}) {
+      width: 100%;
+    }
+  }
 `;
 
 type Props = {
   children: JSX.Element[];
-  variant?: "default" | "center";
+  variant?: "default" | "center" | "home";
   maxColumns?: 1 | 2 | 3 | 4;
 };
 
@@ -41,8 +51,11 @@ export default function CardGrid({ children, variant, maxColumns = 4 }: Props) {
   return (
     <StyledGrid className={variant}>
       {children.map((item, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <CardWrapper key={index} minCardWidth={100 / maxColumns}>
+        <CardWrapper
+          key={index} // eslint-disable-line react/no-array-index-key
+          className={variant}
+          minCardWidth={100 / maxColumns}
+        >
           {item}
         </CardWrapper>
       ))}
