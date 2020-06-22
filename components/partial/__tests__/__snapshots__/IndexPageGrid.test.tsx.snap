@@ -31,22 +31,26 @@ Array [
         className="css-1wmc1h7-StyledFilter eyaavg45"
       >
         <div>
-          <div
-            className="css-18c9go6-TabsContainerStyle efq5uj30"
+          <ul
+            className="css-1n4w086-TabsContainerStyle efq5uj30"
           >
-            <div
-              className="tab is-active css-rdl1v4-TabStyle efq5uj31"
+            <li
+              className="tab is-active css-tm8l0i-TabStyle efq5uj31"
               onClick={[Function]}
+              onFocus={[Function]}
+              tabIndex={0}
             >
               All
-            </div>
-            <div
-              className="tab css-rdl1v4-TabStyle efq5uj31"
+            </li>
+            <li
+              className="tab css-tm8l0i-TabStyle efq5uj31"
               onClick={[Function]}
+              onFocus={[Function]}
+              tabIndex={0}
             >
               Get Building
-            </div>
-          </div>
+            </li>
+          </ul>
           <div
             className="css-n6mzzn-SelectWrapper efq5uj32"
           >

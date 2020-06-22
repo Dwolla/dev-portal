@@ -8,7 +8,10 @@ import classnames from "../../modules/classnames";
 import { slugify } from "../../modules/helpers";
 
 // Styles
-const TabsContainerStyle = styled.div`
+const TabsContainerStyle = styled.ul`
+  margin: unset;
+  padding: unset;
+  list-style-type: none;
   justify-content: center;
   display: grid;
   grid-auto-flow: column;
@@ -18,7 +21,7 @@ const TabsContainerStyle = styled.div`
   }
 `;
 
-export const TabStyle = styled.div`
+export const TabStyle = styled.li`
   height: 25px;
   color: ${GREY_4};
   font-family: ${POPPINS};
@@ -36,6 +39,9 @@ export const TabStyle = styled.div`
   &.is-active {
     color: ${WHITE_PRIMARY};
     border-bottom: 3px solid ${ORANGE_PRIMARY};
+  }
+  :focus {
+    outline: none;
   }
 `;
 
@@ -69,11 +75,13 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
       <TabsContainerStyle>
         {formattedTabs.map((tab) => (
           <TabStyle
+            tabIndex={0}
             className={classnames("tab", {
               "is-active":
                 JSON.stringify(formattedFilter) === JSON.stringify(tab),
             })}
             key={tab.value}
+            onFocus={() => setFilter(tab)}
             onClick={() => {
               setFilter(tab);
             }}
