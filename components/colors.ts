@@ -47,3 +47,6 @@ export const API_STATUS_BAR_ORANGE = "#e67e22";
 export const API_STATUS_BAR_YELLOW = "#f8ba01";
 export const API_STATUS_BAR_GREEN = "#04be5b";
 export const API_STATUS_BAR_RED = "#e84d3d";
+
+// Overlay Colors
+export const BLACK_OVERLAY = "rgba(0, 0, 0, 0.4)";

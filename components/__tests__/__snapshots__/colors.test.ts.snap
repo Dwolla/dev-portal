@@ -7,6 +7,7 @@ Object {
   "API_STATUS_BAR_ORANGE": "#e67e22",
   "API_STATUS_BAR_RED": "#e84d3d",
   "API_STATUS_BAR_YELLOW": "#f8ba01",
+  "BLACK_OVERLAY": "rgba(0, 0, 0, 0.4)",
   "CODE_BLOCK_AQUA": "#4fb4d7",
   "CODE_BLOCK_BLACK": "#1d1e24",
   "CODE_BLOCK_BUTTON": "#383c4c",

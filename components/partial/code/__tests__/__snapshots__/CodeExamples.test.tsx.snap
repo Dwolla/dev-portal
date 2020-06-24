@@ -3,7 +3,7 @@
 exports[`multiple examples 1`] = `
 <div>
   <div
-    className="css-10fipge-CodeBlockBar e6sdwpg0"
+    className="code-block-bar-default css-1k69olo-CodeBlockBar e6sdwpg2"
   >
     <div
       className=" css-k377xg-container"
@@ -56,7 +56,7 @@ exports[`multiple examples 1`] = `
       </div>
     </div>
     <button
-      className="css-12os3vt-CopyButton e6sdwpg1"
+      className="css-5uu5vc-CodeBlockButton e6sdwpg3"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -65,9 +65,21 @@ exports[`multiple examples 1`] = `
        
       <svg />
     </button>
+    <button
+      autoFocus={false}
+      className="css-5uu5vc-CodeBlockButton e6sdwpg3"
+      onClick={[Function]}
+      type="button"
+    >
+      expand 
+      <svg
+        height={16}
+        width={16}
+      />
+    </button>
   </div>
   <div
-    className="css-1n6k321-CodeBlock e6sdwpg3"
+    className="code-block-default css-1yj95e-CodeBlockContent e6sdwpg5"
   >
     <pre>
       <code
@@ -80,21 +92,22 @@ exports[`multiple examples 1`] = `
       />
     </pre>
   </div>
+  
 </div>
 `;
 
 exports[`single example 1`] = `
 <div>
   <div
-    className="css-10fipge-CodeBlockBar e6sdwpg0"
+    className="code-block-bar-default css-1k69olo-CodeBlockBar e6sdwpg2"
   >
     <div
-      className="css-1vovl9e-BarText e6sdwpg2"
+      className="css-1vovl9e-BarText e6sdwpg4"
     >
       javascript
     </div>
     <button
-      className="css-12os3vt-CopyButton e6sdwpg1"
+      className="css-5uu5vc-CodeBlockButton e6sdwpg3"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -103,9 +116,21 @@ exports[`single example 1`] = `
        
       <svg />
     </button>
+    <button
+      autoFocus={false}
+      className="css-5uu5vc-CodeBlockButton e6sdwpg3"
+      onClick={[Function]}
+      type="button"
+    >
+      expand 
+      <svg
+        height={16}
+        width={16}
+      />
+    </button>
   </div>
   <div
-    className="css-1n6k321-CodeBlock e6sdwpg3"
+    className="code-block-default css-1yj95e-CodeBlockContent e6sdwpg5"
   >
     <pre>
       <code
@@ -118,5 +143,6 @@ exports[`single example 1`] = `
       />
     </pre>
   </div>
+  
 </div>
 `;
