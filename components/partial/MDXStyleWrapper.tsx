@@ -99,6 +99,11 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
           ${codeStyles.styles}
         }
       }
+
+      > div {
+        margin-top: 29px;
+        margin-bottom: 29px;
+      }
     `}
   >
     {children}
