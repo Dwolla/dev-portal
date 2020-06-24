@@ -14,8 +14,53 @@ import {
   CODE_BLOCK_GREEN_BROWN,
   CODE_BLOCK_GREEN,
   CODE_BLOCK_YELLOW,
+  BLACK_OVERLAY,
 } from "../../colors";
 import { POPPINS } from "../../typography";
+import { fadeIn, fadeOut, slideIn, slideOut } from "../../keyframes";
+import { breakDown } from "../../breakpoints";
+
+export const ExpandedOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99999;
+  background-color: ${BLACK_OVERLAY};
+  display: flex;
+  flex-direction: column;
+  animation: ${fadeIn} 300ms ease-out;
+
+  &.collapsing {
+    animation: ${fadeOut} 300ms ease-out;
+  }
+`;
+
+export const ExpandedCodeBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: auto;
+  animation: ${slideIn} 300ms ease-out;
+  margin: 75px;
+
+  @media (${breakDown("lg")}) {
+    margin: 45px;
+  }
+
+  @media (${breakDown("md")}) {
+    margin: 30px;
+  }
+
+  @media (${breakDown("sm")}) {
+    margin: 0;
+  }
+
+  &.collapsing {
+    animation: ${slideOut} 300ms ease-out;
+  }
+`;
 
 export const CodeBlockBar = styled.div`
   background-color: ${PURPLE_DARKER};
@@ -24,13 +69,20 @@ export const CodeBlockBar = styled.div`
   border-top-right-radius: 5px;
   display: flex;
   justify-content: flex-end;
+  flex-shrink: 0;
 
   > * {
     margin: 0 5px;
   }
+
+  &.code-block-bar-fullscreen {
+    @media (${breakDown("sm")}) {
+      border-radius: 0;
+    }
+  }
 `;
 
-export const CopyButton = styled.button`
+export const CodeBlockButton = styled.button`
   background-color: ${CODE_BLOCK_BUTTON};
   border: none;
   color: ${GREY_10};
@@ -66,9 +118,10 @@ export const BarText = styled.div`
   padding: 0 5px;
 `;
 
-export const CodeBlock = styled.div`
+export const CodeBlockContent = styled.div`
   background-color: ${PURPLE_DARK};
-  overflow-x: scroll;
+  overflow-x: auto;
+  flex-grow: 1;
   padding: 12px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -103,6 +156,12 @@ export const CodeBlock = styled.div`
           color: ${CODE_BLOCK_YELLOW};
         }
       }
+    }
+  }
+
+  &.code-block-fullscreen {
+    @media (${breakDown("sm")}) {
+      border-radius: 0;
     }
   }
 `;
