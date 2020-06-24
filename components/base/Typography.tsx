@@ -28,7 +28,7 @@ export const headingStyles = {
   h1: css`
     font-size: 42px;
     line-height: 52px;
-    margin-top: 0;
+    margin-top: 26px;
     margin-bottom: 26px;
   `,
   h2: css`

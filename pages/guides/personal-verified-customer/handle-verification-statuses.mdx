@@ -43,7 +43,6 @@ A `retry` status occurs when a Customer’s identity scores are too low during t
   creation attempt will be required in the retry attempt, along with the full
   9-digit SSN.
 </AlertBar>
-<br />
 
 ```bash
 POST https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1
@@ -108,7 +107,7 @@ var requestBody = {
   ssn: "202-99-1516",
 };
 
-appToken.post(customerUrl, requestBody).then(function(res) {
+appToken.post(customerUrl, requestBody).then(function (res) {
   res.body.id; // => '132681fa-1b4d-4181-8ff2-619ca46235b1'
 });
 ```
@@ -577,7 +576,7 @@ body.append("file", fs.createReadStream("mclovin.jpg"), {
 });
 body.append("documentType", "license");
 
-appToken.post(`${customerUrl}/documents`, requestBody).then(function(res) {
+appToken.post(`${customerUrl}/documents`, requestBody).then(function (res) {
   res.headers.get("location"); // => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
 });
 ```
@@ -670,7 +669,7 @@ document.failureReason # => "ScanNotReadable"
 var documentUrl =
   "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0";
 
-appToken.get(document_url).then(function(res) {
+appToken.get(document_url).then(function (res) {
   res.body.failureReason; // => "ScanNotReadable"
 });
 ```

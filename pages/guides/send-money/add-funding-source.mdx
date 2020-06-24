@@ -49,8 +49,6 @@ In this step, we will be adding a bank account to our receive-only user by colle
 | bankAccountType | yes       | string | Type of bank account: `checking` or `savings`                            |
 | name            | yes       | string | Arbitrary nickname for the funding source. Must be 50 characters or less |
 
-<br />
-
 ```bash
 POST https://api.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747/funding-sources
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -94,7 +92,7 @@ var requestBody = {
 
 appToken
   .post(`${customerUrl}/funding-sources`, requestBody)
-  .then(function(res) {
+  .then(function (res) {
     res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
   });
 ```
