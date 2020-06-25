@@ -11,6 +11,8 @@ import { ReactComponent as HomeIcon } from "../assets/images/component-icons/sid
 import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
+import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-icon.svg";
+
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../hooks/useTrackPageViews";
@@ -44,6 +46,12 @@ const SIDE_NAV_LINKS = [
     IconSvg: HomeIcon,
     isSection: false,
     text: "Home",
+  },
+  {
+    href: "/api-reference",
+    IconSvg: ApiReferenceIcon,
+    isSection: true,
+    text: "API Reference",
   },
   {
     href: "/guides",
@@ -103,7 +111,11 @@ const TOP_BAR_PROPS = {
     },
   },
   links: [
-    { text: "API Docs", href: "https://docs.dwolla.com", external: true },
+    {
+      text: "Community",
+      href: "https://discuss.dwolla.com/c/api-support/",
+      external: true,
+    },
     { text: "Changelog", href: "/changelog" },
   ],
 };
