@@ -341,6 +341,11 @@ const MobileWrap = styled.div`
   @media (${breakUp("lg")}) {
     display: none;
   }
+
+  /* Hides MobileWrap contents when Sidebar is toggled and a Section is active. Not tabbable when not in view. */
+  &.visuallyhidden {
+    visibility: hidden;
+  }
 `;
 
 const MobileLink = ({ href, external, text, active }: MobileLinkProps) => {
@@ -443,7 +448,11 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
             </SectionWrap>
           )}
 
-          <MobileWrap>
+          <MobileWrap
+            className={classnames({
+              visuallyhidden: activeSection && activeSection.isSection,
+            })}
+          >
             <MobileItems {...mobileItems} />
           </MobileWrap>
         </SlidePane>

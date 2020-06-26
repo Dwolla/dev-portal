@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import Link from "next/link";
@@ -155,6 +155,15 @@ const Hamburger = styled.div`
   @media (${breakUp("lg")}) {
     display: none;
   }
+
+  :focus {
+    outline: none;
+  }
+
+  &:hover,
+  &.isFocused {
+    opacity: 0.5;
+  }
 `;
 
 export default function TopBar({
@@ -166,6 +175,11 @@ export default function TopBar({
     LanguageContext
   );
 
+  const [isFocused, setIsFocused] = useState(false);
+
+  function onHamburgerKeydown(e) {
+    if (e.key === "Enter") onHamburgerClick();
+  }
   const router = useRouter();
 
   return (
@@ -198,7 +212,17 @@ export default function TopBar({
         <Button {...button} size="standard" variant="primary" />
       </ButtonWrapper>
 
-      {onHamburgerClick && <Hamburger onClick={onHamburgerClick} />}
+      {onHamburgerClick && (
+        <Hamburger
+          tabIndex={0}
+          aria-labelledby="Open menu"
+          className={classnames({ isFocused })}
+          onClick={onHamburgerClick}
+          onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+        />
+      )}
     </Container>
   );
 }

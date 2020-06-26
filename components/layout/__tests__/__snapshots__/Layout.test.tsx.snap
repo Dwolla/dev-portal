@@ -3,7 +3,7 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className=" css-1e2mt3q-LeftSidebar eu5n9bq0"
+    className="visuallyHidden css-g3cfbj-LeftSidebar eu5n9bq0"
   >
     <div
       className="css-wvabyo-LogoWrapper eu5n9bq1"
@@ -19,12 +19,18 @@ Array [
           src="test-image-stub"
         />
       </a>
-      <img
-        alt=""
-        className="css-189x3u4-Layout-Layout"
+      <div
+        className=" css-3djgvj-StyledCloseIcon eu5n9bq3"
+        onBlur={[Function]}
         onClick={[Function]}
-        src="test-image-stub"
-      />
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        tabIndex={0}
+      >
+        <svg
+          width={14}
+        />
+      </div>
     </div>
     <div
       className="css-1exhr1v-SideNavWrapper eu5n9bq2"
@@ -127,7 +133,7 @@ Array [
               </a>
             </div>
             <div
-              className="css-nasyo1-MobileWrap e10mac9s12"
+              className=" css-1lx8d8l-MobileWrap e10mac9s12"
             >
               <a
                 className=" css-1twa2js-MobileLink-MobileLink"
@@ -193,10 +199,10 @@ Array [
     </a>
   </div>,
   <div
-    className="css-10ow9ob-MainArea eu5n9bq3"
+    className="css-10ow9ob-MainArea eu5n9bq4"
   >
     <div
-      className="css-jrlzw3-TopBarWrapper eu5n9bq5"
+      className="css-jrlzw3-TopBarWrapper eu5n9bq6"
     >
       <div
         className="css-16rtae5-Container e1xhgpyy0"
@@ -309,20 +315,25 @@ Array [
           </a>
         </div>
         <div
-          className="css-1gc2exo-Hamburger e1xhgpyy6"
+          aria-labelledby="Open menu"
+          className=" css-1artr2y-Hamburger e1xhgpyy6"
+          onBlur={[Function]}
           onClick={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
         />
       </div>
     </div>
     <div
-      className="css-gsovx7-ContentArea eu5n9bq4"
+      className=" css-r2kzr4-ContentArea eu5n9bq5"
     >
       <div>
         page
       </div>
     </div>
     <div
-      className="css-r8zrnm-FooterWrapper eu5n9bq6"
+      className=" css-1vo9m3u-FooterWrapper eu5n9bq7"
     >
       <div
         className="css-157ism8-Container en8mxva0"
