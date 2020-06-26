@@ -4,7 +4,7 @@ title: "Step 2: Create a funding sources token"
 guide:
   step: 2
 meta:
-  title: Create Funding Source Token | Dwolla API Documentation
+  title: Add Bank - Create Funding Source Token | Dwolla API Documentation
   description: Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.
 ---
 
@@ -43,7 +43,7 @@ customer.token # => "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg"
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/28138609-30ff-4607-b28c-4a3872f8fd4a";
 
-appToken.post(`${customerUrl}/funding-sources-token`).then(function(res) {
+appToken.post(`${customerUrl}/funding-sources-token`).then(function (res) {
   res.body.token; // => 'Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg'
 });
 ```
