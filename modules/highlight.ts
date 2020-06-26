@@ -11,6 +11,7 @@ export type Language =
   | "plaintext"
   | "html"
   | "kotlin"
+  | "csharp"
   | "xml";
 
 const registerLanguage = (language: Language, hljsLanguage: any) =>
@@ -28,6 +29,8 @@ registerLanguage("php", require("highlight.js/lib/languages/php"));
 registerLanguage("python", require("highlight.js/lib/languages/python"));
 
 registerLanguage("kotlin", require("highlight.js/lib/languages/kotlin"));
+
+registerLanguage("csharp", require("highlight.js/lib/languages/csharp"));
 
 registerLanguage("json", require("highlight.js/lib/languages/json"));
 
