@@ -10,7 +10,7 @@ guide:
   filter: get-building
   icon: add-verify-bank-iav.svg
 meta:
-  title: Instant Account Verification | Dwolla API Documentation
+  title: Instant Account Verification Using Dwolla.js | Dwolla API Documentation
   description: Using the client-side Dwolla.js JavaScript library, your application can add and verify a customer's bank account in a matter of seconds.
 ---
 
@@ -49,7 +49,7 @@ dwolla.iav.start(
       console.log("currentPage:", currentPage, "error:", JSON.stringify(error));
     },
   },
-  function(err, res) {
+  function (err, res) {
     console.log(
       "Error: " + JSON.stringify(err) + " -- Response: " + JSON.stringify(res)
     );

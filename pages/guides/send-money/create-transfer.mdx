@@ -4,7 +4,7 @@ title: "Step 4: Create a transfer"
 guide:
   step: 4
 meta:
-  title: Creating a Transfer | Dwolla API Documentation
+  title: Send Money - Creating a Transfer | Dwolla API Documentation
   description: Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.
 ---
 
@@ -98,7 +98,7 @@ var transferRequest = {
   },
 };
 
-appToken.post("transfers", transferRequest).then(function(res) {
+appToken.post("transfers", transferRequest).then(function (res) {
   res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 });
 ```
@@ -223,7 +223,7 @@ transfer.status # => "processed"
 var transferUrl =
   "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388";
 
-appToken.get(transferUrl).then(function(res) {
+appToken.get(transferUrl).then(function (res) {
   res.body.status; // => 'processed'
 });
 ```

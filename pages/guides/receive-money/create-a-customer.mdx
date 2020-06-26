@@ -4,7 +4,7 @@ title: "Step 1: Create a customer"
 guide:
   step: 1
 meta:
-  title: Onboarding a Customer | Dwolla API Documentation
+  title: Receive Money - Onboarding a Customer | Dwolla API Documentation
   description: Onboard users to receive money from their bank accounts with the Dwolla API.
 ---
 
@@ -68,7 +68,7 @@ var requestBody = {
   ipAddress: "99.99.99.99",
 };
 
-appToken.post("customers", requestBody).then(function(res) {
+appToken.post("customers", requestBody).then(function (res) {
   res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 });
 ```
