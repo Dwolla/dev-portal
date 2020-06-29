@@ -6,33 +6,33 @@ exports[`FilterTabs 1`] = `
     className="css-1n4w086-TabsContainerStyle efq5uj30"
   >
     <li
-      className="tab is-active css-tm8l0i-TabStyle efq5uj31"
+      className="tab is-active css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     >
       ALL
     </li>
     <li
-      className="tab css-tm8l0i-TabStyle efq5uj31"
+      className="tab css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     >
       GET BUILDING
     </li>
     <li
-      className="tab css-tm8l0i-TabStyle efq5uj31"
+      className="tab css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     >
       PREREQUISITES
     </li>
     <li
-      className="tab css-tm8l0i-TabStyle efq5uj31"
+      className="tab css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
-      onFocus={[Function]}
+      onKeyDown={[Function]}
       tabIndex={0}
     >
       FEATURES

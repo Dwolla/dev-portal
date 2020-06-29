@@ -4,6 +4,7 @@ import { useState } from "react";
 import ReactCollapsible from "react-collapsible";
 import styled from "@emotion/styled";
 import { css, jsx } from "@emotion/core";
+import classnames from "classnames";
 import plusIcon from "../../assets/images/component-icons/plus-circle-icon.svg";
 import minusIcon from "../../assets/images/component-icons/minus-circle-icon.svg";
 import { GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
@@ -32,19 +33,6 @@ const CollapsibleWrapper = styled.div`
       box-shadow: ${BOX_SHADOW_4};
     }
   }
-
-  /* Content element for react-collapsible https://www.npmjs.com/package/react-collapsible#collapsible__contentinner */
-  .Collapsible__contentInner {
-    margin: 0px 70px 25px 30px;
-    * {
-      margin: unset;
-    }
-    color: ${PARAGRAPH_TEXT};
-    font-family: ${ROBOTO};
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 28px;
-  }
 `;
 
 const StyledTrigger = styled.div`
@@ -58,6 +46,23 @@ const StyledTrigger = styled.div`
 const ImageStyles = css`
   margin-left: 28px;
   width: 24px;
+`;
+
+const InnerContentWrapper = styled.div`
+  margin: 0px 70px 25px 30px;
+  * {
+    margin: unset;
+  }
+  color: ${PARAGRAPH_TEXT};
+  font-family: ${ROBOTO};
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 28px;
+
+  &.visuallyhidden {
+    transition-delay: 200ms;
+    visibility: hidden;
+  }
 `;
 
 // Prop types
@@ -87,16 +92,12 @@ function Collapsible({ triggerText, children }: Props) {
 
   // Sets active state on collapsible
   function handleActive() {
-    if (!active) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
+    setActive(!active);
   }
 
   // Handle "Enter" key to open/close collapsible
   function handleKeyDown(e) {
-    if (e.keyCode === 13) handleActive();
+    if (e.key === "Enter") handleActive();
   }
 
   return (
@@ -111,7 +112,13 @@ function Collapsible({ triggerText, children }: Props) {
         transitionTime={transitionTime}
         open={active}
       >
-        <div tabIndex={active ? 0 : -1}>{children}</div>
+        <InnerContentWrapper
+          className={classnames({
+            visuallyhidden: !active,
+          })}
+        >
+          {children}
+        </InnerContentWrapper>
       </ReactCollapsible>
     </CollapsibleWrapper>
   );

@@ -16,13 +16,13 @@ const ParentDiv = styled.div`
   }
 `;
 const Question1 =
-  "My Customer has a retry status. What activity would they able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?";
+  "My Customer has a retry status. What activity would they be able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?";
 
 const Question2 =
   "My Customer has a document status. Can I submit more than one document via the API?";
 
 const Question3 =
-  "My Customer has a retry status. What activity would they able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?";
+  "My Customer has a retry status. What activity would they be able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?";
 
 const Question4 =
   "My Customer needs to send more funds than is allowed in my Dwolla services agreement. What is the best way to go about this?";

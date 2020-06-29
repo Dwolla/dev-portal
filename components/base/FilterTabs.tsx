@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Select from "./select/Select";
-import { GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
+import { GREY_2, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import classnames from "../../modules/classnames";
@@ -33,15 +33,17 @@ export const TabStyle = styled.li`
   cursor: pointer;
 
   :hover {
-    color: ${WHITE_PRIMARY};
+    color: ${GREY_2};
   }
 
   &.is-active {
     color: ${WHITE_PRIMARY};
     border-bottom: 3px solid ${ORANGE_PRIMARY};
   }
+
   :focus {
     outline: none;
+    color: ${WHITE_PRIMARY};
   }
 `;
 
@@ -70,6 +72,10 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
       ? formattedTabs.find((tab) => tab.value === filter)
       : filter;
 
+  function onKeydown(e, tab) {
+    if (e.key === "Enter") setFilter(tab);
+  }
+
   return (
     <div>
       <TabsContainerStyle>
@@ -81,10 +87,10 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
                 JSON.stringify(formattedFilter) === JSON.stringify(tab),
             })}
             key={tab.value}
-            onFocus={() => setFilter(tab)}
             onClick={() => {
               setFilter(tab);
             }}
+            onKeyDown={(keyPress) => onKeydown(keyPress, tab)}
           >
             {tab.label}
           </TabStyle>
