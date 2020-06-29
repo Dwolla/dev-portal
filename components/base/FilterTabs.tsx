@@ -1,14 +1,17 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Select from "./select/Select";
-import { GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
+import { GREY_2, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import classnames from "../../modules/classnames";
 import { slugify } from "../../modules/helpers";
 
 // Styles
-const TabsContainerStyle = styled.div`
+const TabsContainerStyle = styled.ul`
+  margin: unset;
+  padding: unset;
+  list-style-type: none;
   justify-content: center;
   display: grid;
   grid-auto-flow: column;
@@ -18,7 +21,7 @@ const TabsContainerStyle = styled.div`
   }
 `;
 
-export const TabStyle = styled.div`
+export const TabStyle = styled.li`
   height: 25px;
   color: ${GREY_4};
   font-family: ${POPPINS};
@@ -30,12 +33,17 @@ export const TabStyle = styled.div`
   cursor: pointer;
 
   :hover {
-    color: ${WHITE_PRIMARY};
+    color: ${GREY_2};
   }
 
   &.is-active {
     color: ${WHITE_PRIMARY};
     border-bottom: 3px solid ${ORANGE_PRIMARY};
+  }
+
+  :focus {
+    outline: none;
+    color: ${WHITE_PRIMARY};
   }
 `;
 
@@ -64,11 +72,16 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
       ? formattedTabs.find((tab) => tab.value === filter)
       : filter;
 
+  function onKeydown(e, tab) {
+    if (e.key === "Enter") setFilter(tab);
+  }
+
   return (
     <div>
       <TabsContainerStyle>
         {formattedTabs.map((tab) => (
           <TabStyle
+            tabIndex={0}
             className={classnames("tab", {
               "is-active":
                 JSON.stringify(formattedFilter) === JSON.stringify(tab),
@@ -77,6 +90,7 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
             onClick={() => {
               setFilter(tab);
             }}
+            onKeyDown={(keyPress) => onKeydown(keyPress, tab)}
           >
             {tab.label}
           </TabStyle>

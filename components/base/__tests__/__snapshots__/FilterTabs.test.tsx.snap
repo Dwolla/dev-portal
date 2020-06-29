@@ -2,34 +2,42 @@
 
 exports[`FilterTabs 1`] = `
 <div>
-  <div
-    className="css-18c9go6-TabsContainerStyle efq5uj30"
+  <ul
+    className="css-1n4w086-TabsContainerStyle efq5uj30"
   >
-    <div
-      className="tab is-active css-rdl1v4-TabStyle efq5uj31"
+    <li
+      className="tab is-active css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
     >
       ALL
-    </div>
-    <div
-      className="tab css-rdl1v4-TabStyle efq5uj31"
+    </li>
+    <li
+      className="tab css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
     >
       GET BUILDING
-    </div>
-    <div
-      className="tab css-rdl1v4-TabStyle efq5uj31"
+    </li>
+    <li
+      className="tab css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
     >
       PREREQUISITES
-    </div>
-    <div
-      className="tab css-rdl1v4-TabStyle efq5uj31"
+    </li>
+    <li
+      className="tab css-1w79bbb-TabStyle efq5uj31"
       onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
     >
       FEATURES
-    </div>
-  </div>
+    </li>
+  </ul>
   <div
     className="css-n6mzzn-SelectWrapper efq5uj32"
   >

@@ -3,7 +3,7 @@ import Collapsible from "../Collapsible";
 import { Paragraph, UnorderedList } from "../Typography";
 
 const Question1 =
-  "My Customer has a retry status. What activity would they able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?";
+  "My Customer has a retry status. What activity would they be able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?";
 
 const Question2 =
   "My Customer has a document status. Can I submit more than one document via the API?";
