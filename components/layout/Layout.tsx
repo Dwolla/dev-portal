@@ -18,6 +18,7 @@ import { POPPINS, ROBOTO } from "../typography";
 import { BOX_SHADOW_6 } from "../shadowDepths";
 import {
   GREY_2,
+  GREY_8,
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
@@ -29,7 +30,7 @@ import { breakUp, breakDown } from "../breakpoints";
 import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
-import closeIcon from "../../assets/images/component-icons/close.svg";
+import { ReactComponent as CloseIcon } from "../../assets/images/component-icons/close.svg";
 import dwollaDevLogo from "../../assets/images/dwolla-developers-logo.svg";
 
 export const LEFT_SIDEBAR_PADDING_X = "20px";
@@ -60,6 +61,13 @@ const LeftSidebar = styled.div`
     opacity: 1;
     pointer-events: auto;
   }
+
+  /* Hides sidebar on smaller screens when not toggled. Not tabbable when not in view  */
+  &.visuallyHidden {
+    @media (${breakDown("md")}) {
+      visibility: hidden;
+    }
+  }
 `;
 
 const LogoWrapper = styled.div`
@@ -85,6 +93,32 @@ const SideNavWrapper = styled.div`
   flex-direction: column;
 `;
 
+const StyledCloseIcon = styled.div`
+  cursor: pointer;
+  svg {
+    * {
+      fill: ${ORANGE_PRIMARY};
+    }
+  }
+
+  :hover,
+  &.isFocused {
+    svg {
+      * {
+        fill: ${GREY_8};
+      }
+    }
+  }
+
+  :focus {
+    outline: none;
+  }
+
+  @media (${breakUp("lg")}) {
+    display: none;
+  }
+`;
+
 const MainArea = styled.div`
   @media (${breakUp("lg")}) {
     margin-left: 25%;
@@ -94,6 +128,13 @@ const MainArea = styled.div`
 const ContentArea = styled.div`
   @media (${breakUp("lg")}) {
     margin-right: 40px;
+  }
+
+  /* Hides ContentArea on smaller screens when SideBar is toggled. Not tabbable when not in view  */
+  &.visuallyhidden {
+    @media (${breakDown("md")}) {
+      visibility: hidden;
+    }
   }
 `;
 
@@ -110,6 +151,13 @@ const FooterWrapper = styled.div`
 
   @media (${breakUp("xxl")}) {
     padding-right: 40px;
+  }
+
+  /* Hides FooterArea on smaller screens when SideBar is toggled. Not tabbable when not in view  */
+  &.visuallyhidden {
+    @media (${breakDown("md")}) {
+      visibility: hidden;
+    }
   }
 `;
 
@@ -131,6 +179,7 @@ export default function Layout({
   apiStatus: APIStatus;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     if (document) {
@@ -146,6 +195,10 @@ export default function Layout({
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
+
+  function onKeydown(e) {
+    if (e.key === "Enter") hideSidebar();
+  }
 
   const router = useRouter();
 
@@ -206,7 +259,9 @@ export default function Layout({
         <link rel="canonical" href={router?.pathname} />
       </Head>
 
-      <LeftSidebar className={classnames({ toggled: sidebarToggled })}>
+      <LeftSidebar
+        className={classnames(sidebarToggled ? "toggled" : "visuallyHidden")}
+      >
         <LogoWrapper>
           <Link href="/">
             <a>
@@ -226,19 +281,16 @@ export default function Layout({
             </a>
           </Link>
 
-          <img
-            src={closeIcon}
-            alt=""
+          <StyledCloseIcon
+            tabIndex={0}
+            className={classnames({ isFocused })}
             onClick={hideSidebar}
-            css={css`
-              width: 14px;
-              cursor: pointer;
-
-              @media (${breakUp("lg")}) {
-                display: none;
-              }
-            `}
-          />
+            onKeyDown={(keyPress) => onKeydown(keyPress)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
+          >
+            <CloseIcon width={14} />
+          </StyledCloseIcon>
         </LogoWrapper>
 
         <SideNavWrapper>
@@ -257,9 +309,13 @@ export default function Layout({
           <TopBar {...topBarProps} onHamburgerClick={showSidebar} />
         </TopBarWrapper>
 
-        <ContentArea>{children}</ContentArea>
+        <ContentArea className={classnames({ visuallyhidden: sidebarToggled })}>
+          {children}
+        </ContentArea>
 
-        <FooterWrapper>
+        <FooterWrapper
+          className={classnames({ visuallyhidden: sidebarToggled })}
+        >
           <Footer links={footerLinks} legal={footerLegal} />
         </FooterWrapper>
       </MainArea>
