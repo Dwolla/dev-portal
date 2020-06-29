@@ -1,17 +1,22 @@
 import { Children, useContext, useMemo, useState, useEffect } from "react";
 import sortBy from "lodash.sortby";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { getLanguage } from "../../util/groupCodeExamples";
 import { LanguageContext } from "../../util/Contexts";
 // eslint-disable-next-line no-unused-vars
 import highlight, { Language } from "../../../modules/highlight";
 import Select from "../../base/select/Select";
 import {
+  ExpandedOverlay,
+  ExpandedCodeBlock,
   CodeBlockBar,
   BarText,
-  CopyButton,
-  CodeBlock,
+  CodeBlockButton,
+  CodeBlockContent,
 } from "./CodeExamples.styled";
 import { ReactComponent as CopyIcon } from "../../../assets/images/component-icons/copy-icon.svg";
+import { ReactComponent as ExpandIcon } from "../../../assets/images/component-icons/expand.svg";
+import { ReactComponent as CollapseIcon } from "../../../assets/images/component-icons/collapse.svg";
 import useCopy from "../../../hooks/useCopy";
 import ga from "../../../modules/ga";
 
@@ -60,6 +65,7 @@ export default function CodeExamples({
   );
 
   const [selectedLanguage, setSelectedLanguage] = useState(null);
+  const [expanded, setExpanded] = useState("");
 
   const activeLanguage =
     selectedLanguage ||
@@ -101,9 +107,26 @@ export default function CodeExamples({
 
   const onlyOneExample = options.length === 1;
 
-  return (
-    <div>
-      <CodeBlockBar>
+  const toggleExpanded = () => {
+    if (!expanded) {
+      setExpanded("expanded");
+      disableBodyScroll();
+    } else {
+      setExpanded("collapsing");
+      setTimeout(() => {
+        setExpanded("");
+        enableBodyScroll();
+      }, 280);
+    }
+  };
+
+  type CodeBlockProps = {
+    variant?: "default" | "fullscreen";
+  };
+
+  const CodeBlock = ({ variant = "default" }: CodeBlockProps) => (
+    <>
+      <CodeBlockBar className={`code-block-bar-${variant}`}>
         {onlyOneExample ? (
           <BarText>{activeLanguage}</BarText>
         ) : (
@@ -119,12 +142,28 @@ export default function CodeExamples({
           />
         )}
 
-        <CopyButton type="button" onClick={copy} disabled={copied}>
+        <CodeBlockButton type="button" onClick={copy} disabled={copied}>
           {copied ? "copied" : "copy"} <CopyIcon />
-        </CopyButton>
+        </CodeBlockButton>
+
+        <CodeBlockButton
+          type="button"
+          onClick={toggleExpanded}
+          autoFocus={variant === "fullscreen"}
+        >
+          {variant === "fullscreen" ? (
+            <>
+              collapse <CollapseIcon width={16} height={16} />
+            </>
+          ) : (
+            <>
+              expand <ExpandIcon width={16} height={16} />
+            </>
+          )}
+        </CodeBlockButton>
       </CodeBlockBar>
 
-      <CodeBlock>
+      <CodeBlockContent className={`code-block-${variant}`}>
         <pre>
           <code
             className={`language-${activeLanguage}`}
@@ -134,7 +173,23 @@ export default function CodeExamples({
             }}
           />
         </pre>
-      </CodeBlock>
+      </CodeBlockContent>
+    </>
+  );
+
+  return (
+    <div>
+      <>
+        <CodeBlock />
+      </>
+
+      {expanded && (
+        <ExpandedOverlay className={expanded}>
+          <ExpandedCodeBlock className={expanded}>
+            <CodeBlock variant="fullscreen" />
+          </ExpandedCodeBlock>
+        </ExpandedOverlay>
+      )}
     </div>
   );
 }
