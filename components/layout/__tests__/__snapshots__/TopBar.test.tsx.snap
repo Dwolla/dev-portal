@@ -4,11 +4,17 @@ exports[`TopBar 1`] = `
 <div
   className="css-16rtae5-Container e1xhgpyy0"
 >
-  <img
-    alt=""
-    className="css-15o2exl-StyledLogo e1xhgpyy1"
-    src="test-image-stub"
-  />
+  <a
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <img
+      alt=""
+      className="css-15o2exl-StyledLogo e1xhgpyy1"
+      src="test-image-stub"
+    />
+  </a>
   <div
     className="css-ffwcst-LinksWrapper e1xhgpyy2"
   >

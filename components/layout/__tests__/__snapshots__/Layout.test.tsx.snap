@@ -36,10 +36,10 @@ Array [
       className="css-1exhr1v-SideNavWrapper eu5n9bq2"
     >
       <div
-        className="css-qvalgq-Container e10mac9s0"
+        className="css-88n5j3-Container e10mac9s0"
       >
         <div
-          className=" css-vt0ald-Slide e10mac9s1"
+          className=" css-12hfl5m-Slide e10mac9s1"
         >
           <div
             className="css-1p7u3h5-SlidePane e10mac9s2"
@@ -207,11 +207,17 @@ Array [
       <div
         className="css-16rtae5-Container e1xhgpyy0"
       >
-        <img
-          alt=""
-          className="css-15o2exl-StyledLogo e1xhgpyy1"
-          src="test-image-stub"
-        />
+        <a
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <img
+            alt=""
+            className="css-15o2exl-StyledLogo e1xhgpyy1"
+            src="test-image-stub"
+          />
+        </a>
         <div
           className="css-ffwcst-LinksWrapper e1xhgpyy2"
         >
@@ -341,11 +347,17 @@ Array [
         <div
           className="css-1a8teoz-LogoContainer en8mxva1"
         >
-          <img
-            alt=""
-            className="css-1ty6c2n-Logo en8mxva2"
-            src="test-image-stub"
-          />
+          <a
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <img
+              alt=""
+              className="css-1ty6c2n-Logo en8mxva2"
+              src="test-image-stub"
+            />
+          </a>
           <div
             className="css-1neb9ej-Copyright en8mxva3"
           >

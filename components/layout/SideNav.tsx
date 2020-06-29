@@ -88,6 +88,7 @@ const sortByWeight = (items) => sortBy(items, (i) => i?.weight);
 
 // components
 const Container = styled.div`
+  position: relative;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -99,11 +100,14 @@ const Slide = styled.div`
   display: flex;
   overflow: hidden;
   width: 200%;
-  transform: translate3d(0, 0, 0);
-  transition: transform ease 0.4s;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: left ease 0.4s;
 
   &.slidIn {
-    transform: translate3d(-50%, 0, 0);
+    left: -100%;
   }
 `;
 

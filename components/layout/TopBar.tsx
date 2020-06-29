@@ -184,7 +184,11 @@ export default function TopBar({
 
   return (
     <Container>
-      <StyledLogo src={dwollaDevLogo} alt="" />
+      <Link href="/">
+        <a>
+          <StyledLogo src={dwollaDevLogo} alt="" />
+        </a>
+      </Link>
 
       <LinksWrapper>
         {links.map((l) => (

@@ -7,11 +7,17 @@ exports[`Footer 1`] = `
   <div
     className="css-1a8teoz-LogoContainer en8mxva1"
   >
-    <img
-      alt=""
-      className="css-1ty6c2n-Logo en8mxva2"
-      src="test-image-stub"
-    />
+    <a
+      href="/"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt=""
+        className="css-1ty6c2n-Logo en8mxva2"
+        src="test-image-stub"
+      />
+    </a>
     <div
       className="css-1neb9ej-Copyright en8mxva3"
     >
