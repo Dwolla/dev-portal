@@ -3,7 +3,7 @@ import {
   GREY_1,
   GREY_3,
   GREY_4,
-  GREY_5,
+  GREY_12,
   GREY_6,
   GREY_10,
   WHITE_PRIMARY,
@@ -56,7 +56,7 @@ export const defaultCustomStyles = {
     borderRadius: 20,
     backgroundColor: GREY_1,
     borderColor: isFocused ? GREY_4 : GREY_3,
-    color: isFocused ? GREY_6 : GREY_5,
+    color: isFocused ? GREY_6 : GREY_12,
 
     ":hover": {
       borderColor: GREY_4,
@@ -104,7 +104,7 @@ export const defaultCustomStyles = {
     textTransform: "uppercase",
     cursor: "pointer",
     backgroundColor: isFocused ? GREY_1 : WHITE_PRIMARY,
-    color: isFocused ? GREY_6 : GREY_5,
+    color: isFocused ? GREY_6 : GREY_12,
     padding: "5px 17px 5px 28px",
 
     ":active": {

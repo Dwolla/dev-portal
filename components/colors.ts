@@ -3,13 +3,14 @@ export const GREY_1 = "#f4f7fb";
 export const GREY_2 = "#eaedf3";
 export const GREY_3 = "#c9d3e0";
 export const GREY_4 = "#aab7c8";
-export const GREY_5 = "#8393aa";
+export const GREY_5 = "#61798F";
 export const GREY_6 = "#52627b";
 export const GREY_7 = "#3e4e67";
 export const GREY_8 = "#354153";
 export const GREY_9 = "#2e3745";
 export const GREY_10 = "#cfcff5";
 export const GREY_11 = "#f8fafc";
+export const GREY_12 = "#5F738C";
 
 // Text Colors
 export const HEADLINE_TEXT = "#2a2d38";
@@ -23,7 +24,7 @@ export const PURPLE_PRIMARY_HOVER = "#6a5885";
 export const PURPLE_PRIMARY_ACTIVE = "#524467";
 export const PURPLE_DARK = "#2d2d47";
 export const PURPLE_DARKER = "#242438";
-export const PINK_SECONDARY_BUTTON = "#cb4976";
+export const PINK_SECONDARY_BUTTON = "#C9457E";
 export const PINK_SECONDARY_HOVER = "#e24d80";
 export const PINK_SECONDARY_ACTIVE = "#be406c";
 export const WHITE_PRIMARY = "#ffffff";
@@ -34,10 +35,11 @@ export const CODE_BLOCK_BLACK = "#1d1e24";
 export const CODE_BLOCK_YELLOW = "#e6db74";
 export const CODE_BLOCK_PINK = "#f92672";
 export const CODE_BLOCK_GREEN = "#a6e22e";
-export const CODE_BLOCK_GREEN_BROWN = "#757160";
+export const CODE_BLOCK_GREEN_BROWN = "#9C9786";
+export const CODE_BLOCK_GREY_COMMENT = "#8997AE";
 
 // Code Block Colors (Demo App)
-export const CODE_BLOCK_PURPLE = "#b45ea4";
+export const CODE_BLOCK_PURPLE = "#C482B7";
 export const CODE_BLOCK_ORANGE = "#ee7c2b";
 export const CODE_BLOCK_AQUA = "#4fb4d7";
 

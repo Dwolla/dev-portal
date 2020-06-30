@@ -79,7 +79,7 @@ exports[`multiple examples 1`] = `
     </button>
   </div>
   <div
-    className="code-block-default css-1yj95e-CodeBlockContent e6sdwpg5"
+    className="code-block-default css-1wvz7mj-CodeBlockContent e6sdwpg5"
   >
     <pre>
       <code
@@ -130,7 +130,7 @@ exports[`single example 1`] = `
     </button>
   </div>
   <div
-    className="code-block-default css-1yj95e-CodeBlockContent e6sdwpg5"
+    className="code-block-default css-1wvz7mj-CodeBlockContent e6sdwpg5"
   >
     <pre>
       <code

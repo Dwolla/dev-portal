@@ -46,7 +46,7 @@ exports[`FilterTabs 1`] = `
       onKeyDown={[Function]}
     >
       <div
-        className=" css-1xxipdn-control"
+        className=" css-g974v8-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
