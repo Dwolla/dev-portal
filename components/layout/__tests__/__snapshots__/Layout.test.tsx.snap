@@ -39,10 +39,11 @@ Array [
         className="css-88n5j3-Container e10mac9s0"
       >
         <div
-          className=" css-12hfl5m-Slide e10mac9s1"
+          className="css-11sjyxp-Slide e10mac9s1"
         >
           <div
-            className="css-1p7u3h5-SlidePane e10mac9s2"
+            className="left css-1jc4k7f-SlidePane e10mac9s2"
+            id="body-scroll-lock-side-nav"
           >
             <div
               className="css-kgvw59-SectionWrap e10mac9s3"
@@ -133,7 +134,7 @@ Array [
               </a>
             </div>
             <div
-              className=" css-1lx8d8l-MobileWrap e10mac9s12"
+              className="css-nasyo1-MobileWrap e10mac9s12"
             >
               <a
                 className=" css-1twa2js-MobileLink-MobileLink"
@@ -180,10 +181,6 @@ Array [
               </div>
             </div>
           </div>
-          <div
-            className="css-1p7u3h5-SlidePane e10mac9s2"
-            id="body-scroll-lock-side-nav"
-          />
         </div>
       </div>
     </div>
@@ -207,22 +204,26 @@ Array [
       <div
         className="css-16rtae5-Container e1xhgpyy0"
       >
-        <a
-          href="/"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <img
-            alt=""
-            className="css-15o2exl-StyledLogo e1xhgpyy1"
-            src="test-image-stub"
-          />
-        </a>
         <div
-          className="css-ffwcst-LinksWrapper e1xhgpyy2"
+          className="css-hafdn5-StyledLogoWrap e1xhgpyy1"
         >
           <a
-            className=" css-skf8jj-StyledLink e1xhgpyy5"
+            href="/"
+            onClick={[Function]}
+            onMouseEnter={[Function]}
+          >
+            <img
+              alt=""
+              className="css-g6dikn-StyledLogo e1xhgpyy2"
+              src="test-image-stub"
+            />
+          </a>
+        </div>
+        <div
+          className="css-ffwcst-LinksWrapper e1xhgpyy3"
+        >
+          <a
+            className=" css-skf8jj-StyledLink e1xhgpyy6"
             href="https://docs.dwolla.com"
             onClick={[Function]}
             onMouseEnter={[Function]}
@@ -240,7 +241,7 @@ Array [
             />
           </a>
           <a
-            className=" css-skf8jj-StyledLink e1xhgpyy5"
+            className=" css-skf8jj-StyledLink e1xhgpyy6"
             href="/changelog"
             onClick={[Function]}
             onMouseEnter={[Function]}
@@ -253,7 +254,7 @@ Array [
           </a>
         </div>
         <div
-          className="css-zhv85h-SelectWrapper e1xhgpyy4"
+          className="css-zhv85h-SelectWrapper e1xhgpyy5"
         >
           <div
             className=" css-k377xg-container"
@@ -308,7 +309,7 @@ Array [
           </div>
         </div>
         <div
-          className="css-1as8qu1-ButtonWrapper e1xhgpyy3"
+          className="css-1as8qu1-ButtonWrapper e1xhgpyy4"
         >
           <a
             className="primary standard css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
@@ -322,7 +323,7 @@ Array [
         </div>
         <div
           aria-labelledby="Open menu"
-          className=" css-1artr2y-Hamburger e1xhgpyy6"
+          className=" css-1artr2y-Hamburger e1xhgpyy7"
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}

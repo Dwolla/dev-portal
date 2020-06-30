@@ -21,6 +21,7 @@ import {
 } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
+import { slideInFromLeft, slideInFromRight } from "../keyframes";
 import { ReactComponent as BackIcon } from "../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
 import caretUp from "../../assets/images/component-icons/caret-up.svg";
@@ -99,24 +100,21 @@ const Slide = styled.div`
   flex-grow: 1;
   display: flex;
   overflow: hidden;
-  width: 200%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  transition: left ease 0.4s;
-
-  &.slidIn {
-    left: -100%;
-  }
 `;
 
 const SlidePane = styled.div`
   align-self: stretch;
   flex: 1 1 auto;
-  width: 50%;
   overflow-x: hidden;
   overflow-y: auto;
+
+  &.left {
+    animation: ${slideInFromLeft} 400ms ease;
+  }
+
+  &.right {
+    animation: ${slideInFromRight} 400ms ease;
+  }
 `;
 
 const SectionWrap = styled.div`
@@ -345,11 +343,6 @@ const MobileWrap = styled.div`
   @media (${breakUp("lg")}) {
     display: none;
   }
-
-  /* Hides MobileWrap contents when Sidebar is toggled and a Section is active. Not tabbable when not in view. */
-  &.visuallyhidden {
-    visibility: hidden;
-  }
 `;
 
 const MobileLink = ({ href, external, text, active }: MobileLinkProps) => {
@@ -434,13 +427,14 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
 
   return (
     <Container>
-      <Slide
-        className={classnames({
-          slidIn: activeSection && activeSection.isSection,
-        })}
-      >
-        <SlidePane>
-          {!(activeSection && activeSection.isSection) && (
+      <Slide>
+        <SlidePane
+          id="body-scroll-lock-side-nav"
+          className={
+            !(activeSection && activeSection.isSection) ? "left" : "right"
+          }
+        >
+          {!(activeSection && activeSection.isSection) ? (
             <SectionWrap>
               {sectionLinks.map((l) => (
                 <SectionLink
@@ -450,19 +444,7 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                 />
               ))}
             </SectionWrap>
-          )}
-
-          <MobileWrap
-            className={classnames({
-              visuallyhidden: activeSection && activeSection.isSection,
-            })}
-          >
-            <MobileItems {...mobileItems} />
-          </MobileWrap>
-        </SlidePane>
-
-        <SlidePane key={activeSection?.href} id="body-scroll-lock-side-nav">
-          {activeSection && activeSection.isSection && (
+          ) : (
             <>
               <StickySectionWrap>
                 <SectionLink
@@ -521,12 +503,12 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                   }
                 )}
               </CategoriesWrap>
-
-              <MobileWrap>
-                <MobileItems {...mobileItems} />
-              </MobileWrap>
             </>
           )}
+
+          <MobileWrap>
+            <MobileItems {...mobileItems} />
+          </MobileWrap>
         </SlidePane>
       </Slide>
     </Container>
