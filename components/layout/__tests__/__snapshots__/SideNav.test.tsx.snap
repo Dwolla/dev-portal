@@ -2,13 +2,14 @@
 
 exports[`SideNav 1`] = `
 <div
-  className="css-qvalgq-Container e10mac9s0"
+  className="css-88n5j3-Container e10mac9s0"
 >
   <div
-    className=" css-vt0ald-Slide e10mac9s1"
+    className="css-11sjyxp-Slide e10mac9s1"
   >
     <div
-      className="css-1p7u3h5-SlidePane e10mac9s2"
+      className="left css-1jc4k7f-SlidePane e10mac9s2"
+      id="body-scroll-lock-side-nav"
     >
       <div
         className="css-kgvw59-SectionWrap e10mac9s3"
@@ -99,7 +100,7 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className=" css-1lx8d8l-MobileWrap e10mac9s12"
+        className="css-nasyo1-MobileWrap e10mac9s12"
       >
         <a
           className=" css-1twa2js-MobileLink-MobileLink"
@@ -146,10 +147,6 @@ exports[`SideNav 1`] = `
         </div>
       </div>
     </div>
-    <div
-      className="css-1p7u3h5-SlidePane e10mac9s2"
-      id="body-scroll-lock-side-nav"
-    />
   </div>
 </div>
 `;

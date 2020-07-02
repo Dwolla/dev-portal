@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 import map from "lodash.map";
 import { HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
@@ -136,7 +137,11 @@ export default function Footer(props: FooterProps) {
   return (
     <Container>
       <LogoContainer>
-        <Logo src={logo} alt="" />
+        <Link href="/">
+          <a>
+            <Logo src={logo} alt="" />
+          </a>
+        </Link>
         <Copyright>{new Date().getFullYear()} All Rights Reserved</Copyright>
       </LogoContainer>
 

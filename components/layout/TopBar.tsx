@@ -28,12 +28,14 @@ const Container = styled.div`
   }
 `;
 
-const StyledLogo = styled.img`
-  max-height: 100%;
-
+const StyledLogoWrap = styled.div`
   @media (${breakUp("lg")}) {
     display: none;
   }
+`;
+
+const StyledLogo = styled.img`
+  max-height: 100%;
 
   @media (${breakDown("xs")}) {
     max-width: 115px;
@@ -184,7 +186,13 @@ export default function TopBar({
 
   return (
     <Container>
-      <StyledLogo src={dwollaDevLogo} alt="" />
+      <StyledLogoWrap>
+        <Link href="/">
+          <a>
+            <StyledLogo src={dwollaDevLogo} alt="" />
+          </a>
+        </Link>
+      </StyledLogoWrap>
 
       <LinksWrapper>
         {links.map((l) => (

@@ -65,7 +65,7 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
 
   return (
     <>
-      <BannerWrap>
+      <BannerWrap className="mdx-style-override">
         <Banner
           {...bannerProps}
           filterTabs={

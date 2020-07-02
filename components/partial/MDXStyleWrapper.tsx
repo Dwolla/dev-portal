@@ -100,7 +100,7 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
         }
       }
 
-      > div {
+      > div:not(.mdx-style-override) {
         margin-top: 29px;
         margin-bottom: 29px;
       }

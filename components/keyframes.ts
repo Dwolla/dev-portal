@@ -35,3 +35,21 @@ export const slideOut = keyframes`
     transform: translate(0, -30px);
   }
 `;
+
+export const slideInFromLeft = keyframes`
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: translate(0);
+  }
+`;
+
+export const slideInFromRight = keyframes`
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(0);
+  }
+`;

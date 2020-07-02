@@ -3,7 +3,7 @@
 exports[`IndexPageGrid 1`] = `
 Array [
   <div
-    className="css-h63dfz-BannerWrap e10u28530"
+    className="mdx-style-override css-h63dfz-BannerWrap e10u28530"
   >
     <div
       className="filters default css-qc8b1t-StyledBanner eyaavg40"

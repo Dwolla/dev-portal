@@ -4,16 +4,26 @@ exports[`TopBar 1`] = `
 <div
   className="css-16rtae5-Container e1xhgpyy0"
 >
-  <img
-    alt=""
-    className="css-15o2exl-StyledLogo e1xhgpyy1"
-    src="test-image-stub"
-  />
   <div
-    className="css-ffwcst-LinksWrapper e1xhgpyy2"
+    className="css-hafdn5-StyledLogoWrap e1xhgpyy1"
   >
     <a
-      className=" css-skf8jj-StyledLink e1xhgpyy5"
+      href="/"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt=""
+        className="css-g6dikn-StyledLogo e1xhgpyy2"
+        src="test-image-stub"
+      />
+    </a>
+  </div>
+  <div
+    className="css-ffwcst-LinksWrapper e1xhgpyy3"
+  >
+    <a
+      className=" css-skf8jj-StyledLink e1xhgpyy6"
       href="https://docs.dwolla.com"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -31,7 +41,7 @@ exports[`TopBar 1`] = `
       />
     </a>
     <a
-      className="active css-skf8jj-StyledLink e1xhgpyy5"
+      className="active css-skf8jj-StyledLink e1xhgpyy6"
       href="/changelog"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -43,7 +53,7 @@ exports[`TopBar 1`] = `
       </span>
     </a>
     <a
-      className="active css-skf8jj-StyledLink e1xhgpyy5"
+      className="active css-skf8jj-StyledLink e1xhgpyy6"
       href="/manually-active"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -56,7 +66,7 @@ exports[`TopBar 1`] = `
     </a>
   </div>
   <div
-    className="css-zhv85h-SelectWrapper e1xhgpyy4"
+    className="css-zhv85h-SelectWrapper e1xhgpyy5"
   >
     <div
       className=" css-k377xg-container"
@@ -111,7 +121,7 @@ exports[`TopBar 1`] = `
     </div>
   </div>
   <div
-    className="css-1as8qu1-ButtonWrapper e1xhgpyy3"
+    className="css-1as8qu1-ButtonWrapper e1xhgpyy4"
   >
     <a
       className="primary standard css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
