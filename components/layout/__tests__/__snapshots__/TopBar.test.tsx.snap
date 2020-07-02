@@ -63,7 +63,7 @@ exports[`TopBar 1`] = `
       onKeyDown={[Function]}
     >
       <div
-        className=" css-1xxipdn-control"
+        className=" css-g974v8-control"
         onMouseDown={[Function]}
         onTouchEnd={[Function]}
       >
@@ -114,7 +114,7 @@ exports[`TopBar 1`] = `
     className="css-1as8qu1-ButtonWrapper e1xhgpyy3"
   >
     <a
-      className="primary standard css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+      className="primary standard css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
       href="https://accounts-sandbox.dwolla.com/login"
       onClick={[Function]}
       onMouseEnter={[Function]}

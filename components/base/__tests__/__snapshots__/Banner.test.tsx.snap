@@ -39,7 +39,7 @@ exports[`Banner - with Button 1`] = `
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
     <a
-      className="primary large css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+      className="primary large css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
       href="https://accounts-sandbox.dwolla.com/login"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -69,7 +69,7 @@ exports[`Banner - with Extra Padding for Overlapping Cards 1`] = `
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
     <a
-      className="primary large css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+      className="primary large css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
       href="https://accounts-sandbox.dwolla.com/login"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -152,7 +152,7 @@ exports[`Banner - with Filters 1`] = `
           onKeyDown={[Function]}
         >
           <div
-            className=" css-1xxipdn-control"
+            className=" css-g974v8-control"
             onMouseDown={[Function]}
             onTouchEnd={[Function]}
           >

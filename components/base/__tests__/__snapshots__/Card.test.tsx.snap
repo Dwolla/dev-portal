@@ -35,7 +35,7 @@ exports[`with Badge 1`] = `
     className="css-vz2qld-BadgeStyle eguc8hf3"
   >
     <div
-      className="css-1bdkrme-StyledBadge e1w3mjmy0"
+      className="css-1dspmwm-StyledBadge e1w3mjmy0"
     >
       BADGETEXT
     </div>
@@ -88,7 +88,7 @@ exports[`with Center Align and Badge 1`] = `
     className="css-vz2qld-BadgeStyle eguc8hf3"
   >
     <div
-      className="css-1bdkrme-StyledBadge e1w3mjmy0"
+      className="css-1dspmwm-StyledBadge e1w3mjmy0"
     >
       BADGETEXT
     </div>
@@ -165,7 +165,7 @@ exports[`with Center Align, Link and Badge 1`] = `
       className="css-vz2qld-BadgeStyle eguc8hf3"
     >
       <div
-        className="css-1bdkrme-StyledBadge e1w3mjmy0"
+        className="css-1dspmwm-StyledBadge e1w3mjmy0"
       >
         BADGETEXT
       </div>
@@ -250,7 +250,7 @@ exports[`with Link and Badge 1`] = `
       className="css-vz2qld-BadgeStyle eguc8hf3"
     >
       <div
-        className="css-1bdkrme-StyledBadge e1w3mjmy0"
+        className="css-1dspmwm-StyledBadge e1w3mjmy0"
       >
         BADGETEXT
       </div>

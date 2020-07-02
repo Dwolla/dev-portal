@@ -19,7 +19,7 @@ exports[`FooterCTA 1`] = `
     </p>
   </div>
   <a
-    className="primary large css-qnxw47-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+    className="primary large css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
     href="https://accounts-sandbox.dwolla.com/sign-up"
     onClick={[Function]}
     onMouseEnter={[Function]}

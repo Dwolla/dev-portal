@@ -4,7 +4,6 @@ import {
   CODE_BLOCK_BUTTON,
   GREY_10,
   WHITE_PRIMARY,
-  GREY_5,
   PURPLE_DARK,
   GREY_3,
   CODE_BLOCK_PURPLE,
@@ -14,6 +13,7 @@ import {
   CODE_BLOCK_GREEN_BROWN,
   CODE_BLOCK_GREEN,
   CODE_BLOCK_YELLOW,
+  CODE_BLOCK_GREY_COMMENT,
   BLACK_OVERLAY,
 } from "../../colors";
 import { POPPINS } from "../../typography";
@@ -141,7 +141,7 @@ export const CodeBlockContent = styled.div`
         }
         &meta,
         &comment {
-          color: ${GREY_5};
+          color: ${CODE_BLOCK_GREY_COMMENT};
         }
         &symbol {
           color: ${CODE_BLOCK_ORANGE};
