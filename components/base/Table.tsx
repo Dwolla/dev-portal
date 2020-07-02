@@ -6,7 +6,7 @@ import { breakUp } from "../breakpoints";
 
 // Styles for Table
 const StyledTable = styled.div`
-  overflow-x: scroll;
+  overflow-x: auto;
   white-space: nowrap;
   /* This allows text within cells to wrap around on larger screens */
   @media (${breakUp("lg")}) {
