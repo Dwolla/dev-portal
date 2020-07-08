@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Link as RSLink } from "react-scroll";
 import classnames from "classnames";
 import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
@@ -10,6 +11,7 @@ import uniqBy from "lodash.uniqby";
 import {
   TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
   TopBarLinkProps as MobileLinkProps, // eslint-disable-line no-unused-vars
+  TOP_BAR_HEIGHT,
 } from "./TopBar";
 import Button from "../base/Button";
 import {
@@ -19,6 +21,7 @@ import {
   GREY_2,
   GREY_6,
 } from "../colors";
+import { useAnchors } from "../util/Anchors";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import { ReactComponent as BackIcon } from "../../assets/images/component-icons/side-nav/back-nav-icon.svg";
@@ -410,6 +413,69 @@ const MobileItems = ({ links, button }: MobileItemProps) => {
   );
 };
 
+const APIRefOnThisPage = () => {
+  const MAX_ANCHOR_LEVEL = 2;
+
+  const anchors = useAnchors().anchors.filter(
+    (a) => a.level <= MAX_ANCHOR_LEVEL
+  );
+  const [activeAnchor, setActiveAnchor] = useState(null);
+
+  useEffect(() => {
+    if (activeAnchor) {
+      window.history.replaceState(null, null, `/api-reference/${activeAnchor}`);
+    }
+  }, [activeAnchor]);
+
+  // let nestedAnchors = [];
+  // anchors.map((a) => {
+  //   if(a.level === 1) {
+  //     a.subAnchors = [{...a}];
+  //     nestedAnchors.push(a);
+  //   } else {
+  //     nestedAnchors[nestedAnchors.length - 1].subAnchors.push(a);
+  //   }
+  // });
+
+  return (
+    <div>
+      {anchors.map((a) => (
+        <RSLink
+          key={a.id}
+          onSetActive={() => setActiveAnchor(a.id)}
+          to={a.id}
+          spy
+          smooth
+          offset={-TOP_BAR_HEIGHT}
+          className={activeAnchor === a.id && "active"}
+          css={css`
+            display: flex;
+            height: 30px;
+            padding: 0 20px;
+            align-items: center;
+            justify-content: flex-start;
+            font-family: ${POPPINS};
+            font-size: 14px;
+            color: ${GREY_6};
+            text-decoration: none;
+
+            &:hover {
+              background-color: ${GREY_1};
+            }
+
+            &.active {
+              font-weight: 500;
+              color: ${ORANGE_PRIMARY};
+            }
+          `}
+        >
+          {a.text}
+        </RSLink>
+      ))}
+    </div>
+  );
+};
+
 const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
   const { pathname } = useRouter();
   const [activeSection, setActiveSection] = useState(
@@ -468,46 +534,55 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                 />
               </StickySectionWrap>
 
-              <CategoriesWrap>
-                {sortCategories(activeSection.href, keys(categories)).map(
-                  (c) => {
-                    const categoryDocs = categories[c];
-                    const groups = groupsFrom(categoryDocs);
+              {findSelectedSection(sectionLinks, pathname).text ===
+              "API Reference" ? (
+                <CategoriesWrap>
+                  <Category>
+                    <APIRefOnThisPage />
+                  </Category>
+                </CategoriesWrap>
+              ) : (
+                <CategoriesWrap>
+                  {sortCategories(activeSection.href, keys(categories)).map(
+                    (c) => {
+                      const categoryDocs = categories[c];
+                      const groups = groupsFrom(categoryDocs);
 
-                    return (
-                      <Category key={c}>
-                        {c !== "undefined" && (
-                          <CategoryHeading>{c}</CategoryHeading>
-                        )}
+                      return (
+                        <Category key={c}>
+                          {c !== "undefined" && (
+                            <CategoryHeading>{c}</CategoryHeading>
+                          )}
 
-                        {sortByWeight(groups).map((g?: PageGroup) => {
-                          const docs = categoryDocs.filter(byDocGroup(g?.id));
-                          const ungroupedGroup = typeof g === "undefined";
+                          {sortByWeight(groups).map((g?: PageGroup) => {
+                            const docs = categoryDocs.filter(byDocGroup(g?.id));
+                            const ungroupedGroup = typeof g === "undefined";
 
-                          return (
-                            <div key={g?.id}>
-                              {ungroupedGroup ? (
-                                sortByWeight(docs).map((d: Page) => (
-                                  <DocLink
-                                    key={d.id}
-                                    grouped={false}
-                                    href={d.id}
-                                    active={d.id === pathname}
-                                  >
-                                    {d.title}
-                                  </DocLink>
-                                ))
-                              ) : (
-                                <DocGroup title={g?.title} docs={docs} />
-                              )}
-                            </div>
-                          );
-                        })}
-                      </Category>
-                    );
-                  }
-                )}
-              </CategoriesWrap>
+                            return (
+                              <div key={g?.id}>
+                                {ungroupedGroup ? (
+                                  sortByWeight(docs).map((d: Page) => (
+                                    <DocLink
+                                      key={d.id}
+                                      grouped={false}
+                                      href={d.id}
+                                      active={d.id === pathname}
+                                    >
+                                      {d.title}
+                                    </DocLink>
+                                  ))
+                                ) : (
+                                  <DocGroup title={g?.title} docs={docs} />
+                                )}
+                              </div>
+                            );
+                          })}
+                        </Category>
+                      );
+                    }
+                  )}
+                </CategoriesWrap>
+              )}
 
               <MobileWrap>
                 <MobileItems {...mobileItems} />

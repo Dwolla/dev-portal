@@ -52,7 +52,7 @@ export function AnchorsSetter(props) {
     Children.map(props.children, (c) => {
       if (ANCHOR_EL_TYPES.includes(c.props.originalType)) {
         const text = childrenToString(c.props.children);
-        const id = slugger.slug(text);
+        const id = c.props.id ? c.props.id : slugger.slug(text);
         const level = ANCHOR_EL_TYPES.indexOf(c.props.originalType) + 1;
         return (
           <AnchorData anchor={{ id, text, level }}>

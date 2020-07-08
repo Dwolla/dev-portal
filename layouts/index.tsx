@@ -68,7 +68,7 @@ export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
       </ContentWrapper>
     </MDXProvider>
 
-    <OnThisPage />
+    {!frontMatter.hideOnThisPage && <OnThisPage />}
   </MDXContainer>
 );
 
