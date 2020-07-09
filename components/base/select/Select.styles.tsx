@@ -36,10 +36,6 @@ export const StyledSelectedIconWrap = styled.div`
 `;
 
 const sharedCustomStyles = {
-  valueContainer: (styles) => ({
-    ...styles,
-    padding: 0,
-  }),
   indicatorSeparator: (styles) => ({
     ...styles,
     display: "none",
@@ -61,6 +57,14 @@ export const defaultCustomStyles = {
     ":hover": {
       borderColor: GREY_4,
       color: GREY_6,
+    },
+  }),
+  valueContainer: (styles) => ({
+    ...styles,
+    padding: 0,
+    maxHeight: 30,
+    input: {
+      height: 0,
     },
   }),
   singleValue: (styles) => ({
@@ -140,6 +144,14 @@ export const codeCustomStyles = {
           fill: WHITE_PRIMARY,
         },
       },
+    },
+  }),
+  valueContainer: (styles) => ({
+    ...styles,
+    padding: 0,
+    maxHeight: 27,
+    input: {
+      height: 0,
     },
   }),
   singleValue: (styles) => ({
