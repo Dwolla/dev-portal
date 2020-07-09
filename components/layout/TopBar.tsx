@@ -104,10 +104,21 @@ export type TopBarLinkProps = {
   active?: boolean;
 };
 
+const ConditionalLinkWrapper = ({ external, linkWrapper, children }) =>
+  external ? children : linkWrapper(children);
+
 export function TopBarLink({ href, external, text, active }: TopBarLinkProps) {
   return (
-    <Link href={href} passHref>
+    <ConditionalLinkWrapper
+      external={external}
+      linkWrapper={(children) => (
+        <Link href={href} passHref>
+          {children}
+        </Link>
+      )}
+    >
       <StyledLink
+        href={external ? href : ""}
         target={external && "_blank"}
         className={classnames({ active })}
       >
@@ -117,7 +128,7 @@ export function TopBarLink({ href, external, text, active }: TopBarLinkProps) {
           <img className="icon" src={openInNewTabIcon} alt="Open in new tab" />
         )}
       </StyledLink>
-    </Link>
+    </ConditionalLinkWrapper>
   );
 }
 
