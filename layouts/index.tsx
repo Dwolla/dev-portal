@@ -4,15 +4,20 @@ import { MDXProvider } from "@mdx-js/react";
 import { AnchorsSetter } from "../components/util/Anchors";
 import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../components/util/groupCodeExamples";
+import AlertBar from "../components/base/AlertBar";
+import Button from "../components/base/Button";
+import Card from "../components/base/Card";
+import CardGrid from "../components/base/CardGrid";
 import CodeExamples, {
   CodeExample,
 } from "../components/partial/code/CodeExamples";
-import OnThisPage from "../components/layout/OnThisPage";
-import Table from "../components/base/Table";
-import TabBarPanel from "../components/base/TabBarPanel";
+import Collapsible from "../components/base/Collapsible";
+import Image from "../components/base/Image";
+import ImageDownload from "../components/base/ImageDownload";
 import { InlineCode } from "../components/base/Typography";
-import CardGrid from "../components/base/CardGrid";
-import Card from "../components/base/Card";
+import OnThisPage from "../components/layout/OnThisPage";
+import TabBarPanel from "../components/base/TabBarPanel";
+import Table from "../components/base/Table";
 
 const MDXContainer = styled.div`
   display: flex;
@@ -29,14 +34,19 @@ type Props = {
 };
 
 const MDX_COMPONENTS = {
-  table: Table,
-  TabBarPanel,
-  CodeExamples,
-  CodeExample,
-  InlineCode,
-  CardGrid,
+  AlertBar,
+  Button,
   Card,
+  CardGrid,
   code: InlineCode,
+  CodeExample,
+  CodeExamples,
+  Collapsible,
+  Image,
+  ImageDownload,
+  InlineCode,
+  TabBarPanel,
+  table: Table,
 };
 
 export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (

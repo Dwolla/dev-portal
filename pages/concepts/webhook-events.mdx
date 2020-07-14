@@ -10,8 +10,6 @@ meta:
   description: Reference this material for a list of events that are thrown with Dwolla and what they mean.
 ---
 
-import AlertBar from "../../components/base/AlertBar";
-
 # Webhook Events
 
 When an action occurs within the Dwolla system on a resource (Customers, Transfers, etc.), an Event object is created to record a change to the state of the resource. All created Webhook Events follow the same format and include high level details such as: an event topic, a resource URL that identifies the specific resource that changed states, and a timestamp. If your application has an active [webhook subscription](/guides/webhooks/create-subscription/), all Events relevant to your integration will trigger a webhook notification each time they occur. The following resource article will provide guidance on the structure of webhook events, which will assist with handling incoming webhooks.
