@@ -85,6 +85,14 @@ export const LogoLinksWrapper = styled.div`
   width: 100%;
 `;
 
+export const IFrameWrapper = styled.div`
+  > div
+    > iframe {
+      height: 535px;
+    }
+  }
+`;
+
 <!-- SDKs and Tools LogoLink props -->
 
 export const languageContent = [
@@ -228,7 +236,9 @@ export default function HomePage() {
           <LogoLinks tabs={partnerContent} />
         </LogoLinksWrapper>
         <H3>Get API Updates</H3>
-        <IFrame src="https://go.dwolla.com/l/391342/2018-10-30/n92nqn" />
+        <IFrameWrapper>
+          <IFrame src="https://share.hsforms.com/7996980/4337f9a2-cd52-442f-89c8-d382704dedae" />
+        </IFrameWrapper>
       </ContentContainer>
       <FooterCTA
         topic="Test in the Sandbox for free today."
