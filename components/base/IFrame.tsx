@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import styled from "@emotion/styled";
 import IframeResizer from "iframe-resizer-react";
 import { GREY_11 } from "../colors";
@@ -8,12 +9,34 @@ const IFrameWrap = styled.div`
   background-color: ${GREY_11};
 `;
 
-type Props = {
-  src: string;
+const HubSpotForm = ({ hubSpotFormId }: { hubSpotFormId: string }) => {
+  useEffect(() => {
+    if (
+      window &&
+      window.hbspt &&
+      window.hbspt.forms &&
+      window.hbspt.forms.create
+    ) {
+      window.hbspt.forms.create({
+        portalId: "7996980",
+        formId: hubSpotFormId,
+        target: `#hs-${hubSpotFormId}`,
+      });
+    }
+  }, []);
+
+  return <IFrameWrap id={`hs-${hubSpotFormId}`}></IFrameWrap>;
 };
 
-const IFrame = ({ src }: Props) => {
-  return (
+type Props = {
+  src?: string;
+  hubSpotFormId?: string;
+};
+
+const IFrame = ({ src, hubSpotFormId }: Props) => {
+  return hubSpotFormId ? (
+    <HubSpotForm hubSpotFormId={hubSpotFormId} />
+  ) : (
     <IFrameWrap>
       <IframeResizer
         src={src}
