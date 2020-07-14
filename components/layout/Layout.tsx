@@ -257,6 +257,10 @@ export default function Layout({
           rel="stylesheet"
         ></link>
         <link rel="canonical" href={router?.pathname} />
+        <script
+          type="text/javascript"
+          src="//js.hsforms.net/forms/v2.js"
+        ></script>
       </Head>
 
       <LeftSidebar
