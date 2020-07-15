@@ -5,6 +5,9 @@ import Pagination from "../base/Pagination";
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  > div {
+    flex-basis: 150px;
+  }
 `;
 
 type Props = {
