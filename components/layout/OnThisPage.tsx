@@ -1,6 +1,6 @@
-import React, { useState, useLayoutEffect } from "react";
+import React from "react";
 import styled from "@emotion/styled";
-import { Link, animateScroll } from "react-scroll";
+import Link from "next/link";
 import classnames from "classnames";
 import {
   GREY_2,
@@ -10,11 +10,9 @@ import {
   ORANGE_PRIMARY,
 } from "../colors";
 import { ROBOTO, POPPINS } from "../typography";
-import { useAnchors } from "../util/Anchors";
+import { useAnchors, scrollTo } from "../util/Anchors";
 import { TOP_BAR_HEIGHT } from "../../components/layout/TopBar";
 import { breakDown } from "../../components/breakpoints";
-
-const { scrollToTop } = animateScroll;
 
 const Container = styled.div`
   position: sticky;
@@ -50,6 +48,7 @@ const Container = styled.div`
     box-sizing: border-box;
     border-left: 1px solid ${GREY_2};
     cursor: pointer;
+    transition: border-color 200ms ease;
 
     :hover {
       color: ${HEADLINE_TEXT};
@@ -105,23 +104,13 @@ const PageTop = styled.div`
 
 type Heading = { key: string; level: number; title: string };
 
-const MAX_ANCHOR_LEVEL = 3;
-
 function OnThisPage({
   topOfPageOffset = TOP_BAR_HEIGHT,
 }: {
   topOfPageOffset?: number;
 }) {
-  const anchors = useAnchors().anchors.filter(
-    (a) => a.level <= MAX_ANCHOR_LEVEL
-  );
-  const [activeAnchor, setActiveAnchor] = useState(null);
-
-  useLayoutEffect(() => {
-    if (activeAnchor) {
-      window.history.replaceState(null, null, `#${activeAnchor}`);
-    }
-  }, [activeAnchor]);
+  const ua = useAnchors();
+  const { anchors } = ua;
 
   if (anchors.length === 0) return null;
 
@@ -130,23 +119,22 @@ function OnThisPage({
       <Heading>ON THIS PAGE</Heading>
 
       {anchors.map((a) => (
-        <Link
-          key={a.id}
-          onSetActive={() => setActiveAnchor(a.id)}
-          className={classnames(`tab-${a.level}`, {
-            "is-active": activeAnchor === a.id,
-          })}
-          to={a.id}
-          spy
-          smooth
-          offset={-topOfPageOffset}
-          duration={500}
-        >
-          {a.text}
+        <Link href={`#${a.id}`} key={a.id}>
+          <a
+            className={classnames(`tab-${a.level}`, {
+              "is-active": ua.activeAnchor?.id === a.id,
+            })}
+            onClick={() => scrollTo(a.id)}
+            onKeyPress={() => scrollTo(a.id)}
+            role="link"
+            tabIndex={0}
+          >
+            {a.text}
+          </a>
         </Link>
       ))}
 
-      <PageTop onClick={scrollToTop}>Top of Page</PageTop>
+      <PageTop onClick={null}>Top of Page</PageTop>
     </Container>
   );
 }

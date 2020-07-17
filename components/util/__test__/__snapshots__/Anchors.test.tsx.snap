@@ -17,19 +17,13 @@ Array [
   >
     C
   </h3>,
-  <h4
-    id="d"
-  >
+  <h4>
     D
   </h4>,
-  <h5
-    id="e"
-  >
+  <h5>
     E
   </h5>,
-  <h6
-    id="f"
-  >
+  <h6>
     F
   </h6>,
   <h1
@@ -58,21 +52,6 @@ Array [
     "id": "c",
     "text": "C",
     "level": 3
-  },
-  {
-    "id": "d",
-    "text": "D",
-    "level": 4
-  },
-  {
-    "id": "e",
-    "text": "E",
-    "level": 5
-  },
-  {
-    "id": "f",
-    "text": "F",
-    "level": 6
   },
   {
     "id": "a-1",
