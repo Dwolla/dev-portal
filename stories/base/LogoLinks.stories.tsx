@@ -88,13 +88,13 @@ const partnerContent = [
     label: "Slack",
     icon: slackGray,
     iconActive: slackColor,
-    href: "https://www.dwolla.com/partnerships/slack/",
+    href: "https://www.dwolla.com/integrations/slack/",
   },
   {
     label: "Quickbooks",
     icon: quickbooksGray,
     iconActive: quickbooksColor,
-    href: "https://www.dwolla.com/partnerships/quickbooks/",
+    href: "https://www.dwolla.com/integrations/quickbooks/",
   },
   {
     label: "Apto",
