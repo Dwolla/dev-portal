@@ -49,7 +49,6 @@ export const TabStyle = styled.li`
 
 // Tabs are replaced with Select dropdown on mobile
 const SelectWrapper = styled.div`
-  width: 150px;
   padding-bottom: 10px;
   @media (${breakUp("sm")}) {
     display: none;
@@ -102,6 +101,7 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
           options={formattedTabs}
           selectedValue={formattedFilter}
           setSelectedValue={setFilter}
+          autoWidth
         />
       </SelectWrapper>
     </div>
