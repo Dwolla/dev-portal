@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import styled from "@emotion/styled";
 import { ReactComponent as NewTabIcon } from "../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
@@ -12,7 +11,7 @@ import {
 import { BOX_SHADOW_7 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
 
-const Container = styled.a`
+const StyledLink = styled.a`
   text-decoration: none;
   position: relative;
   display: flex;
@@ -74,18 +73,16 @@ type Props = {
 
 function ExternalCTA({ icon, title, description, href }: Props) {
   return (
-    <Link href={href} passHref>
-      <Container target="_blank">
-        <StyledIcon src={icon} alt="" />
-        <TextContainer>
-          {title && <StyledTitle>{title}</StyledTitle>}
-          {description && <StyledDescription>{description}</StyledDescription>}
-        </TextContainer>
-        <StyledNewTab>
-          <NewTabIcon width={13} />
-        </StyledNewTab>
-      </Container>
-    </Link>
+    <StyledLink href={href} target="_blank">
+      <StyledIcon src={icon} alt="" />
+      <TextContainer>
+        {title && <StyledTitle>{title}</StyledTitle>}
+        {description && <StyledDescription>{description}</StyledDescription>}
+      </TextContainer>
+      <StyledNewTab>
+        <NewTabIcon width={13} />
+      </StyledNewTab>
+    </StyledLink>
   );
 }
 

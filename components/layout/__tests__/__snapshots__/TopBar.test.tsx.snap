@@ -25,8 +25,6 @@ exports[`TopBar 1`] = `
     <a
       className=" css-skf8jj-StyledLink e1xhgpyy6"
       href="https://docs.dwolla.com"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
       target="_blank"
     >
       <span
@@ -124,10 +122,8 @@ exports[`TopBar 1`] = `
     className="css-1as8qu1-ButtonWrapper e1xhgpyy4"
   >
     <a
-      className="primary standard css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+      className="primary standard css-n1runl-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
       href="https://accounts-sandbox.dwolla.com/login"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
       target="_blank"
     >
       Get API Keys

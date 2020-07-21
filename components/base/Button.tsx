@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import Link from "next/link";
 import {
   WHITE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
@@ -127,14 +126,13 @@ const StyledLink = styled.a`
 `;
 
 const ButtonLink = ({ text, size, variant, link }: Props) => (
-  <Link href={link.href} passHref>
-    <StyledLink
-      target={link.external && "_blank"}
-      className={`${variant} ${size}`}
-    >
-      {text}
-    </StyledLink>
-  </Link>
+  <StyledLink
+    href={link.href}
+    target={link.external && "_blank"}
+    className={`${variant} ${size}`}
+  >
+    {text}
+  </StyledLink>
 );
 
 export default Button;

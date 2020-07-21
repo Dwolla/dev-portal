@@ -136,10 +136,8 @@ exports[`SideNav 1`] = `
           className="css-vogkcz-MobileButtonWrap e10mac9s13"
         >
           <a
-            className="primary block css-fczp14-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
+            className="primary block css-n1runl-StyledLink-buttonStyles-buttonStyles e12ysvgk1"
             href="https://accounts-sandbox.dwolla.com/login"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
             target="_blank"
           >
             Get API Keys
