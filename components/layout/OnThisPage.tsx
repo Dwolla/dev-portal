@@ -134,7 +134,7 @@ function OnThisPage({
         </Link>
       ))}
 
-      <PageTop onClick={null}>Top of Page</PageTop>
+      <PageTop onClick={() => scrollTo(anchors[0].id)}>Top of Page</PageTop>
     </Container>
   );
 }
