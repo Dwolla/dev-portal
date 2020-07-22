@@ -30,78 +30,76 @@ Array [
       <div
         className="css-1wmc1h7-StyledFilter eyaavg45"
       >
-        <div>
-          <ul
-            className="css-1n4w086-TabsContainerStyle efq5uj30"
+        <ul
+          className="css-ckmwo8-TabsContainerStyle efq5uj30"
+        >
+          <li
+            className="is-active css-y9jj0p-TabStyle efq5uj31"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
           >
-            <li
-              className="tab is-active css-1w79bbb-TabStyle efq5uj31"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              tabIndex={0}
-            >
-              All
-            </li>
-            <li
-              className="tab css-1w79bbb-TabStyle efq5uj31"
-              onClick={[Function]}
-              onKeyDown={[Function]}
-              tabIndex={0}
-            >
-              Get Building
-            </li>
-          </ul>
+            All
+          </li>
+          <li
+            className=" css-y9jj0p-TabStyle efq5uj31"
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex={0}
+          >
+            Get Building
+          </li>
+        </ul>
+        <div
+          className="css-18difvw-SelectWrapper efq5uj32"
+        >
           <div
-            className="css-gj0wpv-SelectWrapper efq5uj32"
+            className=" css-k377xg-container"
+            onKeyDown={[Function]}
           >
             <div
-              className=" css-k377xg-container"
-              onKeyDown={[Function]}
+              className=" css-g974v8-control"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
             >
               <div
-                className=" css-g974v8-control"
-                onMouseDown={[Function]}
-                onTouchEnd={[Function]}
+                className=" css-15ikjri-ValueContainer"
               >
                 <div
-                  className=" css-15ikjri-ValueContainer"
+                  className=" css-1me8bqy-singleValue"
                 >
-                  <div
-                    className=" css-1me8bqy-singleValue"
-                  >
-                    All
-                  </div>
-                  <input
-                    aria-autocomplete="list"
-                    className="css-62g3xt-dummyInput"
-                    disabled={false}
-                    id="react-select-2-input"
-                    onBlur={[Function]}
-                    onChange={[Function]}
-                    onFocus={[Function]}
-                    readOnly={true}
-                    tabIndex="0"
-                    value=""
-                  />
+                  All
                 </div>
+                <input
+                  aria-autocomplete="list"
+                  className="css-62g3xt-dummyInput"
+                  disabled={false}
+                  id="react-select-2-input"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  readOnly={true}
+                  tabIndex="0"
+                  value=""
+                />
+              </div>
+              <div
+                className=" css-1hb7zxy-IndicatorsContainer"
+              >
+                <span
+                  className=" css-43ykx9-indicatorSeparator"
+                />
                 <div
-                  className=" css-1hb7zxy-IndicatorsContainer"
+                  aria-hidden="true"
+                  className=" css-unjupu-indicatorContainer"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
                 >
-                  <span
-                    className=" css-43ykx9-indicatorSeparator"
+                  <img
+                    alt=""
+                    className=" css-vfym8x-StyledDefaultDropdownIcon e1oqaitj0"
+                    src="test-image-stub"
                   />
-                  <div
-                    aria-hidden="true"
-                    className=" css-unjupu-indicatorContainer"
-                    onMouseDown={[Function]}
-                    onTouchEnd={[Function]}
-                  >
-                    <img
-                      alt=""
-                      className=" css-vfym8x-StyledDefaultDropdownIcon e1oqaitj0"
-                      src="test-image-stub"
-                    />
-                  </div>
                 </div>
               </div>
             </div>

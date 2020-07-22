@@ -35,4 +35,15 @@ storiesOf("base|FilterTabs", module)
         <FilterTabs tabs={TABS} filter={filter} setFilter={setFilter} />
       </DarkBackground>
     );
+  })
+  .add("sidebar", () => {
+    const [filter, setFilter] = React.useState(TABS[0]);
+    return (
+      <FilterTabs
+        tabs={TABS}
+        filter={filter}
+        setFilter={setFilter}
+        variant="sidebar"
+      />
+    );
   });
