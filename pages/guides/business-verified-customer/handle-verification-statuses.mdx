@@ -8,8 +8,6 @@ meta:
   description: Identify the various statuses of Verified Customer creation, including retry, document and suspended.
 ---
 
-import AlertBar from "../../../components/base/AlertBar";
-
 # Step 2: Handling Business Verified Customer Statuses
 
 ## The basics
@@ -379,7 +377,7 @@ body.append("file", fs.createReadStream("mclovin.jpg"), {
 });
 body.append("documentType", "license");
 
-appToken.post(`${customerUrl}/documents`, requestBody).then(function(res) {
+appToken.post(`${customerUrl}/documents`, requestBody).then(function (res) {
   res.headers.get("location"); // => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
 });
 ```
@@ -477,7 +475,7 @@ documents.body['failureReason'] # => 'ScanNotReadable'
 var documentUrl =
   "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0";
 
-appToken.get(document_url).then(function(res) {
+appToken.get(document_url).then(function (res) {
   res.body.failureReason; // => "ScanNotReadable"
 });
 ```
