@@ -8,6 +8,7 @@ import {
   GREY_6,
   HEADLINE_TEXT,
   ORANGE_PRIMARY,
+  GREY_1,
 } from "../colors";
 import { ROBOTO, POPPINS } from "../typography";
 import { useAnchors, scrollTo } from "../util/Anchors";
@@ -52,6 +53,12 @@ const Container = styled.div`
 
     :hover {
       color: ${HEADLINE_TEXT};
+    }
+
+    :focus {
+      outline: none;
+      color: ${HEADLINE_TEXT};
+      background-color: ${GREY_1};
     }
 
     &.tab-1,
