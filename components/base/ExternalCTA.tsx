@@ -27,7 +27,7 @@ const StyledLink = styled.a`
     box-shadow: ${BOX_SHADOW_7};
   }
 `;
-const StyledIcon = styled.img`
+const IconWrapper = styled.div`
   flex-shrink: 0;
   height: 48px;
   width: 48px;
@@ -74,7 +74,9 @@ type Props = {
 function ExternalCTA({ icon, title, description, href }: Props) {
   return (
     <StyledLink href={href} target="_blank">
-      <StyledIcon src={icon} alt="" />
+      <IconWrapper>
+        <img src={icon} alt="" />
+      </IconWrapper>
       <TextContainer>
         {title && <StyledTitle>{title}</StyledTitle>}
         {description && <StyledDescription>{description}</StyledDescription>}
