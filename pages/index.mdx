@@ -21,6 +21,7 @@ import { breakDown } from "../components/breakpoints";
 import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../assets/images/content-images/content-icons/concepts-icon.svg";
 import apiReferenceIcon from "../assets/images/content-images/content-icons/api-reference-icon.svg";
+import demoAppIcon from "../assets/images/content-images/content-icons/dwolla-demo-app.svg";
 import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community-icon.svg";
 import { ReactComponent as CaretRightIcon } from "../assets/images/component-icons/caret-right.svg";
 // Language logos in gray and in color
@@ -65,6 +66,12 @@ export const ContentContainer = styled.div`
 export const CardGridWrapper = styled.div`
   margin-top: -110px;
   padding-bottom: 60px;
+`;
+
+export const ColumnWrapper = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 30px;
 `;
 
 export const StyledLink = styled.a`
@@ -194,17 +201,25 @@ export default function HomePage() {
             <Card
               icon={apiReferenceIcon}
               topic="API Reference"
-              description="View details for all of Dwolla’s API endpoints with a complete reference"
+              description="View details for all of Dwolla’s API endpoints with a complete reference."
               link={{ href: "https://docs.dwolla.com/", external: true }}
             />
           </CardGrid>
         </CardGridWrapper>
-        <ExternalCTA
-          icon={developerCommunityIcon}
-          title="Developer Support"
-          description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
-          href="https://discuss.dwolla.com/"
-        />
+        <ColumnWrapper>
+          <ExternalCTA
+            icon={developerCommunityIcon}
+            title="Developer Support"
+            description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
+            href="https://discuss.dwolla.com/"
+          />
+          <ExternalCTA
+            icon={demoAppIcon}
+            title="Interactive Demo"
+            description="Check out this interactive demo to learn about how Dwolla can be integrated into your platform."
+            href="https://demo.dwolla.com/"
+          />
+        </ColumnWrapper>
         <H3>
           <Link href="/sdks-tools" passHref>
             <StyledLink>
