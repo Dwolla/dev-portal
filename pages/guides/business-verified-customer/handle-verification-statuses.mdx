@@ -303,11 +303,20 @@ When a business verified Customer is placed in the `document` verification statu
 }
 ```
 
-#### Document Types
+### Document Types
 
 ##### Controllers
 
-A color scanned photo of the Controller’s identifying document can be specified as documentType: `passport`, `license` (state issued driver's license), or `idCard` (other U.S. government-issued photo id card).
+**US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card). Examples include:
+
+- Non-expired State Issued Driver’s License/Identification Card
+- Non-expired US Passport
+- Federal Employment Authorization Card
+- US Visa
+
+**Non-US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `passport`. Examples include:
+
+- Non-expired Foreign Passport _**Note:** Foreign Passports are only accepted when the individual does not have an ITIN or SSN and the user must alternatively enter the Passport number_.
 
 ##### Businesses
 
@@ -315,9 +324,18 @@ Documents that are used to help identify a business are specified as documentTyp
 
 - **Partnership, General Partnership**: EIN Letter (IRS-issued SS4 confirmation letter).
 - **Limited Liability Corporation (LLC), Corporation**: EIN Letter (IRS-issued SS4 confirmation letter).
-- **Sole Proprietorship**: One or more of the following, as applicable to your sole proprietorship: Fictitious Business Name Statement; Certificate of Assumed Name; Business License; Sales/Use Tax License; Registration of Trade Name; EIN documentation (IRS-issued SS4 confirmation letter); Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
+- **Sole Proprietorship**: One or more of the following, as applicable to your sole proprietorship:
 
-Other business documents that are applicable includes any US government entity (federal, state, local) issued business formation or licensing exhibiting the name of the business enrolling with Dwolla, or; Any business formation documents exhibiting the name of the business entity in addition to being filed and stamped by a US government entity. Examples include:
+  - Fictitious Business Name Statement,
+  - Certificate of Assumed Name; Business License,
+  - Sales/Use Tax License,
+  - Registration of Trade Name,
+  - EIN documentation (IRS-issued SS4 confirmation letter),
+  - Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
+
+> **Note:** Trusts should be created as Sole Proprietor accounts and will require signed trust documents that include the trust and username that are on file.
+
+Other business documents may be acceptable on a case by case basis with Dwolla approval. These include any US government entity (federal, state, local) issued business formation or licensing exhibiting the name of the business enrolling with Dwolla, or; Any business formation documents exhibiting the name of the business entity in addition to being filed and stamped by a US government entity. Examples include:
 
 - Filed and stamped Articles of Organization or Incorporation
 - Sales/Use Tax License
