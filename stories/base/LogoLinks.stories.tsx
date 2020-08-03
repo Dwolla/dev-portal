@@ -100,7 +100,7 @@ const partnerContent = [
     label: "Apto",
     icon: aptoGray,
     iconActive: aptoColor,
-    href: "https://www.dwolla.com/contact/apto-waitlist/",
+    href: "https://www.dwolla.com/integrations/",
   },
 ];
 
