@@ -24,10 +24,10 @@ A Dwolla API customer is created programmatically by your CIP verified Dwolla Ma
 
 | **Customer Type**              | CIP Verification | Dwolla `balance` | Transaction Limit         | Transact with                             |
 | ------------------------------ | ---------------- | ---------------- | ------------------------- | ----------------------------------------- |
-| **Personal verified Customer** | Required         | Yes              | \$5,000 per **transfer**  | All Customer types                        |
-| **Business verified Customer** | Required         | Yes              | \$10,000 per **transfer** | All Customer type                         |
-| **Unverified Customer**        | Optional         | No               | \$5,000 per **week**      | Verified Customers, Dwolla Master Account |
-| **Receive-only User**          | Optional         | No               | N/A                       | Verified Customers, Dwolla Master Account |
+| **Personal verified Customer** | Yes              | Yes              | \$5,000 per **transfer**  | All Customer types                        |
+| **Business verified Customer** | Yes              | Yes              | \$10,000 per **transfer** | All Customer type                         |
+| **Unverified Customer**        | No               | No               | \$5,000 per **week**      | Verified Customers, Dwolla Master Account |
+| **Receive-only User**          | No               | No               | N/A                       | Verified Customers, Dwolla Master Account |
 
 As you decide what Customer types to create for your application, a good thing to keep in mind is [Customer Identification Program (CIP) Verification](https://www.dwolla.com/updates/guide-to-cip-customer-identification-program-dwolla-payments-api/). Remember that regardless of your application type, a transfer between two parties requires that at least one party must be CIP verified. It is your decision about which party completes this process based on your business model. Your own Dwolla Master Account can count as a verified party. You may also consider having both parties complete CIP verification, as we also require CIP verification in order for a customer to hold funds in the Dwolla network in the form of a balance.
 
