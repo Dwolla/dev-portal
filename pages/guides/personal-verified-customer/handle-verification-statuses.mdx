@@ -602,7 +602,7 @@ You’ll also get a webhook with a `customer_verification_document_uploaded` eve
 
 ### Document review process
 
-Once created, the document will be reviewed by Dwolla. When our team has made a decision, which may take up to 1-2 business days to approve or reject, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
+Once created, the document will be reviewed by Dwolla. When the document has been reviewed, which may take anywhere from a few seconds up to 1-2 business days if manual verification is required to approve or reject, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
 
 If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](#handling-status-document) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
 
