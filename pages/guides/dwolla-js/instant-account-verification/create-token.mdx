@@ -10,7 +10,7 @@ meta:
 
 # Step 2: Create an IAV token
 
-Before calling a function within dwolla.js to render the IAV flow, you need to generate an IAV token. Your server initiates a POST request to Dwolla, specifying for which Dwolla account or Dwolla API Customer you want to add a bank account. Dwolla will respond with a single-use IAV `token` that expires in an hour. This token will be sent to the client and used to authenticate the HTTP request asking Dwolla to add a new funding source.
+Before calling a function within dwolla.js to render the IAV flow, you need to generate an IAV token. Your server initiates a POST request to Dwolla, specifying for which Dwolla account or Dwolla API Customer you want to add a bank account. Dwolla will respond with a single-use IAV `token` that expires in an hour. This token will be sent to the client and used to authenticate the HTTP request asking Dwolla to add a new funding source. **Note:** Creating a new IAV token for a Customer will invalidate any unexpired IAV tokens that were previously created.
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/iav-token
