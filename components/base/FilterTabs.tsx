@@ -1,8 +1,16 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Select from "./select/Select";
-import { GREY_2, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
-import { POPPINS } from "../typography";
+import {
+  GREY_1,
+  GREY_2,
+  GREY_4,
+  GREY_6,
+  GREY_8,
+  WHITE_PRIMARY,
+  ORANGE_PRIMARY,
+} from "../colors";
+import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import classnames from "../../modules/classnames";
 import { slugify } from "../../modules/helpers";
@@ -16,8 +24,14 @@ const TabsContainerStyle = styled.ul`
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 30px;
+
   @media (${breakDown("xs")}) {
     display: none;
+  }
+
+  &.sidebar {
+    justify-content: left;
+    display: block;
   }
 `;
 
@@ -36,21 +50,61 @@ export const TabStyle = styled.li`
     color: ${GREY_2};
   }
 
+  :focus {
+    outline: none;
+    color: ${WHITE_PRIMARY};
+  }
+
   &.is-active {
     color: ${WHITE_PRIMARY};
     border-bottom: 3px solid ${ORANGE_PRIMARY};
   }
 
-  :focus {
-    outline: none;
-    color: ${WHITE_PRIMARY};
+  &.sidebar {
+    padding: 9px 0 11px 17px;
+    height: 38px;
+    min-width: 147px;
+    color: ${GREY_6};
+    background-color: ${WHITE_PRIMARY};
+    font-family: ${ROBOTO};
+    font-size: 14px;
+    font-weight: unset;
+    letter-spacing: 0;
+    line-height: 19px;
+    justify-self: left;
+    box-sizing: border-box;
+    border: 1px solid ${GREY_2};
+    border-bottom: none;
+
+    :last-child {
+      border-bottom: 1px solid ${GREY_2};
+    }
+
+    :focus,
+    :hover {
+      color: ${GREY_8};
+      padding-left: 16px;
+      border-left: 2px solid ${GREY_6};
+      background-color: ${GREY_1};
+    }
+
+    &.is-active {
+      color: ${GREY_8};
+      border-left: 2px solid ${ORANGE_PRIMARY};
+      padding-left: 16px;
+    }
   }
 `;
 
 // Tabs are replaced with Select dropdown on mobile
 const SelectWrapper = styled.div`
   padding-bottom: 10px;
+
   @media (${breakUp("sm")}) {
+    display: none;
+  }
+
+  &.sidebar {
     display: none;
   }
 `;
@@ -60,12 +114,19 @@ type Props = {
   tabs: Array<Tab>;
   filter: Tab | null;
   setFilter: Function;
+  variant?: "default" | "sidebar";
 };
 
-export default function FilterTabs({ tabs, filter, setFilter }: Props) {
+export default function FilterTabs({
+  tabs,
+  filter,
+  setFilter,
+  variant,
+}: Props) {
   const formattedTabs = tabs.map((tab) =>
     typeof tab === "string" ? { value: slugify(tab), label: tab } : tab
   );
+
   const formattedFilter =
     typeof filter === "string" || filter === null
       ? formattedTabs.find((tab) => tab.value === filter)
@@ -76,12 +137,12 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
   }
 
   return (
-    <div>
-      <TabsContainerStyle>
+    <>
+      <TabsContainerStyle className={variant}>
         {formattedTabs.map((tab) => (
           <TabStyle
             tabIndex={0}
-            className={classnames("tab", {
+            className={classnames(variant, {
               "is-active":
                 JSON.stringify(formattedFilter) === JSON.stringify(tab),
             })}
@@ -96,7 +157,7 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
         ))}
       </TabsContainerStyle>
 
-      <SelectWrapper>
+      <SelectWrapper className={variant}>
         <Select
           options={formattedTabs}
           selectedValue={formattedFilter}
@@ -104,6 +165,6 @@ export default function FilterTabs({ tabs, filter, setFilter }: Props) {
           autoWidth
         />
       </SelectWrapper>
-    </div>
+    </>
   );
 }
