@@ -110,7 +110,7 @@ $fsApi->microDeposits($fundingSourceUrl, [
 
 ### Handle failed verification attempts
 
-Your customer will have only three attempts to correctly input the two posted micro-deposit amounts. If your customer reaches the max attempts allowed, a `microdeposits_maxattempts` [event](https://docs.dwolla.com/#events) will be triggered and they will no longer be allowed to verify the funding source using those same two posted micro-deposit amounts. In order to retry bank account verification via micro-deposits, the following steps will need to be taken by your customer and application:
+Your customer will have only three attempts to correctly input the two posted micro-deposit amounts. If your customer reaches the max attempts allowed, a `microdeposits_maxattempts` [event](https://docs.dwolla.com/#events) will be triggered and a `failed-verification-micro-deposits` link will be returned in the response for the funding-source. As a result, they will no longer be allowed to verify the funding source using those same two posted micro-deposit amounts. In order to retry bank account verification via micro-deposits, the following steps will need to be taken by your customer and application:
 
 1. [Removal of the funding source](https://docs.dwolla.com/#remove-a-funding-source) with failed micro-deposit verification attempts.
 2. Wait 48 hours after the initial funding source was added to re-add the funding source.
