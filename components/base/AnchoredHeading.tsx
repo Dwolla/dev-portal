@@ -3,7 +3,7 @@ import { scrollTo } from "../util/Anchors";
 
 interface AnchoredHeadingProps
   extends React.HTMLAttributes<HTMLHeadingElement> {
-  headingLevel: "h1" | "h2" | "h3";
+  headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
 export default function AnchoredHeading({
@@ -46,3 +46,12 @@ export const AnchoredH2 = (props: React.HTMLAttributes<HTMLHeadingElement>) =>
 
 export const AnchoredH3 = (props: React.HTMLAttributes<HTMLHeadingElement>) =>
   AnchoredHeading({ headingLevel: "h3", ...props });
+
+export const AnchoredH4 = (props: React.HTMLAttributes<HTMLHeadingElement>) =>
+  AnchoredHeading({ headingLevel: "h4", ...props });
+
+export const AnchoredH5 = (props: React.HTMLAttributes<HTMLHeadingElement>) =>
+  AnchoredHeading({ headingLevel: "h5", ...props });
+
+export const AnchoredH6 = (props: React.HTMLAttributes<HTMLHeadingElement>) =>
+  AnchoredHeading({ headingLevel: "h6", ...props });

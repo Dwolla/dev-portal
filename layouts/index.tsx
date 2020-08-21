@@ -22,6 +22,9 @@ import {
   AnchoredH1,
   AnchoredH2,
   AnchoredH3,
+  AnchoredH4,
+  AnchoredH5,
+  AnchoredH6,
 } from "../components/base/AnchoredHeading";
 
 const MDXContainer = styled.div`
@@ -55,6 +58,9 @@ const MDX_COMPONENTS = {
   h1: AnchoredH1,
   h2: AnchoredH2,
   h3: AnchoredH3,
+  h4: AnchoredH4,
+  h5: AnchoredH5,
+  h6: AnchoredH6,
 };
 
 export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
