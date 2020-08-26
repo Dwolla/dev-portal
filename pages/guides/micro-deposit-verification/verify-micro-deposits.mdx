@@ -10,7 +10,7 @@ meta:
 
 # Verify micro-deposits
 
-In the Dwolla production environment, you must wait until the micro-deposits actually post to the customer’s bank account before the account can be verified, which can take 1-2 business days. A `microdeposits_completed` event will be triggered once micro-deposits have successfully posted to the bank. Once micro-deposits have completed, a `verify-micro-deposits` link relation will return on the funding source letting your application know the funding source can be verified.
+In the Dwolla production environment, you must wait until the micro-deposits actually post to the customer’s bank account before the account can be verified, which can take 1-2 business days. A `microdeposits_completed` event will be triggered once micro-deposits have successfully posted to the bank. Once micro-deposits have completed, a `verify-micro-deposits` link relation will return on the funding source letting your application know the funding source can be verified. When the amounts are entered for verification, the order in which they are entered doesn't matter.
 
 <AlertBar variation="info">
   In the Sandbox environment, any amount below $0.10 will allow you to verify
@@ -110,7 +110,7 @@ $fsApi->microDeposits($fundingSourceUrl, [
 
 ### Handle failed verification attempts
 
-Your customer will have only three attempts to correctly input the two posted micro-deposit amounts. If your customer reaches the max attempts allowed, a `microdeposits_maxattempts` [event](https://docs.dwolla.com/#events) will be triggered and they will no longer be allowed to verify the funding source using those same two posted micro-deposit amounts. In order to retry bank account verification via micro-deposits, the following steps will need to be taken by your customer and application:
+Your customer will have only three attempts to correctly input the two posted micro-deposit amounts. If your customer reaches the max attempts allowed, a `microdeposits_maxattempts` [event](https://docs.dwolla.com/#events) will be triggered and a `failed-verification-micro-deposits` link will be returned in the response for the funding-source. As a result, they will no longer be allowed to verify the funding source using those same two posted micro-deposit amounts. In order to retry bank account verification via micro-deposits, the following steps will need to be taken by your customer and application:
 
 1. [Removal of the funding source](https://docs.dwolla.com/#remove-a-funding-source) with failed micro-deposit verification attempts.
 2. Wait 48 hours after the initial funding source was added to re-add the funding source.
