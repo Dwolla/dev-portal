@@ -244,7 +244,7 @@ If the Customer has a status of `document`, the Customer will need to upload add
 
 ### Determining verification documents needed
 
-When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docs.dwolla.com/#retrieve-a-customer), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, or both the controller and business. Refer to the table below for the list of possible links and their description.
+When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docs.dwolla.com/#retrieve-a-customer), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, or both the Controller and business. Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
 
 | Link name                                    | Description                                                              |
 | -------------------------------------------- | ------------------------------------------------------------------------ |
@@ -324,14 +324,16 @@ Documents that are used to help identify a business are specified as documentTyp
 
 - **Partnership, General Partnership**: EIN Letter (IRS-issued SS4 confirmation letter).
 - **Limited Liability Corporation (LLC), Corporation**: EIN Letter (IRS-issued SS4 confirmation letter).
-- **Sole Proprietorship**: One or more of the following, as applicable to your sole proprietorship:
+- **Sole Proprietorship**: Sole Proprietorships can be verified by uploading Business documents as well as Personal IDs. Personal IDs need to be specified as documentType `idCard`, `license` or `passport` depending on the type of the ID. Business documents need to be specified as documentType `other`. Acceptable documents include one or more of the following, as applicable to your sole proprietorship:
 
-  - Fictitious Business Name Statement,
-  - Certificate of Assumed Name; Business License,
-  - Sales/Use Tax License,
-  - Registration of Trade Name,
-  - EIN documentation (IRS-issued SS4 confirmation letter),
-  - Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
+  - Business documents (documentType `other`):
+    - Fictitious Business Name Statement,
+    - Certificate of Assumed Name; Business License,
+    - Sales/Use Tax License,
+    - Registration of Trade Name,
+    - EIN documentation (IRS-issued SS4 confirmation letter),
+  - Personal documents (documentType `license`, `passport` or `idCard`):
+    - Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
 
 > **Note:** Trusts should be created as Sole Proprietor accounts and will require signed trust documents that include the trust and username that are on file.
 
