@@ -101,7 +101,7 @@ const LinkGroupLink = styled.a`
 `;
 
 const LegalContainer = styled.div`
-  width: 65%;
+  width: 70%;
   padding: 20px;
 
   @media (${breakDown("sm")}) {
@@ -130,7 +130,11 @@ export interface FooterLink {
 
 interface FooterProps {
   links: Record<string, FooterLink[]>;
-  legal: { title: string; description: string };
+  legal: {
+    title: string;
+    veridianDescription: string;
+    metaBankDescription: JSX.Element;
+  };
 }
 
 export default function Footer(props: FooterProps) {
@@ -163,7 +167,8 @@ export default function Footer(props: FooterProps) {
 
       <LegalContainer>
         <LegalTitle>{props.legal.title}</LegalTitle>
-        <LegalDesc>{props.legal.description}</LegalDesc>
+        <LegalDesc>{props.legal.veridianDescription}</LegalDesc>
+        <LegalDesc>{props.legal.metaBankDescription}</LegalDesc>
       </LegalContainer>
     </Container>
   );

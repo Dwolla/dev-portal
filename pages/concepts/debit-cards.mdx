@@ -1,0 +1,149 @@
+---
+layout: concepts
+title: "Debit Cards"
+description: A debit card is a funding source type that can be used to enable faster payments using the card network, allowing for another efficient method to move funds.
+category: Funding Sources
+concept:
+  icon: "push-to-debit.svg"
+meta:
+  title: Debit Cards | Dwolla API Documentation
+  description: A debit card is a funding source type that can be used to enable faster payments using the card network, allowing for another efficient method to move funds.
+---
+
+# Debit Cards
+
+## Overview
+
+Utilizing the Dwolla API to facilitate the movement of money allows for flexibility in your payment types and transfer methods offered to your end users. One of the ways to add value to your application is to diversify the options for users to receive funds to different payment accounts. The ability to leverage debit cards as a mechanism to receive funds is available only for the payouts funds flow use case.
+
+Funding source types within Dwolla include:
+
+- `Balance` - A funding source automatically created for a Verified Customer. Dwolla Balance functionality is similar to a “wallet” that lives within the Dwolla Network where funds can be sent to, received from and held at Dwolla's financial institution partner.
+- `Bank Account` - An account at a financial institution to send or receive funds to.
+- `Debit Card` - A reloadable prepaid or bank-issued debit card that can be used as a funding source type to receive funds in near real-time.
+
+### The Use Case
+
+Adding a debit card as a funding source type allows your customers to receive funds in typically within 30 minutes rather than hours or days. By sending funds from your Master Dwolla Balance funding source, you can directly “push” these funds out in near real-time to a customer’s reloadable prepaid card or bank-issued debit card.
+
+Prime use cases include dual sided marketplaces and task-based employment - just to name a couple.
+
+### Tell Me More
+
+When a payout is initiated to a debit card, funds will move from your Master Dwolla Balance to an end user’s payment account via the card network, to the specified debit card. In most cases, funds will be available to your users typically within 30 minutes, 24/7/365--no need to worry about weekends or banking holidays.
+
+In order to send money over the card networks, Dwolla will need to register your business as a merchant with Mastercard and Visa. It will require providing a few pieces of information in order to submit your application such as Merchant Category Code (MCC) (the goods and services category that payouts will be initiated for) and billing statement descriptor (how your company is displayed on your end- user’s billing statement). Dwolla will work with you to identify the MCC and statement descriptor that most closely matches your profile.
+
+Billing statement codes can be 1-20 characters in length and we will set that on your behalf.
+
+### Transaction Limits
+
+These limits apply regardless of whether your application is approved for increased transaction limits for your end users on the Dwolla platform, as these are enforced by the card networks.
+
+- The max amount of money that can be pushed to a Mastercard debit card daily is \$10,000
+- The max amount of money that can be pushed to a Visa debit card daily is \$150,000 or a total of 150 transactions.
+
+## Funding Source Types: Debit Card vs. Bank Account
+
+When comparing the differences between adding a bank account vs debit card as a funding source type, it’s important to weigh the pros and cons for each method. While debit cards make funds almost immediately available for a customer, the functionality is only supported for a subset of funds flows and pricing tiers.
+
+Refer to the table below for more information.
+
+| Funding Source Type | Required Information                                                   | Transaction Timing                                            | Transfer Availability                  | Supported Funds Flows                 | Supported Pricing Tiers                           |
+| ------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------- | ------------------------------------- | ------------------------------------------------- |
+| **Debit Card**      | Full Name<br />Card Number<br />Expiration Date<br />CVV<br />Nickname | \*Typically within 30 Minutes                                 | Every day (24/7/365)                   | Send (Sourced from a Dwolla Balance)  | Scale and Enterprise pricing tiers                |
+| **Bank Account**    | Account and Routing Number OR Online banking credentials               | 1-6 business days, depending on transfer timing specification | Business days and non-banking holidays | Receive, Send, Facilitation, Me-to-Me | Pay-As-You-Go, Scale and Enterprise pricing tiers |
+
+## Push-to-Debit Failures
+
+Funds pushed over the card networks will be available for use in near real-time, eliminating the possibility of a return. If a debit card is ineligible to receive funds, the transfer will fail and the applicable error message will be returned via a `customer_card_transfer_failed` webhook. In the event of a failed transfer, funds will not leave your balance.
+
+When a push-to-debit transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docs.dwolla.com/#retrieve-a-transfer-failure-reason).
+
+##### List of push-to-debit failure reasons
+
+| Code                     | Message                                                                                                             |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------- |
+| Unknown                  | There was a problem with this card transaction.                                                                     |
+| InvalidInstrument        | The account number does not exist. Please make sure the account number is correct or contact your issuer.           |
+| ExceedsIssuerAmountLimit | Transaction violates issuer amount limit. Please contact card issuer for more information or try with another card. |
+| ExceedsIssuerCountLimit  | Please attempt with another card or contact card issuer for more information.                                       |
+| CallIssuer               | Please contact card issuer for more information.                                                                    |
+| Declined                 | Please contact card issuer for more information.                                                                    |
+| LostOrStolenCard         | Please contact card issuer for more information.                                                                    |
+| SuspectedFraud           | Please contact card issuer for more information.                                                                    |
+| ComplianceViolation      | This transaction does not fulfill compliance requirements and cannot be processed.                                  |
+
+#### Example push-to-debit transfer failure reason
+
+```bash
+GET https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388/failure
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-devint.dwolla.com/transfers/7303fa32-17ba-ea11-81de-e9dd8f966c72/failure",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "failure"
+        },
+        "failed-funding-source": {
+            "href": "https://api-devint.dwolla.com/funding-sources/5832dd96-42e9-44b3-8e0a-454e52a32655",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "code": "Unknown",
+    "description": "There was a problem with this card transaction.",
+    "created": "2020-06-29T14:45:59.444Z"
+}
+```
+
+```ruby
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+failure = app_token.get "#{transfer_url}/failure"
+failure.code # => "Unknown"
+```
+
+```php
+<?php
+$transfer = '8997ebed-69be-e611-80ea-0aa34a9b2388';
+
+$TransfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$failureReason = $TransfersApi->failureById($transfer);
+print($failureReason->code); # => "Unknown"
+?>
+```
+
+```python
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388'
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+failure = app_token.get('%s/failure' % transfer_url)
+failure.body['code'] # => 'Unknown'
+```
+
+```javascript
+var transferUrl =
+  "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388";
+
+appToken.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'Unknown'
+```
+
+## Creating a Debit Card Funding Source
+
+Create a debit card as a funding source type via the dwolla-cards.js client-side library. Similarly to Dwolla.js+IAV functionality, this allows you to securely transmit sensitive customer card data without the data passing through your server.
+
+<AlertBar variation="info">
+  For more information on implementing our dwolla-cards.js library into your
+  application to add a Debit Card, follow our{" "}
+  <a href="/guides/dwolla-cards-js/add-a-debit-card">Developer Guide</a>.
+</AlertBar>
+
+## Wrap-up
+
+Much like choosing the correct customer type, considerations on which funding source types to create can greatly impact the functionality and flexibility of your application when it comes to sending or receiving funds. From functionality of transfer timing, down to the preference in user experience, each method provides its own characteristics that can be tailored to fit your application’s desired use case. Enabling a Debit Card as an option for a funding source type for end users can open up many possibilities within your application.

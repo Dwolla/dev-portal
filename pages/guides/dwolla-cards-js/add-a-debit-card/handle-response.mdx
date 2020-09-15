@@ -1,0 +1,52 @@
+---
+layout: guides
+title: "Step 3: Handle JavaScript callback"
+guide:
+  step: 3
+meta:
+  title: Add a Debit Card - Handle Dwolla.js callback | Dwolla API Documentation
+  description: Handle JavaScript callback for success and error responses for Dwolla-cards.js, a powerful and secure tool for adding a debit card.
+---
+
+# Step 3: Handle JavaScript Callback
+
+Your customer will then add their card information, including: Full Name, Card Number, Expiration Date, CVV, and Nickname. On submission of the form, you will need to handle the error or response which is triggered by the JavaScript callback. The callback function (err, res) allows you to determine if there is an error with the request (e.g. card expiration invalid) or if the response was successful.
+
+If there is an error, display the error to the user to have them correct any fields and have them re-attempt to add their card by restarting the add a debit card flow.
+
+#### Example error callback
+
+```
+{
+  "error": {
+    "code": "ValidationError",
+    "message": "Validation error(s) present. See embedded errors list for more details.",
+    "_embedded": {
+      "errors": [
+        {
+          "code": "Invalid",
+          "message": "Card expiration invalid.",
+          "path": "/cardExpiration"
+        }
+      ]
+    }
+  }
+}
+```
+
+If successful, you will receive a JSON response that includes a link to the newly attached funding source.
+
+### Example success callback
+
+```
+{
+  "error": null,
+  "response": {
+    "_links": {
+      "funding-source": {
+        "href": "https://api-sandbox.dwolla.com/funding-sources/746d5c93-acb9-4826-a9c1-78ecf16401a6"
+      }
+    }
+  }
+}
+```

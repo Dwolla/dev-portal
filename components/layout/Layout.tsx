@@ -174,7 +174,11 @@ export default function Layout({
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;
-  footerLegal: { title: string; description: string };
+  footerLegal: {
+    title: string;
+    veridianDescription: string;
+    metaBankDescription: JSX.Element;
+  };
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
 }) {
