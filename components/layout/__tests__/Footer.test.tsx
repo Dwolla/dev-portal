@@ -27,8 +27,15 @@ test("Footer", () => {
 
   const FOOTER_LEGAL_COPY = {
     title: "Financial institutions play an important role in our network.",
-    description:
+    veridianDescription:
       "Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.",
+    metaBankDescription: (
+      <span>
+        Sponsorship and Settlement of Push-to-Debit payment services provided by{" "}
+        <span style={{ whiteSpace: "nowrap" }}>MetaBank®, N.A.</span>
+        <br /> Push-to-Debit payments are typically available within 30 minutes.
+      </span>
+    ),
   };
 
   const tree = renderer

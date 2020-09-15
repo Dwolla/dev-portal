@@ -361,7 +361,7 @@ Array [
           </div>
         </div>
         <div
-          className="css-hk2j9w-LinkContainer en8mxva4"
+          className="css-1g5yeab-LinkContainer en8mxva4"
         >
           <div
             className="css-n2kuza-LinkGroup en8mxva5"
@@ -553,10 +553,28 @@ Array [
           </strong>
           <p
             className="css-1rlmt3x-LegalDesc en8mxva12"
-          />
+          >
+            Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.
+          </p>
           <p
             className="css-1rlmt3x-LegalDesc en8mxva12"
-          />
+          >
+            <span>
+              Sponsorship and Settlement of Push-to-Debit payment services provided by
+               
+              <span
+                style={
+                  Object {
+                    "whiteSpace": "nowrap",
+                  }
+                }
+              >
+                MetaBank®, N.A.
+              </span>
+              <br />
+               Push-to-Debit payments are typically available within 30 minutes.
+            </span>
+          </p>
         </div>
       </div>
     </div>
