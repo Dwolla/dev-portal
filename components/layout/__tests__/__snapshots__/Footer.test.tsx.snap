@@ -26,7 +26,7 @@ exports[`Footer 1`] = `
     </div>
   </div>
   <div
-    className="css-1g5yeab-LinkContainer en8mxva4"
+    className="css-hk2j9w-LinkContainer en8mxva4"
   >
     <div
       className="css-n2kuza-LinkGroup en8mxva5"
@@ -209,7 +209,7 @@ exports[`Footer 1`] = `
     </div>
   </div>
   <div
-    className="css-d46t9b-LegalContainer en8mxva10"
+    className="css-1kena77-LegalContainer en8mxva10"
   >
     <strong
       className="css-31ngrj-LegalTitle en8mxva11"
@@ -218,9 +218,10 @@ exports[`Footer 1`] = `
     </strong>
     <p
       className="css-1rlmt3x-LegalDesc en8mxva12"
-    >
-      Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.
-    </p>
+    />
+    <p
+      className="css-1rlmt3x-LegalDesc en8mxva12"
+    />
   </div>
 </div>
 `;

@@ -1,0 +1,67 @@
+---
+layout: guides
+title: "Step 1: Create a card funding sources token"
+guide:
+  step: 1
+meta:
+  title: Add a Debit Card - Create a Card Funding Sources Token | Dwolla API Documentation
+  description: Create a card funding sources token for use in initiating the add a debit card flow.
+---
+
+# Step 1: Creating a Card Funding Sources Token
+
+Before calling a function within dwolla-cards.js to render the add a debit card flow, you need to generate a `card-funding-sources-token` from the server-side. Within your API request, you will pass in the Customer ID which represents the user who will submit their debit card details to be created as a Funding Source object. Dwolla will respond with a single-use token scoped to that user which expires one hour after being issued. This token will be sent to the client-side and be used to authenticate the HTTP request for Dwolla to add a new funding source type. The following code example demonstrates how to retrieve a card funding sources token using one of our server-side SDKs.
+
+#### Example Request and Response
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/card-funding-sources-token
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+HTTP/1.1 200 OK
+
+{
+ "_links": {
+   "self": {
+     "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/card-funding-sources-token"
+   }
+ },
+ "token": "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
+}
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$fsToken = $customersApi->getCustomerCardToken("https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C");
+$fsToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+?>
+```
+
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer = app_token.post "#{customer_url}/card-funding-sources-token"
+customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C'
+
+app_token.post('%s/card-funding-sources-token' % customer_url)
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C";
+
+appToken
+  .post(`${customerUrl}/card-funding-sources-token`)
+  .then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+```
