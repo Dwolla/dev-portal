@@ -82,14 +82,14 @@ Access tokens are short lived: 1 hour.
 Refresh tokens are long lived: 60 days.
 A refresh token can be used within 60 days to generate a new `access_token` and `refresh_token` pair. So long as you refresh your authorization at least every 60 days, your partner integration can maintain authorization indefinitely without requiring the user to re-authorize.
 
-### Step 1
+#### Step 1
 
 To start the OpenID flow, construct the initiation URL which the user will visit in order to grant permission to your integration. It describes who the Partner Integration is (client_id), and where the user should be redirected to after they grant or deny permissions to your integration (redirect_uri). You will use the key from the Partner Portal as your client_id.
 
 ##### Example URL Format
 
 ```plaintext
-https://accounts-sandbox.dwolla.com/auth?client_id=/<key>&redirect_uri=/<redirectUri>&response_type=code`
+https://accounts-sandbox.dwolla.com/auth?client_id=<key>&redirect_uri=<redirectUri>&response_type=code`
 ```
 
 #### Request parameters
@@ -104,23 +104,21 @@ https://accounts-sandbox.dwolla.com/auth?client_id=/<key>&redirect_uri=/<redirec
   Remember to url-encode all query string parameters
 </AlertBar>
 
-### Step 2
+#### Step 2
 
 After redirecting, you will be prompted to login to Dwolla Sandbox with your test Client account. After logging in, you will be prompted to grant authorization to the partner integration using the account with which you just authenticated. This step is simulating what a Client of Dwolla’s would do when enabling your partner integration.
 
 <Image src={sandboxLogin} alt="Sandbox Login Screen" />
 
-### Step 3
-
-After logging in to the Client account, you will be asked to approve the Partner Integration access to the Client account.
-
-### Step 4
+#### Step 3
 
 Once validated, Dwolla will redirect the user to the partner integration’s redirect URI with a query parameter called “code” if the Client approves the request. If the Client did not approve the request, Dwolla will redirect Client to the partner integration’s redirect URI with two query parameters: error & error_description. These values should be used to display a meaningful error message to the user in your application.
 
 <Image src={callbackAuthCode} alt="Auth Flow Callback" />
 
-### Step 5: Finish authorization - exchange code for access token
+### Finish authorization - exchange code for access token
+
+#### Step 4
 
 As mentioned in the previous step, the `"code"` query parameter will need to be exchanged for a Dwolla access token and refresh token pair, requiring an API POST to the `https://accounts-sandbox.dwolla.com/token` endpoint with a **x-www-form-urlencoded** form request with the following attributes:
 
@@ -181,7 +179,7 @@ token.get('customers')
 **/
 ```
 
-### Step 6
+#### Step 5
 
 The API POST to the token endpoint will return a JSON response that includes the fields `"access_token"` and `"refresh_token"`. The `access_token` can be leveraged to call the API on behalf of the account that granted the permissions. If the token expires, the `refresh_token` should be used to get a new `access_token`.
 
@@ -197,7 +195,9 @@ The API POST to the token endpoint will return a JSON response that includes the
 }
 ```
 
-### Step 7: Refresh authorization
+### Refresh authorization
+
+#### Step 6
 
 A refresh token can be used to refresh authorization on the account. A new access token and refresh token pair will be returned after making a successful API POST request to the token exchange endpoint.
 
@@ -215,9 +215,9 @@ Including the `Content-Type: application/x-www-form-urlencoded` header, the requ
 | grant_type    | yes      | string | This must be set to _**refresh_token.**_                                                                 |
 | refresh_token | yes      | string | A valid refresh token.                                                                                   |
 
-### Step 8
+The API POST to the token endpoint for retrieving a new access token and refresh token pair will return a JSON response that includes the fields `"access_token"` and `"refresh_token"`. These tokens can be used in the same way as the ones generated in Step 5.
 
-The API POST to the token endpoint for retrieving a new access token and refresh token pair will return a JSON response that includes the fields `"access_token"` and `"refresh_token"`. These tokens can be used in the same way as the ones generated in [Step 6](#step-6) are.
+##### Example response
 
 ```json
 {
@@ -232,4 +232,4 @@ The API POST to the token endpoint for retrieving a new access token and refresh
 ## Subscribing to Dwolla Webhooks
 
 Subscribing to Dwolla webhooks for a Dwolla Client’s account will allow your partner integration to receive notifications when actions happen on a client’s account, thereby allowing you to take actions in your partner integration. Reference a list of all available webhook events in our [developer documentation](https://developers.dwolla.com/resources/webhook-events.html#list-of-supported-events-by-resource).
-You can leverage the `access_token` access token granted in [Step 6](#step-6) or [Step 8](#step-8) to [create a webhook subscription](https://docs.dwolla.com/#create-a-webhook-subscription).
+You can leverage the `access_token` access token granted in Step 5 or Step 6 to [create a webhook subscription](https://docs.dwolla.com/#create-a-webhook-subscription).
