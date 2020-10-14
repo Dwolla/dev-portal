@@ -18,6 +18,14 @@ import { InlineCode } from "../components/base/Typography";
 import OnThisPage from "../components/layout/OnThisPage";
 import TabBarPanel from "../components/base/TabBarPanel";
 import Table from "../components/base/Table";
+import {
+  AnchoredH1,
+  AnchoredH2,
+  AnchoredH3,
+  AnchoredH4,
+  AnchoredH5,
+  AnchoredH6,
+} from "../components/base/AnchoredHeading";
 
 const MDXContainer = styled.div`
   display: flex;
@@ -47,6 +55,12 @@ const MDX_COMPONENTS = {
   InlineCode,
   TabBarPanel,
   table: Table,
+  h1: AnchoredH1,
+  h2: AnchoredH2,
+  h3: AnchoredH3,
+  h4: AnchoredH4,
+  h5: AnchoredH5,
+  h6: AnchoredH6,
 };
 
 export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
