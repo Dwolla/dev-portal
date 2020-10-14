@@ -1,5 +1,10 @@
 import { createElement } from "react";
+import styled from "@emotion/styled";
 import { scrollTo } from "../util/Anchors";
+
+const StyledAnchor = styled.a`
+  text-decoration: none;
+`;
 
 interface AnchoredHeadingProps
   extends React.HTMLAttributes<HTMLHeadingElement> {
@@ -18,7 +23,7 @@ export default function AnchoredHeading({
         {props.id && (
           <>
             {" "}
-            <a
+            <StyledAnchor
               href={`#${props.id}`}
               onClick={
                 props.id
@@ -30,7 +35,7 @@ export default function AnchoredHeading({
               }
             >
               #
-            </a>
+            </StyledAnchor>
           </>
         )}
       </>
