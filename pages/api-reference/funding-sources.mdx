@@ -1030,7 +1030,7 @@ var fundingSourceUrl =
 
 appToken
   .get(`${fundingSourceUrl}/balance`)
-  .then((res) => res.body.balance.amount);
+  .then((res) => res.body.balance.value);
 ```
 
 ## Retrieve micro-deposits details
