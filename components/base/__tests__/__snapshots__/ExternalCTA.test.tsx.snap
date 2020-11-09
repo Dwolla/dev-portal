@@ -2,7 +2,7 @@
 
 exports[`External CTA 1`] = `
 <a
-  className="css-1mlonx-StyledLink evdv0mj0"
+  className="css-1npw29w-StyledLink evdv0mj0"
   href="https://discuss.dwolla.com/"
   target="_blank"
 >
@@ -40,7 +40,7 @@ exports[`External CTA 1`] = `
 
 exports[`No title 1`] = `
 <a
-  className="css-1mlonx-StyledLink evdv0mj0"
+  className="css-1npw29w-StyledLink evdv0mj0"
   href="https://discuss.dwolla.com/"
   target="_blank"
 >
