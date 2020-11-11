@@ -283,11 +283,11 @@ Congrats! You have created a beneficial owner for a business verified Customer, 
 An `incomplete` status occurs when a beneficial owner's identity scores are too low during the initial verification attempt. Dwolla will trigger a `customer_beneficial_owner_reverification_needed` event which notifies your application to prompt the Customer to [submit another identity verification attempt](https://docs.dwolla.com/#update-a-beneficial-owner) for the beneficial owner. The second attempt will give our identity vendor more accurate information in an attempt to receive a sufficient score to approve the beneficial owner. The Customer will only have one opportunity to correct any mistakes.
 
 <AlertBar variation="info">
-  You need to gather new information if the beneficial owner is placed into the
-  <code>incomplete</code> status; simply passing the same information will result
-  in the same insufficient scores. All fields that were required in the initial beneficial
-  owner creation attempt will be required in the <code>incomplete</code>
-  attempt.
+  You need to gather new information if the beneficial owner is placed into the{" "}
+  <code>incomplete</code> status; simply passing the same information will
+  result in the same insufficient scores. All fields that were required in the
+  initial beneficial owner creation attempt will be required in the{" "}
+  <code>incomplete</code> attempt.
 </AlertBar>
 
 #### Request and Response - update beneficial owner
