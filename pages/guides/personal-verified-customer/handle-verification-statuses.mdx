@@ -478,6 +478,18 @@ A Customer that is unable to answer at least three questions correctly will be m
 
 If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](https://docs.dwolla.com/#create-a-document) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
 
+You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
+
+- All 4 Edges of the document should be visible
+- A dark/high contrast background should be used
+- At least 90% of the image should be the document
+- Should be at least 300dpi
+- Capture image from directly above the document
+- Make sure that the image is properly aligned, not rotated, tilted or skewed
+- No flash to reduce glare
+- No black and white documents
+- No expired IDs
+
 ### Document types
 
 A color scanned photo of the Customer's identifying document can be specified as documentType: `passport`, `license` (state issued driver's license), or `idCard` (other U.S. government-issued photo id card).
