@@ -68,12 +68,6 @@ export const CardGridWrapper = styled.div`
   padding-bottom: 60px;
 `;
 
-export const ColumnWrapper = styled.div`
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-column-gap: 30px;
-`;
-
 export const StyledLink = styled.a`
   text-decoration: none;
   color: ${HEADLINE_TEXT};
@@ -206,7 +200,7 @@ export default function HomePage() {
             />
           </CardGrid>
         </CardGridWrapper>
-        <ColumnWrapper>
+        <CardGrid maxColumns="2">
           <ExternalCTA
             icon={developerCommunityIcon}
             title="Developer Support"
@@ -219,7 +213,7 @@ export default function HomePage() {
             description="Check out this interactive demo to learn about how Dwolla can be integrated into your platform."
             href="https://demo.dwolla.com/"
           />
-        </ColumnWrapper>
+        </CardGrid>
         <H3>
           <Link href="/sdks-tools" passHref>
             <StyledLink>
