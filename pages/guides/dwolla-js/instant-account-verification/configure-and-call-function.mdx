@@ -117,3 +117,28 @@ Dwolla provides a list of CSS classes available for styling certain elements of 
 .dwolla-iav-radio-hover,
 .dwolla-iav-radio-selected
 ```
+
+## IAV user experience
+
+Financial institutions have different procedures when it comes to online logins. There are two flows to be aware of in terms of user experience: Preferred and Non-preferred. Your Customers may fall into either one of these two flows when verifying their bank account within the IAV experience.
+
+### Preferred Flow
+
+There are a subset of banks that are found in the initial bank search page that will immediately prompt the user to login with the associated bank account. These are some of the larger financial institutions in the United States, and are all supported by our IAV flow. If your Customer is not banking with one of these institutions, they can search for their bank in the search bar.
+
+### Non-preferred Flow
+
+#### Non-preferred flow #1
+
+There are a number of banks that aren’t found in the bank search. These banks are generally smaller financial institutions. When a bank isn’t returned in the bank search, we’ll prompt the user to input the account and routing number of their bank. Once they click agree and continue, we’ll attempt to look up a bank with the provided information. If a bank is found, we’ll add it as an `unverified` funding-source to the Customer and return a screen for the user to authenticate using their online banking credentials. Once the online banking credentials are submitted, we receive back information that allows us to verify the bank account. Alternatively, if the user fails to correctly enter their online credentials, the funding-source will fallback to microdeposits verification after two failed attempts.
+
+#### Non-preferred flow #2
+
+In some cases, we don’t receive enough information back to verify the bank account. In such cases, we will fall back to name matching in order to determine if the bank should be verified.
+
+**Note:** In a non-preferred flow, if the user enters their account and routing numbers to look up a bank and exits the flow without entering their online banking credentials for authentication, then we fail to make a connection to the bank account and the user is left with an `unverified` funding-source.
+
+If you run into such cases, we have a few recommendations in order to handle the failure attempt and continue the bank verification process. Immediately after the IAV flow, check for the Customer’s list of funding-sources. The list is sorted by the `created` timestamp of the funding-sources, so the latest funding-source should be at the top of the list. If you find that there exists a newly added funding-source with an `unverified` status, you can do one of the following,
+
+- Remove the `unverified` funding-source and prompt the user to attempt the IAV flow again
+- Verify the funding-source using [Microdeposits](https://developers.dwolla.com/guides/micro-deposit-verification#verify-a-bank-account-with-micro-deposits)
