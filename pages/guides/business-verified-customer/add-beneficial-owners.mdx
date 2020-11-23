@@ -283,11 +283,11 @@ Congrats! You have created a beneficial owner for a business verified Customer, 
 An `incomplete` status occurs when a beneficial owner's identity scores are too low during the initial verification attempt. Dwolla will trigger a `customer_beneficial_owner_reverification_needed` event which notifies your application to prompt the Customer to [submit another identity verification attempt](https://docs.dwolla.com/#update-a-beneficial-owner) for the beneficial owner. The second attempt will give our identity vendor more accurate information in an attempt to receive a sufficient score to approve the beneficial owner. The Customer will only have one opportunity to correct any mistakes.
 
 <AlertBar variation="info">
-  You need to gather new information if the beneficial owner is placed into the
-  <code>incomplete</code> status; simply passing the same information will result
-  in the same insufficient scores. All fields that were required in the initial beneficial
-  owner creation attempt will be required in the <code>incomplete</code>
-  attempt.
+  You need to gather new information if the beneficial owner is placed into the{" "}
+  <code>incomplete</code> status; simply passing the same information will
+  result in the same insufficient scores. All fields that were required in the
+  initial beneficial owner creation attempt will be required in the{" "}
+  <code>incomplete</code> attempt.
 </AlertBar>
 
 #### Request and Response - update beneficial owner
@@ -431,6 +431,18 @@ Check the beneficial owner's status again. The beneficial owner will either be i
 ### Handling `document` status
 
 If a beneficial owner is not verified after being placed in `incomplete` status and submitting a second verification attempt, the only other state the beneficial owner can be in is `document`. If the beneficial owner has a status of `document`, they will need to upload additional pieces of information in order to verify their identity. Use the [create a document](https://docs.dwolla.com/#beneficial-owners) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take anywhere from a few seconds up to 1-2 business days if manual verification is required to approve or reject.
+
+You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
+
+- All 4 Edges of the document should be visible
+- A dark/high contrast background should be used
+- At least 90% of the image should be the document
+- Should be at least 300dpi
+- Capture image from directly above the document
+- Make sure that the image is properly aligned, not rotated, tilted or skewed
+- No flash to reduce glare
+- No black and white documents
+- No expired IDs
 
 ### Determining verification `documents` needed
 
