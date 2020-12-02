@@ -34,10 +34,10 @@ dwolla.configure("prod");
 dwolla.fundingSources.create(
   "1zN400zyPUobbdmeNfhTGH2Jh5JkFREJa9YBI8SLXp0ERXNTMT",
   {
-    routingNumber: getVal("routingNumber"),
-    accountNumber: getVal("accountNumber"),
-    type: getVal("type"),
-    name: getVal("name"),
+    routingNumber: document.getElementById("routingNumber").value,
+    accountNumber: document.getElementById("accountNumber").value,
+    type: document.getElementById("type").value,
+    name: document.getElementById("name").value,
   },
   function (err, res) {
     console.log(
@@ -58,10 +58,10 @@ $("form").on("submit", function () {
   dwolla.configure("sandbox");
   var token = "Z9BvpNuSrsI7Ke1mcGmTT0EpwW34GSmDaYP09frCpeWdq46JUg";
   var bankInfo = {
-    routingNumber: $("routingNumber").val(),
-    accountNumber: $("accountNumber").val(),
-    type: $("type").val(),
-    name: $("name").val(),
+    routingNumber: document.getElementById("routingNumber").value,
+    accountNumber: document.getElementById("accountNumber").value,
+    type: document.getElementById("type").value,
+    name: document.getElementById("name").value,
   };
   dwolla.fundingSources.create(token, bankInfo, callback);
   return false;
