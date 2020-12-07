@@ -63,7 +63,7 @@ not available
 
 ```javascript
 var crypto = require("crypto");
-const fromBuffer = require("buffer").Buffer.from;
+const bufferFrom = require("buffer").Buffer.from;
 
 function verifyGatewaySignature(
   proposed_signature,
@@ -76,8 +76,8 @@ function verifyGatewaySignature(
     .digest("hex");
 
   return crypto.timingSafeEqual(
-    fromBuffer(proposed_signature),
-    fromBuffer(hash)
+    bufferFrom(proposed_signature),
+    bufferFrom(hash)
   );
 }
 ```
