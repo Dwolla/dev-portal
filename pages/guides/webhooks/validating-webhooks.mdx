@@ -98,8 +98,7 @@ def verify_gateway_signature(proposed_signature, webhook_secret, payload_body):
 
 ```php
 <?php
-function verifyGatewaySignature($proposedSignature, $webhookSecret,
-$payloadBody) {
+function verifyGatewaySignature($proposedSignature, $webhookSecret, $payloadBody) {
 $signature = hash_hmac("sha256", $payloadBody, $webhookSecret);
 return hash_equals($signature, $proposedSignature);
 }
