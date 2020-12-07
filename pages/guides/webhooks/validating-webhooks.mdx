@@ -74,7 +74,7 @@ var verifyGatewaySignature = function (
     .update(payload_body)
     .digest("hex");
 
-  return proposed_signature === hash;
+  return crypto.timingSafeEqual(proposed_signature, hash);
 };
 ```
 
