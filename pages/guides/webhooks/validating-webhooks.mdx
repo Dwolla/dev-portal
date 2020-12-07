@@ -62,30 +62,38 @@ not available
 ```
 
 ```javascript
-var verifyGatewaySignature = function (
+var crypto = require("crypto");
+const fromBuffer = require("buffer").Buffer.from;
+
+function verifyGatewaySignature(
   proposed_signature,
   webhook_secret,
   payload_body
 ) {
-  var crypto = require("crypto");
-
   var hash = crypto
     .createHmac("sha256", webhook_secret)
     .update(payload_body)
     .digest("hex");
 
-  return crypto.timingSafeEqual(proposed_signature, hash);
-};
+  return crypto.timingSafeEqual(
+    fromBuffer(proposed_signature),
+    fromBuffer(hash)
+  );
+}
 ```
 
 ```python
+import hmac
+from hashlib import sha256
+
 def verify_gateway_signature(proposed_signature, webhook_secret, payload_body):
-  import hmac
-  from hashlib import sha256
+  signature = hmac.new(
+    webhook_secret.encode('utf-8'),
+    payload_body.encode('utf-8'),
+    sha256
+  ).hexdigest()
 
-  signature = hmac.new(webhook_secret, payload_body, sha256).hexdigest()
-
-  return True if (signature == proposed_signature) else False
+  return hmac.compare_digest(signature, proposed_signature)
 ```
 
 ```php
