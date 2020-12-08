@@ -1,0 +1,87 @@
+---
+layout: guides
+title: "Step 3: Using a drop-in"
+guide:
+  step: 3
+meta:
+  title: Building With Drop-in Components | Dwolla API Documentation
+  description: Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.
+---
+
+import customerUpgradeDropIn from "../../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+
+# Step 3: Using a drop-in
+
+Next, you’ll create a custom HTML container that the drop-in component will render in on page load. A drop-in component will be rendered when the dwolla-web.js library is initialized using dwolla.configure() (referenced below).
+
+### Configure dwolla-web.js
+
+Configuration of the dwolla object includes: your generated client-token, environment, optional styles, along with success and error overrides.
+
+#### Configure options object
+
+| Parameter   | Type     | Description                                                                                      |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------ |
+| environment | string   | Acceptable values of: `sandbox` or `production`                                                  |
+| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles. |
+| token       | function | A generated single-use client-token.                                                             |
+| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token.              |
+| success     | function | A function that gets called upon a successful request from the Component.                        |
+| error       | function | A function that gets called when an error occurs in the Component.                               |
+
+```javascript
+<script type="module" src="cdn.dwolla.com/2/dwolla-components.js"></script>
+<script>
+    dwolla.configure({
+        environment: "sandbox",
+        styles: "/styles/update-custom.css",
+        token: () => Promise.resolve("MY_TOKEN"),
+        success: (res) => Promise.resolve(res),
+        error: (err) => Promise.resolve(err),
+    });
+</script>
+```
+
+### Component Styles
+
+Dwolla provides a list of CSS classes available for styling certain elements of the component. These elements can be customized to match the look and feel of your application and are styled by passing in a custom stylesheet when configuring the dwolla-web client library. By default, the elements within your specified container are responsive to any change in screen size. For a full list of supported CSS classes available for each component, view our Concept article.
+
+### Using Drop-in Components
+
+With the exception of the “Create a Customer” component, all components require a Customer ID to be passed into a `customerId` element in order to initialize the component. This Customer ID should come from your back-end server when generating a client-token for an end-user/Customer and can optionally be stored in a session or cookie.
+
+```html
+<div class="customer">
+  <dwolla-customer-update
+    customerId="customerId"
+    firstName="Jack"
+    lastName="Jackson"
+    email="jjackson@dwolla.com"
+    terms="https://www.yourcompany.com/tos"
+    privacy="https://www.yourcompany.com/privacy"
+  >
+  </dwolla-customer-update>
+</div>
+```
+
+When loading the page containing the component, you should see the following:
+
+<Image
+  src={customerUpgradeDropIn}
+  alt="Upgrade a Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Handle component success and errors
+
+Upon submission of form components, a user facing message will be displayed to the end user on success or error. These user facing messages can be styled via custom div and span CSS classes corresponding to:
+
+- `dwolla-success` and `dwolla-success-message`
+- `dwolla-error` and `dwolla-error-message`
+
+On ‘success’ the creation of a new resource will result in a JSON response that’s returned with a `location` key:value pair including a link to the created resource. For example:
+
+`{ location: https://api.dwolla.com/documents/{id} }`
+
+Updates to an existing resource will result in the actual JSON response which corresponds to the action that occurred.

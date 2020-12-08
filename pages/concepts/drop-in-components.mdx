@@ -1,0 +1,69 @@
+---
+layout: concepts
+title: "Drop-in Components"
+description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement key functionality into an application.
+category: Features
+concept:
+  icon: "drop-in-components.svg"
+meta:
+  title: UI Components Library | Dwolla API Documentation
+  description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement  key functionality into an application
+---
+
+import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+
+# UI Components Library
+
+Dwolla’s UI components library allows developers to leverage isolated functions or build connected flows in their web applications, which expedites the integration process with the Dwolla Platform. Each component within this library includes HTML, CSS and JavaScript that developers can drop-in and customize to fit the look and feel of their application.
+
+The library comes with a collection of low-code components that solve for a variety of functions and flows including: create a customer, document upload, balance display, as well as a connected flow for accepting incoming payments from a user.
+
+Each component contains built-in features such as responsive design, custom styling, error handling and more. These components allow developers to ship more with fewer lines of code— while improving readability and maintainability of their application’s code.
+
+Dwolla also maintains React bindings for all supported components. As the library continues to grow, Dwolla will evaluate adding support for other frameworks and languages based on feedback from the community.
+
+## Workflow
+
+Use of Dwolla components requires both client-side and server-side interaction between your application and Dwolla. A unique “client token” is generated with limited permissions to be used in the components library to authenticate requests to Dwolla.
+
+A quick overview of the steps involved:
+
+1. On your application’s front-end, the Dwolla components library is instantiated and configured. One or many components are dropped into the web page where they will be rendered.
+2. A request is sent from your front-end to your back-end server to generate a client-token. Using a server-side SDK, you’ll specify the “action” needed for the component and the unique Customer ID that represents the end user performing the action.
+3. Your server sends the generated client token back to your front-end which is used by the components library to authenticate the client-side request to Dwolla.
+4. Your end user interacts with the Dwolla Component, either directly via submission of information in a form (e.g. upgrade customer), or indirectly by viewing data (e.g. balance display).
+
+## Drop-in Component Example
+
+Dwolla’s Drop-in UI Components are customizable to match the look and feel of your application down to the individual HTML element by applying styles via custom CSS classes. Preview the create an Unverified Customer component below, or refer to the [drop-ins examples repo](https://github.com/Dwolla/drop-ins-examples) to view a list of all drop-in component examples.
+
+<Image
+  src={customerUpgradeDropIn}
+  alt="Upgrade a Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+## Supported Components
+
+Components are namespaced with `dwolla-` followed by the component name. For example:
+
+`<dwolla-document-upload customerId="{{ customer.id }}"></dwolla-document-upload>`
+
+Each component requires a unique “client-token” and Customer ID for the end-user that is performing the action in your web application.
+
+Reference the table below for the list of available components:
+
+| Component                             | Component Name         | CSS Classes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Client Token Action          | Description                                                                                                                                                                                                                                                                                                                               |
+| ------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Create an Unverified Customer         | dwolla-customer-create | dwolla-customer-create, dwolla-input-container, dwolla-customer-input, dwolla-customer-firstName, dwolla-customer-lastName, dwolla-customer-email, dwolla-customer-tos, dwolla-customer-checkbox, dwolla-customer-text, dwolla-submit, dwolla-customer-submit, dwolla-success, dwolla-success-message, dwolla-error, dwolla-error-message                                                                                                                                                                         | customer.create              | An Unverified Customer is a customer type that requires a minimal amount of information in order to be created and send funds. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, visit our docs on concepts. |
+| Upgrade an Unverified Customer        | dwolla-customer-update | dwolla-customer-update, dwolla-input-container, dwolla-customer-input, dwolla-customer-firstName, dwolla-customer-lastName, dwolla-customer-email, dwolla-customer-address1, dwolla-customer-address2, dwolla-customer-city, dwolla-customer-state, dwolla-customer-postal, dwolla-customer-dob,dwolla-customer-ssn, dwolla-customer-tos, dwolla-customer-checkbox, dwolla-customer-text, dwolla-submit, dwolla-customer-submit, dwolla-success, dwolla-success-message, dwolla-error, dwolla-error-message       | customer.update              | Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, visit our docs on concepts.                                                                                                  |
+| Create a personal Verified Customer   | dwolla-personal-vcr    | dwolla-input-container, dwolla-customer-input, dwolla-customer-firstName, dwolla-customer-lastName, dwolla-customer-email, dwolla-customer-address1, dwolla-customer-address2, dwolla-customer-city, dwolla-customer-state, dwolla-customer-postal, dwolla-customer-dob, dwolla-customer-ssn, dwolla-customer-tos, dwolla-customer-checkbox, dwolla-customer-text, dwolla-submit, dwolla-vcr-submit, dwolla-success, dwolla-success-message, dwolla-error, dwolla-error-message, dwolla-info, dwolla-info-message | customer.create              | Personal Verified Customers can both send and receive money, as well as hold a balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, visit our docs on concepts.    |
+| Document upload for a Customer        | dwolla-document-upload | dwolla-document-type, dwolla-document-type-select, dwolla-document-type-select-label, dwolla-document-chooser, dwolla-document-chooser-label, dwolla-document-name, dwolla-document-name-span, dwolla-document-submit                                                                                                                                                                                                                                                                                             | customer.documents.create    | After creating a Personal Verified Customer or upgrading an Unverified Customer to a Personal Verified Customer, a government-issued document might be required to verify a customer’s identity. This prebuilt component can be used to upload said document.                                                                             |
+| Display a Verified Customer’s Balance | dwolla-balance-display | dwolla-balance, dwolla-balance-display, dwolla-error                                                                                                                                                                                                                                                                                                                                                                                                                                                              | customer.fundingsources.read | In order to use this component, you must first have a customer that has a balance. This can be a Personal Verified Customer or a Business Verified Customer                                                                                                                                                                               |
+
+## Next steps
+
+Leveraging Dwolla’s UI Components library is a great way to expedite your integration with the Dwolla Platform by limiting the amount of custom code that you would be required to write.
+
+Get started building with drop-in components by checking out the [getting started guide](/guides/drop-ins) and the [API Reference documentation](https://docs.dwolla.com/#drop-in-components).
