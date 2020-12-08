@@ -1,0 +1,94 @@
+---
+layout: guides
+title: "Step 1: Setup and configuration"
+guide:
+  step: 1
+meta:
+  title: Building With Drop-in Components | Dwolla API Documentation
+  description: Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.
+---
+
+# Step 1: Setup and configuration
+
+We’ll begin by setting up and configuring both the Dwolla Components library and installing a server-side SDK. This guide assumes that you have the basic structure of a web application set up and running, which includes a backend language (e.g. Node.js, Python, etc.) and a web front end (HTML, CSS, Javascript).
+
+To get up and running quickly, take a look at our [drop-ins examples repo](https://github.com/Dwolla/drop-ins-examples) which is a basic Node.js app that uses [Express](https://expressjs.com/).
+
+### Include dwolla-web.js
+
+Begin the client-side implementation by including dwolla-web.js in the ‘head’ of your HTML page. The Dwolla Components library containing all of the drop-in UI components are available directly from Dwolla’s content delivery network (CDN). As we continue to evolve the components library, it will soon be available to be installed via NPM.
+
+```html
+<head>
+  <script type="text/javascript" src="cdn.dwolla.com/2/dwolla.js"></script>
+</head>
+```
+
+### Install and configure server-side SDK
+
+Dwolla has a collection of SDKs available in a variety of server-side programming languages. You’ll want to be sure to install an SDK or utilize a third party HTTP client library before completing Step 2.
+
+#### Install
+
+```ruby
+gem install dwolla_v2
+```
+
+```python
+pip install dwollav2
+```
+
+```javascript
+npm install dwolla-v2
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+#### Configure
+
+```ruby
+require 'dwolla_v2'
+
+# Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
+app_key = "..."
+app_secret = "..."
+$dwolla = DwollaV2::Client.new(key: app_key, secret: app_secret) do |config|
+  config.environment = :sandbox # optional - defaults to production
+end
+```
+
+```python
+import dwollav2
+
+# Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
+app_key = '...'
+app_secret = '...'
+client = dwollav2.Client(key = app_key,
+                        secret = app_secret,
+                        environment = 'sandbox') # optional - defaults to production
+```
+
+```javascript
+const dwolla = require("dwolla-v2");
+
+// Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
+const appKey = "...";
+const appSecret = "...";
+const client = new dwolla.Client({
+  key: appKey,
+  secret: appSecret,
+  environment: "sandbox", // optional - defaults to production
+});
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+Now that we’ve completed our initial setup, we’ll move on to the next step of generating a “client-token” which will be used when configuring the drop-in components library.

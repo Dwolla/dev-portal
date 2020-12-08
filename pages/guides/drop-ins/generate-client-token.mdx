@@ -1,0 +1,113 @@
+---
+layout: guides
+title: "Step 2: Generate a client token"
+guide:
+  step: 2
+meta:
+  title: Building With Drop-in Components | Dwolla API Documentation
+  description: Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.
+---
+
+# Step 2: Generate a client token
+
+Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” to be passed in on configuration. A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
+
+Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.
+
+### Client token request and response
+
+The API request to /client-tokens requires an action and a “link” that identifies the Customer that is performing the action. Your application must obtain [application authorization](https://docs.dwolla.com/#application-authorization) in order to authenticate the API request to Dwolla. The “Upgrade to a Personal Verified Customer” component requires the `customer.update` action. For a full list of actions available, view our [API Reference docs](https://docs.dwolla.com/#create-a-client-token).
+
+```raw
+POST https://api-sandbox.dwolla.com/client-tokens
+Accept: application/vnd.dwolla.v1.hal+json Content-Type: application/json
+Authorization: Bearer {{token}}
+{
+"action": "customer.update”,
+  "_links": {
+    “customer”: {
+        “href”: “https://api-sandbox.dwolla.com/customers/{{customerId}}”
+    }
+  }
+}
+
+...
+
+{
+ "token": "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :customer => {
+      :href => "https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+    }
+  },
+  :action => "customer.update"
+}
+
+client_token = app_token.post "client-tokens", request_body
+client_token.token # => "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'customer': {
+      'href': 'https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4'
+    }
+  },
+  'action': 'customer.update'
+}
+
+client_token = app_token.post('client-tokens', request_body)
+client_token.body['token'] # => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
+```
+
+```javascript
+var requestBody = {
+  _links: {
+    customer: {
+      href:
+        "https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+    },
+  },
+  action: "customer.update",
+};
+
+appToken.post(`/client-tokens`).then((res) => res.body.token); // => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
+```
+
+### Send client token to front-end
+
+After obtaining a client-token, you will pass this token to your front-end. The example shown below demonstrates this process using Express.
+
+```javascript
+app.get("/update-customer", function (req, res) {
+  generateAccessToken().then((aRes) => {
+    generateClientToken(aRes.access_token, "customer.update", "").then(
+      (cRes) => {
+        const customer = {
+          id: "",
+          firstName: "",
+          lastName: "",
+          email: "",
+        };
+        res
+          .status(200)
+          .render(`update-customer`, { customer, token: cRes.token });
+      }
+    );
+  });
+});
+```
