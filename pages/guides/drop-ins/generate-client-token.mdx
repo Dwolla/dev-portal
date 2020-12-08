@@ -75,6 +75,7 @@ client_token.body['token'] # => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5
 ```
 
 ```javascript
+// Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   _links: {
     customer: {
@@ -85,7 +86,7 @@ var requestBody = {
   action: "customer.update",
 };
 
-appToken.post(`/client-tokens`).then((res) => res.body.token); // => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
+appToken.post("/client-tokens", requestBody).then((res) => res.body.token); // => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
 ```
 
 ### Send client token to front-end
@@ -93,21 +94,11 @@ appToken.post(`/client-tokens`).then((res) => res.body.token); // => '4adF858jPe
 After obtaining a client-token, you will pass this token to your front-end. The example shown below demonstrates this process using Express.
 
 ```javascript
-app.get("/update-customer", function (req, res) {
-  generateAccessToken().then((aRes) => {
-    generateClientToken(aRes.access_token, "customer.update", "").then(
-      (cRes) => {
-        const customer = {
-          id: "",
-          firstName: "",
-          lastName: "",
-          email: "",
-        };
-        res
-          .status(200)
-          .render(`update-customer`, { customer, token: cRes.token });
-      }
-    );
-  });
+// see examples above
+const myClientToken = "...";
+
+// POST /dwolla-client-token
+app.post("/dwolla-client-token", (req, res) => {
+  res.json({ token: myClientToken });
 });
 ```
