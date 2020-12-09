@@ -523,12 +523,12 @@ appToken
   .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
 ```
 
-## Remove and update a Beneficial Owner
+## Update Beneficial Owner Information
 
-If an individual beneficial owner needs to update their information after being verified, there are two ways of accomplishing it:
 
-- remove the individual beneficial owner and re-add with updated information
-- contact Dwolla to place the beneficial owner into incomplete status again so that the owner's information can be updated
+Information can only be edited or updated when the Beneficial Owner has a status of `incomplete`.
+
+If an individual benficial owner with a status of `verified` needs to update their information, that beneficial owner will first need to be removed and re-added.
 
 #### Request and Response
 
