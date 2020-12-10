@@ -1,11 +1,11 @@
 import renderer from "react-test-renderer";
 import NumberedPagination from "../NumberedPagination";
 
-test("Pagination next", () => {
+test("NumberedPagination", () => {
   const tree = renderer
     .create(
       <NumberedPagination
-        totalPages="9"
+        totalPages={9}
         newerLabel="Newer"
         olderLabel="Older"
       />
