@@ -843,7 +843,8 @@ When a bank transfer fails for an Account or Customer, Dwolla returns a `failure
 
 <AlertBar variation="info">
   If a transfer fails to/from a bank account then the bank will automatically be
-  removed from the Dwolla system for all ACH return codes except an R01.
+  removed from the Dwolla system for all ACH return codes except{" "}
+  <code>R01</code>, <code>R09</code> and <code>R20</code>.
 </AlertBar>
 
 ### HTTP Request
