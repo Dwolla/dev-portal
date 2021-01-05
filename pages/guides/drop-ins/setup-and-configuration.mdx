@@ -46,9 +46,8 @@ npm install dwolla-v2
 ```
 
 ```php
-/**
- * No example for this language yet.
- **/
+composer require dwolla/dwollaswagger
+composer install
 ```
 
 #### Configure
@@ -89,9 +88,18 @@ const client = new dwolla.Client({
 ```
 
 ```php
-/**
- * No example for this language yet.
- **/
+<?php
+require('../path/to/vendor/autoload.php');
+
+DwollaSwagger\Configuration::$username = 'API_KEY';
+DwollaSwagger\Configuration::$password = 'API_SECRET';
+
+# For Sandbox
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com");
+
+# For production
+$apiClient = new DwollaSwagger\ApiClient("https://api.dwolla.com");
+?>
 ```
 
 Now that we’ve completed our initial setup, we’ll move on to the next step of generating a “client-token” which will be used when configuring the drop-in components library.
