@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`External CTA 1`] = `
+<a
+  className="css-1npw29w-StyledLink e1uw380j0"
+  href="https://discuss.dwolla.com/"
+  target="_blank"
+>
+  <div
+    className="css-6lgn94-IconWrapper e1uw380j1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-1m6i3g5-TextContainer e1uw380j2"
+  >
+    <div
+      className="css-6x8wkn-StyledTitle e1uw380j3"
+    >
+      Developer Support
+    </div>
+    <div
+      className="css-hn4nzi-StyledDescription e1uw380j4"
+    >
+      Interact with the developer community and Dwolla developer support to find answers to your technical questions.
+    </div>
+  </div>
+  <div
+    className="css-howqhj-StyledNewTab e1uw380j5"
+  >
+    <svg
+      width={13}
+    />
+  </div>
+</a>
+`;
+
+exports[`No title 1`] = `
+<a
+  className="css-1npw29w-StyledLink e1uw380j0"
+  href="https://discuss.dwolla.com/"
+  target="_blank"
+>
+  <div
+    className="css-6lgn94-IconWrapper e1uw380j1"
+  >
+    <img
+      alt=""
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-1m6i3g5-TextContainer e1uw380j2"
+  >
+    <div
+      className="css-hn4nzi-StyledDescription e1uw380j4"
+    >
+      Interact with the developer community and Dwolla developer support to find answers to your technical questions.
+    </div>
+  </div>
+  <div
+    className="css-howqhj-StyledNewTab e1uw380j5"
+  >
+    <svg
+      width={13}
+    />
+  </div>
+</a>
+`;

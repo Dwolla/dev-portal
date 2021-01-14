@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Inline CTA 1`] = `
+<a
+  className="css-kunpmx-StyledLink exww74a0"
+  href="https://developers.dwolla.com/guides/personal-verified-customer"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+>
+  <div
+    className="css-l9xmrb-Container exww74a1"
+  >
+    <img
+      alt=""
+      className="css-1lfxg9z-StyledIcon exww74a2"
+      src="test-image-stub"
+    />
+    <div
+      className="css-cj8isa-TextStyle exww74a3"
+    >
+      For more information on creating a Verified Personal Customer, reference our step by step guide.
+    </div>
+    <div
+      className="css-1qk15us-ArrowStyle exww74a4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+  </div>
+</a>
+`;

@@ -8,7 +8,7 @@ module.exports = (phase) =>
   withYaml(
     withImages(
       withMdxEnhanced({
-        layoutPath: "layouts",
+        layoutPath: "code/components/layouts",
         defaultLayout: true,
         // fileExtensions: ['mdx'],
         // remarkPlugins: [],

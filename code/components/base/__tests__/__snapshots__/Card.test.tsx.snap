@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`default 1`] = `
+<div
+  className=" css-1mrozmg-CardStyle e1f6wozk0"
+>
+  <img
+    alt=""
+    className=" css-142sfdf-StyledIcon e1f6wozk2"
+    src="test-image-stub"
+  />
+  <div
+    className=" css-bgc4kb-TopicStyle e1f6wozk5"
+  >
+    topic
+  </div>
+  <div
+    className=" css-mk6kj1-DescriptionStyle e1f6wozk6"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Badge 1`] = `
+<div
+  className=" css-1mrozmg-CardStyle e1f6wozk0"
+>
+  <img
+    alt=""
+    className=" css-142sfdf-StyledIcon e1f6wozk2"
+    src="test-image-stub"
+  />
+  <div
+    className="css-vz2qld-BadgeStyle e1f6wozk3"
+  >
+    <div
+      className="css-1dspmwm-StyledBadge eezde580"
+    >
+      BADGETEXT
+    </div>
+  </div>
+  <div
+    className=" css-bgc4kb-TopicStyle e1f6wozk5"
+  >
+    topic
+  </div>
+  <div
+    className=" css-mk6kj1-DescriptionStyle e1f6wozk6"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align 1`] = `
+<div
+  className="center css-1mrozmg-CardStyle e1f6wozk0"
+>
+  <img
+    alt=""
+    className="center css-142sfdf-StyledIcon e1f6wozk2"
+    src="test-image-stub"
+  />
+  <div
+    className="center css-bgc4kb-TopicStyle e1f6wozk5"
+  >
+    topic
+  </div>
+  <div
+    className="center css-mk6kj1-DescriptionStyle e1f6wozk6"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align and Badge 1`] = `
+<div
+  className="center css-1mrozmg-CardStyle e1f6wozk0"
+>
+  <img
+    alt=""
+    className="center css-142sfdf-StyledIcon e1f6wozk2"
+    src="test-image-stub"
+  />
+  <div
+    className="css-vz2qld-BadgeStyle e1f6wozk3"
+  >
+    <div
+      className="css-1dspmwm-StyledBadge eezde580"
+    >
+      BADGETEXT
+    </div>
+  </div>
+  <div
+    className="center css-bgc4kb-TopicStyle e1f6wozk5"
+  >
+    topic
+  </div>
+  <div
+    className="center css-mk6kj1-DescriptionStyle e1f6wozk6"
+  >
+    Description
+  </div>
+</div>
+`;
+
+exports[`with Center Align and Link 1`] = `
+<a
+  className="css-kunpmx-StyledLink e1f6wozk1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div
+    className="center css-1mrozmg-CardStyle e1f6wozk0"
+  >
+    <img
+      alt=""
+      className="center css-142sfdf-StyledIcon e1f6wozk2"
+      src="test-image-stub"
+    />
+    <div
+      className="css-17etk8v-LinkIconStyle e1f6wozk4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className="center css-bgc4kb-TopicStyle e1f6wozk5"
+    >
+      topic
+    </div>
+    <div
+      className="center css-mk6kj1-DescriptionStyle e1f6wozk6"
+    >
+      Description
+    </div>
+  </div>
+</a>
+`;
+
+exports[`with Center Align, Link and Badge 1`] = `
+<a
+  className="css-kunpmx-StyledLink e1f6wozk1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div
+    className="center css-1mrozmg-CardStyle e1f6wozk0"
+  >
+    <img
+      alt=""
+      className="center css-142sfdf-StyledIcon e1f6wozk2"
+      src="test-image-stub"
+    />
+    <div
+      className="css-vz2qld-BadgeStyle e1f6wozk3"
+    >
+      <div
+        className="css-1dspmwm-StyledBadge eezde580"
+      >
+        BADGETEXT
+      </div>
+    </div>
+    <div
+      className="css-17etk8v-LinkIconStyle e1f6wozk4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className="center css-bgc4kb-TopicStyle e1f6wozk5"
+    >
+      topic
+    </div>
+    <div
+      className="center css-mk6kj1-DescriptionStyle e1f6wozk6"
+    >
+      Description
+    </div>
+  </div>
+</a>
+`;
+
+exports[`with Link 1`] = `
+<a
+  className="css-kunpmx-StyledLink e1f6wozk1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div
+    className=" css-1mrozmg-CardStyle e1f6wozk0"
+  >
+    <img
+      alt=""
+      className=" css-142sfdf-StyledIcon e1f6wozk2"
+      src="test-image-stub"
+    />
+    <div
+      className="css-17etk8v-LinkIconStyle e1f6wozk4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className=" css-bgc4kb-TopicStyle e1f6wozk5"
+    >
+      topic
+    </div>
+    <div
+      className=" css-mk6kj1-DescriptionStyle e1f6wozk6"
+    >
+      Description
+    </div>
+  </div>
+</a>
+`;
+
+exports[`with Link and Badge 1`] = `
+<a
+  className="css-kunpmx-StyledLink e1f6wozk1"
+  href="https://www.dwolla.com"
+  onClick={[Function]}
+  onMouseEnter={[Function]}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <div
+    className=" css-1mrozmg-CardStyle e1f6wozk0"
+  >
+    <img
+      alt=""
+      className=" css-142sfdf-StyledIcon e1f6wozk2"
+      src="test-image-stub"
+    />
+    <div
+      className="css-vz2qld-BadgeStyle e1f6wozk3"
+    >
+      <div
+        className="css-1dspmwm-StyledBadge eezde580"
+      >
+        BADGETEXT
+      </div>
+    </div>
+    <div
+      className="css-17etk8v-LinkIconStyle e1f6wozk4"
+    >
+      <svg
+        width={13}
+      />
+    </div>
+    <div
+      className=" css-bgc4kb-TopicStyle e1f6wozk5"
+    >
+      topic
+    </div>
+    <div
+      className=" css-mk6kj1-DescriptionStyle e1f6wozk6"
+    >
+      Description
+    </div>
+  </div>
+</a>
+`;

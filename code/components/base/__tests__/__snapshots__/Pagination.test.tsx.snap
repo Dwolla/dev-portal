@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination next 1`] = `
+<div
+  className="next css-88mn7o-Container e1a78r3h0"
+>
+  <a
+    className="css-83egvd-StyledAnchor e1a78r3h1"
+    href="#"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="css-1s13nga-Card e1a78r3h2"
+    >
+      <div
+        className="css-17qbf5t-ArrowDiv e1a78r3h3"
+      >
+        NEXT
+        <img
+          alt="Next"
+          className="css-a41acm-ArrowIcon e1a78r3h4"
+          src="test-image-stub"
+        />
+      </div>
+      <span>
+        Step 2: Add a funding source
+      </span>
+    </div>
+  </a>
+</div>
+`;
+
+exports[`Pagination previous 1`] = `
+<div
+  className="previous css-88mn7o-Container e1a78r3h0"
+>
+  <a
+    className="css-83egvd-StyledAnchor e1a78r3h1"
+    href="#"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+  >
+    <div
+      className="css-1s13nga-Card e1a78r3h2"
+    >
+      <div
+        className="css-17qbf5t-ArrowDiv e1a78r3h3"
+      >
+        <img
+          alt="Previous"
+          className="css-a41acm-ArrowIcon e1a78r3h4"
+          src="test-image-stub"
+        />
+        PREVIOUS
+      </div>
+      <span>
+        Step 1: Creating Business Verified Customers
+      </span>
+    </div>
+  </a>
+</div>
+`;

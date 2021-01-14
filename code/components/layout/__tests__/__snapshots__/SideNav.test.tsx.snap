@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideNav 1`] = `
+<div
+  className="css-88n5j3-Container e1k7aa9p0"
+>
+  <div
+    className="css-11sjyxp-Slide e1k7aa9p1"
+  >
+    <div
+      className="left css-1jc4k7f-SlidePane e1k7aa9p2"
+      id="body-scroll-lock-side-nav"
+    >
+      <div
+        className="css-kgvw59-SectionWrap e1k7aa9p3"
+      >
+        <a
+          className="active css-kyteuo-SectionLink-SectionLink"
+          href="/"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="css-thlorg-SectionIconWrap e1k7aa9p5"
+          >
+            <svg
+              className="section-icon"
+              height={17}
+              width={17}
+            />
+          </div>
+          Home
+        </a>
+        <a
+          className=" css-kyteuo-SectionLink-SectionLink"
+          href="/guides"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="css-thlorg-SectionIconWrap e1k7aa9p5"
+          >
+            <svg
+              className="section-icon"
+              height={17}
+              width={17}
+            />
+          </div>
+          Guides
+          <div
+            className="css-y8ea5i-SectionCaretWrap e1k7aa9p6"
+          >
+            <svg
+              height={10}
+              width={5}
+            />
+          </div>
+        </a>
+        <a
+          className=" css-kyteuo-SectionLink-SectionLink"
+          href="/concepts"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="css-thlorg-SectionIconWrap e1k7aa9p5"
+          >
+            <svg
+              className="section-icon"
+              height={17}
+              width={17}
+            />
+          </div>
+          Concepts
+          <div
+            className="css-y8ea5i-SectionCaretWrap e1k7aa9p6"
+          >
+            <svg
+              height={10}
+              width={5}
+            />
+          </div>
+        </a>
+        <a
+          className=" css-kyteuo-SectionLink-SectionLink"
+          href="/sdks-tools"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="css-thlorg-SectionIconWrap e1k7aa9p5"
+          >
+            <svg
+              className="section-icon"
+              height={17}
+              width={17}
+            />
+          </div>
+          SDKs & Tools
+        </a>
+      </div>
+      <div
+        className="css-nasyo1-MobileWrap e1k7aa9p12"
+      >
+        <a
+          className=" css-1twa2js-MobileLink-MobileLink"
+          href="https://docs.dwolla.com"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+          target="_blank"
+        >
+          <span
+            className="text"
+          >
+            API Docs
+          </span>
+          <img
+            alt="Open in new tab"
+            className="icon"
+            src="test-image-stub"
+          />
+        </a>
+        <a
+          className=" css-1twa2js-MobileLink-MobileLink"
+          href="/changelog"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <span
+            className="text"
+          >
+            Changelog
+          </span>
+        </a>
+        <div
+          className="css-vogkcz-MobileButtonWrap e1k7aa9p13"
+        >
+          <a
+            className="primary block css-n1runl-StyledLink-buttonStyles-buttonStyles ehiyix01"
+            href="https://accounts-sandbox.dwolla.com/login"
+            target="_blank"
+          >
+            Get API Keys
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

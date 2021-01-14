@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterCTA 1`] = `
+<div
+  className="css-1a9nbxj-Container e1lu2i8n0"
+>
+  <div
+    className="css-16d8gvv-StyledContent e1lu2i8n1"
+  >
+    <h2
+      className="dark css-s1wtpx-global-global-h2"
+    >
+      Test in the Sandbox for free today.
+    </h2>
+    <p
+      className="dark css-s62xwb-StyledSubHeader-baseTextStyles-baseTextStyles e1lusjoi1"
+    >
+      Use sandbox environment to test API requests.
+    </p>
+  </div>
+  <a
+    className="primary large css-n1runl-StyledLink-buttonStyles-buttonStyles ehiyix01"
+    href="https://accounts-sandbox.dwolla.com/sign-up"
+    target="_blank"
+  >
+    Get API Keys
+  </a>
+</div>
+`;

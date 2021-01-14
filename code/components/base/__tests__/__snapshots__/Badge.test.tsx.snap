@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge 1`] = `
+<div
+  className="css-1dspmwm-StyledBadge eezde580"
+>
+  BADGETEXT
+</div>
+`;
+
+exports[`with variant 1`] = `
+<div
+  className="orange css-1dspmwm-StyledBadge eezde580"
+>
+  3
+</div>
+`;

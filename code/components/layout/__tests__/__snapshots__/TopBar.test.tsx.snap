@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar 1`] = `
+<div
+  className="css-16rtae5-Container e1neub5s0"
+>
+  <div
+    className="css-hafdn5-StyledLogoWrap e1neub5s1"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt=""
+        className="css-g6dikn-StyledLogo e1neub5s2"
+        src="test-image-stub"
+      />
+    </a>
+  </div>
+  <div
+    className="css-ffwcst-LinksWrapper e1neub5s3"
+  >
+    <a
+      className=" css-skf8jj-StyledLink e1neub5s6"
+      href="https://docs.dwolla.com"
+      target="_blank"
+    >
+      <span
+        className="text"
+      >
+        API Docs
+      </span>
+      <img
+        alt="Open in new tab"
+        className="icon"
+        src="test-image-stub"
+      />
+    </a>
+    <a
+      className="active css-skf8jj-StyledLink e1neub5s6"
+      href="/changelog"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <span
+        className="text"
+      >
+        Changelog
+      </span>
+    </a>
+    <a
+      className="active css-skf8jj-StyledLink e1neub5s6"
+      href="/manually-active"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <span
+        className="text"
+      >
+        Manually Active
+      </span>
+    </a>
+  </div>
+  <div
+    className="css-zhv85h-SelectWrapper e1neub5s5"
+  >
+    <div
+      className=" css-k377xg-container"
+      onKeyDown={[Function]}
+    >
+      <div
+        className=" css-g974v8-control"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className=" css-15ikjri-ValueContainer"
+        >
+          <div
+            className=" css-1me8bqy-singleValue"
+          >
+            
+          </div>
+          <input
+            aria-autocomplete="list"
+            className="css-62g3xt-dummyInput"
+            disabled={false}
+            id="react-select-2-input"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            readOnly={true}
+            tabIndex="0"
+            value=""
+          />
+        </div>
+        <div
+          className=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <span
+            className=" css-43ykx9-indicatorSeparator"
+          />
+          <div
+            aria-hidden="true"
+            className=" css-unjupu-indicatorContainer"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <img
+              alt=""
+              className=" css-vfym8x-StyledDefaultDropdownIcon ewzbsaq0"
+              src="test-image-stub"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-1as8qu1-ButtonWrapper e1neub5s4"
+  >
+    <a
+      className="primary standard css-n1runl-StyledLink-buttonStyles-buttonStyles ehiyix01"
+      href="https://accounts-sandbox.dwolla.com/login"
+      target="_blank"
+    >
+      Get API Keys
+    </a>
+  </div>
+</div>
+`;

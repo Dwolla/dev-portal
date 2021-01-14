@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Next/Back Pagination 1`] = `
+<div
+  className="css-3vzho3-StyledWrapper e9dmwam0"
+>
+  <div
+    className="previous css-88mn7o-Container e1a78r3h0"
+  >
+    <a
+      className="css-83egvd-StyledAnchor e1a78r3h1"
+      href="#prev"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="css-1s13nga-Card e1a78r3h2"
+      >
+        <div
+          className="css-17qbf5t-ArrowDiv e1a78r3h3"
+        >
+          <img
+            alt="Previous"
+            className="css-a41acm-ArrowIcon e1a78r3h4"
+            src="test-image-stub"
+          />
+          Previous
+        </div>
+        <span>
+          Previous Title
+        </span>
+      </div>
+    </a>
+  </div>
+  <div />
+  <div
+    className="next css-88mn7o-Container e1a78r3h0"
+  >
+    <a
+      className="css-83egvd-StyledAnchor e1a78r3h1"
+      href="#next"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <div
+        className="css-1s13nga-Card e1a78r3h2"
+      >
+        <div
+          className="css-17qbf5t-ArrowDiv e1a78r3h3"
+        >
+          Next
+          <img
+            alt="Next"
+            className="css-a41acm-ArrowIcon e1a78r3h4"
+            src="test-image-stub"
+          />
+        </div>
+        <span>
+          Next Title
+        </span>
+      </div>
+    </a>
+  </div>
+</div>
+`;

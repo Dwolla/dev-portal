@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer 1`] = `
+<div
+  className="css-157ism8-Container e1hjylxe0"
+>
+  <div
+    className="css-1a8teoz-LogoContainer e1hjylxe1"
+  >
+    <a
+      href="/"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+    >
+      <img
+        alt=""
+        className="css-1ty6c2n-Logo e1hjylxe2"
+        src="test-image-stub"
+      />
+    </a>
+    <div
+      className="css-1neb9ej-Copyright e1hjylxe3"
+    >
+      2021
+       All Rights Reserved
+    </div>
+  </div>
+  <div
+    className="css-1g5yeab-LinkContainer e1hjylxe4"
+  >
+    <div
+      className="css-n2kuza-LinkGroup e1hjylxe5"
+    >
+      <h3
+        className="css-ve8wjm-LinkGroupHeading e1hjylxe6"
+      >
+        Dwolla
+      </h3>
+      <ul
+        className="css-fqkv27-LinkGroupList e1hjylxe7"
+      >
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/about/"
+          >
+            About
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/updates/"
+          >
+            Blog
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/pricing/"
+          >
+            Pricing
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/contact/"
+          >
+            Contact Sales
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/legal/tos/"
+          >
+            Terms of Service
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/legal/privacy/"
+          >
+            Privacy Policy
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="css-n2kuza-LinkGroup e1hjylxe5"
+    >
+      <h3
+        className="css-ve8wjm-LinkGroupHeading e1hjylxe6"
+      >
+        Product
+      </h3>
+      <ul
+        className="css-fqkv27-LinkGroupList e1hjylxe7"
+      >
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/resources/"
+          >
+            Resources
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/features/"
+          >
+            Features
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/case-studies/"
+          >
+            Case Studies
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://www.dwolla.com/integrations/"
+          >
+            Integrations
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="css-n2kuza-LinkGroup e1hjylxe5"
+    >
+      <h3
+        className="css-ve8wjm-LinkGroupHeading e1hjylxe6"
+      >
+        Developers
+      </h3>
+      <ul
+        className="css-fqkv27-LinkGroupList e1hjylxe7"
+      >
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://docs.dwolla.com/"
+          >
+            API Reference
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://discuss.dwolla.com/"
+          >
+            Support Forum
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="#sdks-and-tools"
+          >
+            SDKs and Tools
+          </a>
+        </li>
+        <li
+          className="css-13i1lc7-LinkGroupItem e1hjylxe8"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink e1hjylxe9"
+            href="https://github.com/Dwolla/"
+          >
+            Github Repos
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="css-1kena77-LegalContainer e1hjylxe10"
+  >
+    <strong
+      className="css-31ngrj-LegalTitle e1hjylxe11"
+    >
+      Financial institutions play an important role in our network.
+    </strong>
+    <p
+      className="css-1rlmt3x-LegalDesc e1hjylxe12"
+    >
+      Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.
+    </p>
+    <p
+      className="css-1rlmt3x-LegalDesc e1hjylxe12"
+    >
+      <span>
+        Sponsorship and Settlement of Push-to-Debit payment services provided by
+         
+        <span
+          style={
+            Object {
+              "whiteSpace": "nowrap",
+            }
+          }
+        >
+          MetaBank®, N.A.
+        </span>
+        <br />
+         Push-to-Debit payments are typically available within 30 minutes.
+      </span>
+    </p>
+  </div>
+</div>
+`;

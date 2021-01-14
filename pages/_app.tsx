@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import App, { createUrl } from "next/app";
 import useSWR from "swr";
 import TagManager from "react-gtm-module";
-import Layout from "../components/layout/Layout";
-import Pages from "../modules/pages";
-import { AnchorsProvider } from "../components/util/Anchors";
-import { LanguageContext } from "../components/util/Contexts";
-import fetcher from "../modules/fetcher";
+import Layout from "../code/components/layout/Layout";
+import Pages from "../code/modules/pages";
+import { AnchorsProvider } from "../code/components/util/Anchors";
+import { LanguageContext } from "../code/components/util/Contexts";
+import fetcher from "../code/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
-import useTrackPageViews from "../hooks/useTrackPageViews";
+import useTrackPageViews from "../code/hooks/useTrackPageViews";
 
 const GoogleTagManager = () => {
   useEffect(() => {
