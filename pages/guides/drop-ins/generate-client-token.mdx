@@ -8,6 +8,8 @@ meta:
   description: Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.
 ---
 
+import apiReferenceIcon from "../../../assets/images/content-images/content-icons/api-reference-icon.svg";
+
 # Step 2: Generate a client token
 
 Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” to be passed in on configuration. A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
@@ -16,7 +18,13 @@ Client-tokens are single-use tokens that are valid for up to 1 hour after being 
 
 ### Client token request and response
 
-The API request to /client-tokens requires an action and a “link” that identifies the Customer that is performing the action. Your application must obtain [application authorization](https://docs.dwolla.com/#application-authorization) in order to authenticate the API request to Dwolla. The “Upgrade to a Personal Verified Customer” component requires the `customer.update` action. For a full list of actions available, view our [API Reference docs](https://docs.dwolla.com/#create-a-client-token).
+The API request to /client-tokens requires an action and a “link” that identifies the Customer that is performing the action. Your application must obtain [application authorization](https://docs.dwolla.com/#application-authorization) in order to authenticate the API request to Dwolla. The “Upgrade to a Personal Verified Customer” component requires the `customer.update` action.
+
+<ExternalCTA
+  icon={apiReferenceIcon}
+  href="https://docs.dwolla.com/#create-a-client-token"
+  description="For a full list of actions available, view the Drop-in components section in the API Reference docs."
+/>
 
 ```raw
 POST https://api-sandbox.dwolla.com/client-tokens
