@@ -10,6 +10,7 @@ meta:
   description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement  key functionality into an application
 ---
 
+import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
@@ -132,6 +133,50 @@ dwolla-error-message
 <Image
   src={customerUpgradeDropIn}
   alt="Upgrade an Unverified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Create a Personal Verified Customer
+
+The `dwolla-personal-vcr` component creates Personal Verified Customers on initial onboard. Personal Verified Customers can both send and receive money, as well as hold a balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, visit our docs on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+
+##### CSS Classes for Create a Personal Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-address1,
+dwolla-customer-address2,
+dwolla-customer-city,
+dwolla-customer-state,
+dwolla-customer-postal,
+dwolla-customer-dob,
+dwolla-customer-ssn,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-vcr-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message,
+dwolla-info,
+dwolla-info-message
+```
+
+##### Example Create a Personal Verified Customer UI
+
+<Image
+  src={createPVCDropIn}
+  alt="Create a Personal Verified Customer Drop-in Component"
   width="75%"
   height="75%"
 />
