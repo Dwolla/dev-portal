@@ -10,6 +10,7 @@ meta:
   description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement  key functionality into an application
 ---
 
+import balanceDisplayDropIn from "../../assets/images/content-images/drop-in-balance-display.png";
 import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
 import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
@@ -207,6 +208,30 @@ dwolla-document-submit
 <Image
   src={documentUploadDropIn}
   alt="Document Upload Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Display a Verified Customer's Balance
+
+The `dwolla-balance-display` component can be used for any customer who already has a balance that needs to be displayed. This can be a Personal Verified Customer or a Business Verified Customer.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.fundingsources.read`
+
+##### CSS Classes for Create a Personal Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-balance,
+dwolla-balance-display,
+dwolla-error
+```
+
+##### Example Balance Display UI
+
+<Image
+  src={balanceDisplayDropIn}
+  alt="Blance Display Drop-in Component"
   width="75%"
   height="75%"
 />
