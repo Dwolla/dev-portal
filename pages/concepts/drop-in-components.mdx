@@ -10,6 +10,7 @@ meta:
   description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement  key functionality into an application
 ---
 
+import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
 import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
@@ -177,6 +178,35 @@ dwolla-info-message
 <Image
   src={createPVCDropIn}
   alt="Create a Personal Verified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Document upload
+
+The `dwolla-document-upload` component can be used after creating a Personal Verified Customer or upgrading an Unverified Customer to a Personal Verified Customer, in order to uploaad a government-issued document might be required to verify a customer’s identity.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.documents.create`
+
+##### CSS Classes for Create a Personal Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-document-type,
+dwolla-document-type-select,
+dwolla-document-type-select-label,
+dwolla-document-chooser,
+dwolla-document-chooser-label,
+dwolla-document-name,
+dwolla-document-name-span,
+dwolla-document-submit
+```
+
+##### Example Document Upload UI
+
+<Image
+  src={documentUploadDropIn}
+  alt="Document Upload Drop-in Component"
   width="75%"
   height="75%"
 />
