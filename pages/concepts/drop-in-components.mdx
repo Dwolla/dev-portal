@@ -93,6 +93,49 @@ dwolla-error-message
   height="75%"
 />
 
+### Upgrade an Unverified Customer
+
+The `dwolla-customer-update` component is used to upgrade an Unverified Customer into a Personal Verified Customer. Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, visit our docs on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.update`
+
+##### CSS Classes for Upgrade an Unverified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-customer-update,
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-address1,
+dwolla-customer-address2,
+dwolla-customer-city,
+dwolla-customer-state,
+dwolla-customer-postal,
+dwolla-customer-dob,
+dwolla-customer-ssn,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-customer-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message
+```
+
+##### Example Upgrade an Unverified Customer UI
+
+<Image
+  src={customerUpgradeDropIn}
+  alt="Upgrade an Unverified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
 ## Next steps
 
 Leveraging Dwolla’s UI Components library is a great way to expedite your integration with the Dwolla Platform by limiting the amount of custom code that you would be required to write.
