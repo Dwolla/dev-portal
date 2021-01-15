@@ -269,13 +269,13 @@ In order to create a transfer using the Dwolla Balance, you will first need the 
 
 There are several reasons you may want to pre-load a Dwolla Balance. Commonly, a pre-loaded Dwolla Balance is used to speed up payouts to Customers. According to the [transfer processing timing](https://developers.dwolla.com/concepts/transfer-processing-times#dwolla-network-to-bank-ach-payment-out) at Dwolla, standard transfers from a bank account into the Dwolla network takes 3-4 business days to settle, and transfers out of the Dwolla Network to a bank account take 1-2 business days to settle. If your use case involves creating payouts to your Customers and you do not want them to wait for 4-6 business days from the time of transfer creation to receive the funds, you can add funds into your Dwolla Balance in advance so that payouts to Customers will only take 1-2 business days from the time of transfer creation.
 
-When [creating a transfer](https://docs.dwolla.com/#transfers) to add funds into a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `destination` URL. The `source` can be a bank account funding-source or even another Balance funding-source which you want to send funds to.
+When [creating a transfer](https://docs.dwolla.com/#transfers) to add funds into a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `destination` URL. The `source` can be a bank account funding-source or even another Balance funding-source from which you want to debit the funds.
 
 ### Transfer funds out of the Dwolla Balance
 
 You can also create transfers from a Dwolla Balance out to another Dwolla Balance or an attached bank account funding-source. In the example above, this may be part of your application design to push funds out to Customers from your Dwolla Balance. It’s also possible that funds will unintentionally accumulate in your or a Verified Customer’s Balance if funds transferred through the Dwolla Network do not succeed in reaching the final destination source due to technical errors in your application or ACH Returns or Reversals (see the [transfer failure example](https://developers.dwolla.com/concepts/balance-funding-source#transfer-failure-example) below for more details). You or your Customer may want to withdraw those accumulated funds into a bank account or send them to another Dwolla Balance.
 
-When [creating a transfer](https://docs.dwolla.com/#transfers) to send funds out from a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `source` URL. The `destination` can be a bank account funding-source or even another Dwolla Balance funding-source from which you want to debit the funds.
+When [creating a transfer](https://docs.dwolla.com/#transfers) to send funds out from a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `source` URL. The `destination` can be a bank account funding-source or even another Dwolla Balance funding-source to which you want to sends funds.
 
 ## Retrieve the balance Amount
 
