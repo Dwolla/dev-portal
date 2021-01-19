@@ -10,7 +10,13 @@ meta:
   description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement  key functionality into an application
 ---
 
+import balanceDisplayDropIn from "../../assets/images/content-images/drop-in-balance-display.png";
+import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
+import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
+import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
+import InlineCTA from "../../components/base/InlineCTA";
 
 # UI Components Library
 
@@ -46,21 +52,189 @@ Dwolla’s Drop-in UI Components are customizable to match the look and feel of 
 
 ## Supported Components
 
-Components are namespaced with `dwolla-` followed by the component name. For example:
+Dwolla's UI components library contains a variety of supported components that represent isolated functions or connected flows. Each component requires a unique “client-token” and Customer ID for the end-user that is performing the action in your web application. This section outlines the complete list of supported components which includes: the component name, css classes for customization, and the required client-token action.
 
-`<dwolla-document-upload customerId="{{ customer.id }}"></dwolla-document-upload>`
+<InlineCTA
+  icon={guideIcon}
+  text="For more information on integrating drop-in components, reference our Guide which walks through how to use drop-in components in full detail."
+  href="/guides/drop-ins/"
+/>
 
-Each component requires a unique “client-token” and Customer ID for the end-user that is performing the action in your web application.
+### Create an Unverified Customer
 
-Reference the table below for the list of available components:
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created and send funds. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
-| Component                             | Component Name         | CSS Classes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Client Token Action          | Description                                                                                                                                                                                                                                                                                                                               |
-| ------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Create an Unverified Customer         | dwolla-customer-create | dwolla-customer-create, dwolla-input-container, dwolla-customer-input, dwolla-customer-firstName, dwolla-customer-lastName, dwolla-customer-email, dwolla-customer-tos, dwolla-customer-checkbox, dwolla-customer-text, dwolla-submit, dwolla-customer-submit, dwolla-success, dwolla-success-message, dwolla-error, dwolla-error-message                                                                                                                                                                         | customer.create              | An Unverified Customer is a customer type that requires a minimal amount of information in order to be created and send funds. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, visit our docs on concepts. |
-| Upgrade an Unverified Customer        | dwolla-customer-update | dwolla-customer-update, dwolla-input-container, dwolla-customer-input, dwolla-customer-firstName, dwolla-customer-lastName, dwolla-customer-email, dwolla-customer-address1, dwolla-customer-address2, dwolla-customer-city, dwolla-customer-state, dwolla-customer-postal, dwolla-customer-dob,dwolla-customer-ssn, dwolla-customer-tos, dwolla-customer-checkbox, dwolla-customer-text, dwolla-submit, dwolla-customer-submit, dwolla-success, dwolla-success-message, dwolla-error, dwolla-error-message       | customer.update              | Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, visit our docs on concepts.                                                                                                  |
-| Create a personal Verified Customer   | dwolla-personal-vcr    | dwolla-input-container, dwolla-customer-input, dwolla-customer-firstName, dwolla-customer-lastName, dwolla-customer-email, dwolla-customer-address1, dwolla-customer-address2, dwolla-customer-city, dwolla-customer-state, dwolla-customer-postal, dwolla-customer-dob, dwolla-customer-ssn, dwolla-customer-tos, dwolla-customer-checkbox, dwolla-customer-text, dwolla-submit, dwolla-vcr-submit, dwolla-success, dwolla-success-message, dwolla-error, dwolla-error-message, dwolla-info, dwolla-info-message | customer.create              | Personal Verified Customers can both send and receive money, as well as hold a balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, visit our docs on concepts.    |
-| Document upload for a Customer        | dwolla-document-upload | dwolla-document-type, dwolla-document-type-select, dwolla-document-type-select-label, dwolla-document-chooser, dwolla-document-chooser-label, dwolla-document-name, dwolla-document-name-span, dwolla-document-submit                                                                                                                                                                                                                                                                                             | customer.documents.create    | After creating a Personal Verified Customer or upgrading an Unverified Customer to a Personal Verified Customer, a government-issued document might be required to verify a customer’s identity. This prebuilt component can be used to upload said document.                                                                             |
-| Display a Verified Customer’s Balance | dwolla-balance-display | dwolla-balance, dwolla-balance-display, dwolla-error                                                                                                                                                                                                                                                                                                                                                                                                                                                              | customer.fundingsources.read | In order to use this component, you must first have a customer that has a balance. This can be a Personal Verified Customer or a Business Verified Customer                                                                                                                                                                               |
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+
+##### CSS Classes for Create an Unverified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-customer-create,
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-customer-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message
+```
+
+##### Example Create an Unverified Customer UI
+
+<Image
+  src={createCustomerDropIn}
+  alt="Create a Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Upgrade an Unverified Customer
+
+The `dwolla-customer-update` component is used to upgrade an Unverified Customer into a Personal Verified Customer. Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, [visit our docs](/concepts/customer-types) on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.update`
+
+##### CSS Classes for Upgrade an Unverified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-customer-update,
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-address1,
+dwolla-customer-address2,
+dwolla-customer-city,
+dwolla-customer-state,
+dwolla-customer-postal,
+dwolla-customer-dob,
+dwolla-customer-ssn,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-customer-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message
+```
+
+##### Example Upgrade an Unverified Customer UI
+
+<Image
+  src={customerUpgradeDropIn}
+  alt="Upgrade an Unverified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Create a Personal Verified Customer
+
+The `dwolla-personal-vcr` component creates Personal Verified Customers on initial onboard. Personal Verified Customers can both send and receive money, as well as hold a balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+
+##### CSS Classes for Create a Personal Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-address1,
+dwolla-customer-address2,
+dwolla-customer-city,
+dwolla-customer-state,
+dwolla-customer-postal,
+dwolla-customer-dob,
+dwolla-customer-ssn,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-vcr-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message,
+dwolla-info,
+dwolla-info-message
+```
+
+##### Example Create a Personal Verified Customer UI
+
+<Image
+  src={createPVCDropIn}
+  alt="Create a Personal Verified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Document upload
+
+The `dwolla-document-upload` component can be used after creating a Personal Verified Customer or upgrading an Unverified Customer to a Personal Verified Customer, in order to upload a government-issued document might be required to verify a customer’s identity.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.documents.create`
+
+##### CSS Classes for Create a Personal Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-document-type,
+dwolla-document-type-select,
+dwolla-document-type-select-label,
+dwolla-document-chooser,
+dwolla-document-chooser-label,
+dwolla-document-name,
+dwolla-document-name-span,
+dwolla-document-submit
+```
+
+##### Example Document Upload UI
+
+<Image
+  src={documentUploadDropIn}
+  alt="Document Upload Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Display a Verified Customer's Balance
+
+The `dwolla-balance-display` component can be used for any customer who already has a balance that needs to be displayed. This can be a Personal Verified Customer or a Business Verified Customer.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.fundingsources.read`
+
+##### CSS Classes for Create a Personal Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-balance,
+dwolla-balance-display,
+dwolla-error
+```
+
+##### Example Balance Display UI
+
+<Image
+  src={balanceDisplayDropIn}
+  alt="Blance Display Drop-in Component"
+  width="75%"
+  height="75%"
+/>
 
 ## Next steps
 
