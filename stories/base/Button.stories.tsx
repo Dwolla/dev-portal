@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
-import Button from "../../components/base/Button";
+import Button from "../../app/components/base/Button";
 
 storiesOf("base|Button", module)
   .addDecorator(centered)

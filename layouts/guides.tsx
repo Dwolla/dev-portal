@@ -1,9 +1,9 @@
 import styled from "@emotion/styled";
 import { DefaultMDXWrapper } from "./index";
-import Pages from "../modules/pages";
-import Pagination from "../components/partial/NextBackPagination";
-import FooterCTA from "../components/base/FooterCTA";
-import { breakUp } from "../components/breakpoints";
+import Pages from "../app/modules/pages";
+import Pagination from "../app/components/partial/NextBackPagination";
+import FooterCTA from "../app/components/base/FooterCTA";
+import { breakUp } from "../app/components/breakpoints";
 
 const StyledPagination = styled.div`
   padding: 20px;

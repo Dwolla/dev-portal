@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
-import Select from "../../components/base/select/Select";
-import { PURPLE_DARKER } from "../../components/colors";
+import Select from "../../app/components/base/select/Select";
+import { PURPLE_DARKER } from "../../app/components/colors";
 
 const SelectWrapContainer = styled.div`
   width: 150px;

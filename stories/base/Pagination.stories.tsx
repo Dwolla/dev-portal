@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import Paginaton from "../../components/base/Pagination";
-import { breakDown } from "../../components/breakpoints";
+import Paginaton from "../../app/components/base/Pagination";
+import { breakDown } from "../../app/components/breakpoints";
 
 // Wrapper div to positiont the pagination links
 const PaginationWrapper = styled.div`

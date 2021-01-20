@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
 import styled from "@emotion/styled";
-import Card from "../../components/base/Card";
+import Card from "../../app/components/base/Card";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 const CardWrapper = styled.div`

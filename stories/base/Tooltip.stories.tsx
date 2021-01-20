@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import Tooltip from "../../components/base/Tooltip";
+import Tooltip from "../../app/components/base/Tooltip";
 
 const StyledDiv = styled.div`
   padding: 100px;

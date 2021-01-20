@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
-import ExternalCTA from "../../components/base/ExternalCTA";
+import ExternalCTA from "../../app/components/base/ExternalCTA";
 import developerCommunityIcon from "../../assets/images/content-images/content-icons/developer-community-icon.svg";
 
 storiesOf("base|External CTA", module)

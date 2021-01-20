@@ -1,23 +1,23 @@
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { MDXProvider } from "@mdx-js/react";
-import { AnchorsSetter } from "../components/util/Anchors";
-import MDXStyleWrapper from "../components/partial/MDXStyleWrapper";
-import groupCodeExamples from "../components/util/groupCodeExamples";
-import AlertBar from "../components/base/AlertBar";
-import Button from "../components/base/Button";
-import Card from "../components/base/Card";
-import CardGrid from "../components/base/CardGrid";
+import { AnchorsSetter } from "../app/components/util/Anchors";
+import MDXStyleWrapper from "../app/components/partial/MDXStyleWrapper";
+import groupCodeExamples from "../app/components/util/groupCodeExamples";
+import AlertBar from "../app/components/base/AlertBar";
+import Button from "../app/components/base/Button";
+import Card from "../app/components/base/Card";
+import CardGrid from "../app/components/base/CardGrid";
 import CodeExamples, {
   CodeExample,
-} from "../components/partial/code/CodeExamples";
-import Collapsible from "../components/base/Collapsible";
-import Image from "../components/base/Image";
-import ImageDownload from "../components/base/ImageDownload";
-import { InlineCode } from "../components/base/Typography";
-import OnThisPage from "../components/layout/OnThisPage";
-import TabBarPanel from "../components/base/TabBarPanel";
-import Table from "../components/base/Table";
+} from "../app/components/partial/code/CodeExamples";
+import Collapsible from "../app/components/base/Collapsible";
+import Image from "../app/components/base/Image";
+import ImageDownload from "../app/components/base/ImageDownload";
+import { InlineCode } from "../app/components/base/Typography";
+import OnThisPage from "../app/components/layout/OnThisPage";
+import TabBarPanel from "../app/components/base/TabBarPanel";
+import Table from "../app/components/base/Table";
 import {
   AnchoredH1,
   AnchoredH2,
@@ -25,7 +25,7 @@ import {
   AnchoredH4,
   AnchoredH5,
   AnchoredH6,
-} from "../components/base/AnchoredHeading";
+} from "../app/components/base/AnchoredHeading";
 
 const MDXContainer = styled.div`
   display: flex;

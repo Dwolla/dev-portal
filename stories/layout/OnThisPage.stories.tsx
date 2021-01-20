@@ -1,7 +1,10 @@
 import React, { createElement } from "react";
 import { storiesOf } from "@storybook/react";
-import { AnchorsSetter, AnchorsProvider } from "../../components/util/Anchors";
-import OnThisPage from "../../components/layout/OnThisPage";
+import {
+  AnchorsSetter,
+  AnchorsProvider,
+} from "../../app/components/util/Anchors";
+import OnThisPage from "../../app/components/layout/OnThisPage";
 
 const Heading = (props: {
   children: string;

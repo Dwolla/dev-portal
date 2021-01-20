@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import LogoLinks from "../../components/base/LogoLinks";
+import LogoLinks from "../../app/components/base/LogoLinks";
 // Importing language logos in gray and in color
 import phpColor from "../../assets/images/content-images/content-icons/language-logos/php-logo.svg";
 import phpGray from "../../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";

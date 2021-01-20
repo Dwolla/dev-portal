@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import styled from "@emotion/styled";
-import NumberedPagination from "../../components/base/NumberedPagination";
+import NumberedPagination from "../../app/components/base/NumberedPagination";
 
 const Container = styled.div`
   height: 120px;

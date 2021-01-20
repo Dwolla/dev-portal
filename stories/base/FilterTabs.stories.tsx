@@ -2,8 +2,8 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
 import styled from "@emotion/styled";
-import FilterTabs from "../../components/base/FilterTabs";
-import { PURPLE_DARK } from "../../components/colors";
+import FilterTabs from "../../app/components/base/FilterTabs";
+import { PURPLE_DARK } from "../../app/components/colors";
 
 const DarkBackground = styled.div`
   background: ${PURPLE_DARK};

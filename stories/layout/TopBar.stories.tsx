@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { storiesOf } from "@storybook/react";
-import TopBar from "../../components/layout/TopBar";
-import { LanguageContext } from "../../components/util/Contexts";
+import TopBar from "../../app/components/layout/TopBar";
+import { LanguageContext } from "../../app/components/util/Contexts";
 
 const languageOptions = [
   { value: "javascript", label: "JavaScript" },

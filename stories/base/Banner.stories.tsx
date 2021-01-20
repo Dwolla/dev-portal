@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import Banner from "../../components/base/Banner";
-import FilterTabs from "../../components/base/FilterTabs";
-import CardGrid from "../../components/base/CardGrid";
-import Card from "../../components/base/Card";
+import Banner from "../../app/components/base/Banner";
+import FilterTabs from "../../app/components/base/FilterTabs";
+import CardGrid from "../../app/components/base/CardGrid";
+import Card from "../../app/components/base/Card";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 const CardGridWrapper = styled.div`
