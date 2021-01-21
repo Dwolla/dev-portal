@@ -14,6 +14,12 @@ Regardless of which drop-in component is being used by your application, the dwo
 
 Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.
 
+#### Token vs. Token URL
+
+For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use token URL. We also recommend using the token URL if you plan to use multiple drop-in components.
+
+For isolated functions, single, or non-flow components, the client token can be utilized.
+
 ### Client token request and response
 
 The API request to /client-tokens requires an action and a “link” that identifies the Customer that is performing the action. Your application must obtain [application authorization](https://docs.dwolla.com/#application-authorization) in order to authenticate the API request to Dwolla. The “Upgrade to a Personal Verified Customer” component requires the `customer.update` action. For a full list of actions available, view our [API Reference docs](https://docs.dwolla.com/#create-a-client-token).
