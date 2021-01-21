@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button 1`] = `
+<button
+  className="primary standard css-172he3k-StyledButton-buttonStyles-buttonStyles ek3ainu0"
+  type="button"
+>
+  Button
+</button>
+`;
+
+exports[`Link Button 1`] = `
+<a
+  className="primary standard css-n1runl-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+  href="https://www.dwolla.com"
+  target="_blank"
+>
+  Button
+</a>
+`;

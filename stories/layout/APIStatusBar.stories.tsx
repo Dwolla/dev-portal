@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react";
-import APIStatusBar from "../../components/layout/APIStatusBar";
+import APIStatusBar from "../../app/components/layout/APIStatusBar";
 
 storiesOf("layout|APIStatusBar", module)
   .add("indicator = none", () => (

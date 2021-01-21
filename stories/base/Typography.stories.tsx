@@ -16,8 +16,8 @@ import {
   BlockQuote,
   InlineCode,
   Link,
-} from "../../components/base/Typography";
-import { PURPLE_DARK } from "../../components/colors";
+} from "../../app/components/base/Typography";
+import { PURPLE_DARK } from "../../app/components/colors";
 
 // Div style for Dark background
 const DivStyle = styled.div`

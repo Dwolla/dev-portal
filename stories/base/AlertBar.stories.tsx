@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import AlertBar from "../../components/base/AlertBar";
+import AlertBar from "../../app/components/base/AlertBar";
 
 const ParentDiv = styled.div`
   padding: 50px;

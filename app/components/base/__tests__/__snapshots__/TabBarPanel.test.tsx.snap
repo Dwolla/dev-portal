@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabBarPanel 1`] = `
+<div
+  className="container"
+  data-tabs={true}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+>
+  <ul
+    className="tab-list"
+    role="tablist"
+  >
+    <li
+      aria-controls="react-tabs-1"
+      aria-disabled="false"
+      aria-selected="true"
+      className="tab is-active react-tabs__tab--selected"
+      id="react-tabs-0"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tab"
+      tabIndex="0"
+    >
+      <img
+        alt="node"
+        className="css-rh2ze1-StyledIcon e1j2h87w0"
+        src="test-image-stub"
+      />
+    </li>
+    <li
+      aria-controls="react-tabs-3"
+      aria-disabled="false"
+      aria-selected="false"
+      className="tab"
+      id="react-tabs-2"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tab"
+      tabIndex={null}
+    >
+      <img
+        alt="ruby"
+        className="css-rh2ze1-StyledIcon e1j2h87w0"
+        src="test-image-stub"
+      />
+    </li>
+    <li
+      aria-controls="react-tabs-5"
+      aria-disabled="false"
+      aria-selected="false"
+      className="tab"
+      id="react-tabs-4"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tab"
+      tabIndex={null}
+    >
+      <img
+        alt="python"
+        className="css-rh2ze1-StyledIcon e1j2h87w0"
+        src="test-image-stub"
+      />
+    </li>
+    <li
+      aria-controls="react-tabs-7"
+      aria-disabled="false"
+      aria-selected="false"
+      className="tab"
+      id="react-tabs-6"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tab"
+      tabIndex={null}
+    >
+      <img
+        alt="php"
+        className="css-rh2ze1-StyledIcon e1j2h87w0"
+        src="test-image-stub"
+      />
+    </li>
+    <li
+      aria-controls="react-tabs-9"
+      aria-disabled="false"
+      aria-selected="false"
+      className="tab"
+      id="react-tabs-8"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tab"
+      tabIndex={null}
+    >
+      <img
+        alt="c-sharp"
+        className="css-rh2ze1-StyledIcon e1j2h87w0"
+        src="test-image-stub"
+      />
+    </li>
+    <li
+      aria-controls="react-tabs-11"
+      aria-disabled="false"
+      aria-selected="false"
+      className="tab"
+      id="react-tabs-10"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="tab"
+      tabIndex={null}
+    >
+      <img
+        alt="kotlin"
+        className="css-rh2ze1-StyledIcon e1j2h87w0"
+        src="test-image-stub"
+      />
+    </li>
+  </ul>
+  <div
+    aria-labelledby="react-tabs-0"
+    className="react-tabs__tab-panel react-tabs__tab-panel--selected"
+    id="react-tabs-1"
+    role="tabpanel"
+  >
+    <div
+      className="css-2vq36g-ContentContainer e1j2h87w1"
+    >
+      Here's some content related to Node.
+    </div>
+  </div>
+  <div
+    aria-labelledby="react-tabs-2"
+    className="react-tabs__tab-panel"
+    id="react-tabs-3"
+    role="tabpanel"
+  />
+  <div
+    aria-labelledby="react-tabs-4"
+    className="react-tabs__tab-panel"
+    id="react-tabs-5"
+    role="tabpanel"
+  />
+  <div
+    aria-labelledby="react-tabs-6"
+    className="react-tabs__tab-panel"
+    id="react-tabs-7"
+    role="tabpanel"
+  />
+  <div
+    aria-labelledby="react-tabs-8"
+    className="react-tabs__tab-panel"
+    id="react-tabs-9"
+    role="tabpanel"
+  />
+  <div
+    aria-labelledby="react-tabs-10"
+    className="react-tabs__tab-panel"
+    id="react-tabs-11"
+    role="tabpanel"
+  />
+</div>
+`;

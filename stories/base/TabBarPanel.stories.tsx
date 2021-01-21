@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import TabBarPanel from "../../components/base/TabBarPanel";
+import TabBarPanel from "../../app/components/base/TabBarPanel";
 import phpColor from "../../assets/images/content-images/content-icons/language-logos/php-logo.svg";
 import phpGray from "../../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
 import pythonColor from "../../assets/images/content-images/content-icons/language-logos/python-logo.svg";

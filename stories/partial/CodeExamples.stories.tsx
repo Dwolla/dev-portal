@@ -3,8 +3,8 @@ import { storiesOf } from "@storybook/react";
 import { createElement } from "react";
 import CodeExamples, {
   CodeExample,
-} from "../../components/partial/code/CodeExamples";
-import { LanguageContext } from "../../components/util/Contexts";
+} from "../../app/components/partial/code/CodeExamples";
+import { LanguageContext } from "../../app/components/util/Contexts";
 
 function MockMDXCreateElement({
   originalType,

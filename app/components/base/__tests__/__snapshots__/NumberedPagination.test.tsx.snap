@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberedPagination 1`] = `
+<div
+  className="css-1rhsvcm-StyledContainer eapsrr00"
+>
+  <div
+    className="css-1penlaa-StyledArrowDiv eapsrr01"
+  >
+    <img
+      alt="Newer"
+      className="css-k5wf1s-ArrowIcon eapsrr02"
+      src="test-image-stub"
+    />
+    Newer
+  </div>
+  <ul
+    className="css-1p8mcs9-StyledUL eapsrr03"
+  >
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      1
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      2
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      3
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      4
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      5
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      6
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      7
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      8
+    </a>
+    <a
+      className="css-h5h6wk-StyledPageLink eapsrr04"
+      href="#"
+    >
+      9
+    </a>
+  </ul>
+  <div
+    className="css-1penlaa-StyledArrowDiv eapsrr01"
+  >
+    Older
+    <img
+      alt="Older"
+      className="css-k5wf1s-ArrowIcon eapsrr02"
+      src="test-image-stub"
+      style={
+        Object {
+          "transform": "rotate(180deg)",
+        }
+      }
+    />
+  </div>
+</div>
+`;

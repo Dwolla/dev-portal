@@ -1,12 +1,12 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import Collapsible from "../../components/base/Collapsible";
+import Collapsible from "../../app/components/base/Collapsible";
 import {
   UnorderedList,
   Paragraph,
   Link,
-} from "../../components/base/Typography";
+} from "../../app/components/base/Typography";
 
 const ParentDiv = styled.div`
   max-width: 1000px;
