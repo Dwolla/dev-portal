@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertBar - info 1`] = `
+<div
+  className="info css-1lx65zb-StyledAlertBar e1qi2q2u0"
+>
+  <div
+    className="css-113bhac-ImageWrapper e1qi2q2u1"
+  >
+    <img
+      alt="Info"
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-5sjqr3-TextWrapper e1qi2q2u2"
+  >
+    Here is an info. The file must be either a .jpg, .jpeg, .png, or .pdf. Files must be no larger than 10MB in size.
+  </div>
+</div>
+`;
+
+exports[`AlertBar - warning 1`] = `
+<div
+  className="warning css-1lx65zb-StyledAlertBar e1qi2q2u0"
+>
+  <div
+    className="css-113bhac-ImageWrapper e1qi2q2u1"
+  >
+    <img
+      alt="Warning"
+      src="test-image-stub"
+    />
+  </div>
+  <div
+    className="css-5sjqr3-TextWrapper e1qi2q2u2"
+  >
+    This is a warning! You need to gather new information if the Customer is placed into the retry status; simply passing the same information will result in the same insufficient scores.
+  </div>
+</div>
+`;

@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import Card from "../../components/base/Card";
-import CardGrid from "../../components/base/CardGrid";
+import Card from "../../app/components/base/Card";
+import CardGrid from "../../app/components/base/CardGrid";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 const Container = styled.div`

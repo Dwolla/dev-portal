@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
-import InlineCTA from "../../components/base/InlineCTA";
+import InlineCTA from "../../app/components/base/InlineCTA";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../../assets/images/content-images/content-icons/concepts-icon.svg";
 

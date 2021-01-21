@@ -1,8 +1,8 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import Table from "../../components/base/Table";
-import { InlineCode } from "../../components/base/Typography";
+import Table from "../../app/components/base/Table";
+import { InlineCode } from "../../app/components/base/Typography";
 
 const ParentDiv = styled.div`
   padding: 50px;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import centered from "@storybook/addon-centered/react";
-import Badge from "../../components/base/Badge";
+import Badge from "../../app/components/base/Badge";
 
 storiesOf("base|Badge", module)
   .addDecorator(centered)

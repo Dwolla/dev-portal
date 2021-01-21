@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import IFrame from "../../components/base/IFrame";
+import IFrame from "../../app/components/base/IFrame";
 
 const ParentDiv = styled.div`
   padding: 50px;

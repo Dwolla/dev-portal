@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import { DefaultMDXWrapper } from "./index";
-import Card from "../components/base/Card";
-import FooterCTA from "../components/base/FooterCTA";
-import { breakUp } from "../components/breakpoints";
+import Card from "../app/components/base/Card";
+import FooterCTA from "../app/components/base/FooterCTA";
+import { breakUp } from "../app/components/breakpoints";
 import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community.svg";
 
 const CardWrap = styled.div`

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import FooterCTA from "../../components/base/FooterCTA";
+import FooterCTA from "../../app/components/base/FooterCTA";
 
 storiesOf("base|FooterCTA", module).add("default", () => (
   <FooterCTA
