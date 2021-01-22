@@ -48,19 +48,13 @@ Dwolla provides a list of CSS classes available for styling certain elements of 
 
 ### Using Drop-in Components
 
-With the exception of the “Create a Customer” component, all components require a Customer ID to be passed into a `customerId` element in order to initialize the component. This Customer ID should come from your back-end server when generating a client-token for an end-user/Customer and can optionally be stored in a session or cookie.
+It's important to note that with the exception of a “Create a Customer” component like the one found below, all components require a Customer ID to be passed into a `customerId` element in order to initialize the component. This Customer ID should come from your back-end server when generating a client-token for an end-user/Customer and can optionally be stored in a session or cookie.
 
 ```html
 <div class="customer">
-  <dwolla-customer-update
-    customerId="customerId"
-    firstName="Jack"
-    lastName="Jackson"
-    email="jjackson@dwolla.com"
-    terms="https://www.yourcompany.com/tos"
-    privacy="https://www.yourcompany.com/privacy"
-  >
-  </dwolla-customer-update>
+  <dwolla-business-vcr>
+    terms=”www.yourterms.com” privacy=”www.yourprivacy.com”>
+  </dwolla-business-vcr>
 </div>
 ```
 
