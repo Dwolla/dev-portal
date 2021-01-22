@@ -16,7 +16,7 @@ Client-tokens are single-use tokens that are valid for up to 1 hour after being 
 
 #### Token vs. Token URL
 
-For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use token URL. We also recommend using the token URL if you plan to use multiple drop-in components.
+For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use token URL. Flow components are designed to support drop-ins that have multiple isolated functions connected together into a single user flow. Creating a server-side endpoint that can be called by the dwolla-web library when an action needs to be performed within the flow simplifies the integration experience.
 
 For isolated functions, single, or non-flow components, the client token can be utilized.
 
