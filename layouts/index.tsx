@@ -12,9 +12,11 @@ import CodeExamples, {
   CodeExample,
 } from "../app/components/partial/code/CodeExamples";
 import Collapsible from "../app/components/base/Collapsible";
+import ExternalCTA from "../app/components/base/ExternalCTA";
 import Image from "../app/components/base/Image";
 import ImageDownload from "../app/components/base/ImageDownload";
 import { InlineCode } from "../app/components/base/Typography";
+import InlineCTA from "../app/components/base/InlineCTA";
 import OnThisPage from "../app/components/layout/OnThisPage";
 import TabBarPanel from "../app/components/base/TabBarPanel";
 import Table from "../app/components/base/Table";
@@ -50,9 +52,11 @@ const MDX_COMPONENTS = {
   CodeExample,
   CodeExamples,
   Collapsible,
+  ExternalCTA,
   Image,
   ImageDownload,
   InlineCode,
+  InlineCTA,
   TabBarPanel,
   table: Table,
   h1: AnchoredH1,
