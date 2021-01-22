@@ -20,6 +20,12 @@ For flow components like Business Verified Customers, Personal Verified Customer
 
 For isolated functions, single, or non-flow components, the client token can be utilized.
 
+### Setup a token endpoint server side
+
+Flow components require a token endpoint. This is necessary to allow us to fetch client-tokens as needed throughout the cusotmer creation process.
+
+This endpoint should simply act as a passthrough to the client-tokens endpoint. It takes the request body and makes a client-token call. Upon success, it returns the token off of the response.
+
 ### Client token request and response
 
 The API request to /client-tokens requires an action and a “link” that identifies the Customer that is performing the action. Your application must obtain [application authorization](https://docs.dwolla.com/#application-authorization) in order to authenticate the API request to Dwolla. The “Upgrade to a Personal Verified Customer” component requires the `customer.update` action. For a full list of actions available, view our [API Reference docs](https://docs.dwolla.com/#create-a-client-token).
