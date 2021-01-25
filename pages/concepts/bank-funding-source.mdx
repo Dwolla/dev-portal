@@ -17,7 +17,7 @@ import plaidLink from "../../assets/images/content-images/plaid-link.png";
 
 # Bank Funding Source
 
-There are many different ways for a Customer to add a bank account on Dwolla’s platform. Choosing the approach that is ideal for your application depends on a number of factors, such as speed and/or user experience. As you think about the different method(s) to [attach a bank account](https://www.dwolla.com/platform/bank-verification-methods/), you will need to consider which one best suits the use case of your business’ application.
+There are many different ways for a Customer to add a bank account on Dwolla’s platform. Choosing the approach that is ideal for your application depends on a number of factors, such as speed and/or user experience. As you think about the different method(s) to attach a bank account, you will need to consider which one best suits the use case of your business’ application.
 
 #### Bank Addition
 
@@ -25,7 +25,7 @@ Adding a bank account to a Customer account. If a business wants to allow for ad
 
 #### Bank Verification
 
-Verifying a bank account. This step is required before a Customer can send funds using their Customer account. This can be accomplished either (1) at the time the bank account is added, using Instant Account Verification, or (2) after attaching a bank by verifying it with microdeposits.
+Verifying a bank account. This step is required before a Customer can send funds using their Customer account. This can be accomplished either (1) at the time the bank account is added, using Instant Account Verification or a Third-party Provider, or (2) after attaching a bank by verifying it with microdeposits.
 
 ## Bank Account Types
 
@@ -48,7 +48,7 @@ As you decide on the various methods for adding a funding-source, a good thing t
 ### Add a Bank via the API and verify using Microdeposits
 
 **The use case:**
-I want to add a U.S. bank account by supplying an account and routing number. The bank will be unverified until microdeposits are initiated and verified.
+I want to add a U.S. bank account by supplying an account and routing number. The bank will be unverified until microdeposits are [initiated](https://docs.dwolla.com/#initiate-micro-deposits) and [verified](https://docs.dwolla.com/#verify-micro-deposits).
 
 This is commonly implemented for receive-only “payout” use cases where users are receiving funds, but not sending.
 
@@ -67,7 +67,7 @@ Adding a bank with the Dwolla API is easy. Take a look at our documentation to l
 <InlineCTA
   icon={guideIcon}
   text="Check our step-by-step guide on verifying a bank using microdeposits."
-  href="/guides/micro-deposit-verification#verify-a-bank-account-with-micro-deposits"
+  href="/guides/micro-deposit-verification"
 />
 
 ### Dwolla.js
@@ -89,7 +89,7 @@ Find out how to generate a Dwolla `funding-sources-token` and utilize the dwolla
 <InlineCTA
   icon={guideIcon}
   text="Check our step-by-step guide on adding a bank funding-source using dwolla.js."
-  href="/guides/dwolla-js/add-a-bank-account#add-a-bank-using-dwollajs"
+  href="/guides/dwolla-js/add-a-bank-account"
 />
 
 ### Add and Verify a Bank with Dwolla.js + Instant Account Verification (IAV)
