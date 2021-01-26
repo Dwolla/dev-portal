@@ -237,6 +237,20 @@ dwolla-error
   height="75%"
 />
 
+### Pay-In
+
+The `Pay-In` component can be used when transferring from a Customer's verified funding source into your own Dwolla Client funding source.
+
+In order to utilize this component, you will first need to have a Customer with a verified funding source. This can be in the form of either an Unverified Customer or a Personal or Business Verified Customer.
+
+In order to add a funding source and verify it, you can:
+
+- [Add a bank](https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account#add-a-bank-using-dwollajs) with an account and routing number, and afterward verify it with [microdeposits](https://developers.dwolla.com/guides/micro-deposit-verification#verify-a-bank-account-with-micro-deposits)
+- Add and verify a bank with [Instant Account Verification](https://developers.dwolla.com/guides/dwolla-js/instant-account-verification#add-a-bank-using-dwollajs--iav) (IAV)
+- Add and verify a bank with [Dwolla + Plaid integration](https://developers.dwolla.com/guides/plaid#plaid-integration)
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.transfers.send`
+
 ## Next steps
 
 Leveraging Dwolla’s UI Components library is a great way to expedite your integration with the Dwolla Platform by limiting the amount of custom code that you would be required to write.
