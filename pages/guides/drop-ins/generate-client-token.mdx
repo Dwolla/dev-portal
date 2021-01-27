@@ -100,17 +100,3 @@ var requestBody = {
 
 appToken.post("/client-tokens", requestBody).then((res) => res.body.token); // => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
 ```
-
-### Send client token to front-end
-
-After obtaining a client-token, you will pass this token to your front-end. The example shown below demonstrates this process using Express.
-
-```javascript
-// see examples above
-const myClientToken = "...";
-
-// POST /dwolla-client-token
-app.post("/dwolla-client-token", (req, res) => {
-  res.json({ token: myClientToken });
-});
-```
