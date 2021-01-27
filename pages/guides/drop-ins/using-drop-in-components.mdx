@@ -8,7 +8,7 @@ meta:
   description: Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.
 ---
 
-import customerUpgradeDropIn from "../../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+import customerBusinessVerifiedDropIn from "../../../assets/images/content-images/drop-in-business-verified-customer.png";
 
 # Step 3: Using a drop-in
 
@@ -35,7 +35,7 @@ Configuration of the dwolla object includes: your generated client-token, enviro
     dwolla.configure({
         environment: "sandbox",
         styles: "/styles/update-custom.css",
-        token: () => Promise.resolve("MY_TOKEN"),
+        tokenUrl: () => Promise.resolve("/token-endpoint"),
         success: (res) => Promise.resolve(res),
         error: (err) => Promise.resolve(err),
     });
@@ -48,27 +48,21 @@ Dwolla provides a list of CSS classes available for styling certain elements of 
 
 ### Using Drop-in Components
 
-With the exception of the “Create a Customer” component, all components require a Customer ID to be passed into a `customerId` element in order to initialize the component. This Customer ID should come from your back-end server when generating a client-token for an end-user/Customer and can optionally be stored in a session or cookie.
+It's important to note that with the exception of a “Create a Customer” component like the one found below, all components require a Customer ID to be passed into a `customerId` element in order to initialize the component. This Customer ID should come from your back-end server when generating a client-token for an end-user/Customer and can optionally be stored in a session or cookie.
 
 ```html
 <div class="customer">
-  <dwolla-customer-update
-    customerId="customerId"
-    firstName="Jack"
-    lastName="Jackson"
-    email="jjackson@dwolla.com"
-    terms="https://www.yourcompany.com/tos"
-    privacy="https://www.yourcompany.com/privacy"
-  >
-  </dwolla-customer-update>
+  <dwolla-business-vcr>
+    terms=”www.yourterms.com” privacy=”www.yourprivacy.com”>
+  </dwolla-business-vcr>
 </div>
 ```
 
 When loading the page containing the component, you should see the following:
 
 <Image
-  src={customerUpgradeDropIn}
-  alt="Upgrade a Customer Drop-in Component"
+  src={customerBusinessVerifiedDropIn}
+  alt="Business Verified Customer Drop-in Component"
   width="75%"
   height="75%"
 />

@@ -10,9 +10,21 @@ meta:
 
 # Step 2: Generate a client token
 
-Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” to be passed in on configuration. A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
+Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” or a server side route that is used to generate a client token to be passed in on configuration. A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
 
 Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.
+
+#### Token vs. Token URL
+
+For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use token URL. Flow components are designed to support drop-ins that have multiple isolated functions connected together into a single user flow. Creating a server-side endpoint that can be called by the dwolla-web library when an action needs to be performed within the flow simplifies the integration experience.
+
+For isolated functions, single, or non-flow components, the client token can be utilized.
+
+### Setup a token endpoint server side
+
+Flow components require a token endpoint. This is necessary and allows for fetching client-tokens as needed throughout the customer creation process.
+
+This endpoint should simply act as a passthrough to the client-tokens endpoint. It takes the request body and makes a client-token call. Upon success, it returns the token off of the response.
 
 ### Client token request and response
 
