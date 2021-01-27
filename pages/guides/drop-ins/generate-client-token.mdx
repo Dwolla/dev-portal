@@ -28,14 +28,14 @@ This endpoint should simply act as a passthrough to the client-tokens endpoint. 
 
 ### Client token request and response
 
-The API request to /client-tokens requires an action and a “link” that identifies the Customer that is performing the action. Your application must obtain [application authorization](https://docs.dwolla.com/#application-authorization) in order to authenticate the API request to Dwolla. The “Upgrade to a Personal Verified Customer” component requires the `customer.update` action. For a full list of actions available, view our [API Reference docs](https://docs.dwolla.com/#create-a-client-token).
+In this example we’re using express to set up a token URL which will be called by `dwolla-web.js` when the component that’s being used needs to generate a client token that’s being performed in the flow. Configuration of dwolla-web.js can be found on [step 3](https://developers.dwolla.com/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs).
 
 ```raw
 POST https://api-sandbox.dwolla.com/client-tokens
 Accept: application/vnd.dwolla.v1.hal+json Content-Type: application/json
 Authorization: Bearer {{token}}
 {
-"action": "customer.update”,
+"action": "customer.create”,
   "_links": {
     “customer”: {
         “href”: “https://api-sandbox.dwolla.com/customers/{{customerId}}”
@@ -58,7 +58,7 @@ request_body = {
       :href => "https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
     }
   },
-  :action => "customer.update"
+  :action => "customer.create"
 }
 
 client_token = app_token.post "client-tokens", request_body
@@ -76,7 +76,7 @@ $request_body = array (
       'href' => 'https://api-sandbox.dwolla.com/customers/8779a1f7-7a98-4a86-921e-83539f6c895e',
     ),
   ),
-  'action' => 'customer.update'
+  'action' => 'customer.create'
 );
 $clientTokensApi = new DwollaSwagger\TokensApi($apiClient);
 $clientToken = $clientTokensApi->clientTokens($request_body);
@@ -91,7 +91,7 @@ request_body = {
       'href': 'https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4'
     }
   },
-  'action': 'customer.update'
+  'action': 'customer.create'
 }
 
 client_token = app_token.post('client-tokens', request_body)
@@ -100,29 +100,36 @@ client_token.body['token'] # => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5
 
 ```javascript
 // Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-node
-var requestBody = {
-  _links: {
-    customer: {
-      href:
-        "https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
-    },
-  },
-  action: "customer.update",
-};
 
-appToken.post("/client-tokens", requestBody).then((res) => res.body.token); // => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
+app.post("/tokenUrl", function (req, res) {
+  generateAccessToken().then((aRes) => {
+    generateClientTokenWithBody(aRes.access_token, req.body).then((cRes) => {
+      console.log(cRes);
+      res.send({ token: cRes.token });
+    });
+  });
+});
+
+function generateClientTokenWithBody(token, body) {
+  const url = `${ENVIRONMENT[env]}/client-tokens`;
+
+  return axios
+    .post(url, body, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        Accept: "application/vnd.dwolla.v1.hal+json",
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
 ```
 
-### Send client token to front-end
+```
 
-After obtaining a client-token, you will pass this token to your front-end. The example shown below demonstrates this process using Express.
-
-```javascript
-// see examples above
-const myClientToken = "...";
-
-// POST /dwolla-client-token
-app.post("/dwolla-client-token", (req, res) => {
-  res.json({ token: myClientToken });
-});
 ```

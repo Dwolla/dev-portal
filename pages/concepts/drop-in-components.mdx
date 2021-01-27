@@ -10,6 +10,7 @@ meta:
   description: Dwolla’s Drop-in components are low-code solutions to alleviate the technical overhead of a payments integration to rapidly implement  key functionality into an application
 ---
 
+import payInDropIn from "../../assets/images/content-images/drop-in-pay-in.png";
 import createBVCDropIn from "../../assets/images/content-images/drop-in-business-verified-customer.png";
 import balanceDisplayDropIn from "../../assets/images/content-images/drop-in-balance-display.png";
 import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
@@ -27,7 +28,7 @@ The library comes with a collection of low-code components that solve for a vari
 
 Each component contains built-in features such as responsive design, custom styling, error handling and more. These components allow developers to ship more with fewer lines of code— while improving readability and maintainability of their application’s code.
 
-Dwolla also maintains React bindings for all supported components. As the library continues to grow, Dwolla will evaluate adding support for other frameworks and languages based on feedback from the community.
+As the library continues to grow, Dwolla will evaluate adding support for other frameworks and languages based on feedback from the community.
 
 ## Workflow
 
@@ -299,6 +300,43 @@ dwolla-error
 <Image
   src={balanceDisplayDropIn}
   alt="Blance Display Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Pay-In
+
+The `Pay-In` component can be used when transferring from a Customer's verified funding source into your own Dwolla Client funding source.
+
+In order to utilize this component, you will first need to have a Customer with a verified funding source. This can be in the form of either an Unverified Customer or a Personal or Business Verified Customer.
+
+In order to add a funding source and verify it, you can:
+
+- [Add a bank](https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account#add-a-bank-using-dwollajs) with an account and routing number, and afterward verify it with [microdeposits](https://developers.dwolla.com/guides/micro-deposit-verification#verify-a-bank-account-with-micro-deposits)
+- Add and verify a bank with [Instant Account Verification](https://developers.dwolla.com/guides/dwolla-js/instant-account-verification#add-a-bank-using-dwollajs--iav) (IAV)
+- Add and verify a bank with [Dwolla + Plaid integration](https://developers.dwolla.com/guides/plaid#plaid-integration)
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.transfers.send`
+
+##### CSS Classes for Pay-In
+
+```css
+/* Available css classes for customization*/
+dwolla-payin,
+dwolla-payin-submit,
+dwolla-amount,
+dwolla-amount-label,
+dwolla-amount-display
+wolla-funding-sources-label,
+dwolla-funding-sources,
+dwolla-payin-title
+```
+
+##### Example Balance Display UI
+
+<Image
+  src={payInDropIn}
+  alt="Pay In Drop-in Component"
   width="75%"
   height="75%"
 />
