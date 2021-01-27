@@ -107,7 +107,7 @@ function verifyGatewaySignature($proposedSignature, $webhookSecret, $payloadBody
 
 #### Step B. Check for duplicate events
 
-It is important to consider that multiple webhooks are fired for the same action on certain events. For example, multiple webhooks are fired for `Transfer` events, that is, two `transfer_created` events with different resource IDs (and, by extension, resource URLs) will be fired, one for each customer. To avoid doing any business logic twice, you would have to check if you have already received a webhook relating to the `Transfer` resource responsible for the event.
+It is important to consider that duplicate webhooks may be fired for the same `Event`. To avoid doing any business logic twice, you would need to build idempotent webhook event processing in your app by checking if you have already successfully processed a webhook for a particular event. Event IDs are unique, so if you receive a webhook with an event ID that you have already received and acknowledged, then you can ignore that webhook.
 
 To do this, keep a queue of events in a database and check to see if an `Event` has the same `self` resource location in `_links` as another event. If not, process the logic for that event. To illustrate, this is how a developer would implement this using Ruby and the ActiveRecord ORM.
 
