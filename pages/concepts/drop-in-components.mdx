@@ -11,6 +11,7 @@ meta:
 ---
 
 import payInDropIn from "../../assets/images/content-images/drop-in-pay-in.png";
+import createBVCDropIn from "../../assets/images/content-images/drop-in-business-verified-customer.png";
 import balanceDisplayDropIn from "../../assets/images/content-images/drop-in-balance-display.png";
 import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
 import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
@@ -179,6 +180,72 @@ dwolla-info-message
 
 <Image
   src={createPVCDropIn}
+  alt="Create a Personal Verified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Create a Business Verified Customer
+
+The `dwolla-business-vcr` component creates Business Verified Customers on initial onboard. Business Verified Customers can both send and receive money and have a tranfer limit of \$10,000 per transfer. To learn more about the different customer types, [visit our docs](https://docs.dwolla.com/#create-a-client-token) on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+
+##### CSS Classes for Create a Business Verified Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-half-button,
+dwolla-half-button-secondary,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-address1,
+dwolla-customer-address2,
+dwolla-customer-city,
+dwolla-customer-state,
+dwolla-customer-country,
+dwolla-customer-postal,
+dwolla-customer-dob,
+dwolla-customer-ssn,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-vcr-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message,
+dwolla-info,
+dwolla-info-message,
+dwolla-document-type,
+dwolla-document-type-select,
+dwolla-document-type-select-label,
+dwolla-document-choose,
+dwolla-document-chooser,
+dwolla-document-chooser-label,
+dwolla-file-name,
+dwolla-document-name-display,
+dwolla-document-name-span,
+dwolla-document-description,
+dwolla-document-label,
+dwolla-document-submit
+dwolla-customer-businessIndustry,
+dwolla-customer-businessClassification,
+dwolla-customer-businessType,
+tooltip,
+tooltip.tooltiptext,
+tooltip-shift,
+
+```
+
+##### Example Create a Business Verified Customer UI
+
+<Image
+  src={createBVCDropIn}
   alt="Create a Personal Verified Customer Drop-in Component"
   width="75%"
   height="75%"
