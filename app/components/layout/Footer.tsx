@@ -15,7 +15,7 @@ const Container = styled.div`
   }
 
   @media (${breakUp("xxl")}) {
-    max-width: 70%;
+    max-width: 100%;
   }
 `;
 
@@ -24,7 +24,7 @@ const LogoContainer = styled.div`
   padding: 20px;
 
   @media (${breakDown("sm")}) {
-    width: 100%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -132,8 +132,10 @@ interface FooterProps {
   links: Record<string, FooterLink[]>;
   legal: {
     title: string;
+    operatorDescription: string;
     veridianDescription: string;
     metaBankDescription: JSX.Element;
+    rtpDescription: string;
   };
 }
 
@@ -167,8 +169,10 @@ export default function Footer(props: FooterProps) {
 
       <LegalContainer>
         <LegalTitle>{props.legal.title}</LegalTitle>
+        <LegalDesc>{props.legal.operatorDescription}</LegalDesc>
         <LegalDesc>{props.legal.veridianDescription}</LegalDesc>
         <LegalDesc>{props.legal.metaBankDescription}</LegalDesc>
+        <LegalDesc>{props.legal.rtpDescription}</LegalDesc>
       </LegalContainer>
     </Container>
   );

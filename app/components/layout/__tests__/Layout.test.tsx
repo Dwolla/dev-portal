@@ -72,8 +72,10 @@ const FOOTER_LINKS = {
 
 const FOOTER_LEGAL_COPY = {
   title: "Financial institutions play an important role in our network.",
+  operatorDescription:
+    "Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to our financial institution partners.",
   veridianDescription:
-    "Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.",
+    "Dwolla is an agent of Veridian Credit Union. All ACH and Wire transfers are performed by Veridian Credit Union. Your Dwolla Balance, if any, is held in one or more pooled holding accounts held by Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund.",
   metaBankDescription: (
     <span>
       Sponsorship and Settlement of Push-to-Debit payment services provided by{" "}
@@ -81,6 +83,8 @@ const FOOTER_LEGAL_COPY = {
       <br /> Push-to-Debit payments are typically available within 30 minutes.
     </span>
   ),
+  rtpDescription:
+    "Real-Time Payments are performed by Cross River Bank, which holds funds on behalf of the Receiver of such transactions in one or more pooled custodial accounts. These funds are not subject to FDIC pass-through deposit insurance.",
 };
 
 const TOP_BAR_PROPS = {

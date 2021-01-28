@@ -337,10 +337,10 @@ Array [
       className=" css-1vo9m3u-FooterWrapper e1ijxxr37"
     >
       <div
-        className="css-157ism8-Container eg0edpy0"
+        className="css-betm3h-Container eg0edpy0"
       >
         <div
-          className="css-1a8teoz-LogoContainer eg0edpy1"
+          className="css-549mvs-LogoContainer eg0edpy1"
         >
           <a
             href="/"
@@ -554,7 +554,12 @@ Array [
           <p
             className="css-1rlmt3x-LegalDesc eg0edpy12"
           >
-            Dwolla, Inc. is an agent of Veridian Credit Union and all funds associated with your account in our network are held in one or more pooled accounts at Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund. Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to Veridian Credit Union.
+            Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to our financial institution partners.
+          </p>
+          <p
+            className="css-1rlmt3x-LegalDesc eg0edpy12"
+          >
+            Dwolla is an agent of Veridian Credit Union. All ACH and Wire transfers are performed by Veridian Credit Union. Your Dwolla Balance, if any, is held in one or more pooled holding accounts held by Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund.
           </p>
           <p
             className="css-1rlmt3x-LegalDesc eg0edpy12"
@@ -574,6 +579,11 @@ Array [
               <br />
                Push-to-Debit payments are typically available within 30 minutes.
             </span>
+          </p>
+          <p
+            className="css-1rlmt3x-LegalDesc eg0edpy12"
+          >
+            Real-Time Payments are performed by Cross River Bank, which holds funds on behalf of the Receiver of such transactions in one or more pooled custodial accounts. These funds are not subject to FDIC pass-through deposit insurance.
           </p>
         </div>
       </div>
