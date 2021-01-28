@@ -15,7 +15,7 @@ const Container = styled.div`
   }
 
   @media (${breakUp("xxl")}) {
-    max-width: 70%;
+    max-width: 100%;
   }
 `;
 
@@ -24,7 +24,7 @@ const LogoContainer = styled.div`
   padding: 20px;
 
   @media (${breakDown("sm")}) {
-    width: 100%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
