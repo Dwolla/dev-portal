@@ -132,8 +132,10 @@ interface FooterProps {
   links: Record<string, FooterLink[]>;
   legal: {
     title: string;
+    operatorDescription: string;
     veridianDescription: string;
     metaBankDescription: JSX.Element;
+    rtpDescription: string;
   };
 }
 
@@ -167,8 +169,10 @@ export default function Footer(props: FooterProps) {
 
       <LegalContainer>
         <LegalTitle>{props.legal.title}</LegalTitle>
+        <LegalDesc>{props.legal.operatorDescription}</LegalDesc>
         <LegalDesc>{props.legal.veridianDescription}</LegalDesc>
         <LegalDesc>{props.legal.metaBankDescription}</LegalDesc>
+        <LegalDesc>{props.legal.rtpDescription}</LegalDesc>
       </LegalContainer>
     </Container>
   );
