@@ -101,7 +101,7 @@ const LinkGroupLink = styled.a`
 `;
 
 const LegalContainer = styled.div`
-  width: 100%;
+  width: 70%;
   padding: 20px;
 
   @media (${breakDown("sm")}) {
