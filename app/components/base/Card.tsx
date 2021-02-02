@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
+import classnames from "../../modules/classnames";
+import ConditionalWrapper from "../util/ConditionalWrapper";
 import Badge from "./Badge";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
@@ -13,60 +15,6 @@ import {
 import { BOX_SHADOW_4 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
 import { breakDown } from "../breakpoints";
-
-type Props = {
-  link?: { href?: string; external?: boolean };
-  centerAlign?: boolean;
-  icon: string;
-  badge?: string;
-  topic: string;
-  description: string;
-};
-
-const CoreCard = ({
-  description,
-  badge,
-  centerAlign,
-  icon,
-  link,
-  topic,
-}: Props) => (
-  <CardStyle className={centerAlign ? "center" : ""}>
-    <StyledIcon src={icon} alt="" className={centerAlign ? "center" : ""} />
-
-    {badge && (
-      <BadgeStyle>
-        <Badge text={badge} />
-      </BadgeStyle>
-    )}
-
-    {link && link.external && (
-      <LinkIconStyle>
-        <NewTabIcon width={13} />
-      </LinkIconStyle>
-    )}
-
-    <TopicStyle className={centerAlign ? "center" : ""}>{topic}</TopicStyle>
-
-    <DescriptionStyle className={centerAlign ? "center" : ""}>
-      {description}
-    </DescriptionStyle>
-  </CardStyle>
-);
-
-const Card = ({ link, ...rest }: Props) =>
-  link && link.href ? (
-    <Link href={link.href} passHref>
-      <StyledLink
-        target={link.external && "_blank"}
-        rel={link.external && "noopener noreferrer"}
-      >
-        <CoreCard link={link} {...rest} />
-      </StyledLink>
-    </Link>
-  ) : (
-    <CoreCard link={link} {...rest} />
-  );
 
 const CardStyle = styled.div`
   height: 100%;
@@ -90,6 +38,10 @@ const CardStyle = styled.div`
     @media (${breakDown("xs")}) {
       width: 100%;
     }
+  }
+
+  &.flex {
+    display: flex;
   }
 `;
 
@@ -125,6 +77,10 @@ const LinkIconStyle = styled.div`
   }
 `;
 
+const StyledFlexDiv = styled.div`
+  padding: 0 30px;
+`;
+
 const TopicStyle = styled.div`
   color: ${HEADLINE_TEXT};
   font-family: ${POPPINS};
@@ -134,6 +90,9 @@ const TopicStyle = styled.div`
   margin-bottom: 15px;
   &.center {
     margin: 11px auto;
+  }
+  &.flex {
+    margin-top: unset;
   }
 `;
 
@@ -147,5 +106,73 @@ const DescriptionStyle = styled.div`
     margin: 11px auto 18px;
   }
 `;
+
+type Props = {
+  link?: { href?: string; external?: boolean };
+  centerAlign?: boolean;
+  isFlex?: boolean;
+  icon: string;
+  badge?: string;
+  topic: string;
+  description: string;
+};
+
+const CoreCard = ({
+  description,
+  badge,
+  centerAlign,
+  isFlex,
+  icon,
+  link,
+  topic,
+}: Props) => (
+  <CardStyle className={classnames({ center: centerAlign }, { flex: isFlex })}>
+    <StyledIcon
+      src={icon}
+      alt=""
+      className={classnames({ center: centerAlign })}
+    />
+
+    {badge && (
+      <BadgeStyle>
+        <Badge text={badge} />
+      </BadgeStyle>
+    )}
+
+    {link && link.external && (
+      <LinkIconStyle>
+        <NewTabIcon width={13} />
+      </LinkIconStyle>
+    )}
+    <ConditionalWrapper
+      condition={isFlex}
+      wrapper={(children) => <StyledFlexDiv>{children}</StyledFlexDiv>}
+    >
+      <TopicStyle
+        className={classnames({ center: centerAlign }, { flex: isFlex })}
+      >
+        {topic}
+      </TopicStyle>
+
+      <DescriptionStyle className={classnames({ center: centerAlign })}>
+        {description}
+      </DescriptionStyle>
+    </ConditionalWrapper>
+  </CardStyle>
+);
+
+const Card = ({ link, ...rest }: Props) =>
+  link && link.href ? (
+    <Link href={link.href} passHref>
+      <StyledLink
+        target={link.external && "_blank"}
+        rel={link.external && "noopener noreferrer"}
+      >
+        <CoreCard link={link} {...rest} />
+      </StyledLink>
+    </Link>
+  ) : (
+    <CoreCard link={link} {...rest} />
+  );
 
 export default Card;

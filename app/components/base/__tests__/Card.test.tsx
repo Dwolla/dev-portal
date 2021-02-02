@@ -114,3 +114,44 @@ test("with Center Align, Link and Badge", () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test("with Flex", () => {
+  const tree = renderer
+    .create(<Card isFlex icon={icon} topic="topic" description="Description" />)
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+test("with Flex and Badge", () => {
+  const tree = renderer
+    .create(
+      <Card
+        isFlex
+        badge="BADGETEXT"
+        icon={icon}
+        topic="topic"
+        description="Description"
+      />
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+test("with Flex, Link and Badge", () => {
+  const tree = renderer
+    .create(
+      <Card
+        link={{ href: "https://www.dwolla.com", external: true }}
+        isFlex
+        badge="BADGETEXT"
+        icon={icon}
+        topic="topic"
+        description="Description"
+      />
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
