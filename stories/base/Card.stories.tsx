@@ -87,4 +87,32 @@ storiesOf("base|Card", module)
       topic="This is the Topic for center aligned cards reperesenting CTAs."
       description="This is a short description."
     />
+  ))
+  .add("`isFlex`", () => (
+    <Card
+      isFlex
+      link={{ href: "https://www.dwolla.com", external: true }}
+      icon={guideIcon}
+      topic="This is the Topic."
+      description="This is a  description.An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
+    />
+  ))
+  .add("`isFlex` + badge", () => (
+    <Card
+      isFlex
+      icon={guideIcon}
+      badge="BADGETEXT"
+      topic="This is the Topic."
+      description="This is a  description.An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
+    />
+  ))
+  .add("`isFlex` + badge + link", () => (
+    <Card
+      isFlex
+      link={{ href: "https://www.dwolla.com", external: true }}
+      icon={guideIcon}
+      badge="BADGETEXT"
+      topic="This is the Topic."
+      description="This is a  description.An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
+    />
   ));
