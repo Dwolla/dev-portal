@@ -62,6 +62,40 @@ Dwolla's UI components library contains a variety of supported components that r
   href="/guides/drop-ins/"
 />
 
+### Create a Receive Only Customer
+
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a receive only customer with `type = "receive-only"`. A Receive Only customers are restriced to a payouts only funds flow. To more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+
+##### CSS Classes for Create a Receive Only Customer
+
+```css
+/* Available css classes for customization*/
+dwolla-customer-create,
+dwolla-input-container,
+dwolla-customer-input,
+dwolla-customer-firstName,
+dwolla-customer-lastName,
+dwolla-customer-email,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-submit,
+dwolla-customer-submit,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message
+```
+
+<Image
+  src={createCustomerDropIn}
+  alt="Create a Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
 ### Create an Unverified Customer
 
 The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created and send funds. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
@@ -83,7 +117,7 @@ dwolla-customer-checkbox,
 dwolla-customer-text,
 dwolla-submit,
 dwolla-customer-submit,
-dwolla-success,
+dwolla-success,o
 dwolla-success-message,
 dwolla-error,
 dwolla-error-message
