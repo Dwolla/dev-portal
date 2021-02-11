@@ -15,9 +15,7 @@ import kotlinColor from "../../assets/images/content-images/content-icons/langua
 import kotlinGray from "../../assets/images/content-images/content-icons/language-logos/kotlin-logo-gray.svg";
 import nodeColor from "../../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
 import nodeGray from "../../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
-// Impoting partner logos in gray and in color
-import aptoColor from "../../assets/images/content-images/content-icons/partner-logos/apto-logo.svg";
-import aptoGray from "../../assets/images/content-images/content-icons/partner-logos/apto-logo-gray.svg";
+// Importing partner logos in gray and in color
 import quickbooksColor from "../../assets/images/content-images/content-icons/partner-logos/quickbooks-logo.svg";
 import quickbooksGray from "../../assets/images/content-images/content-icons/partner-logos/quickbooks-logo-gray.svg";
 import plaidColor from "../../assets/images/content-images/content-icons/partner-logos/plaid-logo.svg";
@@ -95,12 +93,6 @@ const partnerContent = [
     icon: quickbooksGray,
     iconActive: quickbooksColor,
     href: "https://www.dwolla.com/integrations/quickbooks/",
-  },
-  {
-    label: "Apto",
-    icon: aptoGray,
-    iconActive: aptoColor,
-    href: "https://www.dwolla.com/integrations/",
   },
 ];
 
