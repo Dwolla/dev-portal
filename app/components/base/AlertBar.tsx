@@ -41,7 +41,7 @@ const TextWrapper = styled.div`
   line-height: 25px;
 `;
 
-type Props = { variation: "warning" | "info"; children: string };
+type Props = { variation: "warning" | "info"; children: any };
 
 function AlertBar({ variation, children }: Props) {
   return (
