@@ -39,9 +39,10 @@ As a developer, you will want to handle the various Customer statuses that can b
 A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the Controller’s SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
 
 <AlertBar variation="warning">
-  You need to gather new information if the Customer is placed into the retry
-  status; simply passing the same information will result in the same
-  insufficient scores.
+  You need to gather new information if the Customer is placed into the{" "}
+  <code>retry</code>
+  status; simply passing the same information will result in the same insufficient
+  scores.
 </AlertBar>
 
 All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
