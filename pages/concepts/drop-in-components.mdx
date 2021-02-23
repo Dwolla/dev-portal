@@ -64,7 +64,7 @@ Dwolla's UI components library contains a variety of supported components that r
 
 ### Create a Receive Only Customer
 
-The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a receive only customer with `type = "receive-only"`. A Receive Only customers are restriced to a payouts only funds flow. To more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a receive only customer with `type = "receive-only"`. Receive Only customers are restriced to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
 
@@ -98,7 +98,7 @@ dwolla-error-message
 
 ### Create an Unverified Customer
 
-The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created and send funds. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
 
@@ -177,7 +177,7 @@ dwolla-error-message
 
 ### Create a Personal Verified Customer
 
-The `dwolla-personal-vcr` component creates Personal Verified Customers on initial onboard. Personal Verified Customers can both send and receive money, as well as hold a balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-personal-vcr` component is used to display a form to collect the required information needed to create an Personal Verified Customer. Personal Verified Customers can both send and receive funds, as well as hold a Dwolla balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
 
@@ -221,7 +221,7 @@ dwolla-info-message
 
 ### Create a Business Verified Customer
 
-The `dwolla-business-vcr` component creates Business Verified Customers on initial onboard. Business Verified Customers can both send and receive money and have a tranfer limit of \$10,000 per transfer. To learn more about the different customer types, [visit our docs](https://docs.dwolla.com/#create-a-client-token) on concepts.
+The `dwolla-business-vcr` component is used to display a form to collect the required information needed to create a Business Verified Customer. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
 
@@ -287,7 +287,7 @@ tooltip-shift,
 
 ### Document upload
 
-The `dwolla-document-upload` component can be used if a Verified Customer or Beneficial Owner has a `document` status and needs to upload an identifying document to complete verification of their account. A government-issued document might be required to verify an individual or business' identity.
+The `dwolla-document-upload` component can be used if a Verified Customer or a Beneficial Owner has a `document` status and needs to upload an identifying document to complete verification of their account. A government-issued document might be required to verify an individual or business' identity.
 
 [Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.documents.create` or `beneficialowner.documents.create`
 
@@ -316,7 +316,7 @@ dwolla-document-submit
 
 ### Display a Verified Customer's Balance
 
-The `dwolla-balance-display` component can be used for any customer who already has a balance that needs to be displayed. This can be a Personal Verified Customer or a Business Verified Customer.
+The `dwolla-balance-display` component can be used for any customer who already has a Dwolla balance that needs to be displayed. This can be a Personal Verified Customer or a Business Verified Customer.
 
 [Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.fundingsources.read`
 
@@ -342,7 +342,7 @@ dwolla-error
 
 The `Pay-In` component can be used when transferring from a Customer's verified funding source into your own Dwolla Client funding source.
 
-In order to utilize this component, you will first need to have a Customer with a verified funding source. This can be in the form of either an Unverified Customer or a Personal or Business Verified Customer.
+In order to utilize this component, you will first need to have a Customer with a verified funding source. This customer can be of type Unverified, Personal or Business Verified Customer.
 
 In order to add a funding source and verify it, you can:
 
