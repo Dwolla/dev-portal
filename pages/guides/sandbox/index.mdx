@@ -19,6 +19,7 @@ import iavErrorMessage from "../../../assets/images/content-images/iav-error-mes
 import processBankTransfers from "../../../assets/images/content-images/process-bank-transfers.png";
 import imageFail from "../../../assets/images/content-images/test-document-upload-fail.png";
 import imageSuccess from "../../../assets/images/content-images/test-document-upload-success.png";
+import guideIcon from "../../../assets/images/content-images/content-icons/guides-icon.svg";
 
 # Testing in the Sandbox
 
@@ -132,7 +133,9 @@ Dwolla requires a valid U.S. routing number and a random account number between 
 
 Dwolla's Sandbox environment uses a [fake service](https://www.dwolla.com/updates/fake-it-as-you-make-it-why-fake-services-are-awesome-for-developers/) which allows you to simulate the end-user experience for adding and verifying a bank account within the IAV flow. The default "success" scenario is a happy path flow that includes: a single set of MFA questions, presentation of two valid accounts and one account without a routing number. Any text can be entered in the input fields to allow you to proceed through the IAV flow.
 
-To help you test error scenarios, a flag and an option can be used in the first field (usually username or ID) for the bank you are trying to authenticate. The remaining input fields in the flow can be any string of text, as we allow you to proceed through the flow regardless of the information entered. Use the following flag and option values to test various error scenarios:
+To help you test error scenarios, a flag and an option can be used in the first field (usually username or ID) for the bank you are trying to authenticate. The remaining input fields in the flow can be any string of text, as we allow you to proceed through the flow regardless of the information entered.
+
+##### List of flag and option values for testing IAV errors
 
 | Flag | Option          | User-facing message                                                                                                                                                |
 | ---- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -154,6 +157,32 @@ If your application leverages the micro-deposit method of bank verification, Dwo
 ### Test micro-deposit failed verification attempts
 
 When verifying a funding source using the micro-deposit method of bank verification, users are allowed **three attempts** to correctly input the two posted micro-deposit amounts. If the user fails to verify the two posted amounts on the third attempt, an event will be triggered and the funding source will not be verified using those micro-deposit amounts. To simulate the `microdeposits_maxattempts` or `customer_microdeposits_maxattempts` events in the Sandbox, use the amounts `0.09` and `0.09` when calling the API to verify micro-deposits. Reference the [micro-deposit verification](/guides/micro-deposit-verification/verify-micro-deposits#handle-failed-verification-attempts) guide for more information on handling failed verification attempts.
+
+### Test debit card numbers
+
+Dwolla requires a valid card number to add a [debit card](/concepts/debit-cards). For testing purposes, you can use the following card numbers,
+
+- Visa - `4111 1111 1111 1111`
+- MasterCard - `5555 5555 5555 4444`
+
+<InlineCTA
+  icon={guideIcon}
+  text="Check our step-by-step guide on adding a debit card using dwolla-cards.js"
+  href="/guides/dwolla-cards-js/add-a-debit-card"
+/>
+
+### Test debit card failures
+
+To help you test error scenarios, an option can be used in the `Cardholder Name` field for the debit card you are trying to add.
+
+##### List of options for testing Debit card errors
+
+| Option               | Error message                            |
+| -------------------- | ---------------------------------------- |
+| pushfunds ineligible | The card is ineligible for push-to-card. |
+| actioncode invalid   | The card could not be verified.          |
+| cvv invalid          | The CVV or expiration date is invalid.   |
+| address invalid      | The address is invalid.                  |
 
 ## Testing Transfers
 
@@ -210,7 +239,9 @@ A “Process bank transfers” button is available in the Sandbox [Dwolla Dashbo
 
 Transfers to or from a bank account can fail for a number of reasons (e.g. insufficient funds, invalid account number, etc.). When a bank transfer fails, the associated financial institution that rejected the transaction assigns an ACH return code and a transfer failure event is then triggered in Dwolla. Dwolla allows you to trigger various bank transfer failures by specifying an “R” code in the funding source `name` parameter when creating or [updating a funding source](https://docs.dwolla.com/#update-a-funding-source) for a Dwolla Account or API Customer. When a [transfer is initiated](https://docs.dwolla.com/#initiate-a-transfer) using a funding source that has an “R” code assigned to its name, a transfer failure event will trigger and the status will update to failed when you simulate bank transfer processing (as mentioned above).
 
-Dwolla allows you to pass in a few different sentinel values that are used to test different bank transfer failure scenarios. The list of available sentinel values cover the most common uses cases where ACH return codes can be triggered in production. Reference the list of codes in the following table:
+Dwolla allows you to pass in a few different sentinel values that are used to test different bank transfer failure scenarios. The list of available sentinel values cover the most common uses cases where ACH return codes can be triggered in production.
+
+##### List of codes for testing bank transfer failures
 
 | Return code | Description                                                                                                                                                                                                                                                                          |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -275,3 +306,22 @@ var requestBody = {
 
 appToken.post(fundingSourceUrl, requestBody).then((res) => res.body.name); // => "R03"
 ```
+
+### Test Push-to-debit transfer failures
+
+[Push-to-debit](/concepts/debit-cards#push-to-debit-failures) transfers can fail for a number of reasons (e.g. LostOrStolenCard, SuspectedFraud, etc.). When a transfer is created to a debit card that is ineligible to receive funds, a transfer failed event is triggered in Dwolla, and the transfer's status is updated from `pending` to `failed` in a matter of seconds without having to simulate bank transfer processing.
+
+You can trigger various push-to-debit transfer failure scenarios by specifying a specific amount when creating a transfer to a debit card.
+
+##### List of amounts for testing Push-to-debit transfer failures
+
+| Amount  | Description              |
+| ------- | ------------------------ |
+| `$0.11` | InvalidInstrument        |
+| `$0.21` | ExceedsIssuerAmountLimit |
+| `$0.31` | ExceedsIssuerCountLimit  |
+| `$0.41` | CallIssuer               |
+| `$0.51` | Unknown                  |
+| `$0.61` | LostOrStolenCard         |
+| `$0.71` | SuspectedFraud           |
+| `$0.81` | ComplianceViolation      |
