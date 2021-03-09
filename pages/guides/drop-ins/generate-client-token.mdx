@@ -10,7 +10,7 @@ meta:
 
 # Step 2: Generate a client token
 
-Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” or a server side route that is used to generate a client token to be passed in on [configuration](/using-drop-in-components#configure-dwolla-webjs). A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
+Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” or a server side route that is used to generate a client token to be passed in on [configuration](/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs). A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
 
 Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.
 
@@ -22,7 +22,7 @@ For isolated functions or non-flow components, a single [client token](https://d
 
 ### Setup a token endpoint server side
 
-Flow components, such as create a business Verified Customer, require a token endpoint to be setup server-side. This is necessary and allows for fetching `client-tokens` as needed throughout the customer onboarding process.
+Flow components, such as [create a Business Verified Customer](/concepts/drop-in-components#create-a-business-verified-customer), require a token endpoint to be setup server-side. This is necessary and allows for fetching `client-tokens` as needed throughout the customer onboarding process.
 
 This endpoint should simply act as a passthrough to the [client-tokens endpoint](https://docs.dwolla.com/#create-a-client-token). It takes in the request body and makes a client-token call. Upon success, it returns JSON-encoded string token in the response.
 
