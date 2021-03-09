@@ -10,126 +10,49 @@ meta:
 
 # Step 2: Generate a client token
 
-Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” or a server side route that is used to generate a client token to be passed in on configuration. A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
+Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” or a server side route that is used to generate a client token to be passed in on [configuration](/using-drop-in-components#configure-dwolla-webjs). A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
 
 Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.
 
 #### Token vs. Token URL
 
-For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use token URL. Flow components are designed to support drop-ins that have multiple isolated functions connected together into a single user flow. Creating a server-side endpoint that can be called by the dwolla-web library when an action needs to be performed within the flow simplifies the integration experience.
+For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use `tokenUrl` when configuring the dwolla-web library. Flow components are designed to support drop-ins that have multiple isolated functions connected together into a single user flow. Creating a server-side endpoint that can be called by the dwolla-web library when an action needs to be performed within the flow simplifies the integration experience.
 
-For isolated functions, single, or non-flow components, the client token can be utilized.
+For isolated functions or non-flow components, a single [client token](https://docs.dwolla.com/#create-a-client-token) can be utilized.
 
 ### Setup a token endpoint server side
 
-Flow components require a token endpoint. This is necessary and allows for fetching client-tokens as needed throughout the customer creation process.
+Flow components, such as create a business Verified Customer, require a token endpoint to be setup server-side. This is necessary and allows for fetching `client-tokens` as needed throughout the customer onboarding process.
 
-This endpoint should simply act as a passthrough to the client-tokens endpoint. It takes the request body and makes a client-token call. Upon success, it returns the token off of the response.
+This endpoint should simply act as a passthrough to the [client-tokens endpoint](https://docs.dwolla.com/#create-a-client-token). It takes in the request body and makes a client-token call. Upon success, it returns JSON-encoded string token in the response.
 
-### Client token request and response
+### Example usage of tokenUrl using Express
 
-In this example we’re using express to set up a token URL which will be called by `dwolla-web.js` when the component that’s being used needs to generate a client token that’s being performed in the flow. Configuration of dwolla-web.js can be found on [step 3](https://developers.dwolla.com/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs).
-
-```raw
-POST https://api-sandbox.dwolla.com/client-tokens
-Accept: application/vnd.dwolla.v1.hal+json Content-Type: application/json
-Authorization: Bearer {{token}}
-{
-"action": "customer.create”,
-  "_links": {
-    “customer”: {
-        “href”: “https://api-sandbox.dwolla.com/customers/{{customerId}}”
-    }
-  }
-}
-
-...
-
-{
- "token": "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
-}
-```
-
-```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
-request_body = {
-  :_links => {
-    :customer => {
-      :href => "https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
-    }
-  },
-  :action => "customer.create"
-}
-
-client_token = app_token.post "client-tokens", request_body
-client_token.token # => "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
-```
-
-```php
-<?php
-// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
-$request_body = array (
-  '_links' =>
-  array (
-    'customer' =>
-    array (
-      'href' => 'https://api-sandbox.dwolla.com/customers/8779a1f7-7a98-4a86-921e-83539f6c895e',
-    ),
-  ),
-  'action' => 'customer.create'
-);
-$clientTokensApi = new DwollaSwagger\TokensApi($apiClient);
-$clientToken = $clientTokensApi->clientTokens($request_body);
-?>
-```
-
-```python
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-request_body = {
-  '_links': {
-    'customer': {
-      'href': 'https://api-sandbox.dwolla.com/customers/707177c3-bf15-4e7e-b37c-55c3898d9bf4'
-    }
-  },
-  'action': 'customer.create'
-}
-
-client_token = app_token.post('client-tokens', request_body)
-client_token.body['token'] # => '4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY'
-```
+In this example we’re using Express.js to set up a token URL which will be called by `dwolla-web.js` when the component that’s being used needs to generate a client token that’s being performed in the flow. Configuration of dwolla-web.js can be found on [step 3](https://developers.dwolla.com/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs).
 
 ```javascript
-// Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-node
+/**
+ * Using Dwolla Node.js SDK - https://github.com/Dwolla/dwolla-v2-node
+ * Refer to Step 1 on setup and configuration of Dwolla SDK
+ */
 
 app.post("/tokenUrl", function (req, res) {
-  generateAccessToken().then((aRes) => {
-    generateClientTokenWithBody(aRes.access_token, req.body).then((cRes) => {
-      console.log(cRes);
-      res.send({ token: cRes.token });
-    });
+  generateClientTokenWithBody(req.body).then((clientTokenRes) => {
+    console.log(clientTokenRes);
+    res.send({ token: clientTokenRes.token });
   });
 });
 
-function generateClientTokenWithBody(token, body) {
-  const url = `${ENVIRONMENT[env]}/client-tokens`;
+function generateClientTokenWithBody(body) {
+  const url = `/client-tokens`;
 
-  return axios
-    .post(url, body, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-        Accept: "application/vnd.dwolla.v1.hal+json",
-      },
-    })
+  return dwolla
+    .post(url, body)
     .then((response) => {
-      return response.data;
+      return response.body;
     })
     .catch((error) => {
       return error;
     });
 }
-```
-
-```
-
 ```
