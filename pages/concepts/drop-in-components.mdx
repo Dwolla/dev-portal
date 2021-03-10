@@ -12,6 +12,7 @@ meta:
 
 import payInDropIn from "../../assets/images/content-images/drop-in-pay-in.png";
 import createBVCDropIn from "../../assets/images/content-images/drop-in-business-verified-customer.png";
+import addBODropIn from "../../assets/images/content-images/drop-in-add-beneficial-owners.png";
 import balanceDisplayDropIn from "../../assets/images/content-images/drop-in-balance-display.png";
 import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
 import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
@@ -279,7 +280,68 @@ tooltip-shift,
 
 <Image
   src={createBVCDropIn}
-  alt="Create a Personal Verified Customer Drop-in Component"
+  alt="Create a Business Verified Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Create Beneficial Owners
+
+The `dwolla-beneficial-owners` component is used to display a form to collect the required information needed to [add Beneficial Owners](/guides/business-verified-customer/add-beneficial-owners#step-3-adding-beneficial-owners) after the creation of a Business Verified Customer. This component can be paired with the `dwolla-business-vcr` component or be used in isolation. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+
+[Create client-token](https://docs.dwolla.com/#create-a-client-token) possible actions: `beneficialowners.create`, `beneficialownership.read`, `customer.read`, `beneficialownership.certify`, `beneficialowners.update`, `beneficialowner.documents.create`, `beneficialowner.delete`
+
+##### CSS Classes for Add Beneficial Owners
+
+```css
+/* Available css classes for customization*/
+dwolla-bo-submit,
+dwolla-document-submit,
+dwolla-customer-state,
+dwolla-customer-input,
+dwolla-customer-country,
+dwolla-width-1,
+dwolla-width-2,
+dwolla-width-3,
+dwolla-document-label,
+dwolla-document-type,
+dwolla-document-name,
+dwolla-document-name-display,
+dwolla-document-submit,
+dwolla-document-choose,
+dwolla-document-chooser,
+dwolla-document-description,
+dwolla-span-container,
+dwolla-file-name,
+dwolla-half-button,
+dwolla-half-button-secondary,
+dwolla-owner-name,
+dwolla-owner-delete,
+dwolla-owner-header,
+dwolla-owners-summary-container,
+dwolla-owners-empty,
+dwolla-add-owners-button,
+dwolla-owner,
+dwolla-owner-status,
+dwolla-owner-status-verified,
+dwolla-owner-status-incomplete,
+dwolla-owner-status-document,
+dwolla-button-label-container-nb,
+dwolla-button-label-container,
+dwolla-link,
+dwolla-customer-tos,
+dwolla-customer-checkbox,
+dwolla-customer-text,
+dwolla-text-container,
+dwolla-input-container,
+dwolla-loading
+```
+
+##### Example Add Beneficial Owners UI
+
+<Image
+  src={addBODropIn}
+  alt="Add Beneficial Owners Drop-in Component"
   width="75%"
   height="75%"
 />
