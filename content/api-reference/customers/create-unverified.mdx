@@ -1,5 +1,5 @@
 ---
-name: createReceiveOnly
+name: createUnverified
 
 http:
   url: /customers
@@ -9,10 +9,6 @@ params:
   first_name: string
   last_name: string
   email: string
-  business_name:
-    - string
-    - optional
-    - message: "Required if business"
   ip_address:
     - string
     - optional
@@ -28,4 +24,4 @@ tags:
   - customers
 ---
 
-create-receive-only.mdx
+Creating an unverified customer is awesome

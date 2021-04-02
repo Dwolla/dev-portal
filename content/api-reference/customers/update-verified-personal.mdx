@@ -1,0 +1,20 @@
+---
+name: updateVerifiedPersonal
+
+http:
+  url: /customers/:id
+  method: post
+
+params:
+  id: String
+  email: String? = null
+  ipAddress: String? = null
+  address1: String? = null
+  address2: String? = null
+  city: String? = null
+  state: USState? = null
+  postalCode: String? = null
+  phone: String? = null
+---
+
+update-verified-personal.mdx

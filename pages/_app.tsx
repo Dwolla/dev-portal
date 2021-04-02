@@ -58,6 +58,12 @@ const SIDE_NAV_LINKS = [
     text: "Concepts",
   },
   {
+    href: "/api-reference",
+    IconSvg: SdksToolsIcon,
+    isSection: true,
+    text: "API Reference",
+  },
+  {
     href: "/sdks-tools",
     IconSvg: SdksToolsIcon,
     isSection: false,

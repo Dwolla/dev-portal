@@ -1,0 +1,29 @@
+---
+name: createVerifiedBusiness
+
+http:
+  url: /customers
+  method: post
+
+params:
+  firstName: String
+  lastName: String
+  email: String
+  address1: String
+  address2: String? = null
+  city: String
+  state: USState
+  postalCode: String
+  businessName: String
+  businessType: BusinessType
+  businessClassification: String
+  ein: String
+  controller: Controller
+  website: String? = null
+  phone: String? = null
+  doingBusinessAs: String? = null
+  ipAddress: String? = null
+  idempotencyKey: String? = null
+---
+
+create-verified-business.mdx

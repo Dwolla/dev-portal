@@ -1,10 +1,25 @@
-type ContentHead = Record<string, any>;
+type ContentMeta = Record<string, any>;
+
+type ContentIdString = string;
 
 type Content = {
-  id: string;
-  head: ContentHead;
+  id: ContentIdString;
+  meta: ContentMeta;
   rawBody: string;
+};
+
+type RenderedContent = Content & {
   renderedBody: any;
 };
 
-type Contents = Content[];
+type APINameString = string;
+
+type APIReference = {
+  apis: Contents;
+  methods: Record<APINameString, Contents>;
+};
+
+type RenderedAPIReference = {
+  apis: RenderedContent[];
+  methods: Record<APINameString, RenderedContent[]>;
+};

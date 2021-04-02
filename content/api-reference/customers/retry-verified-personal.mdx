@@ -1,0 +1,24 @@
+---
+name: retryVerifiedPersonal
+
+http:
+  url: /customers/:id
+  method: post
+
+params:
+  id: String,
+  firstName: String
+  lastName: String
+  email: String
+  address1: String
+  address2: String? = null
+  city: String
+  state: USState
+  postalCode: String
+  dateOfBirth: DateOfBirth
+  ssn: String
+  phone: String? = null
+  ipAddress: String? = null
+---
+
+retry-verified-personal.mdx

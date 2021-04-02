@@ -16,5 +16,12 @@
     "isolatedModules": true
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx", "next.config.js", "custom.d.ts"]
+  "include": [
+    "**/**/*.ts",
+    "**/**/*.tsx",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.config.js",
+    "custom.d.ts"
+  ]
 }

@@ -30,6 +30,7 @@ exports[`Collapsible list 1`] = `
     </span>
     <div
       className="Collapsible__contentOuter"
+      hidden={false}
       onTransitionEnd={[Function]}
       style={
         Object {
@@ -100,6 +101,7 @@ exports[`Collapsible paragraph 1`] = `
     </span>
     <div
       className="Collapsible__contentOuter"
+      hidden={false}
       onTransitionEnd={[Function]}
       style={
         Object {

@@ -28,6 +28,7 @@ import caretUp from "../../../assets/images/component-icons/caret-up.svg";
 import caretDown from "../../../assets/images/component-icons/caret-down.svg";
 import openInNewTabIcon from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import Section from "../../modules/section";
+import APIReferenceNav from "./APIReferenceNav";
 
 // proptypes
 export interface SideNavLinkProps {
@@ -462,6 +463,8 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
                   isActive
                 />
               </StickySectionWrap>
+
+              {activeSection.href === "/api-reference" && <APIReferenceNav />}
 
               <CategoriesWrap>
                 {sortCategories(activeSection.href, keys(categories)).map(

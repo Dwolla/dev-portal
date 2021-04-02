@@ -9,7 +9,7 @@ module.exports = (phase) =>
     withImages(
       withMdxEnhanced({
         layoutPath: "layouts",
-        defaultLayout: true,
+        defaultLayout: false,
         // fileExtensions: ['mdx'],
         // remarkPlugins: [],
         // rehypePlugins: [],

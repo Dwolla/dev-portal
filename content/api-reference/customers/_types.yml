@@ -1,0 +1,4 @@
+Limit:
+  - number
+  - optional
+  - default=5

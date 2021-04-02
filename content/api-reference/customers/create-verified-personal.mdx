@@ -1,0 +1,24 @@
+---
+name: createVerifiedPersonal
+
+http:
+  url: /customers
+  method: post
+
+params:
+  firstName: String
+  lastName: String
+  email: String
+  address1: String
+  address2: String? = null
+  city: String
+  state: USState
+  postalCode: String
+  dateOfBirth: DateOfBirth
+  ssn: String
+  phone: String? = null
+  ipAddress: String? = null
+  idempotencyKey: String? = null
+---
+
+create-verified-personal.mdx

@@ -1,0 +1,20 @@
+---
+name: upgradeToVerifiedPersonal
+
+http:
+  url: /customers/:id
+  method: post
+
+params:
+  id: String
+  address1: String
+  address2: String? = null
+  city: String
+  state: USState
+  postalCode: String
+  email: String? = null
+  phone: String? = null
+  ipAddress: String? = null
+---
+
+upgrade-to-verified-personal.mdx
