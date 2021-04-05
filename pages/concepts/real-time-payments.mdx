@@ -50,14 +50,14 @@ When [retrieving an existing Funding Source](https://docs.dwolla.com/#retrieve-a
 
 ```json
 "channels": [
-        "ach",
-        "real-time-payments"
-    ]
+  "ach",
+  "real-time-payments"
+]
 ```
 
 ### Initiating an RTP® credit transfer
 
-In order to initiate a transfer with RTP® processing, an optional `processingChannel` JSON object must be included in the transfer request. The processingChannel object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://docs.dwolla.com/#retrieve-a-transfer) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
+In order to initiate a transfer with RTP® processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://docs.dwolla.com/#retrieve-a-transfer) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
 
 The following example assumes the sending party has funds pre-loaded to their `balance` Funding Source and that the destination party has a bank account connected that is RTP®-enabled.
 
@@ -198,7 +198,7 @@ appToken
 
 ### Webhook notifications
 
-Webhooks notification events will be processed in the same sequence as an ACH transfer. The primary difference is the transfer will be created and the completion or failure moments later rather than days. The specific events include
+Webhooks notification events will be processed in the same sequence as an ACH transfer. The primary difference is that once the transfer is created, the completion or failure events will be triggered moments later rather than days. The specific events include -
 
 | Event Topic                              | Description                                               |
 | ---------------------------------------- | --------------------------------------------------------- |
