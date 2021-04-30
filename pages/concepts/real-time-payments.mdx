@@ -200,11 +200,12 @@ appToken
 
 Webhooks notification events will be processed in the same sequence as an ACH transfer. The primary difference is that once the transfer is created, the completion or failure events will be triggered moments later rather than days. The specific events include -
 
-| Event Topic                              | Description                                               |
-| ---------------------------------------- | --------------------------------------------------------- |
-| customer_bank_transfer_created           | Sent when the RTP® transfer is created                    |
-| customer_bank_transfer_failed            | Sent if the RTP® transfer fails\*                         |
-| customer_bank_transfer_completed         | Sent if the RTP® transfer is completed successfully       |
-| customer_funding_source_channels_updated | Sent when a funding source is identified as RTP® eligible |
+| Event Topic                          | Description                                                                      |
+| ------------------------------------ | -------------------------------------------------------------------------------- |
+| customer_bank_transfer_created       | Sent when the RTP® transfer is created                                           |
+| customer_bank_transfer_failed        | Sent if the RTP® transfer fails\*                                                |
+| customer_bank_transfer_completed     | Sent if the RTP® transfer is completed successfully                              |
+| customer_funding_source_rtp_enabled  | Sent when a funding source is identified as RTP® eligible                        |
+| customer_funding_source_rtp_disabled | Sent when an RTP® eligible funding source is later identified as RTP® ineligible |
 
 _\*Based on responses from TCH and Cross River Bank, we will provide more descriptive failure reasons._
