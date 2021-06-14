@@ -7,23 +7,23 @@ concept:
   icon: "same-day-ach.svg"
 meta:
   title: Same Day ACH | Dwolla API Documentation
-  description: The Dwolla API enables use of Same Day ACH credit transfers, a feature for platforms looking to offer expedited transfers and improve end-user experience.
+  description: The Dwolla API enables the use of Same Day ACH credit transfers, a feature for platforms looking to offer expedited transfers and improve end-user experience.
 ---
 
 # Same-Day ACH
 
-Dwolla enables your application to take advantage of Same Day ACH credit transfers on a [per transfer request](https://docs.dwolla.com/#initiate-a-transfer) basis. A `clearing` request parameter is supplied in the request to the Dwolla API which tells Dwolla to expedite clearing for the destination account involved in the transaction. Same-day ACH is a simple and powerful feature for platforms looking to more to differentiate themselves, streamline cash flows, and improve their end-user experiences.
+Dwolla enables your application to take advantage of Same Day ACH credit transfers on a [per transfer request](https://docs.dwolla.com/#initiate-a-transfer) basis. A `clearing` request parameter is supplied in the request to the Dwolla API, which tells Dwolla to expedite clearing for the destination account involved in the transaction. Same-day ACH is a simple and powerful feature for platforms looking to differentiate themselves, streamline cash flows, and improve their end-user experiences.
 
 A few key differences between Standard ACH and Same Day ACH are:
 
 - Funds are available the **same day**, not days later.
 - New payment settlement windows are available.
-- A transaction limit of `$100,000` in enforced by NACHA.
+- A transaction limit of `$100,000` is enforced by NACHA.
 - It is more expensive than standard ACH.
 
 #### Same Day ACH processing times and settlement
 
-Your application can initiate a transfer from a Dwolla balance prior to 12:00PM Central Time and funds will be available in the recipient's bank account by the end of the day. The table below includes times we have observed for the availability of funds. All times are in Central Time. For more information on the timing of transactions, reference our resource article on [processing times](/concepts/transfer-processing-times).
+Your application can initiate a transfer from a Dwolla balance prior to 12:00PM Central Time, and funds will be available in the recipient's bank account by the end of the day. The table below includes times we have observed for the availability of funds. All times are in Central Time. For more information on the timing of transactions, reference our resource article on [processing times](/concepts/transfer-processing-times).
 
 | Transfer cutoff time | Earliest funds may be available | Latest funds are available\* |
 | :------------------: | :-----------------------------: | :--------------------------: |
@@ -33,7 +33,7 @@ _\*This time is the latest observed clearing to customer accounts, but the Fed o
 
 ### Creating a Customer and attaching a bank account
 
-Before you can initiate a transfer using same day clearing, you must first have a [Customer created](https://docs.dwolla.com/#create-a-customer) and a [funding source](https://docs.dwolla.com/#create-a-funding-source-for-a-customer) attached for the user receiving the Same Day ACH credit.
+Before you can initiate a transfer using same-day clearing, you must first have a [Customer created](https://docs.dwolla.com/#create-a-customer) and a [funding source](https://docs.dwolla.com/#create-a-funding-source-for-a-customer) attached for the user receiving the Same Day ACH credit.
 
 Once your customer has connected a bank account, you'll then want to store the funding source id (e.g. `https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f`) which will be used when specifying the bank account as the destination href in the request to the [Transfers API](https://docs.dwolla.com/#initiate-a-transfer).
 
