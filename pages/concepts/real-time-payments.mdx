@@ -59,6 +59,8 @@ When [retrieving an existing Funding Source](https://docs.dwolla.com/#retrieve-a
 
 In order to initiate a transfer with RTP® processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://docs.dwolla.com/#retrieve-a-transfer) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
 
+An optional `rtpDetails` object can be included in the transfer request body. This allows additional information to be passed to the payment recipient's bank account about their RTP® credit transfer.
+
 The following example assumes the sending party has funds pre-loaded to their `balance` Funding Source and that the destination party has a bank account connected that is RTP®-enabled.
 
 ```bash
@@ -83,6 +85,11 @@ Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
     },
     "processingChannel": {
         "destination": "real-time-payments"
+    },
+    "rtpDetails": {
+      "destination": {
+         "remittanceData": "ABC_123 Remittance Data"
+      }
     }
 }
 
@@ -112,6 +119,11 @@ request_body = {
   },
   :processingChannel => {
     :destination => "real-time-payments"
+  },
+  :rtpDetails => {
+    :destination => {
+      :remittanceData => "ABC_123 Remittance Data"
+    }
   }
 }
 
@@ -137,9 +149,13 @@ $transfer = $transfersApi->create([
     'currency' => 'USD',
     'value' => '10000.00'
   ],
-
   'processingChannel' => [
     'destination' => 'real-time-payments'
+  ],
+  'rtpDetails' => [
+    'destination' => [
+      'remittanceData' => 'ABC_123 Remittance Data'
+    ]
   ]
 ]);
 $transfer; # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
@@ -162,6 +178,11 @@ request_body = {
   },
   'processingChannel': {
     'destination': 'real-time-payments'
+  },
+  'rtpDetails': {
+    'destination': {
+      'remittanceData': 'ABC_123 Remittance Data'
+    }
   }
 }
 
@@ -189,11 +210,112 @@ var requestBody = {
   processingChannel: {
     destination: "real-time-payments",
   },
+  rtpDetails: {
+    destination: {
+      remittanceData: "ABC_123 Remittance Data",
+    },
+  },
 };
 
 appToken
   .post("transfers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
+```
+
+### Retrieving an RTP® credit transfer
+
+When retrieving the [transfer from the API](https://docs.dwolla.com/#retrieve-a-transfer), the response will contain an `rtpDetails` object. Within the `rtpDetails` object will be a `destination` JSON object that includes a `remittanceData` key-value pair, depending on if it was included in the original RTP® transfer request, and a `networkId` key-value pair.
+
+The `networkId` is a unique identifier for an RTP® credit transfer which is passed in the payment request to the recipient's bank. It appears on the transfer API resource once the credit entry clears into the destination bank account.
+
+### Request and response
+
+```bash
+GET https://api-sandbox.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+
+{
+  "_links": {
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "account"
+    },
+    "destination-funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/a67d47f0-73de-4a6c-8de4-105d30aad395",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "source-funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/7dc2e1df-9a88-4d9a-868f-90b46f1defcc",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/customers/3f65869e-61de-4efb-9b60-f6d0b9f804ed",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    }
+  },
+  "id": "243fd252-3fcf-eb11-8134-d050ab358a03",
+  "status": "processed",
+  "amount": {
+    "value": "1000.00",
+    "currency": "USD"
+  },
+  "created": "2021-06-17T07:40:45.400Z",
+  "processingChannel": {
+    "destination": "real-time-payments"
+  },
+  "rtpDetails": {
+    "destination": {
+      "networkId": "20210617021214273T1BG27487110796028",
+      "remittanceData": "ABC_123 Remittance Data"
+    }
+  }
+}
+```
+
+```ruby
+transfer_url = 'https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03'
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+transfer = app_token.get transfer_url
+transfer.status # => "processed"
+```
+
+```javascript
+var transferUrl =
+  "https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03";
+
+appToken.get(transferUrl).then(function (res) {
+  res.body.status; // => 'processed'
+});
+```
+
+```python
+transfer_url = 'https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03'
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+fees = app_token.get(transfer_url)
+fees.body['status'] # => 'processed'
+```
+
+```php
+<?php
+$transferUrl = 'https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03';
+
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->byId($transferUrl);
+print($transfer->status); # => "processed"
+?>
 ```
 
 ### Webhook notifications
