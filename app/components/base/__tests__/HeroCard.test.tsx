@@ -27,16 +27,6 @@ test("HeroCard - with Button", () => {
             external: false,
           },
         }}
-        links={[
-          {
-            text: "Technical Documentation",
-            href: "https://www.dwolla.com",
-          },
-          {
-            text: "Learn about the components",
-            href: "https://www.dwolla.com",
-          },
-        ]}
       />
     )
     .toJSON();

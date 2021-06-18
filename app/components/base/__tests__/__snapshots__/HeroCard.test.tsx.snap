@@ -42,28 +42,6 @@ exports[`HeroCard - with Button 1`] = `
       View Walkthrough Guide
     </a>
   </div>
-  <div
-    className="css-rtwbo4-StyledLink e1s1ktis4"
-  >
-    <a
-      className="css-17kq4zo-StyledAnchor e1s1ktis5"
-      href="https://www.dwolla.com"
-    >
-      Technical Documentation
-       &gt;
-    </a>
-  </div>
-  <div
-    className="css-rtwbo4-StyledLink e1s1ktis4"
-  >
-    <a
-      className="css-17kq4zo-StyledAnchor e1s1ktis5"
-      href="https://www.dwolla.com"
-    >
-      Learn about the components
-       &gt;
-    </a>
-  </div>
 </div>
 `;
 
