@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default HeroCard 1`] = `
+<div
+  className="css-lqs0x1-Container e1s1ktis0"
+>
+  <div
+    className="css-103e74w-StyledTitle e1s1ktis1"
+  >
+    Save development time with Drop-in Components
+  </div>
+  <div
+    className="css-13ktynt-StyledDescription e1s1ktis2"
+  >
+    Integrate with the Dwolla API with just a few lines of code 
+  </div>
+</div>
+`;
+
+exports[`HeroCard - with Button 1`] = `
+<div
+  className="css-lqs0x1-Container e1s1ktis0"
+>
+  <div
+    className="css-103e74w-StyledTitle e1s1ktis1"
+  >
+    Save development time with Drop-in Components
+  </div>
+  <div
+    className="css-13ktynt-StyledDescription e1s1ktis2"
+  >
+    Integrate with the Dwolla API with just a few lines of code 
+  </div>
+  <div
+    className="css-1bb6rlt-StyledButton e1s1ktis3"
+  >
+    <a
+      className="hollow-white standard css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      href="https://www.dwolla.com"
+      target={false}
+    >
+      View Walkthrough Guide
+    </a>
+  </div>
+</div>
+`;
+
+exports[`HeroCard - with Button and Links 1`] = `
+<div
+  className="css-lqs0x1-Container e1s1ktis0"
+>
+  <div
+    className="css-103e74w-StyledTitle e1s1ktis1"
+  >
+    Save development time with Drop-in Components
+  </div>
+  <div
+    className="css-13ktynt-StyledDescription e1s1ktis2"
+  >
+    Integrate with the Dwolla API with just a few lines of code 
+  </div>
+  <div
+    className="css-1bb6rlt-StyledButton e1s1ktis3"
+  >
+    <a
+      className="hollow-white standard css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      href="https://www.dwolla.com"
+      target={false}
+    >
+      View Walkthrough Guide
+    </a>
+  </div>
+  <div
+    className="css-rtwbo4-StyledLink e1s1ktis4"
+  >
+    <a
+      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      href="https://www.dwolla.com"
+    >
+      Technical Documentation
+       &gt;
+    </a>
+  </div>
+  <div
+    className="css-rtwbo4-StyledLink e1s1ktis4"
+  >
+    <a
+      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      href="https://www.dwolla.com"
+    >
+      Learn about the components
+       &gt;
+    </a>
+  </div>
+</div>
+`;
+
+exports[`HeroCard - with Links 1`] = `
+<div
+  className="css-lqs0x1-Container e1s1ktis0"
+>
+  <div
+    className="css-103e74w-StyledTitle e1s1ktis1"
+  >
+    Save development time with Drop-in Components
+  </div>
+  <div
+    className="css-13ktynt-StyledDescription e1s1ktis2"
+  >
+    Integrate with the Dwolla API with just a few lines of code 
+  </div>
+  <div
+    className="css-rtwbo4-StyledLink e1s1ktis4"
+  >
+    <a
+      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      href="https://www.dwolla.com"
+    >
+      Technical Documentation
+       &gt;
+    </a>
+  </div>
+  <div
+    className="css-rtwbo4-StyledLink e1s1ktis4"
+  >
+    <a
+      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      href="https://www.dwolla.com"
+    >
+      Learn about the components
+       &gt;
+    </a>
+  </div>
+</div>
+`;
