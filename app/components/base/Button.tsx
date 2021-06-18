@@ -19,7 +19,12 @@ import { POPPINS } from "../typography";
 type Props = {
   text: string;
   size: "tiny" | "small" | "standard" | "large" | "block";
-  variant: "primary" | "secondary" | "hollow-light" | "hollow-dark";
+  variant:
+    | "primary"
+    | "secondary"
+    | "hollow-light"
+    | "hollow-dark"
+    | "hollow-white";
   type?: "button" | "submit" | "reset";
   link?: { href: string; external?: boolean };
 };
@@ -112,6 +117,15 @@ const buttonStyles = css`
     :focus {
       background-color: ${WHITE_PRIMARY};
       color: ${PURPLE_DARK};
+    }
+  }
+  &.hollow-white {
+    border: 1px solid transparent;
+    background: #ffffff;
+    color: #2d2d48;
+    :hover,
+    :focus {
+      border-color: ${GREY_5};
     }
   }
 `;
