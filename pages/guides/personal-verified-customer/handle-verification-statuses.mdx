@@ -494,6 +494,10 @@ You can provide the following best practices to the Customer in order to reduce 
 
 A color scanned photo of the Customer's identifying document can be specified as documentType: `passport`, `license` (state issued driver's license), or `idCard` (other U.S. government-issued photo id card).
 
+<AlertBar variation="info">
+  Note: Military IDs are <b>not</b> accepted
+</AlertBar>
+
 When a Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docs.dwolla.com/#retrieve-a-customer) which will be used by an application to determine if documentation is needed.
 
 | Link name            | Description                                               |
