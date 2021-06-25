@@ -48,6 +48,8 @@ import siftGray from "../assets/images/content-images/content-icons/partner-logo
 import slackColor from "../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
 import slackGray from "../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
 
+import Hero from "../app/components/base/Hero";
+
 export const ContentContainer = styled.div`
   padding: 60px;
   > h3 {
@@ -55,10 +57,10 @@ export const ContentContainer = styled.div`
     margin: 60px 0px 17px 0px;
   }
   @media (${breakDown("sm")}) {
-    padding: 60px 40px 40px 40px;
+    padding: 90px 40px 40px 40px;
   }
   @media (${breakDown("xs")}) {
-    padding: 60px 20px 20px 20px;
+    padding: 90px 20px 20px 20px;
   }
 `;
 
@@ -162,7 +164,7 @@ export const partnerContent = [
 export default function HomePage() {
   return (
     <>
-      <Banner
+      {/* <Banner
         topic="Integrate with Dwolla and move money smarter."
         description="From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
         button={{
@@ -173,7 +175,8 @@ export default function HomePage() {
           },
         }}
         variant="overlapped"
-      />
+      /> */}
+      <Hero />
       <ContentContainer>
         <CardGridWrapper>
           <CardGrid variant="home">
