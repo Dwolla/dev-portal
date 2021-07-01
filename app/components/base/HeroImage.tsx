@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import { breakDown } from "../breakpoints";
-import hero from "../../../assets/images/content-images/hero.png";
+import hero from "../../../assets/images/content-images/hero-image.png";
 
 const StyledHero = styled.div`
   padding: 40px;
