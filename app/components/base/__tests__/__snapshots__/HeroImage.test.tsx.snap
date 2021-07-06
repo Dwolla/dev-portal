@@ -14,10 +14,5 @@ exports[`New Hero Image 1`] = `
 exports[`Style 1`] = `
 <div
   className="css-zv3m84-StyledHero e18yskrt0"
->
-  <img
-    alt="hero-banner"
-    src="test-image-stub"
-  />
-</div>
+/>
 `;
