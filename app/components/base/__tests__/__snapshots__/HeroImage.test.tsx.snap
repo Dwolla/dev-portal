@@ -2,7 +2,7 @@
 
 exports[`New Hero Image 1`] = `
 <div
-  className="css-zv3m84-StyledHero e18yskrt0"
+  className="css-1fhp3ao-StyledHero e18yskrt0"
 >
   <img
     alt="hero-banner"
@@ -13,6 +13,6 @@ exports[`New Hero Image 1`] = `
 
 exports[`Style 1`] = `
 <div
-  className="css-zv3m84-StyledHero e18yskrt0"
+  className="css-1fhp3ao-StyledHero e18yskrt0"
 />
 `;

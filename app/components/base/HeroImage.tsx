@@ -13,10 +13,6 @@ export const StyledHero = styled.div`
   @media (${breakDown("sm")}) {
     display: none;
   }
-
-  @media (${breakDown("xs")}) {
-    display: none;
-  }
 `;
 
 function Hero() {
