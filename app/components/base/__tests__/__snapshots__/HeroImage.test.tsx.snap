@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Hero Image 1`] = `
+<div
+  className="css-zv3m84-StyledHero e18yskrt0"
+>
+  <img
+    alt="hero-banner"
+    src="test-image-stub"
+  />
+</div>
+`;
+
+exports[`Style 1`] = `
+<div
+  className="css-zv3m84-StyledHero e18yskrt0"
+>
+  <img
+    alt="hero-banner"
+    src="test-image-stub"
+  />
+</div>
+`;
