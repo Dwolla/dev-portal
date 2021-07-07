@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`New Hero Image 1`] = `
+<div
+  className="css-1fhp3ao-StyledHero e18yskrt0"
+>
+  <img
+    alt="Some alt text"
+    src="test-image-stub"
+  />
+</div>
+`;
