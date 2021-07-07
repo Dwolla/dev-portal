@@ -5,14 +5,8 @@ exports[`New Hero Image 1`] = `
   className="css-1fhp3ao-StyledHero e18yskrt0"
 >
   <img
-    alt="hero-banner"
+    alt="Some alt text"
     src="test-image-stub"
   />
 </div>
-`;
-
-exports[`Style 1`] = `
-<div
-  className="css-1fhp3ao-StyledHero e18yskrt0"
-/>
 `;

@@ -1,13 +1,18 @@
 import renderer from "react-test-renderer";
-import HeroImage, { StyledHero } from "../HeroImage";
+import HeroImage from "../HeroImage";
+import hero from "../../../../assets/images/content-images/hero-image-drop-ins.png";
 
 test("New Hero Image", () => {
-  const tree = renderer.create(<HeroImage />).toJSON();
+  const tree = renderer
+    .create(
+      <HeroImage
+        heroImage={{
+          src: hero,
+          alt: "Some alt text",
+        }}
+      />
+    )
+    .toJSON();
 
-  expect(tree).toMatchSnapshot();
-});
-
-test("Style", () => {
-  const tree = renderer.create(<StyledHero />).toJSON();
   expect(tree).toMatchSnapshot();
 });

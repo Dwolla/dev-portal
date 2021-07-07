@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import { breakDown } from "../breakpoints";
-import hero from "../../../assets/images/content-images/hero-image.png";
 
 export const StyledHero = styled.div`
   padding: 40px;
@@ -15,11 +14,20 @@ export const StyledHero = styled.div`
   }
 `;
 
-function Hero() {
+type ImageProps = {
+  src: string;
+  alt: string;
+};
+
+type Props = {
+  heroImage: ImageProps;
+};
+
+function Hero({ heroImage }: Props) {
   return (
     <>
       <StyledHero>
-        <img src={hero} alt="hero-banner" />
+        <img src={heroImage.src} alt={heroImage.alt} />
       </StyledHero>
     </>
   );
