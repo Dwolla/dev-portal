@@ -2,7 +2,7 @@
 
 exports[`Default HeroCard 1`] = `
 <div
-  className="css-lqs0x1-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis0"
 >
   <div
     className="css-103e74w-StyledTitle e1s1ktis1"
@@ -19,7 +19,7 @@ exports[`Default HeroCard 1`] = `
 
 exports[`HeroCard - with Button 1`] = `
 <div
-  className="css-lqs0x1-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis0"
 >
   <div
     className="css-103e74w-StyledTitle e1s1ktis1"
@@ -47,7 +47,7 @@ exports[`HeroCard - with Button 1`] = `
 
 exports[`HeroCard - with Button and Links 1`] = `
 <div
-  className="css-lqs0x1-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis0"
 >
   <div
     className="css-103e74w-StyledTitle e1s1ktis1"
@@ -71,22 +71,24 @@ exports[`HeroCard - with Button and Links 1`] = `
     </a>
   </div>
   <div
-    className="css-rtwbo4-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis4"
   >
     <a
-      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis5"
       href="https://www.dwolla.com"
+      target={false}
     >
       Technical Documentation
        &gt;
     </a>
   </div>
   <div
-    className="css-rtwbo4-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis4"
   >
     <a
-      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis5"
       href="https://www.dwolla.com"
+      target="_blank"
     >
       Learn about the components
        &gt;
@@ -97,7 +99,7 @@ exports[`HeroCard - with Button and Links 1`] = `
 
 exports[`HeroCard - with Links 1`] = `
 <div
-  className="css-lqs0x1-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis0"
 >
   <div
     className="css-103e74w-StyledTitle e1s1ktis1"
@@ -110,22 +112,24 @@ exports[`HeroCard - with Links 1`] = `
     Integrate with the Dwolla API with just a few lines of code 
   </div>
   <div
-    className="css-rtwbo4-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis4"
   >
     <a
-      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis5"
       href="https://www.dwolla.com"
+      target={false}
     >
       Technical Documentation
        &gt;
     </a>
   </div>
   <div
-    className="css-rtwbo4-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis4"
   >
     <a
-      className="css-17kq4zo-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis5"
       href="https://www.dwolla.com"
+      target="_blank"
     >
       Learn about the components
        &gt;
