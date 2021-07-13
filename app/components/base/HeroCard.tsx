@@ -12,13 +12,14 @@ import {
 import { POPPINS, ROBOTO } from "../typography";
 
 const Container = styled.div`
-  width: 289px;
+  width: auto;
+  height: auto;
   background: ${PURPLE_MEDIUM};
   border-radius: 4px;
   padding: 25px;
   font-family: ${POPPINS};
 
-  @media (${breakDown("xs")}) {
+  @media (${breakDown("sm")}) {
     width: auto;
     border-radius: unset;
     text-align: center;
@@ -52,7 +53,7 @@ const StyledButton = styled.div`
 
 const StyledLink = styled.div`
   margin: 8px 0;
-  @media (${breakDown("xs")}) {
+  @media (${breakDown("sm")}) {
     margin: 15px 0;
   }
 `;
@@ -62,7 +63,7 @@ const StyledAnchor = styled.a`
   font-family: ${POPPINS};
   font-style: normal;
   font-weight: normal;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 111%;
   color: ${GREY_1};
   text-decoration: none;
@@ -81,7 +82,7 @@ type ButtonProps = {
   };
 };
 
-type LinkProps = { text: string; href: string };
+type LinkProps = { text: string; href: string; external: boolean };
 
 type Props = {
   topic: string;
@@ -103,7 +104,9 @@ function HeroCard({ topic, description, button, links }: Props) {
       {links &&
         links.map((link) => (
           <StyledLink>
-            <StyledAnchor href={link.href}>{link.text} &gt;</StyledAnchor>
+            <StyledAnchor href={link.href} target={link.external && "_blank"}>
+              {link.text} &gt;
+            </StyledAnchor>
           </StyledLink>
         ))}
     </Container>

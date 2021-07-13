@@ -44,10 +44,12 @@ test("HeroCard - with Links", () => {
           {
             text: "Technical Documentation",
             href: "https://www.dwolla.com",
+            external: false,
           },
           {
             text: "Learn about the components",
             href: "https://www.dwolla.com",
+            external: true,
           },
         ]}
       />
@@ -74,10 +76,12 @@ test("HeroCard - with Button and Links", () => {
           {
             text: "Technical Documentation",
             href: "https://www.dwolla.com",
+            external: false,
           },
           {
             text: "Learn about the components",
             href: "https://www.dwolla.com",
+            external: true,
           },
         ]}
       />

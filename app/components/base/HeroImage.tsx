@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import { breakDown } from "../breakpoints";
 
 export const StyledHero = styled.div`
-  padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: right;

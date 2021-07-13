@@ -10,6 +10,8 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import CardGrid from "../app/components/base/CardGrid";
 import Card from "../app/components/base/Card";
+import HeroCard from "../app/components/base/HeroCard";
+import HeroImage from "../app/components/base/HeroImage";
 import ExternalCTA from "../app/components/base/ExternalCTA";
 import Banner from "../app/components/base/Banner";
 import LogoLinks from "../app/components/base/LogoLinks";
@@ -18,6 +20,7 @@ import IFrame from "../app/components/base/IFrame";
 import { H3 } from "../app/components/base/Typography";
 import { HEADLINE_TEXT } from "../app/components/colors";
 import { breakDown } from "../app/components/breakpoints";
+import dropInsHeroImage from "../assets/images/content-images/hero-image-drop-ins.png";
 import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../assets/images/content-images/content-icons/concepts-icon.svg";
 import apiReferenceIcon from "../assets/images/content-images/content-icons/api-reference-icon.svg";
@@ -48,7 +51,34 @@ import siftGray from "../assets/images/content-images/content-icons/partner-logo
 import slackColor from "../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
 import slackGray from "../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
 
-import HeroImage from "../app/components/base/HeroImage";
+export const HeroBannerContainer = styled.div`
+  padding: 40px 60px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (${breakDown("sm")}) {
+    display: block;
+    padding: unset;
+  }
+`;
+
+export const HeroCardWrapper = styled.div`
+  min-width: 289px;
+  max-width: 315px;
+  @media (${breakDown("sm")}) {
+    min-width: unset;
+    max-width: unset;
+  }
+`;
+export const HeroImageWrapper = styled.div`
+  max-height: 100%;
+  margin-left: -225px;
+  z-index: -1;
+  overflow: hidden;
+  @media (${breakDown("sm")}) {
+    display: none;
+  }
+`;
 
 export const ContentContainer = styled.div`
   padding: 60px;
@@ -57,15 +87,14 @@ export const ContentContainer = styled.div`
     margin: 60px 0px 17px 0px;
   }
   @media (${breakDown("sm")}) {
-    padding: 60px 40px 40px 40px;
+    padding: 40px;
   }
   @media (${breakDown("xs")}) {
-    padding: 60px 20px 20px 20px;
+    padding: 20px;
   }
 `;
 
 export const CardGridWrapper = styled.div`
-  margin-top: -110px;
   padding-bottom: 60px;
 `;
 
@@ -164,18 +193,48 @@ export const partnerContent = [
 export default function HomePage() {
   return (
     <>
-      <Banner
-        topic="Integrate with Dwolla and move money smarter."
-        description="From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
-        button={{
-          text: "Get a Sandbox Account",
-          link: {
-            href: "https://accounts-sandbox.dwolla.com/sign-up",
-            external: true,
-          },
-        }}
-        variant="overlapped"
-      />
+      <HeroBannerContainer>
+        <HeroCardWrapper>
+          <HeroCard
+            topic="Save development time with Drop-in Components"
+            description="Integrate with the Dwolla API with just a few lines of code"
+            button={{
+              text: "View Walkthrough Guide",
+              link: {
+                href:
+                  "https://developers.dwolla.com/guides/drop-ins#building-with-drop-in-components",
+                external: false,
+              },
+            }}
+            links={[
+              {
+                text: "Technical Documentation",
+                href: "https://docs.dwolla.com/#drop-in-components",
+                external: true,
+              },
+              {
+                text: "Learn about the components",
+                href:
+                  "https://developers.dwolla.com/concepts/drop-in-components#ui-components-library",
+                external: false,
+              },
+              {
+                text: "Drop-in Examples",
+                href: "https://github.com/Dwolla/drop-ins-examples",
+                external: true,
+              },
+            ]}
+          />
+        </HeroCardWrapper>
+        <HeroImageWrapper>
+          <HeroImage
+            heroImage={{
+              src: dropInsHeroImage,
+              alt: "Some alt text",
+            }}
+          />
+        </HeroImageWrapper>
+      </HeroBannerContainer>
       <ContentContainer>
         <CardGridWrapper>
           <CardGrid variant="home">
