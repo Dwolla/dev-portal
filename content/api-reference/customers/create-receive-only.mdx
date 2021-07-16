@@ -1,0 +1,31 @@
+---
+name: createReceiveOnly
+
+http:
+  url: /customers
+  method: post
+
+params:
+  first_name: string
+  last_name: string
+  email: string
+  business_name:
+    - string
+    - optional
+    - message: "Required if business"
+  ip_address:
+    - string
+    - optional
+    - pattern: "*.*.*.*"
+  idempotency_key:
+    - string
+    - optional
+    - http.header: "idempotency-key"
+
+tags:
+  - app_type:payins
+  - app_type:payouts
+  - customers
+---
+
+Creating a receive-only customer can be fun
