@@ -34,7 +34,7 @@ Configuration of the dwolla object includes: your generated client-token or toke
     dwolla.configure({
         environment: "sandbox",
         styles: "/styles/update-custom.css",
-        tokenUrl: () => Promise.resolve("/token-endpoint"),
+        tokenUrl: "/tokenUrl",
         success: (res) => Promise.resolve(res),
         error: (err) => Promise.resolve(err),
     });
