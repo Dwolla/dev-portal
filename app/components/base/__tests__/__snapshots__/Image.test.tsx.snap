@@ -3,7 +3,15 @@
 exports[`Image 1`] = `
 <img
   alt="image-alt"
-  className="css-1w9f4ul-imageStyles-imageStyles"
+  className=" css-rv7724-imageStyles-imageStyles"
+  src="image-src"
+/>
+`;
+
+exports[`Image no border 1`] = `
+<img
+  alt="image-alt"
+  className="noborder css-rv7724-imageStyles-imageStyles"
   src="image-src"
 />
 `;
