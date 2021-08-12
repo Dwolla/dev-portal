@@ -16,3 +16,11 @@ test("Image no border", () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test("Image with expand", () => {
+  const tree = renderer
+    .create(<Image src="image-src" alt="image-alt" expand />)
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
