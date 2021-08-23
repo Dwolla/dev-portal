@@ -42,6 +42,31 @@ If there is an error, display the error to the user to have them correct any fie
 }
 ```
 
+#### Example duplicate card error
+
+```
+{
+    "code": "DuplicateResource",
+    "message": "Card already exists: id=a67d47f0-73de-4a6c-8de4-105d30aad395",
+    "_links": {
+        "about": {
+            "href": "",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    }
+}
+```
+
+#### Example max card error
+
+```
+{
+    "code": "MaxNumberOfResources",
+    "message": "The maximum number of cards have been added.",
+}
+```
+
 If successful, you will receive a JSON response that includes a link to the newly attached funding source.
 
 ### Example success callback
