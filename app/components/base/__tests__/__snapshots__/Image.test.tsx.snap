@@ -15,3 +15,25 @@ exports[`Image no border 1`] = `
   src="image-src"
 />
 `;
+
+exports[`Image with expand 1`] = `
+<div
+  className="css-rv7724-imageStyles-imageStyles"
+>
+  <div>
+    <img
+      alt="image-alt"
+      className="imageStyles"
+      onClick={[Function]}
+      src="image-src"
+      style={
+        Object {
+          "cursor": "pointer",
+          "maxHeight": "100%",
+          "maxWidth": "100%",
+        }
+      }
+    />
+  </div>
+</div>
+`;

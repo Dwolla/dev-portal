@@ -49,7 +49,7 @@ const LeftSidebar = styled.div`
   transition: opacity 300ms;
   opacity: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 999;
 
   @media (${breakUp("lg")}) {
     right: 75%;
