@@ -16,25 +16,25 @@ Next, you’ll create a custom HTML container that the drop-in component will re
 
 ### Configure dwolla-web.js
 
-Configuration of the dwolla object includes: your generated client-token, environment, optional styles, along with success and error overrides.
+Configuration of the dwolla object includes: your generated client-token or tokenUrl, environment, optional styles, along with success and error overrides.
 
 #### Configure options object
 
-| Parameter   | Type     | Description                                                                                      |
-| ----------- | -------- | ------------------------------------------------------------------------------------------------ |
-| environment | string   | Acceptable values of: `sandbox` or `production`                                                  |
-| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles. |
-| token       | function | A generated single-use client-token.                                                             |
-| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token.              |
-| success     | function | A function that gets called upon a successful request from the Component.                        |
-| error       | function | A function that gets called when an error occurs in the Component.                               |
+| Parameter   | Type     | Description                                                                                                                                                                     |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| environment | string   | Acceptable values of: `sandbox` or `production`                                                                                                                                 |
+| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles.                                                                                |
+| token       | function | A JSON object that contains a key value pair for `token` - a generated single-use client-token. <br/> Example usage: `token: (req) => Promise.resolve({token: 'token123abcd'})` |
+| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token.                                                                                             |
+| success     | function | A function that gets called upon a successful request from the Component.                                                                                                       |
+| error       | function | A function that gets called when an error occurs in the Component.                                                                                                              |
 
 ```javascript
 <script>
     dwolla.configure({
         environment: "sandbox",
         styles: "/styles/update-custom.css",
-        tokenUrl: () => Promise.resolve("/token-endpoint"),
+        tokenUrl: "/tokenUrl",
         success: (res) => Promise.resolve(res),
         error: (err) => Promise.resolve(err),
     });
@@ -43,7 +43,7 @@ Configuration of the dwolla object includes: your generated client-token, enviro
 
 ### Component Styles
 
-Dwolla provides a list of CSS classes available for styling certain elements of the component. These elements can be customized to match the look and feel of your application and are styled by passing in a custom stylesheet when configuring the dwolla-web client library. By default, the elements within your specified container are responsive to any change in screen size. For a full list of supported CSS classes available for each component, view our Concept article.
+Dwolla provides a list of CSS classes available for styling certain elements of the component. These elements can be customized to match the look and feel of your application and are styled by passing in a custom stylesheet when configuring the dwolla-web client library. By default, the elements within your specified container are responsive to any change in screen size. For a full list of supported CSS classes available for each component, view our [Concept article](/concepts/drop-in-components#supported-components).
 
 ### Using Drop-in Components
 

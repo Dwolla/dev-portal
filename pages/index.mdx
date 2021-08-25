@@ -10,6 +10,8 @@ import Link from "next/link";
 import styled from "@emotion/styled";
 import CardGrid from "../app/components/base/CardGrid";
 import Card from "../app/components/base/Card";
+import HeroCard from "../app/components/base/HeroCard";
+import HeroImage from "../app/components/base/HeroImage";
 import ExternalCTA from "../app/components/base/ExternalCTA";
 import Banner from "../app/components/base/Banner";
 import LogoLinks from "../app/components/base/LogoLinks";
@@ -18,13 +20,13 @@ import IFrame from "../app/components/base/IFrame";
 import { H3 } from "../app/components/base/Typography";
 import { HEADLINE_TEXT } from "../app/components/colors";
 import { breakDown } from "../app/components/breakpoints";
+import dropInsHeroImage from "../assets/images/content-images/hero-image-drop-ins.png";
 import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../assets/images/content-images/content-icons/concepts-icon.svg";
 import apiReferenceIcon from "../assets/images/content-images/content-icons/api-reference-icon.svg";
 import demoAppIcon from "../assets/images/content-images/content-icons/dwolla-demo-app.svg";
 import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community-icon.svg";
 import { ReactComponent as CaretRightIcon } from "../assets/images/component-icons/caret-right.svg";
-import dropInComponentsIcon from "../assets/images/content-images/content-icons/drop-in-components.svg";
 // Language logos in gray and in color
 import phpColor from "../assets/images/content-images/content-icons/language-logos/php-logo.svg";
 import phpGray from "../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
@@ -39,8 +41,6 @@ import kotlinGray from "../assets/images/content-images/content-icons/language-l
 import nodeColor from "../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
 import nodeGray from "../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
 // Partner logos in gray and in color
-import aptoColor from "../assets/images/content-images/content-icons/partner-logos/apto-logo.svg";
-import aptoGray from "../assets/images/content-images/content-icons/partner-logos/apto-logo-gray.svg";
 import quickbooksColor from "../assets/images/content-images/content-icons/partner-logos/quickbooks-logo.svg";
 import quickbooksGray from "../assets/images/content-images/content-icons/partner-logos/quickbooks-logo-gray.svg";
 import plaidColor from "../assets/images/content-images/content-icons/partner-logos/plaid-logo.svg";
@@ -50,6 +50,35 @@ import siftGray from "../assets/images/content-images/content-icons/partner-logo
 import slackColor from "../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
 import slackGray from "../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
 
+export const HeroBannerContainer = styled.div`
+  padding: 40px 60px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (${breakDown("sm")}) {
+    display: block;
+    padding: unset;
+  }
+`;
+
+export const HeroCardWrapper = styled.div`
+  min-width: 289px;
+  max-width: 315px;
+  @media (${breakDown("sm")}) {
+    min-width: unset;
+    max-width: unset;
+  }
+`;
+export const HeroImageWrapper = styled.div`
+  max-height: 100%;
+  margin-left: -225px;
+  z-index: -1;
+  overflow: hidden;
+  @media (${breakDown("sm")}) {
+    display: none;
+  }
+`;
+
 export const ContentContainer = styled.div`
   padding: 60px;
   > h3 {
@@ -57,15 +86,14 @@ export const ContentContainer = styled.div`
     margin: 60px 0px 17px 0px;
   }
   @media (${breakDown("sm")}) {
-    padding: 60px 40px 40px 40px;
+    padding: 40px;
   }
   @media (${breakDown("xs")}) {
-    padding: 60px 20px 20px 20px;
+    padding: 20px;
   }
 `;
 
 export const CardGridWrapper = styled.div`
-  margin-top: -110px;
   padding-bottom: 60px;
 `;
 
@@ -159,29 +187,53 @@ export const partnerContent = [
     iconActive: quickbooksColor,
     href: "https://www.dwolla.com/integrations/quickbooks/",
   },
-  {
-    label: "Apto",
-    icon: aptoGray,
-    iconActive: aptoColor,
-    href: "https://www.dwolla.com/integrations/",
-  },
 ];
 
 export default function HomePage() {
   return (
     <>
-      <Banner
-        topic="Integrate with Dwolla and move money smarter."
-        description="From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
-        button={{
-          text: "Get a Sandbox Account",
-          link: {
-            href: "https://accounts-sandbox.dwolla.com/sign-up",
-            external: true,
-          },
-        }}
-        variant="overlapped"
-      />
+      <HeroBannerContainer>
+        <HeroCardWrapper>
+          <HeroCard
+            topic="Save development time with Drop-in Components"
+            description="Integrate with the Dwolla API with just a few lines of code"
+            button={{
+              text: "View Walkthrough Guide",
+              link: {
+                href:
+                  "https://developers.dwolla.com/guides/drop-ins#building-with-drop-in-components",
+                external: false,
+              },
+            }}
+            links={[
+              {
+                text: "Technical Documentation",
+                href: "https://docs.dwolla.com/#drop-in-components",
+                external: true,
+              },
+              {
+                text: "Learn about the components",
+                href:
+                  "https://developers.dwolla.com/concepts/drop-in-components#ui-components-library",
+                external: false,
+              },
+              {
+                text: "Drop-in Examples",
+                href: "https://github.com/Dwolla/drop-ins-examples",
+                external: true,
+              },
+            ]}
+          />
+        </HeroCardWrapper>
+        <HeroImageWrapper>
+          <HeroImage
+            heroImage={{
+              src: dropInsHeroImage,
+              alt: "Some alt text",
+            }}
+          />
+        </HeroImageWrapper>
+      </HeroBannerContainer>
       <ContentContainer>
         <CardGridWrapper>
           <CardGrid variant="home">
@@ -205,16 +257,6 @@ export default function HomePage() {
             />
           </CardGrid>
         </CardGridWrapper>
-        <SingleDivWrapper>
-          <Card
-            isFlex
-            icon={dropInComponentsIcon}
-            badge="Guide"
-            topic="Building With Drop-in Components"
-            description="Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration."
-            link={{ href: "/guides/drop-ins" }}
-          />
-        </SingleDivWrapper>
         <CardGrid maxColumns="2">
           <ExternalCTA
             icon={developerCommunityIcon}

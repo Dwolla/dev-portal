@@ -8,4 +8,7 @@ storiesOf("base|Image", module)
   .addDecorator(centered)
   .add("default", () => (
     <Image src={transferTimeline} alt="Linear Transfer Timeline" />
+  ))
+  .add("with expand", () => (
+    <Image src={transferTimeline} alt="Linear Transfer Timeline" expand />
   ));

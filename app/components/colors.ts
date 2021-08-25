@@ -10,7 +10,8 @@ export const GREY_8 = "#354153";
 export const GREY_9 = "#2e3745";
 export const GREY_10 = "#cfcff5";
 export const GREY_11 = "#f8fafc";
-export const GREY_12 = "#5F738C";
+export const GREY_12 = "#5f738c";
+export const GREY_13 = "#eaeaeb";
 
 // Text Colors
 export const HEADLINE_TEXT = "#2a2d38";
@@ -22,6 +23,7 @@ export const PURPLE_PRIMARY = "#483d66";
 export const PURPLE_PRIMARY_BUTTON = "#5e4e76";
 export const PURPLE_PRIMARY_HOVER = "#6a5885";
 export const PURPLE_PRIMARY_ACTIVE = "#524467";
+export const PURPLE_MEDIUM = "#4a4a5e";
 export const PURPLE_DARK = "#2d2d47";
 export const PURPLE_DARKER = "#242438";
 export const PINK_SECONDARY_BUTTON = "#C9457E";

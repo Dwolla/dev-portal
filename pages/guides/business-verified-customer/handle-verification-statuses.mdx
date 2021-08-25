@@ -39,14 +39,15 @@ As a developer, you will want to handle the various Customer statuses that can b
 A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the Controller’s SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
 
 <AlertBar variation="warning">
-  You need to gather new information if the Customer is placed into the retry
-  status; simply passing the same information will result in the same
-  insufficient scores.
+  You need to gather new information if the Customer is placed into the{" "}
+  <code>retry</code>
+  status; simply passing the same information will result in the same insufficient
+  scores.
 </AlertBar>
 
 All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
 
-### Sole Propreietorship - Request and response
+### Sole Proprietorship - Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
@@ -76,7 +77,8 @@ Authorization: Bearer 0Sn0W6kzNic+oWhDbQcVSKLRUpGjIdl/YyrHqrDDoRnQwE7Q
 ```php
 <?php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
-$new_customer = $customersApi->create([
+$customerUrl = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5';
+$retryCustomer = $customersApi->updateCustomer([
     'firstName' => 'Business',
     'lastName' => 'Owner',
     'email' => 'solePropBusiness@email.com',
@@ -91,13 +93,14 @@ $new_customer = $customersApi->create([
     'businessClassification' => '9ed3f670-7d6f-11e3-b1ce-5404a6144203',
     'businessType' => 'soleProprietorship',
     'businessName' => 'Jane Corp',
-    'ein' => '00-0000000']);
+    'ein' => '00-0000000'], $customerUrl);
 
 ?>
 ```
 
 ```ruby
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer_url = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 request_body = {
     :firstName => 'Business',
     :lastName => 'Owner',
@@ -116,12 +119,13 @@ request_body = {
     :ein => '00-0000000'
 }
 
-customer = app_token.post "customers", request_body
+customer = app_token.post customer_url, request_body
 customer.id # => "62c3aa1b-3a1b-46d0-ae90-17304d60c3d5"
 ```
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 request_body = {
   'firstName': 'Business',
   'lastName': 'Owner',
@@ -140,11 +144,13 @@ request_body = {
   'ein': '00-0000000'
 }
 
-customer = app_token.post('customers', request_body)
+customer = app_token.post(customer_url, request_body)
 customer.body.id # => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
 
 ```javascript
+var customerUrl =
+  "https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5";
 var requestBody = {
   firstName: "Business",
   lastName: "Owner",
@@ -163,12 +169,12 @@ var requestBody = {
   ein: "00-0000000",
 };
 
-appToken.post("customers", requestBody).then(function (res) {
+appToken.post(customerUrl, requestBody).then(function (res) {
   res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 });
 ```
 
-#### Business with Controller - Request and response
+### Business with Controller - Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
@@ -441,12 +447,19 @@ When a business verified Customer is placed in the `document` verification statu
 
 ##### Controllers
 
-**US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card). Examples include:
+**US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card).
+
+Supported Document Examples:
 
 - Non-expired State Issued Driver’s License/Identification Card
 - Non-expired US Passport
 - Federal Employment Authorization Card
 - US Visa
+
+Unsupported Document Examples:
+
+- Military IDs
+- Expired government-issued IDs
 
 **Non-US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `passport`. Examples include:
 

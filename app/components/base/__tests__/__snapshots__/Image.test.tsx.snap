@@ -3,7 +3,37 @@
 exports[`Image 1`] = `
 <img
   alt="image-alt"
-  className="css-1w9f4ul-imageStyles-imageStyles"
+  className=" css-rv7724-imageStyles-imageStyles"
   src="image-src"
 />
+`;
+
+exports[`Image no border 1`] = `
+<img
+  alt="image-alt"
+  className="noborder css-rv7724-imageStyles-imageStyles"
+  src="image-src"
+/>
+`;
+
+exports[`Image with expand 1`] = `
+<div
+  className="css-rv7724-imageStyles-imageStyles"
+>
+  <div>
+    <img
+      alt="image-alt"
+      className="imageStyles"
+      onClick={[Function]}
+      src="image-src"
+      style={
+        Object {
+          "cursor": "pointer",
+          "maxHeight": "100%",
+          "maxWidth": "100%",
+        }
+      }
+    />
+  </div>
+</div>
 `;

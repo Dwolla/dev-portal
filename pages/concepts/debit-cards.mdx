@@ -10,11 +10,13 @@ meta:
   description: A debit card is a funding source type that can be used to enable faster payments using the card network, allowing for another efficient method to move funds.
 ---
 
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
+
 # Debit Cards
 
 ## Overview
 
-Utilizing the Dwolla API to facilitate the movement of money allows for flexibility in your payment types and transfer methods offered to your end users. One of the ways to add value to your application is to diversify the options for users to receive funds to different payment accounts. The ability to leverage debit cards as a mechanism to receive funds is available only for the payouts funds flow use case.
+Utilizing the Dwolla API to facilitate the movement of money allows for flexibility in your payment types and transfer methods offered to your end users. One of the ways to add value to your application is to diversify the options for users to receive funds to different payment accounts. The ability to leverage debit cards as a funding source for your Customers is available only for the payouts funds flow, from your Master Dwolla Balance to your Customer's debit card.
 
 Funding source types within Dwolla include:
 
@@ -24,7 +26,7 @@ Funding source types within Dwolla include:
 
 ### The Use Case
 
-Adding a debit card as a funding source type allows your customers to receive funds in typically within 30 minutes rather than hours or days. By sending funds from your Master Dwolla Balance funding source, you can directly “push” these funds out in near real-time to a customer’s reloadable prepaid card or bank-issued debit card.
+When your Customer adds a debit card as a funding source type it allows them to receive funds typically within 30 minutes rather than hours or days. By sending funds from your Master Dwolla Balance funding source, you can directly “push” these funds out in near real-time to a customer’s reloadable prepaid card or bank-issued debit card.
 
 Prime use cases include dual sided marketplaces and task-based employment - just to name a couple.
 
@@ -59,6 +61,12 @@ Funds pushed over the card networks will be available for use in near real-time,
 
 When a push-to-debit transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docs.dwolla.com/#retrieve-a-transfer-failure-reason).
 
+<InlineCTA
+  icon={guideIcon}
+  text="Check our guide on simulating various Push-to-debit error scenarios in Sandbox."
+  href="/guides/sandbox#test-push-to-debit-transfer-failures"
+/>
+
 ##### List of push-to-debit failure reasons
 
 | Code                     | Message                                                                                                             |
@@ -83,12 +91,12 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
     "_links": {
         "self": {
-            "href": "https://api-devint.dwolla.com/transfers/7303fa32-17ba-ea11-81de-e9dd8f966c72/failure",
+            "href": "https://api-sandbox.dwolla.com/transfers/7303fa32-17ba-ea11-81de-e9dd8f966c72/failure",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "failure"
         },
         "failed-funding-source": {
-            "href": "https://api-devint.dwolla.com/funding-sources/5832dd96-42e9-44b3-8e0a-454e52a32655",
+            "href": "https://api-sandbox.dwolla.com/funding-sources/5832dd96-42e9-44b3-8e0a-454e52a32655",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         }

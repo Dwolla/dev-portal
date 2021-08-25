@@ -197,7 +197,9 @@ appToken
 
 ## Check the status of an individual Beneficial Owner
 
-After a beneficial owner has been created, the beneficial owner’s identity needs to go through a verification process. A beneficial owner that has a status of `incomplete` or `document` will impact the business verified Customer's eligibility to send or receive funds. When a beneficial owner has been successfully verified by Dwolla, the business verified Customer’s status will be set to `verified`. Reference the table below for more information on the events that correspond to each of the beneficial owner statuses:
+After a beneficial owner has been created, the beneficial owner’s identity needs to go through a verification process. A beneficial owner that has a status of `incomplete` or `document` will impact the business verified Customer's eligibility to send or receive funds. When a beneficial owner has been successfully verified by Dwolla, the beneficial owner's status will be set to verified.
+
+Reference the table below for more information on the events that correspond to each of the beneficial owner statuses:
 
 #### Individual Beneficial Owner statuses and events
 
@@ -525,10 +527,9 @@ appToken
 
 ## Update Beneficial Owner Information
 
-
 Information can only be edited or updated when the Beneficial Owner has a status of `incomplete`.
 
-If an individual benficial owner with a status of `verified` needs to update their information, that beneficial owner will first need to be removed and re-added.
+If an individual beneficial owner with a status of `verified` needs to update their information, that beneficial owner will first need to be removed and re-added.
 
 #### Request and Response
 
