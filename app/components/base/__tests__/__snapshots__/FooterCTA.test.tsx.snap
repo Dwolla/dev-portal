@@ -19,7 +19,7 @@ exports[`FooterCTA 1`] = `
     </p>
   </div>
   <a
-    className="primary large css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+    className="primary large css-5lzlu2-StyledLink-buttonStyles-buttonStyles ek3ainu1"
     href="https://accounts-sandbox.dwolla.com/sign-up"
     target="_blank"
   >

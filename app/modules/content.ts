@@ -2,6 +2,8 @@ import fs from "fs";
 import util from "util";
 import path from "path";
 import matter from "gray-matter";
+import sortBy from "lodash.sortby";
+// import { Console } from "console";
 
 const readdir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
@@ -9,7 +11,7 @@ const readFile = util.promisify(fs.readFile);
 const getContents = async (
   rootDir: string,
   _dirsToWalk: string[] = null,
-  _contents: Contents = null
+  _contents: Content[] = null
 ) => {
   // if this is the first call, dirsToWalk is the root dir
   const dirsToWalk: string[] = _dirsToWalk === null ? [rootDir] : _dirsToWalk;
@@ -42,11 +44,11 @@ const getContents = async (
         .filter((i) => i.indexOf(".mdx") > -1)
         .map(async (i) => {
           const contents = await readFile(i).then((f) => f.toString("utf-8"));
-          const { content: body, data: head } = matter(contents);
+          const { content: rawBody, data: meta } = matter(contents);
           return {
-            id: i.slice(rootDir.length), // TODO
-            body: body || "",
-            head: head || {},
+            id: i.slice(rootDir.length),
+            rawBody: rawBody || "",
+            meta: meta || {},
           };
         })
     ),
@@ -58,10 +60,64 @@ const getContents = async (
   return getContents(rootDir, dirs, contents);
 };
 
+const inAPIReference = (c: Content) => c.id.indexOf("/api-reference") === 0;
+
+const noUnderscores = (c: Content) => c.id.indexOf("_") === -1;
+
+const stripFilenameFromId: any = (c) => ({
+  ...c,
+  id: c.id.replace(/(\/index)?\.mdx$/, ""),
+});
+
+const isApi = (c: Content) => c.id.split("/").length === 2;
+
+const isMethod = (c: Content) => c.id.split("/").length === 3;
+
+const toApiReference = (c: Content) => ({
+  ...c,
+  id: c.id.replace(/^\/api-reference/, ""),
+});
+
 export const buildContentModule = (contentDir: string) => {
+  const contentPath = path.resolve(process.cwd(), contentDir);
   return {
-    async list() {
-      return getContents(path.resolve(process.cwd(), contentDir));
+    async list(): Promise<Content[]> {
+      return getContents(contentPath);
+    },
+
+    async getApiReference(): Promise<APIReference> {
+      // return Promise.resolve({ apis: [], methods: {} });
+      const allContent = await getContents(contentPath);
+
+      const sortedApiReference = sortBy(
+        allContent
+          .map(stripFilenameFromId)
+          .filter(inAPIReference)
+          .filter(noUnderscores)
+          .map(toApiReference),
+        ["id"]
+      );
+
+      const methods = sortedApiReference
+        .filter(isMethod)
+        .reduce((acc, next) => {
+          const id = next.id.split("/").slice(0, -1).join("/");
+          const res = {
+            ...acc,
+            [id]: typeof acc[id] !== "undefined" ? [...acc[id], next] : [next],
+          };
+          // console.log(acc, "acc");
+          // console.log(res, "res");
+          // console.log("\n\n\n\n");
+          return res;
+        }, {});
+
+      // console.log(methods);
+
+      return {
+        apis: sortedApiReference.filter(isApi),
+        methods,
+      };
     },
   };
 };

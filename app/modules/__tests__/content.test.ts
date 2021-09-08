@@ -12,3 +12,8 @@ test("list (2)", async () => {
   const content = await TestContent2.list();
   expect(content).toMatchSnapshot();
 });
+
+test("getApiReference", async () => {
+  const content = await TestContent.getApiReference();
+  expect(content).toMatchSnapshot();
+});

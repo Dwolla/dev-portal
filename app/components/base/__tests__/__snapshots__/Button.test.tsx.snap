@@ -2,7 +2,7 @@
 
 exports[`Button 1`] = `
 <button
-  className="primary standard css-1kpf29c-StyledButton-buttonStyles-buttonStyles ek3ainu0"
+  className="primary standard css-dge33p-StyledButton-buttonStyles-buttonStyles ek3ainu0"
   type="button"
 >
   Button
@@ -11,7 +11,7 @@ exports[`Button 1`] = `
 
 exports[`Link Button 1`] = `
 <a
-  className="primary standard css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+  className="primary standard css-5lzlu2-StyledLink-buttonStyles-buttonStyles ek3ainu1"
   href="https://www.dwolla.com"
   target="_blank"
 >

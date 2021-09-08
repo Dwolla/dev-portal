@@ -39,7 +39,7 @@ exports[`Banner - with Button 1`] = `
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
     <a
-      className="primary large css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="primary large css-5lzlu2-StyledLink-buttonStyles-buttonStyles ek3ainu1"
       href="https://accounts-sandbox.dwolla.com/login"
       target="_blank"
     >
@@ -67,7 +67,7 @@ exports[`Banner - with Extra Padding for Overlapping Cards 1`] = `
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
     <a
-      className="primary large css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="primary large css-5lzlu2-StyledLink-buttonStyles-buttonStyles ek3ainu1"
       href="https://accounts-sandbox.dwolla.com/login"
       target="_blank"
     >

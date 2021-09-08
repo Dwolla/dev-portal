@@ -142,7 +142,7 @@ const StyledLink = styled.a`
 const ButtonLink = ({ text, size, variant, link }: Props) => (
   <StyledLink
     href={link.href}
-    target={link.external && "_blank"}
+    target={link.external ? "_blank" : undefined}
     className={`${variant} ${size}`}
   >
     {text}

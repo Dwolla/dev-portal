@@ -1,9 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`getApiReference 1`] = `
+Object {
+  "apis": Array [
+    Object {
+      "id": "/accounts",
+      "meta": Object {
+        "name": "Accounts",
+      },
+      "rawBody": "
+body
+",
+    },
+    Object {
+      "id": "/customers",
+      "meta": Object {
+        "name": "Customers",
+      },
+      "rawBody": "
+body
+",
+    },
+  ],
+  "methods": Object {},
+}
+`;
+
 exports[`list (2) 1`] = `
 Array [
   Object {
-    "body": "
+    "id": "/index.mdx",
+    "meta": Object {
+      "description": "Programmatically send bank transfers with our developer API.",
+      "meta": Object {
+        "description": "Programmatically send bank transfers with our developer API.",
+        "title": "Guides | Dwolla Payments Platform",
+      },
+      "title": "Guides",
+    },
+    "rawBody": "
 \`/guides/index\`
 
 Here
@@ -440,18 +475,21 @@ of
 
 what
 ",
-    "head": Object {
-      "description": "Programmatically send bank transfers with our developer API.",
-      "meta": Object {
-        "description": "Programmatically send bank transfers with our developer API.",
-        "title": "Guides | Dwolla Payments Platform",
-      },
-      "title": "Guides",
-    },
-    "id": "/index.mdx",
   },
   Object {
-    "body": "
+    "id": "/auth/client-credentials-flow.mdx",
+    "meta": Object {
+      "guide": Object {
+        "step": 1,
+      },
+      "layout": "guides",
+      "meta": Object {
+        "description": "Obtain an OAuth access token to access data in the Dwolla API on behalf of an account or application. Grant permission with the client credentials flow.",
+        "title": "OAuth 2.0 - Client Credentials Flow | Dwolla API Documentation",
+      },
+      "title": "Step 1: Generate an access Token",
+    },
+    "rawBody": "
 \`/guides/auth/client-credentials-flow\`
 
 Here
@@ -888,21 +926,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/auth/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.",
+        "title": "Generate an OAuth Access Token",
+        "weight": 1,
+      },
       "guide": Object {
-        "step": 1,
+        "filter": "prerequisites",
+        "icon": "authorization.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Obtain an OAuth access token to access data in the Dwolla API on behalf of an account or application. Grant permission with the client credentials flow.",
-        "title": "OAuth 2.0 - Client Credentials Flow | Dwolla API Documentation",
+        "description": "Dwolla uses the OAuth 2 protocol, an authorization framework that enables a third-party application to obtain access to protected resources in the Dwolla API.",
+        "title": "Dwolla's OAuth 2.0 | Dwolla API Documentation",
       },
-      "title": "Step 1: Generate an access Token",
+      "title": "Overview",
     },
-    "id": "/auth/client-credentials-flow.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/auth/index\`
 
 Here
@@ -1339,29 +1385,22 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.",
-        "title": "Generate an OAuth Access Token",
-        "weight": 1,
-      },
+  },
+  Object {
+    "id": "/auth/using-an-access-token.mdx",
+    "meta": Object {
       "guide": Object {
         "filter": "prerequisites",
-        "icon": "authorization.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Dwolla uses the OAuth 2 protocol, an authorization framework that enables a third-party application to obtain access to protected resources in the Dwolla API.",
-        "title": "Dwolla's OAuth 2.0 | Dwolla API Documentation",
+        "description": "Using an OAuth access token to create requests with the Dwolla API",
+        "title": "OAuth 2.0 - Using an access token | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Using an access token",
     },
-    "id": "/auth/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/auth/using-an-access-token\`
 
 Here
@@ -1798,22 +1837,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/add-beneficial-owners.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "step": 2,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Using an OAuth access token to create requests with the Dwolla API",
-        "title": "OAuth 2.0 - Using an access token | Dwolla API Documentation",
+        "description": "Conditionally required, create a beneficial owner to a verified business Customer to advance them to a transactable state.",
+        "title": "Adding Beneficial Owners | Dwolla API Documentation",
       },
-      "title": "Step 2: Using an access token",
+      "title": "Step 3: Add beneficial owners",
     },
-    "id": "/auth/using-an-access-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/add-beneficial-owners\`
 
 Here
@@ -2250,21 +2288,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/certify-beneficial-ownership.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Conditionally required, create a beneficial owner to a verified business Customer to advance them to a transactable state.",
-        "title": "Adding Beneficial Owners | Dwolla API Documentation",
+        "description": "Conditionally required, certify beneficial ownership to a verified business Customer to advance them to a transactable state.",
+        "title": "Certifying Beneficial Ownership | Dwolla API Documentation",
       },
-      "title": "Step 3: Add beneficial owners",
+      "title": "Step 4: Certify beneficial ownership",
     },
-    "id": "/business-verified-customer/add-beneficial-owners.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/certify-beneficial-ownership\`
 
 Here
@@ -2701,21 +2739,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 4,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Conditionally required, certify beneficial ownership to a verified business Customer to advance them to a transactable state.",
-        "title": "Certifying Beneficial Ownership | Dwolla API Documentation",
+        "description": "Learn how to create a Verified business Customer by passing in the required Know-Your-Customer (KYC) information.",
+        "title": "Business Verified Customers | Dwolla API Documentation",
       },
-      "title": "Step 4: Certify beneficial ownership",
+      "title": "Step 1: Create a business Verified Customer",
     },
-    "id": "/business-verified-customer/certify-beneficial-ownership.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/create-a-customer\`
 
 Here
@@ -3152,21 +3190,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/frequently-asked-questions.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 5,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified business Customer by passing in the required Know-Your-Customer (KYC) information.",
-        "title": "Business Verified Customers | Dwolla API Documentation",
+        "description": "Find answers to common questions about Verified business Customers in the Dwolla API.",
+        "title": "Business verified Customer FAQ | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a business Verified Customer",
+      "title": "Frequently asked questions",
     },
-    "id": "/business-verified-customer/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/frequently-asked-questions\`
 
 Here
@@ -3603,21 +3641,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/handle-verification-statuses.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 5,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Find answers to common questions about Verified business Customers in the Dwolla API.",
-        "title": "Business verified Customer FAQ | Dwolla API Documentation",
+        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
+        "title": "Verifying Customer Statuses | Dwolla API Documentation",
       },
-      "title": "Frequently asked questions",
+      "title": "Step 2: Handle verification statuses",
     },
-    "id": "/business-verified-customer/frequently-asked-questions.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/handle-verification-statuses\`
 
 Here
@@ -4054,21 +4092,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Customers",
+        "description": "Verifying a business’ identity enables increased functionality on the platform. Create a business Customer that can receive funds and send up to $5,000 per transfer (default).",
+        "title": "Create a Business Verified Customer",
+      },
       "guide": Object {
-        "step": 2,
+        "filter": "get-building",
+        "icon": "business-customer-verification.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
-        "title": "Verifying Customer Statuses | Dwolla API Documentation",
+        "description": "Learn how to create a Verified business Customer that can send and receive funds.",
+        "title": "ACH Business Customer Verification | Dwolla API Documentation",
       },
-      "title": "Step 2: Handle verification statuses",
+      "title": "Overview",
     },
-    "id": "/business-verified-customer/handle-verification-statuses.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/index\`
 
 Here
@@ -4505,28 +4550,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Customers",
-        "description": "Verifying a business’ identity enables increased functionality on the platform. Create a business Customer that can receive funds and send up to $5,000 per transfer (default).",
-        "title": "Create a Business Verified Customer",
-      },
+  },
+  Object {
+    "id": "/drop-ins/generate-client-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "business-customer-verification.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified business Customer that can send and receive funds.",
-        "title": "ACH Business Customer Verification | Dwolla API Documentation",
+        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
+        "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Generate a client token",
     },
-    "id": "/business-verified-customer/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/generate-client-token\`
 
 Here
@@ -4963,21 +5001,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/drop-ins/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
+        "title": "Building With Drop-in Components",
+      },
       "guide": Object {
-        "step": 2,
+        "filter": "get-building",
+        "icon": "drop-in-components.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
         "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Step 2: Generate a client token",
+      "title": "Overview",
     },
-    "id": "/drop-ins/generate-client-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/index\`
 
 Here
@@ -5414,28 +5459,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
-        "title": "Building With Drop-in Components",
-      },
+  },
+  Object {
+    "id": "/drop-ins/setup-and-configuration.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "drop-in-components.svg",
-        "step": 0,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
         "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 1: Setup and configuration",
     },
-    "id": "/drop-ins/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/setup-and-configuration\`
 
 Here
@@ -5872,21 +5910,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/drop-ins/using-drop-in-components.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
         "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Step 1: Setup and configuration",
+      "title": "Step 3: Using a drop-in",
     },
-    "id": "/drop-ins/setup-and-configuration.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/using-drop-in-components\`
 
 Here
@@ -6323,21 +6361,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/micro-deposit-verification/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
+        "title": "Verify Bank with Micro-deposits",
+      },
       "guide": Object {
-        "step": 3,
+        "filter": "get-building",
+        "icon": "verify-microdeposits.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
-        "title": "Building With Drop-in Components | Dwolla API Documentation",
+        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
+        "title": "Micro Deposit Verification | Dwolla API Documentation",
       },
-      "title": "Step 3: Using a drop-in",
+      "title": "Overview",
     },
-    "id": "/drop-ins/using-drop-in-components.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/micro-deposit-verification/index\`
 
 Here
@@ -6774,28 +6819,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Verify Bank with Micro-deposits",
-      },
+  },
+  Object {
+    "id": "/micro-deposit-verification/initiate-micro-deposits.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "verify-microdeposits.svg",
-        "step": 0,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Micro Deposit Verification | Dwolla API Documentation",
+        "title": "Initiate Micro-deposits | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 1: Initiate micro-deposits",
     },
-    "id": "/micro-deposit-verification/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/micro-deposit-verification/initiate-micro-deposits\`
 
 Here
@@ -7232,21 +7270,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/micro-deposit-verification/verify-micro-deposits.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Initiate Micro-deposits | Dwolla API Documentation",
+        "title": "Verify Micro-deposits | Dwolla API Documentation",
       },
-      "title": "Step 1: Initiate micro-deposits",
+      "title": "Step 2: Verify micro-deposits",
     },
-    "id": "/micro-deposit-verification/initiate-micro-deposits.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/micro-deposit-verification/verify-micro-deposits\`
 
 Here
@@ -7683,21 +7721,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Verify Micro-deposits | Dwolla API Documentation",
+        "description": "Learn how to create a Verified personal Customer by passing in the required Know-Your-Customer (KYC) information.",
+        "title": "Personal Verified Customers | Dwolla API Documentation",
       },
-      "title": "Step 2: Verify micro-deposits",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/micro-deposit-verification/verify-micro-deposits.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/create-a-customer\`
 
 Here
@@ -8134,21 +8172,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/frequently-asked-questions.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified personal Customer by passing in the required Know-Your-Customer (KYC) information.",
-        "title": "Personal Verified Customers | Dwolla API Documentation",
+        "description": "Find answers to common questions about Verified personal Customers in the Dwolla API.",
+        "title": "Personal verified Customer FAQ | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Frequently asked questions",
     },
-    "id": "/personal-verified-customer/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/frequently-asked-questions\`
 
 Here
@@ -8585,21 +8623,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/handle-verification-statuses.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Find answers to common questions about Verified personal Customers in the Dwolla API.",
-        "title": "Personal verified Customer FAQ | Dwolla API Documentation",
+        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
+        "title": "Customer Verification Statuses | Dwolla API Documentation",
       },
-      "title": "Frequently asked questions",
+      "title": "Step 2: Handling verification statuses",
     },
-    "id": "/personal-verified-customer/frequently-asked-questions.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/handle-verification-statuses\`
 
 Here
@@ -9036,21 +9074,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Customers",
+        "description": "Verifying an individual’s identity enables increased functionality on the platform. Create an individual Customer that can receive funds and send up to $5,000 per transfer (default).",
+        "title": "Create a Personal Verified Customer",
+      },
       "guide": Object {
-        "step": 2,
+        "filter": "get-building",
+        "icon": "personal-customer-verification.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
-        "title": "Customer Verification Statuses | Dwolla API Documentation",
+        "description": "Learn how to create a Verified personal Customer that can send and receive funds.",
+        "title": "Customer Verification | Dwolla API Documentation",
       },
-      "title": "Step 2: Handling verification statuses",
+      "title": "Overview",
     },
-    "id": "/personal-verified-customer/handle-verification-statuses.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/index\`
 
 Here
@@ -9487,28 +9532,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Customers",
-        "description": "Verifying an individual’s identity enables increased functionality on the platform. Create an individual Customer that can receive funds and send up to $5,000 per transfer (default).",
-        "title": "Create a Personal Verified Customer",
-      },
+  },
+  Object {
+    "id": "/plaid/create-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "personal-customer-verification.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified personal Customer that can send and receive funds.",
-        "title": "Customer Verification | Dwolla API Documentation",
+        "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
+        "title": "Create Funding Source Using Plaid Token | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Create funding source using Plaid token",
     },
-    "id": "/personal-verified-customer/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/plaid/create-funding-source\`
 
 Here
@@ -9945,21 +9983,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/plaid/generate-processor-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
-        "title": "Create Funding Source Using Plaid Token | Dwolla API Documentation",
+        "title": "Generate Plaid Processor Token | Dwolla API Documentation",
       },
-      "title": "Step 2: Create funding source using Plaid token",
+      "title": "Step 1: Generate Plaid processor token",
     },
-    "id": "/plaid/create-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/plaid/generate-processor-token\`
 
 Here
@@ -10396,21 +10434,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/plaid/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Securely add and verify an end user’s bank account via online bank authentication through an integration with Dwolla + Plaid.",
+        "title": "Add Bank via Dwolla + Plaid Integration",
+      },
       "guide": Object {
-        "step": 1,
+        "filter": "get-building",
+        "icon": "add-verify-bank-plaid.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
-        "title": "Generate Plaid Processor Token | Dwolla API Documentation",
+        "title": "Dwolla and Plaid Integration | Dwolla API Documentation",
       },
-      "title": "Step 1: Generate Plaid processor token",
+      "title": "Overview",
     },
-    "id": "/plaid/generate-processor-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/plaid/index\`
 
 Here
@@ -10847,28 +10892,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Securely add and verify an end user’s bank account via online bank authentication through an integration with Dwolla + Plaid.",
-        "title": "Add Bank via Dwolla + Plaid Integration",
-      },
+  },
+  Object {
+    "id": "/receive-money/add-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "add-verify-bank-plaid.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
-        "title": "Dwolla and Plaid Integration | Dwolla API Documentation",
+        "description": "Create a bank funding source for a created Customer to receive funds.",
+        "title": "Receive Money - Add a funding source | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Add a funding source",
     },
-    "id": "/plaid/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/add-funding-source\`
 
 Here
@@ -11305,21 +11343,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/receive-money/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a bank funding source for a created Customer to receive funds.",
-        "title": "Receive Money - Add a funding source | Dwolla API Documentation",
+        "description": "Onboard users to receive money from their bank accounts with the Dwolla API.",
+        "title": "Receive Money - Onboarding a Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Add a funding source",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/receive-money/add-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/create-a-customer\`
 
 Here
@@ -11756,21 +11794,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/receive-money/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Onboard users to receive money from their bank accounts with the Dwolla API.",
-        "title": "Receive Money - Onboarding a Customer | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Receieve Money - Creating a Transfer | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Step 4: Create a transfer",
     },
-    "id": "/receive-money/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/create-transfer\`
 
 Here
@@ -12207,21 +12245,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/receive-money/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Learn the key steps involved with receiving funds from your end user’s bank account via ACH",
+        "title": "Receive Money from Users",
+        "weight": 3,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "receive-funds.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Receieve Money - Creating a Transfer | Dwolla API Documentation",
+        "description": "Use the Dwolla API to collect money from your users' bank accounts with pay-in transfers.",
+        "title": "Receive Money from Your Users | Dwolla API Documentation",
       },
-      "title": "Step 4: Create a transfer",
+      "title": "Overview",
     },
-    "id": "/receive-money/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/index\`
 
 Here
@@ -12658,29 +12704,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Learn the key steps involved with receiving funds from your end user’s bank account via ACH",
-        "title": "Receive Money from Users",
-        "weight": 3,
-      },
+  },
+  Object {
+    "id": "/receive-money/retrieve-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "receive-funds.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use the Dwolla API to collect money from your users' bank accounts with pay-in transfers.",
-        "title": "Receive Money from Your Users | Dwolla API Documentation",
+        "description": "Retrieve an existing funding source to initiate a transfer.",
+        "title": "Receive Money - Retrieve Funding Sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Retrieve funding sources",
     },
-    "id": "/receive-money/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/retrieve-funding-sources\`
 
 Here
@@ -13117,21 +13155,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/sandbox/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Applications should be tested against the Sandbox environment before being used in production.",
+        "title": "Testing in the Sandbox",
+        "weight": 0,
+      },
       "guide": Object {
-        "step": 3,
+        "filter": "prerequisites",
+        "icon": "testing-sandbox.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Retrieve an existing funding source to initiate a transfer.",
-        "title": "Receive Money - Retrieve Funding Sources | Dwolla API Documentation",
+        "description": "Utilize the Dwolla sandbox to build out your application in a testing environment for free. Integrate your application with the Dwolla API before going live.",
+        "title": "Getting started in the sandbox | Dwolla API Documentation",
       },
-      "title": "Step 3: Retrieve funding sources",
+      "title": "Sandbox",
     },
-    "id": "/receive-money/retrieve-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/sandbox/index\`
 
 Here
@@ -13568,29 +13614,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Applications should be tested against the Sandbox environment before being used in production.",
-        "title": "Testing in the Sandbox",
-        "weight": 0,
-      },
+  },
+  Object {
+    "id": "/send-money/add-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "testing-sandbox.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Utilize the Dwolla sandbox to build out your application in a testing environment for free. Integrate your application with the Dwolla API before going live.",
-        "title": "Getting started in the sandbox | Dwolla API Documentation",
+        "description": "Add a bank funding source to a Customer to initiate a pay-out transfer.",
+        "title": "Send Money - Add a funding source | Dwolla API Documentation",
       },
-      "title": "Sandbox",
+      "title": "Step 2: Add a funding source",
     },
-    "id": "/sandbox/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/add-funding-source\`
 
 Here
@@ -14027,21 +14065,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/send-money/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Add a bank funding source to a Customer to initiate a pay-out transfer.",
-        "title": "Send Money - Add a funding source | Dwolla API Documentation",
+        "description": "Create a Customer with the Dwolla API for use in sending funds to their bank account with pay-out transfers.",
+        "title": "Send Money - Onboarding a Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Add a funding source",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/send-money/add-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/create-a-customer\`
 
 Here
@@ -14478,21 +14516,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/send-money/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer with the Dwolla API for use in sending funds to their bank account with pay-out transfers.",
-        "title": "Send Money - Onboarding a Customer | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Send Money - Creating a Transfer | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Step 4: Create a transfer",
     },
-    "id": "/send-money/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/create-transfer\`
 
 Here
@@ -14929,21 +14967,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/send-money/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Learn the key steps involved with sending funds to your end user’s bank account via ACH",
+        "title": "Send Money to Users",
+        "weight": 2,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "send-funds.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Send Money - Creating a Transfer | Dwolla API Documentation",
+        "description": "Use the Dwolla API to send money to your users' bank accounts with pay-out transfers.",
+        "title": "Send Money to Your Users | Dwolla API Documentation",
       },
-      "title": "Step 4: Create a transfer",
+      "title": "Overview",
     },
-    "id": "/send-money/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/index\`
 
 Here
@@ -15380,29 +15426,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Learn the key steps involved with sending funds to your end user’s bank account via ACH",
-        "title": "Send Money to Users",
-        "weight": 2,
-      },
+  },
+  Object {
+    "id": "/send-money/retrieve-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "send-funds.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use the Dwolla API to send money to your users' bank accounts with pay-out transfers.",
-        "title": "Send Money to Your Users | Dwolla API Documentation",
+        "description": "Retrieve a list of funding sources associated with your Customer.",
+        "title": "Send Money - Retrieve funding sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Retrieve funding sources",
     },
-    "id": "/send-money/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/retrieve-funding-sources\`
 
 Here
@@ -15839,21 +15877,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 5,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Retrieve a list of funding sources associated with your Customer.",
-        "title": "Send Money - Retrieve funding sources | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Transfer between users - Create a transfer | Dwolla API Documentation",
       },
-      "title": "Step 3: Retrieve funding sources",
+      "title": "Step 5: Create transfer",
     },
-    "id": "/send-money/retrieve-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-transfer\`
 
 Here
@@ -16290,21 +16328,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-unverified-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 5,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Transfer between users - Create a transfer | Dwolla API Documentation",
+        "description": "Create a Customer with the Dwolla API to allow Customers to send funds from their bank account.",
+        "title": "Transfer between users - Creating an Unverified Customer | Dwolla API Documentation",
       },
-      "title": "Step 5: Create transfer",
+      "title": "Step 3: Create Unverified Customer",
     },
-    "id": "/transfer-money-between-users/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-unverified-customer\`
 
 Here
@@ -16741,21 +16779,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-unverified-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer with the Dwolla API to allow Customers to send funds from their bank account.",
-        "title": "Transfer between users - Creating an Unverified Customer | Dwolla API Documentation",
+        "description": "Create an unverified bank funding source to enable Customers to receive funds.",
+        "title": "Transfer between users - Attach an unverified funding source in Dwolla's API | Dwolla API Documentation",
       },
-      "title": "Step 3: Create Unverified Customer",
+      "title": "Step 2: Create unverified funding source",
     },
-    "id": "/transfer-money-between-users/create-unverified-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-unverified-funding-source\`
 
 Here
@@ -17192,21 +17230,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-verified-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create an unverified bank funding source to enable Customers to receive funds.",
-        "title": "Transfer between users - Attach an unverified funding source in Dwolla's API | Dwolla API Documentation",
+        "description": "Create a Customer in the Dwolla API to send funds to their bank account.",
+        "title": "Transfer between users - Creating A Verified Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Create unverified funding source",
+      "title": "Step 1: Create a Verified Customer",
     },
-    "id": "/transfer-money-between-users/create-unverified-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-verified-customer\`
 
 Here
@@ -17643,21 +17681,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-verified-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer in the Dwolla API to send funds to their bank account.",
-        "title": "Transfer between users - Creating A Verified Customer | Dwolla API Documentation",
+        "description": "Create a verified bank funding source for a created Customer to receive funds.",
+        "title": "Transfer between users - Attach a verified funding source | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a Verified Customer",
+      "title": "Step 4: Add verified funding source",
     },
-    "id": "/transfer-money-between-users/create-verified-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-verified-funding-source\`
 
 Here
@@ -18094,21 +18132,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments.",
+        "title": "Transfer Money Between Users",
+        "weight": 4,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "facilitate-payments.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a verified bank funding source for a created Customer to receive funds.",
-        "title": "Transfer between users - Attach a verified funding source | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Transfer Money Between Your Users | Dwolla API Documentation",
       },
-      "title": "Step 4: Add verified funding source",
+      "title": "Overview",
     },
-    "id": "/transfer-money-between-users/create-verified-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/index\`
 
 Here
@@ -18545,29 +18591,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments.",
-        "title": "Transfer Money Between Users",
-        "weight": 4,
-      },
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/add-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "facilitate-payments.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Transfer Money Between Your Users | Dwolla API Documentation",
+        "description": "Create two bank funding source to enable a Customer to send funds between to accounts.",
+        "title": "Me-to-Me - Add funding sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Add funding sources",
     },
-    "id": "/transfer-money-between-users/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/add-funding-sources\`
 
 Here
@@ -19004,21 +19042,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create two bank funding source to enable a Customer to send funds between to accounts.",
-        "title": "Me-to-Me - Add funding sources | Dwolla API Documentation",
+        "description": "Create a Customer in the Dwolla API to send funds between their bank accounts.",
+        "title": "Me-to-Me - Onboarding a Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Add funding sources",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/transfer-money-me-to-me/add-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/create-a-customer\`
 
 Here
@@ -19455,21 +19493,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer in the Dwolla API to send funds between their bank accounts.",
-        "title": "Me-to-Me - Onboarding a Customer | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Me-to-Me - Create a transfer | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Step 4: Create transfer",
     },
-    "id": "/transfer-money-me-to-me/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/create-transfer\`
 
 Here
@@ -19906,21 +19944,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Move funds between two different bank accounts belonging to a single Verified Customer, e.g. for savings applications that move funds between a Customer’s checking and savings accounts.",
+        "title": "Transfer Money Me-to-Me",
+        "weight": 5,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "me-to-me.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Me-to-Me - Create a transfer | Dwolla API Documentation",
+        "description": "Send money online between banks that belong to a single custoemr by utilizing our open bank transfer API.",
+        "title": "Transfer Money Between a Single User | Dwolla API Documentation",
       },
-      "title": "Step 4: Create transfer",
+      "title": "Overview",
     },
-    "id": "/transfer-money-me-to-me/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/index\`
 
 Here
@@ -20357,29 +20403,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Move funds between two different bank accounts belonging to a single Verified Customer, e.g. for savings applications that move funds between a Customer’s checking and savings accounts.",
-        "title": "Transfer Money Me-to-Me",
-        "weight": 5,
-      },
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/retrieve-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "me-to-me.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Send money online between banks that belong to a single custoemr by utilizing our open bank transfer API.",
-        "title": "Transfer Money Between a Single User | Dwolla API Documentation",
+        "description": "Retrieve two bank funding source to enable a Customer to send funds between to accounts.",
+        "title": "Me-to-Me - Retrieve funding sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Retrieve funding sources",
     },
-    "id": "/transfer-money-me-to-me/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/retrieve-funding-sources\`
 
 Here
@@ -20816,21 +20854,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/webhooks/create-subscription.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Retrieve two bank funding source to enable a Customer to send funds between to accounts.",
-        "title": "Me-to-Me - Retrieve funding sources | Dwolla API Documentation",
+        "description": "Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.",
+        "title": "Webhooks - Create Subscription| Dwolla API Documentation",
       },
-      "title": "Step 3: Retrieve funding sources",
+      "title": "Step 1: Create subscription",
     },
-    "id": "/transfer-money-me-to-me/retrieve-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/create-subscription\`
 
 Here
@@ -21267,21 +21305,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/webhooks/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Webhooks",
+        "description": "Implement simple, real-time, event notifications regarding account and transaction status, and more.",
+        "title": "Create a Webhook Subscription",
+      },
       "guide": Object {
-        "step": 1,
+        "filter": "prerequisites",
+        "icon": "create-webhook-subscription.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.",
-        "title": "Webhooks - Create Subscription| Dwolla API Documentation",
+        "description": "Webhooks for payments within your application by utilizing our open API with no per transaction fees.",
+        "title": "Webhooks | Dwolla API Documentation",
       },
-      "title": "Step 1: Create subscription",
+      "title": "Overview: Webhooks",
     },
-    "id": "/webhooks/create-subscription.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/index\`
 
 Here
@@ -21718,28 +21763,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Webhooks",
-        "description": "Implement simple, real-time, event notifications regarding account and transaction status, and more.",
-        "title": "Create a Webhook Subscription",
-      },
+  },
+  Object {
+    "id": "/webhooks/process-webhooks.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "create-webhook-subscription.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Webhooks for payments within your application by utilizing our open API with no per transaction fees.",
-        "title": "Webhooks | Dwolla API Documentation",
+        "description": "Process webhooks for payments within your application by utilizing our open API with no per transaction fees.",
+        "title": "Process Webhooks | Dwolla API Documentation",
       },
-      "title": "Overview: Webhooks",
+      "title": "Example: Process webhooks",
     },
-    "id": "/webhooks/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/process-webhooks\`
 
 Here
@@ -22176,21 +22214,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/webhooks/validating-webhooks.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Process webhooks for payments within your application by utilizing our open API with no per transaction fees.",
-        "title": "Process Webhooks | Dwolla API Documentation",
+        "description": "Validating webhooks for payments within your application by utilizing our open API with no per transaction fees.",
+        "title": "Validating Webhooks | Dwolla API Documentation",
       },
-      "title": "Example: Process webhooks",
+      "title": "Step 2: Validating webhooks",
     },
-    "id": "/webhooks/process-webhooks.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/validating-webhooks\`
 
 Here
@@ -22627,21 +22665,39 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/api-reference/accounts/index.mdx",
+    "meta": Object {
+      "name": "Accounts",
+    },
+    "rawBody": "
+body
+",
+  },
+  Object {
+    "id": "/api-reference/customers/index.mdx",
+    "meta": Object {
+      "name": "Customers",
+    },
+    "rawBody": "
+body
+",
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/configure-and-call-function.mdx",
+    "meta": Object {
       "guide": Object {
         "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Validating webhooks for payments within your application by utilizing our open API with no per transaction fees.",
-        "title": "Validating Webhooks | Dwolla API Documentation",
+        "description": "Configure and call function for initiating Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
+        "title": "Add a Debit Card - Configure and Call Dwolla-card.js | Dwolla API Documentation",
       },
-      "title": "Step 2: Validating webhooks",
+      "title": "Step 2: Configure and call function",
     },
-    "id": "/webhooks/validating-webhooks.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function\`
 
 Here
@@ -23078,21 +23134,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/create-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Configure and call function for initiating Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
-        "title": "Add a Debit Card - Configure and Call Dwolla-card.js | Dwolla API Documentation",
+        "description": "Create a card funding sources token for use in initiating the add a debit card flow.",
+        "title": "Add a Debit Card - Create a Card Funding Sources Token | Dwolla API Documentation",
       },
-      "title": "Step 2: Configure and call function",
+      "title": "Step 1: Create a card funding sources token",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/configure-and-call-function.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/create-token\`
 
 Here
@@ -23529,21 +23585,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/handle-response.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a card funding sources token for use in initiating the add a debit card flow.",
-        "title": "Add a Debit Card - Create a Card Funding Sources Token | Dwolla API Documentation",
+        "description": "Handle JavaScript callback for success and error responses for Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
+        "title": "Add a Debit Card - Handle Dwolla.js callback | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a card funding sources token",
+      "title": "Step 3: Handle JavaScript callback",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/create-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/handle-response\`
 
 Here
@@ -23980,21 +24036,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Debit Card Using Dwolla-cards.js",
+      },
       "guide": Object {
-        "step": 3,
+        "filter": "get-building",
+        "icon": "push-to-debit.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Handle JavaScript callback for success and error responses for Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
-        "title": "Add a Debit Card - Handle Dwolla.js callback | Dwolla API Documentation",
+        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Debit Card Using Dwolla-cards.js | Dwolla API Documentation",
       },
-      "title": "Step 3: Handle JavaScript callback",
+      "title": "Overview",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/handle-response.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/index\`
 
 Here
@@ -24431,28 +24494,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Debit Card Using Dwolla-cards.js",
-      },
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/configure-and-call-function.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "push-to-debit.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Debit Card Using Dwolla-cards.js | Dwolla API Documentation",
+        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "Add Bank - Configure and Call Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Configure and call function",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/configure-and-call-function\`
 
 Here
@@ -24889,21 +24945,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/create-form.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "Add Bank - Configure and Call Dwolla.js | Dwolla API Documentation",
+        "description": "Create the form that will be used as inputs for the account and routing number.",
+        "title": "Add Bank - Create form for Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Step 3: Configure and call function",
+      "title": "Step 1: Create a form",
     },
-    "id": "/dwolla-js/add-a-bank-account/configure-and-call-function.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/create-form\`
 
 Here
@@ -25340,21 +25396,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/create-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create the form that will be used as inputs for the account and routing number.",
-        "title": "Add Bank - Create form for Dwolla.js | Dwolla API Documentation",
+        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "Add Bank - Create Funding Source Token | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a form",
+      "title": "Step 2: Create a funding sources token",
     },
-    "id": "/dwolla-js/add-a-bank-account/create-form.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/create-token\`
 
 Here
@@ -25791,21 +25847,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/handle-response.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "Add Bank - Create Funding Source Token | Dwolla API Documentation",
+        "title": "Add Bank - Handle Dwolla.js callback | Dwolla API Documentation",
       },
-      "title": "Step 2: Create a funding sources token",
+      "title": "Step 4: Handle JavaScript callback",
     },
-    "id": "/dwolla-js/add-a-bank-account/create-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/handle-response\`
 
 Here
@@ -26242,21 +26298,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Utilize Dwolla.js to submit an end user’s U.S. bank account information to Dwolla. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Bank Using Dwolla.js",
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "get-building",
+        "icon": "add-bank-dwolla-js.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "Add Bank - Handle Dwolla.js callback | Dwolla API Documentation",
+        "description": "Dwolla.js is a client-side JavaScript library designed to quickly onboard customers, add and verify bank accounts (IAV), and enable on-demand bank transfers.",
+        "title": "Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation",
       },
-      "title": "Step 4: Handle JavaScript callback",
+      "title": "Overview",
     },
-    "id": "/dwolla-js/add-a-bank-account/handle-response.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/index\`
 
 Here
@@ -26693,28 +26756,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Utilize Dwolla.js to submit an end user’s U.S. bank account information to Dwolla. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Bank Using Dwolla.js",
-      },
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/configure-and-call-function.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "add-bank-dwolla-js.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Dwolla.js is a client-side JavaScript library designed to quickly onboard customers, add and verify bank accounts (IAV), and enable on-demand bank transfers.",
-        "title": "Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation",
+        "description": "Configure and call function for initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "IAV - Configure and Call Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Configure and call function",
     },
-    "id": "/dwolla-js/add-a-bank-account/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/configure-and-call-function\`
 
 Here
@@ -27151,21 +27207,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/create-container.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Configure and call function for initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "IAV - Configure and Call Dwolla.js | Dwolla API Documentation",
+        "description": "Create the container that will be used for rendering the iframe for Dwolla.js and IAV.",
+        "title": "IAV - Create container for IAV | Dwolla API Documentation",
       },
-      "title": "Step 3: Configure and call function",
+      "title": "Step 1: Create a container for IAV",
     },
-    "id": "/dwolla-js/instant-account-verification/configure-and-call-function.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/create-container\`
 
 Here
@@ -27602,21 +27658,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/create-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create the container that will be used for rendering the iframe for Dwolla.js and IAV.",
-        "title": "IAV - Create container for IAV | Dwolla API Documentation",
+        "description": "Create an Instant Account Verification token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "IAV - Create IAV Token | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a container for IAV",
+      "title": "Step 2: Create an IAV token",
     },
-    "id": "/dwolla-js/instant-account-verification/create-container.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/create-token\`
 
 Here
@@ -28053,21 +28109,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/handle-errors.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create an Instant Account Verification token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "IAV - Create IAV Token | Dwolla API Documentation",
+        "description": "Handle JavaScript callback for success and error responses for Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "IAV - Handle Dwolla.js callback | Dwolla API Documentation",
       },
-      "title": "Step 2: Create an IAV token",
+      "title": "Step 4: Handle JavaScript callback",
     },
-    "id": "/dwolla-js/instant-account-verification/create-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/handle-errors\`
 
 Here
@@ -28504,21 +28560,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Utilize Dwolla.js to add and verify an end user’s bank account via online banking credentials. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Bank Using Dwolla.js + IAV",
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "get-building",
+        "icon": "add-verify-bank-iav.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Handle JavaScript callback for success and error responses for Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "IAV - Handle Dwolla.js callback | Dwolla API Documentation",
+        "description": "Using the client-side Dwolla.js JavaScript library, your application can add and verify a customer's bank account in a matter of seconds.",
+        "title": "Instant Account Verification Using Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Step 4: Handle JavaScript callback",
+      "title": "Overview",
     },
-    "id": "/dwolla-js/instant-account-verification/handle-errors.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/index\`
 
 Here
@@ -28955,25 +29018,6 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Utilize Dwolla.js to add and verify an end user’s bank account via online banking credentials. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Bank Using Dwolla.js + IAV",
-      },
-      "guide": Object {
-        "filter": "get-building",
-        "icon": "add-verify-bank-iav.svg",
-        "step": 0,
-      },
-      "layout": "guides",
-      "meta": Object {
-        "description": "Using the client-side Dwolla.js JavaScript library, your application can add and verify a customer's bank account in a matter of seconds.",
-        "title": "Instant Account Verification Using Dwolla.js | Dwolla API Documentation",
-      },
-      "title": "Overview",
-    },
-    "id": "/dwolla-js/instant-account-verification/index.mdx",
   },
 ]
 `;
@@ -28981,7 +29025,16 @@ what
 exports[`list 1`] = `
 Array [
   Object {
-    "body": "
+    "id": "/index.mdx",
+    "meta": Object {
+      "description": "Programmatically send bank transfers with our developer API.",
+      "meta": Object {
+        "description": "Programmatically send bank transfers with our developer API.",
+        "title": "Guides | Dwolla Payments Platform",
+      },
+      "title": "Guides",
+    },
+    "rawBody": "
 \`/guides/index\`
 
 Here
@@ -29418,18 +29471,21 @@ of
 
 what
 ",
-    "head": Object {
-      "description": "Programmatically send bank transfers with our developer API.",
-      "meta": Object {
-        "description": "Programmatically send bank transfers with our developer API.",
-        "title": "Guides | Dwolla Payments Platform",
-      },
-      "title": "Guides",
-    },
-    "id": "/index.mdx",
   },
   Object {
-    "body": "
+    "id": "/auth/client-credentials-flow.mdx",
+    "meta": Object {
+      "guide": Object {
+        "step": 1,
+      },
+      "layout": "guides",
+      "meta": Object {
+        "description": "Obtain an OAuth access token to access data in the Dwolla API on behalf of an account or application. Grant permission with the client credentials flow.",
+        "title": "OAuth 2.0 - Client Credentials Flow | Dwolla API Documentation",
+      },
+      "title": "Step 1: Generate an access Token",
+    },
+    "rawBody": "
 \`/guides/auth/client-credentials-flow\`
 
 Here
@@ -29866,21 +29922,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/auth/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.",
+        "title": "Generate an OAuth Access Token",
+        "weight": 1,
+      },
       "guide": Object {
-        "step": 1,
+        "filter": "prerequisites",
+        "icon": "authorization.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Obtain an OAuth access token to access data in the Dwolla API on behalf of an account or application. Grant permission with the client credentials flow.",
-        "title": "OAuth 2.0 - Client Credentials Flow | Dwolla API Documentation",
+        "description": "Dwolla uses the OAuth 2 protocol, an authorization framework that enables a third-party application to obtain access to protected resources in the Dwolla API.",
+        "title": "Dwolla's OAuth 2.0 | Dwolla API Documentation",
       },
-      "title": "Step 1: Generate an access Token",
+      "title": "Overview",
     },
-    "id": "/auth/client-credentials-flow.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/auth/index\`
 
 Here
@@ -30317,29 +30381,22 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.",
-        "title": "Generate an OAuth Access Token",
-        "weight": 1,
-      },
+  },
+  Object {
+    "id": "/auth/using-an-access-token.mdx",
+    "meta": Object {
       "guide": Object {
         "filter": "prerequisites",
-        "icon": "authorization.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Dwolla uses the OAuth 2 protocol, an authorization framework that enables a third-party application to obtain access to protected resources in the Dwolla API.",
-        "title": "Dwolla's OAuth 2.0 | Dwolla API Documentation",
+        "description": "Using an OAuth access token to create requests with the Dwolla API",
+        "title": "OAuth 2.0 - Using an access token | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Using an access token",
     },
-    "id": "/auth/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/auth/using-an-access-token\`
 
 Here
@@ -30776,22 +30833,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/add-beneficial-owners.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "step": 2,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Using an OAuth access token to create requests with the Dwolla API",
-        "title": "OAuth 2.0 - Using an access token | Dwolla API Documentation",
+        "description": "Conditionally required, create a beneficial owner to a verified business Customer to advance them to a transactable state.",
+        "title": "Adding Beneficial Owners | Dwolla API Documentation",
       },
-      "title": "Step 2: Using an access token",
+      "title": "Step 3: Add beneficial owners",
     },
-    "id": "/auth/using-an-access-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/add-beneficial-owners\`
 
 Here
@@ -31228,21 +31284,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/certify-beneficial-ownership.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Conditionally required, create a beneficial owner to a verified business Customer to advance them to a transactable state.",
-        "title": "Adding Beneficial Owners | Dwolla API Documentation",
+        "description": "Conditionally required, certify beneficial ownership to a verified business Customer to advance them to a transactable state.",
+        "title": "Certifying Beneficial Ownership | Dwolla API Documentation",
       },
-      "title": "Step 3: Add beneficial owners",
+      "title": "Step 4: Certify beneficial ownership",
     },
-    "id": "/business-verified-customer/add-beneficial-owners.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/certify-beneficial-ownership\`
 
 Here
@@ -31679,21 +31735,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 4,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Conditionally required, certify beneficial ownership to a verified business Customer to advance them to a transactable state.",
-        "title": "Certifying Beneficial Ownership | Dwolla API Documentation",
+        "description": "Learn how to create a Verified business Customer by passing in the required Know-Your-Customer (KYC) information.",
+        "title": "Business Verified Customers | Dwolla API Documentation",
       },
-      "title": "Step 4: Certify beneficial ownership",
+      "title": "Step 1: Create a business Verified Customer",
     },
-    "id": "/business-verified-customer/certify-beneficial-ownership.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/create-a-customer\`
 
 Here
@@ -32130,21 +32186,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/frequently-asked-questions.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 5,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified business Customer by passing in the required Know-Your-Customer (KYC) information.",
-        "title": "Business Verified Customers | Dwolla API Documentation",
+        "description": "Find answers to common questions about Verified business Customers in the Dwolla API.",
+        "title": "Business verified Customer FAQ | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a business Verified Customer",
+      "title": "Frequently asked questions",
     },
-    "id": "/business-verified-customer/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/frequently-asked-questions\`
 
 Here
@@ -32581,21 +32637,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/handle-verification-statuses.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 5,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Find answers to common questions about Verified business Customers in the Dwolla API.",
-        "title": "Business verified Customer FAQ | Dwolla API Documentation",
+        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
+        "title": "Verifying Customer Statuses | Dwolla API Documentation",
       },
-      "title": "Frequently asked questions",
+      "title": "Step 2: Handle verification statuses",
     },
-    "id": "/business-verified-customer/frequently-asked-questions.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/handle-verification-statuses\`
 
 Here
@@ -33032,21 +33088,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/business-verified-customer/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Customers",
+        "description": "Verifying a business’ identity enables increased functionality on the platform. Create a business Customer that can receive funds and send up to $5,000 per transfer (default).",
+        "title": "Create a Business Verified Customer",
+      },
       "guide": Object {
-        "step": 2,
+        "filter": "get-building",
+        "icon": "business-customer-verification.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
-        "title": "Verifying Customer Statuses | Dwolla API Documentation",
+        "description": "Learn how to create a Verified business Customer that can send and receive funds.",
+        "title": "ACH Business Customer Verification | Dwolla API Documentation",
       },
-      "title": "Step 2: Handle verification statuses",
+      "title": "Overview",
     },
-    "id": "/business-verified-customer/handle-verification-statuses.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/business-verified-customer/index\`
 
 Here
@@ -33483,28 +33546,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Customers",
-        "description": "Verifying a business’ identity enables increased functionality on the platform. Create a business Customer that can receive funds and send up to $5,000 per transfer (default).",
-        "title": "Create a Business Verified Customer",
-      },
+  },
+  Object {
+    "id": "/drop-ins/generate-client-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "business-customer-verification.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified business Customer that can send and receive funds.",
-        "title": "ACH Business Customer Verification | Dwolla API Documentation",
+        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
+        "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Generate a client token",
     },
-    "id": "/business-verified-customer/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/generate-client-token\`
 
 Here
@@ -33941,21 +33997,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/drop-ins/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
+        "title": "Building With Drop-in Components",
+      },
       "guide": Object {
-        "step": 2,
+        "filter": "get-building",
+        "icon": "drop-in-components.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
         "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Step 2: Generate a client token",
+      "title": "Overview",
     },
-    "id": "/drop-ins/generate-client-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/index\`
 
 Here
@@ -34392,28 +34455,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
-        "title": "Building With Drop-in Components",
-      },
+  },
+  Object {
+    "id": "/drop-ins/setup-and-configuration.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "drop-in-components.svg",
-        "step": 0,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
         "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 1: Setup and configuration",
     },
-    "id": "/drop-ins/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/setup-and-configuration\`
 
 Here
@@ -34850,21 +34906,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/drop-ins/using-drop-in-components.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
         "title": "Building With Drop-in Components | Dwolla API Documentation",
       },
-      "title": "Step 1: Setup and configuration",
+      "title": "Step 3: Using a drop-in",
     },
-    "id": "/drop-ins/setup-and-configuration.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/drop-ins/using-drop-in-components\`
 
 Here
@@ -35301,21 +35357,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/micro-deposit-verification/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
+        "title": "Verify Bank with Micro-deposits",
+      },
       "guide": Object {
-        "step": 3,
+        "filter": "get-building",
+        "icon": "verify-microdeposits.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Dwolla’s Drop-in Components are low-code solutions to abstract away the complexity of integrating with a payment API and act as a shortcut to completing a payment integration.",
-        "title": "Building With Drop-in Components | Dwolla API Documentation",
+        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
+        "title": "Micro Deposit Verification | Dwolla API Documentation",
       },
-      "title": "Step 3: Using a drop-in",
+      "title": "Overview",
     },
-    "id": "/drop-ins/using-drop-in-components.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/micro-deposit-verification/index\`
 
 Here
@@ -35752,28 +35815,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Verify Bank with Micro-deposits",
-      },
+  },
+  Object {
+    "id": "/micro-deposit-verification/initiate-micro-deposits.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "verify-microdeposits.svg",
-        "step": 0,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Micro Deposit Verification | Dwolla API Documentation",
+        "title": "Initiate Micro-deposits | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 1: Initiate micro-deposits",
     },
-    "id": "/micro-deposit-verification/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/micro-deposit-verification/initiate-micro-deposits\`
 
 Here
@@ -36210,21 +36266,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/micro-deposit-verification/verify-micro-deposits.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Initiate Micro-deposits | Dwolla API Documentation",
+        "title": "Verify Micro-deposits | Dwolla API Documentation",
       },
-      "title": "Step 1: Initiate micro-deposits",
+      "title": "Step 2: Verify micro-deposits",
     },
-    "id": "/micro-deposit-verification/initiate-micro-deposits.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/micro-deposit-verification/verify-micro-deposits\`
 
 Here
@@ -36661,21 +36717,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Verify user bank accounts using test funds by posting randomly generated amounts to your customer's account.",
-        "title": "Verify Micro-deposits | Dwolla API Documentation",
+        "description": "Learn how to create a Verified personal Customer by passing in the required Know-Your-Customer (KYC) information.",
+        "title": "Personal Verified Customers | Dwolla API Documentation",
       },
-      "title": "Step 2: Verify micro-deposits",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/micro-deposit-verification/verify-micro-deposits.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/create-a-customer\`
 
 Here
@@ -37112,21 +37168,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/frequently-asked-questions.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified personal Customer by passing in the required Know-Your-Customer (KYC) information.",
-        "title": "Personal Verified Customers | Dwolla API Documentation",
+        "description": "Find answers to common questions about Verified personal Customers in the Dwolla API.",
+        "title": "Personal verified Customer FAQ | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Frequently asked questions",
     },
-    "id": "/personal-verified-customer/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/frequently-asked-questions\`
 
 Here
@@ -37563,21 +37619,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/handle-verification-statuses.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Find answers to common questions about Verified personal Customers in the Dwolla API.",
-        "title": "Personal verified Customer FAQ | Dwolla API Documentation",
+        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
+        "title": "Customer Verification Statuses | Dwolla API Documentation",
       },
-      "title": "Frequently asked questions",
+      "title": "Step 2: Handling verification statuses",
     },
-    "id": "/personal-verified-customer/frequently-asked-questions.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/handle-verification-statuses\`
 
 Here
@@ -38014,21 +38070,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/personal-verified-customer/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Customers",
+        "description": "Verifying an individual’s identity enables increased functionality on the platform. Create an individual Customer that can receive funds and send up to $5,000 per transfer (default).",
+        "title": "Create a Personal Verified Customer",
+      },
       "guide": Object {
-        "step": 2,
+        "filter": "get-building",
+        "icon": "personal-customer-verification.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Identify the various statuses of Verified Customer creation, including retry, document and suspended.",
-        "title": "Customer Verification Statuses | Dwolla API Documentation",
+        "description": "Learn how to create a Verified personal Customer that can send and receive funds.",
+        "title": "Customer Verification | Dwolla API Documentation",
       },
-      "title": "Step 2: Handling verification statuses",
+      "title": "Overview",
     },
-    "id": "/personal-verified-customer/handle-verification-statuses.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/personal-verified-customer/index\`
 
 Here
@@ -38465,28 +38528,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Customers",
-        "description": "Verifying an individual’s identity enables increased functionality on the platform. Create an individual Customer that can receive funds and send up to $5,000 per transfer (default).",
-        "title": "Create a Personal Verified Customer",
-      },
+  },
+  Object {
+    "id": "/plaid/create-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "personal-customer-verification.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Learn how to create a Verified personal Customer that can send and receive funds.",
-        "title": "Customer Verification | Dwolla API Documentation",
+        "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
+        "title": "Create Funding Source Using Plaid Token | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Create funding source using Plaid token",
     },
-    "id": "/personal-verified-customer/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/plaid/create-funding-source\`
 
 Here
@@ -38923,21 +38979,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/plaid/generate-processor-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
-        "title": "Create Funding Source Using Plaid Token | Dwolla API Documentation",
+        "title": "Generate Plaid Processor Token | Dwolla API Documentation",
       },
-      "title": "Step 2: Create funding source using Plaid token",
+      "title": "Step 1: Generate Plaid processor token",
     },
-    "id": "/plaid/create-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/plaid/generate-processor-token\`
 
 Here
@@ -39374,21 +39430,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/plaid/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Securely add and verify an end user’s bank account via online bank authentication through an integration with Dwolla + Plaid.",
+        "title": "Add Bank via Dwolla + Plaid Integration",
+      },
       "guide": Object {
-        "step": 1,
+        "filter": "get-building",
+        "icon": "add-verify-bank-plaid.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
-        "title": "Generate Plaid Processor Token | Dwolla API Documentation",
+        "title": "Dwolla and Plaid Integration | Dwolla API Documentation",
       },
-      "title": "Step 1: Generate Plaid processor token",
+      "title": "Overview",
     },
-    "id": "/plaid/generate-processor-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/plaid/index\`
 
 Here
@@ -39825,28 +39888,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Securely add and verify an end user’s bank account via online bank authentication through an integration with Dwolla + Plaid.",
-        "title": "Add Bank via Dwolla + Plaid Integration",
-      },
+  },
+  Object {
+    "id": "/receive-money/add-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "add-verify-bank-plaid.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users’ bank accounts.",
-        "title": "Dwolla and Plaid Integration | Dwolla API Documentation",
+        "description": "Create a bank funding source for a created Customer to receive funds.",
+        "title": "Receive Money - Add a funding source | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Add a funding source",
     },
-    "id": "/plaid/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/add-funding-source\`
 
 Here
@@ -40283,21 +40339,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/receive-money/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a bank funding source for a created Customer to receive funds.",
-        "title": "Receive Money - Add a funding source | Dwolla API Documentation",
+        "description": "Onboard users to receive money from their bank accounts with the Dwolla API.",
+        "title": "Receive Money - Onboarding a Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Add a funding source",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/receive-money/add-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/create-a-customer\`
 
 Here
@@ -40734,21 +40790,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/receive-money/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Onboard users to receive money from their bank accounts with the Dwolla API.",
-        "title": "Receive Money - Onboarding a Customer | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Receieve Money - Creating a Transfer | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Step 4: Create a transfer",
     },
-    "id": "/receive-money/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/create-transfer\`
 
 Here
@@ -41185,21 +41241,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/receive-money/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Learn the key steps involved with receiving funds from your end user’s bank account via ACH",
+        "title": "Receive Money from Users",
+        "weight": 3,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "receive-funds.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Receieve Money - Creating a Transfer | Dwolla API Documentation",
+        "description": "Use the Dwolla API to collect money from your users' bank accounts with pay-in transfers.",
+        "title": "Receive Money from Your Users | Dwolla API Documentation",
       },
-      "title": "Step 4: Create a transfer",
+      "title": "Overview",
     },
-    "id": "/receive-money/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/index\`
 
 Here
@@ -41636,29 +41700,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Learn the key steps involved with receiving funds from your end user’s bank account via ACH",
-        "title": "Receive Money from Users",
-        "weight": 3,
-      },
+  },
+  Object {
+    "id": "/receive-money/retrieve-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "receive-funds.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use the Dwolla API to collect money from your users' bank accounts with pay-in transfers.",
-        "title": "Receive Money from Your Users | Dwolla API Documentation",
+        "description": "Retrieve an existing funding source to initiate a transfer.",
+        "title": "Receive Money - Retrieve Funding Sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Retrieve funding sources",
     },
-    "id": "/receive-money/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/receive-money/retrieve-funding-sources\`
 
 Here
@@ -42095,21 +42151,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/sandbox/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Applications should be tested against the Sandbox environment before being used in production.",
+        "title": "Testing in the Sandbox",
+        "weight": 0,
+      },
       "guide": Object {
-        "step": 3,
+        "filter": "prerequisites",
+        "icon": "testing-sandbox.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Retrieve an existing funding source to initiate a transfer.",
-        "title": "Receive Money - Retrieve Funding Sources | Dwolla API Documentation",
+        "description": "Utilize the Dwolla sandbox to build out your application in a testing environment for free. Integrate your application with the Dwolla API before going live.",
+        "title": "Getting started in the sandbox | Dwolla API Documentation",
       },
-      "title": "Step 3: Retrieve funding sources",
+      "title": "Sandbox",
     },
-    "id": "/receive-money/retrieve-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/sandbox/index\`
 
 Here
@@ -42546,29 +42610,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Applications should be tested against the Sandbox environment before being used in production.",
-        "title": "Testing in the Sandbox",
-        "weight": 0,
-      },
+  },
+  Object {
+    "id": "/send-money/add-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "testing-sandbox.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Utilize the Dwolla sandbox to build out your application in a testing environment for free. Integrate your application with the Dwolla API before going live.",
-        "title": "Getting started in the sandbox | Dwolla API Documentation",
+        "description": "Add a bank funding source to a Customer to initiate a pay-out transfer.",
+        "title": "Send Money - Add a funding source | Dwolla API Documentation",
       },
-      "title": "Sandbox",
+      "title": "Step 2: Add a funding source",
     },
-    "id": "/sandbox/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/add-funding-source\`
 
 Here
@@ -43005,21 +43061,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/send-money/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Add a bank funding source to a Customer to initiate a pay-out transfer.",
-        "title": "Send Money - Add a funding source | Dwolla API Documentation",
+        "description": "Create a Customer with the Dwolla API for use in sending funds to their bank account with pay-out transfers.",
+        "title": "Send Money - Onboarding a Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Add a funding source",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/send-money/add-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/create-a-customer\`
 
 Here
@@ -43456,21 +43512,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/send-money/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer with the Dwolla API for use in sending funds to their bank account with pay-out transfers.",
-        "title": "Send Money - Onboarding a Customer | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Send Money - Creating a Transfer | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Step 4: Create a transfer",
     },
-    "id": "/send-money/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/create-transfer\`
 
 Here
@@ -43907,21 +43963,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/send-money/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Learn the key steps involved with sending funds to your end user’s bank account via ACH",
+        "title": "Send Money to Users",
+        "weight": 2,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "send-funds.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Send Money - Creating a Transfer | Dwolla API Documentation",
+        "description": "Use the Dwolla API to send money to your users' bank accounts with pay-out transfers.",
+        "title": "Send Money to Your Users | Dwolla API Documentation",
       },
-      "title": "Step 4: Create a transfer",
+      "title": "Overview",
     },
-    "id": "/send-money/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/index\`
 
 Here
@@ -44358,29 +44422,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Learn the key steps involved with sending funds to your end user’s bank account via ACH",
-        "title": "Send Money to Users",
-        "weight": 2,
-      },
+  },
+  Object {
+    "id": "/send-money/retrieve-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "send-funds.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use the Dwolla API to send money to your users' bank accounts with pay-out transfers.",
-        "title": "Send Money to Your Users | Dwolla API Documentation",
+        "description": "Retrieve a list of funding sources associated with your Customer.",
+        "title": "Send Money - Retrieve funding sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Retrieve funding sources",
     },
-    "id": "/send-money/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/send-money/retrieve-funding-sources\`
 
 Here
@@ -44817,21 +44873,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 5,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Retrieve a list of funding sources associated with your Customer.",
-        "title": "Send Money - Retrieve funding sources | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Transfer between users - Create a transfer | Dwolla API Documentation",
       },
-      "title": "Step 3: Retrieve funding sources",
+      "title": "Step 5: Create transfer",
     },
-    "id": "/send-money/retrieve-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-transfer\`
 
 Here
@@ -45268,21 +45324,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-unverified-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 5,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Transfer between users - Create a transfer | Dwolla API Documentation",
+        "description": "Create a Customer with the Dwolla API to allow Customers to send funds from their bank account.",
+        "title": "Transfer between users - Creating an Unverified Customer | Dwolla API Documentation",
       },
-      "title": "Step 5: Create transfer",
+      "title": "Step 3: Create Unverified Customer",
     },
-    "id": "/transfer-money-between-users/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-unverified-customer\`
 
 Here
@@ -45719,21 +45775,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-unverified-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer with the Dwolla API to allow Customers to send funds from their bank account.",
-        "title": "Transfer between users - Creating an Unverified Customer | Dwolla API Documentation",
+        "description": "Create an unverified bank funding source to enable Customers to receive funds.",
+        "title": "Transfer between users - Attach an unverified funding source in Dwolla's API | Dwolla API Documentation",
       },
-      "title": "Step 3: Create Unverified Customer",
+      "title": "Step 2: Create unverified funding source",
     },
-    "id": "/transfer-money-between-users/create-unverified-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-unverified-funding-source\`
 
 Here
@@ -46170,21 +46226,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-verified-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create an unverified bank funding source to enable Customers to receive funds.",
-        "title": "Transfer between users - Attach an unverified funding source in Dwolla's API | Dwolla API Documentation",
+        "description": "Create a Customer in the Dwolla API to send funds to their bank account.",
+        "title": "Transfer between users - Creating A Verified Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Create unverified funding source",
+      "title": "Step 1: Create a Verified Customer",
     },
-    "id": "/transfer-money-between-users/create-unverified-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-verified-customer\`
 
 Here
@@ -46621,21 +46677,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/create-verified-funding-source.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer in the Dwolla API to send funds to their bank account.",
-        "title": "Transfer between users - Creating A Verified Customer | Dwolla API Documentation",
+        "description": "Create a verified bank funding source for a created Customer to receive funds.",
+        "title": "Transfer between users - Attach a verified funding source | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a Verified Customer",
+      "title": "Step 4: Add verified funding source",
     },
-    "id": "/transfer-money-between-users/create-verified-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/create-verified-funding-source\`
 
 Here
@@ -47072,21 +47128,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-between-users/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments.",
+        "title": "Transfer Money Between Users",
+        "weight": 4,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "facilitate-payments.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a verified bank funding source for a created Customer to receive funds.",
-        "title": "Transfer between users - Attach a verified funding source | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Transfer Money Between Your Users | Dwolla API Documentation",
       },
-      "title": "Step 4: Add verified funding source",
+      "title": "Overview",
     },
-    "id": "/transfer-money-between-users/create-verified-funding-source.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-between-users/index\`
 
 Here
@@ -47523,29 +47587,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments.",
-        "title": "Transfer Money Between Users",
-        "weight": 4,
-      },
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/add-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "facilitate-payments.svg",
-        "step": 0,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Transfer Money Between Your Users | Dwolla API Documentation",
+        "description": "Create two bank funding source to enable a Customer to send funds between to accounts.",
+        "title": "Me-to-Me - Add funding sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 2: Add funding sources",
     },
-    "id": "/transfer-money-between-users/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/add-funding-sources\`
 
 Here
@@ -47982,21 +48038,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/create-a-customer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create two bank funding source to enable a Customer to send funds between to accounts.",
-        "title": "Me-to-Me - Add funding sources | Dwolla API Documentation",
+        "description": "Create a Customer in the Dwolla API to send funds between their bank accounts.",
+        "title": "Me-to-Me - Onboarding a Customer | Dwolla API Documentation",
       },
-      "title": "Step 2: Add funding sources",
+      "title": "Step 1: Create a customer",
     },
-    "id": "/transfer-money-me-to-me/add-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/create-a-customer\`
 
 Here
@@ -48433,21 +48489,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/create-transfer.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a Customer in the Dwolla API to send funds between their bank accounts.",
-        "title": "Me-to-Me - Onboarding a Customer | Dwolla API Documentation",
+        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
+        "title": "Me-to-Me - Create a transfer | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a customer",
+      "title": "Step 4: Create transfer",
     },
-    "id": "/transfer-money-me-to-me/create-a-customer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/create-transfer\`
 
 Here
@@ -48884,21 +48940,29 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Getting Started",
+        "description": "Move funds between two different bank accounts belonging to a single Verified Customer, e.g. for savings applications that move funds between a Customer’s checking and savings accounts.",
+        "title": "Transfer Money Me-to-Me",
+        "weight": 5,
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "prerequisites",
+        "icon": "me-to-me.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Use Dwolla's ACH payment API to facilitate and create transfers within your application or platform. Use a single API call to create a payment transfer.",
-        "title": "Me-to-Me - Create a transfer | Dwolla API Documentation",
+        "description": "Send money online between banks that belong to a single custoemr by utilizing our open bank transfer API.",
+        "title": "Transfer Money Between a Single User | Dwolla API Documentation",
       },
-      "title": "Step 4: Create transfer",
+      "title": "Overview",
     },
-    "id": "/transfer-money-me-to-me/create-transfer.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/index\`
 
 Here
@@ -49335,29 +49399,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Getting Started",
-        "description": "Move funds between two different bank accounts belonging to a single Verified Customer, e.g. for savings applications that move funds between a Customer’s checking and savings accounts.",
-        "title": "Transfer Money Me-to-Me",
-        "weight": 5,
-      },
+  },
+  Object {
+    "id": "/transfer-money-me-to-me/retrieve-funding-sources.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "me-to-me.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Send money online between banks that belong to a single custoemr by utilizing our open bank transfer API.",
-        "title": "Transfer Money Between a Single User | Dwolla API Documentation",
+        "description": "Retrieve two bank funding source to enable a Customer to send funds between to accounts.",
+        "title": "Me-to-Me - Retrieve funding sources | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Retrieve funding sources",
     },
-    "id": "/transfer-money-me-to-me/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/transfer-money-me-to-me/retrieve-funding-sources\`
 
 Here
@@ -49794,21 +49850,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/webhooks/create-subscription.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Retrieve two bank funding source to enable a Customer to send funds between to accounts.",
-        "title": "Me-to-Me - Retrieve funding sources | Dwolla API Documentation",
+        "description": "Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.",
+        "title": "Webhooks - Create Subscription| Dwolla API Documentation",
       },
-      "title": "Step 3: Retrieve funding sources",
+      "title": "Step 1: Create subscription",
     },
-    "id": "/transfer-money-me-to-me/retrieve-funding-sources.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/create-subscription\`
 
 Here
@@ -50245,21 +50301,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/webhooks/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Webhooks",
+        "description": "Implement simple, real-time, event notifications regarding account and transaction status, and more.",
+        "title": "Create a Webhook Subscription",
+      },
       "guide": Object {
-        "step": 1,
+        "filter": "prerequisites",
+        "icon": "create-webhook-subscription.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.",
-        "title": "Webhooks - Create Subscription| Dwolla API Documentation",
+        "description": "Webhooks for payments within your application by utilizing our open API with no per transaction fees.",
+        "title": "Webhooks | Dwolla API Documentation",
       },
-      "title": "Step 1: Create subscription",
+      "title": "Overview: Webhooks",
     },
-    "id": "/webhooks/create-subscription.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/index\`
 
 Here
@@ -50696,28 +50759,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Webhooks",
-        "description": "Implement simple, real-time, event notifications regarding account and transaction status, and more.",
-        "title": "Create a Webhook Subscription",
-      },
+  },
+  Object {
+    "id": "/webhooks/process-webhooks.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "prerequisites",
-        "icon": "create-webhook-subscription.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Webhooks for payments within your application by utilizing our open API with no per transaction fees.",
-        "title": "Webhooks | Dwolla API Documentation",
+        "description": "Process webhooks for payments within your application by utilizing our open API with no per transaction fees.",
+        "title": "Process Webhooks | Dwolla API Documentation",
       },
-      "title": "Overview: Webhooks",
+      "title": "Example: Process webhooks",
     },
-    "id": "/webhooks/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/process-webhooks\`
 
 Here
@@ -51154,21 +51210,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/webhooks/validating-webhooks.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Process webhooks for payments within your application by utilizing our open API with no per transaction fees.",
-        "title": "Process Webhooks | Dwolla API Documentation",
+        "description": "Validating webhooks for payments within your application by utilizing our open API with no per transaction fees.",
+        "title": "Validating Webhooks | Dwolla API Documentation",
       },
-      "title": "Example: Process webhooks",
+      "title": "Step 2: Validating webhooks",
     },
-    "id": "/webhooks/process-webhooks.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/webhooks/validating-webhooks\`
 
 Here
@@ -51605,21 +51661,39 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/api-reference/accounts/index.mdx",
+    "meta": Object {
+      "name": "Accounts",
+    },
+    "rawBody": "
+body
+",
+  },
+  Object {
+    "id": "/api-reference/customers/index.mdx",
+    "meta": Object {
+      "name": "Customers",
+    },
+    "rawBody": "
+body
+",
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/configure-and-call-function.mdx",
+    "meta": Object {
       "guide": Object {
         "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Validating webhooks for payments within your application by utilizing our open API with no per transaction fees.",
-        "title": "Validating Webhooks | Dwolla API Documentation",
+        "description": "Configure and call function for initiating Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
+        "title": "Add a Debit Card - Configure and Call Dwolla-card.js | Dwolla API Documentation",
       },
-      "title": "Step 2: Validating webhooks",
+      "title": "Step 2: Configure and call function",
     },
-    "id": "/webhooks/validating-webhooks.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function\`
 
 Here
@@ -52056,21 +52130,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/create-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Configure and call function for initiating Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
-        "title": "Add a Debit Card - Configure and Call Dwolla-card.js | Dwolla API Documentation",
+        "description": "Create a card funding sources token for use in initiating the add a debit card flow.",
+        "title": "Add a Debit Card - Create a Card Funding Sources Token | Dwolla API Documentation",
       },
-      "title": "Step 2: Configure and call function",
+      "title": "Step 1: Create a card funding sources token",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/configure-and-call-function.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/create-token\`
 
 Here
@@ -52507,21 +52581,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/handle-response.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a card funding sources token for use in initiating the add a debit card flow.",
-        "title": "Add a Debit Card - Create a Card Funding Sources Token | Dwolla API Documentation",
+        "description": "Handle JavaScript callback for success and error responses for Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
+        "title": "Add a Debit Card - Handle Dwolla.js callback | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a card funding sources token",
+      "title": "Step 3: Handle JavaScript callback",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/create-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/handle-response\`
 
 Here
@@ -52958,21 +53032,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-cards-js/add-a-debit-card/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Debit Card Using Dwolla-cards.js",
+      },
       "guide": Object {
-        "step": 3,
+        "filter": "get-building",
+        "icon": "push-to-debit.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Handle JavaScript callback for success and error responses for Dwolla-cards.js, a powerful and secure tool for adding a debit card.",
-        "title": "Add a Debit Card - Handle Dwolla.js callback | Dwolla API Documentation",
+        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Debit Card Using Dwolla-cards.js | Dwolla API Documentation",
       },
-      "title": "Step 3: Handle JavaScript callback",
+      "title": "Overview",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/handle-response.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-cards-js/add-a-debit-card/index\`
 
 Here
@@ -53409,28 +53490,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Debit Card Using Dwolla-cards.js",
-      },
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/configure-and-call-function.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "push-to-debit.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Utilize Dwolla-cards.js to add a debit card as a payment account. Dwolla-cards.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Debit Card Using Dwolla-cards.js | Dwolla API Documentation",
+        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "Add Bank - Configure and Call Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Configure and call function",
     },
-    "id": "/dwolla-cards-js/add-a-debit-card/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/configure-and-call-function\`
 
 Here
@@ -53867,21 +53941,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/create-form.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "Add Bank - Configure and Call Dwolla.js | Dwolla API Documentation",
+        "description": "Create the form that will be used as inputs for the account and routing number.",
+        "title": "Add Bank - Create form for Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Step 3: Configure and call function",
+      "title": "Step 1: Create a form",
     },
-    "id": "/dwolla-js/add-a-bank-account/configure-and-call-function.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/create-form\`
 
 Here
@@ -54318,21 +54392,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/create-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create the form that will be used as inputs for the account and routing number.",
-        "title": "Add Bank - Create form for Dwolla.js | Dwolla API Documentation",
+        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "Add Bank - Create Funding Source Token | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a form",
+      "title": "Step 2: Create a funding sources token",
     },
-    "id": "/dwolla-js/add-a-bank-account/create-form.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/create-token\`
 
 Here
@@ -54769,21 +54843,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/handle-response.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
         "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "Add Bank - Create Funding Source Token | Dwolla API Documentation",
+        "title": "Add Bank - Handle Dwolla.js callback | Dwolla API Documentation",
       },
-      "title": "Step 2: Create a funding sources token",
+      "title": "Step 4: Handle JavaScript callback",
     },
-    "id": "/dwolla-js/add-a-bank-account/create-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/handle-response\`
 
 Here
@@ -55220,21 +55294,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/add-a-bank-account/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Utilize Dwolla.js to submit an end user’s U.S. bank account information to Dwolla. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Bank Using Dwolla.js",
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "get-building",
+        "icon": "add-bank-dwolla-js.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create a funding sources token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "Add Bank - Handle Dwolla.js callback | Dwolla API Documentation",
+        "description": "Dwolla.js is a client-side JavaScript library designed to quickly onboard customers, add and verify bank accounts (IAV), and enable on-demand bank transfers.",
+        "title": "Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation",
       },
-      "title": "Step 4: Handle JavaScript callback",
+      "title": "Overview",
     },
-    "id": "/dwolla-js/add-a-bank-account/handle-response.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/add-a-bank-account/index\`
 
 Here
@@ -55671,28 +55752,21 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Utilize Dwolla.js to submit an end user’s U.S. bank account information to Dwolla. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Bank Using Dwolla.js",
-      },
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/configure-and-call-function.mdx",
+    "meta": Object {
       "guide": Object {
-        "filter": "get-building",
-        "icon": "add-bank-dwolla-js.svg",
-        "step": 0,
+        "step": 3,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Dwolla.js is a client-side JavaScript library designed to quickly onboard customers, add and verify bank accounts (IAV), and enable on-demand bank transfers.",
-        "title": "Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation",
+        "description": "Configure and call function for initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "IAV - Configure and Call Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Overview",
+      "title": "Step 3: Configure and call function",
     },
-    "id": "/dwolla-js/add-a-bank-account/index.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/configure-and-call-function\`
 
 Here
@@ -56129,21 +56203,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/create-container.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 3,
+        "step": 1,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Configure and call function for initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "IAV - Configure and Call Dwolla.js | Dwolla API Documentation",
+        "description": "Create the container that will be used for rendering the iframe for Dwolla.js and IAV.",
+        "title": "IAV - Create container for IAV | Dwolla API Documentation",
       },
-      "title": "Step 3: Configure and call function",
+      "title": "Step 1: Create a container for IAV",
     },
-    "id": "/dwolla-js/instant-account-verification/configure-and-call-function.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/create-container\`
 
 Here
@@ -56580,21 +56654,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/create-token.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 1,
+        "step": 2,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create the container that will be used for rendering the iframe for Dwolla.js and IAV.",
-        "title": "IAV - Create container for IAV | Dwolla API Documentation",
+        "description": "Create an Instant Account Verification token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "IAV - Create IAV Token | Dwolla API Documentation",
       },
-      "title": "Step 1: Create a container for IAV",
+      "title": "Step 2: Create an IAV token",
     },
-    "id": "/dwolla-js/instant-account-verification/create-container.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/create-token\`
 
 Here
@@ -57031,21 +57105,21 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/handle-errors.mdx",
+    "meta": Object {
       "guide": Object {
-        "step": 2,
+        "step": 4,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Create an Instant Account Verification token for use in initiating Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "IAV - Create IAV Token | Dwolla API Documentation",
+        "description": "Handle JavaScript callback for success and error responses for Dwolla.js, a powerful and secure bank account verification tool.",
+        "title": "IAV - Handle Dwolla.js callback | Dwolla API Documentation",
       },
-      "title": "Step 2: Create an IAV token",
+      "title": "Step 4: Handle JavaScript callback",
     },
-    "id": "/dwolla-js/instant-account-verification/create-token.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/handle-errors\`
 
 Here
@@ -57482,21 +57556,28 @@ of
 
 what
 ",
-    "head": Object {
+  },
+  Object {
+    "id": "/dwolla-js/instant-account-verification/index.mdx",
+    "meta": Object {
+      "group": Object {
+        "category": "Funding Sources",
+        "description": "Utilize Dwolla.js to add and verify an end user’s bank account via online banking credentials. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
+        "title": "Add a Bank Using Dwolla.js + IAV",
+      },
       "guide": Object {
-        "step": 4,
+        "filter": "get-building",
+        "icon": "add-verify-bank-iav.svg",
+        "step": 0,
       },
       "layout": "guides",
       "meta": Object {
-        "description": "Handle JavaScript callback for success and error responses for Dwolla.js, a powerful and secure bank account verification tool.",
-        "title": "IAV - Handle Dwolla.js callback | Dwolla API Documentation",
+        "description": "Using the client-side Dwolla.js JavaScript library, your application can add and verify a customer's bank account in a matter of seconds.",
+        "title": "Instant Account Verification Using Dwolla.js | Dwolla API Documentation",
       },
-      "title": "Step 4: Handle JavaScript callback",
+      "title": "Overview",
     },
-    "id": "/dwolla-js/instant-account-verification/handle-errors.mdx",
-  },
-  Object {
-    "body": "
+    "rawBody": "
 \`/guides/dwolla-js/instant-account-verification/index\`
 
 Here
@@ -57933,25 +58014,6 @@ of
 
 what
 ",
-    "head": Object {
-      "group": Object {
-        "category": "Funding Sources",
-        "description": "Utilize Dwolla.js to add and verify an end user’s bank account via online banking credentials. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.",
-        "title": "Add a Bank Using Dwolla.js + IAV",
-      },
-      "guide": Object {
-        "filter": "get-building",
-        "icon": "add-verify-bank-iav.svg",
-        "step": 0,
-      },
-      "layout": "guides",
-      "meta": Object {
-        "description": "Using the client-side Dwolla.js JavaScript library, your application can add and verify a customer's bank account in a matter of seconds.",
-        "title": "Instant Account Verification Using Dwolla.js | Dwolla API Documentation",
-      },
-      "title": "Overview",
-    },
-    "id": "/dwolla-js/instant-account-verification/index.mdx",
   },
 ]
 `;
