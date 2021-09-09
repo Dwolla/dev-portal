@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-indent */
 import React from "react";
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 
 import Content from "../app/modules/content";
 
@@ -37,10 +37,11 @@ export default function APIReference({ apiReference }: Props) {
               {meta.name || id}
             </h2>
 
-            {renderedBody === false
-              ? "there was an error rendering this api"
-              : hydrate(renderedBody, { components: {} })}
-
+            {renderedBody === false ? (
+              "there was an error rendering this api"
+            ) : (
+              <MDXRemote {...renderedBody} />
+            )}
             {selectedMethod && apiReference.methods[id] && (
               <>
                 <h4>Methods</h4>
@@ -64,9 +65,11 @@ export default function APIReference({ apiReference }: Props) {
                     <br />)
                   </pre>
 
-                  {selectedMethod.renderedBody === false
-                    ? "there was an error rendering this method"
-                    : hydrate(selectedMethod.renderedBody, { components: {} })}
+                  {selectedMethod.renderedBody === false ? (
+                    "there was an error rendering this method"
+                  ) : (
+                    <MDXRemote {...selectedMethod.renderedBody} />
+                  )}
                 </div>
               </>
             )}
@@ -78,9 +81,7 @@ export default function APIReference({ apiReference }: Props) {
 }
 
 const renderContent = async (c: Content): Promise<RenderedContent> => {
-  const renderedBody = await renderToString(c.rawBody, {
-    components: {},
-  }).catch(() => false);
+  const renderedBody = await serialize(c.rawBody);
   return { ...c, renderedBody };
 };
 
