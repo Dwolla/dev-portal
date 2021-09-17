@@ -3,7 +3,6 @@ import util from "util";
 import path from "path";
 import matter from "gray-matter";
 import sortBy from "lodash.sortby";
-// import { Console } from "console";
 
 const readdir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
@@ -95,7 +94,13 @@ export const buildContentModule = (contentDir: string) => {
           .filter(inAPIReference)
           .filter(noUnderscores)
           .map(toApiReference),
-        ["id"]
+        //sort apis by meta.weight
+        // eslint-disable-next-line func-names
+        [
+          function (ac) {
+            return ac.meta.weight;
+          },
+        ]
       );
 
       const methods = sortedApiReference

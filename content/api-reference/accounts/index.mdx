@@ -1,6 +1,8 @@
 ---
 name: Accounts
-category: Accounts
+group:
+  category: Accounts
+weight: 5
 ---
 
 An `Account` represents your Dwolla Master Account that was established on dwolla.com.
@@ -43,7 +45,7 @@ An `Account` represents your Dwolla Master Account that was established on dwoll
 }
 ```
 
-## Retrieve account details
+<!-- ## Retrieve account details
 
 This section shows you how to retrieve basic account information belonging to the authorized Dwolla Master Account.
 
@@ -131,9 +133,9 @@ var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
 
 appToken.get(accountUrl).then((res) => res.body.name); // => 'Jane Doe'
-```
+``` -->
 
-## Create a funding source for an account
+<!-- ## Create a funding source for an account
 
 This section details how to add a bank account to a Dwolla Master Account. The bank account will have a status of `unverified` upon creation. Before a Dwolla Master Account is eligible to transfer money from their bank or credit union account they need to verify ownership of the account via micro-deposit verification.
 
@@ -231,9 +233,9 @@ var requestBody = {
 appToken
   .post(`funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
-```
+``` -->
 
-## List funding sources for an account
+<!-- ## List funding sources for an account
 
 Retrieve a list of funding sources that belong to an Account. By default, all funding sources are returned unless the `removed` querystring parameter is set to `false` in the request.
 
@@ -360,9 +362,9 @@ var accountUrl =
 appToken
   .get(`${accountUrl}/funding-sources`)
   .then((res) => res.body._embedded["funding-sources"][0].name); // => 'ABC Bank Checking'
-```
+``` -->
 
-## List and search transfers for an account
+<!-- ## List and search transfers for an account
 
 This section covers how to retrieve an Account's list of transfers. Transaction search is supported by passing in optional query string parameters such as: `search` which represents a term to search on, `correlationId`, `startAmount`, `endAmount`, `startDate`, `endDate`, and `status`.
 
@@ -546,9 +548,9 @@ var accountUrl =
 appToken
   .get(`${accountUrl}/transfers`)
   .then((res) => res.body._embedded["transfers"][0].status); // => 'processed'
-```
+``` -->
 
-## List mass payments for an account
+<!-- ## List mass payments for an account
 
 This section covers how to retrieve an Account's list of previously created mass payments. Mass payments are returned ordered by date created, with most recent mass payments appearing first.
 
@@ -657,4 +659,4 @@ appToken
   .then((res) => res.body._embedded["mass-payments"][0].status); // => 'complete'
 ```
 
----
+--- -->
