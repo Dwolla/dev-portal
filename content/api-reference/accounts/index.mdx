@@ -5,44 +5,6 @@ category: Accounts
 
 An `Account` represents your Dwolla Master Account that was established on dwolla.com.
 
-### Account links
-
-| Link            | Description                                                                                           |
-| --------------- | ----------------------------------------------------------------------------------------------------- |
-| self            | URL of the Account resource                                                                           |
-| receive         | Follow the link to create a transfer to this Account.                                                 |
-| funding-sources | GET this link to list the Account's funding sources.                                                  |
-| transfers       | GET this link to list the Account's transfers.                                                        |
-| customers       | (optional) If this link exists, this account is authorized to create and manage Dwolla API Customers. |
-| send            | Follow the link to create a transfer to this Account.                                                 |
-
-```noselect
-{
-  "_links": {
-    "self": {
-      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
-    },
-    "receive": {
-      "href": "https://api-sandbox.dwolla.com/transfers"
-    },
-    "funding-sources": {
-      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
-    },
-    "transfers": {
-      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/transfers"
-    },
-    "customers": {
-      "href": "https://api-sandbox.dwolla.com/customers"
-    },
-    "send": {
-      "href": "https://api-sandbox.dwolla.com/transfers"
-    }
-  },
-  "id": "ca32853c-48fa-40be-ae75-77b37504581b",
-  "name": "Jane Doe"
-}
-```
-
 ## Retrieve account details
 
 This section shows you how to retrieve basic account information belonging to the authorized Dwolla Master Account.

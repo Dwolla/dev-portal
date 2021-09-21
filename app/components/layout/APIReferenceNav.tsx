@@ -22,11 +22,26 @@ export default function APIReferenceNav() {
   return (
     <ul>
       {res?.data?.apis?.map((a) => (
-        <CategoryHeading>
-          <a href={`/api-reference/${a.id}`} id={a.id} onClick={scrollToApi}>
-            {a.meta?.name}
-          </a>
-        </CategoryHeading>
+        <>
+          <CategoryHeading>
+            <a href={`/api-reference${a.id}`} id={a.id} onClick={scrollToApi}>
+              {a.meta?.name}
+            </a>
+          </CategoryHeading>
+
+          {res?.data?.methods &&
+            res?.data?.methods[a.id]?.map((b) => (
+              <CategoryHeading>
+                <a
+                  href={`/api-reference${b.id}`}
+                  id={b.id}
+                  onClick={scrollToApi}
+                >
+                  {b.meta?.name}
+                </a>
+              </CategoryHeading>
+            ))}
+        </>
       ))}
     </ul>
   );
