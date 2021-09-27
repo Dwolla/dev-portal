@@ -29,8 +29,8 @@ export default function APIReferenceNav() {
             </a>
           </CategoryHeading>
 
-          {res?.data?.methods &&
-            res?.data?.methods[a.id]?.map((b) => (
+          {res?.data?.subsections &&
+            res?.data?.subsections[a.id]?.map((b) => (
               <CategoryHeading>
                 <a
                   href={`/api-reference${b.id}`}

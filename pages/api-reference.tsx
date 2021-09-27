@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-indent */
 import React from "react";
 import { serialize } from "next-mdx-remote/serialize";
@@ -15,6 +16,7 @@ const renderParams = (params) =>
   }, "");
 
 export default function APIReference({ apiReference }: Props) {
+  // const [selectedSubsections, setSelectedSubsections] = React.useState({});
   const [selectedMethods, setSelectedMethods] = React.useState({});
 
   // console.log(apiReference, "after");
@@ -29,7 +31,8 @@ export default function APIReference({ apiReference }: Props) {
               ) || apiReference.methods[id][0]
             : null;
 
-        // console.log(apiReference.methods[id], id);
+        // console.log("line 32:", apiReference.methods[id]);
+        // console.log("selectedMethod", selectedMethod);
 
         return (
           <>
@@ -42,35 +45,56 @@ export default function APIReference({ apiReference }: Props) {
             ) : (
               <MDXRemote {...renderedBody} />
             )}
-            {selectedMethod && apiReference.methods[id] && (
+            {/* {selectedMethod && apiReference.subsections[id] && ( */}
+            {apiReference.subsections[id] && (
               <>
-                <h4>Methods</h4>
-                <select
-                  value={selectedMethods[id]}
-                  onChange={(e) => {
-                    setSelectedMethods({
-                      ...selectedMethods,
-                      [id]: e.target.value,
-                    });
-                  }}
-                >
-                  {apiReference.methods[id].map((m) => {
-                    return <option value={m.id}>{m.id}</option>;
-                  })}
-                </select>
-                <div style={{ background: "#eee" }}>
-                  <pre style={{ background: "black", color: "#eee" }}>
-                    dwolla.{meta.name.toLowerCase()}.{selectedMethod.meta.name}(
-                    {renderParams(selectedMethod.meta.params)}
-                    <br />)
-                  </pre>
+                <h4>Here are the Subsections</h4>
+                {apiReference.subsections[id].map((m) => {
+                  return (
+                    <div style={{ background: "#eee" }}>
+                      <h2 id={`heading-${id?.replace(/\//g, "--")}`}>
+                        {m.meta.name || id}
+                      </h2>
+                      {m.renderedBody === false ? (
+                        "there was an error rendering this method"
+                      ) : (
+                        <MDXRemote {...m.renderedBody} />
+                      )}
+                      {selectedMethod && apiReference.methods[id] && (
+                        <>
+                          <h4>Here are the Methods</h4>
+                          <select
+                            value={selectedMethods[id]}
+                            onChange={(e) => {
+                              setSelectedMethods({
+                                ...selectedMethods,
+                                [id]: e.target.value,
+                              });
+                            }}
+                          >
+                            {apiReference.methods[id].map((m) => {
+                              return <option value={m.id}>{m.id}</option>;
+                            })}
+                          </select>
+                          <div style={{ background: "#eee" }}>
+                            <pre style={{ background: "black", color: "#eee" }}>
+                              dwolla.{meta.name.toLowerCase()}.
+                              {selectedMethod.meta.name}(
+                              {renderParams(selectedMethod.meta.params)}
+                              <br />)
+                            </pre>
 
-                  {selectedMethod.renderedBody === false ? (
-                    "there was an error rendering this method"
-                  ) : (
-                    <MDXRemote {...selectedMethod.renderedBody} />
-                  )}
-                </div>
+                            {selectedMethod.renderedBody === false ? (
+                              "there was an error rendering this method"
+                            ) : (
+                              <MDXRemote {...selectedMethod.renderedBody} />
+                            )}
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  );
+                })}
               </>
             )}
           </>
@@ -94,6 +118,20 @@ export async function getStaticProps(): Promise<{ props: Props }> {
     apiReference.apis.map(renderContent)
   );
 
+  const subsections = await Object.keys(apiReference.subsections).reduce(
+    async (acc, next) => {
+      const rendered = await Promise.all(
+        apiReference.subsections[next].map(renderContent)
+      );
+      const awaitAcc = await acc;
+      const now = { ...awaitAcc, [next]: rendered };
+      // console.log(acc, "acc");
+      // console.log(now, "now\n\n\n\n");
+      return now;
+    },
+    {}
+  );
+
   const methods = await Object.keys(apiReference.methods).reduce(
     async (acc, next) => {
       const rendered = await Promise.all(
@@ -108,5 +146,5 @@ export async function getStaticProps(): Promise<{ props: Props }> {
     {}
   );
 
-  return { props: { apiReference: { apis, methods } } };
+  return { props: { apiReference: { apis, subsections, methods } } };
 }
