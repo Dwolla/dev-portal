@@ -1,5 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/jsx-indent */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -40,27 +41,44 @@ export default function APIReference({ apiReference }: Props) {
               {meta.name || id}
             </h2>
 
-            {renderedBody === false ? (
+            <p>Section: {id}</p>
+            {/* {renderedBody === false ? (
               "there was an error rendering this api"
             ) : (
               <MDXRemote {...renderedBody} />
-            )}
-            {/* {selectedMethod && apiReference.subsections[id] && ( */}
+            )} */}
+
             {apiReference.subsections[id] && (
               <>
-                <h4>Here are the Subsections</h4>
-                {apiReference.subsections[id].map((m) => {
+                {apiReference.subsections[id].map((subSection) => {
                   return (
-                    <div style={{ background: "#eee" }}>
-                      <h2 id={`heading-${id?.replace(/\//g, "--")}`}>
-                        {m.meta.name || id}
-                      </h2>
-                      {m.renderedBody === false ? (
+                    <div style={{ background: "#ddd" }}>
+                      <h3 id={`heading-${subSection.id?.replace(/\//g, "--")}`}>
+                        {subSection.meta.name || subSection.id}
+                      </h3>
+
+                      <p>Subsection: {subSection.id}</p>
+                      {/* {m.renderedBody === false ? (
                         "there was an error rendering this method"
                       ) : (
                         <MDXRemote {...m.renderedBody} />
+                      )} */}
+
+                      {apiReference.methods[subSection.id] && (
+                        <>
+                          {apiReference.methods[subSection.id].map((method) => {
+                            return (
+                              <div style={{ background: "#bbb" }}>
+                                <h4>{method.meta.name || method.id}</h4>
+
+                                <p>Method: {method.id}</p>
+                              </div>
+                            );
+                          })}
+                        </>
                       )}
-                      {selectedMethod && apiReference.methods[id] && (
+
+                      {/* {selectedMethod && apiReference.methods[id] && (
                         <>
                           <h4>Here are the Methods</h4>
                           <select
@@ -91,7 +109,7 @@ export default function APIReference({ apiReference }: Props) {
                             )}
                           </div>
                         </>
-                      )}
+                      )} */}
                     </div>
                   );
                 })}

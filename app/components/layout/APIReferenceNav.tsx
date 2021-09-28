@@ -36,6 +36,7 @@ export default function APIReferenceNav() {
                   href={`/api-reference${b.id}`}
                   id={b.id}
                   onClick={scrollToApi}
+                  style={{ marginLeft: "20px" }}
                 >
                   {b.meta?.name}
                 </a>
