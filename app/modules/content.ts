@@ -3,7 +3,6 @@ import util from "util";
 import path from "path";
 import matter from "gray-matter";
 import sortBy from "lodash.sortby";
-// import { Console } from "console";
 
 const readdir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
@@ -71,7 +70,9 @@ const stripFilenameFromId: any = (c) => ({
 
 const isApi = (c: Content) => c.id.split("/").length === 2;
 
-const isMethod = (c: Content) => c.id.split("/").length === 3;
+const isSubsection = (c: Content) => c.id.split("/").length === 3;
+
+const isMethod = (c: Content) => c.id.split("/").length === 4;
 
 const toApiReference = (c: Content) => ({
   ...c,
@@ -86,7 +87,7 @@ export const buildContentModule = (contentDir: string) => {
     },
 
     async getApiReference(): Promise<APIReference> {
-      // return Promise.resolve({ apis: [], methods: {} });
+      // return Promise.resolve({ apis: [], subsections: {} });
       const allContent = await getContents(contentPath);
 
       const sortedApiReference = sortBy(
@@ -98,6 +99,17 @@ export const buildContentModule = (contentDir: string) => {
         ["id"]
       );
 
+      const subsections = sortedApiReference
+        .filter(isSubsection)
+        .reduce((acc, next) => {
+          const id = next.id.split("/").slice(0, -1).join("/");
+          const res = {
+            ...acc,
+            [id]: typeof acc[id] !== "undefined" ? [...acc[id], next] : [next],
+          };
+          return res;
+        }, {});
+
       const methods = sortedApiReference
         .filter(isMethod)
         .reduce((acc, next) => {
@@ -106,16 +118,12 @@ export const buildContentModule = (contentDir: string) => {
             ...acc,
             [id]: typeof acc[id] !== "undefined" ? [...acc[id], next] : [next],
           };
-          // console.log(acc, "acc");
-          // console.log(res, "res");
-          // console.log("\n\n\n\n");
           return res;
         }, {});
 
-      // console.log(methods);
-
       return {
         apis: sortedApiReference.filter(isApi),
+        subsections,
         methods,
       };
     },

@@ -21,12 +21,31 @@ export default function APIReferenceNav() {
 
   return (
     <ul>
-      {res?.data?.apis?.map((a) => (
-        <CategoryHeading>
-          <a href={`/api-reference/${a.id}`} id={a.id} onClick={scrollToApi}>
-            {a.meta?.name}
-          </a>
-        </CategoryHeading>
+      {res?.data?.apis?.map((api) => (
+        <>
+          <CategoryHeading>
+            <a
+              href={`/api-reference${api.id}`}
+              id={api.id}
+              onClick={scrollToApi}
+            >
+              {api.meta?.name}
+            </a>
+          </CategoryHeading>
+
+          {res?.data?.subsections &&
+            res?.data?.subsections[api.id]?.map((subSection) => (
+              <CategoryHeading style={{ marginLeft: "20px" }}>
+                <a
+                  href={`/api-reference${subSection.id}`}
+                  id={subSection.id}
+                  onClick={scrollToApi}
+                >
+                  {subSection.meta?.name}
+                </a>
+              </CategoryHeading>
+            ))}
+        </>
       ))}
     </ul>
   );

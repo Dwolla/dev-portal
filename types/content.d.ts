@@ -16,10 +16,12 @@ type APINameString = string;
 
 type APIReference = {
   apis: Contents;
+  subsections: Record<APINameString, Contents>;
   methods: Record<APINameString, Contents>;
 };
 
 type RenderedAPIReference = {
   apis: RenderedContent[];
+  subsections: Record<APINameString, RenderedContent[]>;
   methods: Record<APINameString, RenderedContent[]>;
 };

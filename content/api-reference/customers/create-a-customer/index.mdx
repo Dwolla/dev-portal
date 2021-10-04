@@ -1,0 +1,29 @@
+---
+name: Create a customer
+category: Customers
+params: { key1, key2 }
+---
+
+This section details how to create a new Customer. It is important to prompt your users to provide their full name as it appears on a US government issued identification card. This will help ensure a straight-through processing approach. If errors occur in name or date of birth, where you may be prompted for such information, additional manual steps are required, which may add processing time that impedes their experience or may even result in additional cost to you.
+
+[**To create `Receive-only Users`**](/#request-parameters---receive-only-user), you'll provide the customer's full name and email address, `type` with the value of `receive-only`, and `businessName` if applicable. Must be a US person.
+
+[**To create `Unverified Customers`**](/#request-parameters---unverified-customer), you will only need to provide the customer's full name and email address, as well as a `businessName` if applicable. Must be a US person.
+
+[**To create `Verified Customers`**](/#request-parameters---verified-strongpersonalstrong-customer), Dwolla will require additional information to confirm the identity of the individual or business. Must be a US person. Verified Customers can include type `business` or `personal`. For [businesses](/#request-parameters---verified-business-customer-businesstypellc-corporation-or-partnership), Dwolla will need to verify information about both the business and the controller for that business. Dwolla does not identity verify the Account Admin. The controller may be a non-US person.
+
+### HTTP request
+
+`POST https://api.dwolla.com/customers`
+
+### HTTP status and error codes
+
+| HTTP Status | Code            | Description                                                                                           |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------- |
+| 201         | Created         | Customer created.                                                                                     |
+| 400         | BadRequest      | The request body contains bad syntax or is incomplete.                                                |
+| 400         | ValidationError | Reference the [errors section](#validation-errors) for list of possible \_embedded validation errors. |
+| 403         | Forbidden       | Not authorized to create customers.                                                                   |
+| 404         | NotFound        | Customer not found.                                                                                   |
+
+---

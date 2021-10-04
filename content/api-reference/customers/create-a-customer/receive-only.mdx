@@ -1,0 +1,101 @@
+---
+name: Request and response - receive-only User
+category: Create a customer
+params: { key1, key2 }
+---
+
+### Request parameters - receive-only User
+
+| Parameter     | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| firstName     | yes      | string | Customer's first name. Must be less than or equal to 50 characters and contain no special characters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| lastName      | yes      | string | Customer's last name. Must be less than or equal to 50 characters and contain no special characters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| email         | yes      | string | Customer's email address.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| type          | yes      | string | Value of `receive-only`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| businessName  | no       | string | Customer's registered business name. (**Optional** if not a business entity)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ipAddress     | no       | string | Customer's IP address.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| correlationId | no       | string | A unique string value attached to a customer which can be used for traceability between Dwolla and your application. **Note:** A correlationId is not a replacement for an [idempotency-key](#idempotency-key). <br /> Must be less than 255 characters and contain no spaces. <br /> Acceptable characters are: `a-Z`, `0-9`, `-`, `.`, and `_`. <br /> **Note:** Sensitive Personal Identifying Information (PII) should not be used in this field and it is recommended to use a random value for correlationId, like a UUID. Uniqueness is enforced on correlationId across Customers. |
+
+##### Request and response - receive-only User
+
+```raw
+POST https://api-sandbox.dwolla.com/customers
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "Jane",
+  "lastName": "Merchant",
+  "email": "jmerchant@nomail.net",
+  "type": "receive-only",
+  "businessName": "Jane Corp llc",
+  "ipAddress": "99.99.99.99"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :firstName => 'Jane',
+  :lastName => 'Merchant',
+  :email => 'jmerchant@nomail.net',
+  :type => 'receive-only',
+  :businessName => 'Jane Corp llc',
+  :ipAddress => '99.99.99.99'
+}
+
+customer = app_token.post "customers", request_body
+customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->create([
+  'firstName' => 'Jane',
+  'lastName' => 'Merchant',
+  'email' => 'jmerchant@nomail.net',
+  'type' => 'receive-only',
+  'businessName' => 'Jane Corp llc',
+  'ipAddress' => '99.99.99.99'
+]);
+$customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'firstName': 'Jane',
+  'lastName': 'Merchant',
+  'email': 'jmerchant@nomail.net',
+  'type': 'receive-only',
+  'businessName': 'Jane Corp llc',
+  'ipAddress': '99.99.99.99'
+}
+
+customer = app_token.post('customers', request_body)
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+```javascript
+var requestBody = {
+  firstName: "Jane",
+  lastName: "Merchant",
+  email: "jmerchant@nomail.net",
+  type: "receive-only",
+  businessName: "Jane Corp llc",
+  ipAddress: "99.99.99.99",
+};
+
+appToken
+  .post("customers", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+---
