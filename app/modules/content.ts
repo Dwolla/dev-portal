@@ -3,7 +3,6 @@ import util from "util";
 import path from "path";
 import matter from "gray-matter";
 import sortBy from "lodash.sortby";
-// import { Console } from "console";
 
 const readdir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
@@ -71,8 +70,6 @@ const stripFilenameFromId: any = (c) => ({
 
 const isApi = (c: Content) => c.id.split("/").length === 2;
 
-// const isSubsection = (c: Content) => console.log("c.id line 74", c.id);
-
 const isSubsection = (c: Content) => c.id.split("/").length === 3;
 
 const isMethod = (c: Content) => c.id.split("/").length === 4;
@@ -106,35 +103,23 @@ export const buildContentModule = (contentDir: string) => {
         .filter(isSubsection)
         .reduce((acc, next) => {
           const id = next.id.split("/").slice(0, -1).join("/");
-          // console.log("line 111:", next.id.split("/").slice(0, -1).join("/"));
           const res = {
             ...acc,
             [id]: typeof acc[id] !== "undefined" ? [...acc[id], next] : [next],
           };
-          // console.log(acc, "acc");
-          // console.log(res, "res");
-          // console.log("\n\n\n\n");
           return res;
         }, {});
-
-      // console.log(subsections);
 
       const methods = sortedApiReference
         .filter(isMethod)
         .reduce((acc, next) => {
           const id = next.id.split("/").slice(0, -1).join("/");
-          console.log("line 126:", next.id.split("/").slice(0, -1).join("/"));
           const res = {
             ...acc,
             [id]: typeof acc[id] !== "undefined" ? [...acc[id], next] : [next],
           };
-          // console.log(acc, "acc");
-          // console.log(res, "res");
-          // console.log("\n\n\n\n");
           return res;
         }, {});
-
-      // console.log(methods);
 
       return {
         apis: sortedApiReference.filter(isApi),

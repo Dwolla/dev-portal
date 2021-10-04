@@ -17,70 +17,45 @@ const renderParams = (params) =>
   }, "");
 
 export default function APIReference({ apiReference }: Props) {
-  // const [selectedSubsections, setSelectedSubsections] = React.useState({});
   const [selectedMethods, setSelectedMethods] = React.useState({});
-
-  // console.log(apiReference, "after");
 
   return (
     <>
       {apiReference.apis.map(({ renderedBody, id, meta }) => {
-        const selectedMethod =
-          typeof apiReference.methods[id] !== "undefined"
-            ? apiReference.methods[id].find(
-                (m) => m.id === selectedMethods[id]
-              ) || apiReference.methods[id][0]
-            : null;
-
-        // console.log("line 32:", apiReference.methods[id]);
-        // console.log("selectedMethod", selectedMethod);
-
         return (
           <>
             <h2 id={`heading-${id?.replace(/\//g, "--")}`}>
               {meta.name || id}
             </h2>
 
-            <p>Section: {id}</p>
-            {/* {renderedBody === false ? (
+            {renderedBody === false ? (
               "there was an error rendering this api"
             ) : (
               <MDXRemote {...renderedBody} />
-            )} */}
+            )}
 
             {apiReference.subsections[id] && (
               <>
                 {apiReference.subsections[id].map((subSection) => {
+                  const currentMethod =
+                    typeof apiReference.methods[subSection.id] !== "undefined"
+                      ? apiReference.methods[subSection.id].find(
+                          (m) => m.id === selectedMethods[id]
+                        ) || apiReference.methods[subSection.id][0]
+                      : null;
                   return (
-                    <div style={{ background: "#ddd" }}>
+                    <div>
                       <h3 id={`heading-${subSection.id?.replace(/\//g, "--")}`}>
                         {subSection.meta.name || subSection.id}
                       </h3>
-
-                      <p>Subsection: {subSection.id}</p>
-                      {/* {m.renderedBody === false ? (
+                      {subSection.renderedBody === false ? (
                         "there was an error rendering this method"
                       ) : (
-                        <MDXRemote {...m.renderedBody} />
-                      )} */}
-
+                        <MDXRemote {...subSection.renderedBody} />
+                      )}
+                      <br />
                       {apiReference.methods[subSection.id] && (
                         <>
-                          {apiReference.methods[subSection.id].map((method) => {
-                            return (
-                              <div style={{ background: "#bbb" }}>
-                                <h4>{method.meta.name || method.id}</h4>
-
-                                <p>Method: {method.id}</p>
-                              </div>
-                            );
-                          })}
-                        </>
-                      )}
-
-                      {/* {selectedMethod && apiReference.methods[id] && (
-                        <>
-                          <h4>Here are the Methods</h4>
                           <select
                             value={selectedMethods[id]}
                             onChange={(e) => {
@@ -90,26 +65,25 @@ export default function APIReference({ apiReference }: Props) {
                               });
                             }}
                           >
-                            {apiReference.methods[id].map((m) => {
-                              return <option value={m.id}>{m.id}</option>;
-                            })}
+                            {apiReference.methods[subSection.id].map(
+                              (method) => {
+                                return (
+                                  <option value={method.id}>
+                                    {method.meta.name}
+                                  </option>
+                                );
+                              }
+                            )}
                           </select>
-                          <div style={{ background: "#eee" }}>
-                            <pre style={{ background: "black", color: "#eee" }}>
-                              dwolla.{meta.name.toLowerCase()}.
-                              {selectedMethod.meta.name}(
-                              {renderParams(selectedMethod.meta.params)}
-                              <br />)
-                            </pre>
-
-                            {selectedMethod.renderedBody === false ? (
+                          <div>
+                            {selectedMethods[id] === false ? (
                               "there was an error rendering this method"
                             ) : (
-                              <MDXRemote {...selectedMethod.renderedBody} />
+                              <MDXRemote {...currentMethod.renderedBody} />
                             )}
                           </div>
                         </>
-                      )} */}
+                      )}
                     </div>
                   );
                 })}
@@ -130,8 +104,6 @@ const renderContent = async (c: Content): Promise<RenderedContent> => {
 export async function getStaticProps(): Promise<{ props: Props }> {
   const apiReference = await Content.getApiReference();
 
-  // console.log(apiReference, "before");
-
   const apis: RenderedContent[] = await Promise.all(
     apiReference.apis.map(renderContent)
   );
@@ -143,8 +115,7 @@ export async function getStaticProps(): Promise<{ props: Props }> {
       );
       const awaitAcc = await acc;
       const now = { ...awaitAcc, [next]: rendered };
-      // console.log(acc, "acc");
-      // console.log(now, "now\n\n\n\n");
+
       return now;
     },
     {}
@@ -157,8 +128,7 @@ export async function getStaticProps(): Promise<{ props: Props }> {
       );
       const awaitAcc = await acc;
       const now = { ...awaitAcc, [next]: rendered };
-      // console.log(acc, "acc");
-      // console.log(now, "now\n\n\n\n");
+
       return now;
     },
     {}
