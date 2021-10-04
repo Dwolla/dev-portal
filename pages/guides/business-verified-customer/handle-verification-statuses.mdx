@@ -568,15 +568,18 @@ If the document was found to be fraudulent or doesn’t match the identity of th
 
 A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned :
 
-| Failure reason           | Description                                                            |
-| ------------------------ | ---------------------------------------------------------------------- |
-| `ScanNotReadable`        | Image blurry, too dark, or obscured by glare                           |
-| `ScanNotUploaded`        | Scan not uploaded                                                      |
-| `ScanIdExpired`          | ID is expired                                                          |
-| `ScanIdTypeNotSupported` | ID may be a military ID, firearm license, or other unsupported ID type |
-| `ScanNameMismatch`       | Name mismatch                                                          |
-| `ScanDobMismatch`        | Date of birth mismatch                                                 |
-| `ScanFailedOther`        | ID may be fraudulent or a generic example ID image                     |
+| Failure reason            | Description                                                            |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `BusinessDocNotSupported` | Business document not supported                                        |
+| `BusinessNameMismatch`    | Business name on account does not match document                       |
+| `BusinessTypeMismatch`    | Business type chosen does not match document                           |
+| `ScanDobMismatch`         | Scan DOB does not match DOB on account                                 |
+| `ScanFailedOther`         | ID may be fraudulent or a generic example ID image                     |
+| `ScanIdExpired`           | ID is expired or missing expiration date                               |
+| `ScanIdTypeNotSupported`  | ID may be a military ID, firearm license, or other unsupported ID type |
+| `ScanNameMismatch`        | Scan name does not match name on account                               |
+| `ScanNotReadable`         | Image blurry, too dark, or obscured by glare                           |
+| `ScanNotUploaded`         | Scan not uploaded                                                      |
 
 #### Request and response
 
