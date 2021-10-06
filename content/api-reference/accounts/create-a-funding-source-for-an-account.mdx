@@ -1,7 +1,6 @@
 ---
 name: Create a funding source for an account
-category: Accounts
-params: { key1, key2 }
+weight: 2
 ---
 
 This section details how to add a bank account to a Dwolla Master Account. The bank account will have a status of `unverified` upon creation. Before a Dwolla Master Account is eligible to transfer money from their bank or credit union account they need to verify ownership of the account via micro-deposit verification.
@@ -101,5 +100,3 @@ appToken
   .post(`funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```
-
----

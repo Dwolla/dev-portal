@@ -1,0 +1,36 @@
+---
+name: Links
+weight: 4
+---
+
+Relationships and available actions for a resource are represented with links. All resources have a `_links` attribute. At a minimum, all resources will have a `self` link which indicates the URL of the resource itself.
+
+Some links, such as `funding-sources`, give you a URL which you can follow to access related resources. For example, the customer resource has a `funding-sources` link which, when followed, will list the customer's available funding sources.
+
+Responses which contain a collection of resources have pagination links, `first`, `next`, `last`, and `prev`.
+
+```noselect
+{
+  "_links": {
+    "self": {
+      "href": "https://api.dwolla.com/customers/132681FA-1B4D-4181-8FF2-619CA46235B1"
+    },
+    "funding-sources": {
+      "href": "https://api.dwolla.com/customers/132681FA-1B4D-4181-8FF2-619CA46235B1/funding-sources"
+    },
+    "transfers": {
+      "href": "https://api.dwolla.com/customers/132681FA-1B4D-4181-8FF2-619CA46235B1/transfers"
+    },
+    "retry-verification": {
+      "href": "https://api.dwolla.com/customers/132681FA-1B4D-4181-8FF2-619CA46235B1"
+    }
+  },
+  "id": "132681FA-1B4D-4181-8FF2-619CA46235B1",
+  "firstName": "Jane",
+  "lastName": "doe",
+  "email": "jdoe@nomail.com",
+  "type": "personal",
+  "status": "retry",
+  "created": "2015-09-29T19:47:28.920Z"
+}
+```

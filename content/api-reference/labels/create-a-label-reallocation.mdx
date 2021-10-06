@@ -1,0 +1,131 @@
+---
+name: Create a label reallocation
+weight: 7
+---
+
+This section outlines how to create a Label reallocation. When creating a Label reallocation you’ll specify an amount as well as from and to which correspond respectively to a Label that will be reduced and a Label that will be increased. The `from` and `to` Labels must belong to the same Verified Customer. Upon success, the API will return a 201 with a link to the created Label reallocation resource in the Location header. A Label reallocation will only occur if the `from` Label has an amount that is equal to or greater than the amount specified in the Label reallocation request. Label ledger entries will be created for both Labels included in the reallocation.
+
+### HTTP request
+
+`POST https://api.dwolla.com/label-reallocations`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                                                                     |
+| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| \_links   | yes      | string | A \_links JSON object that includes the desired `from` and `to` Label.                                                          |
+| amount    | yes      | object | Amount of funds to reallocate for single Verified Customer Record. An amount object. Reference the amount object to learn more. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/label-reallocations
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+ "_links":{
+   "from": {
+     "href": "https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45"
+   },
+   "to": {
+     "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc"
+   }
+ },
+ "amount": {
+   "value": "15.00",
+   "currency": "USD"
+ }
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21
+```
+
+```php
+<?php
+$labelReallocationsApi = new DwollaSwagger\LabelreallocationsApi($apiClient);
+
+$labelReallocation = $labelReallocationsApi->reallocateLabel([
+  '_links' => [
+    'from' => [
+      'href' => 'https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45',
+    ],
+    'to' => [
+      'href' => 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
+    ]
+  ],
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '15.00'
+  ]
+]);
+$labelReallocation; # => "https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :from => {
+      :href => "https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45"
+    },
+    :to => {
+      :href => "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc"
+    }
+  },
+  :amount => {
+    :currency => "USD",
+    :value => "15.00"
+  }
+}
+
+labelReallocation = app_token.post "label-reallocations", request_body
+labelReallocation.response_headers[:location] # => "https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'from': {
+      'href': 'https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45'
+    },
+    'to': {
+      'href': 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
+    }
+  },
+  'amount': {
+    'currency': 'USD',
+    'value': '15.00'
+  }
+}
+
+labelReallocation = app_token.post('label-reallocations', request_body)
+labelReallocation.headers['location'] # => 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21'
+```
+
+```javascript
+var requestBody = {
+  _links: {
+    from: {
+      href:
+        "https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45",
+    },
+    to: {
+      href:
+        "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+    },
+  },
+  amount: {
+    currency: "USD",
+    value: "1.00",
+  },
+};
+
+appToken
+  .post("label-reallocations", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21'
+```

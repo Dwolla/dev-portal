@@ -1,7 +1,6 @@
 ---
 name: List funding sources for an account
-category: Accounts
-params: { key1, key2 }
+weight: 3
 ---
 
 Retrieve a list of funding sources that belong to an Account. By default, all funding sources are returned unless the `removed` querystring parameter is set to `false` in the request.
@@ -130,5 +129,3 @@ appToken
   .get(`${accountUrl}/funding-sources`)
   .then((res) => res.body._embedded["funding-sources"][0].name); // => 'ABC Bank Checking'
 ```
-
----

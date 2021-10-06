@@ -1,7 +1,5 @@
 ---
-name: Request parameters - unverified Customer
-category: Create a customer
-params: { key1, key2 }
+name: Unverified Customer
 ---
 
 ### Request parameters - unverified Customer
@@ -88,5 +86,3 @@ appToken
   .post("customers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
-
----

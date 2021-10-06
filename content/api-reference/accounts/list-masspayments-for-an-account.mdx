@@ -1,7 +1,6 @@
 ---
 name: List mass payments for an account
-category: Accounts
-params: { key1, key2 }
+weight: 5
 ---
 
 This section covers how to retrieve an Account's list of previously created mass payments. Mass payments are returned ordered by date created, with most recent mass payments appearing first.
@@ -110,5 +109,3 @@ appToken
   .get(`${accountUrl}/mass-payments`)
   .then((res) => res.body._embedded["mass-payments"][0].status); // => 'complete'
 ```
-
----

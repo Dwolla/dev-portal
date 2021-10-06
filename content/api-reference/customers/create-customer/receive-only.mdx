@@ -1,7 +1,5 @@
 ---
-name: Request and response - receive-only User
-category: Create a customer
-params: { key1, key2 }
+name: Receive-only User
 ---
 
 ### Request parameters - receive-only User
@@ -97,5 +95,3 @@ appToken
   .post("customers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
-
----

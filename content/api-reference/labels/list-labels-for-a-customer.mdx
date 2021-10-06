@@ -1,0 +1,122 @@
+---
+name: List labels for a customer
+weight: 6
+---
+
+List all Labels for a specified Verified Customer. Labels are sorted by created date in descending order (most recent first).
+
+### HTTP request
+
+`GET https://api.dwolla.com/customers/{id}/labels`
+
+### Request parameters
+
+| Parameter | Required | Type    | Description                                        |
+| --------- | -------- | ------- | -------------------------------------------------- |
+| id        | yes      | string  | Customer unique identifier to retrieve labels for. |
+| limit     | no       | integer | Number of results to return. Defaults to 25.       |
+| offset    | no       | integer | Number of results to skip. Used for pagination.    |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb/labels
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb/labels",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        },
+        "first": {
+            "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb/labels?limit=25&offset=0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        },
+        "last": {
+            "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb/labels?limit=25&offset=0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        },
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        }
+    },
+    "_embedded": {
+        "labels": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "label"
+                    },
+                    "update": {
+                        "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "ledger-entry"
+                    },
+                    "ledger-entries": {
+                        "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "ledger-entry"
+                    },
+                    "customer": {
+                        "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "customer"
+                    }
+                },
+                "id": "7e042ffe-e25e-40d2-b86e-748b98845ecc",
+                "created": "2019-05-15T22:19:09.635Z",
+                "amount": {
+                    "value": "5.00",
+                    "currency": "USD"
+                }
+            }
+        ]
+    },
+    "total": 1
+}
+```
+
+```php
+<?php
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb';
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$labels = $customersApi->getLabelsForCustomer($customerUrl);
+$labels->_embedded->{'labels'}[0]->id; # => "7e042ffe-e25e-40d2-b86e-748b98845ecc"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb'
+
+labels = app_token.get "#{customer_url}/labels"
+labels._embedded['labels'][0].id # => "7e042ffe-e25e-40d2-b86e-748b98845ecc"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb'
+
+labels = app_token.get('%s/labels' % customer_url)
+labels.body['_embedded']['labels'][0]['id'] # => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733";
+
+appToken
+  .get(`${customerUrl}/labels`)
+  .then((res) => res.body._embedded["labels"][0].id); // => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
+```

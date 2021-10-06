@@ -1,0 +1,81 @@
+---
+name: Retrieve a label reallocation
+weight: 8
+---
+
+This section outlines how to retrieve a Label reallocation by its unique identifier.
+
+### HTTP request
+
+`GET https://api.dwolla.com/label-reallocations/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description             |
+| --------- | -------- | ------ | ----------------------- |
+| id        | yes      | string | Label unique identifier |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+…
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label-reallocation"
+        },
+        "to-ledger-entry": {
+            "href": "https://api-sandbox.dwolla.com/ledger-entries/d8a4bf7a-3fa0-48b9-873c-765d7375c59f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "from-ledger-entry": {
+            "href": "https://api-sandbox.dwolla.com/ledger-entries/f6a44994-b4da-48e3-bd10-d3a168e6a77d",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        }
+    },
+    "created": "2019-05-16T13:41:31.036Z"
+}
+```
+
+```php
+<?php
+$labelReallocationUrl = 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21';
+
+$labelReallocationsApi = new DwollaSwagger\LabelreallocationsApi($apiClient);
+
+$labelReallocation = $labelReallocationsApi->getLabelReallocation($labelReallocationUrl);
+$labelReallocation->created; # => "2019-05-16T13:41:31.036Z"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+label_reallocation_url = 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21'
+
+label_reallocation = app_token.get label_reallocation_url
+label_reallocation.created # => "2019-05-16T13:41:31.036Z"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+label_reallocation_url = 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21'
+
+label_reallocation = app_token.get(label_reallocation_url)
+label_reallocation.body['created'] # => '2019-05-16T13:41:31.036Z'
+```
+
+```javascript
+var labelReallocationUrl =
+  "https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21";
+
+appToken.get(labelReallocationUrl).then((res) => res.body.created); // => '2019-05-16T13:41:31.036Z'
+```

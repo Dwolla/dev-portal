@@ -1,0 +1,74 @@
+---
+name: Create a document for a beneficial owner
+weight: 3
+---
+
+Create a document for a beneficial owner pending verification by uploading a photo of the document. This requires a multipart form-data POST request. The file must be either a `.jpg`, `.jpeg`, or `.png`, up to 10MB in size.
+
+### HTTP request
+
+`POST https://api.dwolla.com/beneficial-owners/{id}/documents`
+
+### Request parameters
+
+| Form Field   | Description                                        |
+| ------------ | -------------------------------------------------- |
+| documentType | One of `passport`, `license`, `idCard`, or `other` |
+| file         | File contents.                                     |
+
+### Request and response
+
+```raw
+curl -X POST
+\ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
+\ -H "Accept: application/vnd.dwolla.v1.hal+json"
+\ -H "Cache-Control: no-cache"
+\ -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+\ -F "documentType=passport"
+\ -F "file=@foo.png"
+\ 'https://api-sandbox.dwolla.com/beneficial-owners/1de32ec7-ff0b-4c0c-9f09-19629e6788ce/documents'
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+```
+
+```ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/1DE32EC7-FF0B-4C0C-9F09-19629E6788CE'
+
+file = Faraday::UploadIO.new('mclovin.jpg', 'image/jpeg')
+document = app_token.post "#{beneficial_owner_url}/documents", file: file, documentType: 'license'
+document.response_headers[:location] # => "https://api.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/1DE32EC7-FF0B-4C0C-9F09-19629E6788CE'
+
+document = app_token.post('%s/documents' % customer_url, file = open('mclovin.jpg', 'rb'), documentType = 'license')
+document.headers['location'] # => 'https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16'
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```javascript
+var beneficialOwnerUrl =
+  "https://api-sandbox.dwolla.com/beneficial-owners/1DE32EC7-FF0B-4C0C-9F09-19629E6788CE";
+
+var requestBody = new FormData();
+body.append("file", fs.createReadStream("mclovin.jpg"), {
+  filename: "mclovin.jpg",
+  contentType: "image/jpeg",
+  knownLength: fs.statSync("mclovin.jpg").size,
+});
+body.append("documentType", "license");
+
+appToken
+  .post(`${beneficialOwnerUrl}/documents`, requestBody)
+  .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+```

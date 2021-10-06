@@ -1,0 +1,127 @@
+---
+name: List label ledger entries
+weight: 5
+---
+
+This section outlines how to list the history of Label entries. Label ledger entries are sorted by created date in descending order (most recent first).
+
+### HTTP request
+
+`GET https://api.dwolla.com/labels/{id}/ledger-entries`
+
+### Request parameters
+
+| Parameter | Required | Type    | Description                                           |
+| --------- | -------- | ------- | ----------------------------------------------------- |
+| id        | yes      | string  | The Id of the Label for listing label ledger entries. |
+| limit     | no       | integer | Number of results to return. Defaults to 25.          |
+| offset    | no       | integer | Number of results to skip. Used for pagination.       |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "first": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries?limit=25&offset=0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "last": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries?limit=25&offset=0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        }
+    },
+    "_embedded": {
+        "ledger-entries": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "ledger-entry"
+                    },
+                    "label": {
+                        "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "label"
+                    }
+                },
+                "id": "32d68709-62dd-43d6-a6df-562f4baec526",
+                "amount": {
+                    "value": "-5.00",
+                    "currency": "USD"
+                },
+                "created": "2019-05-16T01:54:58.062Z"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/ledger-entries/b71ccd39-6b03-4f16-aff0-1ae29eeadaa8",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "ledger-entry"
+                    },
+                    "label": {
+                        "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "label"
+                    }
+                },
+                "id": "b71ccd39-6b03-4f16-aff0-1ae29eeadaa8",
+                "amount": {
+                    "value": "10.00",
+                    "currency": "USD"
+                },
+                "created": "2019-05-15T22:19:09.635Z"
+            }
+        ]
+    },
+    "total": 2
+}
+```
+
+```php
+<?php
+$labelUrl = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc';
+
+$labelsApi = new DwollaSwagger\LabelsApi($apiClient);
+
+$ledgerEntries = $labelsApi->getLedgerEntriesForLabel($labelUrl);
+$ledgerEntries->_embedded->{'ledger-entries'}[0]->id; # => "32d68709-62dd-43d6-a6df-562f4baec526"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+label_url = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
+
+ledger_entries = app_token.get "#{label_url}/ledger-entries"
+ledger_entries._embedded['ledger-entries'][0].id # => "32d68709-62dd-43d6-a6df-562f4baec526"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+label_url = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
+
+ledger_entries = app_token.get('%s/ledger-entries' % label_url)
+ledger_entries.body['_embedded']['ledger-entries'][0]['id'] # => '32d68709-62dd-43d6-a6df-562f4baec526'
+```
+
+```javascript
+var labelUrl =
+  "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc";
+
+appToken
+  .get(`${labelUrl}/ledger-entries`)
+  .then((res) => res.body._embedded["ledger-entries"][0].id); // => '32d68709-62dd-43d6-a6df-562f4baec526'
+```

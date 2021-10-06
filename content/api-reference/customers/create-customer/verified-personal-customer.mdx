@@ -1,0 +1,149 @@
+---
+name: Personal Verified Customer
+---
+
+### Request parameters - verified **personal** Customer
+
+For an in-depth look at personal verified Customers creation and status handling, refer to our [developer resource article](https://developers.dwolla.com/resources/personal-verified-customer.html).
+
+| Parameter     | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ------------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| firstName     | yes      | string | An individual Customer's first name. Must be less than or equal to 50 characters and contain no special characters.                                                                                                                                                                                                                                                                                                                                                                             |
+| lastName      | yes      | string | An individual Customer's last name. Must be less than or equal to 50 characters and contain no special characters.                                                                                                                                                                                                                                                                                                                                                                              |
+| email         | yes      | string | Customer's email address.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| ipAddress     | no       | string | Customer's IP address.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| type          | yes      | string | The Verified Customer type. Set to `personal` if creating a verified personal Customer.                                                                                                                                                                                                                                                                                                                                                                                                         |
+| address1      | yes      | string | First line of the street address of the Customer's permanent residence. Must be less than or equal to 50 characters and contain no special characters. **Note:** PO Boxes are not allowed.                                                                                                                                                                                                                                                                                                      |
+| address2      | no       | string | Second line of the street address of the Customer's permanent residence. Must be less than or equal to 50 characters and contain no special characters. **Note:** PO Boxes are not allowed.                                                                                                                                                                                                                                                                                                     |
+| city          | yes      | string | City of Customer's permanent residence.                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| state         | yes      | string | Two letter abbreviation of the state in which the Customer resides, e.g. `CA`.                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| postalCode    | yes      | string | Postal code of Customer's permanent residence. US five-digit ZIP or ZIP + 4 code. e.g. `50314`.                                                                                                                                                                                                                                                                                                                                                                                                 |
+| dateOfBirth   | yes      | string | Customer's date of birth in `YYYY-MM-DD` format. Must be between 18 to 125 years of age.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ssn           | yes      | string | Last four or full 9 digits of the Customer's Social Security Number.                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| phone         | no       | string | Customer's 10 digit phone number. No hyphens or other separators, e.g. `3334447777`.                                                                                                                                                                                                                                                                                                                                                                                                            |
+| correlationId | no       | string | A unique string value attached to a customer which can be used for traceability between Dwolla and your application. <br /> Must be less than 255 characters and contain no spaces. <br /> Acceptable characters are: `a-Z`, `0-9`, `-`, `.`, and `_`. <br /> **Note:** Sensitive Personal Identifying Information (PII) should not be used in this field and it is recommended to use a random value for correlationId, like a UUID. Uniqueness is enforced on correlationId across Customers. |
+
+##### Request and response - verified **personal** Customer
+
+```raw
+POST https://api-sandbox.dwolla.com/customers
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "johndoe@nomail.net",
+  "ipAddress": "10.10.10.10",
+  "type": "personal",
+  "address1": "99-99 33rd St",
+  "city": "Some City",
+  "state": "NY",
+  "postalCode": "11101",
+  "dateOfBirth": "1970-01-01",
+  "ssn": "1234"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->create([
+  'firstName' => 'John',
+  'lastName' => 'Doe',
+  'email' => 'jdoe@nomail.net',
+  'type' => 'personal',
+  'address1' => '99-99 33rd St',
+  'city' => 'Some City',
+  'state' => 'NY',
+  'postalCode' => '11101',
+  'dateOfBirth' => '1970-01-01',
+
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+
+  # If the entire SSN is provided,
+  # it will still be accepted
+  'ssn' => '1234'
+]);
+
+$customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :firstName => 'John',
+  :lastName => 'Doe',
+  :email => 'jdoe@nomail.net',
+  :type => 'personal',
+  :address1 => '99-99 33rd St',
+  :city => 'Some City',
+  :state => 'NY',
+  :postalCode => '11101',
+  :dateOfBirth => '1970-01-01',
+
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+
+  # If the entire SSN is provided,
+  # it will still be accepted
+
+  :ssn => '1234'
+}
+
+customer = app_token.post "customers", request_body
+customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'firstName': 'John',
+  'lastName': 'Doe',
+  'email': 'jdoe@nomail.net',
+  'type': 'personal',
+  'address1': '99-99 33rd St',
+  'city': 'Some City',
+  'state': 'NY',
+  'postalCode': '11101',
+  'dateOfBirth': '1970-01-01',
+  # For the first attempt, only the
+  # last 4 digits of SSN required
+  # If the entire SSN is provided,
+  # it will still be accepted
+  'ssn': '1234'
+}
+
+customer = app_token.post('customers', request_body)
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+```javascript
+var requestBody = {
+  firstName: "John",
+  lastName: "Doe",
+  email: "jdoe@nomail.net",
+  type: "personal",
+  address1: "99-99 33rd St",
+  city: "Some City",
+  state: "NY",
+  postalCode: "11101",
+  dateOfBirth: "1970-01-01",
+  // For the first attempt, only the
+  // last 4 digits of SSN required
+  // If the entire SSN is provided,
+  // it will still be accepted
+  ssn: "1234",
+};
+
+appToken
+  .post("customers", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```

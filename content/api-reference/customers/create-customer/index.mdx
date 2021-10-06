@@ -1,7 +1,6 @@
 ---
 name: Create a customer
-category: Customers
-params: { key1, key2 }
+weight: 1
 ---
 
 This section details how to create a new Customer. It is important to prompt your users to provide their full name as it appears on a US government issued identification card. This will help ensure a straight-through processing approach. If errors occur in name or date of birth, where you may be prompted for such information, additional manual steps are required, which may add processing time that impedes their experience or may even result in additional cost to you.
@@ -25,5 +24,3 @@ This section details how to create a new Customer. It is important to prompt you
 | 400         | ValidationError | Reference the [errors section](#validation-errors) for list of possible \_embedded validation errors. |
 | 403         | Forbidden       | Not authorized to create customers.                                                                   |
 | 404         | NotFound        | Customer not found.                                                                                   |
-
----

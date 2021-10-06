@@ -1,0 +1,99 @@
+---
+name: Retrieve a funding source
+weight: 4
+---
+
+This section covers how to retrieve a funding source by id.
+
+### HTTP request
+
+`GET https://api.dwolla.com/funding-sources/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                       |
+| --------- | -------- | ------ | --------------------------------- |
+| id        | yes      | string | id of funding source to retrieve. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                   |
+| ----------- | ------------------------- |
+| 404         | Funding source not found. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/4594a375-ca4c-4220-a36a-fa7ce556449d",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "initiate-micro-deposits": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31/micro-deposits",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "micro-deposits"
+        }
+    },
+    "id": "49dbaa24-1580-4b1c-8b58-24e26656fa31",
+    "status": "unverified",
+    "type": "bank",
+    "bankAccountType": "checking",
+    "name": "Test checking account",
+    "created": "2017-09-26T14:14:08.000Z",
+    "removed": false,
+    "channels": [
+        "ach"
+    ],
+    "bankName": "SANDBOX TEST BANK",
+    "fingerprint": "5012989b55af15400e8102f95d2ec5e7ce3aef45c01613280d80a236dd8d6c3a"
+}
+
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31'
+
+funding_source = app_token.get funding_source_url
+funding_source.name # => "Test checking account"
+```
+
+```php
+<?php
+$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31';
+
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fsApi->id($fundingSourceUrl);
+$fundingSource->name; # => "Test checking account"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31'
+
+funding_source = app_token.get(funding_source_url)
+funding_source.body['name'] # => 'Test checking account'
+```
+
+```javascript
+var fundingSourceUrl =
+  "https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31";
+
+appToken.get(fundingSourceUrl).then((res) => res.body.name); // => "Test checking account"
+```

@@ -1,0 +1,570 @@
+---
+name: Initiate a mass payment
+weight: 1
+---
+
+This section covers how to initiate a mass payment from your Dwolla Master [Account](#accounts) or Verified [Customer](#customers) resource. A mass payment contains a list of `items` representing individual payments. Optionally, mass payments can contain `metadata` and a `correlationId` on the mass payment itself as well as items contained in the mass payment, which can be used to pass along additional information with the mass payment and item respectively. If a `correlationId` is included on a mass payment item it will be passed along to the transfer created from the item and can be searched on.
+
+### Prevent duplicate mass payment with idempotency key
+
+To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key won't result in multiple resources being created.
+
+For example, if a request to initiate a mass payment fails due to a network connection issue, you can reattempt the request with the same idempotency key to ensure that only a single mass payment is created.
+
+Refer to our [idempotency key](#idempotency-key) section to learn more.
+
+### Deferred mass payment
+
+A mass payment can be created with a status of `deferred`, which allows you to create the mass payment and defer processing to a later time. To trigger processing on a deferred mass payment, you'll [update the mass payment](#update-a-mass-payment) with a status of `pending`. A deferred mass payment can be cancelled by updating the mass payment with a status of `cancelled`.
+
+### HTTP request
+
+`POST https://api.dwolla.com/mass-payments`
+
+### Request parameters
+
+| Parameter     | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links       | yes      | object | A \_links JSON object describing the desired `source` of a mass payment. [Reference the Source and Destination object to learn more about ](#source-and-destination-values) possible values for `source` and `destination`.                                                                                                                                                                                                                                                                                               |
+| items         | yes      | array  | an array of item JSON objects that contain unique payments. [See below](#mass-payment-item)                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| metadata      | no       | object | A metadata JSON object with a maximum of 10 key-value pairs (each key and value must be less than 255 characters).                                                                                                                                                                                                                                                                                                                                                                                                        |
+| status        | no       | string | Acceptable value is: `deferred`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| clearing      | no       | object | A clearing JSON object describing the desired `source` processing time. Utilize this parameter for bank sourced mass payments that you wish to configure the proccessing time for the ACH debit from Next-day ACH to standard ACH. [Reference the clearing JSON object to learn more](#clearing-json-object-mass-payment).                                                                                                                                                                                                |
+| achDetails    | no       | object | An ACH details JSON object which represents additional information sent along with a transfer created from a mass payment item to an originating or receiving financial institution. Details within this object can be used to reference a transaction that has settled with a financial institution. [See below](#achdetails-and-addenda-object)                                                                                                                                                                         |
+| correlationId | no       | string | A string value attached to a customer which can be used for traceability between Dwolla and your application. **Note:** A correlationId is not a replacement for an [idempotency key](#idempotency-key). <br /> Must be less than 255 characters and contain no spaces. <br /> Acceptable characters are: `a-Z`, `0-9`, `-`, `.`, and `_`. <br /> **Note:** Sensitive Personal Identifying Information (PII) should not be used in this field and it is recommended to use a random value for correlationId, like a UUID. |
+
+### Source and destination values
+
+##### Source types
+
+| **Source** Type | URI                                           | Description                                                                                     |
+| --------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Funding source  | `https://api.dwolla.com/funding-sources/{id}` | A bank or balance funding source of an [Account](#accounts) or verified [Customer](#customers). |
+
+##### Destination types
+
+| **Destination** Type | URI                                           | Description                                                                                                                                                                  |
+| -------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Funding source       | `https://api.dwolla.com/funding-sources/{id}` | Destination of a Verified Customer's own `bank` or `balance` funding source, an Unverified Customer's `bank` funding source, or a Receive-only User's `bank` funding source. |
+
+### Mass payment item
+
+| Parameter         | Description                                                                                                                                                                                                                                                                                                                                          |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links           | A \_links JSON object describing the desired `destination` of a mass payment. [See above](#source-and-destination-values) for possible values for `destination`.                                                                                                                                                                                     |
+| amount            | An amount JSON object containing `currency` and `value` keys.                                                                                                                                                                                                                                                                                        |
+| metadata          | A metadata JSON object with a maximum of 10 key-value pairs (each key and value must be less than 255 characters).                                                                                                                                                                                                                                   |
+| correlationId     | A string value attached to a mass payment item which can be used for traceability between Dwolla and your application. The correlationId will be passed along to a transfer that is created from an item and can be searched on. Must be less than 255 characters and contain no spaces. Acceptable characters are: `a-Z`, `0-9`, `-`, `.`, and `_`. |
+| achDetails        | An [ACH details JSON object](#achdetails-object) which represents additional information sent along with a transfer created from a mass payment item to an originating or receiving financial institution. Details within this object can be used to reference a transaction that has settled with a financial institution.                          |
+| processingChannel | A processingChannel JSON object that contains a key-value pair with a string key and string value of `destination` and `real-time-payments`.                                                                                                                                                                                                         |
+
+### amount JSON object
+
+| Parameter | Required | Type   | Description            |
+| --------- | -------- | ------ | ---------------------- |
+| value     | yes      | string | Amount of money        |
+| currency  | yes      | string | Possible values: `USD` |
+
+### clearing JSON object (mass payment)
+
+The `clearing` object is used in tandem with our expedited transfers feature.
+Source specifies the processing time for the source bank funding source involved in the transfer, and can be used to downgrade the processing time from the default of Next-day ACH on the debit portion of the mass payment into the Dwolla Network. Destination specifies the processing time for the destination funding source involved in the transfer, and can be used to upgrade the processing time from the default of Standard ACH to Same-day ACH on each mass payment item.
+
+> **Note:** The clearing request parameter is a premium feature available for [Dwolla](https://www.dwolla.com/platform) customers. Enabling Next-day ACH and Same-day ACH requires additional Dwolla approvals before getting started. Please contact [Sales](https://www.dwolla.com/contact?b=apidocs) or your account manager for more information on enabling this account setting.
+
+| Parameter   | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source      | no       | string | Represents a clearing object for `standard` debits into the Dwolla network. Used to downgrade the processing time from the default of Next-day ACH. <br /> Possible values: `standard` <br /> **Note:** Cannot be used on individual [mass payment items](#mass-payment-item) as items represent a destination for the funds transfer. See [example masspayment request](#request-and-response-mass-payment-from-account-to-customers). |
+| destination | no       | string | Represents a clearing object for `same-day` credits out of the Dwolla network to a bank funding source. <br /> Possible values: `next-available` <br /> **Note:** Can only be used on individual [mass payment items](#mass-payment-item). See [example masspayment request](#request-and-response-mass-payment-from-account-to-customers)                                                                                              |
+
+#### Clearing example:
+
+```noselect
+"clearing": {
+  "destination": "next-available"
+}
+```
+
+### achDetails and addenda object
+
+The addendum record is used to provide additional information to the payment recipient about the payment. This value will be passed in on a transfer request and can be exposed on a customer’s bank statement. Addenda records provide a unique opportunity to supply your customers with more information about their transactions. Allowing businesses to include additional details about the transaction—such as invoice numbers—provides their end users with more information about the transaction in the comfort of their own banking application.
+
+##### achDetails object
+
+| Parameter   | Required | Type   | Description                                                                                                                                                                                                                                                                     |
+| ----------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source      | no       | object | Represents information that is sent to a source/originating bank account along with a transfer. Include information within this JSON object for customizing details on ACH debit transfers. Can include an [addenda JSON object](#addenda-object).                              |
+| destination | no       | object | Represents information that is sent to a destination/receiving bank account along with a transfer from a mass payment item. Include information within this JSON object for customizing details on ACH credit transfers. Can include an [addenda JSON object](#addenda-object). |
+
+##### addenda object
+
+| Parameter | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| addenda   | no       | object | An addenda object contains a `values` key which is an array of comma separated string addenda values. Addenda record information is used for the purpose of transmitting transfer-related information. Values must be less than or equal to 80 characters and can include spaces. Acceptable characters are: a-Z, 0-9, and special characters `- _ . ~! * ' ( ) ; : @ & = + $ , / ? % # [ ]`. _Will not show up on bank statements from balance-sourced transfers_. |
+
+##### Source mass payment achDetails with addenda example:
+
+```noselect
+"achDetails": {
+  "source": {
+    "addenda": {
+      "values": ["ABC123_AddendaValue"]
+    }
+  }
+},
+```
+
+##### Destination mass payment item with achDetails and addenda example
+
+```noselect
+"achDetails": {
+  "destination": {
+    "addenda": {
+      "values": ["ZYX987_AddendaValue"]
+    }
+  }
+}
+```
+
+### HTTP status and error codes
+
+| HTTP Status | Code            | Description                                                                                                                                 |
+| ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created         | A mass payment resource was created                                                                                                         |
+| 400         | ValidationError | Can be: Items exceeded maximum count of 5000, Invalid amount, Invalid metadata, Invalid job item correlation ID, or Invalid funding source. |
+| 401         | NotAuthorized   | OAuth token does not have Send scope.                                                                                                       |
+
+### Request and response (mass payment from Account to Customers)
+
+```raw
+POST https://api-sandbox.dwolla.com/mass-payments
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
+
+{
+    "_links": {
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+        }
+    },
+    "achDetails": {
+      "source": {
+        "addenda": {
+          "values": ["ABC123_AddendaValue"]
+        }
+      }
+    },
+    "clearing": {
+      "source": "standard"
+    },
+    "items": [
+      {
+        "_links": {
+            "destination": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db"
+            }
+        },
+        "amount": {
+            "currency": "USD",
+            "value": "1.00"
+        },
+        "clearing": {
+          "destination": "next-available"
+        },
+        "metadata": {
+            "payment1": "payment1"
+        },
+        "achDetails": {
+          "destination": {
+            "addenda": {
+              "values": ["ZYX987_AddendaValue"]
+            }
+          }
+        },
+        "correlationId": "ad6ca82d-59f7-45f0-a8d2-94c2cd4e8841",
+        "processingChannel": {
+          "destination": "real-time-payments"
+        }
+      },
+      {
+        "_links": {
+            "destination": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd"
+            }
+        },
+        "amount": {
+            "currency": "USD",
+            "value": "5.00"
+        },
+        "clearing": {
+          "destination": "next-available"
+        },
+        "metadata": {
+            "payment2": "payment2"
+        },
+        "achDetails": {
+          "destination": {
+            "addenda": {
+              "values": ["ZYX987_AddendaValue"]
+              }
+            }
+        }
+      }
+    ],
+    "metadata": {
+        "batch1": "batch1"
+    },
+    "correlationId": "6d127333-69e9-4c2b-8cae-df850228e130"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/mass-payments/d093bcd1-d0c1-41c2-bcb5-a5cc011be0b7
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :source => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+    }
+  },
+  :achDetails => {
+    :source => {
+      :addenda => {
+        :values => ["ABC123_AddendaValue"]
+      }
+    }
+  },
+  :clearing => {
+    :source => "standard"
+  },
+  :items => [
+    {
+      :_links => {
+        :destination => {
+          :href => "https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db"
+        }
+      },
+      :amount => {
+        :currency => "USD",
+        :value => "1.00"
+      },
+      :clearing => {
+        :destination => "next-available"
+      },
+      :metadata => {
+        :payment1 => "payment1"
+      },
+      :correlationId => "ad6ca82d-59f7-45f0-a8d2-94c2cd4e8841",
+      :achDetails => {
+        :destination => {
+          :addenda => {
+            :values => ["ABC123_AddendaValue"]
+          }
+        }
+      },
+      :processingChannel => {
+        :destination => "real-time-payments"
+      }
+    },
+    {
+      :_links => {
+        :destination => {
+          :href => "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd"
+        }
+      },
+      :amount => {
+        :currency => "USD",
+        :value => "5.00"
+      },
+      :clearing => {
+        :destination => "next-available"
+      },
+      :metadata => {
+        :payment2 => "payment2"
+      },
+      :achDetails => {
+        :destination => {
+          :addenda => {
+            :values => ["ABC123_AddendaValue"]
+          }
+        }
+      }
+    }
+  ],
+  :metadata => {
+    :batch1 => "batch1"
+  },
+  :correlationId => "6d127333-69e9-4c2b-8cae-df850228e130"
+}
+
+mass_payment = app_token.post "mass-payments", request_body
+mass_payment.response_headers[:location] # => "https://api-sandbox.dwolla.com/mass-payments/cf1e9e00-09cf-43da-b8b5-a43b3f6192d4"
+```
+
+```php
+<?php
+$massPaymentsApi = new DwollaSwagger\MasspaymentsApi($apiClient);
+
+$massPayment = $massPaymentsApi->create([
+  '_links' =>
+  [
+    'source' =>
+    [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4',
+    ],
+  ],
+  'achDetails' =>
+  [
+    'source' => [
+      'addenda' => [
+        'values' => ['ABC123_AddendaValue']
+      ]
+    ]
+  ],
+  'clearing' =>
+  [
+    'source' => 'standard'
+  ],
+  'items' =>
+  [
+    [
+      '_links' =>
+      [
+        'destination' =>
+        [
+          'href' => 'https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db',
+        ],
+      ],
+      'amount' =>
+      [
+        'currency' => 'USD',
+        'value' => '1.00',
+      ],
+      'clearing' =>
+      [
+        'destination' => 'next-available'
+      ],
+      'metadata' =>
+      [
+        'payment1' => 'payment1',
+      ],
+      'correlationId' => 'ad6ca82d-59f7-45f0-a8d2-94c2cd4e8841',
+      'achDetails' =>
+      [
+        'source' => [
+          'addenda' => [
+            'values' => ['ABC123_AddendaValue']
+          ]
+        ]
+      ],
+      'processingChannel' => [
+        'destination' => 'real-time-payments'
+      ]
+    ],
+    [
+      '_links' =>
+      [
+        'destination' =>
+        [
+          'href' => 'https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd',
+        ],
+      ],
+      'amount' =>
+      [
+        'currency' => 'USD',
+        'value' => '5.00',
+      ],
+      'clearing' =>
+      [
+        'destination' => 'next-available'
+      ],
+      'metadata' =>
+      [
+        'payment2' => 'payment2',
+      ],
+      'achDetails' =>
+      [
+        'source' => [
+          'addenda' => [
+            'values' => ['ABC123_AddendaValue']
+          ]
+        ]
+      ]
+    ],
+  ],
+  'metadata' =>
+  [
+    'batch1' => 'batch1',
+  ],
+  'correlationId' => '6d127333-69e9-4c2b-8cae-df850228e130',
+]);
+$massPayment; # => "https://api-sandbox.dwolla.com/mass-payments/cf1e9e00-09cf-43da-b8b5-a43b3f6192d4"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'source': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4'
+    }
+  },
+  'achDetails': {
+    'addenda': {
+      'values': ['ABC123_AddendaValue']
+    }
+  },
+  'clearing': {
+    'source': 'standard'
+  },
+  'items': [
+    {
+      '_links': {
+        'destination': {
+          'href': 'https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db'
+        }
+      },
+      'amount': {
+        'currency': 'USD',
+        'value': '1.00'
+      },
+      'clearing': {
+        'destination': 'next-available'
+      },
+      'metadata': {
+        'payment1': 'payment1'
+      },
+      'correlationId': 'ad6ca82d-59f7-45f0-a8d2-94c2cd4e8841',
+      'achDetails': {
+        'addenda': {
+          'values': ['ABC123_AddendaValue']
+        }
+      },
+      'processingChannel': {
+        'destination': 'real-time-payments'
+      }
+    },
+    {
+      '_links': {
+        'destination': {
+          'href': 'https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd'
+        }
+      },
+      'amount': {
+        'currency': 'USD',
+        'value': '5.00'
+      },
+      'clearing': {
+        'destination': 'next-available'
+      },
+      'metadata': {
+        'payment2': 'payment2'
+      },
+      'achDetails': {
+        'addenda': {
+          'values': ['ABC123_AddendaValue']
+        }
+      }
+    }
+  ],
+  'metadata': {
+    'batch1': 'batch1'
+  },
+  'correlationId': '6d127333-69e9-4c2b-8cae-df850228e130'
+}
+
+mass_payment = app_token.post('mass-payments', request_body)
+mass_payment.headers['location'] # => 'https://api-sandbox.dwolla.com/mass-payments/cf1e9e00-09cf-43da-b8b5-a43b3f6192d4'
+```
+
+```javascript
+var requestBody = {
+  _links: {
+    source: {
+      href:
+        "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+    },
+  },
+  achDetails: {
+    source: {
+      addenda: {
+        values: ["ABC123_AddendaValue"],
+      },
+    },
+  },
+  clearing: {
+    source: "standard",
+  },
+  items: [
+    {
+      _links: {
+        destination: {
+          href:
+            "https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db",
+        },
+      },
+      amount: {
+        currency: "USD",
+        value: "1.00",
+      },
+      clearing: {
+        destination: "next-available",
+      },
+      metadata: {
+        payment1: "payment1",
+      },
+      correlationId: "ad6ca82d-59f7-45f0-a8d2-94c2cd4e8841",
+      achDetails: {
+        destination: {
+          addenda: {
+            values: ["ABC123_AddendaValue"],
+          },
+        },
+      },
+      processingChannel: {
+        destination: "real-time-payments",
+      },
+    },
+    {
+      _links: {
+        destination: {
+          href:
+            "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd",
+        },
+      },
+      amount: {
+        currency: "USD",
+        value: "5.00",
+      },
+      clearing: {
+        destination: "next-available",
+      },
+      metadata: {
+        payment2: "payment2",
+      },
+      achDetails: {
+        destination: {
+          addenda: {
+            values: ["ABC123_AddendaValue"],
+          },
+        },
+      },
+    },
+  ],
+  metadata: {
+    batch1: "batch1",
+  },
+  correlationId: "6d127333-69e9-4c2b-8cae-df850228e130",
+};
+
+appToken
+  .post("mass-payments", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/mass-payments/cf1e9e00-09cf-43da-b8b5-a43b3f6192d4'
+```

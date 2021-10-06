@@ -1,0 +1,32 @@
+---
+name: Ruby
+weight: 1
+---
+
+`dwolla_v2` is available on [RubyGems](https://rubygems.org/gems/dwolla_v2) with [source code](https://github.com/Dwolla/dwolla-v2-ruby) available on our GitHub page. More information is available on the project's README.
+
+### Installation
+
+```bashnoselect
+gem install dwolla_v2
+```
+
+### Quickstart
+
+Let's list some `Customer` objects:
+
+```rubynoselect
+require 'dwolla_v2'
+
+# Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
+app_key = "..."
+app_secret = "..."
+$dwolla = DwollaV2::Client.new(key: app_key, secret: app_secret) do |config|
+  config.environment = :sandbox # optional - defaults to production
+end
+
+# create an application token
+app_token = $dwolla.auths.client
+
+customers = app_token.get "customers", limit: 10
+```

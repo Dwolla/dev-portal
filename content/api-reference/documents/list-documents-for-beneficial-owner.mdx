@@ -1,0 +1,105 @@
+---
+name: List documents for a beneficial owner
+weight: 4
+---
+
+This section contains information on how to retrieve a list of documents that belong to a beneficial owner.
+
+### HTTP request
+
+`GET https://api.dwolla.com/beneficial-owners/{id}/documents`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                         |
+| --------- | -------- | ------ | ----------------------------------- |
+| id        | yes      | string | Beneficial owner unique identifier. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2/documents
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2/documents"
+    }
+  },
+  "_embedded": {
+    "documents": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/documents/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+          }
+        },
+        "id": "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc",
+        "status": "pending",
+        "type": "passport",
+        "created": "2015-09-29T21:42:16.000Z"
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
+          }
+        },
+        "id": "11fe0bab-39bd-42ee-bb39-275afcc050d0",
+        "status": "reviewed",
+        "type": "passport",
+        "created": "2015-09-29T21:45:37.000Z",
+        "failureReason": "ScanDobMismatch",
+        "allFailureReasons": [
+            {
+                "reason": "ScanDobMismatch",
+                "description": "Date of Birth mismatch"
+            },
+            {
+                "reason": "ScanIdExpired",
+                "description": "ID is expired"
+            }
+        ]
+      }
+    ]
+  },
+  "total": 2
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+
+documents = token.get "#{beneficial_owner_url}/documents"
+documents._embedded['documents'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+```
+
+```php
+<?php
+$beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
+$beneficialOwner = 'https://api-sandbox.dwolla.com/beneficial-owners/55469604-40ab-44b6-962f-de2c0837ba98';
+$listDocsBeneficialOwner = $beneficialOwnersApi->getBeneficialOwnerDocuments($beneficialOwner);
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+
+documents = app_token.get('%s/documents' % beneficial_owner_url)
+documents.body['total'] # => 2
+```
+
+```javascript
+var beneficialOwnerUrl =
+  "https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2";
+
+token
+  .get(`${beneficialOwnerUrl}/documents`)
+  .then((res) => res.body._embedded["documents"][0].id); // => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+```
