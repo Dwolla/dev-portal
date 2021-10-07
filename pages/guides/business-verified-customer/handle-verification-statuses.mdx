@@ -384,13 +384,14 @@ You can provide the following best practices to the Customer in order to reduce 
 
 ### Determining verification documents needed
 
-When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docs.dwolla.com/#retrieve-a-customer), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, or both the Controller and business. Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
+When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docs.dwolla.com/#retrieve-a-customer), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, both the Controller and business, or for the DBA (Doing Business As). Additionally, embedded errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
 
-| Link name                                    | Description                                                              |
-| -------------------------------------------- | ------------------------------------------------------------------------ |
-| verify-with-document                         | Identifies if documents are needed only for a Controller.                |
-| verify-business-with-document                | Identifies if documents are needed only for a business.                  |
-| verify-controller-and-business-with-document | Identifies if documents are needed for both the Controller and business. |
+| Link name                                    | Description                                                                  |
+| -------------------------------------------- | ---------------------------------------------------------------------------- |
+| verify-with-document                         | Identifies if documents are needed only for a Controller.                    |
+| verify-business-with-document                | Identifies if documents are needed only for a business.                      |
+| verify-controller-and-business-with-document | Identifies if documents are needed for both the Controller and business.     |
+| upload-dba-document                          | Identifies if documents are needed for a business's DBA (Doing Business As). |
 
 #### Example response
 
@@ -407,11 +408,24 @@ When a business verified Customer is placed in the `document` verification statu
       "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
       "resource-type": "document"
     },
-    "verify-business-with-document": {
+    "upload-dba-document": {
       "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
       "type": "application/vnd.dwolla.v1.hal+json",
       "resource-type": "document"
     }
+  },
+  "_embedded": {
+    "errors": [
+      {
+        "code": "Required",
+        "message": "DBA (Doing Business As) document upload required",
+        "_links": {
+          "upload-dba-document": {
+            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents"
+          }
+        }
+      }
+    ]
   },
   "id": "41432759-6d65-42e5-a6be-400ddd103b78",
   "firstName": "Account",
@@ -467,7 +481,7 @@ Unsupported Document Examples:
 
 ##### Businesses
 
-Documents that are used to help identify a business are specified as documentType `other`. Business Identifying documents we recommend uploading can include the following:
+Documents that are used to help identify a business are specified as documentType `other`. \*Note\*\*: A DBA document should be issued by the government and should include the DBA name along with the state registered business name. Business Identifying documents we recommend uploading can include the following:
 
 - **Partnership, General Partnership**: EIN Letter (IRS-issued SS4 confirmation letter).
 - **Limited Liability Corporation (LLC), Corporation**: EIN Letter (IRS-issued SS4 confirmation letter).
