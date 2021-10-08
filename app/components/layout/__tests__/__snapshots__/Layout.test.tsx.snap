@@ -452,6 +452,16 @@ Array [
               >
                 <a
                   className="css-1yfy9it-LinkGroupLink eg0edpy9"
+                  href="https://support.dwolla.com/s/"
+                >
+                  Support
+                </a>
+              </li>
+              <li
+                className="css-13i1lc7-LinkGroupItem eg0edpy8"
+              >
+                <a
+                  className="css-1yfy9it-LinkGroupLink eg0edpy9"
                   href="https://www.dwolla.com/resources/"
                 >
                   Resources

@@ -80,11 +80,10 @@ In production, Dwolla will place the Verified Customer in either the `retry`, `k
 
 **For personal Verified Customers**, reference the guide on [customer verification](/guides/personal-verified-customer/handle-verification-statuses) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status.
 
-**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller, the business and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status. 
+**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller, the business and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://docs.dwolla.com/#request-parameters---verified-customer) with that status.
 
-With business Verified Customers, documents may be needed for the Controller, the business, or both the Controller and business. To simulate the `document` status for the controller, submit `document` in the **controller firstName** parameter. 
-Similarly, to simulate the `document` status for the business, submit `document` in the **businessName** parameter. To simulate both the Controller and the business in `document`, submit `document` in both the **controller firstName** and the **businessName** parameters. 
-
+With business Verified Customers, documents may be needed for the Controller, the business, or both the Controller and business. To simulate the `document` status for the controller, submit `document` in the **controller firstName** parameter.
+Similarly, to simulate the `document` status for the business, submit `document` in the **businessName** parameter. To simulate both the Controller and the business in `document`, submit `document` in both the **controller firstName** and the **businessName** parameters.
 
 ##### Simulate KBA verified and failed events
 
@@ -234,6 +233,15 @@ Authorization: Bearer {Your access token}
 A “Process bank transfers” button is available in the Sandbox [Dwolla Dashboard and Admin](https://dashboard-sandbox.dwolla.com). This button performs the same function as the "sandbox-simulations" endpoint (mentioned above) and allows you to simulate bank transfer processing in the Sandbox. Once the button is clicked, Dwolla will process or fail (see below for how-to trigger ACH failures) the last 500 bank transfers that occurred on your Sandbox account or the API Customer accounts you manage.
 
 <Image src={processBankTransfers} alt="process bank transfers" />
+
+### Test RTP transfers
+
+To create a Real-time payment (RTP) transfer, you need to attach a funding-source that is RTP enabled to your Customer. The Clearing House maintains lists of all [financial institutions](https://www.theclearinghouse.org/payment-systems/rtp/rtp-participating-financial-institutions) in the RTP® Network and all [RTP-enabled Routing/Transit Numbers](https://www.theclearinghouse.org/payment-systems/rtp/rtn). Use one of the routing numbers from the list to create an RTP-enabled funding-source in your Sandbox account. The account number can be any random number of 4-17 digits.
+
+<AlertBar variation="warning">
+  Real bank account numbers should not be used in a testing environment like
+  Sandbox.
+</AlertBar>
 
 ### Test bank transfer failures
 

@@ -8,9 +8,12 @@ meta:
   description: Configure and call function for initiating Dwolla-cards.js, a powerful and secure tool for adding a debit card.
 ---
 
+import addACardFormImage from "../../../../assets/images/content-images/add-a-card-form.png";
+import blogIcon from "../../../../assets/images/content-images/content-icons/blog-icon.svg";
+
 # Step 2: Configure and call function
 
-Once you’ve obtained a card funding source token, the next step is to complete the client-side implementation which starts with including dwolla-cards.js on the page you want the container to load and configuring the dwolla-cards.js library.
+Once you've obtained a card funding source token, the next step is to complete the client-side implementation which starts with including dwolla-cards.js on the page you want the container to load and configuring the dwolla-cards.js library.
 
 ##### Including dwolla-cards.js
 
@@ -48,9 +51,9 @@ There are a subset of options available for customizing the `add a debit card` f
 
 ### Dwolla-cards.js Example
 
-For this example, you’ll pass the token you received from the previous step into ‘token goes here’ below. This input box can be a ‘hidden’ input. The only requirement is that there is an input with id=”‘authTokenInput” that has the generated token assigned to its value. It will be used in the JavaScript function `dwolla.cards.start`. This token will be used to authenticate the request asking Dwolla to render the add a debit card flow.
+For this example, you'll pass the token you received from the previous step into 'token goes here' below. This input box can be a 'hidden' input. The only requirement is that there is an input with id="authTokenInput" that has the generated token assigned to its value. It will be used in the JavaScript function `dwolla.cards.start`. This token will be used to authenticate the request asking Dwolla to render the add a debit card flow.
 
-Once your customer clicks “Add Card”, your application will call dwolla.cards.start() passing in the following arguments:
+Once your customer clicks "Add Card", your application will call dwolla.cards.start() passing in the following arguments:
 
 - The cardContainer element where the add a debit card flow will render
 - A string value of your single-use card funding source token
@@ -91,6 +94,16 @@ value="token goes here">
 </body></html>
 ```
 
+##### Example styled form
+
+<Image src={addACardFormImage} alt="Add a Card form example" />
+
+<ExternalCTA
+  icon={blogIcon}
+  href="https://www.dwolla.com/updates/dwolla-cards-js-styling-debit-card-form/"
+  description="Check out our blog post for an interactive code example on styling the debit card form."
+/>
+
 ### Dwolla-cards.js Styling
 
 When you invoke the function to create the tokenized fields via dwolla-cards.js, you can pass in style options for placeholder, valid and invalid text. From here, you can style text-specific properties such as color, font-family, font-style and font-weight. These styles are applied to all fields.
@@ -112,7 +125,7 @@ Success text applies to format validation for the following:
 
 #### Using an External Style Sheet
 
-You can also link an external style sheet to the form. While you can’t adjust the font-specific properties of the placeholder, success or failure text via an external stylesheet, you can style container-specific properties.
+You can also link an external style sheet to the form. While you can't adjust the font-specific properties of the placeholder, success or failure text via an external stylesheet, you can style container-specific properties.
 
 Basic container-specific properties include the following:
 
@@ -156,7 +169,7 @@ const options = {
 
 #### Styling the Card Name Input
 
-The card name input isn’t a tokenized field, so it doesn’t apply font styles from the options. You will need to style this field manually to match the properties applied from the options and external CSS. You’ll also need to supply the submit button and you’re responsible for wiring it up to the dwolla-cards.js call.
+The card name input isn't a tokenized field, so it doesn't apply font styles from the options. You will need to style this field manually to match the properties applied from the options and external CSS. You'll also need to supply the submit button and you're responsible for wiring it up to the dwolla-cards.js call.
 
 To the left of the card number is an input. Once the card number is entered, it will change to the card brand name.
 
@@ -169,3 +182,19 @@ You can style this in your stylesheet via #brand. Key properties that can be adj
 - Border radius
 
 **Note:** All of the inputs share a class name and each field has its own id.
+
+#### Styling the Form Validation Errors
+
+The form provides client-side form validation to ensure that users do not enter invalid data in the form-fields. The validation error messages are displayed in a `<span>` with `class="cards-error-message"`. By default, the error message has a red text color. You can customize it in your stylesheet to match the look and feel of your application.
+
+Here is the list of all possible form validation error messages:
+
+- Cardholder Name is required
+- Card Nickname is required
+- City is required
+- Invalid card number
+- Invalid expiration date
+- Invalid CVV
+- Street Address is required
+- State is required
+- Zip code is required

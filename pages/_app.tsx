@@ -82,6 +82,7 @@ const FOOTER_LINKS = {
     { text: "Privacy Policy", href: "https://www.dwolla.com/legal/privacy/" },
   ],
   Product: [
+    { text: "Support", href: "https://support.dwolla.com/s/" },
     { text: "Resources", href: "https://www.dwolla.com/resources/" },
     { text: "Features", href: "https://www.dwolla.com/features/" },
     { text: "Case Studies", href: "https://www.dwolla.com/case-studies/" },

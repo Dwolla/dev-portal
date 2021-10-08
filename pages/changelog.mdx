@@ -16,6 +16,21 @@ No upcoming changes
 
 ## Completed
 
+### 2021-10-07
+
+**ADDED**
+
+- Added a new `upload-dba-document` link to the Customer resource. This link appears whenever a DBA (Doing Business As) document is required from the Customer to verify their business.
+- Added an `_embedded` object to the Customer resource which contains a list of errors related to getting the Customer verified. The `_embedded` object appears whenever the Customer is in `retry` or `document`.
+- Check out our [Developer documentation](/guides/business-verified-customer/handle-verification-statuses#determining-verification-documents-needed) for more information.
+
+### 2021-09-21
+
+**ADDED**
+
+- Added client-side form validation to the `Add a Debit Card` form in `dwolla-cards.js`. This enables the form to display helpful error messages to the user whenever they enter invalid data.
+- Check out our [Developer documentation](https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function#dwolla-cardsjs-styling) for more information on styling the `<span>` element that displays the validation error messages.
+
 ### 2021-08-27
 
 **ADDED**
