@@ -3,6 +3,7 @@ import util from "util";
 import path from "path";
 import matter from "gray-matter";
 import sortBy from "lodash.sortby";
+import apiOrder from "./api-section.import";
 
 const readdir = util.promisify(fs.readdir);
 const readFile = util.promisify(fs.readFile);
@@ -90,16 +91,23 @@ export const buildContentModule = (contentDir: string) => {
       // return Promise.resolve({ apis: [], subsections: {} });
       const allContent = await getContents(contentPath);
 
-      const sortedApiReference = sortBy(
-        allContent
-          .map(stripFilenameFromId)
-          .filter(inAPIReference)
-          .filter(noUnderscores)
-          .map(toApiReference),
-        ["id"]
+      const filteredContent = allContent
+        .map(stripFilenameFromId)
+        .filter(inAPIReference)
+        .filter(noUnderscores)
+        .map(toApiReference);
+
+      // Sort APIs based on _section.yml ordering
+      const sortedApiReference = sortBy(filteredContent.filter(isApi), (c) =>
+        apiOrder.apiSections.apis.indexOf(c.meta.name)
       );
 
-      const subsections = sortedApiReference
+      const subsections = sortBy(filteredContent, [
+        // eslint-disable-next-line func-names
+        function (ac) {
+          return ac.meta.weight; // Sort subsections by meta.weight
+        },
+      ])
         .filter(isSubsection)
         .reduce((acc, next) => {
           const id = next.id.split("/").slice(0, -1).join("/");
