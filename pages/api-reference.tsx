@@ -68,7 +68,7 @@ export default function APIReference({ apiReference }: Props) {
                             {apiReference.methods[subSection.id].map(
                               (method) => {
                                 return (
-                                  <option value={method.id}>
+                                  <option key={method.id} value={method.id}>
                                     {method.meta.name}
                                   </option>
                                 );

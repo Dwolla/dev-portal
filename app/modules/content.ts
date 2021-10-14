@@ -118,7 +118,12 @@ export const buildContentModule = (contentDir: string) => {
           return res;
         }, {});
 
-      const methods = sortedApiReference
+      const methods = sortBy(filteredContent, [
+        // eslint-disable-next-line func-names
+        function (ac) {
+          return ac.meta.weight; // Sort by meta.weight
+        },
+      ])
         .filter(isMethod)
         .reduce((acc, next) => {
           const id = next.id.split("/").slice(0, -1).join("/");
