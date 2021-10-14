@@ -2,27 +2,9 @@
 
 exports[`getApiReference 1`] = `
 Object {
-  "apis": Array [
-    Object {
-      "id": "/accounts",
-      "meta": Object {
-        "name": "Accounts",
-      },
-      "rawBody": "
-body
-",
-    },
-    Object {
-      "id": "/customers",
-      "meta": Object {
-        "name": "Customers",
-      },
-      "rawBody": "
-body
-",
-    },
-  ],
+  "apis": Array [],
   "methods": Object {},
+  "subsections": Object {},
 }
 `;
 

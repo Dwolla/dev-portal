@@ -2,6 +2,9 @@ import { buildContentModule } from "../content";
 
 const TestContent = buildContentModule(`${__dirname}/fake-content/`);
 const TestContent2 = buildContentModule(`${__dirname}/fake-content`);
+const TestContent3 = buildContentModule(
+  `${__dirname}/fake-content/api-reference`
+);
 
 test("list", async () => {
   const content = await TestContent.list();
@@ -14,6 +17,6 @@ test("list (2)", async () => {
 });
 
 test("getApiReference", async () => {
-  const content = await TestContent.getApiReference();
+  const content = await TestContent3.getApiReference();
   expect(content).toMatchSnapshot();
 });
