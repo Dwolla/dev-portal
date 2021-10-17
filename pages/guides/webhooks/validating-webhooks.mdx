@@ -42,9 +42,9 @@ The `topic` field of an event holds [a description](http://docs.dwolla.com/#even
 
 #### Step A. Authenticating the webhook request
 
-Before we process any data from the webhook we’ll want to validate that the request really came from Dwolla and not someone pretending to be Dwolla. Dwolla signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-Sha-256` header and is a Sha256 HMAC hash of the request body with the key being your webhook secret.
+Before we process any data from the webhook we’ll want to validate that the request really came from Dwolla and not someone pretending to be Dwolla. Dwolla signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-Sha-256` header and is a Sha-256 HMAC hash of the request body with the key being your webhook secret.
 
-You can validate the webhook by generating the same Sha256 HMAC hash and comparing it to the signature sent with the payload.
+You can validate the webhook by generating the same Sha-256 HMAC hash and comparing it to the signature sent with the payload.
 
 ```ruby
 def verify_signature(payload_body, request_signature)
