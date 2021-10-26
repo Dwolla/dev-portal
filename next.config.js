@@ -29,6 +29,18 @@ module.exports = (phase) =>
           });
           return config;
         },
+        rewrites: async () => {
+          return [
+            {
+              source: "/api-reference/:section",
+              destination: "/api-reference",
+            },
+            {
+              source: "/api-reference/:section/:subsection",
+              destination: "/api-reference",
+            },
+          ];
+        },
       })
     )
   );

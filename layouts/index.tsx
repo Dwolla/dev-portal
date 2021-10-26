@@ -104,10 +104,14 @@ export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
   </MDXContainer>
 );
 
-export default (frontMatter) => {
-  return ({ children: content }: { children: any }) => {
-    return (
-      <DefaultMDXWrapper frontMatter={frontMatter}>{content}</DefaultMDXWrapper>
-    );
-  };
-};
+export default function Layout({
+  children: content,
+  frontMatter,
+}: {
+  children: any;
+  frontMatter: any;
+}) {
+  return (
+    <DefaultMDXWrapper frontMatter={frontMatter}>{content}</DefaultMDXWrapper>
+  );
+}

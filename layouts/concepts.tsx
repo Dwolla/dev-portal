@@ -14,36 +14,38 @@ const CardWrap = styled.div`
   }
 `;
 
-export default (frontMatter) => {
-  return ({ children: content }: { children: any }) => {
-    return (
-      <>
-        <DefaultMDXWrapper frontMatter={frontMatter}>
-          {content}
-        </DefaultMDXWrapper>
+export default function Concepts({
+  children: content,
+  frontMatter,
+}: {
+  children: any;
+  frontMatter: any;
+}) {
+  return (
+    <>
+      <DefaultMDXWrapper frontMatter={frontMatter}>{content}</DefaultMDXWrapper>
 
-        <CardWrap>
-          <Card
-            icon={developerCommunityIcon}
-            topic="Still haven’t found what you are looking for?"
-            description="Ask the community."
-            link={{ href: "https://discuss.dwolla.com/", external: true }}
-            centerAlign
-          />
-        </CardWrap>
-
-        <FooterCTA
-          topic="Test in the Sandbox for free today."
-          description="Use sandbox environment to test API requests."
-          button={{
-            text: "Get API Keys",
-            link: {
-              href: "https://accounts-sandbox.dwolla.com/sign-up",
-              external: true,
-            },
-          }}
+      <CardWrap>
+        <Card
+          icon={developerCommunityIcon}
+          topic="Still haven’t found what you are looking for?"
+          description="Ask the community."
+          link={{ href: "https://discuss.dwolla.com/", external: true }}
+          centerAlign
         />
-      </>
-    );
-  };
-};
+      </CardWrap>
+
+      <FooterCTA
+        topic="Test in the Sandbox for free today."
+        description="Use sandbox environment to test API requests."
+        button={{
+          text: "Get API Keys",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/sign-up",
+            external: true,
+          },
+        }}
+      />
+    </>
+  );
+}
