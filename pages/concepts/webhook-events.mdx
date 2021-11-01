@@ -26,10 +26,10 @@ When your webhook subscription is configured, events will be created and sent as
 
 ## Webhook headers
 
-There are a few HTTP headers that are useful for your application when consuming the webhook request. `x-dwolla-topic` lets your app know, at a high level, the type of event being sent in the payload. `x-request-signature-sha256` contains a HMAC SHA256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [validated](/guides/webhooks/validating-webhooks) prior to parsing the webhook payload.
+There are a few HTTP headers that are useful for your application when consuming the webhook request. `x-dwolla-topic` lets your app know, at a high level, the type of event being sent in the payload. `x-request-signature-Sha-256` contains a HMAC SHA256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [validated](/guides/webhooks/validating-webhooks) prior to parsing the webhook payload.
 
 - `x-dwolla-topic` - customer_created
-- `x-request-signature-sha-256` - ed551cfb4acb48d31e14886bffa33aa417dfa4a3d3778f6141a7f7f92ee64861
+- `x-request-signature-Sha-256` - ed551cfb4acb48d31e14886bffa33aa417dfa4a3d3778f6141a7f7f92ee64861
 
 ## Webhook payload
 
@@ -127,7 +127,7 @@ Webhooks are available for the list of Events shown below. As API enhancements a
 | customer_microdeposits_added       | Description: Two less than or equal to ten cent transfers to a Customer’s linked bank account were initiated.<br /> Timing: Occurs upon a POST request to the [Initiate micro-deposits](https://docs.dwolla.com/#initiate-micro-deposits) endpoint, or when a Customer selects the microdeposits option within IAV.                                                                                                                                                                                                                                               |
 | customer_microdeposits_failed      | Description: The two less than or equal to ten cent transfers to a Customer’s linked bank account failed to clear successfully.<br /> Timing: Occurs when micro-deposits fails to clear into a bank account, usually within 1-2 business days of initiating them.                                                                                                                                                                                                                                                                                                 |
 | customer_microdeposits_completed   | Description: The two less than or equal to ten cent transfers to a Customer’s linked bank account were successful.<br /> Timing: Occurs when micro-deposit are successful, usually within 1-2 business days of initiating them.                                                                                                                                                                                                                                                                                                                                   |
-| customer_microdeposits_maxattempt  | Description: The Customer has reached their max verification attempts, limit of three. The Customer can no longer verify their funding source with the completed micro-deposit amounts.<br /> Timing: Occurs upon the third POST request to the [Verify micro-deposits](https://docs.dwolla.com/#verify-micro-deposits) endpoint with incorrect micro-deposit amounts.                                                                                                                                                                                            |
+| customer_microdeposits_maxattempts | Description: The Customer has reached their max verification attempts, limit of three. The Customer can no longer verify their funding source with the completed micro-deposit amounts.<br /> Timing: Occurs upon the third POST request to the [Verify micro-deposits](https://docs.dwolla.com/#verify-micro-deposits) endpoint with incorrect micro-deposit amounts.                                                                                                                                                                                            |
 
 ### Customers - Transfers
 
