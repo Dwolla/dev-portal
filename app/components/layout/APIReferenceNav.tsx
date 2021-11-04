@@ -7,6 +7,7 @@ import { SCROLL_DURATION, SCROLL_OFFSET } from "../util/Anchors";
 
 const scrollToApi = (e) => {
   e.preventDefault();
+  window.history.replaceState(null, "", `/api-reference${e.target.id}`); //Update the URL when user clicks on a link in the side nav
   scrollToElement(`#heading-${e.target.id.replace(/\//g, "--")}`, {
     offset: -SCROLL_OFFSET,
     duration: SCROLL_DURATION,

@@ -4,6 +4,7 @@
 import React from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
+import { useRouter } from "next/router";
 
 import Content from "../app/modules/content";
 
@@ -18,6 +19,8 @@ const renderParams = (params) =>
 
 export default function APIReference({ apiReference }: Props) {
   const [selectedMethods, setSelectedMethods] = React.useState({});
+  const { query } = useRouter();
+  console.log(query);
 
   return (
     <>
