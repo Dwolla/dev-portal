@@ -4974,7 +4974,7 @@ babel-plugin-add-react-displayname@^0.0.5:
   resolved "https://registry.yarnpkg.com/babel-plugin-add-react-displayname/-/babel-plugin-add-react-displayname-0.0.5.tgz#339d4cddb7b65fd62d1df9db9fe04de134122bd5"
   integrity sha1-M51M3be2X9YtHfnbn+BN4TQSK9U=
 
-babel-plugin-apply-mdx-type-prop@1.0.27:
+babel-plugin-apply-mdx-type-prop@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-apply-mdx-type-prop/-/babel-plugin-apply-mdx-type-prop-1.2.2.tgz#0fe4b54c8f9b547d220a98c06dfc7bbefff9b1b0"
   integrity sha512-AZxq05nVPnQjjOOzLYomIrpWIfHo9SBdWaimIC+HKK/pEe6RoL4N+Io22Bm6HWLbVQ91mgt9o0SwgBAQ1IC/og==
