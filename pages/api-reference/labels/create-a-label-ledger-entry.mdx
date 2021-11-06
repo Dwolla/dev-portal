@@ -1,0 +1,98 @@
+---
+layout: guides
+title: "Create a label ledger entry"
+guide:
+  step: 3
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Create a label ledger entry
+
+To create a new entry on a Label Ledger you’ll specify the ID of the Label, as well as a positive or negative amount value (depending on if the purpose is to increase or decrease the amount tied to a Label). The amount tied to a Label cannot go negative, therefore if the amount of the label ledger entry exceeds the current amount tied to a Label then a validation error will be returned.
+
+### HTTP request
+
+`POST https://api.dwolla.com/labels/{id}/ledger-entries`
+
+| Parameter | Required | Type   | Description                                                                                                                                                                                                               |
+| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string | The Id of the Label to update.                                                                                                                                                                                            |
+| amount    | yes      | object | Amount of funds to increase or decrease for a Label. To decrease funds in a Label a string numeric value will be supplied and prepended with a “-” operator. An amount object. Reference the amount object to learn more. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f/ledger-entries
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+ "amount": {
+   "value": "-5.00",
+   "currency": "USD"
+ }
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/ledger-entries/76e5541d-18f4-e811-8112-e8dd3bececa8
+```
+
+```php
+<?php
+$labelsApi = new DwollaSwagger\LabelsApi($apiClient);
+
+$label = $labelsApi->addLedgerEntry([
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '-5.00'
+  ]
+], "https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f");
+$label; # => "https://api-sandbox.dwolla.com/ledger-entries/76e5541d-18f4-e811-8112-e8dd3bececa8"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+label_url = 'https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f'
+request_body = {
+  :amount => {
+    :currency => "USD",
+    :value => "-5.00"
+  }
+}
+
+ledger_entry = app_token.post "#{label_url}/ledger-entries", request_body
+ledger_entry.response_headers[:location] # => "https://api-sandbox.dwolla.com/ledger-entries/76e5541d-18f4-e811-8112-e8dd3bececa8"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+label_url = 'https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f'
+request_body = {
+  'amount': {
+    'currency': 'USD',
+    'value': '-5.00'
+  }
+}
+
+ledger_entry = app_token.post('%s/ledger-entries' % label_url, request_body)
+ledger_entry.headers['location'] # => 'https://api-sandbox.dwolla.com/ledger-entries/76e5541d-18f4-e811-8112-e8dd3bececa8'
+```
+
+```javascript
+var labelUrl =
+  "https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f";
+var requestBody = {
+  amount: {
+    currency: "USD",
+    value: "-5.00",
+  },
+};
+
+appToken
+  .post(`${labelUrl}/ledger-entries`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/ledger-entries/76e5541d-18f4-e811-8112-e8dd3bececa8'
+```

@@ -1,0 +1,46 @@
+---
+layout: guides
+title: "Overview"
+group:
+  title: Webhooks
+  description: Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.
+  weight: 16
+guide:
+  step: 0
+  icon: authorization.svg
+meta:
+  title: API Reference | Dwolla API Documentation
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Webhooks
+
+When a new [event](#events) is created, and there is an active [webhook subscription](#webhook-subscriptions), a new webhook is created in order to deliver that event. Attempted deliveries are recorded under the webhook's `attempts` property. Each attempt includes the recorded request and response of the delivery attempt. Webhooks are sent asynchronously and are not guaranteed to be delivered in order. We recommend that applications protect against duplicated events by making event processing idempotent.
+
+### Webhook resource
+
+| Parameter      | Description                                      |
+| -------------- | ------------------------------------------------ |
+| id             | Webhook unique identifier                        |
+| topic          | Type of webhook subscription                     |
+| accountId      | Account associated with the webhook notification |
+| eventId        | Event id for this webhook                        |
+| subscriptionId | Webhook subscription id for this event           |
+| attempts       | Array of attempt JSON object                     |
+
+### Attempts JSON object
+
+| Parameter | Description                            |
+| --------- | -------------------------------------- |
+| id        | Unique id of webhook delivery attempt. |
+| request   | Request JSON object                    |
+| response  | Response JSON object                   |
+
+### Request/response JSON object
+
+| Parameter | Description                                                                  |
+| --------- | ---------------------------------------------------------------------------- |
+| created   | ISO-8601 timestamp                                                           |
+| url       | URL where data was sent to/received from                                     |
+| headers   | Array of objects with keys `name` and `value` representative of HTTP headers |
+| body      | An Event for the webhook                                                     |

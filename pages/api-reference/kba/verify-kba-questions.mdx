@@ -1,0 +1,180 @@
+---
+layout: guides
+title: "Verify KBA Questions"
+guide:
+  step: 3
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Verify KBA Questions
+
+This section covers how to verify the KBA questions for Customer verification.
+
+### HTTP Request
+
+`POST https://api.dwolla.com/kba/{id}`
+
+### Request parameters
+
+| Parameter | Required? | Type   | Description                                                                                            |
+| --------- | --------- | ------ | ------------------------------------------------------------------------------------------------------ |
+| id        | yes       | string | The id of the KBA session to verify questions for.                                                     |
+| answers   | yes       | object | An array of four JSON objects that each consist of two key-value pairs -- `questionId` and `answerId`. |
+
+#### answers JSON object
+
+| Parameter  | Required? | Type   | Description                                                         |
+| ---------- | --------- | ------ | ------------------------------------------------------------------- |
+| questionId | yes       | string | The id of a question in a KBA session.                              |
+| answerId   | yes       | string | The id of an answer to the corresponding question in a KBA session. |
+
+### Example request and response
+
+```raw
+POST https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer cRahPzURfaIrTewKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
+
+...
+
+{
+    "answers": [
+        {
+            "questionId": "2355953375",
+            "answerId": "2687969335"
+        },
+        {
+            "questionId": "2355953385",
+            "answerId": "2687969385"
+        },
+        {
+            "questionId": "2355953395",
+            "answerId": "2687969435"
+        },
+        {
+            "questionId": "2355953405",
+            "answerId": "2687969485"
+        }
+    ]
+}
+```
+
+```ruby
+kba_url = 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+
+request_body = {
+    :answers => [
+        {
+            :questionId => "2355953375",
+            :answerId => "2687969335"
+        },
+        {
+            :questionId => "2355953385",
+            :answerId => "2687969385"
+        },
+        {
+            :questionId => "2355953395",
+            :answerId => "2687969435"
+        },
+        {
+            :questionId => "2355953405",
+            :answerId => "2687969485"
+        }
+    ]
+}
+
+kba_answers = app_token.post kba_url, request_body
+```
+
+```php
+<?php
+$kbaApi = new DwollaSwagger\KbaApi($apiClient);
+
+$kbaUrl = "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31";
+
+$kbaAnswers = $kbaApi->answerKbaQuestions([
+    "answers" => [
+         [
+             "questionId" => "2355953375",
+             "answerId" => "2687969335"
+         ],
+         [
+             "questionId" => "2355953385",
+             "answerId" => "2687969385"
+         ],
+         [
+             "questionId" => "2355953395",
+             "answerId" => "2687969435"
+         ],
+         [
+             "questionId" => "2355953405",
+             "answerId" => "2687969485"
+         ]
+    ]
+  ], $kbaUrl);
+?>
+```
+
+```python
+kba_url = 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+
+request_body = {
+    'answers' : [
+        {
+            'questionId': "2355953375",
+            'answerId': "2687969335"
+        },
+        {
+            'questionId': "2355953385",
+            'answerId': "2687969385"
+        },
+        {
+            'questionId': "2355953395",
+            'answerId':"2687969435"
+        },
+        {
+            'questionId': "2355953405",
+            'answerId': "2687969485"
+        }
+    ]
+}
+
+kba_answers = app_token.post (kba_url, request_body)
+```
+
+```javascript
+var kbaUrl = "https://api.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31";
+var requestBody = {
+  answers: [
+    {
+      questionId: "2355953375",
+      answerId: "2687969335",
+    },
+    {
+      questionId: "2355953385",
+      answerId: "2687969385",
+    },
+    {
+      questionId: "2355953395",
+      answerId: "2687969435",
+    },
+    {
+      questionId: "2355953405",
+      answerId: "2687969485",
+    },
+  ],
+};
+
+appToken.post(kbaUrl, requestBody);
+```
+
+### HTTP Status and Error Codes
+
+| HTTP Status | Code                 | Description                                                                                                   |
+| ----------- | -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| 200         | OK                   | KBA scoring is complete. Check verificationStatus to determine if the user passed or failed KBA verification. |
+| 403         | InvalidResourceState | The kba session has expired.                                                                                  |
+| 403         | InvalidResourceState | The kba session is no longer valid.                                                                           |
+| 404         | NotFound             | KBA session not found.                                                                                        |

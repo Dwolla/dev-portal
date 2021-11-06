@@ -1,0 +1,78 @@
+---
+layout: guides
+title: "Overview"
+group:
+  title: Mass payments
+  description: Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.
+  weight: 12
+guide:
+  step: 0
+  icon: authorization.svg
+meta:
+  title: API Reference | Dwolla API Documentation
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Mass payments
+
+Dwolla mass payments allows you to easily send up to 5,000 payments in one API request. The payments are funded from a single user's specified funding source and processed asynchronously upon submission.
+
+<AlertBar variation="info">
+  Dwolla Mass Payments are meant for batches of multiple payments. If you are
+  initiating a single payment to a singular Customer, we recommend using our
+  <a href="/api-reference/transfers">transfers endpoint</a>.
+</AlertBar>
+
+Your mass payment will initially be pending and then processed. As the service processes your mass payment, each `item` is processed one after the other, at a rate between 0.5 sec. - 1 sec. / item. Therefore, you can expect a 1000-item mass payment to be completed between 8-16 minutes.
+
+A mass payment offers a significant advantage over repeatedly calling the [Transfers](#transfers) endpoint for each individual transaction. A key benefit is that a bank-funded mass payment only incurs a single ACH debit from the bank account to fund the entire batch of payments. The alternative approach will incur an ACH debit from the bank funding source for each individual payment. Those who used this approach have reported incurring fees from their financial institutions for excessive ACH transactions.
+
+### Mass payments resource
+
+| Parameter     | Description                                                                                                                                                                                                                                                                                                                                                |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id            | Mass payment unique identifier.                                                                                                                                                                                                                                                                                                                            |
+| status        | Either `deferred`: A created mass payment that can be processed at a later time. `pending`: A mass payment that is pending and awaiting processing. A mass payment has a pending status for a brief period of time and cannot be cancelled. `processing`: A mass payment that is processing. `complete`: A mass payment successfully completed processing. |
+| created       | ISO-8601 timestamp.                                                                                                                                                                                                                                                                                                                                        |
+| metadata      | A metadata JSON object.                                                                                                                                                                                                                                                                                                                                    |
+| clearing      | A clearing JSON object.                                                                                                                                                                                                                                                                                                                                    |
+| total         | The sum amount of all items in the mass payment.                                                                                                                                                                                                                                                                                                           |
+| totalFees     | The sum amount of all fees charged for the mass payment.                                                                                                                                                                                                                                                                                                   |
+| correlationId | A string value attached to a mass payment resource which can be used for traceability between Dwolla and your application.                                                                                                                                                                                                                                 |
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/mass-payments/da835c07-1e12-4212-8b93-a7e0013dfd98",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "mass-payment"
+        },
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "items": {
+            "href": "https://api-sandbox.dwolla.com/mass-payments/da835c07-1e12-4212-8b93-a7e0013dfd98/items",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "mass-payment-item"
+        }
+    },
+    "id": "da835c07-1e12-4212-8b93-a7e0013dfd98",
+    "status": "complete",
+    "created": "2017-08-31T19:18:02.000Z",
+    "metadata": {
+        "batch": "batch1"
+    },
+    "total": {
+        "value": "0.02",
+        "currency": "USD"
+    },
+    "totalFees": {
+        "value": "0.00",
+        "currency": "USD"
+    },
+    "correlationId": "d028beed-8152-481d-9427-21b6c4d99644"
+}
+```

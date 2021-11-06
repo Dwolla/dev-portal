@@ -1,0 +1,101 @@
+---
+layout: guides
+title: "Remove a label"
+guide:
+  step: 9
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Remove a label
+
+This section outlines how to remove a Label by its unique identifier. The amount of a Label must be reduced to zero prior to removing a label. Once a label is removed it can no longer be retrieved by its unique identifier.
+
+### HTTP request
+
+`DELETE https://api.dwolla.com/labels/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description             |
+| --------- | -------- | ------ | ----------------------- |
+| id        | yes      | string | Label unique identifier |
+
+### Request and response
+
+```raw
+DELETE https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "ledger-entries": {
+            "href": "https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc/ledger-entries",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        },
+        "remove": {
+            "href": "https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        },
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "update": {
+            "href": "https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc/ledger-entries",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        }
+    },
+    "id": "30165ded-2f32-4ee9-b340-ac44dda1d7fc",
+    "created": "2019-05-16T14:56:52.629Z",
+    "amount": {
+        "value": "0.00",
+        "currency": "USD"
+    }
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+label_url = 'https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc'
+
+app_token.delete label_url
+```
+
+```javascript
+var labelUrl =
+  "https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc";
+
+appToken.delete(labelUrl);
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+label_url = 'https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc'
+
+app_token.delete(label_url)
+```
+
+```php
+<?php
+$labelsApi = new DwollaSwagger\LabelsApi($apiClient);
+$labelsApi->removeLabel('https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc');
+?>
+```
+
+### HTTP status and error codes
+
+| HTTP Status | Code                 | Description                          |
+| ----------- | -------------------- | ------------------------------------ |
+| 403         | InvalidResourceState | Amount must be zero to remove label. |

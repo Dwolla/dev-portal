@@ -1,0 +1,115 @@
+---
+layout: guides
+title: "Create a funding source for an account"
+guide:
+  step: 2
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+import guideIcon from "../../../assets/images/content-images/content-icons/guides-icon.svg";
+
+# Create a funding source for an account
+
+This section details how to add a bank account to a Dwolla Master Account. The bank account will have a status of `unverified` upon creation. Before a Dwolla Master Account is eligible to transfer money from their bank or credit union account they need to verify ownership of the account via micro-deposit verification.
+
+<InlineCTA
+  icon={guideIcon}
+  text="For more information on micro-deposit verification, reference our step by step guide."
+  href="/guides/micro-deposit-verification"
+/>
+
+### HTTP request
+
+`POST https://api.dwolla.com/funding-sources`
+
+### Request parameters
+
+| Parameter       | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| --------------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| accountNumber   | yes      | string | The bank account number.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| routingNumber   | yes      | string | The bank account's routing number.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| bankAccountType | yes      | string | Type of bank account: `checking` or `savings`.                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| name            | yes      | string | Arbitrary nickname for the funding source.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| channels        | no       | array  | An array containing a list of processing channels. ACH is the default processing channel for bank transfers. Acceptable value for channels is: "wire". e.g. `“channels”: [ “wire” ]`. A funding source (Bank Account) added using the wire channel only supports a funds transfer going to the bank account from a balance. **Note:** `channels` is a premium feature that must be enabled on your account and is only available to select [Dwolla](https://www.dwolla.com/platform) customers. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                       |
+| ----------- | --------------------------------------------- |
+| 400         | Duplicate funding source or validation error. |
+| 403         | Not authorized to create funding source.      |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+{
+    "routingNumber": "222222226",
+    "accountNumber": "123456789",
+    "bankAccountType": "checking",
+    "name": "My Bank"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3
+```
+
+```php
+<?php
+$fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fundingApi->createFundingSource([
+  "routingNumber" => "222222226",
+  "accountNumber" => "123456789",
+  "bankAccountType" => "checking",
+  "name" => "My Bank"
+]);
+$fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  routingNumber: '222222226',
+  accountNumber: '123456789',
+  bankAccountType: 'checking',
+  name: 'My Bank'
+}
+
+funding_source = app_token.post "funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'routingNumber': '222222226',
+  'accountNumber': '123456789',
+  'bankAccountType': 'checking',
+  'name': 'My Bank'
+}
+
+funding_source = app_token.post('funding-sources', request_body)
+funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+```
+
+```javascript
+var requestBody = {
+  routingNumber: "222222226",
+  accountNumber: "123456789",
+  bankAccountType: "checking",
+  name: "My Bank",
+};
+
+appToken
+  .post(`funding-sources`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+```

@@ -1,0 +1,129 @@
+---
+layout: guides
+title: "List and search customers"
+guide:
+  step: 3
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# List and search customers
+
+This section outlines how to retrieve your list of created Customers. This endpoint contains optional query string parameters allowing you to filter by `email` and `status`, as well as search on key fields such as `firstName`, `lastName`, and `businessName`.
+
+### HTTP Request
+
+`GET https://api.dwolla.com/customers`
+
+### Pagination
+
+By default, an embedded list of 25 customers are returned and are sorted by created timestamp. To page through the remaining list, you’ll specify a combination of `limit` and `offset` as query string parameters. Limit can have a max value of 200 customer objects. It is recommended to use the `_links` object in the response which includes the following relational links for paging. Check out the [Links](#links) section for more information.
+
+- `next` includes the URL to list the next set of Customers as defined by Limit
+- `prev` includes the URL to list the previous set of Customers as defined by Limit
+- `first` includes the URL to list the first set of Customers as defined by Limit
+- `last` includes the URL to list the last set of Customers as defined by Limit
+- `self` link indicates the URL of the resource itself
+
+##### Example HTTP Request
+
+`GET https://api.dwolla.com/customers?limit=5&offset=25`
+
+### Searching and filtering Customers
+
+The `search` query string parameter contains a fuzzy search query across `firstName`, `lastName`, `businessName`, and `email` fields. Scoring is performed on the search term which looks for approximate spellings that match the entered search string and results are returned accordingly in an embedded customers array. **Note:** For exact match on `email` string value, the email filter should be used.
+
+The `email` query string parameter is a filter that returns an embedded customers array based on an exact match of the filter value. For example, if you would like to search for a Customer with the email address “jane@email.com”, you can append the additional parameter `email` to the request URL as shown in the example HTTP request below. **Note:** The email filter string value must be URL-encoded.
+
+The `status` query string parameter can be used to list an embedded customers array based on the status field. For example, if you would like to list all Customers that are in `document` status, you can append the additional parameter `status` to the request URL with the value "document". Check out all possible values listed in the table below.
+
+##### Example Request URL using `email` filter
+
+`GET https://api.dwolla.com/customers?email=jane%40email.com`
+
+##### Example Request URL using `search`
+
+`GET https://api.dwolla.com/customers?search=Jane`
+
+##### Example Request URL using `status` filter
+
+`GET https://api.dwolla.com/customers?status=document`
+
+### Request parameters
+
+| Parameter | Required | Type    | Description                                                                                                                                                                                                     |
+| --------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| limit     | no       | integer | How many results to return.                                                                                                                                                                                     |
+| offset    | no       | integer | How many results to skip.                                                                                                                                                                                       |
+| search    | no       | string  | Searches on `firstName`, `lastName`, and `email` fields. <strong>Note:</strong> Value must be URL encoded. (`/customers?search=Doe`)                                                                            |
+| email     | no       | string  | Filter by `email` field. <strong>Note:</strong> Value must be URL encoded. (``/customers?email=jane.doe%40email.com`)                                                                                           |
+| status    | no       | string  | Filter by Customer status or multiple Customer statuses. Possible values: `unverified`, `retry`, `kba`, `document`, `verified`, `suspended`, or `deactivated`. (e.g. `/customers?status=retry&status=document`) |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/customers
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "first": {
+      "href": "https://api-sandbox.dwolla.com/customers?limit=25&offset=0"
+    },
+    "last": {
+      "href": "https://api-sandbox.dwolla.com/customers?limit=25&offset=0"
+    },
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers?limit=25&offset=0"
+    }
+  },
+  "_embedded": {
+    "customers": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8"
+          }
+        },
+        "id": "07d59716-ef22-4fe6-98e8-f3190233dfb8",
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "janedoe@nomail.com",
+        "type": "unverified",
+        "status": "unverified",
+        "created": "2015-09-03T23:56:10.023Z"
+      }
+    ]
+  },
+  "total": 1
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customers = app_token.get "customers", limit: 10
+customers._embedded.['customers'][0].firstName # => "Jane"
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customers = $customersApi->_list(10, 0);
+$customers->_embedded->{'customers'}[0]->firstName; # => "Jane"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer = app_token.get('customers', limit = 10)
+customer.body['_embedded']['customers'][0]['firstName'] # => 'Jane'
+```
+
+```javascript
+appToken
+  .get("customers", { limit: 10 })
+  .then((res) => res.body._embedded["customers"][0].firstName); // => 'Jane'
+```

@@ -1,0 +1,99 @@
+---
+layout: guides
+title: "Retrieve Account Details"
+guide:
+  step: 1
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Retrieve Account Details
+
+This section shows you how to retrieve basic account information belonging to the authorized Dwolla Master Account.
+
+To retrieve your Account ID, you will need to call the [root](#root) of the API.
+
+### HTTP request
+
+`GET https://api.dwolla.com/accounts/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                |
+| --------- | -------- | ------ | -------------------------- |
+| id        | yes      | string | Account unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                      |
+| ----------- | -------------------------------------------- |
+| 403         | Not authorized to retrieve an Account by id. |
+| 404         | Account not found.                           |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+    },
+    "receive": {
+      "href": "https://api-sandbox.dwolla.com/transfers"
+    },
+    "funding-sources": {
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
+    },
+    "transfers": {
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/transfers"
+    },
+    "customers": {
+      "href": "https://api-sandbox.dwolla.com/customers"
+    },
+    "send": {
+      "href": "https://api-sandbox.dwolla.com/transfers"
+    }
+  },
+  "id": "ca32853c-48fa-40be-ae75-77b37504581b",
+  "name": "Jane Doe"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+account_url = 'https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
+
+account = app_token.get account_url
+account.name # => "Jane Doe"
+```
+
+```php
+<?php
+$accountUrl = 'https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
+
+$accountsApi = new DwollaSwagger\AccountsApi($apiClient);
+
+$account = $accountsApi->id($accountUrl);
+print($account->name); # => "Jane Doe"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+account_url = 'https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
+
+account = app_token.get(account_url)
+account.body['name']
+```
+
+```javascript
+var accountUrl =
+  "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
+
+appToken.get(accountUrl).then((res) => res.body.name); // => 'Jane Doe'
+```

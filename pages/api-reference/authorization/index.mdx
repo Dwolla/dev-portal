@@ -1,0 +1,34 @@
+---
+layout: guides
+title: "Authorization"
+group:
+  title: Authorization
+  description: Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.
+  weight: 3
+guide:
+  step: 0
+  icon: authorization.svg
+meta:
+  title: API Reference | Dwolla API Documentation
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+import guideIcon from "../../../assets/images/content-images/content-icons/guides-icon.svg";
+
+# Authorization
+
+Dwolla utilizes the [OAuth 2 protocol](https://oauth.net/2/) to facilitate authorization. OAuth is an authorization framework that enables a third-party application to obtain access to protected resources (Transfers, Funding Sources, Customers etc.) in the Dwolla API. Access to the Dwolla API can be granted to an application either on behalf of a user or on behalf of the application itself. This section covers application auth which is meant for server-to-server applications using the Dwolla API.
+
+#### Creating an application
+
+Before you can get started with making OAuth requests, you’ll need to first register an application with Dwolla by logging in and navigating to the applications page. Once an application is registered you will obtain your `client_id` and `client_secret` (aka App Key and Secret), which will be used to identify your application when calling the Dwolla API. The Sandbox environment provides you with a created application once you have signed up for an account. Learn more in our [getting started guide](https://developers.dwolla.com/guides/sandbox-setup/). **Remember:** Your client_secret should be kept a secret! Be sure to store your client credentials securely.
+
+<InlineCTA
+  icon={guideIcon}
+  text="For more information on getting started in the Sandbox environment, reference our step by step guide."
+  href="/guides/sandbox"
+/>
+
+#### Token lifetime
+
+**Access tokens** are _short lived_: 1 hour. To refresh authorization on an application access token, your application will simply exchange its client credentials for a new app access token. Any access tokens that have been previously initialized will not be invalidated with the creation of a new one; they will simply expire within an hour of the time of their creation.

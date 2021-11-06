@@ -1,0 +1,174 @@
+---
+layout: guides
+title: "List items for a mass payment"
+guide:
+  step: 4
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# List items for a mass payment
+
+A mass payment contains a list of payments called `items`. An `item` is distinct from the transfer which it creates. An item can contain a status of either `failed`, `pending`, or `success` depending on whether the payment was created by the Dwolla service or not. A mass payment item status of `success` is an indication that a transfer was successfully created. A mass payment's items will be returned in the `_embedded` object as a list of `items`.
+
+### HTTP Request
+
+`GET https://api.dwolla.com/mass-payments/{id}/items`
+
+### Request parameters
+
+| Parameter | Required | Type    | Description                                                                                                                                                        |
+| --------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| id        | yes      | string  | Mass payment unique identifier.                                                                                                                                    |
+| limit     | no       | integer | How many results to return. Defaults to 25.                                                                                                                        |
+| offset    | no       | integer | How many results to skip.                                                                                                                                          |
+| status    | no       | string  | Filter results on item status. Possible values: `failed`, `pending`, and `success`. Values delimited by `&status=` (i.e. - `/items?status=failed&status=pending`). |
+
+### Mass payment item failures
+
+Individual mass payment items can have a status of `failed`. If an item has a status of `failed`, an `_embedded` object will be returned within the item which contains a list of `errors`. Each error object includes a top-level error `code`, a `message` with a detailed description of the error, and a `path` which is a JSON pointer to the specific field in the request that has a problem. You can utilize both the failure code and message to get a better understanding of why the particular item failed.
+
+| Code                  | Message                                                      | Description                                                                                             |
+| --------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------- |
+| InsufficientFunds     | "Insufficient funds."                                        | The `source` funding source has insufficient funds, and as a result failed to create a transfer.        |
+| Invalid               | "Receiver not found."                                        | The `destination` was not a valid Customer or Funding Source.                                           |
+| Invalid               | "Receiver cannot be the owner of the source funding source." | The `destination` of the transfer cannot be the same as the `source`.                                   |
+| RequiresFundingSource | "Receiver requires funding source."                          | The `destination` of the mass payment item does not have an active funding source attached.             |
+| Restricted            | "Receiver restricted."                                       | The `destination` customer is either `deactivated` or `suspended` and is not eligible to receive funds. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code      | Description                                |
+| ----------- | --------- | ------------------------------------------ |
+| 403         | Forbidden | Not authorized to list mass payment items. |
+| 404         | NotFound  | Mass payment not found.                    |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563/items
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563/items"
+    },
+    "first": {
+      "href": "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563/items?limit=25&offset=0"
+    },
+    "last": {
+      "href": "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563/items?limit=25&offset=0"
+    }
+  },
+  "_embedded": {
+    "items": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/mass-payment-items/2f845bc9-41ed-e511-80df-0aa34a9b2388"
+          },
+          "mass-payment": {
+            "href": "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563"
+          },
+          "destination": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd"
+          },
+          "transfer": {
+            "href": "https://api-sandbox.dwolla.com/transfers/fa3999db-41ed-e511-80df-0aa34a9b2388"
+          }
+        },
+        "id": "2f845bc9-41ed-e511-80df-0aa34a9b2388",
+        "status": "success",
+        "amount": {
+          "value": "1.00",
+          "currency": "USD"
+        },
+        "metadata": {
+          "item1": "item1"
+        },
+        "processingChannel": {
+          "destination": "real-time-payments"
+        }
+      },
+      {
+        "_links": {
+            "self": {
+                "href": "https://api-sandbox.dwolla.com/mass-payment-items/30845bc9-41ed-e511-80df-0aa34a9b2388",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "mass-payment-item"
+            },
+            "mass-payment": {
+                "href": "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "mass-payment"
+            },
+            "destination": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+            }
+        },
+        "_embedded": {
+            "errors": [
+                {
+                    "code": "RequiresFundingSource",
+                    "message": "Receiver requires funding source.",
+                    "path": "/items/destination/href",
+                    "_links": {}
+                }
+            ]
+        },
+        "id": "30845bc9-41ed-e511-80df-0aa34a9b2388",
+        "status": "failed",
+        "amount": {
+            "value": "0.02",
+            "currency": "USD"
+        },
+        "metadata": {
+            "item2": "item2"
+        }
+      }
+    ]
+  },
+  "total": 2
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+mass_payment_url = 'https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563'
+
+mass_payment_items = app_token.get "#{mass_payment_url}/items"
+mass_payment_items.total # => 2
+```
+
+```php
+<?php
+$massPaymentUrl = 'https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563';
+
+$massPaymentItemsApi = new DwollaSwagger\MasspaymentitemsApi($apiClient);
+
+$massPaymentItems = $massPaymentItemsApi->getMassPaymentItems($massPaymentUrl);
+$massPaymentItems->total; # => "2"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+mass_payment_url = 'https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563'
+
+mass_payment_items = app_token.get('%s/items' % mass_payment_url)
+mass_payment_items.body['total'] # => "2"
+```
+
+```javascript
+var massPaymentUrl =
+  "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563";
+
+appToken.get(`${massPaymentUrl}/items`).then((res) => res.body.total); // => 2
+```

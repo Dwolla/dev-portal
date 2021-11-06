@@ -1,0 +1,78 @@
+---
+layout: guides
+title: "Initiate KBA Session"
+guide:
+  step: 1
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Initiate KBA Session
+
+This section covers how to generate a new KBA identifier which is used to represent the session for the user created as a personal Verified Customer record.
+
+### HTTP Request
+
+`POST https://api.dwolla.com/customers/{id}/kba`
+
+### Request parameters
+
+| Parameter | Required? | Type   | Description                               |
+| --------- | --------- | ------ | ----------------------------------------- |
+| id        | yes       | string | The ID of the Customer to verify via KBA. |
+
+### Example request and response
+
+```raw
+POST https://api.dwolla.com/customers/33aa88b1-97df-424a-9043-d5f85809858b/kba
+Authorization: Bearer cRahPzURfaIrTKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
+Content-Type: application/json
+Accept: application/vnd.dwolla.v1.hal+json
+
+...
+
+HTTP/1.1 201 Created\
+Location: https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
+```
+
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/ca22d192-48f1-4b72-b29d-681e9e20795d'
+
+kba = app_token.post "#{customer_url}/kba"
+kba.response_headers[:location] # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31"
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customerUrl = "https://api.dwolla.com/customers/ca22d192-48f1-4b72-b29d-681e9e20795d"
+
+$kba = $customersApi->initiateKba($customer_url);
+$kba; # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31"
+?>
+```
+
+```python
+customer_url = 'https://api-sandbox.dwolla.com/customers/61a74e62-e27d-46f1-9fa6-a8e57226bb3e'
+
+kba = app_token.post('%s/kba' % customer_url)
+kba.headers['location'] # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31"
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/61a74e62-e27d-46f1-9fa6-a8e57226bb3e";
+
+appToken.post(`${customerUrl}/kba`).then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+```
+
+### HTTP Status and Error Codes
+
+| HTTP Status | Code                 | Description                                                                                            |
+| ----------- | -------------------- | ------------------------------------------------------------------------------------------------------ |
+| 201         | Created              | A KBA question for a Customer was created.                                                             |
+| 403         | InvalidResourceState | Customer verification status is not valid for kba.                                                     |
+| 403         | Forbidden            | The supplied credentials are not authorized for this resource. Not authorized to create KBA questions. |
+| 404         | NotFound             | Customer not found. Check CustomerId.                                                                  |

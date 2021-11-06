@@ -1,0 +1,109 @@
+---
+layout: guides
+title: "Create a label"
+guide:
+  step: 1
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Create a label
+
+This section outlines how to create a new Label. When creating a Label you’ll specify an `amount` as well as the ID of a Verified Customer that the label is tied to. Upon success, the API will return a `201` with a link to the created Label resource in the `location` header.
+
+### HTTP request
+
+`POST https://api.dwolla.com/customers/{id}/labels`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                                                    |
+| --------- | -------- | ------ | -------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string | A Customer's unique identifier.                                                                                |
+| amount    | yes      | object | Amount of funds to label for a Verified Customer. An amount object. Reference the amount object to learn more. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code            | Description                                                                                                                             |
+| ----------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | created         | A Label was created.                                                                                                                    |
+| 400         | ValidationError | Required - Field is required. <br /> InvalidFormat - InvalidFormat. <br /> Invalid - Amount can not cause label balance to be negative. |
+| 403         | NotAuthorized   | Not authorized to create Labels. [Contact us](https://www.dwolla.com/contact/) to enable this functionality.                            |
+| 404         | NotFound        | Customer not found. Check CustomerId.                                                                                                   |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/customers/{id}/labels
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "amount": {
+    	"currency": "USD",
+    	"value": "10.00"
+    }
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$label = $customersApi->createLabel([
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '10.00'
+  ]
+], "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C");
+$label; # => "https://api-sandbox.dwolla.com/labels/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  :amount => {
+    :currency => "USD",
+    :value => "10.00"
+  }
+}
+
+label = app_token.post "#{customer_url}/labels", request_body
+label.response_headers[:location] # => "https://api-sandbox.dwolla.com/labels/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  'amount': {
+    'currency': 'USD',
+    'value': '10.00'
+  }
+}
+
+label = app_token.post('%s/labels' % customer_url, request_body)
+label.headers['location'] # => 'https://api-sandbox.dwolla.com/labels/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
+var requestBody = {
+  amount: {
+    currency: "USD",
+    value: "10.00",
+  },
+};
+
+appToken
+  .post(`${customerUrl}/labels`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/labels/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```

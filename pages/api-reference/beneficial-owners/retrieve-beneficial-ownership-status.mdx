@@ -1,0 +1,87 @@
+---
+layout: guides
+title: "Retrieve beneficial ownership status"
+guide:
+  step: 6
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Retrieve beneficial ownership status
+
+This section contains information on how to retrieve a Customer's beneficial ownership status.
+
+### HTTP request
+
+`GET https://api.dwolla.com/customers/{id}/beneficial-ownership`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Customer unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                     |
+| ----------- | ------------------------------------------- |
+| 200         | Ownership certification status found.       |
+| 403         | Not authorized to get certification status. |
+| 404         | Ownership certification status not found.   |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc/beneficial-ownership",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-ownership"
+        }
+    },
+    "status": "uncertified"
+}
+
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+
+beneficial_ownership = app_token.get "#{customer_url}/beneficial-ownership"
+beneficial_ownership.status # => "uncertified"
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$newCustomer = 'https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc';
+$customerOwnershipStatus = $customersApi->getOwnershipStatus($newCustomer);
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+
+beneficial_ownership = app_token.get('%s/beneficial-ownership' % customer_url)
+beneficial_ownership.body['status'] # => 'uncertified'
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc";
+
+appToken
+  .get(`${customer_url}/beneficial-ownership`)
+  .then((res) => res.body.status); // => "uncertified"
+```

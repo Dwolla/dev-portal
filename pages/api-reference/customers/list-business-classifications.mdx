@@ -1,0 +1,86 @@
+---
+layout: guides
+title: "List business classifications"
+guide:
+  step: 5
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# List business classifications
+
+Retrieve an `_embedded` list of business classifications that contains an `_embedded` list of industry classifications. The appropriate Id from the list of industry classifications must be passed in the `businessClassification` parameter when [creating a Business Verified Customer](#request-parameters---verified-strongbusinessstrong-customer-sole-proprietorship-only). The industry classification is used to identify the Customer's business and is required by Dwolla when verifying a `business` in order to better analyze the nature of a business.
+
+### HTTP request
+
+`GET https://api.dwolla.com/business-classifications`
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/business-classifications
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {},
+  "_embedded": {
+    "business-classifications": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/business-classifications/9ed3f669-7d6f-11e3-b545-5404a6144203"
+          }
+        },
+        "_embedded": {
+          "industry-classifications": [
+            {
+              "id": "9ed3f671-7d6f-11e3-803c-5404a6144203",
+              "name": "Gourmet foods"
+            },
+            {
+              "id": "9ed3f66c-7d6f-11e3-86ae-5404a6144203",
+              "name": "Distilleries"
+            },
+            {
+              ...........
+            }
+          ]
+        },
+        "id": "9ed3f669-7d6f-11e3-b545-5404a6144203",
+        "name": "Food retail and service"
+      }
+      ...........
+    ]
+  },
+  "total": 27
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+business_classifications = app_token.get "business-classifications"
+business_classifications._embedded['business-classifications'][0].name # => "Food retail and service"
+```
+
+```php
+<?php
+$businessClassificationsApi = new DwollaSwagger\BusinessclassificationsApi($apiClient);
+
+$busClassifications = $businessClassificationsApi->_list();
+$busClassifications->_embedded->{'business-classifications'}[0]->name; # => "Food retail and service"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+business_classifications = app_token.get('business-classifications')
+business_classifications.body['_embedded']['business-classifications'][0]['name'] # => 'Food retail and service'
+```
+
+```javascript
+appToken
+  .get("business-classifications")
+  .then((res) => res.body._embedded["business-classifications"][0].name); // => 'Food retail and service'
+```

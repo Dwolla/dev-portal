@@ -1,0 +1,101 @@
+---
+layout: guides
+title: "Create a document for a customer"
+guide:
+  step: 1
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Create a document for a customer
+
+Create a document for a Customer pending verification by uploading a color scan or photo of government issued identification (see below for acceptable document types). This requires a multipart form-data POST request. The uploaded file must be a color image, in a `.jpg`, `.jpeg`, or `.png` format, and less than 10MB in size. Additionally, Business Documents can also be uploaded in a `.pdf` format.
+
+### Acceptable documents
+
+| Customer type              | Acceptable documents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Personal Verified Customer | `passport`, `license`, or `idCard`. Must be a color scan of US Government issued identification.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| Business Verified Customer | Controller documents - `passport`, `license`, or `idCard`. Must be a color scan of US Government issued identification. <br /> Business documents - `other`. Refer to our guide on [Handling Document status for Business Verified Customers](https://developers.dwolla.com/resources/business-verified-customer/handling-controller-and-customer-statuses.html#document-types) for acceptable documents.<br /> Beneficial Owner documents - `passport`, `license`, or `idCard`. Refer to our guide on [Handling Document status for Beneficial Owners](https://developers.dwolla.com/resources/business-verified-customer/adding-beneficial-owners.html#handling-document-status) for acceptable documents. |
+
+### HTTP request
+
+`POST https://api.dwolla.com/customers/{id}/documents`
+
+### Request Parameters
+
+| Form Field   | Description                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| documentType | Acceptable values of: `passport`, `license`, `idCard`, or `other`. Refer to the [acceptable documents](#acceptable-documents) section for more information on how these document types apply to each Customer type. |
+| file         | File contents.                                                                                                                                                                                                      |
+
+### HTTP status and error codes
+
+| HTTP Status | Code                     | Description                                                                                                                            |
+| ----------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created                  | A document resource was created.                                                                                                       |
+| 400         | maximumNumberOfResources | Max of four files upload allowed. Please wait for Dwolla to manually check the documents.                                              |
+| 400         | invalidFileType          | File types supported: <br /> Personal IDs - `.jpg`, `.jpeg` or `.png`. <br /> Business Documents - `.jpg`, `.jpeg`, `.png`, or `.pdf`. |
+| 400         | DuplicateResource        | Document already exists. Follow the link to find the existing document for the Customer.                                               |
+| 403         | invalidResourceState     | Resource cannot be modified. Document creation not allowed for already `verified` Customers or non-`verified` Customer types.          |
+| 403         | notAuthorized            | Not authorized to create documents.                                                                                                    |
+| 404         | notFound                 | Customer not found. Check CustomerId.                                                                                                  |
+| 413         | fileTooLarge             | Document requests are limited to 10 MiB.                                                                                               |
+
+### Request and response
+
+```raw
+curl -X POST
+\ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
+\ -H "Accept: application/vnd.dwolla.v1.hal+json"
+\ -H "Cache-Control: no-cache"
+\ -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+\ -F "documentType=passport"
+\ -F "file=@foo.png"
+\ 'https://api-sandbox.dwolla.com/customers/1de32eC7-ff0b-4c0c-9f09-19629e6788ce/documents'
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+```
+
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/1de32eC7-ff0b-4c0c-9f09-19629e6788ce'
+
+file = Faraday::UploadIO.new('mclovin.jpg', 'image/jpeg')
+document = app_token.post "#{customer_url}/documents", file: file, documentType: 'license'
+document.response_headers[:location] # => "https://api.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/1de32eC7-ff0b-4c0c-9f09-19629e6788ce'
+
+document = app_token.post('%s/documents' % customer_url, file = open('mclovin.jpg', 'rb'), documentType = 'license')
+document.headers['location'] # => 'https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16'
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/1de32eC7-ff0b-4c0c-9f09-19629e6788ce";
+
+var requestBody = new FormData();
+requestBody.append("file", fs.createReadStream("mclovin.jpg"), {
+  filename: "mclovin.jpg",
+  contentType: "image/jpeg",
+  knownLength: fs.statSync("mclovin.jpg").size,
+});
+requestBody.append("documentType", "license");
+
+appToken
+  .post(`${customerUrl}/documents`, requestBody)
+  .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+```

@@ -1,0 +1,125 @@
+---
+layout: guides
+title: "List fees for a transfer"
+guide:
+  step: 4
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# List fees for a transfer
+
+This section outlines how to retrieve fees charged on a created transfer. Fees are visible to the `Customer` or `Account` that is charged the fee, as well as the Dwolla `Account` that is involved in receiving the fee.
+
+### HTTP request
+
+`GET https://api.dwolla.com/transfers/{id}/fees`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                  |
+| --------- | -------- | ------ | -------------------------------------------- |
+| id        | yes      | string | The id of the transfer to retrieve fees for. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message             |
+| ----------- | ------------------- |
+| 404         | Transfer not found. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388/fees
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "transactions": [
+    {
+      "_links": {
+        "self": {
+          "href": "https://api-sandbox.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e"
+        },
+        "source": {
+          "href": "https://api-sandbox.dwolla.com/customers/ac6d4c2a-fda8-49f6-805d-468066dd474c"
+        },
+        "destination": {
+          "href": "https://api-sandbox.dwolla.com/accounts/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+        },
+        "created-from-transfer": {
+          "href": "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
+        }
+      },
+      "id": "416a2857-c887-4cca-bd02-8c3f75c4bb0e",
+      "status": "pending",
+      "amount": {
+        "value": "2.00",
+        "currency": "usd"
+      },
+      "created": "2016-02-22T20:46:38.777Z"
+    },
+    {
+      "_links": {
+        "self": {
+          "href": "https://api-sandbox.dwolla.com/transfers/e58ae1f1-7007-47d3-a308-7e9aa6266d53"
+        },
+        "source": {
+          "href": "https://api-sandbox.dwolla.com/customers/ac6d4c2a-fda8-49f6-805d-468066dd474c"
+        },
+        "destination": {
+          "href": "https://api-sandbox.dwolla.com/accounts/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+        },
+        "created-from-transfer": {
+          "href": "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388"
+        }
+      },
+      "id": "e58ae1f1-7007-47d3-a308-7e9aa6266d53",
+      "status": "pending",
+      "amount": {
+        "value": "1.00",
+        "currency": "usd"
+      },
+      "created": "2016-02-22T20:46:38.860Z"
+    }
+  ],
+  "total": 2
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388'
+
+fees = app_token.get "#{transfer_url}/fees"
+fees.total # => 2
+```
+
+```php
+<?php
+$transferUrl = 'https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388';
+
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transferFees = $transfersApi->getFeesBySource($transferUrl);
+$transferFees->total; # => "2"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+transfer_url = 'https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388'
+
+fees = app_token.get('%s/fees' % transfer_url)
+fees.body['total'] # => 2
+```
+
+```javascript
+var transferUrl =
+  "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388";
+
+appToken.get(`${transferUrl}/fees`).then((res) => res.body.total); // => 2
+```

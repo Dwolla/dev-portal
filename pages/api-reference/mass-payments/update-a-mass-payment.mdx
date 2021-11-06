@@ -1,0 +1,84 @@
+---
+layout: guides
+title: "Update a mass payment"
+guide:
+  step: 3
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Update a mass payment
+
+This section covers how to update a mass payment's status to `pending` which triggers processing on a created and deferred mass payment, or `cancelled` which cancels a created and deferred mass payment.
+
+### HTTP request
+
+`POST https://api.dwolla.com/mass-payments/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                                          |
+| --------- | -------- | ------ | ---------------------------------------------------------------------------------------------------- |
+| id        | yes      | string | id of mass payment to update.                                                                        |
+| status    | yes      | string | Either `pending` or `cancelled` depending on the action you want to take on a deferred mass payment. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code            | Description                                           |
+| ----------- | --------------- | ----------------------------------------------------- |
+| 404         | NotFound        | Mass payment not found.                               |
+| 400         | ValidationError | Invalid status. Allowed types are pending, cancelled. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "status": "pending"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+mass_payment_url = 'https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+request_body = {
+      "status" => "pending",
+}
+
+mass_payment = app_token.post "#{mass_payment_url}", request_body
+mass_payment.status # => "pending"
+```
+
+```php
+/**
+ *  No example for this language yet. Coming soon.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+mass_payment_url = 'https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+request_body = {
+  'status': 'pending'
+}
+
+mass_payments = app_token.post('mass-payments', request_body)
+mass_payments.body['status'] # => 'pending'
+```
+
+```javascript
+var massPaymentUrl =
+  "https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c";
+var requestBody = {
+  status: "pending",
+};
+
+appToken.post(massPaymentUrl, requestBody).then((res) => res.body.status); // => "pending"
+```

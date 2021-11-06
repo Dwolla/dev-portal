@@ -1,0 +1,85 @@
+---
+layout: guides
+title: "Retrieve a webhook subscription"
+guide:
+  step: 2
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Retrieve a webhook subscription
+
+This section details how to retrieve a webhook subscription by its id.
+
+### HTTP request
+
+`GET https://api.dwolla.com/webhook-subscriptions/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                             |
+| --------- | -------- | ------ | --------------------------------------- |
+| id        | yes      | string | Webhook subscription unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                         |
+| ----------- | ------------------------------- |
+| 404         | Webhook subscription not found. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589"
+    },
+    "webhooks": {
+      "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589/webhooks"
+    }
+  },
+  "id": "077dfffb-4852-412f-96b6-0fe668066589",
+  "url": "http://myapplication.com/webhooks",
+  "created": "2015-10-28T16:20:47+00:00"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+
+webhook_subscription = app_token.get webhook_subscription_url
+webhook_subscription.created # => 2015-10-28T16:20:47+00:00
+```
+
+```javascript
+var webhookSubscriptionUrl =
+  "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
+
+appToken.get(webhookSubscriptionUrl).then((res) => res.body.created); // => '2016-04-20T15:49:50.340Z'
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+
+webhook_subscription = app_token.get(webhook_subscription_url)
+webhook_subscription.body['created'] # => '2015-10-28T16:20:47+00:00'
+```
+
+```php
+<?php
+$webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
+$retrieved = $webhookApi->id('https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216');
+
+$retrieved->created; # => 2015-10-28T16:20:47+00:00
+?>
+```

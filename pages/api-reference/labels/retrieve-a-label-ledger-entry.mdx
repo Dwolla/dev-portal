@@ -1,0 +1,86 @@
+---
+layout: guides
+title: "Retrieve a label ledger entry"
+guide:
+  step: 4
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Retrieve a label ledger entry
+
+This section outlines how to retrieve a Label Ledger entry by its unique identifier
+
+### HTTP request
+
+`GET https://api.dwolla.com/ledger-entries/{id}`
+
+Request parameters
+
+| Parameter | Required | Type   | Description                             |
+| --------- | -------- | ------ | --------------------------------------- |
+| id        | yes      | string | A Label Ledger entry unique identifier. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "label": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        }
+    },
+    "id": "32d68709-62dd-43d6-a6df-562f4baec526",
+    "amount": {
+        "value": "-5.00",
+        "currency": "USD"
+    },
+    "created": "2019-05-16T01:54:58.062Z"
+}
+```
+
+```php
+<?php
+$ledgerEntryUrl = "https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526";
+
+$ledgerEntriesApi = new DwollaSwagger\LedgerentriesApi($apiClient);
+
+$ledgerEntry = $ledgerEntriesApi->getLedgerEntry($ledgerEntryUrl);
+$ledgerEntry->id; # => "7e042ffe-e25e-40d2-b86e-748b98845ecc"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+ledger_entry_url = 'https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526'
+
+ledger_entry = app_token.get ledger_entry_url
+ledger_entry.id # => "32d68709-62dd-43d6-a6df-562f4baec526"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+ledger_entry_url = 'https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526'
+
+ledger_entry = app_token.get(ledger_entry_url)
+ledger_entry.body['id'] # => '32d68709-62dd-43d6-a6df-562f4baec526'
+```
+
+```javascript
+var ledgerEntryUrl =
+  "https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526";
+
+appToken.get(ledgerEntryUrl).then((res) => res.body.id); // => '32d68709-62dd-43d6-a6df-562f4baec526'
+```

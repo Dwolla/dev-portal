@@ -1,0 +1,56 @@
+---
+layout: guides
+title: "Overview"
+group:
+  title: Accounts
+  description: Requests to the Dwolla API require an OAuth access token for authentication. Learn about Dwolla’s supported authorization flow and how to create an access token.
+  weight: 5
+guide:
+  step: 0
+  icon: authorization.svg
+meta:
+  title: API Reference | Dwolla API Documentation
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Accounts
+
+An `Account` represents your Dwolla Master Account that was established on dwolla.com.
+
+### Account Links
+
+| Link            | Description                                                                                           |
+| --------------- | ----------------------------------------------------------------------------------------------------- |
+| self            | URL of the Account resource                                                                           |
+| receive         | Follow the link to create a transfer to this Account.                                                 |
+| funding-sources | GET this link to list the Account's funding sources.                                                  |
+| transfers       | GET this link to list the Account's transfers.                                                        |
+| customers       | (optional) If this link exists, this account is authorized to create and manage Dwolla API Customers. |
+| send            | Follow the link to create a transfer to this Account.                                                 |
+
+```bash
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+    },
+    "receive": {
+      "href": "https://api-sandbox.dwolla.com/transfers"
+    },
+    "funding-sources": {
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
+    },
+    "transfers": {
+      "href": "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/transfers"
+    },
+    "customers": {
+      "href": "https://api-sandbox.dwolla.com/customers"
+    },
+    "send": {
+      "href": "https://api-sandbox.dwolla.com/transfers"
+    }
+  },
+  "id": "ca32853c-48fa-40be-ae75-77b37504581b",
+  "name": "Jane Doe"
+}
+```

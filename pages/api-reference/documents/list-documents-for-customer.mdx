@@ -1,0 +1,117 @@
+---
+layout: guides
+title: "List documents for a customer"
+guide:
+  step: 2
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# List documents for a customer
+
+This section contains information on how to retrieve a list of documents that belong to a Customer.
+
+### HTTP request
+
+`GET https://api.dwolla.com/customers/{id}/documents`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Customer unique identifier. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/customers/176878b8-ecdb-469b-a82b-43ba5e8704b2/documents
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLfwKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/176878b8-ecdb-469b-a82b-43ba5e8704b2/documents"
+    }
+  },
+  "_embedded": {
+    "documents": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/documents/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+          }
+        },
+        "id": "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc",
+        "status": "pending",
+        "type": "passport",
+        "created": "2015-09-29T21:42:16.000Z"
+      },
+      {
+        "_links": {
+            "self": {
+                "href": "https://api-sandbox.dwolla.com/documents/20988444-c7e1-40cf-ab1a-a20da878e568",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "document"
+            }
+        },
+        "id": "20988444-c7e1-40cf-ab1a-a20da878e568",
+        "status": "reviewed",
+        "type": "license",
+        "created": "2019-05-30T22:01:40.000Z",
+        "failureReason": "ScanDobMismatch",
+        "allFailureReasons": [
+            {
+                "reason": "ScanDobMismatch",
+                "description": "Date of Birth mismatch"
+            },
+            {
+                "reason": "ScanIdExpired",
+                "description": "ID is expired"
+            }
+        ]
+      }
+    ]
+  },
+  "total": 2
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+
+documents = app_token.get "#{customer_url}/documents"
+documents._embedded['documents'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+```
+
+```php
+<?php
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/176878b8-ecdb-469b-a82b-43ba5e8704b2';
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->getCustomerDocuments($customerUrl);
+$customer->total; # => 2
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+
+documents = app_token.get('%s/documents' % customer_url)
+documents.body['total'] # => 2
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/176878b8-ecdb-469b-a82b-43ba5e8704b2";
+
+token
+  .get(`${customerUrl}/documents`)
+  .then((res) => res.body._embedded["documents"][0].id); // => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+```

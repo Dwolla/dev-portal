@@ -1,0 +1,42 @@
+---
+layout: guides
+title: "JavaScript"
+guide:
+  step: 6
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# JavaScript
+
+`dwolla-v2` is available on [NPM](https://www.npmjs.com/package/dwolla-v2) with [source code](https://github.com/Dwolla/dwolla-v2-node) available on our GitHub page. More information is available on the project's README.
+
+### Installation
+
+```bash
+npm install dwolla-v2
+```
+
+### Quickstart
+
+Let's fetch a page of customers:
+
+```javascript
+const dwolla = require("dwolla-v2");
+
+// Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
+const appKey = "...";
+const appSecret = "...";
+const client = new dwolla.Client({
+  key: appKey,
+  secret: appSecret,
+  environment: "sandbox", // optional - defaults to production
+});
+
+// create a token
+client.auth
+  .client()
+  .then((appToken) => appToken.get("customers", { limit: 10 }))
+  .then((res) => console.log(res.body));
+```

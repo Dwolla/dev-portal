@@ -1,0 +1,78 @@
+---
+layout: guides
+title: "List webhook subscriptions"
+guide:
+  step: 4
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# List webhook subscriptions
+
+This section covers how to retrieve a list of webhook subscriptions that belong to an application.
+
+### HTTP request
+
+`GET https://api.dwolla.com/webhook-subscriptions`
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/webhook-subscriptions
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/webhook-subscriptions"
+    }
+  },
+  "_embedded": {
+    "webhook-subscriptions": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/f4d21628-fde2-4d3a-b69a-0a7cb42adc4c"
+          },
+          "webhooks": {
+            "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/f4d21628-fde2-4d3a-b69a-0a7cb42adc4c/webhooks"
+          }
+        },
+        "id": "f4d21628-fde2-4d3a-b69a-0a7cb42adc4c",
+        "url": "https://destination.url",
+        "created": "2015-08-19T21:43:49.000Z"
+      }
+    ]
+  },
+  "total": 1
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+webhook_subscriptions = app_token.get "webhook-subscriptions"
+webhook_subscriptions.total # => 1
+```
+
+```javascript
+appToken.get("webhook-subscriptions").then((res) => res.body.total); // => 1
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+webhook_subscriptions = app_token.get('webhook-subscriptions')
+webhook_subscriptions.body['total'] # => 1
+```
+
+```php
+<?php
+$webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
+
+$retrieved = $webhookApi->_list();
+$retrieved->total; # => 1
+?>
+```

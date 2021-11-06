@@ -1,0 +1,95 @@
+---
+layout: guides
+title: "Certify beneficial ownership"
+guide:
+  step: 7
+meta:
+  title: "API Reference | Dwolla API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+# Certify beneficial ownership
+
+This section contains information on how to certify beneficial ownership for a business Verified Customer.
+
+### HTTP request
+
+`POST https://api.dwolla.com/customers/{id}/beneficial-ownership`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Customer unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                                                |
+| ----------- | ---------------------------------------------------------------------- |
+| 200         | Beneficial ownership status updated.                                   |
+| 400         | Validation error.                                                      |
+| 403         | Forbidden from updating beneficial ownership status for this customer. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc/beneficial-ownership
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "status": "certified"
+}
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc/beneficial-ownership",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-ownership"
+        }
+    },
+    "status": "certified"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
+request_body = {
+  :status => "certified"
+}
+
+app_token.post "#{customer_url}/beneficial-ownership", request_body
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909";
+var requestBody = {
+  status: "certified",
+};
+
+appToken.post(`${customerUrl}/beneficial-ownership`, requestBody);
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
+request_body = {
+    "status": "certified"
+}
+
+app_token.post('%s/beneficial-ownership' % customer_url, request_body)
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customerId = 'https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909';
+$certifyCustomer = $customersApi->changeOwnershipStatus(['status' => 'certified' ], $customerId);
+?>
+```
