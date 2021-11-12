@@ -30,7 +30,7 @@ This section shows you how to retrieve a Customer belonging to the authorized Dw
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -82,5 +82,5 @@ customer.body['firstName']
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8";
 
-appToken.get(customerUrl).then((res) => res.body.firstName); // => 'Jane'
+dwolla.get(customerUrl).then((res) => res.body.firstName); // => 'Jane'
 ```

@@ -11,6 +11,10 @@ meta:
 
 This section covers how to retrieve an Account's list of transfers. Transaction search is supported by passing in optional query string parameters such as: `search` which represents a term to search on, `correlationId`, `startAmount`, `endAmount`, `startDate`, `endDate`, and `status`.
 
+**Note:** You can only retrieve up to 10,000 transfers using the `limit` and `offset` query string parameters. To retrieve historical transactions that exceed that limit, `startDate` and `endDate` query string parameters must be used to further limit the search. For example, if item 10,000 has a date of 2021-01-01 the next request can be the following,
+
+`GET https://api.dwolla.com/accounts/{id}/transfers?search={term}&endDate=2021-01-01`
+
 ### HTTP request
 
 `GET https://api.dwolla.com/accounts/{id}/transfers`
@@ -38,7 +42,7 @@ This section covers how to retrieve an Account's list of transfers. Transaction 
 
 ### Request and response
 
-```raw
+```bash
 GET https://api.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966/transfers
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -188,7 +192,7 @@ transfers.body['_embedded']['transfers'][0]['status'] # => "processed"
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966";
 
-appToken
+dwolla
   .get(`${accountUrl}/transfers`)
   .then((res) => res.body._embedded["transfers"][0].status); // => 'processed'
 ```

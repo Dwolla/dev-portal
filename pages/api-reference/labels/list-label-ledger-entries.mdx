@@ -25,7 +25,7 @@ This section outlines how to list the history of Label entries. Label ledger ent
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -127,7 +127,7 @@ ledger_entries.body['_embedded']['ledger-entries'][0]['id'] # => '32d68709-62dd-
 var labelUrl =
   "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc";
 
-appToken
+dwolla
   .get(`${labelUrl}/ledger-entries`)
   .then((res) => res.body._embedded["ledger-entries"][0].id); // => '32d68709-62dd-43d6-a6df-562f4baec526'
 ```

@@ -32,7 +32,7 @@ To retrieve your Account ID, you will need to call the [root](#root) of the API.
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -94,5 +94,5 @@ account.body['name']
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
 
-appToken.get(accountUrl).then((res) => res.body.name); // => 'Jane Doe'
+dwolla.get(accountUrl).then((res) => res.body.name); // => 'Jane Doe'
 ```

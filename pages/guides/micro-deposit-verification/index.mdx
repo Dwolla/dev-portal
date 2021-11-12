@@ -82,7 +82,7 @@ retrieved.body['name'] # => 'Test checking account'
 var fundingSourceUrl =
   "https://api.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909";
 
-appToken.get(fundingSourceUrl).then(function(res) {
+dwolla.get(fundingSourceUrl).then(function(res) {
   res.body.name; // => 'Test checking account'
 });
 ```

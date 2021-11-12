@@ -312,7 +312,7 @@ var requestBody = {
   name: "R03",
 };
 
-appToken.post(fundingSourceUrl, requestBody).then((res) => res.body.name); // => "R03"
+dwolla.post(fundingSourceUrl, requestBody).then((res) => res.body.name); // => "R03"
 ```
 
 ### Test Push-to-debit transfer failures

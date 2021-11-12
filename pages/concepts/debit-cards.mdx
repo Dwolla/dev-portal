@@ -138,7 +138,7 @@ failure.body['code'] # => 'Unknown'
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388";
 
-appToken.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'Unknown'
+dwolla.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'Unknown'
 ```
 
 ## Creating a Debit Card Funding Source

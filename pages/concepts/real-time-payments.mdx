@@ -217,7 +217,7 @@ var requestBody = {
   },
 };
 
-appToken
+dwolla
   .post("transfers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
 ```
@@ -294,7 +294,7 @@ transfer.status # => "processed"
 var transferUrl =
   "https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03";
 
-appToken.get(transferUrl).then(function (res) {
+dwolla.get(transferUrl).then(function (res) {
   res.body.status; // => 'processed'
 });
 ```

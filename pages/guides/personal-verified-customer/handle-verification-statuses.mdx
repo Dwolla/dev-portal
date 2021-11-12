@@ -105,7 +105,7 @@ var requestBody = {
   ssn: "202-99-1516",
 };
 
-appToken.post(customerUrl, requestBody).then(function (res) {
+dwolla.post(customerUrl, requestBody).then(function (res) {
   res.body.id; // => '132681fa-1b4d-4181-8ff2-619ca46235b1'
 });
 ```
@@ -210,7 +210,7 @@ kba.headers['location'] # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/61a74e62-e27d-46f1-9fa6-a8e57226bb3e";
 
-appToken.post(`${customerUrl}/kba`).then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+dwolla.post(`${customerUrl}/kba`).then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
 ```
 
 ### Retrieve KBA Question set
@@ -342,7 +342,7 @@ kba_questions.id # => '70b0e9cc-020d-4de2-9a82-a2281afa4c31'
 var kbaUrl =
   "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31";
 
-appToken.get(kbaUrl).then((res) => res.body.id); // => '70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+dwolla.get(kbaUrl).then((res) => res.body.id); // => '70b0e9cc-020d-4de2-9a82-a2281afa4c31'
 ```
 
 ### Answer KBA Questions
@@ -463,7 +463,7 @@ var requestBody = {
   ],
 };
 
-appToken.post(kbaUrl, requestBody);
+dwolla.post(kbaUrl, requestBody);
 ```
 
 #### KBA Success
@@ -590,7 +590,7 @@ body.append("file", fs.createReadStream("mclovin.jpg"), {
 });
 body.append("documentType", "license");
 
-appToken.post(`${customerUrl}/documents`, requestBody).then(function (res) {
+dwolla.post(`${customerUrl}/documents`, requestBody).then(function (res) {
   res.headers.get("location"); // => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
 });
 ```
@@ -683,7 +683,7 @@ document.failureReason # => "ScanNotReadable"
 var documentUrl =
   "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0";
 
-appToken.get(document_url).then(function (res) {
+dwolla.get(document_url).then(function (res) {
   res.body.failureReason; // => "ScanNotReadable"
 });
 ```

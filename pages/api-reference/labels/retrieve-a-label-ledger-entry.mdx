@@ -23,7 +23,7 @@ Request parameters
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -81,5 +81,5 @@ ledger_entry.body['id'] # => '32d68709-62dd-43d6-a6df-562f4baec526'
 var ledgerEntryUrl =
   "https://api-sandbox.dwolla.com/ledger-entries/32d68709-62dd-43d6-a6df-562f4baec526";
 
-appToken.get(ledgerEntryUrl).then((res) => res.body.id); // => '32d68709-62dd-43d6-a6df-562f4baec526'
+dwolla.get(ledgerEntryUrl).then((res) => res.body.id); // => '32d68709-62dd-43d6-a6df-562f4baec526'
 ```

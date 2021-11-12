@@ -21,7 +21,7 @@ The "root" serves as an entry point to the API, providing your application with 
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -61,5 +61,5 @@ root.body['_links']['account']['href'] # => 'https://api-sandbox.dwolla.com/acco
 ```
 
 ```javascript
-appToken.get("/").then((res) => res.body._links.account.href); // => 'https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254'
+dwolla.get("/").then((res) => res.body._links.account.href); // => 'https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254'
 ```

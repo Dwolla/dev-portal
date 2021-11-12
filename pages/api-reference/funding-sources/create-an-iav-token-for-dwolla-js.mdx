@@ -9,7 +9,7 @@ meta:
 
 # Create an IAV token for dwolla.js
 
-Dwolla.js is a client-side library that allows you `add and verify` a funding source for your Customer without having any sensitive data hit your server. This section details how to create a token that will be sent to the client and used to authenticate the HTTP request asking Dwolla to `add and verify` a new funding source.
+Dwolla.js is a client-side library that allows you to `add and verify` a funding source for your Customer without having any sensitive data hit your server. This section details how to create a token that will be sent to the client and used to authenticate the HTTP request asking Dwolla to `add and verify` a new funding source.
 
 Refer to our [Dwolla.js developer resource article](https://developers.dwolla.com/resources/dwolla-js/instant-account-verification.html) to learn more on how to utilize this single-use iav-token to `add and verify` a funding source for a Customer.
 
@@ -31,7 +31,7 @@ Refer to our [Dwolla.js developer resource article](https://developers.dwolla.co
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/iav-token
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -62,7 +62,7 @@ customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6";
 
-appToken.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+dwolla.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 ```
 
 ```python

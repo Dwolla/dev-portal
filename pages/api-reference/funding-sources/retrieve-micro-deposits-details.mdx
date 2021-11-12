@@ -2,7 +2,7 @@
 layout: guides
 title: "Retrieve micro-deposits details"
 guide:
-  step: 10
+  step: 11
 meta:
   title: "Retrieve Micro Deposit Details | Dwolla API Documentation"
 ---
@@ -38,7 +38,7 @@ This section shows how to retrieve the status of micro-deposits and check if mic
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/funding-sources/dfe59fdd-7467-44cf-a339-2020dab5e98a/micro-deposits
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -98,7 +98,5 @@ funding_source.body['status'] # => 'failed'
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 
-appToken
-  .get(`${fundingSourceUrl}/micro-deposits`)
-  .then((res) => res.body.status); // => "failed"
+dwolla.get(`${fundingSourceUrl}/micro-deposits`).then((res) => res.body.status); // => "failed"
 ```

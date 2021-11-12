@@ -29,7 +29,7 @@ Delete a beneficial owner. A removed beneficial owner cannot be retrieved after 
 
 ### Request and response
 
-```raw
+```bash
 DELETE https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -73,7 +73,7 @@ app_token.delete beneficial_owner_url
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 
-appToken.delete(beneficialOwnerUrl);
+dwolla.delete(beneficialOwnerUrl);
 ```
 
 ```python

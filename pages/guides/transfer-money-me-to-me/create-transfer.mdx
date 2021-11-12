@@ -168,7 +168,7 @@ var transferRequest = {
   },
 };
 
-appToken.post("transfers", transferRequest).then(function (res) {
+dwolla.post("transfers", transferRequest).then(function (res) {
   res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/transfers/81643da1-b1b3-e911-811b-f08aa77f5aa3'
 });
 ```

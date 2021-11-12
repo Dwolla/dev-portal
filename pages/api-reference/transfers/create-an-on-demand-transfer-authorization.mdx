@@ -32,7 +32,7 @@ When on-demand authorization is enabled for your application the Customer is pre
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/on-demand-authorizations
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -70,5 +70,5 @@ on_demand_authorization.body['buttonText'] # => 'Agree & Continue'
 ```
 
 ```javascript
-appToken.post("on-demand-authorizations").then((res) => res.body.buttonText); // => "Agree & Continue"
+dwolla.post("on-demand-authorizations").then((res) => res.body.buttonText); // => "Agree & Continue"
 ```

@@ -2,7 +2,7 @@
 layout: guides
 title: "Remove a funding source"
 guide:
-  step: 11
+  step: 12
 meta:
   title: "Remove a Funding Source | Dwolla API Documentation"
 ---
@@ -36,7 +36,7 @@ If a funding source has an **incoming** transfer, we recommend not removing it u
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -104,5 +104,5 @@ var requestBody = {
   removed: true,
 };
 
-appToken.post(fundingSourceUrl, requestBody);
+dwolla.post(fundingSourceUrl, requestBody);
 ```

@@ -2,7 +2,7 @@
 layout: guides
 title: "Initiate micro-deposits"
 guide:
-  step: 7
+  step: 8
 meta:
   title: "Initiate Micro Deposits | Dwolla API Documentation"
 ---
@@ -30,7 +30,7 @@ This section covers how to initiate micro-deposits for bank verification. Refere
 
 #### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits
 Authorization: Bearer 8tJjM7iTjujLthkbVPMUcHLqMNw4uv5kG712g9j1RRBHplGpwo
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -51,7 +51,7 @@ app_token.post "#{funding_source_url}/micro-deposits"
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909";
 
-appToken.post(`${fundingSourceUrl}/micro-deposits`);
+dwolla.post(`${fundingSourceUrl}/micro-deposits`);
 ```
 
 ```python

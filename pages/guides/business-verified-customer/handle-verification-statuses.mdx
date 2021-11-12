@@ -169,7 +169,7 @@ var requestBody = {
   ein: "00-0000000",
 };
 
-appToken.post(customerUrl, requestBody).then(function (res) {
+dwolla.post(customerUrl, requestBody).then(function (res) {
   res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 });
 ```
@@ -359,7 +359,7 @@ var requestBody = {
   ein: '12-3456789'
 };
 
-appToken
+dwolla
   .post(customerUrl, requestBody)
   .then(function(res) {
     res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
@@ -558,7 +558,7 @@ body.append("file", fs.createReadStream("mclovin.jpg"), {
 });
 body.append("documentType", "license");
 
-appToken.post(`${customerUrl}/documents`, requestBody).then(function (res) {
+dwolla.post(`${customerUrl}/documents`, requestBody).then(function (res) {
   res.headers.get("location"); // => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
 });
 ```
@@ -659,7 +659,7 @@ documents.body['failureReason'] # => 'ScanNotReadable'
 var documentUrl =
   "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0";
 
-appToken.get(document_url).then(function (res) {
+dwolla.get(document_url).then(function (res) {
   res.body.failureReason; // => "ScanNotReadable"
 });
 ```

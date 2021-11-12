@@ -23,7 +23,7 @@ When a bank transfer is eligible for cancellation, Dwolla returns a `cancel` lin
 
 ### Request and Response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/transfers/3d48c13a-0fc6-e511-80de-0aa34a9b2388
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -129,5 +129,5 @@ var requestBody = {
   status: "cancelled",
 };
 
-appToken.post("transfers", requestBody).then((res) => res.body.status); // => "cancelled"
+dwolla.post("transfers", requestBody).then((res) => res.body.status); // => "cancelled"
 ```

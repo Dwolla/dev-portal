@@ -30,7 +30,7 @@ Retrieve a list of events for the application. **Note:** Dwolla will only guaran
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/events
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -133,5 +133,5 @@ events.body['total'] # => 3
 ```
 
 ```javascript
-appToken.get("events").then((res) => res.body.total); // => 3
+dwolla.get("events").then((res) => res.body.total); // => 3
 ```

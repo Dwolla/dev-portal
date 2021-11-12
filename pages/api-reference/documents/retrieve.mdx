@@ -23,7 +23,7 @@ This section contains information on how to retrieve a document by its id.
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/documents/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -40,15 +40,16 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
   "status": "reviewed",
   "type": "passport",
   "created": "2015-09-29T21:42:16.000Z",
+  "verificationStatus": "rejected",
   "failureReason": "ScanDobMismatch",
   "allFailureReasons": [
       {
           "reason": "ScanDobMismatch",
-          "description": "Date of Birth mismatch"
+          "description": "Scan DOB does not match DOB on account"
       },
       {
           "reason": "ScanIdExpired",
-          "description": "ID is expired"
+          "description": "ID is expired or missing expiration date"
       }
   ]
 }
@@ -85,5 +86,5 @@ documents.body['type'] # => 'passport'
 var documentUrl =
   "https://api-sandbox.dwolla.com/documents/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc";
 
-appToken.get(document_url).then((res) => res.body.type); // => "passport"
+dwolla.get(document_url).then((res) => res.body.type); // => "passport"
 ```

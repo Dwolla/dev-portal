@@ -29,7 +29,7 @@ This section details how to retry a webhook by id.
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8/retries
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -69,5 +69,5 @@ app_token.post('%s/retries' % webhook_url)
 var webhookUrl =
   "https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8";
 
-appToken.post(`${webhookUrl}/retries`);
+dwolla.post(`${webhookUrl}/retries`);
 ```

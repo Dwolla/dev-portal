@@ -33,7 +33,7 @@ This section covers how to retrieve a [verified Customer's](#customers) list of 
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/customers/39e21228-5958-4c4f-96fe-48a4bf11332d/mass-payments
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -111,7 +111,7 @@ mass_payments.body['_embedded']['mass-payments'][0]['status'] # => 'complete'
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/ca32853c-48fa-40be-ae75-77b37504581b";
 
-appToken
+dwolla
   .get(`${customerUrl}/mass-payments`, { limit: 10 })
   .then((res) => res.body._embedded["mass-payments"][0].status); // => "complete"
 ```

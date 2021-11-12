@@ -22,7 +22,7 @@ To create a new entry on a Label Ledger you’ll specify the ID of the Label, as
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230616f/ledger-entries
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -91,7 +91,7 @@ var requestBody = {
   },
 };
 
-appToken
+dwolla
   .post(`${labelUrl}/ledger-entries`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/ledger-entries/76e5541d-18f4-e811-8112-e8dd3bececa8'
 ```

@@ -131,7 +131,7 @@ funding_sources._embedded['funding-sources'][1].name # => "Balance"
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
 
-appToken
+dwolla
   .get(`${accountUrl}/funding-sources`)
   .then((res) => res.body._embedded["funding-sources"][1].name); // => 'Balance'
 ```
@@ -237,7 +237,7 @@ funding_sources._embedded['funding-sources'][0].name # => "Balance"
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733";
 
-appToken
+dwolla
   .get(`${customerUrl}/funding-sources`)
   .then((res) => res.body._embedded["funding-sources"][0].name); // => 'Balance'
 ```
@@ -355,7 +355,7 @@ funding_source = app_token.get "#{funding_source_url}/balance"
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/e5b8223f-08f7-4a7e-b952-88a773c0df61";
 
-appToken
+dwolla
   .get(`${fundingSourceUrl}/balance`)
   .then((res) => res.body.balance.amount);
 ```

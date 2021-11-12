@@ -29,7 +29,7 @@ This section covers how to retrieve a transfer belonging to an Account or Custom
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -118,5 +118,5 @@ transfer.body['status'] # => 'pending'
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8";
 
-appToken.get(transferUrl).then((res) => res.body.status); // => 'pending'
+dwolla.get(transferUrl).then((res) => res.body.status); // => 'pending'
 ```

@@ -23,7 +23,7 @@ This section outlines how to retrieve a label by its unique identifier.
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -91,5 +91,5 @@ label.body['id'] # => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
 var labelUrl =
   "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc";
 
-appToken.get(labelUrl).then((res) => res.body.id); // => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
+dwolla.get(labelUrl).then((res) => res.body.id); // => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
 ```

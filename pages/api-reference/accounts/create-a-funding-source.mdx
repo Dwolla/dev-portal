@@ -42,7 +42,7 @@ This section details how to add a bank account to a Dwolla Master Account. The b
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/funding-sources
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -108,7 +108,7 @@ var requestBody = {
   name: "My Bank",
 };
 
-appToken
+dwolla
   .post(`funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```

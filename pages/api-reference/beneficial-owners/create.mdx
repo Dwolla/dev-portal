@@ -55,7 +55,7 @@ This section details how to create a new beneficial owner. To create `beneficial
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/81696e5d-a593-45a6-8863-3c20ad634de5/beneficial-owners
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -161,7 +161,7 @@ var requestBody = {
   }
 };
 
-appToken
+dwolla
   .post(`${customerUrl}/beneficial-owners`, requestBody)
   .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/beneficial-owners/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 ```

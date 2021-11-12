@@ -25,7 +25,7 @@ List all Labels for a specified Verified Customer. Labels are sorted by created 
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb/labels
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -122,7 +122,7 @@ labels.body['_embedded']['labels'][0]['id'] # => '7e042ffe-e25e-40d2-b86e-748b98
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733";
 
-appToken
+dwolla
   .get(`${customerUrl}/labels`)
   .then((res) => res.body._embedded["labels"][0].id); // => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
 ```

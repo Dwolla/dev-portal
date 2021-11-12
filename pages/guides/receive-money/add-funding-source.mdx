@@ -83,7 +83,7 @@ app_token.post('%s/iav-token' % customer_url)
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C";
 
-appToken.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+dwolla.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 ```
 
 Then, you’ll pass this single-use IAV token to the client-side of your application where it will be used in the JavaScript function dwolla.iav.start(). This token will be used to authenticate the request asking Dwolla to render the IAV flow. Before calling this function, you’ll want to include the dwolla.js library in the HEAD of your page.

@@ -220,7 +220,7 @@ var requestBody = {
   ]
 };
 
-appToken
+dwolla
   .post('transfers', requestBody)
   .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
 ```
@@ -322,7 +322,7 @@ fees.body['total'] # => 2
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388";
 
-appToken.get(`${transferUrl}/fees`).then((res) => res.body.total); // => 2
+dwolla.get(`${transferUrl}/fees`).then((res) => res.body.total); // => 2
 ```
 
 ### Reconciling fees
@@ -395,7 +395,7 @@ transfer.body['_links']['created-from-transfer'] # => 'https://api-sandbox.dwoll
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/416a2857-c887-4cca-bd02-8c3f75c4bb0e";
 
-appToken
+dwolla
   .get(transferUrl)
   .then((res) => res.body._links.created - from - transfer); // => 'https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388'
 ```

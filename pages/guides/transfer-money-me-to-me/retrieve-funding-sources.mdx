@@ -128,7 +128,7 @@ funding_sources.body['_embedded']['funding-sources'][0]['name'] # => 'Jane Doeâ€
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733";
 
-appToken
+dwolla
   .get(`${customerUrl}/funding-sources`)
   .then((res) => res.body._embedded["funding-sources"][0].name); // => 'Jane Doeâ€™s Checking'
 ```

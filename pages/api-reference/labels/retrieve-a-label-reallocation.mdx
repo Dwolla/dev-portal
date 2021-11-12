@@ -23,7 +23,7 @@ This section outlines how to retrieve a Label reallocation by its unique identif
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -83,5 +83,5 @@ label_reallocation.body['created'] # => '2019-05-16T13:41:31.036Z'
 var labelReallocationUrl =
   "https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21";
 
-appToken.get(labelReallocationUrl).then((res) => res.body.created); // => '2019-05-16T13:41:31.036Z'
+dwolla.get(labelReallocationUrl).then((res) => res.body.created); // => '2019-05-16T13:41:31.036Z'
 ```

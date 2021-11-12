@@ -24,7 +24,7 @@ This section outlines how to create a Label reallocation. When creating a Label 
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/label-reallocations
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -131,7 +131,7 @@ var requestBody = {
   },
 };
 
-appToken
+dwolla
   .post("label-reallocations", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21'
 ```

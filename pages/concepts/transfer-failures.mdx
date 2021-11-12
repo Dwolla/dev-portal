@@ -98,7 +98,7 @@ failure.body['code'] # => 'R01'
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/8997ebed-69be-e611-80ea-0aa34a9b2388";
 
-appToken.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'R01'
+dwolla.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'R01'
 ```
 
 ### What occurs in the Dwolla system when a bank transfer fails?

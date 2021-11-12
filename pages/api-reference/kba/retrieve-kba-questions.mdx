@@ -24,7 +24,7 @@ This section covers how to retrieve KBA questions after you have created the KBA
 
 ### Example request and response
 
-```raw
+```bash
 GET https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer cRahPzURfaIrTewKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
@@ -152,7 +152,7 @@ kba_questions.id # => '70b0e9cc-020d-4de2-9a82-a2281afa4c31'
 var kbaUrl =
   "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31";
 
-appToken.get(kbaUrl).then((res) => res.body.id); // => '70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+dwolla.get(kbaUrl).then((res) => res.body.id); // => '70b0e9cc-020d-4de2-9a82-a2281afa4c31'
 ```
 
 ### HTTP Status and Error Codes
