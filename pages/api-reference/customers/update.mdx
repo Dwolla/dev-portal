@@ -1,0 +1,352 @@
+---
+layout: guides
+title: "Update a customer"
+guide:
+  step: 4
+meta:
+  title: "Update Customer | Dwolla API Documentation"
+---
+
+# Update a customer
+
+This endpoint can be used to facilitate the following use cases: Update Customer information, upgrade an `unverified` Customer to a `verified` Customer, suspend a Customer, deactivate a Customer, reactivate a Customer, and update a verified Customer's information to `retry` verification.
+
+### HTTP request
+
+`POST https://api.dwolla.com/customers/{id}`
+
+### Update a Customer's information
+
+A limited set of information can be updated on an existing created Customer. **Note:** A Customer's information cannot be updated when in a [status](#customer-statuses) of `document` or `suspended`.
+
+##### Request parameters - unverified Customer and receive-only User
+
+| Parameter    | Required | Type   | Description                                                                         |
+| ------------ | -------- | ------ | ----------------------------------------------------------------------------------- |
+| firstName    | no       | string | Customer's first name.                                                              |
+| lastName     | no       | string | Customer's last name.                                                               |
+| email        | no       | string | Customer's email address.                                                           |
+| businessName | no       | string | Customer's registered business name. An empty string value will unset businessName. |
+
+##### Request parameters - verified Customer
+
+| Parameter  | Required | Type   | Description                                                                                                  |
+| ---------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| email      | no       | string | Customer's email address.                                                                                    |
+| ipAddress  | no       | string | Customer's IP address.                                                                                       |
+| address1   | no       | string | First line of the street address of the customer's permanent residence. **Note:** PO Boxes are not allowed.  |
+| address2   | no       | string | Second line of the street address of the customer's permanent residence. **Note:** PO Boxes are not allowed. |
+| city       | no       | string | City of customer's permanent residence.                                                                      |
+| state      | no       | string | Two letter abbreviation of the state in which the customer resides. e.g. `NY`.                               |
+| postalCode | no       | string | Postal code of customer's permanent residence. Should be a five digit postal code, e.g. `50314`.             |
+| phone      | no       | string | Customer's 10 digit phone number. No hyphens or other separators, e.g. `3334447777`.                         |
+
+##### Request parameters - verified Customer with type=business
+
+In addition to the table above, business verified Customers can update the following fields.
+
+| Parameter       | Required | Type   | Description                                                                        |
+| --------------- | -------- | ------ | ---------------------------------------------------------------------------------- |
+| doingBusinessAs | no       | string | Name that is different from the officially registered name of Customer’s business. |
+| website         | no       | string | https://www.domain.com                                                             |
+
+### Upgrade an unverified Customer to verified Customer
+
+An unverified Customer can be upgraded to a verified Customer by supplying the necessary information required to create a verified Customer. Reference [this table](#request-parameters---verified-customer) for required information.
+
+### Suspend a Customer
+
+Unverified and Verified Customers can be suspended by specifying a status of `suspended` in your request. You'll need to contact Dwolla to unsuspend a Customer.
+
+##### Request parameters
+
+| Parameter | Required | Type   | Description           |
+| --------- | -------- | ------ | --------------------- |
+| status    | yes      | string | Value of `suspended`. |
+
+### Deactivate a Customer
+
+Customers can be deactivated by specifying a status of `deactivated` in your request. A Customer **cannot** be deactivated if the Customer has a `suspended` verification status. Customers can be systematically deactivated by Dwolla if certain ACH return codes are triggered on bank transfer failures.
+
+##### Request parameters
+
+| Parameter | Required | Type   | Description             |
+| --------- | -------- | ------ | ----------------------- |
+| status    | yes      | string | Value of `deactivated`. |
+
+### Reactivate a Customer
+
+Customers can be reactivated by specifying a status of `reactivated` in your request. Reactivated Customers will be moved to the status they were in prior to being deactivated.
+
+##### Request parameters
+
+| Parameter | Required | Type   | Description             |
+| --------- | -------- | ------ | ----------------------- |
+| status    | yes      | string | Value of `reactivated`. |
+
+### Retry verification
+
+If the verified Customer has a status of `retry`, some information may have been miskeyed. You have one more opportunity to correct any mistakes using this endpoint. This time, you’ll need to provide the Customer’s full SSN. If the additional attempt fails, the resulting status will be either `document` or `suspended`.
+
+### Customer must be in the retry state:
+
+```bash
+{
+    "_links": {
+        "deactivate": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "edit-form": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+            "resource-type": "customer"
+        },
+        "edit": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "funding-sources": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f/funding-sources",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "retry-verification": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "transfers": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        }
+    },
+    "id": "53863b11-1758-47c8-821f-00e6a126f97f",
+    "firstName": "retry",
+    "lastName": "doe",
+    "email": "jdoe@nomail.com",
+    "type": "personal",
+    "status": "retry",
+    "created": "2017-11-06T20:11:13.430Z",
+    "address1": "99-99 33rd St",
+    "city": "Some City",
+    "state": "NY",
+    "postalCode": "11101"
+}
+```
+
+### Request and response
+
+This example goes through retry verification for a [Personal Verified Customer](https://developers.dwolla.com/resources/personal-verified-customer/handling-verification-statuses-personal.html#handling-status-retry). For a Business Verified Customer in `retry` status, all fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN. To learn more about retry for business verified Customers and view further code examples, refer to our [business verified Customer developer resource article](https://developers.dwolla.com/resources/business-verified-customer/handling-controller-and-customer-statuses.html#handling-retry-status).
+
+```raw
+POST https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "jdoe@nomail.com",
+  "ipAddress": "10.10.10.10",
+  "type": "personal",
+  "address1": "221 Corrected Address St.",
+  "address2": "Apt 201",
+  "city": "San Francisco",
+  "state": "CA",
+  "postalCode": "94104",
+  "dateOfBirth": "1970-07-11",
+  "ssn": "123-45-6789"
+}
+
+...
+
+{
+    "_links": {
+        "deactivate": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "receive": {
+            "href": "https://api-sandbox.dwolla.com/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "edit-form": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+            "resource-type": "customer"
+        },
+        "edit": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "funding-sources": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f/funding-sources",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "transfers": {
+            "href": "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "send": {
+            "href": "https://api-sandbox.dwolla.com/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        }
+    },
+    "id": "53863b11-1758-47c8-821f-00e6a126f97f",
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "jdoe@nomail.com",
+    "type": "personal",
+    "status": "verified",
+    "created": "2017-11-06T20:11:13.430Z",
+    "address1": "221 Corrected Address St.",
+    "address2": "Apt 201",
+    "city": "San Francisco",
+    "state": "CA",
+    "postalCode": "94104"
+}
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customerUrl = 'https://api.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f';
+$customer = $customersApi->updateCustomer(array (
+  'firstName' => 'John',
+  'lastName' => 'Doe',
+  'email' => 'jdoe@nomail.com',
+  'ipAddress' => '10.10.10.10',
+  'type' => 'personal',
+  'address1' => '221 Corrected Address St.',
+  'address2' => 'Apt 201',
+  'city' => 'San Francisco',
+  'state' => 'CA',
+  'postalCode' => '94104',
+  'dateOfBirth' => '1970-07-11',
+  'ssn' => '123-45-6789',
+), $customerUrl);
+
+$customer->id; # => "53863b11-1758-47c8-821f-00e6a126f97f"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f'
+request_body = {
+      "firstName" => "John",
+       "lastName" => "Doe",
+          "email" => "jdoe@nomail.com",
+      "ipAddress" => "10.10.10.10",
+           "type" => "personal",
+       "address1" => "221 Corrected Address St.",
+       "address2" => "Apt 201",
+           "city" => "San Francisco",
+          "state" => "CA",
+     "postalCode" => "94104",
+    "dateOfBirth" => "1970-07-11",
+            "ssn" => "123-45-6789"
+}
+
+customer = app_token.post customer_url, request_body
+customer.id # => "53863b11-1758-47c8-821f-00e6a126f97f"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f'
+request_body = {
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "jdoe@nomail.com",
+  "ipAddress": "10.10.10.10",
+  "type": "personal",
+  "address1": "221 Corrected Address St.",
+  "address2": "Apt 201",
+  "city": "San Francisco",
+  "state": "CA",
+  "postalCode": "94104",
+  "dateOfBirth": "1970-07-11",
+  "ssn": "123-45-6789"
+}
+
+customer = app_token.post(customer_url, request_body)
+customer.body.id # => '53863b11-1758-47c8-821f-00e6a126f97f'
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f";
+var requestBody = {
+  firstName: "John",
+  lastName: "Doe",
+  email: "johndoe@dwolla.com",
+  ipAddress: "10.10.10.10",
+  type: "personal",
+  address1: "221 Corrected Address St.",
+  address2: "Fl 8",
+  city: "Ridgewood",
+  state: "NY",
+  postalCode: "11385",
+  dateOfBirth: "1990-07-11",
+  ssn: "202-99-1516",
+};
+
+appToken.post(customerUrl, requestBody).then((res) => res.body.id); // => '53863b11-1758-47c8-821f-00e6a126f97f'
+```
+
+### If you try more than once, or Customer is not in retry state:
+
+```bash
+{
+  "code": "InvalidResourceState",
+  "message": "Resource cannot be modified."
+}
+```
+
+### Request parameters - retry verified **personal** Customer
+
+| Parameter   | Required | Type   | Description                                                                                                  |
+| ----------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------ |
+| firstName   | yes      | string | Customer's first name.                                                                                       |
+| lastName    | yes      | string | Customer's last name.                                                                                        |
+| email       | yes      | string | Customer's email address.                                                                                    |
+| ipAddress   | no       | string | Customer's IP address.                                                                                       |
+| type        | yes      | string | Either `personal` or `business`. If business, see above for additional required information.                 |
+| address1    | yes      | string | First line of the street address of the Customer's permanent residence. **Note:** PO Boxes are not allowed.  |
+| address2    | no       | string | Second line of the street address of the Customer's permanent residence. **Note:** PO Boxes are not allowed. |
+| city        | yes      | string | City of Customer's permanent residence.                                                                      |
+| state       | yes      | string | Two letter abbreviation of the state in which the customer resides, e.g. `CA`.                               |
+| postalCode  | yes      | string | Postal code of Customer's permanent residence. Should be a five digit postal code, e.g. `50314`.             |
+| dateOfBirth | yes      | string | Customer's date of birth in `YYYY-MM-DD` format. Must be between 18 to 125 years of age.                     |
+| ssn         | yes      | string | Customer's **full** Social Security Number.                                                                  |
+| phone       | no       | string | Customer's 10 digit phone number. No hyphens or other separators, e.g. `3334447777`.                         |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                 |
+| ----------- | --------------------------------------- |
+| 400         | Duplicate customer or validation error. |
+| 403         | Not authorized to create customers.     |

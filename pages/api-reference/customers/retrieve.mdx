@@ -1,0 +1,86 @@
+---
+layout: guides
+title: "Retrieve a customer"
+guide:
+  step: 2
+meta:
+  title: "Retrieve Customer | Dwolla API Documentation"
+---
+
+# Retrieve a customer
+
+This section shows you how to retrieve a Customer belonging to the authorized Dwolla Master Account. Each `Customer` id is a part of its location resource. You can pass either an `id` or the entire `location` resource to make this request.
+
+### HTTP request
+
+`GET https://api.dwolla.com/customers/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Customer unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                 |
+| ----------- | --------------------------------------- |
+| 403         | Not authorized to get a customer by id. |
+| 404         | Customer not found.                     |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8"
+    }
+  },
+  "id": "07d59716-ef22-4fe6-98e8-f3190233dfb8",
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "janedoe@nomail.com",
+  "type": "unverified",
+  "status": "unverified",
+  "created": "2015-09-03T23:56:10.023Z"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8'
+
+customer = app_token.get customer_url
+customer.firstName # => "Jane"
+```
+
+```php
+<?php
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->getCustomer($customerUrl);
+$customer->firstName; # => "Jane"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8'
+
+customer = app_token.get(customer_url)
+customer.body['firstName']
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8";
+
+appToken.get(customerUrl).then((res) => res.body.firstName); // => 'Jane'
+```

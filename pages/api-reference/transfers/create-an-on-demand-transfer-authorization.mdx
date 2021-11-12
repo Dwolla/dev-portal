@@ -1,0 +1,74 @@
+---
+layout: guides
+title: "Create an on-demand transfer authorization"
+guide:
+  step: 7
+meta:
+  title: "Create an on Demand Transfer Authorization | Dwolla API Documentation"
+---
+
+# Create an on-demand transfer authorization
+
+This section outlines how to create an on-demand bank transfer authorization for your Customer. On-demand authorization allows Customers to authorize Dwolla to transfer variable amounts from their bank account using ACH at a later point in time for products or services delivered. This on-demand authorization is supplied along with the Customer's bank details when creating a [new Customer funding source](#create-a-funding-source-for-a-customer).
+
+When on-demand authorization is enabled for your application the Customer is presented with text on a “add bank account” screen in your user interface(UI) giving authorization to Dwolla for future variable payments. **Note:** On-demand payments come as part of our Dwolla API and requires additional approval before getting started. Please [contact Sales](https://www.dwolla.com/contact?b=apidocs) or your account manager for more information on enabling.
+
+<AlertBar variation="info">
+  On-demand payments come as part of our Dwolla API and requires additional
+  approval before getting started. Please{" "}
+  <a href="https://www.dwolla.com/contact?b=apidocs"> contact sales</a> or your
+  account manager for more information on enabling this feature.
+</AlertBar>
+
+### HTTP request
+
+`POST https://api.dwolla.com/on-demand-authorizations`
+
+### HTTP status and error codes
+
+| HTTP Status | Code      | Description                                                    |
+| ----------- | --------- | -------------------------------------------------------------- |
+| 403         | Forbidden | The supplied credentials are not authorized for this resource. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/on-demand-authorizations
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388"
+    }
+  },
+  "bodyText": "I agree that future payments to Company ABC inc. will be processed by the Dwolla payment system from the selected account above. In order to cancel this authorization, I will change my payment settings within my Company ABC inc. account.",
+  "buttonText": "Agree & Continue"
+}
+```
+
+```ruby
+on_demand_authorization = app_token.post "on-demand-authorizations"
+on_demand_authorization.buttonText # => "Agree & Continue"
+```
+
+```php
+<?php
+$onDemandApi = new DwollaSwagger\OndemandauthorizationsApi($apiClient);
+
+$onDemandAuth = $onDemandApi->createAuthorization();
+$onDemandAuth->_links["self"]->href; # => "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+on_demand_authorization = app_token.post('on-demand-authorizations')
+on_demand_authorization.body['buttonText'] # => 'Agree & Continue'
+```
+
+```javascript
+appToken.post("on-demand-authorizations").then((res) => res.body.buttonText); // => "Agree & Continue"
+```

@@ -1,0 +1,89 @@
+---
+layout: guides
+title: "Retrieve a business classification"
+guide:
+  step: 6
+meta:
+  title: "Retrieve Business Classification | Dwolla API Documentation"
+---
+
+# Retrieve a business classification
+
+This section shows you how to retrieve an Id from a list of industry classifications to be passed in the `businessClassification` parameter when [creating a Business Verified Customer](#request-parameters---verified-strongbusinessstrong-customer-sole-proprietorship-only).
+
+### HTTP request
+
+`GET https://api.dwolla.com/business-classifications/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                |
+| --------- | -------- | ------ | ------------------------------------------ |
+| id        | yes      | string | Business classification unique identifier. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203"
+    }
+  },
+  "_embedded": {
+    "industry-classifications": [
+      {
+        "id": "9ed3cf58-7d6f-11e3-81a4-5404a6144203",
+        "name": "Toys and games"
+      },
+      {
+        "id": "9ed3cf50-7d6f-11e3-8ae8-5404a6144203",
+        "name": "Music"
+      },
+      {
+        ...........
+      }
+    ]
+  },
+  "id": "9ed3a866-7d6f-11e3-a0ce-5404a6144203",
+  "name": "Entertainment and media"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+business_classification_url = 'https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203'
+
+business_classification = app_token.get business_classification_url
+business_classification.name # => "Entertainment and media"
+```
+
+```php
+<?php
+$businessClassificationUrl = 'https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203';
+
+$businessClassificationsApi = new DwollaSwagger\BusinessclassificationsApi($apiClient);
+
+$busClassifications = $businessClassificationsApi->getBusinessClassification($businessClassificationUrl);
+$busClassifications->name; # => "Entertainment and media"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+business_classification_url = 'https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203'
+
+busClassification = app_token.get(business_classification_url)
+busClassification.body['name']
+```
+
+```javascript
+var businessClassificationUrl =
+  "https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203";
+
+appToken.get(businessClassificationUrl).then((res) => res.body.name); // => 'Entertainment and media'
+```

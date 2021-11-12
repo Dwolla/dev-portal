@@ -1,0 +1,129 @@
+---
+layout: guides
+title: "Verify micro-deposits"
+guide:
+  step: 8
+meta:
+  title: "Verify Micro Deposits | Dwolla API Documentation"
+---
+
+# Verify micro-deposits
+
+This section covers how to verify micro-deposits for bank verification. Reference the [funding source verification](https://developers.dwolla.com/resources/funding-source-verification.html) resource article for more information on the micro-deposit method of bank account verification. **Note:** Micro-deposits do not expire. Micro-deposits can be verified anytime in the future after they have a `processed` status in the Dwolla system.
+
+### HTTP request
+
+`POST https://api.dwolla.com/funding-sources/{id}/micro-deposits`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                     |
+| --------- | -------- | ------ | ------------------------------------------------------------------------------- |
+| id        | yes      | string | id of funding source to verify micro-deposits on.                               |
+| amount1   | yes      | string | An amount JSON object of first micro-deposit. Contains `value` and `currency`.  |
+| amount2   | yes      | string | An amount JSON object of second micro-deposit. Contains `value` and `currency`. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code                 | Description                                                                                                                                          |
+| ----------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 200         | OK                   | Micro-deposits successfully verified.                                                                                                                |
+| 202         | TryAgainLater        | Micro-deposits have not have not settled to destination bank. A Customer can verify these amounts after micro-deposits have processed to their bank. |
+| 400         | ValidationError      | InvalidAmount, "Wrong amount(s)."                                                                                                                    |
+| 400         | MaxNumberOfResources | Micro-deposits already initiated for this funding source.                                                                                            |
+| 403         | InvalidResourceState | "Too many attempts.", "Bank already verified."                                                                                                       |
+| 404         | NotFound             | Micro-deposits not initiated,Funding source not found                                                                                                |
+| 500         | Unknown              | "Verify micro-deposits returned an unknown error."                                                                                                   |
+
+#### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits
+Authorization: Bearer 8tJjM7iTjujLthkbVPMUcHLqMNw4uv5kG712g9j1RRBHplGpwo
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+
+{
+    "amount1": {
+        "value": "0.03",
+        "currency": "USD"
+    },
+    "amount2": {
+        "value": "0.09",
+        "currency": "USD"
+    }
+}
+
+HTTP 200 OK
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
+request_body = {
+  :amount1 => {
+    :value => "0.03",
+    :currency => "USD"
+  },
+  :amount2 => {
+    :value => "0.09",
+    :currency => "USD"
+  }
+}
+
+app_token.post "#{funding_source_url}/micro-deposits", request_body
+```
+
+```javascript
+var fundingSourceUrl =
+  "https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909";
+var requestBody = {
+  amount1: {
+    value: "0.03",
+    currency: "USD",
+  },
+  amount2: {
+    value: "0.09",
+    currency: "USD",
+  },
+};
+
+appToken.post(`${fundingSourceUrl}/micro-deposits`, requestBody);
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
+request_body = {
+    'amount1': {
+        'value': '0.03',
+        'currency': 'USD'
+    },
+    'amount2': {
+        'value': '0.09',
+        'currency': 'USD'
+    }
+}
+
+app_token.post('%s/micro-deposits' % funding_source_url, request_body)
+```
+
+```php
+<?php
+$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909';
+
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fsApi->microDeposits([
+  'amount1' => [
+    'value' => '0.03',
+    'currency' => 'USD'
+  ],
+  'amount2' => [
+    'value' => '0.09',
+    'currency' => 'USD'
+  ]],
+  $fundingSourceUrl
+);
+?>
+```

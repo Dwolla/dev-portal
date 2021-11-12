@@ -1,0 +1,113 @@
+---
+layout: guides
+title: "List webhooks for a webhook subscription"
+guide:
+  step: 6
+meta:
+  title: "List Webhooks for a Webhook Subscription | Dwolla API Documentation"
+---
+
+# List webhooks for a webhook subscription
+
+This section covers how to view all fired [webhooks](#webhooks) for a webhook subscription. Webhook search is supported by passing in optional querystring parameters such as: `search` which represents a term to search on, `startDate` and `endDate`. **Note:** Dwolla will only guarantee access to webhook data through the API over a rolling 30-day period.
+
+### HTTP request
+
+`GET https://api.dwolla.com/webhook-subscriptions/{id}/webhooks`
+
+### Request parameters
+
+| Parameter | Required | Type    | Description                                                                                                                              |
+| --------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string  | Webhook subscription unique identifier.                                                                                                  |
+| limit     | no       | integer | How many results to return. Defaults to 25.                                                                                              |
+| offset    | no       | integer | How many results to skip.                                                                                                                |
+| startDate | no       | string  | Only include webhooks sent after this date. ISO-8601 format: YYYY-MM-DD. Can optionally be used with endDate to specify a date range.    |
+| endDate   | no       | string  | Only include webhooks sent before this date. ISO-8601 format: YYYY-MM-DD. Can optionally be used with startDate to specify a date range. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/webhook-subscriptions/10d4133e-b308-4646-b276-40d9d36def1c/webhooks
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {},
+  "total": 0,
+  "_embedded": {
+      "webhooks": [
+          {
+            "_links": {},
+            "id": "string",
+            "topic": "string",
+            "accountId": "string",
+            "eventId": "string",
+            "subscriptionId": "string",
+            "attempts": [
+              {
+                "id": "string",
+                "request": {
+                  "created": "2015-07-23T14:19:37.006Z",
+                  "url": "string",
+                  "headers": [
+                    {
+                      "name": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "body": "string"
+                },
+                "response": {
+                  "created": "2015-07-23T14:19:37.006Z",
+                  "headers": [
+                    {
+                      "name": "string",
+                      "value": "string"
+                    }
+                  ],
+                  "statusCode": 0,
+                  "body": "string"
+                }
+              }
+          }
+      ]
+  }
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+
+hooks = app_token.get "#{webhook_subscription_url}/webhooks"
+hooks.total # => 5
+```
+
+```javascript
+var webhookSubscriptionUrl =
+  "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
+
+appToken
+  .get(`${webhookSubscriptionUrl}/webhooks`)
+  .then((res) => res.body.total); // => 5
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+
+hooks = app_token.get('%s/webhooks' % webhook_subscription_url)
+hooks.body['total'] # => 5
+```
+
+```php
+<?php
+$webhookApi = new DwollaSwagger\WebhooksApi($apiClient);
+
+$hooks = $webhookApi->hooksById('https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216');
+$hooks->total; # => 5
+?>
+```

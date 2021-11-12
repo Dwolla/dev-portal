@@ -1,0 +1,132 @@
+---
+layout: guides
+title: "List funding sources for a customer"
+guide:
+  step: 5
+meta:
+  title: "List Funding Sources for a Customer | Dwolla API Documentation"
+---
+
+# List funding sources for a customer
+
+Retrieve a list of funding sources that belong to a Customer. By default, all funding sources are returned unless the `removed` query string parameter is set to `false` in the request.
+
+### HTTP request
+
+`GET https://api.dwolla.com/customers/{id}/funding-sources`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                                                                                                                |
+| --------- | -------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string | Customer's unique identifier.                                                                                                                                              |
+| removed   | no       | string | Filter removed funding sources. Defaults to `true`. Set to `false` to filter out removed funding sources from list (i.e. - /customers/{id}/funding-sources?removed=false). |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                 |
+| ----------- | --------------------------------------- |
+| 403         | Not authorized to list funding sources. |
+| 404         | Customer not found.                     |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/funding-sources
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/funding-sources"
+    },
+    "customer": {
+      "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733"
+    }
+  },
+  "_embedded": {
+    "funding-sources": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/ab9cd5de-9435-47af-96fb-8d2fa5db51e8"
+          },
+          "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733"
+          },
+          "with-available-balance": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/ab9cd5de-9435-47af-96fb-8d2fa5db51e8"
+          }
+        },
+        "id": "ab9cd5de-9435-47af-96fb-8d2fa5db51e8",
+        "status": "verified",
+        "type": "balance",
+        "name": "Balance",
+        "created": "2015-10-02T21:00:28.153Z",
+        "removed": false,
+        "channels": []
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/98c209d3-02d6-4bee-bc0f-61e18acf0e33"
+          },
+          "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733"
+          }
+        },
+        "id": "98c209d3-02d6-4bee-bc0f-61e18acf0e33",
+        "status": "verified",
+        "type": "bank",
+        "bankAccountType": "checking",
+        "name": "Jane Doe’s Checking",
+        "created": "2015-10-02T22:03:45.537Z",
+        "removed": false,
+        "channels": [
+            "ach"
+        ],
+        "fingerprint": "4cf31392f678cb26c62b75096e1a09d4465a801798b3d5c3729de44a4f54c794"
+      }
+    ]
+  }
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733'
+
+funding_sources = app_token.get "#{customer_url}/funding-sources"
+funding_sources._embedded['funding-sources'][0].name # => "Jane Doe’s Checking"
+```
+
+```php
+<?php
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733';
+
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSources = $fsApi->getCustomerFundingSources($customerUrl);
+$fundingSources->_embedded->{'funding-sources'}[0]->name; # => "Jane Doe’s Checking"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733'
+
+funding_sources = app_token.get('%s/funding-sources' % customer_url)
+funding_sources.body['_embedded']['funding-sources'][0]['name'] # => 'Jane Doe’s Checking'
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733";
+
+appToken
+  .get(`${customerUrl}/funding-sources`)
+  .then((res) => res.body._embedded["funding-sources"][0].name); // => 'Jane Doe’s Checking'
+```

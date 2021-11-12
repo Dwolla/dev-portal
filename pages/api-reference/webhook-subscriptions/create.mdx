@@ -1,0 +1,83 @@
+---
+layout: guides
+title: "Create a webhook subscription"
+guide:
+  step: 1
+meta:
+  title: "Create a Webhook Subscription | Dwolla API Documentation"
+---
+
+# Create a webhook subscription
+
+This section details how to create a webhook subscription to deliver [webhooks](#webhooks) to a specified URL.
+
+### HTTP request
+
+`POST https://api.dwolla.com/webhook-subscriptions`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                                                                                                                                                                                                   |
+| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url       | yes      | string | Where Dwolla should deliver the webhook notification.                                                                                                                                                                                                         |
+| secret    | yes      | string | A random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity](https://developers.dwolla.com/guides/webhooks/validating-webhooks.html) of the webhook request from Dwolla. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code                 | Description                                           |
+| ----------- | -------------------- | ----------------------------------------------------- |
+| 400         | MaxNumberOfResources | The maximum number of subscriptions has been reached. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/webhook-subscriptions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+{
+    "url": "http://myapplication.com/webhooks",
+    "secret": "sshhhhhh"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :url => "http://myawesomeapplication.com/destination",
+  :secret => "your webhook secret"
+}
+subscription = app_token.post "webhook-subscriptions", request_body
+subscription.response_headers[:location] # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
+```
+
+```javascript
+var requestBody = {
+  url: "http://myawesomeapplication.com/destination",
+  secret: "your webhook secret",
+};
+appToken
+  .post("webhook-subscriptions", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'url': 'http://myapplication.com/webhooks',
+  'secret': 'sshhhhhh'
+}
+subscription = app_token.post('webhook-subscriptions', request_body)
+subscription.headers['location'] # => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+```
+
+```php
+<?php
+$webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
+$subscription = $webhookApi->create(array (
+  'url' => 'http://myapplication.com/webhooks',
+  'secret' => 'sshhhhhh',
+));
+$subscription; # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
+?>
+```

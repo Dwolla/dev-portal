@@ -1,0 +1,39 @@
+---
+layout: guides
+title: "Python"
+guide:
+  step: 2
+meta:
+  title: "Python SDK | Dwolla API Documentation"
+---
+
+# Python
+
+`dwollav2` is available on [PyPi](https://pypi.python.org/pypi/dwollav2) with
+[source code](https://github.com/Dwolla/dwolla-v2-python) available on our GitHub page. More
+information is available on the project's README.
+
+### Installation
+
+```bash
+pip install dwollav2
+```
+
+### Quickstart
+
+Let's list some `Customer` objects:
+
+```python
+import dwollav2
+
+# Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
+app_key = '...'
+app_secret = '...'
+client = dwollav2.Client(key = app_key,
+                         secret = app_secret,
+                         environment = 'sandbox') # optional - defaults to production
+
+app_token = client.Auth.client()
+
+customers = app_token.get('customers', {'limit': 10})
+```

@@ -1,0 +1,82 @@
+---
+layout: guides
+title: "Create an IAV token for dwolla.js"
+guide:
+  step: 3
+meta:
+  title: "Create an IAV Token for dwolla.js | Dwolla API Documentation"
+---
+
+# Create an IAV token for dwolla.js
+
+Dwolla.js is a client-side library that allows you `add and verify` a funding source for your Customer without having any sensitive data hit your server. This section details how to create a token that will be sent to the client and used to authenticate the HTTP request asking Dwolla to `add and verify` a new funding source.
+
+Refer to our [Dwolla.js developer resource article](https://developers.dwolla.com/resources/dwolla-js/instant-account-verification.html) to learn more on how to utilize this single-use iav-token to `add and verify` a funding source for a Customer.
+
+### HTTP Request
+
+`POST https://api.dwolla.com/customers/{id}/iav-token`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Customer unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message             |
+| ----------- | ------------------- |
+| 404         | Customer not found. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/iav-token
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+HTTP/1.1 200 OK
+
+{
+ "_links": {
+   "self": {
+     "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/iav-token"
+   }
+ },
+ "token": "4adF858jPeQ9RnojMHdqSD2KwsvmhO7Ti7cI5woOiBGCpH5krY"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
+
+customer = app_token.post "#{customer_url}/iav-token"
+customer.token # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6";
+
+appToken.post(`${customerUrl}/iav-token`).then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'http://api.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
+
+app_token.post('%s/iav-token' % customer_url)
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$iavToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6");
+$iavToken->token; # => "lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL"
+?>
+```

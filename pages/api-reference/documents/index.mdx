@@ -1,0 +1,54 @@
+---
+layout: guides
+title: "Overview"
+group:
+  title: Documents
+  weight: 9
+guide:
+  step: 0
+meta:
+  title: API Reference | Documents
+  description: "Create, list, and retrieve documents from Customers and Beneficial Owners."
+---
+
+# Documents
+
+Verified Customers of type `personal` or `business` and of status `document` require color photos of identifying documents to be uploaded for manual review in order to be verified. Currently, SDK support for document upload only exists for Ruby, Node.js, and Python. To upload a document using other languages, you must use an external HTTP library.
+
+For more information on handling the Customer verification status of `document`, reference our [Customer verification](https://developers.dwolla.com/resources/customer-verification/handling-verification-statuses.html) resource article.
+
+### Document resource
+
+| Parameter         | Description                                                                                                                                                                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                | Document unique identifier                                                                                                                                                                                                                     |
+| type              | Either `passport`, `license`, `idCard`, or `other`. Must be a color scan of US Government issued identification. <br /> Refer to the [acceptable documents](#acceptable-documents) section for more information on what each type is used for. |
+| status            | Either `pending` or `reviewed`. When a document has been manually reviewed by Dwolla, its status will be `reviewed`. A reviewed document does not necessarily indicate that the customer has completed the identity verification process.      |
+| created           | ISO 8601 Timestamp of document upload time and date.                                                                                                                                                                                           |
+| failureReason     | The reason an uploaded document was rejected. Can be: `ScanNotReadable`, `ScanNotUploaded`, `ScanIdExpired`, `ScanIdTypeNotSupported`, `ScanDobMismatch`, `ScanNameMismatch` or `ScanFailedOther`.                                             |
+| allFailureReasons | An array of `reason`s and `description`s for when an uploaded document is rejected for multiple reasons.                                                                                                                                       |
+
+```bash
+{
+  "_links": {
+    "self": {
+      "href": "https://api.dwolla.com/documents/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+    }
+  },
+  "id": "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc",
+  "status": "reviewed",
+  "type": "passport",
+  "created": "2015-09-29T21:42:16.000Z",
+  "failureReason": "ScanDobMismatch",
+  "allFailureReasons": [
+      {
+          "reason": "ScanDobMismatch",
+          "description": "Date of Birth mismatch"
+      },
+      {
+          "reason": "ScanIdExpired",
+          "description": "ID is expired"
+      }
+  ]
+}
+```

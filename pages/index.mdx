@@ -238,6 +238,12 @@ export default function HomePage() {
         <CardGridWrapper>
           <CardGrid variant="home">
             <Card
+              icon={apiReferenceIcon}
+              topic="API Reference"
+              description="View details for all of Dwolla’s API endpoints with a complete reference."
+              link={{ href: "/api-reference" }}
+            />
+            <Card
               icon={guideIcon}
               topic="Guides"
               description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
@@ -248,12 +254,6 @@ export default function HomePage() {
               topic="Concepts"
               description="Transform your use case to business and functional requirements."
               link={{ href: "/concepts" }}
-            />
-            <Card
-              icon={apiReferenceIcon}
-              topic="API Reference"
-              description="View details for all of Dwolla’s API endpoints with a complete reference."
-              link={{ href: "https://docs.dwolla.com/", external: true }}
             />
           </CardGrid>
         </CardGridWrapper>

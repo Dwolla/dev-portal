@@ -1,0 +1,95 @@
+---
+layout: guides
+title: "Retrieve a label"
+guide:
+  step: 2
+meta:
+  title: "Retrieve a Label | Dwolla API Documentation"
+---
+
+# Retrieve a label
+
+This section outlines how to retrieve a label by its unique identifier.
+
+### HTTP request
+
+`GET https://api.dwolla.com/labels/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                  |
+| --------- | -------- | ------ | ---------------------------- |
+| id        | yes      | string | A Label's unique identifier. |
+
+### Request and response
+
+```raw
+GET https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "label"
+        },
+        "update": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "ledger-entries": {
+            "href": "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc/ledger-entries",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ledger-entry"
+        },
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/315a9456-3750-44bf-8b41-487b10d1d4bb",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        }
+    },
+    "id": "7e042ffe-e25e-40d2-b86e-748b98845ecc",
+    "created": "2019-05-15T22:19:09.635Z",
+    "amount": {
+        "value": "10.00",
+        "currency": "USD"
+    }
+}
+```
+
+```php
+<?php
+$labelUrl = "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc";
+
+$labelsApi = new DwollaSwagger\LabelsApi($apiClient);
+
+$label = $labelsApi->getLabel($labelUrl);
+$label->id; # => "7e042ffe-e25e-40d2-b86e-748b98845ecc"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+label_url = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
+
+label = app_token.get label_url
+label.id # => "7e042ffe-e25e-40d2-b86e-748b98845ecc"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+label_url = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
+
+label = app_token.get(label_url)
+label.body['id'] # => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
+```
+
+```javascript
+var labelUrl =
+  "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc";
+
+appToken.get(labelUrl).then((res) => res.body.id); // => '7e042ffe-e25e-40d2-b86e-748b98845ecc'
+```

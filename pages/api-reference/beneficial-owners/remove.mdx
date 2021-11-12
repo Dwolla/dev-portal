@@ -1,0 +1,92 @@
+---
+layout: guides
+title: "Remove a beneficial owner"
+guide:
+  step: 5
+meta:
+  title: "Remove a Beneficial Owner | Dwolla API Documentation"
+---
+
+# Remove a beneficial owner
+
+Delete a beneficial owner. A removed beneficial owner cannot be retrieved after being removed.
+
+### HTTP request
+
+`DELETE https://api.dwolla.com/beneficial-owners/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                       |
+| --------- | -------- | ------ | --------------------------------- |
+| id        | yes      | string | id of beneficial owner to delete. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                     |
+| ----------- | --------------------------- |
+| 404         | Beneficial owner not found. |
+
+### Request and response
+
+```raw
+DELETE https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/beneficial-owners/0f394602-d714-4d77-9d58-3a3e8394bcdd",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-owner"
+        }
+    },
+    "id": "0f394602-d714-4d77-9d58-3a3e8394bcdd",
+    "firstName": "B",
+    "lastName": "Owner",
+    "address": {
+        "address1": "123 Main St.",
+        "city": "New York",
+        "stateProvinceRegion": "NY",
+        "country": "US",
+        "postalCode": "10005"
+    },
+    "verificationStatus": "verified"
+}
+
+...
+
+HTTP 200 OK
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+
+app_token.delete beneficial_owner_url
+```
+
+```javascript
+var beneficialOwnerUrl =
+  "https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c";
+
+appToken.delete(beneficialOwnerUrl);
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+
+app_token.delete(beneficial_owner_url)
+```
+
+```php
+<?php
+$beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
+$beneficialOwner = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c';
+$deletedBeneficialOwner = $beneficialOwnersApi->deleteById($beneficialOwner);
+?>
+```

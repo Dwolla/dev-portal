@@ -1,0 +1,37 @@
+---
+layout: guides
+title: "C#"
+guide:
+  step: 4
+meta:
+  title: "C# SDK | Dwolla API Documentation"
+---
+
+# `C#`
+
+`Dwolla.Client` is available on [Nuget](https://www.nuget.org/packages/Dwolla.Client/) with
+[source code](https://github.com/Dwolla/dwolla-v2-csharp) available on our GitHub page. More
+information is available on the project's README.
+
+### Installation
+
+```bash
+Install-Package Dwolla.Client
+```
+
+### Quickstart
+
+Let's list some `Customer` objects:
+
+```bash
+var client = DwollaClient.Create(isSandbox: true);
+
+var tokenRes = await client.PostAuthAsync<AppTokenRequest, TokenResponse>(
+    new Uri($"{client.AuthBaseAddress}/token"),
+    new AppTokenRequest {Key = "...", Secret = "..."});
+
+var headers = new Headers {{"Authorization", $"Bearer {tokenRes.Content.Token}"}};
+var rootRes = (await client.GetAsync<RootResponse>(new Uri(client.ApiBaseAddress), headers)).Content;
+
+var customers = await client.GetAsync<GetCustomersResponse>(rootRes.Links["customers"].Href, headers);
+```

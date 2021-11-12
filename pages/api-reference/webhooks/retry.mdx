@@ -1,0 +1,73 @@
+---
+layout: guides
+title: "Retry a webhook"
+guide:
+  step: 2
+meta:
+  title: "Retry a Webhook | Dwolla API Documentation"
+---
+
+# Retry a webhook
+
+This section details how to retry a webhook by id.
+
+### HTTP Request
+
+`POST https://api.dwolla.com/webhooks/{id}/retries`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description             |
+| --------- | -------- | ------ | ----------------------- |
+| id        | yes      | string | Id of webhook to retry. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message            |
+| ----------- | ------------------ |
+| 404         | Webhook not found. |
+
+### Request and response
+
+```raw
+POST https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8/retries
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8/retries/5aa27a0f-cf99-418d-a3ee-67c0ff99a494
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+webhook_url = 'https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8'
+
+app_token.post "#{webhook_url}/retries"
+```
+
+```php
+<?php
+$webhookUrl = 'https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8';
+
+$webhooksApi = new DwollaSwagger\WebhooksApi($apiClient);
+
+$webhooksApi->retryWebhook($webhookUrl);
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+webhook_url = 'https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8'
+
+app_token.post('%s/retries' % webhook_url)
+```
+
+```javascript
+var webhookUrl =
+  "https://api-sandbox.dwolla.com/webhooks/9ece9660-aa34-41eb-80d7-0125d53b45e8";
+
+appToken.post(`${webhookUrl}/retries`);
+```
