@@ -20,14 +20,14 @@ Configuration of the dwolla object includes: your generated client-token or toke
 
 #### Configure options object
 
-| Parameter   | Type     | Description                                                                                                                                                                     |
-| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| environment | string   | Acceptable values of: `sandbox` or `production`                                                                                                                                 |
-| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles.                                                                                |
-| token       | function | A JSON object that contains a key value pair for `token` - a generated single-use client-token. <br/> Example usage: `token: (req) => Promise.resolve({token: 'token123abcd'})` |
-| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token.                                                                                             |
-| success     | function | A function that gets called upon a successful request from the Component.                                                                                                       |
-| error       | function | A function that gets called when an error occurs in the Component.                                                                                                              |
+| Parameter   | Type     | Description                                                                                                                                                                      |
+| ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| environment | string   | Acceptable values of: `sandbox` or `production`                                                                                                                                  |
+| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles.                                                                                 |
+| token       | function | A JSON object that contains a key value pair for `token` - a generated single-use client-token. <br /> Example usage: `token: (req) => Promise.resolve({token: 'token123abcd'})` |
+| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token.                                                                                              |
+| success     | function | A function that gets called upon a successful request from the Component.                                                                                                        |
+| error       | function | A function that gets called when an error occurs in the Component.                                                                                                               |
 
 ```javascript
 <script>

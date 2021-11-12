@@ -17,7 +17,7 @@ Retrieve an `_embedded` list of business classifications that contains an `_embe
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/business-classifications
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -79,7 +79,7 @@ business_classifications.body['_embedded']['business-classifications'][0]['name'
 ```
 
 ```javascript
-appToken
+dwolla
   .get("business-classifications")
   .then((res) => res.body._embedded["business-classifications"][0].name); // => 'Food retail and service'
 ```

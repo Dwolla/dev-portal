@@ -2,7 +2,7 @@
 layout: guides
 title: "Verify micro-deposits"
 guide:
-  step: 8
+  step: 9
 meta:
   title: "Verify Micro Deposits | Dwolla API Documentation"
 ---
@@ -37,7 +37,7 @@ This section covers how to verify micro-deposits for bank verification. Referenc
 
 #### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits
 Authorization: Bearer 8tJjM7iTjujLthkbVPMUcHLqMNw4uv5kG712g9j1RRBHplGpwo
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -88,7 +88,7 @@ var requestBody = {
   },
 };
 
-appToken.post(`${fundingSourceUrl}/micro-deposits`, requestBody);
+dwolla.post(`${fundingSourceUrl}/micro-deposits`, requestBody);
 ```
 
 ```python

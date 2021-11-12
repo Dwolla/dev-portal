@@ -61,7 +61,7 @@ app_token.post('%s/card-funding-sources-token' % customer_url)
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/247B1BD8-F5A0-4B71-A898-F62F67B8AE1C";
 
-appToken
+dwolla
   .post(`${customerUrl}/card-funding-sources-token`)
   .then((res) => res.body.token); // => 'lr0Ax1zwIpeXXt8sJDiVXjPbwEeGO6QKFWBIaKvnFG0Sm2j7vL'
 ```

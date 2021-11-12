@@ -159,7 +159,7 @@ var requestBody = {
   ssn: "1234",
 };
 
-appToken
+dwolla
   .post("customers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 ```

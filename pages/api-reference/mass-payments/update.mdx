@@ -31,7 +31,7 @@ This section covers how to update a mass payment's status to `pending` which tri
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -79,5 +79,5 @@ var requestBody = {
   status: "pending",
 };
 
-appToken.post(massPaymentUrl, requestBody).then((res) => res.body.status); // => "pending"
+dwolla.post(massPaymentUrl, requestBody).then((res) => res.body.status); // => "pending"
 ```

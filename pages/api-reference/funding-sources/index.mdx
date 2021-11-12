@@ -69,6 +69,31 @@ Adding a debit `card` as a funding source type allows your [Customers](#customer
 | bankName          | The financial institution name.                                                                                                                                                                                                                                                                                                                                                                     |
 | iavAccountHolders | An optional object that includes optional `selected` and `other` parameters. `selected`, a string with the account holder name(s) on file with the financial institution for the IAV selected account. `other`, a list of strings with name(s) of other accounts on file. Only returned for a Customer that added a bank using Dwolla IAV, and if names are returned for the selected bank account. |
 | fingerprint       | Fingerprint is an optional unique identifying string value returned for funding sources of type `bank`. This attribute can be used to check across all Dwolla API Customers if two bank accounts share the same account number and routing number. Removing a funding source does not remove the `fingerprint`.                                                                                     |
+| cardDetails       | A card details JSON object. Included if the funding-source is of type `card`.                                                                                                                                                                                                                                                                                                                       |
+
+#### cardDetails JSON object
+
+| Parameter       | Description                       |
+| --------------- | --------------------------------- |
+| brand           | The brand of the card.            |
+| lastFour        | The last four digit of the card.  |
+| expirationMonth | The expiration month of the card. |
+| expirationYear  | The expiration year of the card.  |
+| nameOnCard      | The name of the cardholder.       |
+
+#### cardDetails example
+
+```bash
+"cardDetails": {
+  "brand": "VISA",
+  "lastFour": "1111",
+  "expirationMonth": 12,
+  "expirationYear": 2024,
+  "nameOnCard": "Jane Doe"
+}
+```
+
+#### Funding source resource example
 
 ```bash
 {

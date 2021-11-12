@@ -22,20 +22,19 @@ npm install dwolla-v2
 Let's fetch a page of customers:
 
 ```javascript
-const dwolla = require("dwolla-v2");
+var Client = require("dwolla-v2").Client;
 
 // Navigate to https://dashboard.dwolla.com/applications (production) or https://dashboard-sandbox.dwolla.com/applications (Sandbox) for your application key and secret.
 const appKey = "...";
 const appSecret = "...";
-const client = new dwolla.Client({
+var dwolla = new Client({
   key: appKey,
   secret: appSecret,
-  environment: "sandbox", // optional - defaults to production
+  environment: "sandbox", // defaults to 'production'
 });
 
-// create a token
-client.auth
-  .client()
-  .then((appToken) => appToken.get("customers", { limit: 10 }))
-  .then((res) => console.log(res.body));
+// GET api.dwolla.com/customers?limit=10&offset=20
+dwolla
+  .get("customers", { limit: 10, offset: 20 })
+  .then((res) => console.log(res.body.total));
 ```

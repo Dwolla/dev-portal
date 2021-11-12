@@ -76,8 +76,8 @@ var requestBody = {
   },
 };
 
-// For Dwolla API applications, an appToken can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
-appToken
+// For Dwolla API applications, an dwolla can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
+dwolla
   .post("transfers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 ```
@@ -200,8 +200,8 @@ transfer.body['status'] # => 'pending'
 var transferUrl =
   "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388";
 
-// For Dwolla API applications, an appToken can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
-appToken.get(transferUrl).then((res) => res.body.status); // => 'pending'
+// For Dwolla API applications, an dwolla can be used for this endpoint. (https://docs.dwolla.com/#application-authorization)
+dwolla.get(transferUrl).then((res) => res.body.status); // => 'pending'
 ```
 
 That’s it! You’ve successfully transferred money from Joe Buyer to Jane Merchant. Please continue to the [Webhooks guide](/guides/webhooks) for information on implementing notifications for your customers about the transfer.

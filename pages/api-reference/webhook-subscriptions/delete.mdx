@@ -15,10 +15,10 @@ Delete a Webhook Subscription to stop receiving Webhooks at the URL specified. I
   Deleting a Webhook Subscription removes all webhooks data associated with that
   subscription. This will make it unable to replay any previous webhooks that
   were sent to the subscribed URL. To temporarily disable webhooks while
-  retaining all webhooks data, a Webhook Subscription may be{" "}
+  retaining all webhooks data, a Webhook Subscription may be
   <a href="/api-reference/webhook-subscriptions/update-a-webhook-subscription">
     paused
-  </a>{" "}
+  </a>
   instead of being deleted.
 </AlertBar>
 
@@ -40,7 +40,7 @@ Delete a Webhook Subscription to stop receiving Webhooks at the URL specified. I
 
 ### Request and response
 
-```raw
+```bash
 DELETE https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -57,7 +57,7 @@ app_token.delete webhook_subscription_url
 var webhookSubscriptionUrl =
   "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
 
-appToken.delete(webhookSubscriptionUrl);
+dwolla.delete(webhookSubscriptionUrl);
 ```
 
 ```python

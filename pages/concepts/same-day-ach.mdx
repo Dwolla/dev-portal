@@ -178,7 +178,7 @@ var requestBody = {
   },
 };
 
-appToken
+dwolla
   .post("transfers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
 ```
@@ -317,7 +317,7 @@ var requestBody = {
   },
 };
 
-appToken
+dwolla
   .post("transfers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
 ```
@@ -412,7 +412,7 @@ transfer.body['status'] # => 'processed'
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388";
 
-appToken.get(transferUrl).then((res) => res.body.status); // => 'processed'
+dwolla.get(transferUrl).then((res) => res.body.status); // => 'processed'
 ```
 
 #### Retrieving a Same Day Credit Transfer
@@ -501,5 +501,5 @@ transfer.body['status'] # => 'processed'
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388";
 
-appToken.get(transferUrl).then((res) => res.body.status); // => 'processed'
+dwolla.get(transferUrl).then((res) => res.body.status); // => 'processed'
 ```

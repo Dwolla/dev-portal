@@ -147,7 +147,7 @@ If the verified Customer has a status of `retry`, some information may have been
 
 This example goes through retry verification for a [Personal Verified Customer](https://developers.dwolla.com/resources/personal-verified-customer/handling-verification-statuses-personal.html#handling-status-retry). For a Business Verified Customer in `retry` status, all fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN. To learn more about retry for business verified Customers and view further code examples, refer to our [business verified Customer developer resource article](https://developers.dwolla.com/resources/business-verified-customer/handling-controller-and-customer-statuses.html#handling-retry-status).
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -314,7 +314,7 @@ var requestBody = {
   ssn: "202-99-1516",
 };
 
-appToken.post(customerUrl, requestBody).then((res) => res.body.id); // => '53863b11-1758-47c8-821f-00e6a126f97f'
+dwolla.post(customerUrl, requestBody).then((res) => res.body.id); // => '53863b11-1758-47c8-821f-00e6a126f97f'
 ```
 
 ### If you try more than once, or Customer is not in retry state:

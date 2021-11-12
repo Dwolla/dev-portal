@@ -17,7 +17,7 @@ This section covers how to retrieve a list of webhook subscriptions that belong 
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/webhook-subscriptions
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -58,7 +58,7 @@ webhook_subscriptions.total # => 1
 ```
 
 ```javascript
-appToken.get("webhook-subscriptions").then((res) => res.body.total); // => 1
+dwolla.get("webhook-subscriptions").then((res) => res.body.total); // => 1
 ```
 
 ```python

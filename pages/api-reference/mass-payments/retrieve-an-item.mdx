@@ -30,7 +30,7 @@ This section covers how to retrieve a mass payment item by its unique identifier
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/mass-payment-items/c1c7d293-63ec-e511-80df-0aa34a9b2388
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -95,5 +95,5 @@ mass_payment_item.body['status'] # => 'success'
 var massPaymentItemUrl =
   "https://api-sandbox.dwolla.com/mass-payment-items/c1c7d293-63ec-e511-80df-0aa34a9b2388";
 
-appToken.get(massPaymentItemUrl).then((res) => res.body.status); // => 'success'
+dwolla.get(massPaymentItemUrl).then((res) => res.body.status); // => 'success'
 ```

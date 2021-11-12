@@ -61,7 +61,7 @@ The `status` query string parameter can be used to list an embedded customers ar
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/customers
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -122,7 +122,7 @@ customer.body['_embedded']['customers'][0]['firstName'] # => 'Jane'
 ```
 
 ```javascript
-appToken
+dwolla
   .get("customers", { limit: 10 })
   .then((res) => res.body._embedded["customers"][0].firstName); // => 'Jane'
 ```

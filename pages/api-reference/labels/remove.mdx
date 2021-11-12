@@ -23,7 +23,7 @@ This section outlines how to remove a Label by its unique identifier. The amount
 
 ### Request and response
 
-```raw
+```bash
 DELETE https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -76,7 +76,7 @@ app_token.delete label_url
 var labelUrl =
   "https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc";
 
-appToken.delete(labelUrl);
+dwolla.delete(labelUrl);
 ```
 
 ```python

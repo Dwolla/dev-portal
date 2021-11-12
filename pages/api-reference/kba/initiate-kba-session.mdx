@@ -23,7 +23,7 @@ This section covers how to generate a new KBA identifier which is used to repres
 
 ### Example request and response
 
-```raw
+```bash
 POST https://api.dwolla.com/customers/33aa88b1-97df-424a-9043-d5f85809858b/kba
 Authorization: Bearer cRahPzURfaIrTKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
 Content-Type: application/json
@@ -64,7 +64,7 @@ kba.headers['location'] # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/61a74e62-e27d-46f1-9fa6-a8e57226bb3e";
 
-appToken.post(`${customerUrl}/kba`).then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
+dwolla.post(`${customerUrl}/kba`).then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4c31'
 ```
 
 ### HTTP Status and Error Codes

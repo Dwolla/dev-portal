@@ -31,7 +31,7 @@ Retrieve a list of funding sources that belong to an Account. By default, all fu
 
 ### Request and response
 
-```raw
+```bash
 GET https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -131,7 +131,7 @@ funding_sources.body['_embedded']['funding-sources'][0]['name'] # => 'Jane Doeâ€
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
 
-appToken
+dwolla
   .get(`${accountUrl}/funding-sources`)
   .then((res) => res.body._embedded["funding-sources"][0].name); // => 'ABC Bank Checking'
 ```

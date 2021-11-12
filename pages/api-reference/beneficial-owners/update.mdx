@@ -56,7 +56,7 @@ This endpoint can be used to update a beneficial owner's information to `retry` 
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -185,7 +185,7 @@ var requestBody = {
   }
 };
 
-appToken
+dwolla
   .post(beneficialOwnerUrl, requestBody)
   .then(res => res.body.id); // => '00cb67f2-768c-4ee3-ac81-73bc4faf9c2b'
 ```

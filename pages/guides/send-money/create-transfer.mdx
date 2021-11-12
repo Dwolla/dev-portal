@@ -97,7 +97,7 @@ var transferRequest = {
   },
 };
 
-appToken.post("transfers", transferRequest).then(function (res) {
+dwolla.post("transfers", transferRequest).then(function (res) {
   res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 });
 ```
@@ -222,7 +222,7 @@ transfer.status # => "processed"
 var transferUrl =
   "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388";
 
-appToken.get(transferUrl).then(function (res) {
+dwolla.get(transferUrl).then(function (res) {
   res.body.status; // => 'processed'
 });
 ```

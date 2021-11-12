@@ -189,7 +189,7 @@ var requestBody = {
   }
 };
 
-appToken
+dwolla
   .post(`${customerUrl}/beneficial-owners`, requestBody)
   .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/beneficial-owners/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 
@@ -273,7 +273,7 @@ beneficial_owner.body['status']
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8";
 
-appToken.get(beneficialOwnerUrl).then((res) => res.body.verificationStatus); // => 'verified'
+dwolla.get(beneficialOwnerUrl).then((res) => res.body.verificationStatus); // => 'verified'
 ```
 
 ## Handling an individual beneficial owner Status
@@ -423,7 +423,7 @@ var requestBody = {
   }
 };
 
-appToken
+dwolla
   .post(beneficialOwnerUrl, requestBody)
   .then(res => res.body.id); // => '07d59716-ef22-4fe6-98e8-f3190233dfb8'
 ```
@@ -520,7 +520,7 @@ body.append("file", fs.createReadStream("mclovin.jpg"), {
 });
 body.append("documentType", "license");
 
-appToken
+dwolla
   .post(`${beneficialOwnerUrl}/documents`, requestBody)
   .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
 ```
@@ -577,7 +577,7 @@ app_token.delete beneficial_owner_url
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 
-appToken.delete(beneficialOwnerUrl);
+dwolla.delete(beneficialOwnerUrl);
 ```
 
 ```python

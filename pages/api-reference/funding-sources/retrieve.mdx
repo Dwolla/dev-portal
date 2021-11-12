@@ -2,7 +2,7 @@
 layout: guides
 title: "Retrieve a funding source"
 guide:
-  step: 4
+  step: 5
 meta:
   title: "Retrieve a Funding Source | Dwolla API Documentation"
 ---
@@ -29,7 +29,7 @@ This section covers how to retrieve a funding source by id.
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -101,5 +101,5 @@ funding_source.body['name'] # => 'Test checking account'
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31";
 
-appToken.get(fundingSourceUrl).then((res) => res.body.name); // => "Test checking account"
+dwolla.get(fundingSourceUrl).then((res) => res.body.name); // => "Test checking account"
 ```

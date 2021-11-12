@@ -74,7 +74,7 @@ var requestBody = {
   ipAddress: "99.99.99.99",
 };
 
-appToken.post("customers", requestBody).then(function (res) {
+dwolla.post("customers", requestBody).then(function (res) {
   res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
 });
 ```

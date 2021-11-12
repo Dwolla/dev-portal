@@ -1,0 +1,92 @@
+---
+layout: guides
+title: "Create a funding sources token for dwolla.js"
+guide:
+  step: 4
+meta:
+  title: "Create a Funding Source Token for dwolla.js | Dwolla API Documentation"
+---
+
+# Create a card funding sources token for dwolla-cards.js
+
+Dwolla-cards.js is a client-side library that allows you to display a form
+hosted by Dwolla via an iframe to your Customers in order to add their card
+funding source by passing details directly to the card service provider. This section
+details how to create a token that will be sent to the client and used to
+authenticate the HTTP request asking Dwolla to add a new card funding source.
+
+Refer to our
+[dwolla-cards.js developer guide](https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card#add-a-debit-card-using-dwolla-cardsjs)
+to learn more about utlizing this single-use `card-funding-sources-token` to add a
+card for a Customer.
+
+### HTTP Request
+
+`POST https://api.dwolla.com/customers/{id}/card-funding-sources-token`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Customer unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Message                                                       |
+| ----------- | ------------------------------------------------------------- |
+| 401         | Application does not have required scopes for creating token. |
+| 404         | Customer not found.                                           |
+
+### Request and response
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/card-funding-sources-token
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+HTTP/1.1 200 OK
+
+{
+ "_links": {
+   "self": {
+     "href": "https://api-sandbox.dwolla.com/customers/5b29279d-6359-4c87-a318-e09095532733/card-funding-sources-token"
+   }
+ },
+ "token": "4e6158394155554b4d74423975727475326a4b4f73436d73616e6c30597a6f61424a7249386545394e7149555533646d55623a41506e693176383545567167454e4d31355563683157675a"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
+
+card_token = app_token.post "#{customer_url}/card-funding-sources-token"
+card_token.token # => "4e6158394155554b4d74423975727475326a4b4f73436d73616e6c30597a6f61424a7249386545394e7149555533646d55623a41506e693176383545567167454e4d31355563683157675a"
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6";
+
+dwolla
+  .post(`${customerUrl}/card-funding-sources-token`)
+  .then((res) => res.body.token); // => '4e6158394155554b4d74423975727475326a4b4f73436d73616e6c30597a6f61424a7249386545394e7149555533646d55623a41506e693176383545567167454e4d31355563683157675a'
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'http://api.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
+
+app_token.post('%s/card-funding-sources-token' % customer_url)
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$cardToken = $customersApi->getCustomerCardToken("https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6");
+$cardToken->token; # => "4e6158394155554b4d74423975727475326a4b4f73436d73616e6c30597a6f61424a7249386545394e7149555533646d55623a41506e693176383545567167454e4d31355563683157675a"
+?>
+```

@@ -2,7 +2,7 @@
 layout: guides
 title: "Retrieve a funding source balance"
 guide:
-  step: 9
+  step: 10
 meta:
   title: "Retrieve a Funding Source Balance | Dwolla API Documentation"
 ---
@@ -17,7 +17,7 @@ There are two different amounts returned in the API response when retrieving a b
 
 ##### Available Balance
 
-The amount of funds readily available in a Verified Customer Record’s balance that can be sent, withdrawn, or [labeled](https://docs.dwolla.com/#labels).
+The amount of funds readily available in a Verified Customer Record’s balance that can be sent, withdbashn, or [labeled](https://docs.dwolla.com/#labels).
 
 ##### Total Balance
 
@@ -41,7 +41,7 @@ Represents the Verified Customer Record’s total balance held in the Dwolla net
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418/balance
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -99,7 +99,5 @@ funding_source = app_token.get('%s/balance' % funding_source_url)
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418";
 
-appToken
-  .get(`${fundingSourceUrl}/balance`)
-  .then((res) => res.body.balance.value);
+dwolla.get(`${fundingSourceUrl}/balance`).then((res) => res.body.balance.value);
 ```

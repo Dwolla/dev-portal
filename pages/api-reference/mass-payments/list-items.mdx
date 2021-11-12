@@ -45,7 +45,7 @@ Individual mass payment items can have a status of `failed`. If an item has a st
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563/items
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -169,5 +169,5 @@ mass_payment_items.body['total'] # => "2"
 var massPaymentUrl =
   "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563";
 
-appToken.get(`${massPaymentUrl}/items`).then((res) => res.body.total); // => 2
+dwolla.get(`${massPaymentUrl}/items`).then((res) => res.body.total); // => 2
 ```

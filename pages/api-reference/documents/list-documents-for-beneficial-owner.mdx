@@ -23,7 +23,7 @@ This section contains information on how to retrieve a list of documents that be
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2/documents
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -63,11 +63,11 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
         "allFailureReasons": [
             {
                 "reason": "ScanDobMismatch",
-                "description": "Date of Birth mismatch"
+                "description": "Scan DOB does not match DOB on account"
             },
             {
                 "reason": "ScanIdExpired",
-                "description": "ID is expired"
+                "description": "ID is expired or missing expiration date"
             }
         ]
       }
@@ -105,7 +105,7 @@ documents.body['total'] # => 2
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2";
 
-token
+dwolla
   .get(`${beneficialOwnerUrl}/documents`)
   .then((res) => res.body._embedded["documents"][0].id); // => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
 ```

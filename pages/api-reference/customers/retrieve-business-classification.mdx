@@ -23,7 +23,7 @@ This section shows you how to retrieve an Id from a list of industry classificat
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -85,5 +85,5 @@ busClassification.body['name']
 var businessClassificationUrl =
   "https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203";
 
-appToken.get(businessClassificationUrl).then((res) => res.body.name); // => 'Entertainment and media'
+dwolla.get(businessClassificationUrl).then((res) => res.body.name); // => 'Entertainment and media'
 ```

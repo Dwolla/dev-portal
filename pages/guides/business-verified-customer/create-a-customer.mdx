@@ -190,7 +190,7 @@ var requestBody = {
   ein: "00-0000000",
 };
 
-appToken
+dwolla
   .post("customers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
@@ -452,7 +452,7 @@ var requestBody = {
   businessName: "Jane Corp",
   ein: "12-3456789",
 };
-appToken
+dwolla
   .post("customers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
@@ -584,7 +584,7 @@ customer.body['status']
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5";
 
-appToken.get(customerUrl).then((res) => res.body.status); // => 'verified'
+dwolla.get(customerUrl).then((res) => res.body.status); // => 'verified'
 ```
 
 You will want to ensure that both your Controller and your Business have been verified, as the Customer will be unable to send or receive funds until then. If the Customer is in `retry` or `document` status, head to the next step to learn how to handle these statuses.

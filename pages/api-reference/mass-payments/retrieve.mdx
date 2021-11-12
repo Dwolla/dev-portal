@@ -29,7 +29,7 @@ This section outlines how to retrieve a mass payment by its id. All mass payment
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -86,5 +86,5 @@ mass_payment.body['status'] # => 'processing'
 var massPaymentUrl =
   "https://api-sandbox.dwolla.com/mass-payments/eb467252-808c-4bc0-b86f-a5cd01454563";
 
-appToken.get(massPaymentUrl).then((res) => res.body.status); // => 'processing'
+dwolla.get(massPaymentUrl).then((res) => res.body.status); // => 'processing'
 ```

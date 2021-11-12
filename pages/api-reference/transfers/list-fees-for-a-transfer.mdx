@@ -29,7 +29,7 @@ This section outlines how to retrieve fees charged on a created transfer. Fees a
 
 ### Request and response
 
-```raw
+```bash
 GET https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388/fees
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -120,5 +120,5 @@ fees.body['total'] # => 2
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/83eb4b5e-a5d9-e511-80de-0aa34a9b2388";
 
-appToken.get(`${transferUrl}/fees`).then((res) => res.body.total); // => 2
+dwolla.get(`${transferUrl}/fees`).then((res) => res.body.total); // => 2
 ```

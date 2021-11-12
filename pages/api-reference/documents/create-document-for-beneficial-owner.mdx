@@ -24,7 +24,7 @@ Create a document for a beneficial owner pending verification by uploading a pho
 
 ### Request and response
 
-```raw
+```bash
 curl -X POST
 \ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
 \ -H "Accept: application/vnd.dwolla.v1.hal+json"
@@ -74,7 +74,7 @@ body.append("file", fs.createReadStream("mclovin.jpg"), {
 });
 body.append("documentType", "license");
 
-appToken
+dwolla
   .post(`${beneficialOwnerUrl}/documents`, requestBody)
   .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
 ```

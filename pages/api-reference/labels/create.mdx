@@ -33,7 +33,7 @@ This section outlines how to create a new Label. When creating a Label you’ll 
 
 ### Request and response
 
-```raw
+```bash
 POST https://api-sandbox.dwolla.com/customers/{id}/labels
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
@@ -102,7 +102,7 @@ var requestBody = {
   },
 };
 
-appToken
+dwolla
   .post(`${customerUrl}/labels`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/labels/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```

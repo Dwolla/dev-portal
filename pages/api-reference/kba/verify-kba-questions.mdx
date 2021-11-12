@@ -31,7 +31,7 @@ This section covers how to verify the KBA questions for Customer verification.
 
 ### Example request and response
 
-```raw
+```bash
 POST https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer cRahPzURfaIrTewKL18tmslWPqKdzkLeYJm0oB1hGJ1vMPArft1v
@@ -166,7 +166,7 @@ var requestBody = {
   ],
 };
 
-appToken.post(kbaUrl, requestBody);
+dwolla.post(kbaUrl, requestBody);
 ```
 
 ### HTTP Status and Error Codes

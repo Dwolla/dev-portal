@@ -133,7 +133,7 @@ var requestBody = {
   ein: "00-0000000",
 };
 
-appToken
+dwolla
   .post("customers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
