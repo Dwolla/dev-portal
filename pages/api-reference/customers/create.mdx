@@ -33,7 +33,7 @@ This section details how to create a new Customer. It is important to prompt you
 | 403         | Forbidden       | Not authorized to create customers.                                                                   |
 | 404         | NotFound        | Customer not found.                                                                                   |
 
-### Request parameters - receive-only User
+## Receive-only User - Request parameters
 
 | Parameter     | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ------------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -127,7 +127,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
-### Request parameters - unverified Customer
+## Unverified Customer - Request parameters
 
 | Parameter     | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -212,7 +212,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
-### Request parameters - verified **personal** Customer
+## Verified **personal** Customer - Request parameters
 
 For an in-depth look at personal verified Customers creation and status handling, refer to our [developer resource article](https://developers.dwolla.com/resources/personal-verified-customer.html).
 
@@ -358,7 +358,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
-### Request parameters - verified **business** Customer (sole proprietorship only)
+## Verified **business** Customer (sole proprietorship only) - Request parameters
 
 For an in-depth look at business verified Customers creation and status handling, refer to our [developer resource article](https://developers.dwolla.com/resources/business-verified-customer.html). Dwolla will verify the identity of both the Business Owner and the Business entity.
 
@@ -510,7 +510,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
 
-### Request parameters - verified business Customer (businessType=llc, corporation or partnership)
+## Verified business Customer (businessType=llc, corporation or partnership) - Request parameters
 
 For an in-depth look at business verified Customers creation and status handling, refer to our [developer resource article](https://developers.dwolla.com/resources/business-verified-customer.html).
 A verified business Customer must input information on the controller and the Business entity for Dwolla. Dwolla will verify the identity of both the Controller and the Business Entity.
@@ -572,7 +572,7 @@ A controller will only need to input passport information if they are non-US per
 | number    | conditional | string | Required if controller is a non-US person and has no Social Security Number. |
 | country   | conditional | string | Country of issued passport.                                                  |
 
-### Verified Business Customer (businessType= llc, corporation or partnership)
+##### Request and response - Verified Business Customer (businessType= llc, corporation or partnership)
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers
