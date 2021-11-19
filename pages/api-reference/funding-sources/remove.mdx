@@ -9,9 +9,7 @@ meta:
 
 # Remove a funding source
 
-This section outlines how to remove a funding source, both bank account and `VAN`, by id. A removed funding source is soft deleted and can still be accessed when retrieved.
-
-When a bank funding source with an `unverified` status is removed, an attempt to re-add it within 48 hours of the initial created date will re-activate the removed funding source and maintain the same `id`. Removing and readding a `VAN` however, will create a different `id`.
+Remove a funding source by id. A removed funding source is soft deleted and can still be accessed when retrieved. When a funding source with an `unverified` status is removed, an attempt to re-add it within 48 hours of the initial created date will re-activate the removed funding source and maintain the same `id`.
 
 ##### Best Practices
 
@@ -36,7 +34,7 @@ If a funding source has an **incoming** transfer, we recommend not removing it u
 | ----------- | ------------------------- |
 | 404         | Funding source not found. |
 
-### Request and response - bank account funding source
+### Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c
@@ -102,83 +100,6 @@ funding_source = app_token.post(funding_source_url, request_body)
 ```javascript
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c";
-var requestBody = {
-  removed: true,
-};
-
-dwolla.post(fundingSourceUrl, requestBody);
-```
-
-### Request and response - VAN funding source
-
-```bash
-POST https://api-sandbox.dwolla.com/funding-sources/62c88abb-96cb-4f1e-8ca9-7f45b5308d16
-Content-Type: application/vnd.dwolla.v1.hal+json
-Accept: application/vnd.dwolla.v1.hal+json
-Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
-{
-    "removed": true
-}
-
-...
-
-HTTP 200 OK
-{
-    "_links": {
-        "self": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/62c88abb-96cb-4f1e-8ca9-7f45b5308d16",
-            "type": "application/vnd.dwolla.v1.hal+json",
-            "resource-type": "funding-source"
-        }
-    },
-    "id": "62c88abb-96cb-4f1e-8ca9-7f45b5308d16",
-    "status": "verified",
-    "type": "virtual",
-    "bankAccountType": "checking",
-    "name": "My First VAN",
-    "created": "2021-11-19T13:56:11.000Z",
-    "removed": true,
-    "channels": [
-        "external"
-    ],
-    "fingerprint": "a6f548e4b427191bab4284dc240f673d03046270a4fd519a8a8f82623f2814ac"
-}
-```
-
-```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
-funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/62c88abb-96cb-4f1e-8ca9-7f45b5308d16'
-
-request_body = {
-  :removed => true
-}
-
-app_token.post "#{funding_source_url}", request_body
-```
-
-```php
-<?php
-$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/62c88abb-96cb-4f1e-8ca9-7f45b5308d16';
-
-$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
-
-$fsApi->softDelete(['removed' => true ], $fundingSourceUrl);
-?>
-```
-
-```python
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/62c88abb-96cb-4f1e-8ca9-7f45b5308d16'
-request_body = {
-  'removed': True
-}
-
-funding_source = app_token.post(funding_source_url, request_body)
-```
-
-```javascript
-var fundingSourceUrl =
-  "https://api-sandbox.dwolla.com/funding-sources/62c88abb-96cb-4f1e-8ca9-7f45b5308d16";
 var requestBody = {
   removed: true,
 };

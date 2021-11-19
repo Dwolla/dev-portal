@@ -9,7 +9,7 @@ meta:
 
 # Retrieve a transfer failure reason
 
-When a bank or `VAN` transfer fails for an Account or Customer, Dwolla returns a `failure` link when [retrieving the transfer by its Id](#retrieve-a-transfer). This failure link is used to retrieve the ACH return code and description. For reference, the list of possible failure codes and descriptions are shown in the [Transfer failures](https://developers.dwolla.com/resources/bank-transfer-workflow/transfer-failures.html) resource article.
+When a bank transfer fails for an Account or Customer, Dwolla returns a `failure` link when [retrieving the transfer by its Id](#retrieve-a-transfer). This failure link is used to retrieve the ACH return code and description. For reference, the list of possible failure codes and descriptions are shown in the [Transfer failures](https://developers.dwolla.com/resources/bank-transfer-workflow/transfer-failures.html) resource article.
 
 <AlertBar variation="info">
   If a transfer fails to/from a bank account then the bank will automatically be
@@ -91,5 +91,3 @@ var transferUrl =
 
 dwolla.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'R01'
 ```
-
-Note that for `VANs`, additional details about the external transaction will be available in an achDetails JSON object in the transfer `GET` response. Either the source or the destination will be present in the object depending on the direction of money movement.
