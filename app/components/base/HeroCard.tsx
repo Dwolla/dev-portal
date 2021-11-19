@@ -102,8 +102,9 @@ function HeroCard({ topic, description, button, links }: Props) {
         </StyledButton>
       )}
       {links &&
-        links.map((link) => (
-          <StyledLink>
+        links.map((link, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <StyledLink key={index}>
             <StyledAnchor href={link.href} target={link.external && "_blank"}>
               {link.text} &gt;
             </StyledAnchor>
