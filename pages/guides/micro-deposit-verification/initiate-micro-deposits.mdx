@@ -10,7 +10,7 @@ meta:
 
 # Initiate micro-deposits
 
-Once you POST to the [initiate-micro-deposits](https://docs.dwolla.com/#initiate-micro-deposits) link, Dwolla will send two small amounts to your customer's bank or credit union account. If the request is successful, Dwolla returns a `HTTP 201` and a link to the created micro-deposits resource `funding-sources/{id}/micro-deposits` in the location header. The micro-deposits resource can be later used to retrieve the status of micro-deposits or verify micro-deposit amounts. If your application is subscribed to webhooks, a webhook will be sent with the `microdeposits_added` event, notifying your application that micro-deposits are en route to your customer’s bank account.
+Once you POST to the [initiate-micro-deposits](https://developers.dwolla.com/api-reference/#initiate-micro-deposits) link, Dwolla will send two small amounts to your customer's bank or credit union account. If the request is successful, Dwolla returns a `HTTP 201` and a link to the created micro-deposits resource `funding-sources/{id}/micro-deposits` in the location header. The micro-deposits resource can be later used to retrieve the status of micro-deposits or verify micro-deposit amounts. If your application is subscribed to webhooks, a webhook will be sent with the `microdeposits_added` event, notifying your application that micro-deposits are en route to your customer’s bank account.
 
 ```bash
 POST https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits

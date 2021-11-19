@@ -14,7 +14,7 @@ meta:
 
 ## Overview
 
-There are two types of [Funding Sources](https://docs.dwolla.com/#funding-sources) available within the Dwolla Platform: a bank account and a user’s Dwolla Balance. A bank account is commonly used as the source or destination for ACH transfers. The Dwolla `balance` is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds. The Dwolla Balance is made available for account types that have completed [“KYC” requirements](https://www.dwolla.com/updates/guide-customer-identification-program-payments-api/), which includes clients of Dwolla and their end users that have been on-boarded as [Verified Customers](/concepts/customer-types#verified-customer). All funds held in a Dwolla Balance are held by Dwolla’s [financial institution partner(s)](https://www.dwolla.com/legal/about-our-financial-institution-partner/) and not by Dwolla.
+There are two types of [Funding Sources](https://developers.dwolla.com/api-reference/#funding-sources) available within the Dwolla Platform: a bank account and a user’s Dwolla Balance. A bank account is commonly used as the source or destination for ACH transfers. The Dwolla `balance` is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds. The Dwolla Balance is made available for account types that have completed [“KYC” requirements](https://www.dwolla.com/updates/guide-customer-identification-program-payments-api/), which includes clients of Dwolla and their end users that have been on-boarded as [Verified Customers](/concepts/customer-types#verified-customer). All funds held in a Dwolla Balance are held by Dwolla’s [financial institution partner(s)](https://www.dwolla.com/legal/about-our-financial-institution-partner/) and not by Dwolla.
 
 What makes the Dwolla Balance useful in relation to the platform is that the funds are immediately available within the Dwolla network. This means the Dwolla Balance acts as a funding source associated directly with each Verified Customer within your application. Your Customer can only access their Dwolla Balance through your application. You must provide an easily accessible and accurate summary of the [total and available balance](#total-and-available-balance) as well as transaction history for the Customer’s Dwolla Balance.
 
@@ -31,7 +31,7 @@ As a Funding Source, you and your end users can use the Dwolla Balance to:
 - Make instant payment transfers between two Dwolla Balances
 - Keep funds accessible in a Dwolla Balance
 
-To learn more about how to initiate transfers with the Dwolla API, check out our [API Reference Docs](https://docs.dwolla.com/#transfers)
+To learn more about how to initiate transfers with the Dwolla API, check out our [API Reference Docs](https://developers.dwolla.com/api-reference/#transfers)
 
 #### Balance transfer timing
 
@@ -43,11 +43,11 @@ In production, transfer timing will vary depending on whether the Dwolla Balance
 
 ## Viewing and displaying the balance
 
-The Dwolla Balance is a Funding Source that can be accessed when an account (your [Master Dwolla Account](https://docs.dwolla.com/#accounts) or a [Verified Customer account](/concepts/customer-types#verified-customer)) has successfully completed the identity verification process and has a status of `verified`. Because this funding source exists within the Dwolla Network, you can obtain the details by utilizing the Dwolla API to retrieve the account’s list of funding sources.
+The Dwolla Balance is a Funding Source that can be accessed when an account (your [Master Dwolla Account](https://developers.dwolla.com/api-reference/#accounts) or a [Verified Customer account](/concepts/customer-types#verified-customer)) has successfully completed the identity verification process and has a status of `verified`. Because this funding source exists within the Dwolla Network, you can obtain the details by utilizing the Dwolla API to retrieve the account’s list of funding sources.
 
 #### Retrieve Dwolla Master Account Balance Funding Source
 
-To retrieve your Account ID, you will need to call the [root](https://docs.dwolla.com/#root) of the API. Check out our API Reference Docs to learn more about retrieving the Balance funding source for [your Dwolla Master Account](https://docs.dwolla.com/#list-funding-sources-for-an-account).
+To retrieve your Account ID, you will need to call the [root](https://developers.dwolla.com/api-reference/#root) of the API. Check out our API Reference Docs to learn more about retrieving the Balance funding source for [your Dwolla Master Account](https://developers.dwolla.com/api-reference/#list-funding-sources-for-an-account).
 
 ##### Example request and response (Master Dwolla Account)
 
@@ -157,7 +157,7 @@ $fundingSources->_embedded->{'funding-sources'}[1]->name; # => "Balance"
 
 #### Retrieve a Customer’s Dwolla Balance Funding Source
 
-Check out our API Reference Docs to learn more about retrieving the Dwolla Balance funding source for [your Verified Customers](https://docs.dwolla.com/#list-funding-sources-for-a-customer).
+Check out our API Reference Docs to learn more about retrieving the Dwolla Balance funding source for [your Verified Customers](https://developers.dwolla.com/api-reference/#list-funding-sources-for-a-customer).
 
 ##### Example request and response (Customer)
 
@@ -263,27 +263,27 @@ $fundingSources->_embedded->{'funding-sources'}[0]->name; # => "Balance"
 
 ## Create Transfers using the Dwolla Balance
 
-In order to create a transfer using the Dwolla Balance, you will first need the Dwolla Balance funding-source ID. Check out the above section on [Viewing and Displaying the Balance](https://developers.dwolla.com/concepts/balance-funding-source#viewing-and-displaying-the-balance) in order to learn how to retrieve this ID. Once you have the Balance ID, it can be used as the `source` or the `destination` in a [transfer](https://docs.dwolla.com/#transfers) request depending on if you want to send funds out of the Dwolla Balance or into the Dwolla Balance, respectively.
+In order to create a transfer using the Dwolla Balance, you will first need the Dwolla Balance funding-source ID. Check out the above section on [Viewing and Displaying the Balance](https://developers.dwolla.com/concepts/balance-funding-source#viewing-and-displaying-the-balance) in order to learn how to retrieve this ID. Once you have the Balance ID, it can be used as the `source` or the `destination` in a [transfer](https://developers.dwolla.com/api-reference/#transfers) request depending on if you want to send funds out of the Dwolla Balance or into the Dwolla Balance, respectively.
 
 ### Add funds into the Dwolla Balance
 
 There are several reasons you may want to pre-load a Dwolla Balance. Commonly, a pre-loaded Dwolla Balance is used to speed up payouts to Customers. According to the [transfer processing timing](https://developers.dwolla.com/concepts/transfer-processing-times#dwolla-network-to-bank-ach-payment-out) at Dwolla, standard transfers from a bank account into the Dwolla network takes 3-4 business days to settle, and transfers out of the Dwolla Network to a bank account take 1-2 business days to settle. If your use case involves creating payouts to your Customers and you do not want them to wait for 4-6 business days from the time of transfer creation to receive the funds, you can add funds into your Dwolla Balance in advance so that payouts to Customers will only take 1-2 business days from the time of transfer creation.
 
-When [creating a transfer](https://docs.dwolla.com/#transfers) to add funds into a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `destination` URL. The `source` can be a bank account funding-source or even another Balance funding-source from which you want to debit the funds.
+When [creating a transfer](https://developers.dwolla.com/api-reference/#transfers) to add funds into a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `destination` URL. The `source` can be a bank account funding-source or even another Balance funding-source from which you want to debit the funds.
 
 ### Transfer funds out of the Dwolla Balance
 
 You can also create transfers from a Dwolla Balance out to another Dwolla Balance or an attached bank account funding-source. In the example above, this may be part of your application design to push funds out to Customers from your Dwolla Balance. It’s also possible that funds will unintentionally accumulate in your or a Verified Customer’s Balance if funds transferred through the Dwolla Network do not succeed in reaching the final destination source due to technical errors in your application or ACH Returns or Reversals (see the [transfer failure example](https://developers.dwolla.com/concepts/balance-funding-source#transfer-failure-example) below for more details). You or your Customer may want to withdraw those accumulated funds into a bank account or send them to another Dwolla Balance.
 
-When [creating a transfer](https://docs.dwolla.com/#transfers) to send funds out from a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `source` URL. The `destination` can be a bank account funding-source or even another Dwolla Balance funding-source to which you want to sends funds.
+When [creating a transfer](https://developers.dwolla.com/api-reference/#transfers) to send funds out from a Dwolla Balance, you will have to make sure to use the Balance funding-source ID in the `source` URL. The `destination` can be a bank account funding-source or even another Dwolla Balance funding-source to which you want to sends funds.
 
 ## Retrieve the balance Amount
 
-You can check the amount in a Dwolla Balance at any given time. You’ll want to be sure you and your end users know the amount available in your respective Dwolla Balances prior to sending funds. You must also be able to show the available balance at all times within your application to your Verified Customers. Check out our [API Reference Docs](https://docs.dwolla.com/#retrieve-a-funding-source-balance) to learn more.
+You can check the amount in a Dwolla Balance at any given time. You’ll want to be sure you and your end users know the amount available in your respective Dwolla Balances prior to sending funds. You must also be able to show the available balance at all times within your application to your Verified Customers. Check out our [API Reference Docs](https://developers.dwolla.com/api-reference/#retrieve-a-funding-source-balance) to learn more.
 
 #### Total and Available Balance
 
-There are two different amounts returned in the API response when [retrieving a balance](https://docs.dwolla.com/#retrieve-a-funding-source-balance) which correspond to a `total` and `available` balance. **Note:** Unless your application utilizes [Labels](https://docs.dwolla.com/#labels) functionality, the amounts that are returned in both the balance and total object will be the same. Available balance can be accessed via the `balance` attribute, whereas total balance can be accessed via the `total` attribute within the Balance object. Both `balance` and `total` are JSON objects that contain key value pairs for `value` and `currency`.
+There are two different amounts returned in the API response when [retrieving a balance](https://developers.dwolla.com/api-reference/#retrieve-a-funding-source-balance) which correspond to a `total` and `available` balance. **Note:** Unless your application utilizes [Labels](https://developers.dwolla.com/api-reference/#labels) functionality, the amounts that are returned in both the balance and total object will be the same. Available balance can be accessed via the `balance` attribute, whereas total balance can be accessed via the `total` attribute within the Balance object. Both `balance` and `total` are JSON objects that contain key value pairs for `value` and `currency`.
 
 ##### Available Balance
 
@@ -302,7 +302,7 @@ Available Balance means the amount readily available in a Verified Customer’s 
   the Dwolla Balance, even if the Total Balance is positive. To resume use of
   the Dwolla Balance, funds from labels will need to be “un-labeled” by creating
   a{" "}
-  <a href="https://docs.dwolla.com/#create-a-label-ledger-entry">
+  <a href="https://developers.dwolla.com/api-reference/#create-a-label-ledger-entry">
     label ledger entry
   </a>{" "}
   or additional funds will need to be added to the Available Balance.

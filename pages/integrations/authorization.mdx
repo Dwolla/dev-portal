@@ -45,14 +45,14 @@ Once in the Partner Portal, you’ll have the ability to create a Test Integrati
 
 Your test integration will have some permissions by default that will control what access you have to a Client’s data through the Dwolla API. These default permissions include the following:
 
-- [Create and retrieve webhook subscriptions for your integration](https://docs.dwolla.com/#webhook-subscriptions)
-- [Retrieve Client account transfers and details](https://docs.dwolla.com/#list-and-search-transfers-for-an-account)
-- [Read Client account details](https://docs.dwolla.com/#retrieve-account-details)
-- [Retrieve Client funding sources and details](https://docs.dwolla.com/#list-funding-sources-for-an-account)
-- [Read customer account information](https://docs.dwolla.com/#retrieve-a-customer)
-- [Retrieve customer funding sources and details](https://docs.dwolla.com/#list-funding-sources-for-a-customer)
-- [Retrieve customer transfers and details](https://docs.dwolla.com/#list-and-search-transfers-for-a-customer)
-- [Retrieve customer verification documents and details](https://docs.dwolla.com/#list-documents-for-a-customer)
+- [Create and retrieve webhook subscriptions for your integration](https://developers.dwolla.com/api-reference/#webhook-subscriptions)
+- [Retrieve Client account transfers and details](https://developers.dwolla.com/api-reference/#list-and-search-transfers-for-an-account)
+- [Read Client account details](https://developers.dwolla.com/api-reference/#retrieve-account-details)
+- [Retrieve Client funding sources and details](https://developers.dwolla.com/api-reference/#list-funding-sources-for-an-account)
+- [Read customer account information](https://developers.dwolla.com/api-reference/#retrieve-a-customer)
+- [Retrieve customer funding sources and details](https://developers.dwolla.com/api-reference/#list-funding-sources-for-a-customer)
+- [Retrieve customer transfers and details](https://developers.dwolla.com/api-reference/#list-and-search-transfers-for-a-customer)
+- [Retrieve customer verification documents and details](https://developers.dwolla.com/api-reference/#list-documents-for-a-customer)
 
 If your test integration needs more permission to access other endpoints in the Dwolla API on the Client’s behalf, such as the ability to create/update data, please reach out to partnerships@dwolla.com and detail what your integration does and what endpoints you would like to access.
 
@@ -230,4 +230,4 @@ The API POST to the token endpoint for retrieving a new access token and refresh
 ## Subscribing to Dwolla Webhooks
 
 Subscribing to Dwolla webhooks for a Dwolla Client’s account will allow your partner integration to receive notifications when actions happen on a client’s account, thereby allowing you to take actions in your partner integration. Reference a list of all available webhook events in our [developer documentation](https://developers.dwolla.com/resources/webhook-events.html#list-of-supported-events-by-resource).
-You can leverage the `access_token` access token granted in Step 5 or Step 6 to [create a webhook subscription](https://docs.dwolla.com/#create-a-webhook-subscription).
+You can leverage the `access_token` access token granted in Step 5 or Step 6 to [create a webhook subscription](https://developers.dwolla.com/api-reference/#create-a-webhook-subscription).

@@ -32,7 +32,7 @@ The Customer will complete the IAV flow by authenticating with their online bank
 
 IAV related errors are returned either as user-facing messages within the IAV flow, or triggered through the dwolla.js callback. User-facing messages are displayed in red text at the top of the bank login screen informing the user there was an issue with connecting the associated bank account. Error callbacks will trigger letting your app know of errors that can't be fixed by the user within the flow.
 
-Error callbacks will contain a similar JSON error response body as [common errors](https://docs.dwolla.com/#errors) in the API, which includes a top-level error `code` and a `message`. Reference the following list of error callbacks:
+Error callbacks will contain a similar JSON error response body as [common errors](https://developers.dwolla.com/api-reference/#errors) in the API, which includes a top-level error `code` and a `message`. Reference the following list of error callbacks:
 
 | Code             | Message                                                                                                                                                            | Description                                                                                                                                 |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |

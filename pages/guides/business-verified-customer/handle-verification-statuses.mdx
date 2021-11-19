@@ -368,7 +368,7 @@ dwolla
 
 ## Handling `document` status
 
-If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](https://docs.dwolla.com/#create-a-document) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
+If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](https://developers.dwolla.com/api-reference/#create-a-document) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
 
 You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
 
@@ -384,7 +384,7 @@ You can provide the following best practices to the Customer in order to reduce 
 
 ### Determining verification documents needed
 
-When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://docs.dwolla.com/#retrieve-a-customer), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, both the Controller and business, or for the DBA (Doing Business As). Additionally, embedded errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
+When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/api-reference/#retrieve-a-customer), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, both the Controller and business, or for the DBA (Doing Business As). Additionally, embedded errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
 
 | Link name                                    | Description                                                                  |
 | -------------------------------------------- | ---------------------------------------------------------------------------- |

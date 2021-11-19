@@ -30,7 +30,7 @@ The facilitator fee is a feature allowing for a flat rate amount to be removed f
 
 Fees are programmatically set on an individual transfer API request. Within a transfer request you can specify an optional `fees` request parameter, which is an array of fee objects that can represent many unique fee transfers. If your platform wishes to charge a percentage of the total transfer amount then your application will need to compute the percentage prior to initiating the transfer request. **Note:** Fees must be deducted from one of the accounts that is involved in either sending or receiving the funds for a transfer (not an alternative account).
 
-A fee object is made up of a `_links` and an `amount` JSON object. The `_links` object contains `charge-to`, which represents the associated source or destination [Customer](https://docs.dwolla.com/#customers) or [Account](https://docs.dwolla.com/#accounts) resource that will assume the fee. The `amount` object contains `value` and `currency` keys corresponding to the fee amount and `USD` respectively.
+A fee object is made up of a `_links` and an `amount` JSON object. The `_links` object contains `charge-to`, which represents the associated source or destination [Customer](https://developers.dwolla.com/api-reference/#customers) or [Account](https://developers.dwolla.com/api-reference/#accounts) resource that will assume the fee. The `amount` object contains `value` and `currency` keys corresponding to the fee amount and `USD` respectively.
 
 When a facilitator fee is added to a transfer request, it is treated as a separate transfer which does not affect a Customer's weekly, or per transaction limit. 
 
@@ -327,7 +327,7 @@ dwolla.get(`${transferUrl}/fees`).then((res) => res.body.total); // => 2
 
 ### Reconciling fees
 
-Since a fee is a separate transfer in itself, it will show up in the transfer listing of either the [Account](https://docs.dwolla.com/#list-and-search-transfers-for-an-account) or [Customer](https://docs.dwolla.com/#list-and-search-transfers-for-a-customer) resource, depending on which party is sending or receiving the fee. To correlate a fee to the transfer that the fee was charged on, a key of `created-from-transfer` will be returned in the list of links on a unique transfer resource. The `created-from-transfer` key can also be used to differentiate a fee from other transfer types.
+Since a fee is a separate transfer in itself, it will show up in the transfer listing of either the [Account](https://developers.dwolla.com/api-reference/#list-and-search-transfers-for-an-account) or [Customer](https://developers.dwolla.com/api-reference/#list-and-search-transfers-for-a-customer) resource, depending on which party is sending or receiving the fee. To correlate a fee to the transfer that the fee was charged on, a key of `created-from-transfer` will be returned in the list of links on a unique transfer resource. The `created-from-transfer` key can also be used to differentiate a fee from other transfer types.
 
 **Refunding fees:**
 Within the Dwolla API, an endpoint does not exist to `refund` a processed transfer from the receiving user or account back to the sending party—this includes fees if any were charged. Refunds occur by the destination user initiating a separate transfer in reverse from the funding source in which they received the funds. As a facilitator who received funds from the fee, you must determine if the charged user will incur the cost of the fee or be refunded for the original fee amount charged.
