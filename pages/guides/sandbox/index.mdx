@@ -243,6 +243,59 @@ To create a Real-time payment (RTP) transfer, you need to attach a funding-sourc
   Real bank account numbers should not be used in a testing environment like Sandbox.
 </AlertBar>
 
+### Test Virtual Account Numbers (VANs) Transfer
+
+External transfers can be simulated in the Sandbox by using the sandbox-simulations endpoint with a non-blank body and a type field set to `virtual`. 
+
+##### Optional fields and default values for VAN transfers
+
+| Optional Field           | Default Value                            |
+| ------------------------ | ---------------------------------------- |
+| companyEntryDescription  | ""                                       |
+| routingNumber            | “222222226”                              |
+| addenda                  | “addenda”                                |
+| beneficiaryName          | “Fake name”                              |
+| companyDiscretionaryData | “Fake discretionary data”                |
+| companyId                | “random integer value”                   |
+| companyName              | “Fake company name”                      |
+
+```bash
+POST https://api-sandbox.dwolla.com/sandbox-simulations
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer {Your access token}
+
+...
+
+{
+    "type": "virtual",
+    "transfers": [
+        {
+            "_link": {
+                "destination": {
+                    "href": "https://api-sandbox.dwolla.com/funding-sources/5880e310-675a-4ce3-87d9-a475cc565e09"
+                }
+            },
+            "amount": {
+                "currency": "USD",
+                "value": "1.11"
+            },
+            "achDetails": {
+                "companyEntryDescription": "AUTOENROLL",
+                "companyName": "Test Business Name",
+                "companyDiscretionaryData": "Test discretionary data",
+                "beneficiaryName": "Test Name",
+                "routingNumber": "012256789",
+                "addenda": "addenda example",
+                "companyId": "0012422"
+            }
+        }
+    ]
+}
+
+HTTP/1.1 202 Accepted
+```
+
 ### Test bank transfer failures
 
 Transfers to or from a bank account can fail for a number of reasons (e.g. insufficient funds, invalid account number, etc.). When a bank transfer fails, the associated financial institution that rejected the transaction assigns an ACH return code and a transfer failure event is then triggered in Dwolla. Dwolla allows you to trigger various bank transfer failures by specifying an “R” code in the funding source `name` parameter when creating or [updating a funding source](https://docs.dwolla.com/#update-a-funding-source) for a Dwolla Account or API Customer. When a [transfer is initiated](https://docs.dwolla.com/#initiate-a-transfer) using a funding source that has an “R” code assigned to its name, a transfer failure event will trigger and the status will update to failed when you simulate bank transfer processing (as mentioned above).
