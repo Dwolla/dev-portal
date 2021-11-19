@@ -13,7 +13,7 @@ This section outlines how to retrieve your list of created Customers. This endpo
 
 ### HTTP Request
 
-`GET https://api.dwolla.com/customers`
+> `GET https://api.dwolla.com/customers`
 
 ### Pagination
 
@@ -27,7 +27,7 @@ By default, an embedded list of 25 customers are returned and are sorted by crea
 
 ##### Example HTTP Request
 
-`GET https://api.dwolla.com/customers?limit=5&offset=25`
+> `GET https://api.dwolla.com/customers?limit=5&offset=25`
 
 ### Searching and filtering Customers
 
@@ -39,15 +39,15 @@ The `status` query string parameter can be used to list an embedded customers ar
 
 ##### Example Request URL using `email` filter
 
-`GET https://api.dwolla.com/customers?email=jane%40email.com`
+> `GET https://api.dwolla.com/customers?email=jane%40email.com`
 
 ##### Example Request URL using `search`
 
-`GET https://api.dwolla.com/customers?search=Jane`
+> `GET https://api.dwolla.com/customers?search=Jane`
 
 ##### Example Request URL using `status` filter
 
-`GET https://api.dwolla.com/customers?status=document`
+> `GET https://api.dwolla.com/customers?status=document`
 
 ### Request parameters
 
