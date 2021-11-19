@@ -9,25 +9,25 @@ meta:
 
 # Retrieve a funding source
 
-This section covers how to retrieve a funding source by id.
+This section covers how to retrieve a funding source, both bank account and `VAN`, by id.
 
-### HTTP request
+### HTTP request - bank account funding source
 
 `GET https://api.dwolla.com/funding-sources/{id}`
 
-### Request parameters
+### Request parameters - bank account funding source
 
 | Parameter | Required | Type   | Description                       |
 | --------- | -------- | ------ | --------------------------------- |
 | id        | yes      | string | id of funding source to retrieve. |
 
-### HTTP status and error codes
+### HTTP status and error codes - bank account funding source
 
 | HTTP Status | Message                   |
 | ----------- | ------------------------- |
 | 404         | Funding source not found. |
 
-### Request and response
+### Request and response - bank account funding source
 
 ```bash
 GET https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31
@@ -100,6 +100,102 @@ funding_source.body['name'] # => 'Test checking account'
 ```javascript
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/49dbaa24-1580-4b1c-8b58-24e26656fa31";
+
+dwolla.get(fundingSourceUrl).then((res) => res.body.name); // => "Test checking account"
+```
+
+### HTTP request - VAN funding source
+
+`GET https://api.dwolla.com/funding-sources/{id}`
+
+### Request parameters - VAN funding source
+
+| Parameter | Required | Type   | Description                       |
+| --------- | -------- | ------ | --------------------------------- |
+| id        | yes      | string | id of funding source to retrieve. |
+
+### HTTP status and error codes - VAN funding source
+
+| HTTP Status | Message                   |
+| ----------- | ------------------------- |
+| 404         | Funding source not found. |
+
+### Request and response - VAN funding source
+
+```bash
+GET https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/fd7c402f-cd33-4333-9be4-54414e39f844",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "ach-routing": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c/ach-routing",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "ach-routing"
+        },
+        "remove": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "e6d68efb-c49b-43db-8867-e1ca58c6ee8c",
+    "status": "verified",
+    "type": "virtual",
+    "bankAccountType": "checking",
+    "name": "My First VAN",
+    "created": "2021-11-19T12:49:51.000Z",
+    "removed": false,
+    "channels": [
+        "external"
+    ],
+    "bankName": "SANDBOX TEST BANK",
+    "fingerprint": "ab589c89b3f7fe227920f7aed5a383fb48e3cb927eacb1a3b37c3b0f739d68d7"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c'
+
+funding_source = app_token.get funding_source_url
+funding_source.name # => "Test checking account"
+```
+
+```php
+<?php
+$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c';
+
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fsApi->id($fundingSourceUrl);
+$fundingSource->name; # => "Test checking account"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c'
+
+funding_source = app_token.get(funding_source_url)
+funding_source.body['name'] # => 'Test checking account'
+```
+
+```javascript
+var fundingSourceUrl =
+  "https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c";
 
 dwolla.get(fundingSourceUrl).then((res) => res.body.name); // => "Test checking account"
 ```
