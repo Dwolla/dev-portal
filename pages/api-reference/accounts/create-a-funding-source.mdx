@@ -23,6 +23,15 @@ The bank account will have a status of `unverified` upon creation. Before a Dwol
 
 The Virtual Account Number, or `VAN`, will have a status of `verified` by default upon creation, and can be used only outside of the Dwolla Platform to route ACH payments both to and from the Dwolla Balance.
 
+<AlertBar variation="warning">
+  Because VANs behave as a route to a Dwolla Balance, only{" "}
+  <a href="/concepts/customer-types#verified-customer">Verifed Customers</a> and
+  Dwolla Master Accounts are eligible to create one. VANs count toward a total
+  funding source limit and is a premium feature. To learn more about pricing and
+  enabling this functionality, please{" "}
+  <a href="hhttps://www.dwolla.com/contact?b=apidocs">contact Sales</a>.
+</AlertBar>
+
 ### HTTP request - bank account funding source
 
 `POST https://api.dwolla.com/funding-sources`
