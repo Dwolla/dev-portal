@@ -13,13 +13,24 @@ There are two methods available for adding a bank or credit union account to a C
 
 Before a Dwolla account or Dwolla API Customer is eligible to transfer money from their bank or credit union account they need to verify ownership of the account, either via Instant Account Verification (IAV) or micro-deposits. For more information on bank account verification, reference this [funding source verification](https://developers.dwolla.com/resources/funding-source-verification.html) resource article.
 
+[Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) also have the ability to add Virtual Account Numbers, or `VANs`. A `VAN` can only be used outside of the Dwolla Platform to route ACH payments both to and from the Dwolla Balance.
+
+<AlertBar variation="warning">
+  Because VANs behave as a route to a Dwolla Balance, only{" "}
+  <a href="/concepts/customer-types#verified-customer">Verifed Customers</a> and
+  Dwolla Master Accounts are eligible to create one. VANs count toward a total
+  funding source limit and is a premium feature. To learn more about pricing and
+  enabling this functionality, please{" "}
+  <a href="hhttps://www.dwolla.com/contact?b=apidocs">contact Sales</a>.
+</AlertBar>
+
 Customers can have a maximum of 2 active funding sources.
 
-### HTTP request
+### HTTP request - bank account funding source
 
 `POST https://api.dwolla.com/customers/{id}/funding-sources`
 
-### Request parameters
+### Request parameters - bank account funding source
 
 | Parameter       | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | --------------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -31,14 +42,14 @@ Customers can have a maximum of 2 active funding sources.
 | plaidToken      | no       | string | A processor token obtained from Plaid for `adding and verifying` a bank. Reference our [Plaid Link Developer Resource Article](https://developers.dwolla.com/resources/dwolla-plaid-integration.html) to learn more about this integration.                                                                                                                                                                                                                                                                                                                                                                                 |
 | channels        | no       | array  | An array containing a list of processing channels. ACH is the default processing channel for bank transfers. Acceptable value for channels is: "wire". e.g. `“channels”: [ “wire” ]`. A funding source (Bank Account) added using the wire channel only supports a funds transfer going to the bank account from a balance. As a result, wire as a destination funding source can only be added where the Customer account type is a Verified Customer. **Note:** `channels` is a premium feature that must be enabled on your account and is only available to select [Dwolla](https://www.dwolla.com/platform) customers. |
 
-### HTTP status and error codes
+### HTTP status and error codes - bank account funding source
 
 | HTTP Status | Code            | Description                                                                                                 |
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------- |
 | 400         | ValidationError | Can be: Duplicate funding source or validation error. Authorization already associated to a funding source. |
 | 403         | Forbidden       | Not authorized to create funding source.                                                                    |
 
-### Request and response
+### Request and response - bank account funding source
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
@@ -113,7 +124,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
 
-### Request and response - using [on-demand authorization](#create-an-on-demand-transfer-authorization)
+### Request and response - using on-demand authorization
 
 ```bash
 POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
@@ -212,4 +223,90 @@ var requestBody = {
 dwolla
   .post(`${customerUrl}/funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+### HTTP request - VAN funding source
+
+`POST https://api.dwolla.com/customers/{id}/funding-sources`
+
+### Request parameters - VAN funding source
+
+| Parameter       | Required | Type   | Description                                                                                       |
+| --------------- | -------- | ------ | ------------------------------------------------------------------------------------------------- |
+| name            | yes      | string | Arbitrary nickname for the funding source.                                                        |
+| type            | yes      | string | Denotes that this is a virtual funding source being created (VAN). Value must be `virtual`.       |
+| bankAccountType | yes      | string | Value must be `checking`. VANs with a `bankAccountType` of `savings` are not currently available. |
+
+### HTTP status and error codes - VAN funding source
+
+| HTTP Status | Message                                                   |
+| ----------- | --------------------------------------------------------- |
+| 403         | Virtual account numbers are not enabled for this account. |
+
+### Request and response - VAN funding source
+
+```bash
+POST https://api.dwolla.com/customers/fd7c402f-cd33-4333-9be4-54414e39f844/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+{
+ "name": "My First VAN",
+ "type": "virtual",
+ "bankAccountType": "checking"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3
+```
+
+```php
+<?php
+$fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fundingApi->createCustomerFundingSource([
+  "name" => "My First VAN",
+  "type" => "virtual",
+  "bankAccountType" => "checking"
+], "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C");
+$fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  name: 'My First VAN',
+  type: 'virtual',
+  bankAccountType: 'checking'
+}
+
+funding_source = app_token.post "#{customer_url}/funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'name': 'My First VAN',
+  'type': 'virtual',
+  'bankAccountType': 'checking'
+}
+
+funding_source = app_token.post('%s/funding-sources' % customer_url, request_body)
+funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+```
+
+```javascript
+var requestBody = {
+  name: "My First VAN",
+  type: "virtual",
+  bankAccountType: "checking",
+};
+
+dwolla
+  .post(`${customerUrl}/funding-sources`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```
