@@ -20,7 +20,7 @@ There are several reasons bank transfers can fail, a few of which are outlined b
 
 ### Retrieving the transfer
 
-You can check the status of a transfer at any time by [retrieving the transfer via the API](https://docs.dwolla.com/#retrieve-a-transfer). When a bank transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docs.dwolla.com/#retrieve-a-transfer-failure-reason) in the next step.
+You can check the status of a transfer at any time by [retrieving the transfer via the API](https://developers.dwolla.com/api-reference/transfers/retrieve). When a bank transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://developers.dwolla.com/api-reference/transfers/retrieve-a-transfer-failure-reason) in the next step.
 
 ##### Example failure link
 
@@ -103,7 +103,7 @@ dwolla.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'R01'
 
 ### What occurs in the Dwolla system when a bank transfer fails?
 
-When a bank transfer failure occurs there is a subset of systematic actions Dwolla may take on the Customer and/or the funding source based on the ACH return code. It is recommended to have an active [webhook subscription](https://docs.dwolla.com/#create-a-webhook-subscription), which is used to listen for events relating to any Customer or funding source state change. Please refer to the table below to understand the systematic actions that Dwolla may take for Customer and funding source resources, as well as the events that are created.
+When a bank transfer failure occurs there is a subset of systematic actions Dwolla may take on the Customer and/or the funding source based on the ACH return code. It is recommended to have an active [webhook subscription](https://developers.dwolla.com/api-reference/webhook-subscriptions/create), which is used to listen for events relating to any Customer or funding source state change. Please refer to the table below to understand the systematic actions that Dwolla may take for Customer and funding source resources, as well as the events that are created.
 
 #### Systematic actions taken against the Customer
 
@@ -115,7 +115,7 @@ When a bank transfer failure occurs there is a subset of systematic actions Dwol
 #### Systematic actions taken against the bank funding source
 
 | Funding Source action | Description                                              | Webhook Event                        |
-| --------------------- | -------------------------------------------------------- | ------------------------------------ |
+| --------------------- | -------------------------------------------------------- | ------------------------------------ | --------------------------------- |
 | None                  | No action taken against the Customer bank funding source | N/A                                  |
 | Unverified            | A Customer's bank has been unverified, but not removed   | `customer_funding_source_unverified` |
 | Removed               | A Customer's bank has been removed                       | `customer_funding_source_removed`    | `customer_funding_source_removed` |

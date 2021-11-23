@@ -64,7 +64,10 @@ const FOOTER_LINKS = {
     { text: "Integrations", href: "https://www.dwolla.com/integrations/" },
   ],
   Developers: [
-    { text: "API Reference", href: "https://docs.dwolla.com/" },
+    {
+      text: "API Reference",
+      href: "https://developers.dwolla.com/api-reference/",
+    },
     { text: "Support Forum", href: "https://discuss.dwolla.com/" },
     { text: "SDKs and Tools", href: "#sdks-and-tools" },
     { text: "Github Repos", href: "https://github.com/Dwolla/" },

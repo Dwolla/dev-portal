@@ -32,10 +32,10 @@ To initiate a transfer, we will need to specify the source and destination fundi
 
 #### Request Parameters
 
-| Parameter | Required | Type   | Description                                                                                                                                                                                                                                             |
-| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links   | yes      | object | A \_links JSON object describing the desired source and destination of a transfer. [Reference the Source and Destination object](https://docs.dwolla.com/#source-and-destination-types) to learn more about possible values for source and destination. |
-| amount    | yes      | object | An amount JSON object. [Reference the amount JSON object](https://docs.dwolla.com/#amount-json-object) to learn more.                                                                                                                                   |
+| Parameter | Required | Type   | Description                                                                                                                                                                                                                                                                          |
+| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| \_links   | yes      | object | A \_links JSON object describing the desired source and destination of a transfer. [Reference the Source and Destination object](https://developers.dwolla.com/api-reference/transfers#source-and-destination-types) to learn more about possible values for source and destination. |
+| amount    | yes      | object | An amount JSON object. [Reference the amount JSON object](https://developers.dwolla.com/api-reference/transfers#amount-json-object) to learn more.                                                                                                                                   |
 
 <AlertBar variation="info">
   Within a transfer request, Dwolla supports additional optional parameters.
@@ -44,7 +44,7 @@ To initiate a transfer, we will need to specify the source and destination fundi
   from end-to-end. The object <code>facilitator-fee</code> isn't supported for
   this funds flow. For more information on all available transfer request
   parameters, check out our{" "}
-  <a href="https://docs.dwolla.com/#initiate-a-transfer">
+  <a href="https://developers.dwolla.com/api-reference/transfers/initiate">
     {" "}
     API reference documentation.{" "}
   </a>

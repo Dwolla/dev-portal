@@ -170,7 +170,7 @@ exports[`Footer 1`] = `
         >
           <a
             className="css-1yfy9it-LinkGroupLink eg0edpy9"
-            href="https://docs.dwolla.com/"
+            href="https://developers.dwolla.com/api-reference/"
           >
             API Reference
           </a>
