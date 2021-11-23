@@ -18,11 +18,27 @@ If there is an error, display the error to the user to have them correct any fie
 
 <InlineCTA
   icon={guideIcon}
-  text="Check our guide on simulating various Push-to-debit error scenarios in Sandbox."
-  href="/guides/sandbox#test-push-to-debit-transfer-failures"
+  text="Check our guide on simulating various Debit card error scenarios in Sandbox."
+  href="/guides/sandbox#test-debit-card-failures"
 />
 
-#### Example error callback
+### Common errors
+
+| Code                   | Message                                                                                                                                                                                                                                                                                              |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| FastFundsIneligible    | The card is ineligible for Fast Funds.                                                                                                                                                                                                                                                               |
+| PushToCardIneligible   | The card is ineligible for push-to-card.                                                                                                                                                                                                                                                             |
+| InvalidAddress         | The address is invalid. <br /> **Note:** This error is thrown when the address entered is different from the one that the card was issued with. For example, if you originally used the format `XXXXX:XXXX` for the zip code, entering just the 5 digits into the card form will trigger this error. |
+| InvalidCardNumber      | The card number is invalid.                                                                                                                                                                                                                                                                          |
+| InvalidCardType        | Invalid card type. Only debit cards are supported.                                                                                                                                                                                                                                                   |
+| InvalidCvvOrExpiration | The CVV or expiration date is invalid.                                                                                                                                                                                                                                                               |
+| InvalidToken           | The token is invalid.                                                                                                                                                                                                                                                                                |
+| InvalidVisaActionCode  | The card could not be verified.                                                                                                                                                                                                                                                                      |
+| SuspectedFraud         | The card may be lost or stolen.                                                                                                                                                                                                                                                                      |
+| DuplicateResource      | Card already exists.                                                                                                                                                                                                                                                                                 |
+| MaxNumberOfResources   | The maximum number of cards have been added.                                                                                                                                                                                                                                                         |
+
+### Example error callback
 
 ```
 {
