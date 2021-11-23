@@ -14,7 +14,7 @@ After successfully creating a personal identity-verified `Customer`, they will i
 
 A Customer’s verification status is determined by an identity verification score based on the data submitted; this score is returned from Dwolla’s identity vendor. Therefore, it is important that the user enters accurate and complete identifying data, and that you exercise [best practices](https://www.owasp.org/index.php/Input_Validation_Cheat_Sheet) in input field validation to ensure the best possible success rate. As an example, the `retry` status can occur when an individual mis-keys or uses incorrect identifying information upon Customer creation (i.e. submitting a date of birth that differs from the user’s actual date of birth).
 
-It is recommended to have an active [webhook subscription](https://developers.dwolla.com/api-reference/#webhook-subscriptions) to listen for Customer verification related events. Reference the table below for Customer verification statuses and the related events.
+It is recommended to have an active [webhook subscription](https://developers.dwolla.com/api-reference/webhook-subscriptions) to listen for Customer verification related events. Reference the table below for Customer verification statuses and the related events.
 
 ### Verification statuses
 
@@ -28,7 +28,7 @@ It is recommended to have an active [webhook subscription](https://developers.dw
 
 ### Testing verification statuses in Sandbox
 
-Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://developers.dwolla.com/api-reference/#update-a-customer) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](/guides/sandbox#testing-customers) resource article.
+Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://developers.dwolla.com/api-reference/customers/update) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](/guides/sandbox#testing-customers) resource article.
 
 ## Handling status: `retry`
 
@@ -170,7 +170,7 @@ A `KBA` status occurs when a Customer’s identity scores are too low after the 
 
 ### Initiating the KBA session
 
-The first step in the KBA flow is to make a request to the Dwolla API to [generate a unique KBA ID](http://docs.dwolla.com/#initiate-kba-session) which is used to represent the KBA session.
+The first step in the KBA flow is to make a request to the Dwolla API to [generate a unique KBA ID](https://developers.dwolla.com/api-reference/kba/initiate-kba-session) which is used to represent the KBA session.
 
 #### Example request and response
 
@@ -215,7 +215,7 @@ dwolla.post(`${customerUrl}/kba`).then((res) => res.headers.get("location")); //
 
 ### Retrieve KBA Question set
 
-Once the KBA ID is created, your application will have a **single attempt** to [retrieve](http://docs.dwolla.com/#retrieve-kba-questions) and [answer](http://docs.dwolla.com/#verify-kba-questions) the question set returned from the Dwolla API. Upon a successful request to retrieve the question set, your end user will have two minutes to complete the submission of their selected answers.
+Once the KBA ID is created, your application will have a **single attempt** to [retrieve](https://developers.dwolla.com/api-reference/kba/retrieve-kba-questions) and [answer](https://developers.dwolla.com/api-reference/kba/verify-kba-questions) the question set returned from the Dwolla API. Upon a successful request to retrieve the question set, your end user will have two minutes to complete the submission of their selected answers.
 
 #### Example request and response
 
@@ -476,7 +476,7 @@ A Customer that is unable to answer at least three questions correctly will be m
 
 ## Handling status: `document`
 
-If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](https://developers.dwolla.com/api-reference/#create-a-document) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
+If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](https://developers.dwolla.com/api-reference/documents/create-document-for-customer) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
 
 You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
 
@@ -498,7 +498,7 @@ A color scanned photo of the Customer's identifying document can be specified as
   Note: Military IDs are <b>not</b> accepted
 </AlertBar>
 
-When a Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/api-reference/#retrieve-a-customer) which will be used by an application to determine if documentation is needed.
+When a Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/api-reference/customers/retrieve) which will be used by an application to determine if documentation is needed.
 
 | Link name            | Description                                               |
 | -------------------- | --------------------------------------------------------- |

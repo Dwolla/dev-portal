@@ -10,7 +10,7 @@ meta:
 
 # Step 5: Initiating a transfer
 
-[Create a transfer](https://developers.dwolla.com/api-reference/#transfers) by specifying Joe Buyer’s funding source as the source and Jane Merchant’s funding source as the destination.
+[Create a transfer](https://developers.dwolla.com/api-reference/transfers) by specifying Joe Buyer’s funding source as the source and Jane Merchant’s funding source as the destination.
 
 ```bash
 POST https://api-sandbox.dwolla.com/transfers
@@ -53,7 +53,7 @@ request_body = {
 }
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-# For Dwolla API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/#application-authorization)
+# For Dwolla API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/authorization/application-authorization)
 transfer = app_token.post "transfers", request_body
 transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 ```
@@ -76,7 +76,7 @@ var requestBody = {
   },
 };
 
-// For Dwolla API applications, an dwolla can be used for this endpoint. (https://developers.dwolla.com/api-reference/#application-authorization)
+// For Dwolla API applications, an dwolla can be used for this endpoint. (https://developers.dwolla.com/api-reference/authorization/application-authorization)
 dwolla
   .post("transfers", requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
@@ -99,7 +99,7 @@ request_body = {
 }
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-# For Dwolla API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/#application-authorization)
+# For Dwolla API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/authorization/application-authorization)
 transfer = app_token.post('transfers', request_body)
 transfer.headers['location'] # => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 ```
@@ -171,7 +171,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 transfer_url = 'https://api-sandbox.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-# For Dwolla  API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/#application-authorization)
+# For Dwolla  API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/authorization/application-authorization)
 transfer = app_token.get transfer_url
 transfer.status # => "pending"
 ```
@@ -191,7 +191,7 @@ $transfer->status; # => "pending"
 transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-# For Dwolla API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/#application-authorization)
+# For Dwolla API applications, an app_token can be used for this endpoint. (https://developers.dwolla.com/api-reference/authorization/application-authorization)
 transfer = app_token.get(transfer_url)
 transfer.body['status'] # => 'pending'
 ```
@@ -200,7 +200,7 @@ transfer.body['status'] # => 'pending'
 var transferUrl =
   "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388";
 
-// For Dwolla API applications, an dwolla can be used for this endpoint. (https://developers.dwolla.com/api-reference/#application-authorization)
+// For Dwolla API applications, an dwolla can be used for this endpoint. (https://developers.dwolla.com/api-reference/authorization/application-authorization)
 dwolla.get(transferUrl).then((res) => res.body.status); // => 'pending'
 ```
 
