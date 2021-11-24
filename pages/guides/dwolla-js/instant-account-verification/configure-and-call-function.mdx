@@ -35,7 +35,7 @@ $('#start').click(function() {
             'https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
           ],
           microDeposits: 'true',
-          fallbackToMicroDeposits: (fallbackToMicroDeposits.value === 'true')
+          fallbackToMicroDeposits: 'true'
         }, function(err, res) {
     console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
   });
