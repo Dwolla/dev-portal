@@ -17,7 +17,7 @@ This endpoint can be used to facilitate the following use cases: Update Customer
 
 ### Update a Customer's information
 
-A limited set of information can be updated on an existing created Customer. **Note:** A Customer's information cannot be updated when in a [status](#customer-statuses) of `document` or `suspended`.
+A limited set of information can be updated on an existing created Customer. **Note:** A Customer's information cannot be updated when in a [status](https://developers.dwolla.com/api-reference/customers#customer-statuses) of `document` or `suspended`.
 
 ##### Request parameters - unverified Customer and receive-only User
 
@@ -45,14 +45,14 @@ A limited set of information can be updated on an existing created Customer. **N
 
 In addition to the table above, business verified Customers can update the following fields.
 
-| Parameter       | Required | Type   | Description                                                                        |
-| --------------- | -------- | ------ | ---------------------------------------------------------------------------------- |
-| doingBusinessAs | no       | string | Name that is different from the officially registered name of Customer’s business. |
-| website         | no       | string | https://www.domain.com                                                             |
+| Parameter       | Required | Type   | Description                                                                                           |
+| --------------- | -------- | ------ | ----------------------------------------------------------------------------------------------------- |
+| doingBusinessAs | no       | string | Name that is different from the officially registered name of Customer’s business.                    |
+| website         | no       | string | Validation includes: protocol, subdomain, domain, and top-level domain. e.g. `https://www.domain.com` |
 
-### Upgrade an unverified Customer to verified Customer
+## Upgrade an unverified Customer to verified Customer
 
-An unverified Customer can be upgraded to a verified Customer by supplying the necessary information required to create a verified Customer. Reference [this table](#request-parameters---verified-customer) for required information.
+An unverified Customer can be upgraded to a verified Customer by supplying the necessary information required to create a verified Customer. Reference the [create customer](https://developers.dwolla.com/api-reference/customers/create) section for required information.
 
 ### Suspend a Customer
 
@@ -84,11 +84,11 @@ Customers can be reactivated by specifying a status of `reactivated` in your req
 | --------- | -------- | ------ | ----------------------- |
 | status    | yes      | string | Value of `reactivated`. |
 
-### Retry verification
+## Retry verification
 
 If the verified Customer has a status of `retry`, some information may have been miskeyed. You have one more opportunity to correct any mistakes using this endpoint. This time, you’ll need to provide the Customer’s full SSN. If the additional attempt fails, the resulting status will be either `document` or `suspended`.
 
-### Customer must be in the retry state:
+##### Customer must be in the retry state:
 
 ```bash
 {
@@ -317,7 +317,7 @@ var requestBody = {
 dwolla.post(customerUrl, requestBody).then((res) => res.body.id); // => '53863b11-1758-47c8-821f-00e6a126f97f'
 ```
 
-### If you try more than once, or Customer is not in retry state:
+##### If you try more than once, or Customer is not in retry state:
 
 ```bash
 {
