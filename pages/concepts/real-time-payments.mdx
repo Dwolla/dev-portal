@@ -1,7 +1,7 @@
 ---
 layout: concepts
 title: "Real-time Payments"
-description: Learn about Real Time Payments, and how to identify and send transfers to RTP®-enabled funding-sources.
+description: Learn about Real Time Payments, and how to identify and send transfers to RTP-enabled funding-sources.
 category: Features
 concept:
   icon: "real-time-payments.svg"
@@ -9,6 +9,8 @@ meta:
   title: Real-time Payments | Dwolla API Documentation
   description: The Dwolla API enables use of Real-Time payment credit transfers, a feature for platforms looking to offer expedited transfers and improve end-user experience.
 ---
+
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 # Real-time payments
 
@@ -26,7 +28,7 @@ While RTP and ACH are similar in many ways, there are some key differences:
 | Agreed-upon processes for correcting erroneous transactions (i.e. reversal requests).       | Funds are irrevocable once sent (although not guaranteed or required, a request for return of funds may be issued). |
 
 <AlertBar variation="warning">
-  RTP® is a premium feature available for Dwolla customers. Enabling RTP does
+  RTP is a premium feature available for Dwolla customers. Enabling RTP does
   require additional Dwolla approvals before getting started. Please{" "}
   <a href="https://www.dwolla.com/contact?b=apidocs">contact Sales</a> or your
   account manager for more information on enabling this account feature.
@@ -60,6 +62,12 @@ When [retrieving an existing Funding Source](https://developers.dwolla.com/api-r
 In order to initiate a transfer with RTP processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
 
 An optional `rtpDetails` object can be included in the transfer request body. This allows additional information to be passed to the payment recipient's bank account about their RTP credit transfer.
+
+<InlineCTA
+  icon={guideIcon}
+  text="Check out our guide to learn how you can simulate an RTP transfer in Sandbox."
+  href="/guides/sandbox#test-rtp-transfers"
+/>
 
 The following example assumes the sending party has funds pre-loaded to their `balance` Funding Source and that the destination party has a bank account connected that is RTP-enabled.
 
