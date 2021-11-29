@@ -13,6 +13,7 @@ import {
   GREY_3,
   GREY_4,
   GREY_5,
+  GREY_14,
 } from "../colors";
 
 // Heading styles
@@ -112,6 +113,16 @@ export const codeStyles = css`
   &.dark {
     background-color: ${PURPLE_DARK};
     color: ${GREY_4};
+  }
+`;
+
+export const blockQuoteStyles = css`
+  margin: auto;
+  code {
+    ${codeStyles}
+    color: ${HEADLINE_TEXT};
+    background-color: ${GREY_14};
+    border-color: ${GREY_4};
   }
 `;
 
