@@ -9,9 +9,9 @@ meta:
 
 # Create a client token
 
-The client token API request requires an `action` as well as a `link` which points to the Customer that identifies the end-user performing the action within the drop-in component. The `action` is a string that contains a granular permission for the Customer performing the action within a drop-in component. **Note:** This endpoint requires [application authorization](#application-authorization).
+The client token API request requires an `action` as well as a `link` which points to the Customer that identifies the end-user performing the action within the drop-in component. The `action` is a string that contains a granular permission for the Customer performing the action within a drop-in component. **Note:** This endpoint requires [application authorization](https://developers.dwolla.com/api-reference/authorization/application-authorization).
 
-#### Client token actions
+### Client token actions
 
 | Component                             | Component Name           | Possible Actions                                                                                                                                                                                                     |
 | ------------------------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,7 +21,7 @@ The client token API request requires an `action` as well as a `link` which poin
 | Create a personal Verified Customer   | dwolla-personal-vcr      | customer.create                                                                                                                                                                                                      |
 | Create a business Verified Customer   | dwolla-business-vcr      | customer.create <br /> businessclassifications.read <br /> customer.read <br /> customer.update <br /> customer.documents.create                                                                                     |
 | Create Beneficial Owners              | dwolla-beneficial-owners | beneficialowners.create <br /> beneficialownership.read <br /> customer.read <br /> beneficialownership.certify <br /> beneficialowners.update <br /> beneficialowner.documents.create <br /> beneficialowner.delete |
-| Document upload for a Customer        | dwolla-document-upload   | customer.documents.create                                                                                                                                                                                            |
+| Document upload for a Customer        | dwolla-document-upload   | customer.documents.create <br /> customer.read <br /> customer.documents.read                                                                                                                                        |
 | Display a Verified Customer’s Balance | dwolla-balance-display   | customer.fundingsources.read                                                                                                                                                                                         |
 
 #### HTTP request
@@ -30,10 +30,10 @@ The client token API request requires an `action` as well as a `link` which poin
 
 #### Request parameters
 
-| Parameter | Required | Type   | Description                                                                                                                                                        |
-| --------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| action    | yes      | object | A granular permission for the Customer performing an action within a drop-in component. [Reference the client token actions to learn more](#client-token-actions). |
-| \_links   | yes      | object | A \_links JSON object that contains a link to the desired `customer` performing the action within the drop-in component.                                           |
+| Parameter | Required | Type   | Description                                                                                                                                                                                                                                          |
+| --------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| action    | yes      | object | A granular permission for the Customer performing an action within a drop-in component. [Reference the client token actions to learn more](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token#client-token-actions). |
+| \_links   | yes      | object | A \_links JSON object that contains a link to the desired `customer` performing the action within the drop-in component.                                                                                                                             |
 
 #### Request and response
 
