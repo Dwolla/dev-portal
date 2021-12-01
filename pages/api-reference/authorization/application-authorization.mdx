@@ -13,7 +13,7 @@ The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) i
 
 `Authorization: Basic Base64(client_id:client_secret)`
 
-#### HTTP request
+### HTTP request
 
 **Production:** `POST https://api.dwolla.com/token`
 
@@ -21,7 +21,7 @@ The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) i
 
 Including the `Content-Type: application/x-www-form-urlencoded` header, the request is sent to the token endpoint with `grant_type=client_credentials` in the body of the request:
 
-#### Request parameters
+### Request parameters
 
 | Parameter     | Required | Type   | Description                                                                                                                                                                                   |
 | ------------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
