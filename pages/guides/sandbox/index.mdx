@@ -251,26 +251,38 @@ To create a Real-time payment (RTP) transfer, you need to attach a funding-sourc
 
 ### Test Virtual Account Numbers (VANs) Transfer
 
-External transfers can be simulated in the Sandbox by using the sandbox-simulations endpoint with a non-blank body and a type field set to `virtual`. 
+External transfers can be simulated in the Sandbox by using the sandbox-simulations endpoint with a non-blank body and a type field set to `virtual`. Up to 10 transfers at a time can be included in one call to the sandbox simulations endpoint. Transfers will be created in a `pending` or `failed` status depending on whether the VAN has been removed or the Customer has been `deactivated` or `suspended`. Pending transfers will be processed automatically during the following times (all in Central Time), 
+
+- 2 AM
+- 5 AM
+- 8 AM
+- 11 AM
+- 1:15 PM 
+- 5:45 PM 
+- 8 PM
+
+<AlertBar variation="info">
+The times listed above only apply to the Sandbox testing environment. In Production, external transfers are processed at 11 AM, 1:15 PM and 5:45 PM (Central Time).
+</AlertBar>
 
 ##### Optional fields and default values for VAN transfers
 
-| Optional Field           | Default Value                            |
-| ------------------------ | ---------------------------------------- |
-| companyEntryDescription  | ""                                       |
-| routingNumber            | “222222226”                              |
-| addenda                  | “addenda”                                |
-| beneficiaryName          | “Fake name”                              |
-| companyDiscretionaryData | “Fake discretionary data”                |
-| companyId                | “random integer value”                   |
-| companyName              | “Fake company name”                      |
+| Optional Field           | Default Value                                                                                                       |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------|
+| companyEntryDescription  | `""` **Note:** The default value is an empty string. To simulate how a reversal transaction would look, set `companyEntryDescription` to "REVERSAL". |
+| routingNumber            | `"222222226"`                                                                                                         |
+| addenda                  | `"addenda"`                                                                                                           |
+| beneficiaryName          | `"Fake name"`                                                                                                         |
+| companyDiscretionaryData | `"Fake discretionary data"`                                                                                           |
+| companyId                | `"random integer value"`                                                                                              |
+| companyName              | `"Fake company name"`                                                                                                 |
 
 ```bash
 POST https://api-sandbox.dwolla.com/sandbox-simulations
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer {Your access token}
-...
+
 {
     "type": "virtual",
     "transfers": [
@@ -296,6 +308,9 @@ Authorization: Bearer {Your access token}
         }
     ]
 }
+
+...
+
 HTTP/1.1 202 Accepted
 ```
 
@@ -309,8 +324,8 @@ Dwolla allows you to pass in a few different sentinel values that are used to te
 
 | Return code | Description                                                                                                                                                                                                                                                                          |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| R01         | Insufficient Funds: This value is used to simulate funds failing from the source bank account (ACH debit).                                                                                                                                                                           |
-| R03         | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (ACH credit). The funding source will be automatically removed from Dwolla when this return code is triggered.                                           |
+| R01         | Insufficient Funds: This value is used to simulate funds failing from the source bank account (debit).                                                                                                                                                                               |
+| R03         | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (credit). The funding source will be automatically removed from Dwolla when this return code is triggered.                                               |
 | R01-late    | This value is used to simulate funds failing from the source bank account post-settlement. Note: You must click “Process bank transfers” twice in order to test this scenario.                                                                                                       |
 | R03-late    | This value is primarily used to simulate funds failing to the destination bank post-settlement. The funding source will be automatically removed from Dwolla when this return code is triggered. Note: You must click “Process bank transfers” twice in order to test this scenario. |
 
@@ -370,6 +385,19 @@ var requestBody = {
 
 dwolla.post(fundingSourceUrl, requestBody).then((res) => res.body.name); // => "R03"
 ```
+
+### Test VANs transfer failures
+
+Similar to [testing ACH bank transfer failures](#test-bank-transfer-failures), you can test VANs transfer failures by specifying an "R" code in the "name" parameter when creating a VAN (e.g. “R08 Failure Test VAN”). The return code must be at the beginning of the VAN funding source’s name. **Note** that it is not case sensitive. 
+
+##### List of codes for testing VAN transfer failures
+
+| Code | Description                                                                                                                                                                                                                                | When is the failure triggered?                                                      |
+| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
+| R01  | Insufficient Funds: This value is used to simulate funds failing from the source bank account (ACH debit).                                                                                                                                 | During processing of pending transactions.                                          |
+| R02  | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (ACH credit). The funding source will be automatically removed from Dwolla when this return code is triggered. | During processing of pending transactions.                                          |
+| R08  | Payment Stopped: The person who owns the account has placed a stop payment with their bank.                                                                                                                                                | “Immediately” triggered upon transfer creation by funding source naming convention. |
+| R10  | Customer Advises Unauthorized, Improper, Ineligible, or Part of an Incomplete Transaction: The person who owns the bank account has told their bank account that the transaction was unauthorized.                                         | “Immediately” triggered upon transfer creation by funding source naming convention. |
 
 ### Test Push-to-debit transfer failures
 
