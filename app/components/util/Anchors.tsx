@@ -133,7 +133,7 @@ export function AnchorsSetter(props) {
 
   useLayoutEffect(() => {
     if (activeAnchor) {
-      window.history.replaceState(null, null, `#${activeAnchor.id}`);
+      window.history.replaceState(null, null, `${activeAnchor.id}`);
     }
   }, [activeAnchor?.id]);
 
@@ -141,7 +141,7 @@ export function AnchorsSetter(props) {
 }
 
 export const scrollTo = (anchorId: string) => {
-  scrollToElement(`#${anchorId}`, {
+  scrollToElement(`${anchorId}`, {
     offset: -SCROLL_OFFSET + 1,
     duration: SCROLL_DURATION,
   });
