@@ -42,7 +42,7 @@ storiesOf("layout|Footer", module).add("default", () => (
     legal={{
       title: "Financial institutions play an important role in our network.",
       operatorDescription:
-        "Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to our financial institution partners.",
+        "Financial Institutions are an important part of our network. All funds transfers made using the Dwolla Platform are performed by a financial institution partner, and any funds held in a Dwolla Balance are held by a financial institution partner. [Learn more about our financial institution partners](https://www.dwolla.com/legal/about-our-financial-institution-partners/#legal-content).",
       veridianDescription:
         "Dwolla is an agent of Veridian Credit Union. All ACH and Wire transfers are performed by Veridian Credit Union. Your Dwolla Balance, if any, is held in one or more pooled holding accounts held by Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund.",
       metaBankDescription: (
