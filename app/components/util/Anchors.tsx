@@ -14,7 +14,7 @@ import { childrenToString } from "../../modules/helpers";
 
 // constants
 
-const ANCHOR_EL_TYPES = ["h1", "h2", "h3"];
+const ANCHOR_EL_TYPES = ["h2", "h3"];
 export const SCROLL_OFFSET = 100;
 export const SCROLL_DURATION = 500;
 
@@ -133,7 +133,7 @@ export function AnchorsSetter(props) {
 
   useLayoutEffect(() => {
     if (activeAnchor) {
-      window.history.replaceState(null, null, `${activeAnchor.id}`);
+      window.history.replaceState(null, null, `#${activeAnchor.id}`);
     }
   }, [activeAnchor?.id]);
 
@@ -141,7 +141,7 @@ export function AnchorsSetter(props) {
 }
 
 export const scrollTo = (anchorId: string) => {
-  scrollToElement(`${anchorId}`, {
+  scrollToElement(`#${anchorId}`, {
     offset: -SCROLL_OFFSET + 1,
     duration: SCROLL_DURATION,
   });
