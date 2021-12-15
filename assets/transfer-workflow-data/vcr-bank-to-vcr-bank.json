@@ -1,0 +1,272 @@
+{
+  "name": "Verified Customer Bank to Verified Customer Bank",
+  "transferId": "949df329-c23f-e911-8116-917813db6033",
+  "webhooksArray": [
+    {
+      "stepTitle": "Transfer initiated",
+      "stepDescription": "Below are the webhooks associated with the transfer from the sender's bank to the receiver's balance.",
+      "set": [
+        {
+          "webhookTopic": "customer_transfer_created",
+          "senderOrReceiver": "SENDER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/82ea8f14-011c-4ce1-8611-87ed69615cd7",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:44:36.273Z",
+            "id": "82ea8f14-011c-4ce1-8611-87ed69615cd7",
+            "resourceId": "949df329-c23f-e911-8116-917813db6033",
+            "topic": "customer_transfer_created"
+          }
+        },
+        {
+          "webhookTopic": "customer_transfer_created",
+          "senderOrReceiver": "RECEIVER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/49ef7722-77b7-49e1-b754-e375d053c50c",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:44:36.273Z",
+            "id": "49ef7722-77b7-49e1-b754-e375d053c50c",
+            "resourceId": "949df329-c23f-e911-8116-917813db6033",
+            "topic": "customer_transfer_created"
+          }
+        },
+        {
+          "webhookTopic": "customer_bank_transfer_created",
+          "senderOrReceiver": "SENDER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/939df329-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/168b91eb-770c-467b-8389-89573998e1e9",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:44:36.376Z",
+            "id": "168b91eb-770c-467b-8389-89573998e1e9",
+            "resourceId": "939df329-c23f-e911-8116-917813db6033",
+            "topic": "customer_bank_transfer_created"
+          }
+        }
+      ]
+    },
+    {
+      "stepTitle": "Transfer completes to Dwolla network and Customer B",
+      "stepDescription": "Customer A Balance to Customer B Balance",
+      "set": [
+        {
+          "webhookTopic": "customer_bank_transfer_completed",
+          "senderOrReceiver": "SENDER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/939df329-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/96aaf1b9-278d-4233-b90e-922ed4d8ca8c",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:46:13.740Z",
+            "id": "96aaf1b9-278d-4233-b90e-922ed4d8ca8c",
+            "resourceId": "939df329-c23f-e911-8116-917813db6033",
+            "topic": "customer_bank_transfer_completed"
+          }
+        },
+        {
+          "webhookTopic": "customer_transfer_completed",
+          "senderOrReceiver": "SENDER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/19670af8-67df-46cf-be46-9eb2f77a0c7a",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:46:13.645Z",
+            "id": "19670af8-67df-46cf-be46-9eb2f77a0c7a",
+            "resourceId": "949df329-c23f-e911-8116-917813db6033",
+            "topic": "customer_transfer_completed"
+          }
+        },
+        {
+          "webhookTopic": "customer_transfer_completed",
+          "senderOrReceiver": "RECEIVER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/cc282411-9b32-4b1e-bd9a-c1d1639738eb",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:46:13.645Z",
+            "id": "cc282411-9b32-4b1e-bd9a-c1d1639738eb",
+            "resourceId": "949df329-c23f-e911-8116-917813db6033",
+            "topic": "customer_transfer_completed"
+          }
+        },
+        {
+          "webhookTopic": "customer_bank_transfer_created",
+          "senderOrReceiver": "RECEIVER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/e0bef963-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/079dc101-9a15-4299-ad04-3566564170fa",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:46:13.946Z",
+            "id": "079dc101-9a15-4299-ad04-3566564170fa",
+            "resourceId": "e0bef963-c23f-e911-8116-917813db6033",
+            "topic": "customer_bank_transfer_created"
+          }
+        }
+      ]
+    },
+    {
+      "stepTitle": "Transfer completes to destination Customer's bank",
+      "stepDescription": "Customer A Balance to Customer B Bank",
+      "set": [
+        {
+          "webhookTopic": "customer_bank_transfer_completed",
+          "senderOrReceiver": "RECEIVER",
+          "webhookPayload": {
+            "_links": {
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "resource-type": "account",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "resource-type": "customer",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/e0bef963-c23f-e911-8116-917813db6033",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/d97560a7-7d81-4732-916e-7d18c1ec1928",
+                "resource-type": "event",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              }
+            },
+            "created": "2019-03-06T03:48:38.469Z",
+            "id": "d97560a7-7d81-4732-916e-7d18c1ec1928",
+            "resourceId": "e0bef963-c23f-e911-8116-917813db6033",
+            "topic": "customer_bank_transfer_completed"
+          }
+        }
+      ]
+    }
+  ]
+}

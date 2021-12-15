@@ -108,32 +108,6 @@ const customStyles = {
   }),
 };
 
-const senderTypeOptions = [
-  { value: "account", label: "Account" },
-  { value: "vcr", label: "Verified Customer" },
-  { value: "cr", label: "Unverified Customer" },
-];
-
-const senderSourceOptions = [
-  { value: "balance", label: "Balance" },
-  { value: "bank", label: "Bank" },
-  { value: "r01", label: "R01-Bank" },
-];
-
-const receiverTypeOptions = [
-  { value: "account", label: "Account" },
-  { value: "vcr", label: "Verified Customer" },
-  { value: "cr", label: "Unverified Customer" },
-  { value: "ro", label: "Receive-Only User" },
-];
-
-const receiverDestinationOptions = [
-  { value: "balance", label: "Balance" },
-  { value: "bank", label: "Bank" },
-  { value: "r03", label: "R03-Bank" },
-  { value: "card", label: "Debit Card" },
-];
-
 const DropdownIndicator = (props: any) => {
   return (
     <components.DropdownIndicator {...props}>
@@ -159,7 +133,29 @@ const Option = (props: any) => {
   );
 };
 
-function FundsFlowSelector() {
+type Option = { value: string; label: string };
+
+type Props = {
+  senderTypeOptions: Array<Option>;
+  senderSourceOptions: Array<Option>;
+  receiverTypeOptions: Array<Option>;
+  receiverDestinationOptions: Array<Option>;
+  setSelectedSender: any;
+  setSelectedSource: any;
+  setSelectedReceiver: any;
+  setSelectedDestination: any;
+};
+
+function FundsFlowSelector({
+  senderTypeOptions,
+  senderSourceOptions,
+  receiverTypeOptions,
+  receiverDestinationOptions,
+  setSelectedSender,
+  setSelectedSource,
+  setSelectedReceiver,
+  setSelectedDestination,
+}: Props) {
   return (
     <StyledContainer>
       <StyledTitle>Sender:</StyledTitle>
@@ -169,6 +165,7 @@ function FundsFlowSelector() {
         options={senderTypeOptions}
         components={{ DropdownIndicator, Option }}
         placeholder="Select Sender Type"
+        onChange={setSelectedSender}
       />
       <StyledType>Sender Source</StyledType>
       <Select
@@ -176,6 +173,7 @@ function FundsFlowSelector() {
         options={senderSourceOptions}
         components={{ DropdownIndicator, Option }}
         placeholder="Select Sender Source"
+        onChange={setSelectedSource}
       />
       <StyledTitle>Receiver:</StyledTitle>
       <StyledType>Receiver Type</StyledType>
@@ -184,6 +182,7 @@ function FundsFlowSelector() {
         options={receiverTypeOptions}
         components={{ DropdownIndicator, Option }}
         placeholder="Select Receiver Type"
+        onChange={setSelectedReceiver}
       />
       <StyledType>Receiver Destination</StyledType>
       <Select
@@ -191,6 +190,7 @@ function FundsFlowSelector() {
         options={receiverDestinationOptions}
         components={{ DropdownIndicator, Option }}
         placeholder="Select Receiver Destination"
+        onChange={setSelectedDestination}
       />
     </StyledContainer>
   );

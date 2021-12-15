@@ -29,6 +29,7 @@ module.exports = {
     "import/no-unresolved": "off", // typescript
     "jsx-a11y/anchor-is-valid": "off", // next/link
     "no-confusing-arrow": "off", // prettier
+    "nonblock-statement-body-position": "off", // prettier
     "object-curly-newline": "off", // prettier
     "operator-linebreak": "off", // prettier
     quotes: "off", // prettier

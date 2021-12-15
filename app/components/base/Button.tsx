@@ -16,28 +16,6 @@ import {
 import { BOX_SHADOW_6 } from "../shadowDepths";
 import { POPPINS } from "../typography";
 
-type Props = {
-  text: string;
-  size: "tiny" | "small" | "standard" | "large" | "block";
-  variant:
-    | "primary"
-    | "secondary"
-    | "hollow-light"
-    | "hollow-dark"
-    | "hollow-white";
-  type?: "button" | "submit" | "reset";
-  link?: { href: string; external?: boolean };
-};
-
-const Button = ({ text, size, variant, type = "button", link }: Props) =>
-  link && link.href ? (
-    <ButtonLink text={text} size={size} variant={variant} link={link} />
-  ) : (
-    <StyledButton type={type} className={`${variant} ${size}`}>
-      {text}
-    </StyledButton>
-  );
-
 const buttonStyles = css`
   color: ${WHITE_PRIMARY};
   font-family: ${POPPINS};
@@ -104,6 +82,7 @@ const buttonStyles = css`
   &.hollow-light {
     border: 1px solid ${GREY_4};
     color: ${GREY_9};
+    background: ${WHITE_PRIMARY};
     :hover,
     :focus {
       border-color: ${GREY_5};
@@ -121,12 +100,21 @@ const buttonStyles = css`
   }
   &.hollow-white {
     border: 1px solid transparent;
-    background: #ffffff;
+    background: ${WHITE_PRIMARY};
     color: #2d2d48;
     :hover,
     :focus {
       border-color: ${GREY_5};
     }
+  }
+  &.disabled {
+    background-color: ${GREY_4};
+    :hover,
+    :focus {
+      background-color: ${GREY_4};
+      box-shadow: none;
+    }
+    cursor: not-allowed;
   }
 `;
 
@@ -139,11 +127,56 @@ const StyledLink = styled.a`
   display: inline-block;
 `;
 
-const ButtonLink = ({ text, size, variant, link }: Props) => (
+type Props = {
+  text: string;
+  size: "tiny" | "small" | "standard" | "large" | "block";
+  variant:
+    | "primary"
+    | "secondary"
+    | "hollow-light"
+    | "hollow-dark"
+    | "hollow-white";
+  type?: "button" | "submit" | "reset";
+  link?: { href: string; external?: boolean };
+  isDisabled?: boolean;
+  onButtonClick?: any;
+};
+
+const Button = ({
+  text,
+  size,
+  variant,
+  type = "button",
+  link,
+  isDisabled,
+  onButtonClick,
+}: Props) =>
+  link && link.href ? (
+    <ButtonLink text={text} size={size} variant={variant} link={link} />
+  ) : (
+    <StyledButton
+      type={type}
+      className={`${variant} ${size} ${isDisabled ? "disabled" : ""}`}
+      disabled={isDisabled}
+      onClick={onButtonClick}
+    >
+      {text}
+    </StyledButton>
+  );
+
+const ButtonLink = ({
+  text,
+  size,
+  variant,
+  link,
+  isDisabled,
+  onButtonClick,
+}: Props) => (
   <StyledLink
     href={link.href}
     target={link.external && "_blank"}
-    className={`${variant} ${size}`}
+    className={`${variant} ${size} ${isDisabled ? "disabled" : ""}`}
+    onClick={onButtonClick}
   >
     {text}
   </StyledLink>
