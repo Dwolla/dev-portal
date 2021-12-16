@@ -189,6 +189,7 @@ export default function Layout({
 
   useEffect(() => {
     if (document) {
+      document.documentElement.lang = "en-us";
       enableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
       if (sidebarToggled) {
         disableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));

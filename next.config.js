@@ -29,10 +29,6 @@ module.exports = (phase) =>
           });
           return config;
         },
-        i18n: {
-          locales: ["en-US"],
-          defaultLocale: "en-US",
-        },
       })
     )
   );
