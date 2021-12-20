@@ -1,0 +1,10 @@
+import * as React from "react";
+import { storiesOf } from "@storybook/react";
+import TimelineNav from "../../app/components/base/TimelineNav";
+
+storiesOf("base|TimelineNav", module).add("default", () => (
+  <TimelineNav
+    totalSteps={["First Leg", "Second Leg", "Third Leg", "Fourth Leg"]}
+    activeStep={1}
+  />
+));
