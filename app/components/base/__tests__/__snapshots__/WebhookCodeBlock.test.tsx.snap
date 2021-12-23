@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransferWorkflow 1`] = `
+<div
+  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc0"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="Collapsible"
+  >
+    <span
+      className="Collapsible__trigger is-closed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      style={null}
+      tabIndex={null}
+    >
+      <div
+        className="webhook css-1ywf0fz-StyledTrigger e1jgqqjc1"
+      >
+        <svg
+          width={9}
+        />
+        <div
+          className="css-1vsgzd0-flexStyles"
+        >
+          <div>
+            customer_transfer_completed
+          </div>
+           
+          <div>
+            SENDER
+          </div>
+        </div>
+      </div>
+    </span>
+    <div
+      className="Collapsible__contentOuter"
+      onTransitionEnd={[Function]}
+      style={
+        Object {
+          "WebkitTransition": "height 200ms linear",
+          "height": 0,
+          "msTransition": "height 200ms linear",
+          "overflow": "hidden",
+          "transition": "height 200ms linear",
+        }
+      }
+    >
+      <div
+        className="Collapsible__contentInner"
+      >
+        <div
+          className="visuallyhidden webhook css-1lrge1l-InnerContentWrapper e1jgqqjc2"
+        >
+          <div>
+            <div
+              className="code-block-bar-default title css-vlw6pb-CodeBlockBar e112hlxu2"
+            >
+              <div
+                className="css-1v0t4mu-BarTitle e112hlxu3"
+              >
+                WEBHOOK
+              </div>
+              <div
+                className="css-dffxm8-BarItems e112hlxu4"
+              >
+                <div
+                  className="css-1vovl9e-BarText e112hlxu6"
+                >
+                  raw
+                </div>
+                <button
+                  className="css-5uu5vc-CodeBlockButton e112hlxu5"
+                  disabled={false}
+                  onClick={[Function]}
+                  type="button"
+                >
+                  copy
+                   
+                  <svg />
+                </button>
+                <button
+                  autoFocus={false}
+                  className="css-5uu5vc-CodeBlockButton e112hlxu5"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  expand 
+                  <svg
+                    height={16}
+                    width={16}
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
+            >
+              <pre>
+                <code
+                  className="language-raw"
+                  dangerouslySetInnerHTML={
+                    Object {
+                      "__html": "{
+  <span class=\\"hljs-string\\">\\"_links\\"</span>: {
+    <span class=\\"hljs-string\\">\\"account\\"</span>: {
+      <span class=\\"hljs-string\\">\\"href\\"</span>: <span class=\\"hljs-string\\">\\"https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3\\"</span>,
+      <span class=\\"hljs-string\\">\\"resource-type\\"</span>: <span class=\\"hljs-string\\">\\"account\\"</span>,
+      <span class=\\"hljs-string\\">\\"type\\"</span>: <span class=\\"hljs-string\\">\\"application/vnd.dwolla.v1.hal+json\\"</span>
+    },
+    <span class=\\"hljs-string\\">\\"customer\\"</span>: {
+      <span class=\\"hljs-string\\">\\"href\\"</span>: <span class=\\"hljs-string\\">\\"https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912\\"</span>,
+      <span class=\\"hljs-string\\">\\"resource-type\\"</span>: <span class=\\"hljs-string\\">\\"customer\\"</span>,
+      <span class=\\"hljs-string\\">\\"type\\"</span>: <span class=\\"hljs-string\\">\\"application/vnd.dwolla.v1.hal+json\\"</span>
+    },
+    <span class=\\"hljs-string\\">\\"resource\\"</span>: {
+      <span class=\\"hljs-string\\">\\"href\\"</span>: <span class=\\"hljs-string\\">\\"https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033\\"</span>,
+      <span class=\\"hljs-string\\">\\"type\\"</span>: <span class=\\"hljs-string\\">\\"application/vnd.dwolla.v1.hal+json\\"</span>
+    },
+    <span class=\\"hljs-string\\">\\"self\\"</span>: {
+      <span class=\\"hljs-string\\">\\"href\\"</span>: <span class=\\"hljs-string\\">\\"https://api-sandbox.dwolla.com/events/19670af8-67df-46cf-be46-9eb2f77a0c7a\\"</span>,
+      <span class=\\"hljs-string\\">\\"resource-type\\"</span>: <span class=\\"hljs-string\\">\\"event\\"</span>,
+      <span class=\\"hljs-string\\">\\"type\\"</span>: <span class=\\"hljs-string\\">\\"application/vnd.dwolla.v1.hal+json\\"</span>
+    }
+  },
+  <span class=\\"hljs-string\\">\\"created\\"</span>: <span class=\\"hljs-string\\">\\"2019-03-06T03:46:13.645Z\\"</span>,
+  <span class=\\"hljs-string\\">\\"id\\"</span>: <span class=\\"hljs-string\\">\\"19670af8-67df-46cf-be46-9eb2f77a0c7a\\"</span>,
+  <span class=\\"hljs-string\\">\\"resourceId\\"</span>: <span class=\\"hljs-string\\">\\"949df329-c23f-e911-8116-917813db6033\\"</span>,
+  <span class=\\"hljs-string\\">\\"topic\\"</span>: <span class=\\"hljs-string\\">\\"customer_transfer_completed\\"</span>
+}",
+                    }
+                  }
+                />
+              </pre>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
