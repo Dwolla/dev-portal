@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+/* eslint-disable no-nested-ternary */
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import isEqual from "lodash.isequal";
 import FundsFlowSelector from "./FundsFlowSelector";
 import Button from "./Button";
-import { GREY_1, GREY_3 } from "../colors";
+import { GREY_1, GREY_3, HEADLINE_TEXT } from "../colors";
 import { breakDown } from "../breakpoints";
 import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/vcr-bank-to-vcr-bank.json";
+import { POPPINS, ROBOTO } from "../typography";
 
 // styles
 
@@ -26,6 +28,32 @@ const StyledContainer = styled.div`
     width: 100%;
     margin: 0;
   }
+`;
+
+const StyledTitle = styled.div`
+  height: 33px;
+  font-family: ${POPPINS};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: ${HEADLINE_TEXT};
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: auto auto 7px auto;
+`;
+
+const StyledDescription = styled.div`
+  max-width: 411px;
+  font-family: ${ROBOTO};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: ${HEADLINE_TEXT};
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 7px auto 28px auto;
 `;
 
 const StyledTimelineContainer = styled.div`
@@ -55,29 +83,29 @@ const StyledBottomContainer = styled.div`
 // selectable options for FundsFlowSelector component
 
 const senderTypeOptions = [
-  // { value: "account", label: "Account" },
+  { value: "account", label: "Account" },
   { value: "vcr", label: "Verified Customer" },
-  // { value: "cr", label: "Unverified Customer" },
+  { value: "cr", label: "Unverified Customer" },
 ];
 
 const senderSourceOptions = [
-  // { value: "balance", label: "Balance" },
+  { value: "balance", label: "Balance" },
   { value: "bank", label: "Bank" },
-  // { value: "r01", label: "R01-Bank" },
+  { value: "r01", label: "R01-Bank" },
 ];
 
 const receiverTypeOptions = [
-  // { value: "account", label: "Account" },
+  { value: "account", label: "Account" },
   { value: "vcr", label: "Verified Customer" },
-  // { value: "cr", label: "Unverified Customer" },
-  // { value: "ro", label: "Receive-Only User" },
+  { value: "cr", label: "Unverified Customer" },
+  { value: "ro", label: "Receive-Only User" },
 ];
 
 const receiverDestinationOptions = [
-  // { value: "balance", label: "Balance" },
+  { value: "balance", label: "Balance" },
   { value: "bank", label: "Bank" },
-  // { value: "r03", label: "R03-Bank" },
-  // { value: "card", label: "Debit Card" },
+  { value: "r03", label: "R03-Bank" },
+  { value: "card", label: "Debit Card" },
 ];
 
 // possible Funds Flow combinations
@@ -97,40 +125,80 @@ function TransferWorkflow() {
   const [selectedReceiver, setSelectedReceiver] = useState(null);
   const [selectedDestination, setSelectedDestination] = useState(null);
   const [selectedFundsFlow, setSelectedFundsFlow] = useState([]);
-
-  // remove eslint comment once variable is used
-  // eslint-disable-next-line no-unused-vars
-  let webhooksData;
+  const [unsupportedFundsFlow, setUnsupportedFundsFlow] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
+  const [webhookJsonData, setWebhookJsonData] = useState<any | undefined>(
+    undefined
+  );
 
   // function to handle Start button
 
   function handleStart() {
-    // sets the funds flow in the selectedFundsFlow state
+    setSelectedFundsFlow([
+      selectedSender.value,
+      selectedSource.value,
+      selectedReceiver.value,
+      selectedDestination.value,
+    ]);
+    setActiveStep(activeStep + 1);
+  }
+
+  function compareAndSetFundsFlow() {
+    // if else condition to compare selectedFundsFlow with fundsFlowCombinations
+    // and assign the relevant JSON object to webhookJsonData
+
     if (selectedFundsFlow.length === 0) {
-      setSelectedFundsFlow([
-        selectedSender.value,
-        selectedSource.value,
-        selectedReceiver.value,
-        selectedDestination.value,
-      ]);
+      setWebhookJsonData(undefined);
+      setUnsupportedFundsFlow(false);
+      return;
+    }
+    if (isEqual(selectedFundsFlow, fundsFlowCombinations.one)) {
+      setWebhookJsonData(VCRBanktoVCRBankdata);
+    } else {
+      setUnsupportedFundsFlow(true);
     }
 
-    // if else condition to compare selectedFundsFlow with fundsFlowCombinations
-    // and assign the relevant JSON object to webhooksData
-    if (isEqual(selectedFundsFlow, fundsFlowCombinations.one)) {
-      webhooksData = VCRBanktoVCRBankdata;
-    }
+    // TODO
     // example else if statement
     // else if (isEqual(selectedFundsFlow, fundsFlowCombinations.two)) {
     //   webhooksData = VCRBalancetoVCRBankdata;
     // }
   }
 
+  // Call compareAndSetFundsFlow every time selectedFundsFlow state changes
+
+  useEffect(() => {
+    compareAndSetFundsFlow();
+  }, [selectedFundsFlow]);
+
+  //  Back button logic: decrements activeStep and resets all states when activeStep is 1
+  function handleBack() {
+    if (activeStep === 1) {
+      setSelectedFundsFlow([]);
+      setUnsupportedFundsFlow(false);
+      setWebhookJsonData(undefined);
+      setSelectedSender(null);
+      setSelectedSource(null);
+      setSelectedReceiver(null);
+      setSelectedDestination(null);
+    } else if (activeStep === 0) {
+      return;
+    }
+    setActiveStep(activeStep - 1);
+  }
+
+  // Next button logic: Increments activeStep
+  function handleNext() {
+    setActiveStep(activeStep + 1);
+  }
+
   return (
     <StyledContainer>
-      <StyledTimelineContainer />
-      {selectedFundsFlow.length === 0 ? (
-        // display FundsFlowSelector component when funds flow has not been selected
+      <StyledTimelineContainer>
+        {/* TODO: Call Timeline Nav component, props: totalSteps[], activeStep, setActiveStep */}
+      </StyledTimelineContainer>
+      {activeStep === 0 ? (
+        // display FundsFlowSelector component when activeStep is 0
         <FundsFlowSelector
           senderTypeOptions={senderTypeOptions}
           senderSourceOptions={senderSourceOptions}
@@ -141,38 +209,75 @@ function TransferWorkflow() {
           setSelectedReceiver={setSelectedReceiver}
           setSelectedDestination={setSelectedDestination}
         />
+      ) : // check if Funds Flow is unsupported, otherwise display code block component
+      unsupportedFundsFlow ? (
+        <>
+          <StyledTitle>Select a different funds flow.</StyledTitle>
+          <StyledDescription>
+            {selectedSender.label} <strong>{selectedSource.label}</strong> to{" "}
+            {selectedReceiver.label}{" "}
+            <strong>{selectedDestination.label}</strong> is not supported.
+          </StyledDescription>
+        </>
       ) : (
-        // TODO: display code blocks when funds flow is selected
-        <div>Funds flow is selected: {selectedFundsFlow}</div>
+        webhookJsonData !== undefined && (
+          <>
+            <StyledTitle>
+              {webhookJsonData.webhooksArray[activeStep - 1].stepTitle}
+            </StyledTitle>
+            <StyledDescription>
+              {webhookJsonData.webhooksArray[activeStep - 1].stepDescription}
+            </StyledDescription>
+            {webhookJsonData.webhooksArray[activeStep - 1].set.map((json) => {
+              return (
+                <div key={json.webhookTopic}>
+                  {/* TODO call Webhook Code Block component, props: json*/}
+                </div>
+              );
+            })}
+          </>
+        )
       )}
-
       <StyledBottomContainer>
-        {
-          // display 'Start' button initiatlly;
-          // replace with 'Next', 'Back' once funds flow is selected
-          selectedFundsFlow.length === 0 ? (
-            <Button
-              text="Start"
-              size="standard"
-              variant="primary"
-              onButtonClick={handleStart}
-              isDisabled={
-                !(
-                  selectedSender &&
-                  selectedSource &&
-                  selectedReceiver &&
-                  selectedDestination
-                )
-              }
-            />
-          ) : (
+        {selectedFundsFlow.length === 0 ? (
+          <Button
+            text="Start"
+            size="standard"
+            variant="primary"
+            onButtonClick={handleStart}
+            isDisabled={
+              !(
+                selectedSender &&
+                selectedSource &&
+                selectedReceiver &&
+                selectedDestination
+              )
+            }
+          />
+        ) : (
+          // webhookJsonData &&
+          activeStep !== 0 && (
             <>
-              <Button text="Back" size="standard" variant="hollow-light" />
-
-              <Button text="Next" size="standard" variant="primary" />
+              <Button
+                text="Back"
+                size="standard"
+                variant="hollow-light"
+                onButtonClick={handleBack}
+              />
+              {webhookJsonData && (
+                <Button
+                  text="Next"
+                  size="standard"
+                  variant="primary"
+                  onButtonClick={handleNext}
+                  isDisabled={
+                    activeStep === webhookJsonData.webhooksArray.length
+                  }
+                />
+              )}
             </>
           )
-        }
+        )}
       </StyledBottomContainer>
     </StyledContainer>
   );
