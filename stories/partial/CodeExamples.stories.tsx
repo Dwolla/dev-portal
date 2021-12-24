@@ -44,6 +44,18 @@ storiesOf("partial|CodeExamples", module)
       </MockMDXCreateElement>
     </CodeExamples>
   ))
+  .add("single example - with title", () => (
+    <CodeExamples title="Title goes here">
+      <MockMDXCreateElement originalType="pre">
+        <MockMDXCreateElement
+          originalType="code"
+          className="language-javascript"
+        >
+          {'const foo = "bar";'}
+        </MockMDXCreateElement>
+      </MockMDXCreateElement>
+    </CodeExamples>
+  ))
   .add("multiple examples", () => (
     <CodeExamples>
       <CodeExample language="javascript">{'const foo = "bar";'}</CodeExample>

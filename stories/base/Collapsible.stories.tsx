@@ -77,11 +77,23 @@ const Answer4 = (
   </>
 );
 
-storiesOf("base|Collapsible", module).add("default", () => (
-  <ParentDiv>
-    <Collapsible triggerText={Question1}>{Answer1}</Collapsible>
-    <Collapsible triggerText={Question2}>{Answer2}</Collapsible>
-    <Collapsible triggerText={Question3}>{Answer3}</Collapsible>
-    <Collapsible triggerText={Question4}>{Answer4}</Collapsible>
-  </ParentDiv>
-));
+storiesOf("base|Collapsible", module)
+  .add("default", () => (
+    <ParentDiv>
+      <Collapsible triggerText={Question1}>{Answer1}</Collapsible>
+      <Collapsible triggerText={Question2}>{Answer2}</Collapsible>
+      <Collapsible triggerText={Question3}>{Answer3}</Collapsible>
+      <Collapsible triggerText={Question4}>{Answer4}</Collapsible>
+    </ParentDiv>
+  ))
+  .add("webhook", () => (
+    <ParentDiv>
+      <Collapsible
+        triggerText="customer_transfer_created"
+        extraTrigger="SENDER"
+        variant="webhook"
+      >
+        Code Block child
+      </Collapsible>
+    </ParentDiv>
+  ));

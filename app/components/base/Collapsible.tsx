@@ -7,7 +7,15 @@ import { css, jsx } from "@emotion/core";
 import classnames from "classnames";
 import plusIcon from "../../../assets/images/component-icons/plus-circle-icon.svg";
 import minusIcon from "../../../assets/images/component-icons/minus-circle-icon.svg";
-import { GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
+import { ReactComponent as CaretRightIcon } from "../../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
+import {
+  GREY_1,
+  GREY_2,
+  GREY_4,
+  WHITE_PRIMARY,
+  HEADLINE_TEXT,
+  PARAGRAPH_TEXT,
+} from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
 import { BOX_SHADOW_7, BOX_SHADOW_4 } from "../shadowDepths";
 
@@ -18,7 +26,6 @@ const CollapsibleWrapper = styled.div`
     outline: none;
     box-shadow: ${BOX_SHADOW_7};
   }
-
   /* Main container element for react-collapsible https://www.npmjs.com/package/react-collapsible#collapsible */
   .Collapsible {
     box-sizing: border-box;
@@ -33,14 +40,41 @@ const CollapsibleWrapper = styled.div`
       box-shadow: ${BOX_SHADOW_4};
     }
   }
+  &.webhook {
+    .Collapsible {
+      width: 100%;
+      background-color: ${GREY_1};
+      border: 1px solid ${GREY_4};
+      border-radius: 8px;
+      font-family: ${ROBOTO};
+      font-size: 14px;
+      line-height: 152.19%;
+      letter-spacing: 0.02em;
+    }
+  }
 `;
 
 const StyledTrigger = styled.div`
   padding: 25px 30px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
   cursor: pointer;
+  &.webhook {
+    border-radius: 8px;
+    padding: 14px 20px;
+    font-family: ${ROBOTO};
+    font-size: 14px;
+    line-height: 152.19%;
+    letter-spacing: 0.02em;
+    color: ${HEADLINE_TEXT};
+  }
+`;
+
+const flexStyles = css`
+  padding-left: 14px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const ImageStyles = css`
@@ -63,30 +97,63 @@ const InnerContentWrapper = styled.div`
     transition-delay: 200ms;
     visibility: hidden;
   }
+  &.webhook {
+    margin: 0px 12px 12px;
+    color: unset;
+    font-family: unset;
+    font-size: unset;
+    letter-spacing: unset;
+    line-height: unset;
+  }
 `;
 
 // Prop types
-type Props = { triggerText: string; children: any };
+type Props = {
+  triggerText: string;
+  extraTrigger?: string;
+  variant?: "default" | "webhook";
+  children: any;
+};
 
 // Collapsible component
-function Collapsible({ triggerText, children }: Props) {
+function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
   const [active, setActive] = useState(false);
 
   // Main content when collapsible is closed
-  const closedTrigger = (
-    <StyledTrigger>
-      {triggerText}
-      <img css={ImageStyles} src={plusIcon} alt="Open collapsible content" />
-    </StyledTrigger>
-  );
+  const closedTrigger =
+    variant === "webhook" ? (
+      <StyledTrigger className={variant}>
+        <CaretRightIcon width={9} />
+        <div css={flexStyles}>
+          <div>{triggerText}</div> <div>{extraTrigger}</div>
+        </div>
+      </StyledTrigger>
+    ) : (
+      <StyledTrigger>
+        {triggerText}
+        <img css={ImageStyles} src={plusIcon} alt="Open collapsible content" />
+      </StyledTrigger>
+    );
 
   // Main content when collapsible is open
-  const openTrigger = (
-    <StyledTrigger>
-      {triggerText}
-      <img css={ImageStyles} src={minusIcon} alt="Close collapsible content" />
-    </StyledTrigger>
-  );
+  const openTrigger =
+    variant === "webhook" ? (
+      <StyledTrigger className={variant}>
+        <CaretRightIcon width={9} transform="rotate(90)" />
+        <div css={flexStyles}>
+          <div>{triggerText}</div> <div>{extraTrigger}</div>
+        </div>
+      </StyledTrigger>
+    ) : (
+      <StyledTrigger>
+        {triggerText}
+        <img
+          css={ImageStyles}
+          src={minusIcon}
+          alt="Close collapsible content"
+        />
+      </StyledTrigger>
+    );
 
   const transitionTime = 200;
 
@@ -105,6 +172,7 @@ function Collapsible({ triggerText, children }: Props) {
       tabIndex={0}
       onKeyDown={(keyPress) => handleKeyDown(keyPress)}
       onClick={() => handleActive()}
+      className={variant}
     >
       <ReactCollapsible
         trigger={closedTrigger}
@@ -115,6 +183,7 @@ function Collapsible({ triggerText, children }: Props) {
         <InnerContentWrapper
           className={classnames({
             visuallyhidden: !active,
+            webhook: variant === "webhook",
           })}
         >
           {children}

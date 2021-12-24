@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import isEqual from "lodash.isequal";
 import FundsFlowSelector from "./FundsFlowSelector";
+import WebhookCodeBlock from "./WebhookCodeBlock";
 import Button from "./Button";
 import { GREY_1, GREY_3, HEADLINE_TEXT } from "../colors";
 import { breakDown } from "../breakpoints";
-import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/vcr-bank-to-vcr-bank.json";
 import { POPPINS, ROBOTO } from "../typography";
+import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/vcr-bank-to-vcr-bank.json";
+import VCRBanktoCRBank from "../../../assets/transfer-workflow-data/vcr-bank-to-cr-bank.json";
 
 // styles
 
@@ -28,6 +30,16 @@ const StyledContainer = styled.div`
     width: 100%;
     margin: 0;
   }
+`;
+
+const StyledTimelineContainer = styled.div`
+  width: 100%;
+  height: 81px;
+  background: ${GREY_1};
+  border-bottom: 1px solid ${GREY_3};
+  box-sizing: border-box;
+  border-radius: 4px 4px 0px 0px;
+  margin-bottom: 50px;
 `;
 
 const StyledTitle = styled.div`
@@ -56,14 +68,13 @@ const StyledDescription = styled.div`
   margin: 7px auto 28px auto;
 `;
 
-const StyledTimelineContainer = styled.div`
-  width: 100%;
-  height: 81px;
-  background: ${GREY_1};
-  border-bottom: 1px solid ${GREY_3};
-  box-sizing: border-box;
-  border-radius: 4px 4px 0px 0px;
-  margin-bottom: 50px;
+const StyledCodeBlockContainer = styled.div`
+  max-width: 597px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  @media (${breakDown("sm")}) {
+    width: 100%;
+  }
 `;
 
 const StyledBottomContainer = styled.div`
@@ -77,7 +88,7 @@ const StyledBottomContainer = styled.div`
   align-items: center;
   gap: 12px;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: 27px;
 `;
 
 // selectable options for FundsFlowSelector component
@@ -111,10 +122,41 @@ const receiverDestinationOptions = [
 // possible Funds Flow combinations
 
 const fundsFlowCombinations = {
-  one: ["vcr", "bank", "vcr", "bank"],
-  // all possible comibnations as arrays, for example,
-  // two: ["vcr", "balance", "vcr", "bank"]
-  // three: ["cr", "bank", "vcr", "bank"]
+  master: {
+    m1: ["account", "bank", "account", "balance"],
+    m2: ["account", "bank", "ro", "bank"],
+    m3: ["account", "bank", "cr", "bank"],
+    m4: ["account", "bank", "vcr", "balance"],
+    m5: ["account", "bank", "vcr", "bank"],
+    m6: ["account", "balance", "master", "bank"],
+    m7: ["account", "balance", "ro", "bank"],
+    m8: ["account", "balance", "cr", "bank"],
+    m9: ["account", "balance", "vcr", "balance"],
+    m10: ["account", "balance", "vcr", "bank"],
+    m11: ["account", "balance", "ro", "card"],
+    m12: ["account", "balance", "cr", "card"],
+    m13: ["account", "balance", "vcr", "card"],
+  },
+  cr: {
+    c1: ["cr", "bank", "account", "balance"],
+    c2: ["cr", "bank", "account", "bank"],
+    c3: ["cr", "bank", "vcr", "balance"],
+    c4: ["cr", "bank", "vcr", "bank"],
+  },
+  vcr: {
+    vcr1: ["vcr", "bank", "account", "balance"],
+    vcr2: ["vcr", "bank", "account", "bank"],
+    vcr3: ["vcr", "bank", "ro", "bank"],
+    vcr4: ["vcr", "bank", "cr", "bank"],
+    vcr5: ["vcr", "bank", "vcr", "balance"],
+    vcr6: ["vcr", "bank", "vcr", "bank"],
+    vcr7: ["vcr", "balance", "master", "balance"],
+    vcr8: ["vcr", "balance", "master", "bank"],
+    vcr9: ["vcr", "balance", "ro", "bank"],
+    vcr10: ["vcr", "balance", "cr", "bank"],
+    vcr11: ["vcr", "balance", "vcr", "balance"],
+    vcr12: ["vcr", "balance", "vcr", "bank"],
+  },
 };
 
 // TransferWorkflow component
@@ -152,21 +194,25 @@ function TransferWorkflow() {
       setUnsupportedFundsFlow(false);
       return;
     }
-    if (isEqual(selectedFundsFlow, fundsFlowCombinations.one)) {
-      setWebhookJsonData(VCRBanktoVCRBankdata);
+
+    if (selectedSender.value === "master") {
+      //  TODO: Write if/else statements for all combinations + add JSON data
+    } else if (selectedSender.value === "vcr") {
+      if (isEqual(setSelectedFundsFlow, fundsFlowCombinations.vcr.vcr4)) {
+        setWebhookJsonData(VCRBanktoCRBank);
+      } else if (isEqual(selectedFundsFlow, fundsFlowCombinations.vcr.vcr6)) {
+        setWebhookJsonData(VCRBanktoVCRBankdata);
+      } else {
+        setUnsupportedFundsFlow(true);
+      }
+    } else if (selectedSender.value === "cr") {
+      // TODO: Write if/else statements for all combinations + add JSON data
     } else {
       setUnsupportedFundsFlow(true);
     }
-
-    // TODO
-    // example else if statement
-    // else if (isEqual(selectedFundsFlow, fundsFlowCombinations.two)) {
-    //   webhooksData = VCRBalancetoVCRBankdata;
-    // }
   }
 
   // Call compareAndSetFundsFlow every time selectedFundsFlow state changes
-
   useEffect(() => {
     compareAndSetFundsFlow();
   }, [selectedFundsFlow]);
@@ -230,9 +276,13 @@ function TransferWorkflow() {
             </StyledDescription>
             {webhookJsonData.webhooksArray[activeStep - 1].set.map((json) => {
               return (
-                <div key={json.webhookTopic}>
-                  {/* TODO call Webhook Code Block component, props: json*/}
-                </div>
+                <StyledCodeBlockContainer>
+                  <WebhookCodeBlock
+                    topic={json.webhookTopic}
+                    senderOrReceiver={json.senderOrReceiver}
+                    payload={json.webhookPayload}
+                  />
+                </StyledCodeBlockContainer>
               );
             })}
           </>

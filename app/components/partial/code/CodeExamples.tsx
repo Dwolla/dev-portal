@@ -10,6 +10,8 @@ import {
   ExpandedOverlay,
   ExpandedCodeBlock,
   CodeBlockBar,
+  BarTitle,
+  BarItems,
   BarText,
   CodeBlockButton,
   CodeBlockContent,
@@ -49,8 +51,10 @@ const toCodeExampleProps = (child): CodeExampleProps => {
 };
 
 export default function CodeExamples({
+  title,
   children,
 }: {
+  title?: string;
   children: JSX.Element | JSX.Element[];
 }) {
   const examples: CodeExampleProps[] = Children.toArray(children).map(
@@ -126,41 +130,46 @@ export default function CodeExamples({
 
   const CodeBlock = ({ variant = "default" }: CodeBlockProps) => (
     <>
-      <CodeBlockBar className={`code-block-bar-${variant}`}>
-        {onlyOneExample ? (
-          <BarText>{activeLanguage}</BarText>
-        ) : (
-          <Select
-            autoWidth
-            variant="code"
-            options={options}
-            selectedValue={options.find((o) => o.value === activeLanguage)}
-            setSelectedValue={({ value }) => {
-              setSelectedLanguage(value);
-              ga("code sample", "language change", value);
-            }}
-          />
-        )}
-
-        <CodeBlockButton type="button" onClick={copy} disabled={copied}>
-          {copied ? "copied" : "copy"} <CopyIcon />
-        </CodeBlockButton>
-
-        <CodeBlockButton
-          type="button"
-          onClick={toggleExpanded}
-          autoFocus={variant === "fullscreen"}
-        >
-          {variant === "fullscreen" ? (
-            <>
-              collapse <CollapseIcon width={16} height={16} />
-            </>
+      <CodeBlockBar
+        className={`code-block-bar-${variant} ${title ? "title" : ""}`}
+      >
+        {title && <BarTitle>{title}</BarTitle>}
+        <BarItems>
+          {onlyOneExample ? (
+            <BarText>{activeLanguage}</BarText>
           ) : (
-            <>
-              expand <ExpandIcon width={16} height={16} />
-            </>
+            <Select
+              autoWidth
+              variant="code"
+              options={options}
+              selectedValue={options.find((o) => o.value === activeLanguage)}
+              setSelectedValue={({ value }) => {
+                setSelectedLanguage(value);
+                ga("code sample", "language change", value);
+              }}
+            />
           )}
-        </CodeBlockButton>
+
+          <CodeBlockButton type="button" onClick={copy} disabled={copied}>
+            {copied ? "copied" : "copy"} <CopyIcon />
+          </CodeBlockButton>
+
+          <CodeBlockButton
+            type="button"
+            onClick={toggleExpanded}
+            autoFocus={variant === "fullscreen"}
+          >
+            {variant === "fullscreen" ? (
+              <>
+                collapse <CollapseIcon width={16} height={16} />
+              </>
+            ) : (
+              <>
+                expand <ExpandIcon width={16} height={16} />
+              </>
+            )}
+          </CodeBlockButton>
+        </BarItems>
       </CodeBlockBar>
 
       <CodeBlockContent className={`code-block-${variant}`}>

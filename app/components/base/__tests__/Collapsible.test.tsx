@@ -46,3 +46,19 @@ test("Collapsible paragraph", () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test("Collapsible paragraph", () => {
+  const tree = renderer
+    .create(
+      <Collapsible
+        triggerText="customer_transfer_created"
+        extraTrigger="SENDER"
+        variant="webhook"
+      >
+        Code Block child
+      </Collapsible>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
