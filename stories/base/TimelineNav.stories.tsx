@@ -4,7 +4,7 @@ import TimelineNav from "../../app/components/base/TimelineNav";
 
 storiesOf("base|TimelineNav", module).add("default", () => (
   <TimelineNav
-    totalSteps={["First Leg", "Second Leg", "Third Leg", "Fourth Leg"]}
-    activeStep={1}
+    totalSteps={["Create Transfer", "First Leg", "Second Leg", "Third Leg"]}
+    setActiveStep={2}
   />
 ));
