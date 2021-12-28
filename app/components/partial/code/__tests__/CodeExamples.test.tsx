@@ -46,6 +46,36 @@ test("single example", () => {
   expect(tree).toMatchSnapshot();
 });
 
+test("single example with title", () => {
+  const tree = renderer
+    .create(
+      <LanguageContext.Provider
+        value={{
+          selectedLanguage: { value: "php", label: "PHP" },
+          setSelectedLanguage: () => {},
+          languageOptions: [
+            { value: "java", label: "Java" },
+            { value: "php", label: "PHP" },
+          ],
+        }}
+      >
+        <CodeExamples title="Title goes here">
+          <MockMDXCreateElement originalType="pre">
+            <MockMDXCreateElement
+              originalType="code"
+              className="language-javascript"
+            >
+              {'const foo = "bar";'}
+            </MockMDXCreateElement>
+          </MockMDXCreateElement>
+        </CodeExamples>
+      </LanguageContext.Provider>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
 test("multiple examples", () => {
   const tree = renderer
     .create(

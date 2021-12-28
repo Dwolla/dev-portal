@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Collapsible list 1`] = `
+exports[`Collapsible Webhook Variant 1`] = `
 <div
-  className="css-1xkfmuw-CollapsibleWrapper e1jgqqjc0"
+  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc0"
   onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
@@ -18,7 +18,70 @@ exports[`Collapsible list 1`] = `
       tabIndex={null}
     >
       <div
-        className="css-icu0je-StyledTrigger e1jgqqjc1"
+        className="webhook css-1ywf0fz-StyledTrigger e1jgqqjc1"
+      >
+        <svg
+          width={9}
+        />
+        <div
+          className="css-1vsgzd0-flexStyles"
+        >
+          <div>
+            customer_transfer_created
+          </div>
+           
+          <div>
+            SENDER
+          </div>
+        </div>
+      </div>
+    </span>
+    <div
+      className="Collapsible__contentOuter"
+      onTransitionEnd={[Function]}
+      style={
+        Object {
+          "WebkitTransition": "height 200ms linear",
+          "height": 0,
+          "msTransition": "height 200ms linear",
+          "overflow": "hidden",
+          "transition": "height 200ms linear",
+        }
+      }
+    >
+      <div
+        className="Collapsible__contentInner"
+      >
+        <div
+          className="visuallyhidden webhook css-1lrge1l-InnerContentWrapper e1jgqqjc2"
+        >
+          Code Block child
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Collapsible list 1`] = `
+<div
+  className="css-dzay3o-CollapsibleWrapper e1jgqqjc0"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="Collapsible"
+  >
+    <span
+      className="Collapsible__trigger is-closed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      style={null}
+      tabIndex={null}
+    >
+      <div
+        className="css-1ywf0fz-StyledTrigger e1jgqqjc1"
       >
         My Customer has a retry status. What activity would they be able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?
         <img
@@ -45,7 +108,7 @@ exports[`Collapsible list 1`] = `
         className="Collapsible__contentInner"
       >
         <div
-          className="visuallyhidden css-12dwurn-InnerContentWrapper e1jgqqjc2"
+          className="visuallyhidden css-1lrge1l-InnerContentWrapper e1jgqqjc2"
         >
           <ul
             className=" css-1diyhur-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
@@ -72,7 +135,7 @@ exports[`Collapsible list 1`] = `
 
 exports[`Collapsible paragraph 1`] = `
 <div
-  className="css-1xkfmuw-CollapsibleWrapper e1jgqqjc0"
+  className="css-dzay3o-CollapsibleWrapper e1jgqqjc0"
   onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
@@ -88,7 +151,7 @@ exports[`Collapsible paragraph 1`] = `
       tabIndex={null}
     >
       <div
-        className="css-icu0je-StyledTrigger e1jgqqjc1"
+        className="css-1ywf0fz-StyledTrigger e1jgqqjc1"
       >
         My Customer has a document status. Can I submit more than one document via the API?
         <img
@@ -115,7 +178,7 @@ exports[`Collapsible paragraph 1`] = `
         className="Collapsible__contentInner"
       >
         <div
-          className="visuallyhidden css-12dwurn-InnerContentWrapper e1jgqqjc2"
+          className="visuallyhidden css-1lrge1l-InnerContentWrapper e1jgqqjc2"
         >
           <p
             className=" css-1tblf9u-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
