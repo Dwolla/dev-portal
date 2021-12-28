@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { ReactComponent as CheckMarkIcon } from "../../../assets/images/component-icons/check-mark.svg";
+import { GREY_3, CODE_BLOCK_ORANGE, PURPLE_DARK } from "../colors";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -19,8 +20,8 @@ const StyledStepNum = styled.div`
   z-index: 5;
   align-items: center;
   justify-content: center;
-  border: 1px solid #c9d3e0;
-  color: #c9d3e0;
+  border: 1px solid ${GREY_3};
+  color: ${GREY_3};
   border-radius: 50%;
   margin-top: 14px;
   margin-left: 7px;
@@ -28,12 +29,12 @@ const StyledStepNum = styled.div`
   margin-bottom: 9px;
   z-index: 10;
   &.active {
-    border-color: #e37c53;
-    color: #e37c53;
+    border-color: ${CODE_BLOCK_ORANGE};
+    color: ${CODE_BLOCK_ORANGE};
   }
   &.completed {
-    border-color: #e37c53;
-    color: #e37c53;
+    border-color: ${CODE_BLOCK_ORANGE};
+    color: ${CODE_BLOCK_ORANGE};
   }
 `;
 
@@ -44,12 +45,12 @@ const StyledText = styled.div`
   font-weight: normal;
   font-size: 12px;
   width: 105px;
-  color: #c9d3e0;
+  color: ${GREY_3};
   &.active {
-    color: #2b2d37;
+    color: ${PURPLE_DARK};
   }
   &.completed {
-    color: #2b2d37;
+    color: ${PURPLE_DARK};
   }
 `;
 
@@ -64,7 +65,7 @@ const StyledStep = styled.div`
   &:before {
     position: absolute;
     content: "";
-    border: 1px solid #c9d3e0;
+    border: 1px solid ${GREY_3};
     width: 80%;
     top: 25px;
     margin-left: 10%;
@@ -74,7 +75,7 @@ const StyledStep = styled.div`
   &:after {
     position: absolute;
     content: "";
-    border: 1px solid #c9d3e0;
+    border: 1px solid ${GREY_3};
     width: 80%;
     top: 25px;
     margin-left: 10%;
@@ -92,10 +93,10 @@ const StyledStep = styled.div`
     }
   }
   &.active {
-    //border-color: #e37c53;
+    //border-color: ${CODE_BLOCK_ORANGE};
   }
   &.completed {
-    //border-color: #e37c53;
+    //border-color: ${CODE_BLOCK_ORANGE};
   }
 `;
 
@@ -122,7 +123,7 @@ const createElements = (steps) => {
       num = idx + 1;
     }
     return (
-      <StyledStep className={status}>
+      <StyledStep className={status} key={step}>
         <StyledStepNum className={status} onClick={onClick} id={num}>
           {num}
         </StyledStepNum>
