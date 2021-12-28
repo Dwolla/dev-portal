@@ -37,7 +37,7 @@ const dummyJson = {
   },
 };
 
-test("TransferWorkflow", () => {
+test("WebhookCodeBlock", () => {
   const tree = renderer
     .create(
       <WebhookCodeBlock

@@ -122,13 +122,13 @@ const receiverDestinationOptions = [
 // possible Funds Flow combinations
 
 const fundsFlowCombinations = {
-  master: {
+  account: {
     m1: ["account", "bank", "account", "balance"],
     m2: ["account", "bank", "ro", "bank"],
     m3: ["account", "bank", "cr", "bank"],
     m4: ["account", "bank", "vcr", "balance"],
     m5: ["account", "bank", "vcr", "bank"],
-    m6: ["account", "balance", "master", "bank"],
+    m6: ["account", "balance", "account", "bank"],
     m7: ["account", "balance", "ro", "bank"],
     m8: ["account", "balance", "cr", "bank"],
     m9: ["account", "balance", "vcr", "balance"],
@@ -150,8 +150,8 @@ const fundsFlowCombinations = {
     vcr4: ["vcr", "bank", "cr", "bank"],
     vcr5: ["vcr", "bank", "vcr", "balance"],
     vcr6: ["vcr", "bank", "vcr", "bank"],
-    vcr7: ["vcr", "balance", "master", "balance"],
-    vcr8: ["vcr", "balance", "master", "bank"],
+    vcr7: ["vcr", "balance", "account", "balance"],
+    vcr8: ["vcr", "balance", "account", "bank"],
     vcr9: ["vcr", "balance", "ro", "bank"],
     vcr10: ["vcr", "balance", "cr", "bank"],
     vcr11: ["vcr", "balance", "vcr", "balance"],
@@ -195,7 +195,7 @@ function TransferWorkflow() {
       return;
     }
 
-    if (selectedSender.value === "master") {
+    if (selectedSender.value === "account") {
       //  TODO: Write if/else statements for all combinations + add JSON data
     } else if (selectedSender.value === "vcr") {
       if (isEqual(setSelectedFundsFlow, fundsFlowCombinations.vcr.vcr4)) {

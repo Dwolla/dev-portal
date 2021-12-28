@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TransferWorkflow 1`] = `
+exports[`WebhookCodeBlock 1`] = `
 <div
   className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc0"
   onClick={[Function]}

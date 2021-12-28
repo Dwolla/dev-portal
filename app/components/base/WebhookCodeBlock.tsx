@@ -8,7 +8,7 @@ type Props = {
   payload: any;
 };
 
-// WebhookCodeBlock styles payload prop using <CodeExamlpes>
+// WebhookCodeBlock styles payload prop using <CodeExamples>
 // and wraps it in <Collapsible variant="webhook">
 function WebhookCodeBlock({ topic, senderOrReceiver, payload }: Props) {
   return (

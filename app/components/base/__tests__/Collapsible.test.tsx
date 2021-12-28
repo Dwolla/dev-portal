@@ -47,7 +47,7 @@ test("Collapsible paragraph", () => {
   expect(tree).toMatchSnapshot();
 });
 
-test("Collapsible paragraph", () => {
+test("Collapsible Webhook Variant", () => {
   const tree = renderer
     .create(
       <Collapsible

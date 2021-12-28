@@ -1,5 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Collapsible Webhook Variant 1`] = `
+<div
+  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc0"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  <div
+    className="Collapsible"
+  >
+    <span
+      className="Collapsible__trigger is-closed"
+      onClick={[Function]}
+      onKeyPress={[Function]}
+      style={null}
+      tabIndex={null}
+    >
+      <div
+        className="webhook css-1ywf0fz-StyledTrigger e1jgqqjc1"
+      >
+        <svg
+          width={9}
+        />
+        <div
+          className="css-1vsgzd0-flexStyles"
+        >
+          <div>
+            customer_transfer_created
+          </div>
+           
+          <div>
+            SENDER
+          </div>
+        </div>
+      </div>
+    </span>
+    <div
+      className="Collapsible__contentOuter"
+      onTransitionEnd={[Function]}
+      style={
+        Object {
+          "WebkitTransition": "height 200ms linear",
+          "height": 0,
+          "msTransition": "height 200ms linear",
+          "overflow": "hidden",
+          "transition": "height 200ms linear",
+        }
+      }
+    >
+      <div
+        className="Collapsible__contentInner"
+      >
+        <div
+          className="visuallyhidden webhook css-1lrge1l-InnerContentWrapper e1jgqqjc2"
+        >
+          Code Block child
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Collapsible list 1`] = `
 <div
   className="css-dzay3o-CollapsibleWrapper e1jgqqjc0"
@@ -122,69 +185,6 @@ exports[`Collapsible paragraph 1`] = `
           >
             Yes, although this is not necessary, nor recommended. Dwolla manually reviews all documents, so sending more documents than necessary may slow down the verification process for your Customers.
           </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Collapsible paragraph 2`] = `
-<div
-  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc0"
-  onClick={[Function]}
-  onKeyDown={[Function]}
-  tabIndex={0}
->
-  <div
-    className="Collapsible"
-  >
-    <span
-      className="Collapsible__trigger is-closed"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      style={null}
-      tabIndex={null}
-    >
-      <div
-        className="webhook css-1ywf0fz-StyledTrigger e1jgqqjc1"
-      >
-        <svg
-          width={9}
-        />
-        <div
-          className="css-1vsgzd0-flexStyles"
-        >
-          <div>
-            customer_transfer_created
-          </div>
-           
-          <div>
-            SENDER
-          </div>
-        </div>
-      </div>
-    </span>
-    <div
-      className="Collapsible__contentOuter"
-      onTransitionEnd={[Function]}
-      style={
-        Object {
-          "WebkitTransition": "height 200ms linear",
-          "height": 0,
-          "msTransition": "height 200ms linear",
-          "overflow": "hidden",
-          "transition": "height 200ms linear",
-        }
-      }
-    >
-      <div
-        className="Collapsible__contentInner"
-      >
-        <div
-          className="visuallyhidden webhook css-1lrge1l-InnerContentWrapper e1jgqqjc2"
-        >
-          Code Block child
         </div>
       </div>
     </div>

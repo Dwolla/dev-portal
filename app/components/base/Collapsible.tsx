@@ -139,7 +139,11 @@ function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
   const openTrigger =
     variant === "webhook" ? (
       <StyledTrigger className={variant}>
-        <CaretRightIcon width={9} transform="rotate(90)" />
+        <CaretRightIcon
+          width={9}
+          transform="rotate(90)"
+          style={{ transitionDuration: "0.2s" }}
+        />
         <div css={flexStyles}>
           <div>{triggerText}</div> <div>{extraTrigger}</div>
         </div>
