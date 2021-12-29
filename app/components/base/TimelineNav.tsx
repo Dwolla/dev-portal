@@ -82,7 +82,7 @@ const StyledStep = styled.div`
     left: 50%;
     z-index: 3;
   }
-  &:first-child {
+  &:first-of-type {
     &:before {
       content: none;
     }
