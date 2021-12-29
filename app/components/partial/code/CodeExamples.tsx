@@ -109,9 +109,17 @@ export default function CodeExamples({
 
   const { copied, copy } = useCopy(codeString);
 
+  function onKeydownCopy(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      copy(e);
+    }
+  }
+
   const onlyOneExample = options.length === 1;
 
-  const toggleExpanded = () => {
+  const toggleExpanded = (e) => {
+    e.stopPropagation();
     if (!expanded) {
       setExpanded("expanded");
       disableBodyScroll();
@@ -123,6 +131,13 @@ export default function CodeExamples({
       }, 280);
     }
   };
+
+  function onKeydownExpand(e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      toggleExpanded(e);
+    }
+  }
 
   type CodeBlockProps = {
     variant?: "default" | "fullscreen";
@@ -150,13 +165,19 @@ export default function CodeExamples({
             />
           )}
 
-          <CodeBlockButton type="button" onClick={copy} disabled={copied}>
+          <CodeBlockButton
+            type="button"
+            onClick={copy}
+            onKeyDown={(keyPress) => onKeydownCopy(keyPress)}
+            disabled={copied}
+          >
             {copied ? "copied" : "copy"} <CopyIcon />
           </CodeBlockButton>
 
           <CodeBlockButton
             type="button"
             onClick={toggleExpanded}
+            onKeyDown={(keyPress) => onKeydownExpand(keyPress)}
             autoFocus={variant === "fullscreen"}
           >
             {variant === "fullscreen" ? (

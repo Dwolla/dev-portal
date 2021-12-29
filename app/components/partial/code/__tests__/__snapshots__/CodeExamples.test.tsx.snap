@@ -62,6 +62,7 @@ exports[`multiple examples 1`] = `
         className="css-5uu5vc-CodeBlockButton e112hlxu5"
         disabled={false}
         onClick={[Function]}
+        onKeyDown={[Function]}
         type="button"
       >
         copy
@@ -72,6 +73,7 @@ exports[`multiple examples 1`] = `
         autoFocus={false}
         className="css-5uu5vc-CodeBlockButton e112hlxu5"
         onClick={[Function]}
+        onKeyDown={[Function]}
         type="button"
       >
         expand 
@@ -117,6 +119,7 @@ exports[`single example 1`] = `
         className="css-5uu5vc-CodeBlockButton e112hlxu5"
         disabled={false}
         onClick={[Function]}
+        onKeyDown={[Function]}
         type="button"
       >
         copy
@@ -127,6 +130,7 @@ exports[`single example 1`] = `
         autoFocus={false}
         className="css-5uu5vc-CodeBlockButton e112hlxu5"
         onClick={[Function]}
+        onKeyDown={[Function]}
         type="button"
       >
         expand 
@@ -177,6 +181,7 @@ exports[`single example with title 1`] = `
         className="css-5uu5vc-CodeBlockButton e112hlxu5"
         disabled={false}
         onClick={[Function]}
+        onKeyDown={[Function]}
         type="button"
       >
         copy
@@ -187,6 +192,7 @@ exports[`single example with title 1`] = `
         autoFocus={false}
         className="css-5uu5vc-CodeBlockButton e112hlxu5"
         onClick={[Function]}
+        onKeyDown={[Function]}
         type="button"
       >
         expand 
