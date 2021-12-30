@@ -6,7 +6,7 @@ exports[`multiple examples 1`] = `
     className="code-block-bar-default  css-vlw6pb-CodeBlockBar e112hlxu2"
   >
     <div
-      className="css-dffxm8-BarItems e112hlxu4"
+      className="css-1t0sur2-BarItems e112hlxu4"
     >
       <div
         className=" css-k377xg-container"
@@ -108,7 +108,7 @@ exports[`single example 1`] = `
     className="code-block-bar-default  css-vlw6pb-CodeBlockBar e112hlxu2"
   >
     <div
-      className="css-dffxm8-BarItems e112hlxu4"
+      className="css-1t0sur2-BarItems e112hlxu4"
     >
       <div
         className="css-1vovl9e-BarText e112hlxu6"
@@ -170,7 +170,7 @@ exports[`single example with title 1`] = `
       Title goes here
     </div>
     <div
-      className="css-dffxm8-BarItems e112hlxu4"
+      className="css-1t0sur2-BarItems e112hlxu4"
     >
       <div
         className="css-1vovl9e-BarText e112hlxu6"

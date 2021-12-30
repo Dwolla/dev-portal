@@ -104,7 +104,7 @@ export const BarItems = styled.div`
   justify-content: flex-end;
 
   > * {
-    margin: 0 5px;
+    margin: 0 5px !important;
   }
 `;
 
