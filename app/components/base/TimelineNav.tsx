@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "@emotion/styled";
 import { ReactComponent as CheckMarkIcon } from "../../../assets/images/component-icons/check-mark.svg";
 import { GREY_3, CODE_BLOCK_ORANGE, PURPLE_DARK } from "../colors";
+import { POPPINS } from "../typography";
 
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   width: 75%;
+  cursor: pointer;
 `;
 
 const StyledStepNum = styled.div`
   width: 25px;
   height: 25px;
-  font-family: Poppins;
+  font-family: ${POPPINS};
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -23,10 +25,7 @@ const StyledStepNum = styled.div`
   border: 1px solid ${GREY_3};
   color: ${GREY_3};
   border-radius: 50%;
-  margin-top: 14px;
-  margin-left: 7px;
-  margin-right: 7px;
-  margin-bottom: 9px;
+  margin: 14px 7px 9px;
   z-index: 10;
   &.active {
     border-color: ${CODE_BLOCK_ORANGE};
@@ -39,7 +38,7 @@ const StyledStepNum = styled.div`
 `;
 
 const StyledText = styled.div`
-  font-family: Poppins;
+  font-family: ${POPPINS};
   text-align: center;
   font-style: normal;
   font-weight: normal;
@@ -92,39 +91,38 @@ const StyledStep = styled.div`
       content: none;
     }
   }
-  &.active {
-    //border-color: ${CODE_BLOCK_ORANGE};
-  }
-  &.completed {
-    //border-color: ${CODE_BLOCK_ORANGE};
-  }
 `;
 
-const createElements = (steps) => {
-  // setActiveStep
-  const [active, setActive] = useState(1);
-
+const createElements = (steps, active, setActive) => {
   const onClick = (e) => {
-    setActive(parseInt(e.target.id, 10));
+    if (e.target.id) setActive(parseInt(e.target.id, 10));
   };
-
   const elements = steps.map((step, idx) => {
     let status = null;
     let num = null;
-    if (idx + 1 === active) {
+    if (idx === active) {
       status = "active";
-      num = idx + 1;
-    } else if (idx + 1 < active) {
+      num = idx;
+    } else if (idx < active) {
       status = "completed";
       num = (
-        <CheckMarkIcon id={idx + 1} width={14} height={10} stroke="#e37c53" />
+        <CheckMarkIcon
+          id={idx}
+          width={14}
+          height={10}
+          stroke={CODE_BLOCK_ORANGE}
+        />
       );
     } else {
-      num = idx + 1;
+      num = idx;
     }
     return (
       <StyledStep className={status} key={step}>
-        <StyledStepNum className={status} onClick={onClick} id={num}>
+        <StyledStepNum
+          className={status}
+          onClick={idx !== 0 && onClick}
+          id={idx}
+        >
           {num}
         </StyledStepNum>
         <StyledText className={status}>{step}</StyledText>
@@ -134,13 +132,16 @@ const createElements = (steps) => {
   return elements;
 };
 
-type Props = { totalSteps: Array<string> }; // setActiveStep: number
+type Props = {
+  totalSteps: Array<string>;
+  active: number;
+  setActive: Function;
+};
 
-function TimelineNav({ totalSteps }: Props) {
-  // setActiveStep
+function TimelineNav({ totalSteps, active, setActive }: Props) {
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <StyledDiv>{createElements(totalSteps)}</StyledDiv>
+      <StyledDiv>{createElements(totalSteps, active, setActive)}</StyledDiv>
     </div>
   );
 }
