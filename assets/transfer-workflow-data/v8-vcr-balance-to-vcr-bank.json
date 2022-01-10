@@ -1,10 +1,10 @@
 {
-  "name": "Verified customer balance to customer bank",
+  "name": "Verified Customer A balance to Verified Customer A bank",
   "transferId": "b01cf362-4d6e-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {
       "stepTitle": "First leg",
-      "stepDescription": "Verified customer balance to customer bank",
+      "stepDescription": "Verified Customer balance to Verified Customer bank",
       "set": [
         {
           "webhookTopic": "customer_bank_transfer_created",
@@ -61,7 +61,7 @@
               }
             },
             "id": "b01cf362-4d6e-ec11-813c-f6ddd36b41b8",
-            "status": "processed",
+            "status": "pending",
             "amount": {
               "value": "200.00",
               "currency": "USD"
