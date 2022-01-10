@@ -176,10 +176,7 @@ export default function Layout({
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
-    operatorDescription: string;
-    veridianDescription: string;
-    metaBankDescription: JSX.Element;
-    rtpDescription: string;
+    description: any;
   };
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
