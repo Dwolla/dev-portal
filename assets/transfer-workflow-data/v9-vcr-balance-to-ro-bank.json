@@ -148,7 +148,7 @@
     },
     {
       "stepTitle": "Second leg",
-      "stepDescription": "Customer transfer completed",
+      "stepDescription": "Completed to Recieve Only bank",
       "set": [
         {
           "webhookTopic": "customer_transfer_completed",

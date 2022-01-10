@@ -77,7 +77,7 @@
     },
     {
       "stepTitle": "Second leg",
-      "stepDescription": "Customer bank transfer completed",
+      "stepDescription": "Completed to Verified Customer bank",
       "set": [
         {
           "webhookTopic": "customer_bank_transfer_completed",
