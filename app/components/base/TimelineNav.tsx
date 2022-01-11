@@ -120,7 +120,7 @@ const createElements = (steps, active, setActive) => {
       <StyledStep className={status} key={step}>
         <StyledStepNum
           className={status}
-          onClick={idx !== 0 && onClick}
+          onClick={idx !== 0 ? onClick : undefined}
           id={idx}
         >
           {num}
