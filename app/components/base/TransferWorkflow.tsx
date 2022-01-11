@@ -10,8 +10,8 @@ import Button from "./Button";
 import { GREY_1, GREY_3, HEADLINE_TEXT, PURPLE_DARK } from "../colors";
 import { breakDown } from "../breakpoints";
 import { POPPINS, ROBOTO } from "../typography";
-import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/vcr-bank-to-vcr-bank.json";
-import VCRBanktoCRBank from "../../../assets/transfer-workflow-data/vcr-bank-to-cr-bank.json";
+import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/v6-vcr-bank-to-vcr-bank.json";
+import VCRBanktoCRBank from "../../../assets/transfer-workflow-data/v4-vcr-bank-to-cr-bank.json";
 
 // styles
 

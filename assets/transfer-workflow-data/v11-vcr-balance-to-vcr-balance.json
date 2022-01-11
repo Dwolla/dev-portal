@@ -1,0 +1,286 @@
+{
+  "name": "Verified Customer A balance to Verified Customer B balance",
+  "transferId": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+  "webhooksArray": [
+    {
+      "stepTitle": "First leg",
+      "stepDescription": "Verified Customer A balance to Verified B Customer balance",
+      "set": [
+        {
+          "webhookTopic": "customer_transfer_created",
+          "senderOrReceiver": "SENDER",
+          "webhookPayload": {
+            "_links": {
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/f79ddfb4-8583-4fb2-9060-9fc0f4bd6076",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "event"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "account"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "f79ddfb4-8583-4fb2-9060-9fc0f4bd6076",
+            "created": "2022-01-04T22:14:40.544Z",
+            "topic": "customer_transfer_created",
+            "resourceId": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8"
+          },
+          "transferResponse": {
+            "_links": {
+              "source": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              },
+              "destination-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/0f814bfb-d513-4137-a5c8-287a0b57bde1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "transfer"
+              },
+              "source-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/e0761446-8e1b-4f78-99de-b28f4954b3f1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "destination": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+            "status": "processed",
+            "amount": {
+              "value": "311.00",
+              "currency": "USD"
+            },
+            "created": "2022-01-04T22:14:44.087Z"
+          }
+        },
+        {
+          "webhookTopic": "customer_transfer_created",
+          "senderOrReceiver": "RECEIVER",
+          "webhookPayload": {
+            "_links": {
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/957e5ba7-a702-45c5-86a8-91d3e4e99c8e",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "event"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "account"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "957e5ba7-a702-45c5-86a8-91d3e4e99c8e",
+            "created": "2022-01-04T22:14:40.544Z",
+            "topic": "customer_transfer_created",
+            "resourceId": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8"
+          },
+          "transferResponse": {
+            "_links": {
+              "source": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              },
+              "destination-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/0f814bfb-d513-4137-a5c8-287a0b57bde1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "transfer"
+              },
+              "source-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/e0761446-8e1b-4f78-99de-b28f4954b3f1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "destination": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+            "status": "processed",
+            "amount": {
+              "value": "311.00",
+              "currency": "USD"
+            },
+            "created": "2022-01-04T22:14:44.087Z"
+          }
+        }
+      ]
+    },
+    {
+      "stepTitle": "Second Leg",
+      "stepDescription": "Completed to Verified B Customer balance",
+      "set": [
+        {
+          "webhookTopic": "customer_transfer_completed",
+          "senderOrReceiver": "SENDER",
+          "webhookPayload": {
+            "_links": {
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/4f9e9f72-3769-44e6-a13d-40975c900b43",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "event"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "account"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "4f9e9f72-3769-44e6-a13d-40975c900b43",
+            "created": "2022-01-04T22:14:40.544Z",
+            "topic": "customer_transfer_completed",
+            "resourceId": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8"
+          },
+          "transferResponse": {
+            "_links": {
+              "source": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              },
+              "destination-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/0f814bfb-d513-4137-a5c8-287a0b57bde1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "transfer"
+              },
+              "source-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/e0761446-8e1b-4f78-99de-b28f4954b3f1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "destination": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+            "status": "processed",
+            "amount": {
+              "value": "311.00",
+              "currency": "USD"
+            },
+            "created": "2022-01-04T22:14:44.087Z"
+          }
+        },
+        {
+          "webhookTopic": "customer_transfer_completed",
+          "senderOrReceiver": "RECEIVER",
+          "webhookPayload": {
+            "_links": {
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/events/92aedea6-3d41-4de5-a3e9-a604b2684261",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "event"
+              },
+              "resource": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json"
+              },
+              "account": {
+                "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "account"
+              },
+              "customer": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "92aedea6-3d41-4de5-a3e9-a604b2684261",
+            "created": "2022-01-04T22:14:40.544Z",
+            "topic": "customer_transfer_completed",
+            "resourceId": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8"
+          },
+          "transferResponse": {
+            "_links": {
+              "source": {
+                "href": "https://api-sandbox.dwolla.com/customers/cf3f1ad4-fc48-45d3-8aff-0ef5577b8a17",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              },
+              "destination-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/0f814bfb-d513-4137-a5c8-287a0b57bde1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "self": {
+                "href": "https://api-sandbox.dwolla.com/transfers/9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "transfer"
+              },
+              "source-funding-source": {
+                "href": "https://api-sandbox.dwolla.com/funding-sources/e0761446-8e1b-4f78-99de-b28f4954b3f1",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "funding-source"
+              },
+              "destination": {
+                "href": "https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912",
+                "type": "application/vnd.dwolla.v1.hal+json",
+                "resource-type": "customer"
+              }
+            },
+            "id": "9a81bfb7-ab6d-ec11-813c-f6ddd36b41b8",
+            "status": "processed",
+            "amount": {
+              "value": "311.00",
+              "currency": "USD"
+            },
+            "created": "2022-01-04T22:14:44.087Z"
+          }
+        }
+      ]
+    }
+  ]
+}
