@@ -5,8 +5,14 @@ exports[`TransferWorkflow 1`] = `
   className="css-1bvvi3d-StyledContainer evg26n40"
 >
   <div
-    className="css-86tl5e-StyledTimelineContainer evg26n41"
-  />
+    className="css-vrkopy-StyledTimelineContainer evg26n41"
+  >
+    <div
+      className="css-urymb5-StyledHeader evg26n42"
+    >
+      Select a funds flow
+    </div>
+  </div>
   <div
     className="css-1pis8ym-StyledContainer e7p8rnk0"
   >
@@ -426,7 +432,7 @@ exports[`TransferWorkflow 1`] = `
     </div>
   </div>
   <div
-    className="css-1sz0iw5-StyledBottomContainer evg26n45"
+    className="css-1sz0iw5-StyledBottomContainer evg26n46"
   >
     <button
       className="primary standard disabled css-4oxaqu-StyledButton-buttonStyles-buttonStyles ek3ainu0"

@@ -10,68 +10,68 @@ exports[`TimelineNav 1`] = `
   }
 >
   <div
-    className="css-19l3dx2-StyledDiv e92fyip0"
+    className="css-b3ypt0-StyledDiv e92fyip0"
   >
     <div
-      className="active css-1axsdw6-StyledStep e92fyip3"
+      className="active css-zr8nux-StyledStep e92fyip3"
     >
       <div
-        className="active css-14tqs2y-StyledStepNum e92fyip1"
+        className="active css-e0ruun-StyledStepNum e92fyip1"
+        id={0}
+        onClick={false}
+      >
+        0
+      </div>
+      <div
+        className="active css-1g7t0p2-StyledText e92fyip2"
+      >
+        Create Transfer
+      </div>
+    </div>
+    <div
+      className="css-zr8nux-StyledStep e92fyip3"
+    >
+      <div
+        className="css-e0ruun-StyledStepNum e92fyip1"
         id={1}
         onClick={[Function]}
       >
         1
       </div>
       <div
-        className="active css-1k6l1lm-StyledText e92fyip2"
+        className="css-1g7t0p2-StyledText e92fyip2"
       >
-        Create Transfer
+        First Leg
       </div>
     </div>
     <div
-      className="css-1axsdw6-StyledStep e92fyip3"
+      className="css-zr8nux-StyledStep e92fyip3"
     >
       <div
-        className="css-14tqs2y-StyledStepNum e92fyip1"
+        className="css-e0ruun-StyledStepNum e92fyip1"
         id={2}
         onClick={[Function]}
       >
         2
       </div>
       <div
-        className="css-1k6l1lm-StyledText e92fyip2"
+        className="css-1g7t0p2-StyledText e92fyip2"
       >
-        First Leg
+        Second Leg
       </div>
     </div>
     <div
-      className="css-1axsdw6-StyledStep e92fyip3"
+      className="css-zr8nux-StyledStep e92fyip3"
     >
       <div
-        className="css-14tqs2y-StyledStepNum e92fyip1"
+        className="css-e0ruun-StyledStepNum e92fyip1"
         id={3}
         onClick={[Function]}
       >
         3
       </div>
       <div
-        className="css-1k6l1lm-StyledText e92fyip2"
-      >
-        Second Leg
-      </div>
-    </div>
-    <div
-      className="css-1axsdw6-StyledStep e92fyip3"
-    >
-      <div
-        className="css-14tqs2y-StyledStepNum e92fyip1"
-        id={4}
-        onClick={[Function]}
-      >
-        4
-      </div>
-      <div
-        className="css-1k6l1lm-StyledText e92fyip2"
+        className="css-1g7t0p2-StyledText e92fyip2"
       >
         Third Leg
       </div>

@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import isEqual from "lodash.isequal";
+import ordinal from "ordinal";
 import FundsFlowSelector from "./FundsFlowSelector";
 import WebhookCodeBlock from "./WebhookCodeBlock";
+import TimelineNav from "./TimelineNav";
 import Button from "./Button";
-import { GREY_1, GREY_3, HEADLINE_TEXT } from "../colors";
+import { GREY_1, GREY_3, HEADLINE_TEXT, PURPLE_DARK } from "../colors";
 import { breakDown } from "../breakpoints";
 import { POPPINS, ROBOTO } from "../typography";
 import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/vcr-bank-to-vcr-bank.json";
@@ -40,6 +42,19 @@ const StyledTimelineContainer = styled.div`
   box-sizing: border-box;
   border-radius: 4px 4px 0px 0px;
   margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledHeader = styled.div`
+  margin: auto;
+  font-family: ${POPPINS};
+  text-align: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  color: ${GREY_3};
+  color: ${PURPLE_DARK};
 `;
 
 const StyledTitle = styled.div`
@@ -241,7 +256,21 @@ function TransferWorkflow() {
   return (
     <StyledContainer>
       <StyledTimelineContainer>
-        {/* TODO: Call Timeline Nav component, props: totalSteps[], activeStep, setActiveStep */}
+        {webhookJsonData !== undefined ? (
+          <div style={{ width: "100%" }}>
+            <TimelineNav
+              totalSteps={["Create transfer"].concat(
+                webhookJsonData.webhooksArray.map((value, index) => {
+                  return `${ordinal(index + 1)} leg`;
+                })
+              )}
+              active={activeStep}
+              setActive={setActiveStep}
+            />
+          </div>
+        ) : (
+          <StyledHeader>Select a funds flow</StyledHeader>
+        )}
       </StyledTimelineContainer>
       {activeStep === 0 ? (
         // display FundsFlowSelector component when activeStep is 0
