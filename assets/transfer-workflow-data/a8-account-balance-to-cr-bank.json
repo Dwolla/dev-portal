@@ -1,5 +1,5 @@
 {
-  "name": "Account balance to Unverified Customer bank",
+  "name": "Master Account balance to Unverified Customer bank",
   "transferId": "cf411c35-6b6d-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {

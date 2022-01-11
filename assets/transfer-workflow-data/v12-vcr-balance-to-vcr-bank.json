@@ -7,7 +7,7 @@
       "stepDescription": "Verified Customer A balance to Verified Customer B balance",
       "set": [
         {
-          "webhookTopic": "transfer_created",
+          "webhookTopic": "customer_transfer_created",
           "senderOrReceiver": "SENDER",
           "webhookPayload": {
             "_links": {
@@ -157,7 +157,7 @@
       "stepDescription": "Completed to Verified Customer B balance",
       "set": [
         {
-          "webhookTopic": "transfer_completed",
+          "webhookTopic": "customer_transfer_completed",
           "senderOrReceiver": "SENDER",
           "webhookPayload": {
             "_links": {

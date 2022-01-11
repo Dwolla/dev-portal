@@ -1,5 +1,5 @@
 {
-  "name": "Account balance to Account bank",
+  "name": "Master Account balance to Master Account bank",
   "transferId": "3ec80fcf-8f69-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {

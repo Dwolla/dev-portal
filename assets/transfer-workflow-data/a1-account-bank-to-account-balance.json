@@ -72,7 +72,7 @@
     },
     {
       "stepTitle": "Second Leg",
-      "stepDescription": "Processed to Account Balance",
+      "stepDescription": "Completed to Account Balance",
       "set": [
         {
           "webhookTopic": "bank_transfer_completed",

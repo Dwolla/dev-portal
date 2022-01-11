@@ -142,7 +142,13 @@
             },
             "individualAchId": "I4EY99E5"
           }
-        },
+        }
+      ]
+    },
+    {
+      "stepTitle": "Second Leg",
+      "stepDescription": "Completed to Account balance",
+      "set": [
         {
           "webhookTopic": "customer_transfer_completed",
           "senderOrReceiver": "SENDER",
@@ -279,13 +285,7 @@
             },
             "individualAchId": "I4EY99E5"
           }
-        }
-      ]
-    },
-    {
-      "stepTitle": "Second Leg",
-      "stepDescription": "Account Balance to Account Bank",
-      "set": [
+        },
         {
           "webhookTopic": "bank_transfer_created",
           "senderOrReceiver": "RECEIVER",
@@ -347,7 +347,13 @@
             },
             "individualAchId": "IAE4OOER"
           }
-        },
+        }
+      ]
+    },
+    {
+      "stepTitle": "Third Leg",
+      "stepDescription": "Completed to Account bank",
+      "set": [
         {
           "webhookTopic": "bank_transfer_completed",
           "senderOrReceiver": "RECEIVER",

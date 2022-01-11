@@ -1,10 +1,10 @@
 {
-  "name": "Verified Customer balance to Receive Only bank",
+  "name": "Verified Customer balance to Receive Only User bank",
   "transferId": "c0e01d88-746e-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {
       "stepTitle": "First leg",
-      "stepDescription": "Verified Customer balance to Recieve Only bank",
+      "stepDescription": "Verified Customer balance to Recieve Only User bank",
       "set": [
         {
           "webhookTopic": "customer_transfer_created",
@@ -148,7 +148,7 @@
     },
     {
       "stepTitle": "Second leg",
-      "stepDescription": "Completed to Recieve Only bank",
+      "stepDescription": "Completed to Recieve Only User bank",
       "set": [
         {
           "webhookTopic": "customer_transfer_completed",

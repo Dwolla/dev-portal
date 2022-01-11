@@ -1,10 +1,10 @@
 {
-  "name": "Verified Customer Balance to Unverified Bank",
+  "name": "Verified Customer Balance to Unverified Customer Bank",
   "transferId": "c0e01d88-746e-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {
       "stepTitle": "First leg",
-      "stepDescription": "Verified Customer Balance to Unverified Bank",
+      "stepDescription": "Verified Customer Balance to Unverified Customer Bank",
       "set": [
         {
           "webhookTopic": "customer_transfer_created",
@@ -148,7 +148,7 @@
     },
     {
       "stepTitle": "Second leg",
-      "stepDescription": "Completed to Unverified Bank",
+      "stepDescription": "Completed to Unverified Customer Bank",
       "set": [
         {
           "webhookTopic": "customer_transfer_completed",

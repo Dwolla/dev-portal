@@ -1,10 +1,10 @@
 {
-  "name": "Account balance to Verified Customer bank",
+  "name": "Master Account balance to Verified Customer bank",
   "transferId": "ee646c1f-b969-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {
       "stepTitle": "First leg",
-      "stepDescription": "Customer A Bank to Customer A Balance",
+      "stepDescription": "Account balance to Customer A Balance",
       "set": [
         {
           "webhookTopic": "transfer_created",

@@ -1,5 +1,5 @@
 {
-  "name": "Account balance to Receive Only bank",
+  "name": "Master Account balance to Receive Only User bank",
   "transferId": "a6314d56-9069-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {

@@ -75,7 +75,7 @@
           }
         },
         {
-          "webhookTopic": "bank_transfer_created",
+          "webhookTopic": "transfer_created",
           "senderOrReceiver": "RECEIVER",
           "webhookPayload": {
             "id": "defb11d6-d3f3-4df0-b2b4-479a3d8912de",
@@ -212,12 +212,12 @@
           }
         },
         {
-          "webhookTopic": "bank_transfer_completed",
+          "webhookTopic": "transfer_completed",
           "senderOrReceiver": "RECEIVER",
           "webhookPayload": {
             "id": "defb11d6-d3f3-4df0-b2b4-479a3d8912de",
             "resourceId": "567aa7e4-9a6d-ec11-813c-f6ddd36b41b8",
-            "topic": "transfer_created",
+            "topic": "transfer_completed",
             "timestamp": "2022-01-04T20:14:17.837Z",
             "_links": {
               "self": {

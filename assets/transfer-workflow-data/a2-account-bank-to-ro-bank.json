@@ -1,5 +1,5 @@
 {
-  "name": "Account bank to Receive Only bank",
+  "name": "Account bank to Receive Only User bank",
   "transferId": "2a148336-1d68-ec11-813c-f6ddd36b41b8",
   "webhooksArray": [
     {

@@ -4,7 +4,7 @@
   "webhooksArray": [
     {
       "stepTitle": "First leg",
-      "stepDescription": "Unverified customer Bank to Account Balance",
+      "stepDescription": "Unverified Customer Bank to Account Balance",
       "set": [
         {
           "webhookTopic": "customer_transfer_created",
