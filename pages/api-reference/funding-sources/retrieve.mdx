@@ -11,6 +11,8 @@ meta:
 
 This section covers how to retrieve a funding source, both bank account and `VAN`, by id.
 
+## Bank
+
 ### HTTP request - bank funding source
 
 `GET https://api.dwolla.com/funding-sources/{id}`
@@ -103,6 +105,8 @@ var fundingSourceUrl =
 
 dwolla.get(fundingSourceUrl).then((res) => res.body.name); // => "Test checking account"
 ```
+
+## VAN
 
 ### HTTP request - VAN funding source
 
