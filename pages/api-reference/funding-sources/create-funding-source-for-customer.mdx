@@ -26,6 +26,8 @@ Before a Dwolla account or Dwolla API Customer is eligible to transfer money fro
 
 Customers can have a maximum of 2 active funding sources.
 
+## Bank
+
 ### HTTP request - bank funding source
 
 `POST https://api.dwolla.com/customers/{id}/funding-sources`
@@ -224,6 +226,8 @@ dwolla
   .post(`${customerUrl}/funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
+
+## VAN (Virtual Account Number)
 
 ### HTTP request - VAN funding source
 

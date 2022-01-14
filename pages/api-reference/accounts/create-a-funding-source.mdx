@@ -32,6 +32,8 @@ The Virtual Account Number, or `VAN`, will have a status of `verified` by defaul
   <a href="hhttps://www.dwolla.com/contact?b=apidocs">contact Sales</a>.
 </AlertBar>
 
+## Bank
+
 ### HTTP request - bank funding source
 
 `POST https://api.dwolla.com/funding-sources`
@@ -125,6 +127,8 @@ dwolla
   .post(`funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```
+
+## VAN (Virtual Account Number)
 
 ### HTTP request - VAN funding source
 
