@@ -14,18 +14,24 @@ meta:
 
 When you create a transfer using the Dwolla API, there are various steps involved in the life cycle of the transfer from the moment of its creation to when it finishes processing. When the funds move through each step in the cycle, various events are created in Dwolla that record the change, and help us identify which step a transfer is in. These events trigger webhooks which developers can subscribe to in order to be notified about any changes to a resource. There are specific webhooks you can expect to receive based on your funds flow and the Customer types involved in a transfer. Use this interactive tool to guide you through the various transfer scenarios in Dwolla, and their life cycles.
 
+<AlertBar variation="info">
+  This resource currently features ACH as the primary method for funds
+  transfers. We will be adding other methods such as push-to-debit and real-time
+  payment transfers in the future, as well as including unhappy paths for all
+  transfer types.
+</AlertBar>
+
 ## Key Terminology:
 
-[Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source#the-dwolla-balance) - The Dwolla Balance is a funding-source type in the Dwolla Platform that can be utilized like a virtual “wallet” to hold funds in. The Dwolla Balance is automatically made available to [Verified Customer types](https://developers.dwolla.com/concepts/customer-types#customer-types), as well as the Master Account.
-ACH Export - Dwolla exports an ACH file every business day at 4:00 pm CT.
-Funded-transfer - `funded-transfer` points to the transaction that occurs from the destination Dwolla Balance to the bank
-Funding-transfer - `funding-transfer` points to the transaction that occurs from the source bank to the Dwolla Balance
+- **Dwolla Balance** - The [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source) is a funding-source type in the Dwolla Platform that can be utilized like a virtual “wallet” to hold funds in. The Dwolla Balance is automatically made available to [Verified Customer types](https://developers.dwolla.com/concepts/customer-types), as well as the Master Account.
+- **Funded-transfer** - `funded-transfer` is a link returned when [retreiving a transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) which points to the transfer that is further ahead in the overall transfer life cycle. `funded-transfer` is a unique transaction created to route funds to the destination user and/or payment account.
+- **Funding-transfer** - `funding-transfer` is a link returned when [retrieving a transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) which points to the transfer that is further behind in the overall transfer life cycle. `funding-transfer` is a unique transaction created to route funds from the source user and/or payment account to the destination user.
 
-## Use Correlation Id to query transactions
+## Use Correlation ID to query transactions
 
-The correlation id is a string value that can be attached to a transfer resource which can be used for traceability between Dwolla and your application. An example of how to pass in a correlation id and how to search for a transaction using the correlationId query search parameter can be found in the code snippets below.
+The correlation ID is a string value that can be attached to a transfer resource which can be used for traceability between Dwolla and your application. An example of how to pass in a correlation id and how to search for a transaction using the correlationId query search parameter can be found in the code snippets below. When a correlation ID has been sent with a transfer, Dwolla will preserve it throughout the entire transfer life cycle.
 
-#### Create a transaction using a correlation id
+#### Create a transaction using a correlation ID
 
 ##### Example request and response
 
