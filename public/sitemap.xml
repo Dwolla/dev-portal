@@ -1,901 +1,1083 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" 
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-    xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
-        <loc>http://developers.dwolla.com/api-reference/accounts/create-a-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/accounts/create-a-funding-source/" />
+        <loc>https://developers.dwolla.com</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/accounts/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/accounts/" />
+        <loc>https://developers.dwolla.com/api-reference</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/accounts/list-and-search-transfers/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/accounts/list-and-search-transfers/" />
+        <loc>https://developers.dwolla.com/api-reference/accounts</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/accounts/list-funding-sources/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/accounts/list-funding-sources/" />
+        <loc>https://developers.dwolla.com/api-reference/accounts/create-a-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/accounts/list-masspayments/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/accounts/list-masspayments/" />
+        <loc>https://developers.dwolla.com/api-reference/accounts/list-and-search-transfers</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/accounts/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/accounts/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/accounts/list-funding-sources</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/authorization/application-authorization/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/authorization/application-authorization/" />
+        <loc>https://developers.dwolla.com/api-reference/accounts/list-masspayments</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/authorization/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/authorization/" />
+        <loc>https://developers.dwolla.com/api-reference/accounts/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/certify-beneficial-ownership/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/certify-beneficial-ownership/" />
+        <loc>https://developers.dwolla.com/api-reference/authorization</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/create/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/create/" />
+        <loc>https://developers.dwolla.com/api-reference/authorization/application-authorization</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/list/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/list/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/certify-beneficial-ownership</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/remove/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/remove/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/create</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/retrieve-beneficial-ownership-status/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/retrieve-beneficial-ownership-status/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/list</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/remove</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/beneficial-owners/update/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/beneficial-owners/update/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/create/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/create/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/retrieve-beneficial-ownership-status</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/" />
+        <loc>https://developers.dwolla.com/api-reference/beneficial-owners/update</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/list-and-search/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/list-and-search/" />
+        <loc>https://developers.dwolla.com/api-reference/customers</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/list-business-classifications/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/list-business-classifications/" />
+        <loc>https://developers.dwolla.com/api-reference/customers/create</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/retrieve-business-classification/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/retrieve-business-classification/" />
+        <loc>https://developers.dwolla.com/api-reference/customers/list-and-search</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/customers/list-business-classifications</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/customers/update/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/customers/update/" />
+        <loc>https://developers.dwolla.com/api-reference/customers/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/documents/create-document-for-beneficial-owner/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/documents/create-document-for-beneficial-owner/" />
+        <loc>https://developers.dwolla.com/api-reference/customers/retrieve-business-classification</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/documents/create-document-for-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/documents/create-document-for-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/customers/update</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/documents/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/documents/" />
+        <loc>https://developers.dwolla.com/api-reference/documents</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/documents/list-documents-for-beneficial-owner/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/documents/list-documents-for-beneficial-owner/" />
+        <loc>https://developers.dwolla.com/api-reference/documents/create-document-for-beneficial-owner</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/documents/list-documents-for-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/documents/list-documents-for-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/documents/create-document-for-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/documents/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/documents/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/documents/list-documents-for-beneficial-owner</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/drop-in-components/create-client-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/drop-in-components/create-client-token/" />
+        <loc>https://developers.dwolla.com/api-reference/documents/list-documents-for-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/drop-in-components/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/drop-in-components/" />
+        <loc>https://developers.dwolla.com/api-reference/documents/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/events/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/events/" />
+        <loc>https://developers.dwolla.com/api-reference/drop-in-components</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/events/list/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/events/list/" />
+        <loc>https://developers.dwolla.com/api-reference/drop-in-components/create-client-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/events/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/events/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/events</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/create-a-card-funding-sources-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/create-a-card-funding-sources-token/" />
+        <loc>https://developers.dwolla.com/api-reference/events/list</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/create-a-funding-sources-token-for-dwolla-js/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/create-a-funding-sources-token-for-dwolla-js/" />
+        <loc>https://developers.dwolla.com/api-reference/events/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/create-an-iav-token-for-dwolla-js/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/create-an-iav-token-for-dwolla-js/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/create-funding-source-for-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/create-funding-source-for-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/create-a-card-funding-sources-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/create-a-funding-sources-token-for-dwolla-js</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/initiate-micro-deposits/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/initiate-micro-deposits/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/create-an-iav-token-for-dwolla-js</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/list-funding-sources-for-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/list-funding-sources-for-a-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/create-funding-source-for-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/remove/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/remove/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/initiate-micro-deposits</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/retrieve-funding-source-balance/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/retrieve-funding-source-balance/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/list-funding-sources-for-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/retrieve-micro-deposits-details/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/retrieve-micro-deposits-details/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/remove</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/update/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/update/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/retrieve-funding-source-balance</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/funding-sources/verify-micro-deposits/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/funding-sources/verify-micro-deposits/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/retrieve-micro-deposits-details</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/update</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/kba/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/kba/" />
+        <loc>https://developers.dwolla.com/api-reference/funding-sources/verify-micro-deposits</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/kba/initiate-kba-session/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/kba/initiate-kba-session/" />
+        <loc>https://developers.dwolla.com/api-reference/kba</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/kba/retrieve-kba-questions/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/kba/retrieve-kba-questions/" />
+        <loc>https://developers.dwolla.com/api-reference/kba/initiate-kba-session</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/kba/verify-kba-questions/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/kba/verify-kba-questions/" />
+        <loc>https://developers.dwolla.com/api-reference/kba/retrieve-kba-questions</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/create-a-label-ledger-entry/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/create-a-label-ledger-entry/" />
+        <loc>https://developers.dwolla.com/api-reference/kba/verify-kba-questions</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/create-a-label-reallocation/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/create-a-label-reallocation/" />
+        <loc>https://developers.dwolla.com/api-reference/labels</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/create/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/create/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/create</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/create-a-label-ledger-entry</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/list-label-ledger-entries/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/list-label-ledger-entries/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/create-a-label-reallocation</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/list-labels-for-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/list-labels-for-a-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/list-label-ledger-entries</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/remove/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/remove/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/list-labels-for-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/retrieve-a-label-ledger-entry/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/retrieve-a-label-ledger-entry/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/remove</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/retrieve-a-label-reallocation/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/retrieve-a-label-reallocation/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/labels/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/labels/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/retrieve-a-label-ledger-entry</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/" />
+        <loc>https://developers.dwolla.com/api-reference/labels/retrieve-a-label-reallocation</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/initiate/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/initiate/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/list-items/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/list-items/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments/initiate</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/list-mass-payments-for-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/list-mass-payments-for-a-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments/list-items</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/retrieve-an-item/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/retrieve-an-item/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments/list-mass-payments-for-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/mass-payments/update/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/mass-payments/update/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments/retrieve-an-item</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/root/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/root/" />
+        <loc>https://developers.dwolla.com/api-reference/mass-payments/update</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/c-sharp/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/c-sharp/" />
+        <loc>https://developers.dwolla.com/api-reference/root</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/kotlin/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/kotlin/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks/c-sharp</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/node-js/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/node-js/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks/kotlin</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/php/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/php/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks/node-js</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/python/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/python/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks/php</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/sdks/ruby/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/sdks/ruby/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks/python</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/cancel/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/cancel/" />
+        <loc>https://developers.dwolla.com/api-reference/sdks/ruby</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/create-an-on-demand-transfer-authorization/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/create-an-on-demand-transfer-authorization/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/cancel</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/initiate/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/initiate/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/create-an-on-demand-transfer-authorization</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/list-and-search-transfers-for-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/list-and-search-transfers-for-a-customer/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/initiate</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/list-fees-for-a-transfer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/list-fees-for-a-transfer/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/list-and-search-transfers-for-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/retrieve-a-transfer-failure-reason/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/retrieve-a-transfer-failure-reason/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/list-fees-for-a-transfer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/transfers/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/transfers/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/create/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/create/" />
+        <loc>https://developers.dwolla.com/api-reference/transfers/retrieve-a-transfer-failure-reason</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/delete/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/delete/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions/create</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/list-webhooks/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/list-webhooks/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions/delete</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/list/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/list/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions/list</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions/list-webhooks</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhook-subscriptions/update/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhook-subscriptions/update/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhooks/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhooks/" />
+        <loc>https://developers.dwolla.com/api-reference/webhook-subscriptions/update</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhooks/list-retries/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhooks/list-retries/" />
+        <loc>https://developers.dwolla.com/api-reference/webhooks</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhooks/retrieve/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhooks/retrieve/" />
+        <loc>https://developers.dwolla.com/api-reference/webhooks/list-retries</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/api-reference/webhooks/retry/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/api-reference/webhooks/retry/" />
+        <loc>https://developers.dwolla.com/api-reference/webhooks/retrieve</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/changelog/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/changelog/" />
+        <loc>https://developers.dwolla.com/api-reference/webhooks/retry</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/balance-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/balance-funding-source/" />
+        <loc>https://developers.dwolla.com/changelog</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/bank-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/bank-funding-source/" />
+        <loc>https://developers.dwolla.com/concepts</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/customer-types/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/customer-types/" />
+        <loc>https://developers.dwolla.com/concepts/balance-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/debit-cards/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/debit-cards/" />
+        <loc>https://developers.dwolla.com/concepts/bank-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/drop-in-components/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/drop-in-components/" />
+        <loc>https://developers.dwolla.com/concepts/customer-types</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/facilitator-fee/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/facilitator-fee/" />
+        <loc>https://developers.dwolla.com/concepts/debit-cards</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/" />
+        <loc>https://developers.dwolla.com/concepts/drop-in-components</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/operational-notifications/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/operational-notifications/" />
+        <loc>https://developers.dwolla.com/concepts/facilitator-fee</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/real-time-payments/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/real-time-payments/" />
+        <loc>https://developers.dwolla.com/concepts/operational-notifications</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/same-day-ach/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/same-day-ach/" />
+        <loc>https://developers.dwolla.com/concepts/real-time-payments</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/sift/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/sift/" />
+        <loc>https://developers.dwolla.com/concepts/same-day-ach</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/transfer-failures/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/transfer-failures/" />
+        <loc>https://developers.dwolla.com/concepts/sift</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/transfer-processing-times/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/transfer-processing-times/" />
+        <loc>https://developers.dwolla.com/concepts/transfer-failures</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/concepts/webhook-events/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/concepts/webhook-events/" />
+        <loc>https://developers.dwolla.com/concepts/transfer-processing-times</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/auth/client-credentials-flow/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/auth/client-credentials-flow/" />
+        <loc>https://developers.dwolla.com/concepts/webhook-events</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/auth/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/auth/" />
+        <loc>https://developers.dwolla.com/guides</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/auth/using-an-access-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/auth/using-an-access-token/" />
+        <loc>https://developers.dwolla.com/guides/auth</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/business-verified-customer/add-beneficial-owners/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/business-verified-customer/add-beneficial-owners/" />
+        <loc>https://developers.dwolla.com/guides/auth/client-credentials-flow</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/business-verified-customer/certify-beneficial-ownership/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/business-verified-customer/certify-beneficial-ownership/" />
+        <loc>https://developers.dwolla.com/guides/auth/using-an-access-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/business-verified-customer/create-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/business-verified-customer/create-a-customer/" />
+        <loc>https://developers.dwolla.com/guides/business-verified-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/business-verified-customer/frequently-asked-questions/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/business-verified-customer/frequently-asked-questions/" />
+        <loc>https://developers.dwolla.com/guides/business-verified-customer/add-beneficial-owners</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/business-verified-customer/handle-verification-statuses/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/business-verified-customer/handle-verification-statuses/" />
+        <loc>https://developers.dwolla.com/guides/business-verified-customer/certify-beneficial-ownership</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/business-verified-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/business-verified-customer/" />
+        <loc>https://developers.dwolla.com/guides/business-verified-customer/create-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/drop-ins/generate-client-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/drop-ins/generate-client-token/" />
+        <loc>https://developers.dwolla.com/guides/business-verified-customer/frequently-asked-questions</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/drop-ins/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/drop-ins/" />
+        <loc>https://developers.dwolla.com/guides/business-verified-customer/handle-verification-statuses</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/drop-ins/setup-and-configuration/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/drop-ins/setup-and-configuration/" />
+        <loc>https://developers.dwolla.com/guides/drop-ins</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/drop-ins/using-drop-in-components/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/drop-ins/using-drop-in-components/" />
+        <loc>https://developers.dwolla.com/guides/drop-ins/generate-client-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function/" />
+        <loc>https://developers.dwolla.com/guides/drop-ins/setup-and-configuration</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/create-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/create-token/" />
+        <loc>https://developers.dwolla.com/guides/drop-ins/using-drop-in-components</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/handle-response/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/handle-response/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/configure-and-call-function/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/configure-and-call-function/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/create-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/create-form/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/create-form/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/handle-response</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/create-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/create-token/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/handle-response/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/handle-response/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/configure-and-call-function</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/create-form</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/configure-and-call-function/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/configure-and-call-function/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/create-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/create-container/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/create-container/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account/handle-response</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/create-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/create-token/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/instant-account-verification</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/handle-errors/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/handle-errors/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/instant-account-verification/configure-and-call-function</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/dwolla-js/instant-account-verification/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/instant-account-verification/create-container</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/instant-account-verification/create-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/micro-deposit-verification/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/micro-deposit-verification/" />
+        <loc>https://developers.dwolla.com/guides/dwolla-js/instant-account-verification/handle-errors</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/micro-deposit-verification/initiate-micro-deposits/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/micro-deposit-verification/initiate-micro-deposits/" />
+        <loc>https://developers.dwolla.com/guides/micro-deposit-verification</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/micro-deposit-verification/verify-micro-deposits/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/micro-deposit-verification/verify-micro-deposits/" />
+        <loc>https://developers.dwolla.com/guides/micro-deposit-verification/initiate-micro-deposits</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/personal-verified-customer/create-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/personal-verified-customer/create-a-customer/" />
+        <loc>https://developers.dwolla.com/guides/micro-deposit-verification/verify-micro-deposits</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/personal-verified-customer/frequently-asked-questions/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/personal-verified-customer/frequently-asked-questions/" />
+        <loc>https://developers.dwolla.com/guides/personal-verified-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/personal-verified-customer/handle-verification-statuses/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/personal-verified-customer/handle-verification-statuses/" />
+        <loc>https://developers.dwolla.com/guides/personal-verified-customer/create-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/personal-verified-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/personal-verified-customer/" />
+        <loc>https://developers.dwolla.com/guides/personal-verified-customer/frequently-asked-questions</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/plaid/create-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/plaid/create-funding-source/" />
+        <loc>https://developers.dwolla.com/guides/personal-verified-customer/handle-verification-statuses</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/plaid/generate-processor-token/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/plaid/generate-processor-token/" />
+        <loc>https://developers.dwolla.com/guides/plaid</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.944Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/plaid/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/plaid/" />
+        <loc>https://developers.dwolla.com/guides/plaid/create-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/receive-money/add-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/receive-money/add-funding-source/" />
+        <loc>https://developers.dwolla.com/guides/plaid/generate-processor-token</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/receive-money/create-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/receive-money/create-a-customer/" />
+        <loc>https://developers.dwolla.com/guides/receive-money</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/receive-money/create-transfer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/receive-money/create-transfer/" />
+        <loc>https://developers.dwolla.com/guides/receive-money/add-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/receive-money/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/receive-money/" />
+        <loc>https://developers.dwolla.com/guides/receive-money/create-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/receive-money/retrieve-funding-sources/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/receive-money/retrieve-funding-sources/" />
+        <loc>https://developers.dwolla.com/guides/receive-money/create-transfer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/sandbox/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/sandbox/" />
+        <loc>https://developers.dwolla.com/guides/receive-money/retrieve-funding-sources</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/send-money/add-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/send-money/add-funding-source/" />
+        <loc>https://developers.dwolla.com/guides/sandbox</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/send-money/create-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/send-money/create-a-customer/" />
+        <loc>https://developers.dwolla.com/guides/send-money</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/send-money/create-transfer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/send-money/create-transfer/" />
+        <loc>https://developers.dwolla.com/guides/send-money/add-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/send-money/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/send-money/" />
+        <loc>https://developers.dwolla.com/guides/send-money/create-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/send-money/retrieve-funding-sources/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/send-money/retrieve-funding-sources/" />
+        <loc>https://developers.dwolla.com/guides/send-money/create-transfer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-between-users/create-transfer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-between-users/create-transfer/" />
+        <loc>https://developers.dwolla.com/guides/send-money/retrieve-funding-sources</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-between-users/create-unverified-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-between-users/create-unverified-customer/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-between-users</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-between-users/create-unverified-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-between-users/create-unverified-funding-source/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-between-users/create-transfer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-between-users/create-verified-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-between-users/create-verified-customer/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-between-users/create-unverified-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-between-users/create-verified-funding-source/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-between-users/create-verified-funding-source/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-between-users/create-unverified-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-between-users/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-between-users/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-between-users/create-verified-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-me-to-me/add-funding-sources/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-me-to-me/add-funding-sources/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-between-users/create-verified-funding-source</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-me-to-me/create-a-customer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-me-to-me/create-a-customer/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-me-to-me</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-me-to-me/create-transfer/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-me-to-me/create-transfer/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-me-to-me/add-funding-sources</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-me-to-me/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-me-to-me/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-me-to-me/create-a-customer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/transfer-money-me-to-me/retrieve-funding-sources/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/transfer-money-me-to-me/retrieve-funding-sources/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-me-to-me/create-transfer</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/webhooks/create-subscription/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/webhooks/create-subscription/" />
+        <loc>https://developers.dwolla.com/guides/transfer-money-me-to-me/retrieve-funding-sources</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/webhooks/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/webhooks/" />
+        <loc>https://developers.dwolla.com/guides/webhooks</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/webhooks/process-webhooks/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/webhooks/process-webhooks/" />
+        <loc>https://developers.dwolla.com/guides/webhooks/create-subscription</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/guides/webhooks/validating-webhooks/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/guides/webhooks/validating-webhooks/" />
+        <loc>https://developers.dwolla.com/guides/webhooks/process-webhooks</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/" />
+        <loc>https://developers.dwolla.com/guides/webhooks/validating-webhooks</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/integrations/authorization/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/integrations/authorization/" />
+        <loc>https://developers.dwolla.com/index</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/integrations/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/integrations/" />
+        <loc>https://developers.dwolla.com/integrations</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
     <url>
-        <loc>http://developers.dwolla.com/sdks-tools/</loc>
-        <lastmod>2021-11-23</lastmod>
-		<xhtml:link rel="alternate" hreflang="en" href="http://developers.dwolla.com/sdks-tools/" />
+        <loc>https://developers.dwolla.com/integrations/authorization</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
+    </url>
+    <url>
+        <loc>https://developers.dwolla.com/sdks-tools</loc>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+        <lastmod>2022-01-19T22:42:22.945Z</lastmod>
     </url>
 </urlset>
