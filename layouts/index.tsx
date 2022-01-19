@@ -22,6 +22,7 @@ import InlineCTA from "../app/components/base/InlineCTA";
 import OnThisPage from "../app/components/layout/OnThisPage";
 import TabBarPanel from "../app/components/base/TabBarPanel";
 import Table from "../app/components/base/Table";
+import TransferWorkflow from "../app/components/base/TransferWorkflow";
 import {
   AnchoredH1,
   AnchoredH2,
@@ -63,6 +64,7 @@ const MDX_COMPONENTS = {
   InlineCTA,
   TabBarPanel,
   table: Table,
+  TransferWorkflow,
   h1: AnchoredH1,
   h2: AnchoredH2,
   h3: AnchoredH3,

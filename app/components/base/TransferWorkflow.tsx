@@ -1,7 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import isEqual from "lodash.isequal";
 import ordinal from "ordinal";
 import FundsFlowSelector from "./FundsFlowSelector";
 import WebhookCodeBlock from "./WebhookCodeBlock";
@@ -10,8 +9,34 @@ import Button from "./Button";
 import { GREY_1, GREY_3, HEADLINE_TEXT, PURPLE_DARK } from "../colors";
 import { breakDown } from "../breakpoints";
 import { POPPINS, ROBOTO } from "../typography";
-import VCRBanktoVCRBankdata from "../../../assets/transfer-workflow-data/v6-vcr-bank-to-vcr-bank.json";
-import VCRBanktoCRBank from "../../../assets/transfer-workflow-data/v4-vcr-bank-to-cr-bank.json";
+
+// Import JSON data to be used in the interactive component
+import a1 from "../../../assets/transfer-workflow-data/a1-account-bank-to-account-balance.json";
+import a2 from "../../../assets/transfer-workflow-data/a2-account-bank-to-ro-bank.json";
+import a3 from "../../../assets/transfer-workflow-data/a3-account-bank-to-cr-bank.json";
+import a4 from "../../../assets/transfer-workflow-data/a4-account-bank-to-vcr-balance.json";
+import a5 from "../../../assets/transfer-workflow-data/a5-account-bank-to-vcr-bank.json";
+import a6 from "../../../assets/transfer-workflow-data/a6-account-balance-to-account-bank.json";
+import a7 from "../../../assets/transfer-workflow-data/a7-account-balance-to-ro-bank.json";
+import a8 from "../../../assets/transfer-workflow-data/a8-account-balance-to-cr-bank.json";
+import a9 from "../../../assets/transfer-workflow-data/a9-account-balance-to-vcr-balance.json";
+import a10 from "../../../assets/transfer-workflow-data/a10-account-balance-to-vcr-bank.json";
+import c1 from "../../../assets/transfer-workflow-data/c1-cr-bank-to-account-balance.json";
+import c2 from "../../../assets/transfer-workflow-data/c2-cr-bank-to-account-bank.json";
+import c3 from "../../../assets/transfer-workflow-data/c3-cr-bank-to-vcr-balance.json";
+import c4 from "../../../assets/transfer-workflow-data/c4-cr-bank-to-vcr-bank.json";
+import v1 from "../../../assets/transfer-workflow-data/v1-vcr-bank-to-account-balance.json";
+import v2 from "../../../assets/transfer-workflow-data/v2-vcr-bank-to-account-bank.json";
+import v3 from "../../../assets/transfer-workflow-data/v3-vcr-bank-to-ro-bank.json";
+import v4 from "../../../assets/transfer-workflow-data/v4-vcr-bank-to-cr-bank.json";
+import v5 from "../../../assets/transfer-workflow-data/v5-vcr-bank-to-vcr-balance.json";
+import v6 from "../../../assets/transfer-workflow-data/v6-vcr-bank-to-vcr-bank.json";
+import v7 from "../../../assets/transfer-workflow-data/v7-vcr-balance-to-master-balance.json";
+import v8 from "../../../assets/transfer-workflow-data/v8-vcr-balance-to-vcr-bank.json";
+import v9 from "../../../assets/transfer-workflow-data/v9-vcr-balance-to-ro-bank.json";
+import v10 from "../../../assets/transfer-workflow-data/v10-vcr-balance-to-cr-bank.json";
+import v11 from "../../../assets/transfer-workflow-data/v11-vcr-balance-to-vcr-balance.json";
+import v12 from "../../../assets/transfer-workflow-data/v12-vcr-balance-to-vcr-bank.json";
 
 // styles
 
@@ -117,7 +142,6 @@ const senderTypeOptions = [
 const senderSourceOptions = [
   { value: "balance", label: "Balance" },
   { value: "bank", label: "Bank" },
-  { value: "r01", label: "R01-Bank" },
 ];
 
 const receiverTypeOptions = [
@@ -130,27 +154,22 @@ const receiverTypeOptions = [
 const receiverDestinationOptions = [
   { value: "balance", label: "Balance" },
   { value: "bank", label: "Bank" },
-  { value: "r03", label: "R03-Bank" },
-  { value: "card", label: "Debit Card" },
 ];
 
 // possible Funds Flow combinations
 
 const fundsFlowCombinations = {
   account: {
-    m1: ["account", "bank", "account", "balance"],
-    m2: ["account", "bank", "ro", "bank"],
-    m3: ["account", "bank", "cr", "bank"],
-    m4: ["account", "bank", "vcr", "balance"],
-    m5: ["account", "bank", "vcr", "bank"],
-    m6: ["account", "balance", "account", "bank"],
-    m7: ["account", "balance", "ro", "bank"],
-    m8: ["account", "balance", "cr", "bank"],
-    m9: ["account", "balance", "vcr", "balance"],
-    m10: ["account", "balance", "vcr", "bank"],
-    m11: ["account", "balance", "ro", "card"],
-    m12: ["account", "balance", "cr", "card"],
-    m13: ["account", "balance", "vcr", "card"],
+    a1: ["account", "bank", "account", "balance"],
+    a2: ["account", "bank", "ro", "bank"],
+    a3: ["account", "bank", "cr", "bank"],
+    a4: ["account", "bank", "vcr", "balance"],
+    a5: ["account", "bank", "vcr", "bank"],
+    a6: ["account", "balance", "account", "bank"],
+    a7: ["account", "balance", "ro", "bank"],
+    a8: ["account", "balance", "cr", "bank"],
+    a9: ["account", "balance", "vcr", "balance"],
+    a10: ["account", "balance", "vcr", "bank"],
   },
   cr: {
     c1: ["cr", "bank", "account", "balance"],
@@ -159,18 +178,18 @@ const fundsFlowCombinations = {
     c4: ["cr", "bank", "vcr", "bank"],
   },
   vcr: {
-    vcr1: ["vcr", "bank", "account", "balance"],
-    vcr2: ["vcr", "bank", "account", "bank"],
-    vcr3: ["vcr", "bank", "ro", "bank"],
-    vcr4: ["vcr", "bank", "cr", "bank"],
-    vcr5: ["vcr", "bank", "vcr", "balance"],
-    vcr6: ["vcr", "bank", "vcr", "bank"],
-    vcr7: ["vcr", "balance", "account", "balance"],
-    vcr8: ["vcr", "balance", "account", "bank"],
-    vcr9: ["vcr", "balance", "ro", "bank"],
-    vcr10: ["vcr", "balance", "cr", "bank"],
-    vcr11: ["vcr", "balance", "vcr", "balance"],
-    vcr12: ["vcr", "balance", "vcr", "bank"],
+    v1: ["vcr", "bank", "account", "balance"],
+    v2: ["vcr", "bank", "account", "bank"],
+    v3: ["vcr", "bank", "ro", "bank"],
+    v4: ["vcr", "bank", "cr", "bank"],
+    v5: ["vcr", "bank", "vcr", "balance"],
+    v6: ["vcr", "bank", "vcr", "bank"],
+    v7: ["vcr", "balance", "account", "balance"],
+    v8: ["vcr", "balance", "account", "bank"],
+    v9: ["vcr", "balance", "ro", "bank"],
+    v10: ["vcr", "balance", "cr", "bank"],
+    v11: ["vcr", "balance", "vcr", "balance"],
+    v12: ["vcr", "balance", "vcr", "bank"],
   },
 };
 
@@ -201,7 +220,7 @@ function TransferWorkflow() {
   }
 
   function compareAndSetFundsFlow() {
-    // if else condition to compare selectedFundsFlow with fundsFlowCombinations
+    // switch case to compare selectedFundsFlow with fundsFlowCombinations
     // and assign the relevant JSON object to webhookJsonData
 
     if (selectedFundsFlow.length === 0) {
@@ -210,20 +229,109 @@ function TransferWorkflow() {
       return;
     }
 
-    if (selectedSender.value === "account") {
-      //  TODO: Write if/else statements for all combinations + add JSON data
-    } else if (selectedSender.value === "vcr") {
-      if (isEqual(setSelectedFundsFlow, fundsFlowCombinations.vcr.vcr4)) {
-        setWebhookJsonData(VCRBanktoCRBank);
-      } else if (isEqual(selectedFundsFlow, fundsFlowCombinations.vcr.vcr6)) {
-        setWebhookJsonData(VCRBanktoVCRBankdata);
-      } else {
+    switch (selectedSender.value) {
+      case "account":
+        switch (selectedFundsFlow.toString()) {
+          case fundsFlowCombinations.account.a1.toString():
+            setWebhookJsonData(a1);
+            break;
+          case fundsFlowCombinations.account.a2.toString():
+            setWebhookJsonData(a2);
+            break;
+          case fundsFlowCombinations.account.a3.toString():
+            setWebhookJsonData(a3);
+            break;
+          case fundsFlowCombinations.account.a4.toString():
+            setWebhookJsonData(a4);
+            break;
+          case fundsFlowCombinations.account.a5.toString():
+            setWebhookJsonData(a5);
+            break;
+          case fundsFlowCombinations.account.a6.toString():
+            setWebhookJsonData(a6);
+            break;
+          case fundsFlowCombinations.account.a7.toString():
+            setWebhookJsonData(a7);
+            break;
+          case fundsFlowCombinations.account.a8.toString():
+            setWebhookJsonData(a8);
+            break;
+          case fundsFlowCombinations.account.a9.toString():
+            setWebhookJsonData(a9);
+            break;
+          case fundsFlowCombinations.account.a10.toString():
+            setWebhookJsonData(a10);
+            break;
+          default:
+            setUnsupportedFundsFlow(true);
+            break;
+        }
+        break;
+      case "cr":
+        switch (selectedFundsFlow.toString()) {
+          case fundsFlowCombinations.cr.c1.toString():
+            setWebhookJsonData(c1);
+            break;
+          case fundsFlowCombinations.cr.c2.toString():
+            setWebhookJsonData(c2);
+            break;
+          case fundsFlowCombinations.cr.c3.toString():
+            setWebhookJsonData(c3);
+            break;
+          case fundsFlowCombinations.cr.c4.toString():
+            setWebhookJsonData(c4);
+            break;
+          default:
+            setUnsupportedFundsFlow(true);
+            break;
+        }
+        break;
+      case "vcr":
+        switch (selectedFundsFlow.toString()) {
+          case fundsFlowCombinations.vcr.v1.toString():
+            setWebhookJsonData(v1);
+            break;
+          case fundsFlowCombinations.vcr.v2.toString():
+            setWebhookJsonData(v2);
+            break;
+          case fundsFlowCombinations.vcr.v3.toString():
+            setWebhookJsonData(v3);
+            break;
+          case fundsFlowCombinations.vcr.v4.toString():
+            setWebhookJsonData(v4);
+            break;
+          case fundsFlowCombinations.vcr.v5.toString():
+            setWebhookJsonData(v5);
+            break;
+          case fundsFlowCombinations.vcr.v6.toString():
+            setWebhookJsonData(v6);
+            break;
+          case fundsFlowCombinations.vcr.v7.toString():
+            setWebhookJsonData(v7);
+            break;
+          case fundsFlowCombinations.vcr.v8.toString():
+            setWebhookJsonData(v8);
+            break;
+          case fundsFlowCombinations.vcr.v9.toString():
+            setWebhookJsonData(v9);
+            break;
+          case fundsFlowCombinations.vcr.v10.toString():
+            setWebhookJsonData(v10);
+            break;
+          case fundsFlowCombinations.vcr.v11.toString():
+            setWebhookJsonData(v11);
+            break;
+          case fundsFlowCombinations.vcr.v12.toString():
+            setWebhookJsonData(v12);
+            break;
+          default:
+            setUnsupportedFundsFlow(true);
+            break;
+        }
+        break;
+      default:
         setUnsupportedFundsFlow(true);
-      }
-    } else if (selectedSender.value === "cr") {
-      // TODO: Write if/else statements for all combinations + add JSON data
-    } else {
-      setUnsupportedFundsFlow(true);
+        break;
     }
   }
 
@@ -334,7 +442,6 @@ function TransferWorkflow() {
             }
           />
         ) : (
-          // webhookJsonData &&
           activeStep !== 0 && (
             <>
               <Button
