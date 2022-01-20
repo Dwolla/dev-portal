@@ -109,7 +109,7 @@ const StyledDescription = styled.div`
 `;
 
 const StyledCodeBlockContainer = styled.div`
-  max-width: 597px;
+  max-width: 90%;
   margin-top: 9px;
   margin-bottom: 9px;
   @media (${breakDown("sm")}) {
