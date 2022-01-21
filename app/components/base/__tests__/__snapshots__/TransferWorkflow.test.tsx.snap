@@ -435,7 +435,7 @@ exports[`TransferWorkflow 1`] = `
     className="css-1sz0iw5-StyledBottomContainer evg26n46"
   >
     <button
-      className="primary standard disabled css-4oxaqu-StyledButton-buttonStyles-buttonStyles ek3ainu0"
+      className="primary standard disabled css-1m5tpkq-StyledButton-buttonStyles-buttonStyles ek3ainu0"
       disabled={true}
       onClick={[Function]}
       type="button"
