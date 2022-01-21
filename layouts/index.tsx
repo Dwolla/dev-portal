@@ -73,41 +73,44 @@ const MDX_COMPONENTS = {
   h6: AnchoredH6,
 };
 
-export const DefaultMDXWrapper = ({ children, frontMatter }: Props) => (
-  <MDXContainer>
-    {frontMatter.meta && (
-      <Head>
-        {frontMatter.meta.title && <title>{frontMatter.meta.title}</title>}
+export function DefaultMDXWrapper({ children, frontMatter }: Props) {
+  return (
+    <MDXContainer>
+      {frontMatter.meta && (
+        <Head>
+          {frontMatter.meta.title && <title>{frontMatter.meta.title}</title>}
 
-        {frontMatter.meta.description && (
-          <meta
-            name="description"
-            content={frontMatter.meta.description}
-            key="description"
-          />
-        )}
-      </Head>
-    )}
+          {frontMatter.meta.description && (
+            <meta
+              name="description"
+              content={frontMatter.meta.description}
+              key="description"
+            />
+          )}
+        </Head>
+      )}
 
-    <MDXProvider components={MDX_COMPONENTS}>
-      <ContentWrapper>
-        <MDXStyleWrapper>
-          <AnchorsSetter>
-            {groupCodeExamples({
-              children,
-              into: CodeExamples,
-            })}
-          </AnchorsSetter>
-        </MDXStyleWrapper>
-      </ContentWrapper>
-    </MDXProvider>
+      <MDXProvider components={MDX_COMPONENTS}>
+        <ContentWrapper>
+          <MDXStyleWrapper>
+            <AnchorsSetter>
+              {groupCodeExamples({
+                children,
+                into: CodeExamples,
+              })}
+            </AnchorsSetter>
+          </MDXStyleWrapper>
+        </ContentWrapper>
+      </MDXProvider>
 
-    <OnThisPage />
-  </MDXContainer>
-);
+      <OnThisPage />
+    </MDXContainer>
+  );
+}
 
 export default (frontMatter) => {
-  return ({ children: content }: { children: any }) => {
+  // eslint-disable-next-line func-names
+  return function ({ children: content }: { children: any }) {
     return (
       <DefaultMDXWrapper frontMatter={frontMatter}>{content}</DefaultMDXWrapper>
     );

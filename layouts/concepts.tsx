@@ -15,7 +15,8 @@ const CardWrap = styled.div`
 `;
 
 export default (frontMatter) => {
-  return ({ children: content }: { children: any }) => {
+  // eslint-disable-next-line func-names
+  return function ({ children: content }: { children: any }) {
     return (
       <>
         <DefaultMDXWrapper frontMatter={frontMatter}>

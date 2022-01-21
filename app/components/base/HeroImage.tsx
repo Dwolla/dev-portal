@@ -24,11 +24,9 @@ type Props = {
 
 function Hero({ heroImage }: Props) {
   return (
-    <>
-      <StyledHero>
-        <img src={heroImage.src} alt={heroImage.alt} />
-      </StyledHero>
-    </>
+    <StyledHero>
+      <img src={heroImage.src} alt={heroImage.alt} />
+    </StyledHero>
   );
 }
 

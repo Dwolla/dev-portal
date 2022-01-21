@@ -6,10 +6,12 @@ import {
 } from "../../app/components/util/Anchors";
 import OnThisPage from "../../app/components/layout/OnThisPage";
 
-const Heading = (props: {
+function Heading(props: {
   children: string;
   originalType: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-}) => createElement(props.originalType, props);
+}) {
+  return createElement(props.originalType, props);
+}
 
 storiesOf("layout|OnThisPage", module).add("default", () => (
   <AnchorsProvider>

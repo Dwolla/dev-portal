@@ -9,7 +9,7 @@ const IFrameWrap = styled.div`
   background-color: ${GREY_11};
 `;
 
-const HubSpotForm = ({ hubSpotFormId }: { hubSpotFormId: string }) => {
+function HubSpotForm({ hubSpotFormId }: { hubSpotFormId: string }) {
   useEffect(() => {
     if (
       window &&
@@ -26,14 +26,14 @@ const HubSpotForm = ({ hubSpotFormId }: { hubSpotFormId: string }) => {
   }, []);
 
   return <IFrameWrap id={`hs-${hubSpotFormId}`}></IFrameWrap>;
-};
+}
 
 type Props = {
   src?: string;
   hubSpotFormId?: string;
 };
 
-const IFrame = ({ src, hubSpotFormId }: Props) => {
+function IFrame({ src, hubSpotFormId }: Props) {
   return hubSpotFormId ? (
     <HubSpotForm hubSpotFormId={hubSpotFormId} />
   ) : (
@@ -44,6 +44,6 @@ const IFrame = ({ src, hubSpotFormId }: Props) => {
       />
     </IFrameWrap>
   );
-};
+}
 
 export default IFrame;

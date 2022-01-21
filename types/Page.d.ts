@@ -16,6 +16,7 @@ type Meta = {
   description: string;
 };
 
+// eslint-disable-next-line no-unused-vars
 type Page = {
   id: string;
   title: string;

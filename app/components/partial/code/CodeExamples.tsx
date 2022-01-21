@@ -41,7 +41,9 @@ const codeStringFrom = (codeExample: any): any =>
 type CodeExampleProps = { language: Language; children: string };
 
 // eslint-disable-next-line no-unused-vars
-export const CodeExample = (props: CodeExampleProps) => null;
+export function CodeExample(props: CodeExampleProps) {
+  return null;
+}
 
 const toCodeExampleProps = (child): CodeExampleProps => {
   if (child.type === CodeExample || child.props.mdxType === "CodeExample") {
@@ -143,75 +145,75 @@ export default function CodeExamples({
     variant?: "default" | "fullscreen";
   };
 
-  const CodeBlock = ({ variant = "default" }: CodeBlockProps) => (
-    <>
-      <CodeBlockBar
-        className={`code-block-bar-${variant} ${title ? "title" : ""}`}
-      >
-        {title && <BarTitle>{title}</BarTitle>}
-        <BarItems>
-          {onlyOneExample ? (
-            <BarText>{activeLanguage}</BarText>
-          ) : (
-            <Select
-              autoWidth
-              variant="code"
-              options={options}
-              selectedValue={options.find((o) => o.value === activeLanguage)}
-              setSelectedValue={({ value }) => {
-                setSelectedLanguage(value);
-                ga("code sample", "language change", value);
+  function CodeBlock({ variant = "default" }: CodeBlockProps) {
+    return (
+      <>
+        <CodeBlockBar
+          className={`code-block-bar-${variant} ${title ? "title" : ""}`}
+        >
+          {title && <BarTitle>{title}</BarTitle>}
+          <BarItems>
+            {onlyOneExample ? (
+              <BarText>{activeLanguage}</BarText>
+            ) : (
+              <Select
+                autoWidth
+                variant="code"
+                options={options}
+                selectedValue={options.find((o) => o.value === activeLanguage)}
+                setSelectedValue={({ value }) => {
+                  setSelectedLanguage(value);
+                  ga("code sample", "language change", value);
+                }}
+              />
+            )}
+
+            <CodeBlockButton
+              type="button"
+              onClick={copy}
+              onKeyDown={(keyPress) => onKeydownCopy(keyPress)}
+              disabled={copied}
+            >
+              {copied ? "copied" : "copy"} <CopyIcon />
+            </CodeBlockButton>
+
+            <CodeBlockButton
+              type="button"
+              onClick={toggleExpanded}
+              onKeyDown={(keyPress) => onKeydownExpand(keyPress)}
+              autoFocus={variant === "fullscreen"}
+            >
+              {variant === "fullscreen" ? (
+                <>
+                  collapse <CollapseIcon width={16} height={16} />
+                </>
+              ) : (
+                <>
+                  expand <ExpandIcon width={16} height={16} />
+                </>
+              )}
+            </CodeBlockButton>
+          </BarItems>
+        </CodeBlockBar>
+
+        <CodeBlockContent className={`code-block-${variant}`}>
+          <pre>
+            <code
+              className={`language-${activeLanguage}`}
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: codeHtmlHighlighted,
               }}
             />
-          )}
-
-          <CodeBlockButton
-            type="button"
-            onClick={copy}
-            onKeyDown={(keyPress) => onKeydownCopy(keyPress)}
-            disabled={copied}
-          >
-            {copied ? "copied" : "copy"} <CopyIcon />
-          </CodeBlockButton>
-
-          <CodeBlockButton
-            type="button"
-            onClick={toggleExpanded}
-            onKeyDown={(keyPress) => onKeydownExpand(keyPress)}
-            autoFocus={variant === "fullscreen"}
-          >
-            {variant === "fullscreen" ? (
-              <>
-                collapse <CollapseIcon width={16} height={16} />
-              </>
-            ) : (
-              <>
-                expand <ExpandIcon width={16} height={16} />
-              </>
-            )}
-          </CodeBlockButton>
-        </BarItems>
-      </CodeBlockBar>
-
-      <CodeBlockContent className={`code-block-${variant}`}>
-        <pre>
-          <code
-            className={`language-${activeLanguage}`}
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: codeHtmlHighlighted,
-            }}
-          />
-        </pre>
-      </CodeBlockContent>
-    </>
-  );
+          </pre>
+        </CodeBlockContent>
+      </>
+    );
+  }
 
   return (
     <div>
-      <>
-        <CodeBlock />
-      </>
+      <CodeBlock />
 
       {expanded && (
         <ExpandedOverlay className={expanded}>

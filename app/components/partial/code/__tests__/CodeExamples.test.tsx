@@ -10,6 +10,7 @@ function MockMDXCreateElement(props: {
   id?: string;
   className?: string;
 }) {
+  // eslint-disable-next-line react/no-children-prop
   return createElement(props.originalType, {
     children: props.children,
     id: props.id,

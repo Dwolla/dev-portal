@@ -119,7 +119,7 @@ export function TopBarLink({ href, external, text, active }: TopBarLinkProps) {
     >
       <StyledLink
         href={external ? href : ""}
-        target={external && "_blank"}
+        target={external ? "_blank" : undefined}
         className={classnames({ active })}
       >
         <span className="text">{text}</span>

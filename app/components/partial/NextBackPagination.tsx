@@ -17,25 +17,27 @@ type Props = {
   nextHref: string;
 };
 
-const NextBackPagination = ({
+function NextBackPagination({
   prevTitle,
   prevHref,
   nextTitle,
   nextHref,
-}: Props) => (
-  <StyledWrapper>
-    {prevTitle && prevHref && (
-      <Pagination variant="previous" variantText="Previous" href={prevHref}>
-        {prevTitle}
-      </Pagination>
-    )}
-    <div></div>
-    {nextTitle && nextHref && (
-      <Pagination variant="next" variantText="Next" href={nextHref}>
-        {nextTitle}
-      </Pagination>
-    )}
-  </StyledWrapper>
-);
+}: Props) {
+  return (
+    <StyledWrapper>
+      {prevTitle && prevHref && (
+        <Pagination variant="previous" variantText="Previous" href={prevHref}>
+          {prevTitle}
+        </Pagination>
+      )}
+      <div></div>
+      {nextTitle && nextHref && (
+        <Pagination variant="next" variantText="Next" href={nextHref}>
+          {nextTitle}
+        </Pagination>
+      )}
+    </StyledWrapper>
+  );
+}
 
 export default NextBackPagination;

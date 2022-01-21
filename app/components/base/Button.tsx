@@ -142,7 +142,27 @@ type Props = {
   onButtonClick?: any;
 };
 
-const Button = ({
+function ButtonLink({
+  text,
+  size,
+  variant,
+  link,
+  isDisabled,
+  onButtonClick,
+}: Props) {
+  return (
+    <StyledLink
+      href={link.href}
+      target={link.external ? "_blank" : undefined}
+      className={`${variant} ${size} ${isDisabled ? "disabled" : ""}`}
+      onClick={onButtonClick}
+    >
+      {text}
+    </StyledLink>
+  );
+}
+
+function Button({
   text,
   size,
   variant,
@@ -150,8 +170,8 @@ const Button = ({
   link,
   isDisabled,
   onButtonClick,
-}: Props) =>
-  link && link.href ? (
+}: Props) {
+  return link && link.href ? (
     <ButtonLink text={text} size={size} variant={variant} link={link} />
   ) : (
     <StyledButton
@@ -163,23 +183,6 @@ const Button = ({
       {text}
     </StyledButton>
   );
-
-const ButtonLink = ({
-  text,
-  size,
-  variant,
-  link,
-  isDisabled,
-  onButtonClick,
-}: Props) => (
-  <StyledLink
-    href={link.href}
-    target={link.external && "_blank"}
-    className={`${variant} ${size} ${isDisabled ? "disabled" : ""}`}
-    onClick={onButtonClick}
-  >
-    {text}
-  </StyledLink>
-);
+}
 
 export default Button;

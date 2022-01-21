@@ -117,7 +117,7 @@ type Props = {
   description: string;
 };
 
-const CoreCard = ({
+function CoreCard({
   description,
   badge,
   centerAlign,
@@ -125,47 +125,51 @@ const CoreCard = ({
   icon,
   link,
   topic,
-}: Props) => (
-  <CardStyle className={classnames({ center: centerAlign }, { flex: isFlex })}>
-    <StyledIcon
-      src={icon}
-      alt=""
-      className={classnames({ center: centerAlign })}
-    />
-
-    {badge && (
-      <BadgeStyle>
-        <Badge text={badge} />
-      </BadgeStyle>
-    )}
-
-    {link && link.external && (
-      <LinkIconStyle>
-        <NewTabIcon width={13} />
-      </LinkIconStyle>
-    )}
-    <ConditionalWrapper
-      condition={isFlex}
-      wrapper={(children) => <StyledFlexDiv>{children}</StyledFlexDiv>}
+}: Props) {
+  return (
+    <CardStyle
+      className={classnames({ center: centerAlign }, { flex: isFlex })}
     >
-      <TopicStyle
-        className={classnames({ center: centerAlign }, { flex: isFlex })}
+      <StyledIcon
+        src={icon}
+        alt=""
+        className={classnames({ center: centerAlign })}
+      />
+
+      {badge && (
+        <BadgeStyle>
+          <Badge text={badge} />
+        </BadgeStyle>
+      )}
+
+      {link && link.external && (
+        <LinkIconStyle>
+          <NewTabIcon width={13} />
+        </LinkIconStyle>
+      )}
+      <ConditionalWrapper
+        condition={isFlex}
+        wrapper={(children) => <StyledFlexDiv>{children}</StyledFlexDiv>}
       >
-        {topic}
-      </TopicStyle>
+        <TopicStyle
+          className={classnames({ center: centerAlign }, { flex: isFlex })}
+        >
+          {topic}
+        </TopicStyle>
 
-      <DescriptionStyle className={classnames({ center: centerAlign })}>
-        {description}
-      </DescriptionStyle>
-    </ConditionalWrapper>
-  </CardStyle>
-);
+        <DescriptionStyle className={classnames({ center: centerAlign })}>
+          {description}
+        </DescriptionStyle>
+      </ConditionalWrapper>
+    </CardStyle>
+  );
+}
 
-const Card = ({ link, ...rest }: Props) =>
-  link && link.href ? (
+function Card({ link, ...rest }: Props) {
+  return link && link.href ? (
     <Link href={link.href} passHref>
       <StyledLink
-        target={link.external && "_blank"}
+        target={link.external ? "_blank" : undefined}
         rel={link.external && "noopener noreferrer"}
       >
         <CoreCard link={link} {...rest} />
@@ -174,5 +178,6 @@ const Card = ({ link, ...rest }: Props) =>
   ) : (
     <CoreCard link={link} {...rest} />
   );
+}
 
 export default Card;

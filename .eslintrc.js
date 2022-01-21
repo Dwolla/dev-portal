@@ -29,6 +29,7 @@ module.exports = {
     "import/no-unresolved": "off", // typescript
     "jsx-a11y/anchor-is-valid": "off", // next/link
     "no-confusing-arrow": "off", // prettier
+    "no-undef": "off", //tyescript
     "nonblock-statement-body-position": "off", // prettier
     "object-curly-newline": "off", // prettier
     "operator-linebreak": "off", // prettier
@@ -39,7 +40,13 @@ module.exports = {
     "react/jsx-one-expression-per-line": "off", // prettier
     "react/jsx-props-no-spreading": "off",
     "react/jsx-wrap-multilines": "off", // prettier
+    "react/jsx-no-bind": "off", // typescript
+    "react/jsx-no-constructed-context-values": "off", // typescript
+    "react/no-children-prop": "off", // typescript
+    "react/no-unstable-nested-components": "off",
+    "react/no-unused-prop-types": "off", // typescript
     "react/react-in-jsx-scope": "off", // next
+    "react/require-default-props": "off", //typescript
     "react/self-closing-comp": "off", // prettier
     "spaced-comment": "off", // typescript
   },

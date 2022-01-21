@@ -37,7 +37,7 @@ type Props = {
   };
 };
 
-const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
+function IndexPageGrid({ unfilteredCards, bannerProps }: Props) {
   const router = useRouter();
   const filters: any = [
     { value: null, label: "All" },
@@ -97,6 +97,6 @@ const IndexPageGrid = ({ unfilteredCards, bannerProps }: Props) => {
       </CardGridWrap>
     </>
   );
-};
+}
 
 export default IndexPageGrid;

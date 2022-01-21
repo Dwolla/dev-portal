@@ -1,4 +1,4 @@
-import { createElement } from "react";
+import React, { createElement } from "react";
 import styled from "@emotion/styled";
 import { scrollTo } from "../util/Anchors";
 
@@ -15,6 +15,7 @@ export default function AnchoredHeading({
   headingLevel,
   ...props
 }: AnchoredHeadingProps) {
+  // eslint-disable-next-line react/no-children-prop
   return createElement(headingLevel, {
     ...props,
     children: (

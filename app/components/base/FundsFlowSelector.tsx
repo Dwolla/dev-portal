@@ -108,7 +108,7 @@ const customStyles = {
   }),
 };
 
-const DropdownIndicator = (props: any) => {
+function DropdownIndicator(props: any) {
   return (
     <components.DropdownIndicator {...props}>
       <StyledDefaultDropdownIcon
@@ -118,9 +118,9 @@ const DropdownIndicator = (props: any) => {
       />
     </components.DropdownIndicator>
   );
-};
+}
 
-const Option = (props: any) => {
+function Option(props: any) {
   return (
     <StyledOptionWrap>
       {props.isSelected && (
@@ -131,15 +131,15 @@ const Option = (props: any) => {
       <components.Option {...props} />
     </StyledOptionWrap>
   );
-};
+}
 
-type Option = { value: string; label: string };
+type Options = { value: string; label: string };
 
 type Props = {
-  senderTypeOptions: Array<Option>;
-  senderSourceOptions: Array<Option>;
-  receiverTypeOptions: Array<Option>;
-  receiverDestinationOptions: Array<Option>;
+  senderTypeOptions: Array<Options>;
+  senderSourceOptions: Array<Options>;
+  receiverTypeOptions: Array<Options>;
+  receiverDestinationOptions: Array<Options>;
   setSelectedSender: any;
   setSelectedSource: any;
   setSelectedReceiver: any;
