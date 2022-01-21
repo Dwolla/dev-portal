@@ -45,16 +45,16 @@ When the state of a resource changes, Dwolla creates a new event resource to rec
 }
 ```
 
-### Dwolla Master Account Event topics
+## Dwolla Master Account Event topics
 
-##### Accounts
+### Accounts
 
 | Topic             | Description                                                                                               |
 | ----------------- | --------------------------------------------------------------------------------------------------------- |
 | account_suspended | Description: A Dwolla Master Account was suspended.                                                       |
 | account_activated | Description: A Dwolla Master Account moves from deactivated or suspended to active state of verification. |
 
-##### Funding Sources
+### Funding Sources
 
 | Topic                     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -69,7 +69,7 @@ When the state of a resource changes, Dwolla creates a new event resource to rec
 | microdeposits_completed   | Description: The two <=10¢ transfers to a Dwolla Master Account’s linked bank account have cleared successfully. Timing: Occurs when micro-deposits are successfully verified.                                                                                                                                                                                                                                                                                                                        |
 | microdeposits_maxattempts | Description: The funding source has reached its max verification attempts limit of three. The funding source can no longer be verified with the completed micro-deposit amounts. Timing: Occurs with the fourth attempt to verify micro-deposits.                                                                                                                                                                                                                                                     |
 
-##### Transfers
+### Transfers
 
 | Topic                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -87,7 +87,7 @@ When the state of a resource changes, Dwolla creates a new event resource to rec
 | card_transfer_failed          | Description: A push to debit card transfer failed to complete. Represents funds failing to complete from a Master Account's `balance` to a Customer's debit `card`. Timing: Triggers when funds attempting to land in the debit card are returned like in the event a debit card was removed after the initiation of the transfer.                                                                                                                                                                                     |
 | card_transfer_completed       | Description: A push to debit card transfer has cleared successfully. Represents funds clearing from a Master Account's `balance` to a Customer's debit `card`. Timing: Occurs after funds have successfully processed out of the Dwolla ecosystem.                                                                                                                                                                                                                                                                     |
 
-##### Mass Payments
+### Mass Payments
 
 | Topic                  | Description                                                                                                                                                                     |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -98,15 +98,15 @@ Timing: Occurs when a mass payment job completes.
 |
 | mass_payment_cancelled | A created and deferred mass payment was cancelled. Timing: Occurs upon a POST request to the [Update a mass-payment](https://developers.dwolla.com/api-reference/mass-payments/update) endpoint when cancelling a mass payment job.|
 
-##### Statements
+### Statements
 
 | Topic             | Description                                                                                                                                                                |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | statement_created | A monthly balance summary and a detailed transaction record for the previous month was created for a Dwolla Master Account. Timing: Occurs at the beginning of each month. |
 
-### Customer Account Event topics
+## Customer Account Event topics
 
-##### Customers
+### Customers
 
 | Topic                                   | Description                                                                                                                                                                                                                                                                                                                                                                                    |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -124,7 +124,7 @@ Timing: Occurs when a mass payment job completes.
 | customer_activated                      | Description: A Customer moves from deactivated or suspended to an active status. Timing: Occurs upon reactivating a Customer that has a deactivated status by making a POST request to the [Update a Customer](https://developers.dwolla.com/api-reference/customers/update) endpoint, or when Dwolla reactivates a Customer that has a suspended status.                                      |
 | customer_deactivated                    | Description: A Customer was deactivated. Timing: Occurs upon deactivation of a Customer by making a POST request to the [Update a Customer](https://developers.dwolla.com/api-reference/customers/update) endpoint, or when Dwolla systematically deactivates a Customer upon receiving certain ACH return codes when a transfer fails.                                                        |
 
-##### Beneficial Owners
+### Beneficial Owners
 
 | Topic                                                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,7 +137,7 @@ Timing: Occurs when a mass payment job completes.
 | customer_beneficial_owner_reverification_needed          | Description: A previously `verified` beneficial owner status has changed due to either a change in the beneficial owner’s information or at request for more information from Dwolla. The individual will need to verify their identity within 30 days. Timing: Occurs upon a POST request to the [Update a beneficial owner](https://developers.dwolla.com/api-reference/beneficial-owners/update) endpoint, or when Dwolla places the beneficial owner into incomplete status. |
 | customer_beneficial_owner_verified                       | A beneficial owner has been verified.                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 
-##### Funding Sources
+### Funding Sources
 
 | Topic                              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -152,7 +152,7 @@ Timing: Occurs when a mass payment job completes.
 | customer_microdeposits_completed   | Description: The two <=10¢ transfers to a Customer’s linked bank account have cleared successfully. Timing: Occurs when micro-deposit are successful, usually within 1-2 business days of initiating them.                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | customer_microdeposits_maxattempts | Description: The Customer has reached their max verification attempts limit of three. The Customer can no longer verify their funding source with the completed micro-deposit amounts. Timing: Occurs upon the third POST request to the [Verify micro-deposits](https://developers.dwolla.com/api-reference/funding-sources/verify-micro-deposits) endpoint with incorrect micro-deposit amounts.                                                                                                                                                                                                                                                           |
 
-##### Transfers
+### Transfers
 
 | Topic                                  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -166,7 +166,7 @@ Timing: Occurs when a mass payment job completes.
 | customer_transfer_failed               | Description: A Customer transfer failed to clear successfully. Represents funds failing to clear either to an unverified Customer's `bank` or to a verified Customer's `balance`. This can also be fired when a push to debit card transfer fails to complete from a Master Account's `balance` to a Customer's debit `card`. Timing: Occurs when Dwolla marks a transfer as failed.                                                                                                                                                                                                                                               |
 | customer_transfer_completed            | Description: A Customer transfer has cleared successfully. Represents funds clearing either to an unverified Customer's `bank` or to a verified Customer's `balance`. This can also be fired when a push to debit card transfer clears successfully from a Master Account's `balance` to a Customer's debit `card`. Timing: Occurs when a funds transfer into an unverified Customer’s bank or a verified Customer’s balance is successful, based on the transfer processing timing used.                                                                                                                                          |
 
-##### Mass Payments
+### Mass Payments
 
 | Topic                              | Description                                                                                                                                                                                                                                                          |
 | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -175,7 +175,7 @@ Timing: Occurs when a mass payment job completes.
 | customer_mass_payment_cancelled    | Description: A Verified Customer's created and deferred mass payment was cancelled. Timing: Occurs upon a POST request to the [Update a mass-payment](https://developers.dwolla.com/api-reference/mass-payments/update) endpoint when cancelling a mass payment job. |
 | customer_balance_inquiry_completed | Description: Upon checking a Customer's bank balance, Dwolla will immediately return an HTTP 202 with response body that includes a status of `processing`. This event will be triggered when the bank balance check has completed processing.                       |
 
-##### Labels
+### Labels
 
 | Topic                               | Description                                                                                                                                                                                                                                |
 | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
