@@ -80,7 +80,7 @@ In production, Dwolla will place the Verified Customer in either the `retry`, `k
 
 **For personal Verified Customers**, reference the guide on [customer verification](/guides/personal-verified-customer/handle-verification-statuses) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-personal-customer---request-parameters) with that status.
 
-**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller, the business and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-business-customer-businesstypellc-corporation-or-partnership---request-parameters) with that status. To simulate different verification status for Beneficial Owners, submit either `incomplete` or `document`  in the **beneficial owner firstName** parameter.  
+**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller, the business and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-business-customer-businesstypellc-corporation-or-partnership---request-parameters) with that status. To simulate different verification status for Beneficial Owners, submit either `incomplete` or `document` in the **beneficial owner firstName** parameter.
 
 With business Verified Customers, documents may be needed for the Controller, the business, or both the Controller and business. To simulate the `document` status for the controller, submit `document` in the **controller firstName** parameter. 
 Similarly, to simulate the `document` status for the business, submit `document` in the **businessName** parameter. To simulate both the Controller and the business in `document`, submit `document` in both the **controller firstName** and the **businessName** parameters. 
@@ -249,6 +249,73 @@ To create a Real-time payment (RTP) transfer, you need to attach a funding-sourc
   Real bank account numbers should not be used in a testing environment like Sandbox.
 </AlertBar>
 
+### Test Virtual Account Numbers (VANs) Transfer
+
+External transfers can be simulated in the Sandbox by using the sandbox-simulations endpoint with a non-blank body and a type field set to `virtual`. Up to 10 transfers at a time can be included in one call to the sandbox simulations endpoint. Transfers will be created in a `pending` or `failed` status depending on whether the VAN has been removed or the Customer has been `deactivated` or `suspended`. Pending transfers will be processed automatically during the following times (all in Central Time),
+
+- 2 AM
+- 5 AM
+- 8 AM
+- 11 AM
+- 1:15 PM
+- 5:45 PM
+- 8 PM
+
+<AlertBar variation="info">
+  The times listed above only apply to the Sandbox testing environment. In
+  Production, external transfers are processed at 11 AM, 1:15 PM and 5:45 PM
+  (Central Time).
+</AlertBar>
+
+##### Optional fields and default values for VAN transfers
+
+| Optional Field           | Default Value                                                                                                                                        |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| companyEntryDescription  | `""` **Note:** The default value is an empty string. To simulate how a reversal transaction would look, set `companyEntryDescription` to "REVERSAL". |
+| routingNumber            | `"222222226"`                                                                                                                                        |
+| addenda                  | `"addenda"`                                                                                                                                          |
+| beneficiaryName          | `"Fake name"`                                                                                                                                        |
+| companyDiscretionaryData | `"Fake discretionary data"`                                                                                                                          |
+| companyId                | `"random integer value"`                                                                                                                             |
+| companyName              | `"Fake company name"`                                                                                                                                |
+
+```bash
+POST https://api-sandbox.dwolla.com/sandbox-simulations
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer {Your access token}
+
+{
+    "type": "virtual",
+    "transfers": [
+        {
+            "_link": {
+                "destination": {
+                    "href": "https://api-sandbox.dwolla.com/funding-sources/5880e310-675a-4ce3-87d9-a475cc565e09"
+                }
+            },
+            "amount": {
+                "currency": "USD",
+                "value": "1.11"
+            },
+            "achDetails": {
+                "companyEntryDescription": "AUTOENROLL",
+                "companyName": "Test Business Name",
+                "companyDiscretionaryData": "Test discretionary data",
+                "beneficiaryName": "Test Name",
+                "routingNumber": "012256789",
+                "addenda": "addenda example",
+                "companyId": "0012422"
+            }
+        }
+    ]
+}
+
+...
+
+HTTP/1.1 202 Accepted
+```
+
 ### Test bank transfer failures
 
 Transfers to or from a bank account can fail for a number of reasons (e.g. insufficient funds, invalid account number, etc.). When a bank transfer fails, the associated financial institution that rejected the transaction assigns an ACH return code and a transfer failure event is then triggered in Dwolla. Dwolla allows you to trigger various bank transfer failures by specifying an “R” code in the funding source `name` parameter when creating or [updating a funding source](https://developers.dwolla.com/api-reference/funding-sources/update) for a Dwolla Account or API Customer. When a [transfer is initiated](https://developers.dwolla.com/api-reference/transfers/initiate) using a funding source that has an “R” code assigned to its name, a transfer failure event will trigger and the status will update to failed when you simulate bank transfer processing (as mentioned above).
@@ -320,6 +387,19 @@ var requestBody = {
 
 dwolla.post(fundingSourceUrl, requestBody).then((res) => res.body.name); // => "R03"
 ```
+
+### Test VANs transfer failures
+
+Similar to [testing ACH bank transfer failures](#test-bank-transfer-failures), you can test VANs transfer failures by specifying an "R" code in the "name" parameter when creating a VAN (e.g. “R08 Failure Test VAN”). The return code must be at the beginning of the VAN funding source’s name. **Note** that it is not case sensitive.
+
+##### List of codes for testing VAN transfer failures
+
+| Code | Description                                                                                                                                                                                                                            | When is the failure triggered?                                                      |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| R01  | Insufficient Funds: This value is used to simulate funds failing from the source bank account (debit).                                                                                                                                 | During processing of pending transactions.                                          |
+| R02  | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (credit). The funding source will be automatically removed from Dwolla when this return code is triggered. | During processing of pending transactions.                                          |
+| R08  | Payment Stopped: The person who owns the account has placed a stop payment with their bank.                                                                                                                                            | “Immediately” triggered upon transfer creation by funding source naming convention. |
+| R10  | Customer Advises Unauthorized, Improper, Ineligible, or Part of an Incomplete Transaction: The person who owns the bank account has told their bank account that the transaction was unauthorized.                                     | “Immediately” triggered upon transfer creation by funding source naming convention. |
 
 ### Test Push-to-debit transfer failures
 
