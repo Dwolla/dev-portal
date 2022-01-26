@@ -13,13 +13,19 @@ This section outlines how to remove a Label by its unique identifier. The amount
 
 ### HTTP request
 
-`DELETE https://api.dwolla.com/labels/{id}`
+> `DELETE https://api.dwolla.com/labels/{id}`
 
 ### Request parameters
 
 | Parameter | Required | Type   | Description             |
 | --------- | -------- | ------ | ----------------------- |
 | id        | yes      | string | Label unique identifier |
+
+### HTTP status and error codes
+
+| HTTP Status | Code                 | Description                          |
+| ----------- | -------------------- | ------------------------------------ |
+| 403         | InvalidResourceState | Amount must be zero to remove label. |
 
 ### Request and response
 
@@ -92,9 +98,3 @@ $labelsApi = new DwollaSwagger\LabelsApi($apiClient);
 $labelsApi->removeLabel('https://api-sandbox.dwolla.com/labels/30165ded-2f32-4ee9-b340-ac44dda1d7fc');
 ?>
 ```
-
-### HTTP status and error codes
-
-| HTTP Status | Code                 | Description                          |
-| ----------- | -------------------- | ------------------------------------ |
-| 403         | InvalidResourceState | Amount must be zero to remove label. |

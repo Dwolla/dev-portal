@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimelineNav 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div
+    className="css-b3ypt0-StyledDiv e92fyip0"
+  >
+    <div
+      className="active css-zr8nux-StyledStep e92fyip3"
+    >
+      <div
+        className="active css-e0ruun-StyledStepNum e92fyip1"
+        id={0}
+      >
+        0
+      </div>
+      <div
+        className="active css-1g7t0p2-StyledText e92fyip2"
+      >
+        Create Transfer
+      </div>
+    </div>
+    <div
+      className="css-zr8nux-StyledStep e92fyip3"
+    >
+      <div
+        className="css-e0ruun-StyledStepNum e92fyip1"
+        id={1}
+        onClick={[Function]}
+      >
+        1
+      </div>
+      <div
+        className="css-1g7t0p2-StyledText e92fyip2"
+      >
+        First Leg
+      </div>
+    </div>
+    <div
+      className="css-zr8nux-StyledStep e92fyip3"
+    >
+      <div
+        className="css-e0ruun-StyledStepNum e92fyip1"
+        id={2}
+        onClick={[Function]}
+      >
+        2
+      </div>
+      <div
+        className="css-1g7t0p2-StyledText e92fyip2"
+      >
+        Second Leg
+      </div>
+    </div>
+    <div
+      className="css-zr8nux-StyledStep e92fyip3"
+    >
+      <div
+        className="css-e0ruun-StyledStepNum e92fyip1"
+        id={3}
+        onClick={[Function]}
+      >
+        3
+      </div>
+      <div
+        className="css-1g7t0p2-StyledText e92fyip2"
+      >
+        Third Leg
+      </div>
+    </div>
+  </div>
+</div>
+`;

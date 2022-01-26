@@ -33,13 +33,13 @@ Let's illustrate the movement of funds for a bank-to-bank transfer in the diagra
 
 ## Bank Into Dwolla Network (ACH Payment In)
 
-Transfers into the Dwolla Network from a bank, including transfers that pass through the network (balance) to another Customer’s bank account, can be canceled up until the transfer is exported out of the Dwolla Network. To determine if a transfer is eligible for cancellation, Dwolla will return a `cancel` link on the [transfer resource](https://docs.dwolla.com/#cancel-a-transfer). The export cut off time for Standard and Next-Day ACH transfers is 4 p.m. Central Time. The export cut off time for Same Day ACH is 12 p.m. Central Time every business day.
+Transfers into the Dwolla Network from a bank, including transfers that pass through the network (balance) to another Customer’s bank account, can be canceled up until the transfer is exported out of the Dwolla Network. To determine if a transfer is eligible for cancellation, Dwolla will return a `cancel` link on the [transfer resource](https://developers.dwolla.com/api-reference/transfers/cancel). The export cut off time for Standard and Next-Day ACH transfers is 4 p.m. Central Time. The export cut off time for Same Day ACH is 1 p.m. Central Time every business day.
 
 **Note:** This is not a hard cut off. Occasionally, the export out of the Dwolla Network may be delayed or could take time to process, causing transfers created some time after the cut off to be exported in the same batch. We recommend that you use the `cancel` link returned on the transfer resource to determine if a transfer is cancellable rather than relying on the export timing.
 
 ##### ACH payment in (Debit)- Standard ACH clearing
 
-Standard ACH transfers from a bank to the Dwolla Network will take 3-4 business days to settle. ACH is known as a next-business day settlement system, however, to account for ACH returns and processing delays by financial institutions the processing timeline is extended. With this ACH processing, funds can be held for 3-4 days to allow for checks on [common return codes](https://www.dwolla.com/resources/ach-return-codes/); including insufficient funds and basic checks for valid bank accounts. If during ACH processing a failure is discovered as funds are held, the transfer will fail and be marked with a return code. To learn more about the various ACH return codes that can be returned systematically on a [transfer failures](https://developers.dwolla.com/concepts/transfer-failures.html), take a look at our transfer failures developer resource article.
+Standard ACH transfers from a bank to the Dwolla Network will take 3-4 business days to settle. ACH is known as a next-business day settlement system, however, to account for ACH returns and processing delays by financial institutions the processing timeline is extended. With this ACH processing, funds can be held for 3-4 days to allow for checks on [common return codes](https://www.dwolla.com/resources/ach-return-codes/); including insufficient funds and basic checks for valid bank accounts. If during ACH processing a failure is discovered as funds are held, the transfer will fail and be marked with a return code. To learn more about the various ACH return codes that can be returned systematically on a [transfer failures](https://developers.dwolla.com/concepts/transfer-failures), take a look at our transfer failures developer resource article.
 
 <Image
   src={achStandardIn}
@@ -49,7 +49,7 @@ Standard ACH transfers from a bank to the Dwolla Network will take 3-4 business 
 
 ##### ACH payment in (Debit) - Next Day ACH clearing
 
-Dwolla offers expedited clearing into the Dwolla Network from a bank account. Using `next-day` ACH transfers, funds will be made available in the Dwolla Network 1-2 business days after the transfer is created. Next-Day ACH transfers are an account setting that can be enabled on an account-level basis for you and users that send funds on your application. **After receiving proper approval from Dwolla, we will enable transfers into the Dwolla network as `next-day`.** In the case where you would want to slow down the availability of incoming funds to standard ACH, you will need to specify this in the API transfer request. To learn more on how to set transfers to the default standard processing, refer to the `clearing` object in our [API Reference Docs](https://docs.dwolla.com/#clearing-json-object).
+Dwolla offers expedited clearing into the Dwolla Network from a bank account. Using `next-day` ACH transfers, funds will be made available in the Dwolla Network 1-2 business days after the transfer is created. Next-Day ACH transfers are an account setting that can be enabled on an account-level basis for you and users that send funds on your application. **After receiving proper approval from Dwolla, we will enable transfers into the Dwolla network as `next-day`.** In the case where you would want to slow down the availability of incoming funds to standard ACH, you will need to specify this in the API transfer request. To learn more on how to set transfers to the default standard processing, refer to the `clearing` object in our [API Reference Docs](https://developers.dwolla.com/api-reference/transfers#clearing-json-object).
 
 <AlertBar variation="warning">
   With Next Day ACH enabled, transfer processing is expedited, meaning that
@@ -61,15 +61,15 @@ Dwolla offers expedited clearing into the Dwolla Network from a bank account. Us
 
 ##### ACH payment in (Debit) - Same Day ACH clearing
 
-Dwolla offers expedited clearing into the Dwolla Network from a bank account. Using `same-day` ACH Debit transfers, funds will be made available in the Dwolla Network on the same business day. For instance, if a Same Day Debit transfer is created prior to 12 p.m. Central Time, the funds will be available in the Dwolla Network by the end of that business day. Same Day Debit transfers are an account setting that can be enabled on an account-level basis for debit transfers. After receiving proper approval from Dwolla, you can create a Same Day Debit on a per-transfer basis by specifying this in the clearing object of an API transfer request.
+Dwolla offers expedited clearing into the Dwolla Network from a bank account. Using `same-day` ACH Debit transfers, funds will be made available in the Dwolla Network on the same business day. For instance, if a Same Day Debit transfer is created prior to 1 p.m. Central Time, the funds will be available in the Dwolla Network by the end of that business day. Same Day Debit transfers are an account setting that can be enabled on an account-level basis for debit transfers. After receiving proper approval from Dwolla, you can create a Same Day Debit on a per-transfer basis by specifying this in the clearing object of an API transfer request.
 
-Refer to the [clearing object](https://docs.dwolla.com/#transfers) in our API Reference Docs for more information.
+Refer to the [clearing object](https://developers.dwolla.com/api-reference/transfers) in our API Reference Docs for more information.
 
 <Image src={achSameDayIn} alt="ACH Debit transfer timeline Same Day" noborder />
 
 ## Dwolla Network Out To Bank Account (ACH Payment Out)
 
-Transfers out of the Dwolla Network can be canceled at any point until 4 p.m. Central Time on that same business day if the transfer was initiated prior to 4 p.m. Central Time. If a transfer was initiated after 4 p.m. Central Time, it can usually be canceled anytime before 4 p.m. Central Time on the following business day. To determine if a transfer is eligible for cancellation, Dwolla will return a cancel link on the [transfer resource](https://docs.dwolla.com/#cancel-a-transfer).
+Transfers out of the Dwolla Network can be canceled at any point until 4 p.m. Central Time on that same business day if the transfer was initiated prior to 4 p.m. Central Time. If a transfer was initiated after 4 p.m. Central Time, it can usually be canceled anytime before 4 p.m. Central Time on the following business day. To determine if a transfer is eligible for cancellation, Dwolla will return a cancel link on the [transfer resource](https://developers.dwolla.com/api-reference/transfers/cancel).
 
 ##### ACH payment out (Credit) - Standard ACH clearing
 
@@ -83,7 +83,7 @@ Standard clearing time out of the Dwolla Network to a bank takes 1-2 business da
 
 ##### ACH payment out (Credit) - Same-Day ACH clearing
 
-Upgrading exports out of the Dwolla Network to a bank using `Same-day` ACH clearing will push funds to the `destination` bank on the same day. For instance, funds moving out of the Dwolla Network prior to 12 p.m. Central Time will be available in the recipient’s bank account by the end of the day.
+Upgrading exports out of the Dwolla Network to a bank using `Same-day` ACH clearing will push funds to the `destination` bank on the same day. For instance, funds moving out of the Dwolla Network prior to 1 p.m. Central Time will be available in the recipient’s bank account by the end of the day.
 
 <Image
   src={achSameDayOut}

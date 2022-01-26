@@ -37,7 +37,7 @@ const Option = (props: any) => {
     <StyledOptionWrap>
       {props.isSelected && (
         <StyledSelectedIconWrap>
-          <CheckMarkIcon width={10} />
+          <CheckMarkIcon stroke="#52627B" width={10} />
         </StyledSelectedIconWrap>
       )}
       <components.Option {...props} />

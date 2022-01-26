@@ -9,11 +9,11 @@ meta:
 
 # Verify micro-deposits
 
-This section covers how to verify micro-deposits for bank verification. Reference the [funding source verification](https://developers.dwolla.com/resources/funding-source-verification.html) resource article for more information on the micro-deposit method of bank account verification. **Note:** Micro-deposits do not expire. Micro-deposits can be verified anytime in the future after they have a `processed` status in the Dwolla system.
+This section covers how to verify micro-deposits for bank verification. Reference the [funding source verification](https://developers.dwolla.com/concepts/bank-funding-source#bank-addition--verification-methods) resource article for more information on the micro-deposit method of bank account verification. **Note:** Micro-deposits do not expire. Micro-deposits can be verified anytime in the future after they have a `processed` status in the Dwolla system.
 
 ### HTTP request
 
-`POST https://api.dwolla.com/funding-sources/{id}/micro-deposits`
+> `POST https://api.dwolla.com/funding-sources/{id}/micro-deposits`
 
 ### Request parameters
 
@@ -35,7 +35,7 @@ This section covers how to verify micro-deposits for bank verification. Referenc
 | 404         | NotFound             | Micro-deposits not initiated,Funding source not found                                                                                                |
 | 500         | Unknown              | "Verify micro-deposits returned an unknown error."                                                                                                   |
 
-#### Request and response
+### Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits

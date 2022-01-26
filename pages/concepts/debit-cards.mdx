@@ -59,7 +59,7 @@ Refer to the table below for more information.
 
 Funds pushed over the card networks will be available for use in near real-time, eliminating the possibility of a return. If a debit card is ineligible to receive funds, the transfer will fail and the applicable error message will be returned via a `customer_card_transfer_failed` webhook. In the event of a failed transfer, funds will not leave your balance.
 
-When a push-to-debit transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://docs.dwolla.com/#retrieve-a-transfer-failure-reason).
+When a push-to-debit transfer is unable to be completed, its status will be updated to `failed`. The response from the API when retrieving the transfer should contain a `"failure"` link that your application will follow to [retrieve the transfer failure reason](https://developers.dwolla.com/api-reference/transfers/retrieve-a-transfer-failure-reason).
 
 <InlineCTA
   icon={guideIcon}

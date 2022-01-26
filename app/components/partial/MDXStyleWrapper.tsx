@@ -6,6 +6,7 @@ import {
   codeStyles,
   linkStyles,
   listStyles,
+  blockQuoteStyles,
 } from "../base/Typography";
 import { imageStyles } from "../base/Image";
 import { GREY_5 } from "../colors";
@@ -127,6 +128,10 @@ const MDXStyleWrapper = ({ children }: { children: any }) => (
       > div:not(.mdx-style-override) {
         margin-top: 29px;
         margin-bottom: 29px;
+      }
+
+      blockQuote {
+        ${blockQuoteStyles.styles}
       }
     `}
   >

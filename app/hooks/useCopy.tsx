@@ -17,7 +17,8 @@ export default function useCopy(text, timeout = DEFAULT_TIMEOUT) {
     return () => clearTimeout(resetCopied);
   }, [copied]);
 
-  const copy = () => {
+  const copy = (e) => {
+    e.stopPropagation();
     navigator.clipboard.writeText(text);
     setCopied(true);
   };

@@ -66,7 +66,7 @@ Dwolla's UI components library contains a variety of supported components that r
 
 The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a receive only customer with `type = "receive-only"`. Receive Only customers are restriced to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
 ##### CSS Classes for Create a Receive Only Customer
 
@@ -100,7 +100,7 @@ dwolla-error-message
 
 The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
 ##### CSS Classes for Create an Unverified Customer
 
@@ -136,7 +136,7 @@ dwolla-error-message
 
 The `dwolla-customer-update` component is used to upgrade an Unverified Customer into a Personal Verified Customer. Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, [visit our docs](/concepts/customer-types) on concepts.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.update`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.update`
 
 ##### CSS Classes for Upgrade an Unverified Customer
 
@@ -179,7 +179,7 @@ dwolla-error-message
 
 The `dwolla-personal-vcr` component is used to display a form to collect the required information needed to create an Personal Verified Customer. Personal Verified Customers can both send and receive funds, as well as hold a Dwolla balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
 ##### CSS Classes for Create a Personal Verified Customer
 
@@ -223,7 +223,7 @@ dwolla-info-message
 
 The `dwolla-business-vcr` component is used to display a form to collect the required information needed to create a Business Verified Customer. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.create`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
 ##### CSS Classes for Create a Business Verified Customer
 
@@ -289,7 +289,7 @@ tooltip-shift,
 
 The `dwolla-beneficial-owners` component is used to display a form to collect the required information needed to [add Beneficial Owners](/guides/business-verified-customer/add-beneficial-owners#step-3-adding-beneficial-owners) after the creation of a Business Verified Customer. This component can be paired with the `dwolla-business-vcr` component or be used in isolation. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) possible actions: `beneficialowners.create`, `beneficialownership.read`, `customer.read`, `beneficialownership.certify`, `beneficialowners.update`, `beneficialowner.documents.create`, `beneficialowner.delete`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) possible actions: `beneficialowners.create`, `beneficialownership.read`, `customer.read`, `beneficialownership.certify`, `beneficialowners.update`, `beneficialowner.documents.create`, `beneficialowner.delete`
 
 ##### CSS Classes for Add Beneficial Owners
 
@@ -350,7 +350,7 @@ dwolla-loading
 
 The `dwolla-document-upload` component can be used if a Verified Customer or a Beneficial Owner has a `document` status and needs to upload an identifying document to complete verification of their account. A government-issued document might be required to verify an individual or business's identity.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.documents.create` or `beneficialowner.documents.create`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.documents.create` or `beneficialowner.documents.create`
 
 ##### CSS Classes for Upload a Document
 
@@ -379,7 +379,7 @@ dwolla-document-submit
 
 The `dwolla-balance-display` component can be used for any customer who already has a Dwolla balance that needs to be displayed. This can be a Personal Verified Customer or a Business Verified Customer.
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.fundingsources.read`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.fundingsources.read`
 
 ##### CSS Classes for Create a Personal Verified Customer
 
@@ -411,7 +411,7 @@ In order to add a funding source and verify it, you can:
 - Add and verify a bank with [Instant Account Verification](https://developers.dwolla.com/guides/dwolla-js/instant-account-verification#add-a-bank-using-dwollajs--iav) (IAV)
 - Add and verify a bank with [Dwolla + Plaid integration](https://developers.dwolla.com/guides/plaid#plaid-integration)
 
-[Create client-token](https://docs.dwolla.com/#create-a-client-token) action: `customer.transfers.send`
+[Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.transfers.send`
 
 ##### CSS Classes for Pay-In
 
@@ -440,4 +440,4 @@ dwolla-payin-title
 
 Leveraging Dwolla’s UI Components library is a great way to expedite your integration with the Dwolla Platform by limiting the amount of custom code that you would be required to write.
 
-Get started building with drop-in components by checking out the [getting started guide](/guides/drop-ins) and the [API Reference documentation](https://docs.dwolla.com/#drop-in-components).
+Get started building with drop-in components by checking out the [getting started guide](/guides/drop-ins) and the [API Reference documentation](https://developers.dwolla.com/api-reference/drop-in-components).

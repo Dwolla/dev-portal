@@ -35,7 +35,7 @@ exports[`HeroCard - with Button 1`] = `
     className="css-1bb6rlt-StyledButton e1s1ktis3"
   >
     <a
-      className="hollow-white standard css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="hollow-white standard  css-5fh7ca-StyledLink-buttonStyles-buttonStyles ek3ainu1"
       href="https://www.dwolla.com"
       target={false}
     >
@@ -63,7 +63,7 @@ exports[`HeroCard - with Button and Links 1`] = `
     className="css-1bb6rlt-StyledButton e1s1ktis3"
   >
     <a
-      className="hollow-white standard css-11e3fwu-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="hollow-white standard  css-5fh7ca-StyledLink-buttonStyles-buttonStyles ek3ainu1"
       href="https://www.dwolla.com"
       target={false}
     >

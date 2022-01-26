@@ -9,11 +9,11 @@ meta:
 
 # Initiate micro-deposits
 
-This section covers how to initiate micro-deposits for bank verification. Reference the [funding source verification](https://developers.dwolla.com/resources/funding-source-verification.html) resource article for more information on the micro-deposit method of bank account verification.
+This section covers how to initiate micro-deposits for bank verification. Reference the [funding source verification](https://developers.dwolla.com/concepts/bank-funding-source#bank-addition--verification-methods) resource article for more information on the micro-deposit method of bank account verification.
 
 ### HTTP request
 
-`POST https://api.dwolla.com/funding-sources/{id}/micro-deposits`
+> `POST https://api.dwolla.com/funding-sources/{id}/micro-deposits`
 
 ### Request parameters
 
@@ -28,7 +28,7 @@ This section covers how to initiate micro-deposits for bank verification. Refere
 | 201         | Created  | Micro-deposits initiated, will take 1-2 days to settle to destination bank. |
 | 404         | NotFound | Funding source not found                                                    |
 
-#### Request and response
+### Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909/micro-deposits

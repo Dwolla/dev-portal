@@ -18,7 +18,10 @@ test("Footer", () => {
       { text: "Integrations", href: "https://www.dwolla.com/integrations/" },
     ],
     Developers: [
-      { text: "API Reference", href: "https://docs.dwolla.com/" },
+      {
+        text: "API Reference",
+        href: "https://developers.dwolla.com/api-reference/",
+      },
       { text: "Support Forum", href: "https://discuss.dwolla.com/" },
       { text: "SDKs and Tools", href: "#sdks-and-tools" },
       { text: "Github Repos", href: "https://github.com/Dwolla/" },
@@ -27,19 +30,21 @@ test("Footer", () => {
 
   const FOOTER_LEGAL_COPY = {
     title: "Financial institutions play an important role in our network.",
-    operatorDescription:
-      "Dwolla, Inc. is the operator of a software platform that communicates user instructions for funds transfers to our financial institution partners.",
-    veridianDescription:
-      "Dwolla is an agent of Veridian Credit Union. All ACH and Wire transfers are performed by Veridian Credit Union. Your Dwolla Balance, if any, is held in one or more pooled holding accounts held by Veridian Credit Union. These funds may not be eligible for share insurance by the National Credit Union Share Insurance Fund.",
-    metaBankDescription: (
-      <span>
-        Sponsorship and Settlement of Push-to-Debit payment services provided by{" "}
-        <span style={{ whiteSpace: "nowrap" }}>MetaBank®, N.A.</span>
-        <br /> Push-to-Debit payments are typically available within 30 minutes.
-      </span>
+    description: (
+      <>
+        All funds transfers made using the Dwolla Platform are performed by a
+        financial institution partner, and any funds held in a Dwolla Balance
+        are held by a financial institution partner.{" "}
+        <a
+          href="https://www.dwolla.com/legal/about-our-financial-institution-partners/#legal-content"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Learn more about our financial institution partners
+        </a>
+        .
+      </>
     ),
-    rtpDescription:
-      "Real-Time Payments are performed by Cross River Bank, which holds funds on behalf of the Receiver of such transactions in one or more pooled custodial accounts. These funds are not subject to FDIC pass-through deposit insurance.",
   };
 
   const tree = renderer

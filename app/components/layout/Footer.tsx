@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import map from "lodash.map";
-import { HEADLINE_TEXT, PARAGRAPH_TEXT } from "../colors";
+import { HEADLINE_TEXT, PARAGRAPH_TEXT, ORANGE_PRIMARY } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import logo from "../../../assets/images/dwolla-developers-logo.svg";
@@ -121,6 +121,14 @@ const LegalDesc = styled.p`
   font-size: 12px;
   line-height: 21px;
   color: ${PARAGRAPH_TEXT};
+  a {
+    color: ${ORANGE_PRIMARY};
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export interface FooterLink {
@@ -132,10 +140,7 @@ interface FooterProps {
   links: Record<string, FooterLink[]>;
   legal: {
     title: string;
-    operatorDescription: string;
-    veridianDescription: string;
-    metaBankDescription: JSX.Element;
-    rtpDescription: string;
+    description: any;
   };
 }
 
@@ -169,10 +174,7 @@ export default function Footer(props: FooterProps) {
 
       <LegalContainer>
         <LegalTitle>{props.legal.title}</LegalTitle>
-        <LegalDesc>{props.legal.operatorDescription}</LegalDesc>
-        <LegalDesc>{props.legal.veridianDescription}</LegalDesc>
-        <LegalDesc>{props.legal.metaBankDescription}</LegalDesc>
-        <LegalDesc>{props.legal.rtpDescription}</LegalDesc>
+        <LegalDesc>{props.legal.description}</LegalDesc>
       </LegalContainer>
     </Container>
   );

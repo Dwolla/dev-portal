@@ -92,7 +92,10 @@ storiesOf("base|Banner", module)
             icon={guideIcon}
             topic="API Reference"
             description="View details for all of Dwolla’s API endpoints with a complete reference"
-            link={{ href: "https://docs.dwolla.com/", external: true }}
+            link={{
+              href: "https://developers.dwolla.com/api-reference/",
+              external: true,
+            }}
           />
         </CardGrid>
       </CardGridWrapper>

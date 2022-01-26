@@ -5,6 +5,7 @@ guide:
   step: 1
 meta:
   title: "Create Document | Dwolla API Documentation"
+  description: Create a document for a Customer pending verification by uploading a color scan or photo of government issued identification.
 ---
 
 # Create a document for a customer
@@ -13,21 +14,21 @@ Create a document for a Customer pending verification by uploading a color scan 
 
 ### Acceptable documents
 
-| Customer type              | Acceptable documents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Personal Verified Customer | `passport`, `license`, or `idCard`. Must be a color scan of US Government issued identification.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| Business Verified Customer | Controller documents - `passport`, `license`, or `idCard`. Must be a color scan of US Government issued identification. <br /> Business documents - `other`. Refer to our guide on [Handling Document status for Business Verified Customers](https://developers.dwolla.com/resources/business-verified-customer/handling-controller-and-customer-statuses.html#document-types) for acceptable documents.<br /> Beneficial Owner documents - `passport`, `license`, or `idCard`. Refer to our guide on [Handling Document status for Beneficial Owners](https://developers.dwolla.com/resources/business-verified-customer/adding-beneficial-owners.html#handling-document-status) for acceptable documents. |
+| Customer type              | Acceptable documents                                                                                                                                                                                                                                                                                                                                                                           |
+| -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Personal Verified Customer | `passport`, `license`, or `idCard`. Must be a color scan of US Government issued identification.                                                                                                                                                                                                                                                                                               |
+| Business Verified Customer | Controller documents - `passport`, `license`, or `idCard`. Must be a color scan of US Government issued identification. <br /> Business documents - `other`. Refer to our guide on [Handling Document status for Business Verified Customers](https://developers.dwolla.com/guides/business-verified-customer/handle-verification-statuses#handling-document-status) for acceptable documents. |
 
 ### HTTP request
 
-`POST https://api.dwolla.com/customers/{id}/documents`
+> `POST https://api.dwolla.com/customers/{id}/documents`
 
 ### Request Parameters
 
-| Form Field   | Description                                                                                                                                                                                                         |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| documentType | Acceptable values of: `passport`, `license`, `idCard`, or `other`. Refer to the [acceptable documents](#acceptable-documents) section for more information on how these document types apply to each Customer type. |
-| file         | File contents.                                                                                                                                                                                                      |
+| Form Field   | Description                                                                                                                                                                                                                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| documentType | Acceptable values of: `passport`, `license`, `idCard`, or `other`. Refer to the [acceptable documents](https://developers.dwolla.com/api-reference/documents/create-document-for-customer#acceptable-documents) section for more information on how these document types apply to each Customer type. |
+| file         | File contents.                                                                                                                                                                                                                                                                                        |
 
 ### HTTP status and error codes
 

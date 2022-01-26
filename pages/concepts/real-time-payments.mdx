@@ -1,7 +1,7 @@
 ---
 layout: concepts
 title: "Real-time Payments"
-description: Learn about Real Time Payments, and how to identify and send transfers to RTP®-enabled funding-sources.
+description: Learn about Real Time Payments, and how to identify and send transfers to RTP-enabled funding-sources.
 category: Features
 concept:
   icon: "real-time-payments.svg"
@@ -9,6 +9,8 @@ meta:
   title: Real-time Payments | Dwolla API Documentation
   description: The Dwolla API enables use of Real-Time payment credit transfers, a feature for platforms looking to offer expedited transfers and improve end-user experience.
 ---
+
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 # Real-time payments
 
@@ -26,7 +28,7 @@ While RTP and ACH are similar in many ways, there are some key differences:
 | Agreed-upon processes for correcting erroneous transactions (i.e. reversal requests).       | Funds are irrevocable once sent (although not guaranteed or required, a request for return of funds may be issued). |
 
 <AlertBar variation="warning">
-  RTP® is a premium feature available for Dwolla customers. Enabling RTP does
+  RTP is a premium feature available for Dwolla customers. Enabling RTP does
   require additional Dwolla approvals before getting started. Please{" "}
   <a href="https://www.dwolla.com/contact?b=apidocs">contact Sales</a> or your
   account manager for more information on enabling this account feature.
@@ -42,11 +44,11 @@ The RTP® Network supports credit “push” transfers, whereas ACH supports cre
 
 ### Identifying an RTP-enabled Funding Source
 
-On the Dwolla Platform, Funding Sources allow bank accounts to be added or retrieved. Available for both a Dwolla [Master Account](https://docs.dwolla.com/#accounts) and [Customers](https://docs.dwolla.com/#customers) (end-users) resources, funding sources have represented payment accounts used for ACH, Wire, and/or Push-to-Debit activities. Dwolla will be able to identify a bank account as RTP-enabled upon creation of a Funding Source, so no additional information is needed from your end users or application.
+On the Dwolla Platform, Funding Sources allow bank accounts to be added or retrieved. Available for both a Dwolla [Master Account](https://developers.dwolla.com/api-reference/accounts) and [Customers](https://developers.dwolla.com/api-reference/customers) (end-users) resources, funding sources have represented payment accounts used for ACH, Wire, and/or Push-to-Debit activities. Dwolla will be able to identify a bank account as RTP-enabled upon creation of a Funding Source, so no additional information is needed from your end users or application.
 
 #### Retrieving an RTP-enabled Funding Source
 
-When [retrieving an existing Funding Source](https://docs.dwolla.com/#retrieve-a-funding-source) resource from the API, the response will contain a “channels” attribute which represents the different capabilities available for transfers. For a bank account, historically the only values available have been “ach” and “wire”. The example below represents how “real-time-payments” is returned within the “channels” array to identify an RTP-eligible account.
+When [retrieving an existing Funding Source](https://developers.dwolla.com/api-reference/funding-sources/retrieve) resource from the API, the response will contain a “channels” attribute which represents the different capabilities available for transfers. For a bank account, historically the only values available have been “ach” and “wire”. The example below represents how “real-time-payments” is returned within the “channels” array to identify an RTP-eligible account.
 
 ```json
 "channels": [
@@ -57,9 +59,15 @@ When [retrieving an existing Funding Source](https://docs.dwolla.com/#retrieve-a
 
 ### Initiating an RTP credit transfer
 
-In order to initiate a transfer with RTP processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://docs.dwolla.com/#retrieve-a-transfer) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
+In order to initiate a transfer with RTP processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
 
 An optional `rtpDetails` object can be included in the transfer request body. This allows additional information to be passed to the payment recipient's bank account about their RTP credit transfer.
+
+<InlineCTA
+  icon={guideIcon}
+  text="Check out our guide to learn how you can simulate an RTP transfer in Sandbox."
+  href="/guides/sandbox#test-rtp-transfers"
+/>
 
 The following example assumes the sending party has funds pre-loaded to their `balance` Funding Source and that the destination party has a bank account connected that is RTP-enabled.
 
@@ -224,7 +232,7 @@ dwolla
 
 ### Retrieving an RTP credit transfer
 
-When retrieving the [transfer from the API](https://docs.dwolla.com/#retrieve-a-transfer), the response will contain an `rtpDetails` object. Within the `rtpDetails` object will be a `destination` JSON object that includes a `remittanceData` key-value pair, depending on if it was included in the original RTP transfer request, and a `networkId` key-value pair.
+When retrieving the [transfer from the API](https://developers.dwolla.com/api-reference/transfers/retrieve), the response will contain an `rtpDetails` object. Within the `rtpDetails` object will be a `destination` JSON object that includes a `remittanceData` key-value pair, depending on if it was included in the original RTP transfer request, and a `networkId` key-value pair.
 
 The `networkId` is a unique identifier for an RTP credit transfer which is passed in the payment request to the recipient's bank. It appears on the transfer API resource once the credit entry clears into the destination bank account.
 

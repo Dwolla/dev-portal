@@ -3,83 +3,89 @@
 exports[`multiple examples 1`] = `
 <div>
   <div
-    className="code-block-bar-default css-1k69olo-CodeBlockBar e112hlxu2"
+    className="code-block-bar-default  css-vlw6pb-CodeBlockBar e112hlxu2"
   >
     <div
-      className=" css-k377xg-container"
-      onKeyDown={[Function]}
+      className="css-1t0sur2-BarItems e112hlxu4"
     >
       <div
-        className=" css-ypb917-control"
-        onMouseDown={[Function]}
-        onTouchEnd={[Function]}
+        className=" css-k377xg-container"
+        onKeyDown={[Function]}
       >
         <div
-          className=" css-1fpxn2j-ValueContainer"
+          className=" css-ypb917-control"
+          onMouseDown={[Function]}
+          onTouchEnd={[Function]}
         >
           <div
-            className=" css-gn3biy-singleValue"
+            className=" css-1fpxn2j-ValueContainer"
           >
-            PHP
-          </div>
-          <input
-            aria-autocomplete="list"
-            className="css-62g3xt-dummyInput"
-            disabled={false}
-            id="react-select-2-input"
-            onBlur={[Function]}
-            onChange={[Function]}
-            onFocus={[Function]}
-            readOnly={true}
-            tabIndex="0"
-            value=""
-          />
-        </div>
-        <div
-          className=" css-1hb7zxy-IndicatorsContainer"
-        >
-          <span
-            className=" css-43ykx9-indicatorSeparator"
-          />
-          <div
-            aria-hidden="true"
-            className=" css-1hkylt5-indicatorContainer"
-            onMouseDown={[Function]}
-            onTouchEnd={[Function]}
-          >
-            <svg
-              height={12}
-              width={7}
+            <div
+              className=" css-gn3biy-singleValue"
+            >
+              PHP
+            </div>
+            <input
+              aria-autocomplete="list"
+              className="css-62g3xt-dummyInput"
+              disabled={false}
+              id="react-select-2-input"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              readOnly={true}
+              tabIndex="0"
+              value=""
             />
+          </div>
+          <div
+            className=" css-1hb7zxy-IndicatorsContainer"
+          >
+            <span
+              className=" css-43ykx9-indicatorSeparator"
+            />
+            <div
+              aria-hidden="true"
+              className=" css-1hkylt5-indicatorContainer"
+              onMouseDown={[Function]}
+              onTouchEnd={[Function]}
+            >
+              <svg
+                height={12}
+                width={7}
+              />
+            </div>
           </div>
         </div>
       </div>
+      <button
+        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        disabled={false}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        copy
+         
+        <svg />
+      </button>
+      <button
+        autoFocus={false}
+        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        expand 
+        <svg
+          height={16}
+          width={16}
+        />
+      </button>
     </div>
-    <button
-      className="css-5uu5vc-CodeBlockButton e112hlxu3"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      copy
-       
-      <svg />
-    </button>
-    <button
-      autoFocus={false}
-      className="css-5uu5vc-CodeBlockButton e112hlxu3"
-      onClick={[Function]}
-      type="button"
-    >
-      expand 
-      <svg
-        height={16}
-        width={16}
-      />
-    </button>
   </div>
   <div
-    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu5"
+    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
   >
     <pre>
       <code
@@ -99,38 +105,106 @@ exports[`multiple examples 1`] = `
 exports[`single example 1`] = `
 <div>
   <div
-    className="code-block-bar-default css-1k69olo-CodeBlockBar e112hlxu2"
+    className="code-block-bar-default  css-vlw6pb-CodeBlockBar e112hlxu2"
   >
     <div
-      className="css-1vovl9e-BarText e112hlxu4"
+      className="css-1t0sur2-BarItems e112hlxu4"
     >
-      javascript
+      <div
+        className="css-1vovl9e-BarText e112hlxu6"
+      >
+        javascript
+      </div>
+      <button
+        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        disabled={false}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        copy
+         
+        <svg />
+      </button>
+      <button
+        autoFocus={false}
+        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        expand 
+        <svg
+          height={16}
+          width={16}
+        />
+      </button>
     </div>
-    <button
-      className="css-5uu5vc-CodeBlockButton e112hlxu3"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
-    >
-      copy
-       
-      <svg />
-    </button>
-    <button
-      autoFocus={false}
-      className="css-5uu5vc-CodeBlockButton e112hlxu3"
-      onClick={[Function]}
-      type="button"
-    >
-      expand 
-      <svg
-        height={16}
-        width={16}
-      />
-    </button>
   </div>
   <div
-    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu5"
+    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
+  >
+    <pre>
+      <code
+        className="language-javascript"
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "<span class=\\"hljs-keyword\\">const</span> foo = <span class=\\"hljs-string\\">\\"bar\\"</span>;",
+          }
+        }
+      />
+    </pre>
+  </div>
+  
+</div>
+`;
+
+exports[`single example with title 1`] = `
+<div>
+  <div
+    className="code-block-bar-default title css-vlw6pb-CodeBlockBar e112hlxu2"
+  >
+    <div
+      className="css-1v0t4mu-BarTitle e112hlxu3"
+    >
+      Title goes here
+    </div>
+    <div
+      className="css-1t0sur2-BarItems e112hlxu4"
+    >
+      <div
+        className="css-1vovl9e-BarText e112hlxu6"
+      >
+        javascript
+      </div>
+      <button
+        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        disabled={false}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        copy
+         
+        <svg />
+      </button>
+      <button
+        autoFocus={false}
+        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        expand 
+        <svg
+          height={16}
+          width={16}
+        />
+      </button>
+    </div>
+  </div>
+  <div
+    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
   >
     <pre>
       <code

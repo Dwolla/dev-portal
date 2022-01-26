@@ -12,7 +12,7 @@ meta:
 
 Assume that your integration is an online marketplace, and that a customer just placed an order on your site. A few days after the customer initiated their payment, your application receives this webhook.
 
-The `topic` field of an event holds [a description](http://docs.dwolla.com/#events) of the event, which is similar the subject of an e-mail message. The `webhook` itself contains `_links` to the resource impacted by the event that can be used to retrieve more information about the webhook you have received.
+The `topic` field of an event holds [a description](https://developers.dwolla.com/api-reference/events) of the event, which is similar the subject of an e-mail message. The `webhook` itself contains `_links` to the resource impacted by the event that can be used to retrieve more information about the webhook you have received.
 
 ##### Webhook payload example
 
@@ -40,11 +40,18 @@ The `topic` field of an event holds [a description](http://docs.dwolla.com/#even
 }
 ```
 
-#### Step A. Authenticating the webhook request
+### Step A. Authenticating the webhook request
 
 Before we process any data from the webhook we’ll want to validate that the request really came from Dwolla and not someone pretending to be Dwolla. Dwolla signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-Sha-256` header and is a SHA256 HMAC hash of the request body with the key being your webhook secret.
 
-You can validate the webhook by generating the same SHA256 HMAC hash and comparing it to the signature sent with the payload.
+<AlertBar variation="info">
+  As a best practice, we recommend validating webhooks by generating the same
+  SHA256 HMAC hash and comparing it to the signature sent with the payload.
+  <br />
+  <strong>Note:</strong> We do not recommend nor support relying on IP
+  whitelisting as a method of validating webhooks. Dwolla's IPs are dynamically
+  allocated with no defined range and are subject to change.
+</AlertBar>
 
 ```ruby
 def verify_signature(payload_body, request_signature)
@@ -105,7 +112,7 @@ function verifyGatewaySignature($proposedSignature, $webhookSecret, $payloadBody
 ?>
 ```
 
-#### Step B. Check for duplicate events
+### Step B. Check for duplicate events
 
 It is important to consider that duplicate webhooks may be fired for the same `Event`. To avoid doing any business logic twice, you would need to build idempotent webhook event processing in your app by checking if you have already successfully processed a webhook for a particular event. Event IDs are unique, so if you receive a webhook with an event ID that you have already received and acknowledged, then you can ignore that webhook.
 

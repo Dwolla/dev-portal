@@ -15,13 +15,13 @@ When a bank funding source with an `unverified` status is removed, an attempt to
 
 ##### Best Practices
 
-If a funding-source has an **outgoing** transfer, we recommend not removing it until the transfer has been [exported](https://developers.dwolla.com/concepts/transfer-processing-times#transfer-processing-times). Doing so will result in the cancellation of the transfer. Determining if a transfer has been exported or not can be done by retrieving the transfer resource and looking for the [`cancel`](https://docs.dwolla.com/#cancel-a-transfer) link in the response -- if the transfer has exported, the `cancel` link is removed.
+If a funding-source has an **outgoing** transfer, we recommend not removing it until the transfer has been [exported](https://developers.dwolla.com/concepts/transfer-processing-times). Doing so will result in the cancellation of the transfer. Determining if a transfer has been exported or not can be done by retrieving the transfer resource and looking for the [`cancel`](https://developers.dwolla.com/api-reference/transfers/cancel) link in the response -- if the transfer has exported, the `cancel` link is removed.
 
-If a funding source has an **incoming** transfer, we recommend not removing it until the transfer has been `processed`. If the recipient Customer has multiple funding sources attached, doing so will result in the funds processing to a randomly chosen bank funding source. If the recipient is a [Verified Customer type](https://developers.dwolla.com/concepts/customer-types#verified-customer) with only one bank funding source attached, removing it prior to an incoming transfer processing will result in the funds settling to the [balance funding source](https://developers.dwolla.com/concepts/balance-funding-source#the-dwolla-balance) rather than the intended bank funding source.
+If a funding source has an **incoming** transfer, we recommend not removing it until the transfer has been `processed`. If the recipient Customer has multiple funding sources attached, doing so will result in the funds processing to a randomly chosen bank funding source. If the recipient is a [Verified Customer type](https://developers.dwolla.com/concepts/customer-types#verified-customer) with only one bank funding source attached, removing it prior to an incoming transfer processing will result in the funds settling to the [balance funding source](https://developers.dwolla.com/concepts/balance-funding-source) rather than the intended bank funding source.
 
 ### HTTP request
 
-`POST https://api.dwolla.com/funding-sources/{id}`
+> `POST https://api.dwolla.com/funding-sources/{id}`
 
 ### Request parameters
 

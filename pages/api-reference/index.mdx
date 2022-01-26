@@ -8,7 +8,7 @@ meta:
 
 # Introduction
 
-Welcome to the [Dwolla API](https://www.dwolla.com/platform) documentation. This API will give you the ability to connect your software to banking infrastructure to move money, store funds, validate customer identities, and verify bank accounts.
+Welcome to the Dwolla API documentation. This API will give you the ability to connect your software to banking infrastructure to move money, store funds, validate customer identities, and verify bank accounts.
 
 ## Making requests
 
@@ -31,9 +31,9 @@ Authorization: Bearer myOAuthAccessToken123
 GET https://api.dwolla.com/accounts/a84222d5-31d2-4290-9a96-089813ef96b3/transfers
 ```
 
-### Authorization
+### Authentication
 
-All requests require either an OAuth access token or a `client_id` and `client_secret`. OAuth access tokens are passed via the `Authorization` HTTP header:
+All requests require either an OAuth access token or a `client_id` and `client_secret` in order to authenticate with the API. OAuth access tokens are passed via the `Authorization` HTTP header:
 
 `Authorization: Bearer {access_token_here}`
 
@@ -47,7 +47,7 @@ All requests require either an OAuth access token or a `client_id` and `client_s
 
 To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key and request body won't result in multiple resources being created. It is recommended to use a random value for the idempotency key, like a UUID (i.e. - `Idempotency-Key: d2adcbab-4e4e-430b-9181-ac9346be723a`).
 
-For example, if a request to [initiate a transfer](#initiate-a-transfer) fails due to a network connection issue, you can reattempt the request with the same idempotency key to guarantee that only a single transfer is created.
+For example, if a request to [initiate a transfer](https://developers.dwolla.com/api-reference/transfers/initiate) fails due to a network connection issue, you can reattempt the request with the same idempotency key to guarantee that only a single transfer is created.
 
 If you reattempt a `POST` request with the same value for the `Idempotency-Key`, rather than creating new or potentially duplicate resources, you will receive a `201 Created`, with the original response of the created resource. If the Dwolla server is still processing the original `POST` request, you will receive a `409 Conflict` error response on the subsequent request. Multiple `POST`s with the same idempotency key including an **exact match** request body wonâ€™t result in multiple resources being created. Idempotency keys are intended to prevent conflicts over a short period of time, therefore keys which are paired with a request body expire after 24 hours.
 
@@ -234,16 +234,18 @@ Responses with a top-level error code of `ValidationError` are returned when itâ
 
 The `path` field is a JSON pointer to the specific field in the request that has a problem. The `message` is a human readable description of the problem. The `code` is a detailed error code that can have one of the following values:
 
-- Required - {field name} is required. For example, null or empty string in required field.
-- Invalid - {field name} invalid.
-- InvalidFormat - {field name} is not in a valid format. For example, characters in the amount field.
-- Duplicate - "A customer with the specified email already exists."
-- ReadOnly - this field is not allowed to be modified
-- NotAllowed - value, while valid/exists, is not allowed to be used
-- Restricted - account or customer restricted from this activity
-- InsufficientFunds - used on source or destination fields of transfer endpoint
-- RequiresFundingSource - used on destination field of transfer endpoint to indicate customer needs a bank
-- FileTooLarge - used on document upload
+| Code                  | Description                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------ |
+| Required              | {field name} is required. For example, null or empty string in required field.             |
+| Invalid               | {field name} invalid.                                                                      |
+| InvalidFormat         | {field name} is not in a valid format. For example, characters in the amount field.        |
+| Duplicate             | Duplicate resource error. For example, A customer with the specified email already exists. |
+| ReadOnly              | this field is not allowed to be modified                                                   |
+| NotAllowed            | value, while valid/exists, is not allowed to be used                                       |
+| Restricted            | account or customer restricted from this activity                                          |
+| InsufficientFunds     | used on source or destination fields of transfer endpoint                                  |
+| RequiresFundingSource | used on destination field of transfer endpoint to indicate customer needs a bank           |
+| FileTooLarge          | used on document upload                                                                    |
 
 #### Example HTTP 400 validation error
 

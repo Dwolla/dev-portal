@@ -13,7 +13,7 @@ This section outlines how to retrieve your list of created Customers. This endpo
 
 ### HTTP Request
 
-`GET https://api.dwolla.com/customers`
+> `GET https://api.dwolla.com/customers`
 
 ### Pagination
 
@@ -27,27 +27,27 @@ By default, an embedded list of 25 customers are returned and are sorted by crea
 
 ##### Example HTTP Request
 
-`GET https://api.dwolla.com/customers?limit=5&offset=25`
+> `GET https://api.dwolla.com/customers?limit=5&offset=25`
 
 ### Searching and filtering Customers
 
 The `search` query string parameter contains a fuzzy search query across `firstName`, `lastName`, `businessName`, and `email` fields. Scoring is performed on the search term which looks for approximate spellings that match the entered search string and results are returned accordingly in an embedded customers array. **Note:** For exact match on `email` string value, the email filter should be used.
 
-The `email` query string parameter is a filter that returns an embedded customers array based on an exact match of the filter value. For example, if you would like to search for a Customer with the email address “jane@email.com”, you can append the additional parameter `email` to the request URL as shown in the example HTTP request below. **Note:** The email filter string value must be URL-encoded.
+The `email` query string parameter is a filter that returns an embedded customers array based on an exact match of the filter value. For example, if you would like to search for a Customer with the email address `jane@email.com`, you can append the additional parameter `email` to the request URL as shown in the example HTTP request below. **Note:** The email filter string value must be URL-encoded.
 
 The `status` query string parameter can be used to list an embedded customers array based on the status field. For example, if you would like to list all Customers that are in `document` status, you can append the additional parameter `status` to the request URL with the value "document". Check out all possible values listed in the table below.
 
 ##### Example Request URL using `email` filter
 
-`GET https://api.dwolla.com/customers?email=jane%40email.com`
+> `GET https://api.dwolla.com/customers?email=jane%40email.com`
 
 ##### Example Request URL using `search`
 
-`GET https://api.dwolla.com/customers?search=Jane`
+> `GET https://api.dwolla.com/customers?search=Jane`
 
 ##### Example Request URL using `status` filter
 
-`GET https://api.dwolla.com/customers?status=document`
+> `GET https://api.dwolla.com/customers?status=document`
 
 ### Request parameters
 

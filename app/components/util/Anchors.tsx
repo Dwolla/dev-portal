@@ -133,7 +133,11 @@ export function AnchorsSetter(props) {
 
   useLayoutEffect(() => {
     if (activeAnchor) {
-      window.history.replaceState(null, null, `#${activeAnchor.id}`);
+      window.history.replaceState(
+        null,
+        null,
+        activeAnchor.level !== 1 ? `#${activeAnchor.id}` : " " //prevent h1 tags from displaying as anchors in the url
+      );
     }
   }, [activeAnchor?.id]);
 

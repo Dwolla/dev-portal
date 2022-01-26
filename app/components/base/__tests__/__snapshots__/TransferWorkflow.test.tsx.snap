@@ -1,0 +1,447 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TransferWorkflow 1`] = `
+<div
+  className="css-1bvvi3d-StyledContainer evg26n40"
+>
+  <div
+    className="css-vrkopy-StyledTimelineContainer evg26n41"
+  >
+    <div
+      className="css-urymb5-StyledHeader evg26n42"
+    >
+      Select a funds flow
+    </div>
+  </div>
+  <div
+    className="css-1pis8ym-StyledContainer e7p8rnk0"
+  >
+    <div
+      className="css-kpql9x-StyledTitle e7p8rnk1"
+    >
+      Sender:
+    </div>
+    <div
+      className="css-17bdsbe-StyledType e7p8rnk2"
+    >
+      Sender Type
+    </div>
+    <div
+      className=" css-2b097c-container"
+      onKeyDown={[Function]}
+    >
+      <div
+        className=" css-1dm4nuz-control"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className=" css-g1d714-ValueContainer"
+        >
+          <div
+            className=" css-16brcdz-Placeholder"
+          >
+            Select Sender Type
+          </div>
+          <div
+            className="css-117gjuv-Input"
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-autocomplete="list"
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                disabled={false}
+                id="react-select-2-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                spellCheck="false"
+                style={
+                  Object {
+                    "background": 0,
+                    "border": 0,
+                    "boxSizing": "content-box",
+                    "color": "inherit",
+                    "fontSize": "inherit",
+                    "label": "input",
+                    "opacity": 1,
+                    "outline": 0,
+                    "padding": 0,
+                    "width": "1px",
+                  }
+                }
+                tabIndex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <span
+            className=" css-1xjgjl1-IndicatorSeparator"
+          />
+          <div
+            aria-hidden="true"
+            className=" css-tlfecz-indicatorContainer"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <img
+              alt=""
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              src="test-image-stub"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-17bdsbe-StyledType e7p8rnk2"
+    >
+      Sender Source
+    </div>
+    <div
+      className=" css-2b097c-container"
+      onKeyDown={[Function]}
+    >
+      <div
+        className=" css-1dm4nuz-control"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className=" css-g1d714-ValueContainer"
+        >
+          <div
+            className=" css-16brcdz-Placeholder"
+          >
+            Select Sender Source
+          </div>
+          <div
+            className="css-117gjuv-Input"
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-autocomplete="list"
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                disabled={false}
+                id="react-select-3-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                spellCheck="false"
+                style={
+                  Object {
+                    "background": 0,
+                    "border": 0,
+                    "boxSizing": "content-box",
+                    "color": "inherit",
+                    "fontSize": "inherit",
+                    "label": "input",
+                    "opacity": 1,
+                    "outline": 0,
+                    "padding": 0,
+                    "width": "1px",
+                  }
+                }
+                tabIndex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <span
+            className=" css-1xjgjl1-IndicatorSeparator"
+          />
+          <div
+            aria-hidden="true"
+            className=" css-tlfecz-indicatorContainer"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <img
+              alt=""
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              src="test-image-stub"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-kpql9x-StyledTitle e7p8rnk1"
+    >
+      Receiver:
+    </div>
+    <div
+      className="css-17bdsbe-StyledType e7p8rnk2"
+    >
+      Receiver Type
+    </div>
+    <div
+      className=" css-2b097c-container"
+      onKeyDown={[Function]}
+    >
+      <div
+        className=" css-1dm4nuz-control"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className=" css-g1d714-ValueContainer"
+        >
+          <div
+            className=" css-16brcdz-Placeholder"
+          >
+            Select Receiver Type
+          </div>
+          <div
+            className="css-117gjuv-Input"
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-autocomplete="list"
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                disabled={false}
+                id="react-select-4-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                spellCheck="false"
+                style={
+                  Object {
+                    "background": 0,
+                    "border": 0,
+                    "boxSizing": "content-box",
+                    "color": "inherit",
+                    "fontSize": "inherit",
+                    "label": "input",
+                    "opacity": 1,
+                    "outline": 0,
+                    "padding": 0,
+                    "width": "1px",
+                  }
+                }
+                tabIndex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <span
+            className=" css-1xjgjl1-IndicatorSeparator"
+          />
+          <div
+            aria-hidden="true"
+            className=" css-tlfecz-indicatorContainer"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <img
+              alt=""
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              src="test-image-stub"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-17bdsbe-StyledType e7p8rnk2"
+    >
+      Receiver Destination
+    </div>
+    <div
+      className=" css-2b097c-container"
+      onKeyDown={[Function]}
+    >
+      <div
+        className=" css-1dm4nuz-control"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className=" css-g1d714-ValueContainer"
+        >
+          <div
+            className=" css-16brcdz-Placeholder"
+          >
+            Select Receiver Destination
+          </div>
+          <div
+            className="css-117gjuv-Input"
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-autocomplete="list"
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                disabled={false}
+                id="react-select-5-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                spellCheck="false"
+                style={
+                  Object {
+                    "background": 0,
+                    "border": 0,
+                    "boxSizing": "content-box",
+                    "color": "inherit",
+                    "fontSize": "inherit",
+                    "label": "input",
+                    "opacity": 1,
+                    "outline": 0,
+                    "padding": 0,
+                    "width": "1px",
+                  }
+                }
+                tabIndex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className=" css-1hb7zxy-IndicatorsContainer"
+        >
+          <span
+            className=" css-1xjgjl1-IndicatorSeparator"
+          />
+          <div
+            aria-hidden="true"
+            className=" css-tlfecz-indicatorContainer"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
+          >
+            <img
+              alt=""
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              src="test-image-stub"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-1sz0iw5-StyledBottomContainer evg26n46"
+  >
+    <button
+      className="primary standard disabled css-4oxaqu-StyledButton-buttonStyles-buttonStyles ek3ainu0"
+      disabled={true}
+      onClick={[Function]}
+      type="button"
+    >
+      Start
+    </button>
+  </div>
+</div>
+`;

@@ -75,10 +75,36 @@ export const CodeBlockBar = styled.div`
     margin: 0 5px;
   }
 
+  &.title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &.code-block-bar-fullscreen {
     @media (${breakDown("sm")}) {
       border-radius: 0;
     }
+  }
+`;
+
+export const BarTitle = styled.div`
+  font-family: ${POPPINS};
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 17px;
+  color: ${GREY_10};
+  margin: 0 5px;
+  text-transform: uppercase;
+`;
+
+export const BarItems = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+  > * {
+    margin: 0 5px !important;
   }
 `;
 

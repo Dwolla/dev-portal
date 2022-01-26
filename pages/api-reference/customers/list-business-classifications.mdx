@@ -9,11 +9,11 @@ meta:
 
 # List business classifications
 
-Retrieve an `_embedded` list of business classifications that contains an `_embedded` list of industry classifications. The appropriate Id from the list of industry classifications must be passed in the `businessClassification` parameter when [creating a Business Verified Customer](#request-parameters---verified-strongbusinessstrong-customer-sole-proprietorship-only). The industry classification is used to identify the Customer's business and is required by Dwolla when verifying a `business` in order to better analyze the nature of a business.
+Retrieve an `_embedded` list of business classifications that contains an `_embedded` list of industry classifications. The appropriate Id from the list of industry classifications must be passed in the `businessClassification` parameter when [creating a Business Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-business-customer-businesstypellc-corporation-or-partnership---request-parameters). The industry classification is used to identify the Customer's business and is required by Dwolla when verifying a `business` in order to better analyze the nature of a business.
 
 ### HTTP request
 
-`GET https://api.dwolla.com/business-classifications`
+> `GET https://api.dwolla.com/business-classifications`
 
 ### Request and response
 

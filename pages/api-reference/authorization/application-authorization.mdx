@@ -13,7 +13,7 @@ The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) i
 
 `Authorization: Basic Base64(client_id:client_secret)`
 
-#### HTTP request
+### HTTP request
 
 **Production:** `POST https://api.dwolla.com/token`
 
@@ -21,7 +21,7 @@ The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) i
 
 Including the `Content-Type: application/x-www-form-urlencoded` header, the request is sent to the token endpoint with `grant_type=client_credentials` in the body of the request:
 
-#### Request parameters
+### Request parameters
 
 | Parameter     | Required | Type   | Description                                                                                                                                                                                   |
 | ------------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -49,13 +49,13 @@ grant_type=client_credentials
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-# This example assumes you've already initialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/pages/sdks.html
+# This example assumes you've already initialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/sdks-tools
 app_token = client.Auth.client()
 ```
 
 ```javascript
 // Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-node
-// This example assumes you've already initialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/pages/sdks.html
+// This example assumes you've already initialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/sdks-tools
 client.auth
   .client()
   .then(function (appToken) {
@@ -68,7 +68,7 @@ client.auth
 
 ```ruby
 # Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
-# This example assumes you've already initialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/pages/sdks.html
+# This example assumes you've already initialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/sdks-tools
 app_token = $dwolla.auths.client
 # => #<DwollaV2::Token client=#<DwollaV2::Client id="..." secret="..." environment=:sandbox> access_token="..." expires_in=3600 scope="...">
 ```
@@ -76,7 +76,7 @@ app_token = $dwolla.auths.client
 ```php
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
-// This example assumes you've already intialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/pages/sdks.html
+// This example assumes you've already intialized the client. Reference the SDKs page for more information: https://developers.dwolla.com/sdks-tools
 $tokensApi = new DwollaSwagger\TokensApi($apiClient);
 $appToken = $tokensApi->token();
 

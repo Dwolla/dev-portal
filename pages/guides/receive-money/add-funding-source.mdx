@@ -32,7 +32,7 @@ In this guide, we’ll be utilizing Dwolla’s Instant Account Verification (IAV
 
 In this step, we will be attaching a bank account to the Customer, which will be accomplished by using Instant Account Verification (IAV). This method will give the Customer the ability to add and verify their bank account in a matter of seconds through authentication of their online banking credentials.
 
-Once the Customer reaches the page in your application to add a bank account, you’ll send an API request to Dwolla’s server to [generate an IAV token](https://docs.dwolla.com/#create-an-iav-token-for-dwolla-js).
+Once the Customer reaches the page in your application to add a bank account, you’ll send an API request to Dwolla’s server to [generate an IAV token](https://developers.dwolla.com/api-reference/funding-sources/create-an-iav-token-for-dwolla-js).
 
 ### Generate a single-use IAV token for your Customer (view schema in ‘raw’)
 
@@ -117,7 +117,7 @@ $('#start').click(function() {
             'https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext'
           ],
           microDeposits: 'true',
-          fallbackToMicroDeposits: (fallbackToMicroDeposits.value === 'true')
+          fallbackToMicroDeposits: 'true'
         }, function(err, res) {
     console.log('Error: ' + JSON.stringify(err) + ' -- Response: ' + JSON.stringify(res));
   });

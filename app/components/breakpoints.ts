@@ -1,5 +1,7 @@
-type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
+type Breakpoint = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl";
 
+// <: extra extra small devices - portrait phones
+const BREAKPOINT_320 = 321;
 // <: extra small devices - portrait phones
 const BREAKPOINT_576 = 576;
 // > <: small devices - landscape phones
@@ -31,6 +33,8 @@ function breakUpPx(bpt: Breakpoint): number {
 
 function breakDownPx(bpt: Breakpoint): number {
   switch (bpt) {
+    case "xxs":
+      return BREAKPOINT_320;
     case "xs":
       return BREAKPOINT_576;
     case "sm":
