@@ -12,7 +12,7 @@ import {
   addAutoWidthStyles,
 } from "./Select.styles";
 
-const DefaultDropdownIndicator = (props: any) => {
+function DefaultDropdownIndicator(props: any) {
   return (
     <components.DropdownIndicator {...props}>
       <StyledDefaultDropdownIcon
@@ -22,17 +22,17 @@ const DefaultDropdownIndicator = (props: any) => {
       />
     </components.DropdownIndicator>
   );
-};
+}
 
-const CodeDropdownIndicator = (props: any) => {
+function CodeDropdownIndicator(props: any) {
   return (
     <components.DropdownIndicator {...props}>
       <DropdownArrowDouble width={7} height={12} />
     </components.DropdownIndicator>
   );
-};
+}
 
-const Option = (props: any) => {
+function Option(props: any) {
   return (
     <StyledOptionWrap>
       {props.isSelected && (
@@ -43,7 +43,7 @@ const Option = (props: any) => {
       <components.Option {...props} />
     </StyledOptionWrap>
   );
-};
+}
 
 type Props = {
   options: any;
@@ -53,13 +53,13 @@ type Props = {
   variant?: "default" | "code";
 };
 
-const Select = ({
+function Select({
   options,
   selectedValue,
   setSelectedValue,
   autoWidth = false,
   variant = "default",
-}: Props) => {
+}: Props) {
   const customStyles =
     variant === "code" ? codeCustomStyles : defaultCustomStyles;
   const DropdownIndicator =
@@ -75,6 +75,6 @@ const Select = ({
       isSearchable={false}
     />
   );
-};
+}
 
 export default Select;

@@ -3,10 +3,12 @@ import { createElement } from "react";
 import OnThisPage from "../OnThisPage";
 import { AnchorsProvider, AnchorsSetter } from "../../util/Anchors";
 
-const Heading = (props: {
+function Heading(props: {
   children: string;
   originalType: "h1" | "h2" | "h3" | "h4";
-}) => createElement(props.originalType, props);
+}) {
+  return createElement(props.originalType, props);
+}
 
 test("with anchors", () => {
   const tree = renderer

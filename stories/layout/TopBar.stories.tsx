@@ -11,17 +11,18 @@ const languageOptions = [
   { value: "raw", label: "Raw" },
 ];
 
-const LanguageContextDecorator = (story) => {
+function LanguageContextDecorator(story) {
   const [selectedLanguage, setSelectedLanguage] = useState(languageOptions[0]);
 
   return (
     <LanguageContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{ selectedLanguage, setSelectedLanguage, languageOptions }}
     >
       {story()}
     </LanguageContext.Provider>
   );
-};
+}
 
 type LanguageType = { value: String; label: String };
 type LanguageContextType = {
@@ -30,11 +31,11 @@ type LanguageContextType = {
   languageOptions: Array<LanguageType>;
 };
 
-const LangaugeContextAccessor = () => {
+function LangaugeContextAccessor() {
   const { selectedLanguage }: LanguageContextType = useContext(LanguageContext);
 
   return <h2>Selected Language: {selectedLanguage.label}</h2>;
-};
+}
 
 storiesOf("layout|TopBar", module)
   .addDecorator(LanguageContextDecorator)

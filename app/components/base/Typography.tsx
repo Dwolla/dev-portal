@@ -160,114 +160,140 @@ type LinkProps = {
   href: string;
 };
 
-export const PreHeader = ({ children, isDark }: Props) => (
-  <StyledPreHeader className={classnames({ dark: isDark })}>
-    {children}
-  </StyledPreHeader>
-);
+export function PreHeader({ children, isDark }: Props) {
+  return (
+    <StyledPreHeader className={classnames({ dark: isDark })}>
+      {children}
+    </StyledPreHeader>
+  );
+}
 
-export const H1 = ({ children, isDark }: Props) => (
-  <h1
-    css={[headingStyles.global, headingStyles.h1]}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </h1>
-);
+export function H1({ children, isDark }: Props) {
+  return (
+    <h1
+      css={[headingStyles.global, headingStyles.h1]}
+      className={classnames({ dark: isDark })}
+    >
+      {children}
+    </h1>
+  );
+}
 
-export const H2 = ({ children, isDark }: Props) => (
-  <h2
-    css={[headingStyles.global, headingStyles.h2]}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </h2>
-);
+export function H2({ children, isDark }: Props) {
+  return (
+    <h2
+      css={[headingStyles.global, headingStyles.h2]}
+      className={classnames({ dark: isDark })}
+    >
+      {children}
+    </h2>
+  );
+}
 
-export const H3 = ({ children, isDark }: Props) => (
-  <h3
-    css={[headingStyles.global, headingStyles.h3]}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </h3>
-);
+export function H3({ children, isDark }: Props) {
+  return (
+    <h3
+      css={[headingStyles.global, headingStyles.h3]}
+      className={classnames({ dark: isDark })}
+    >
+      {children}
+    </h3>
+  );
+}
 
-export const H4 = ({ children, isDark }: Props) => (
-  <h4
-    css={[headingStyles.global, headingStyles.h4]}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </h4>
-);
+export function H4({ children, isDark }: Props) {
+  return (
+    <h4
+      css={[headingStyles.global, headingStyles.h4]}
+      className={classnames({ dark: isDark })}
+    >
+      {children}
+    </h4>
+  );
+}
 
-export const H5 = ({ children, isDark }: Props) => (
-  <h5
-    css={[headingStyles.global, headingStyles.h5]}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </h5>
-);
+export function H5({ children, isDark }: Props) {
+  return (
+    <h5
+      css={[headingStyles.global, headingStyles.h5]}
+      className={classnames({ dark: isDark })}
+    >
+      {children}
+    </h5>
+  );
+}
 
-export const SubHeader = ({ children, isDark }: Props) => (
-  <StyledSubHeader className={classnames({ dark: isDark })}>
-    {children}
-  </StyledSubHeader>
-);
+export function SubHeader({ children, isDark }: Props) {
+  return (
+    <StyledSubHeader className={classnames({ dark: isDark })}>
+      {children}
+    </StyledSubHeader>
+  );
+}
 
-export const Paragraph = ({ children, isDark }: Props) => (
-  <p css={paragraphStyles} className={classnames({ dark: isDark })}>
-    {children}
-  </p>
-);
+export function Paragraph({ children, isDark }: Props) {
+  return (
+    <p css={paragraphStyles} className={classnames({ dark: isDark })}>
+      {children}
+    </p>
+  );
+}
 
-export const UnorderedList = ({ children, isDark }: Props) => (
-  <ul
-    css={css`
-      ${listStyles}
-    `}
-    className={classnames({ dark: isDark })}
-  >
-    {children.map((item) => (
-      <li key={item.id}>{item.text}</li>
-    ))}
-  </ul>
-);
+export function UnorderedList({ children, isDark }: Props) {
+  return (
+    <ul
+      css={css`
+        ${listStyles}
+      `}
+      className={classnames({ dark: isDark })}
+    >
+      {children.map((item) => (
+        <li key={item.id}>{item.text}</li>
+      ))}
+    </ul>
+  );
+}
 
-export const OrderedList = ({ children, isDark }: Props) => (
-  <ol
-    css={css`
-      ${listStyles}
-    `}
-    className={classnames({ dark: isDark })}
-  >
-    {children.map((item) => (
-      <li key={item.id}>{item.text}</li>
-    ))}
-  </ol>
-);
+export function OrderedList({ children, isDark }: Props) {
+  return (
+    <ol
+      css={css`
+        ${listStyles}
+      `}
+      className={classnames({ dark: isDark })}
+    >
+      {children.map((item) => (
+        <li key={item.id}>{item.text}</li>
+      ))}
+    </ol>
+  );
+}
 
-export const BlockQuote = ({ children, isDark }: Props) => (
-  <blockquote
-    css={css`
-      ${baseTextStyles}
-    `}
-    className={classnames({ dark: isDark })}
-  >
-    {children}
-  </blockquote>
-);
+export function BlockQuote({ children, isDark }: Props) {
+  return (
+    <blockquote
+      css={css`
+        ${baseTextStyles}
+      `}
+      className={classnames({ dark: isDark })}
+    >
+      {children}
+    </blockquote>
+  );
+}
 
-export const InlineCode = ({ children, isDark }: Props) => (
-  <code css={codeStyles} className={classnames({ dark: isDark })}>
-    {children}
-  </code>
-);
+export function InlineCode({ children, isDark }: Props) {
+  return (
+    <code css={codeStyles} className={classnames({ dark: isDark })}>
+      {children}
+    </code>
+  );
+}
 
-export const Link = ({ text, href }: LinkProps) => (
-  <a css={linkStyles} href={href}>
-    {text}
-  </a>
-);
+export function Link({ text, href }: LinkProps) {
+  return (
+    <a css={linkStyles} href={href}>
+      {text}
+    </a>
+  );
+}

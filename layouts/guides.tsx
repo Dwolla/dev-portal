@@ -18,7 +18,8 @@ const StyledPagination = styled.div`
 `;
 
 export default (frontMatter) => {
-  return ({ children: content }: { children: any }) => {
+  // eslint-disable-next-line func-names
+  return function ({ children: content }: { children: any }) {
     const splitPath = frontMatter.__resourcePath.split("/"); // eslint-disable-line no-underscore-dangle
     splitPath.pop();
     const parentPath = splitPath.join("/");

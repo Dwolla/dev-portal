@@ -11,132 +11,134 @@ import {
 import { imageStyles } from "../base/Image";
 import { GREY_5 } from "../colors";
 
-const MDXStyleWrapper = ({ children }: { children: any }) => (
-  <div
-    css={css`
-      padding: 20px;
+function MDXStyleWrapper({ children }: { children: any }) {
+  return (
+    <div
+      css={css`
+        padding: 20px;
 
-      @media (${breakUp("md")}) {
-        padding: 20px 40px;
-      }
-
-      > h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        ${headingStyles.global.styles}
-        code {
-          ${codeStyles.styles}
-          font-size: inherit;
+        @media (${breakUp("md")}) {
+          padding: 20px 40px;
         }
-      }
 
-      > h1 {
-        ${headingStyles.h1.styles}
-
-        &:first-of-type > a {
-          display: none;
+        > h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          ${headingStyles.global.styles}
+          code {
+            ${codeStyles.styles}
+            font-size: inherit;
+          }
         }
-      }
 
-      > h2 {
-        ${headingStyles.h2.styles}
-      }
+        > h1 {
+          ${headingStyles.h1.styles}
 
-      > h3 {
-        ${headingStyles.h3.styles}
-      }
+          &:first-of-type > a {
+            display: none;
+          }
+        }
 
-      > h4 {
-        ${headingStyles.h4.styles}
-      }
+        > h2 {
+          ${headingStyles.h2.styles}
+        }
 
-      > h5 {
-        ${headingStyles.h5.styles}
-      }
+        > h3 {
+          ${headingStyles.h3.styles}
+        }
 
-      > p:not([class]),
-      blockquote {
-        ${paragraphStyles.styles}
+        > h4 {
+          ${headingStyles.h4.styles}
+        }
 
-        > code {
-          ${codeStyles.styles}
+        > h5 {
+          ${headingStyles.h5.styles}
+        }
+
+        > p:not([class]),
+        blockquote {
+          ${paragraphStyles.styles}
+
+          > code {
+            ${codeStyles.styles}
+          }
+
+          > img {
+            ${imageStyles.styles}
+          }
+        }
+
+        p {
+          code {
+            ${codeStyles.styles}
+          }
+        }
+
+        > table,
+        th,
+        td {
+          code {
+            ${codeStyles.styles}
+          }
+        }
+
+        a:not([class]) {
+          ${linkStyles.styles}
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          > a {
+            color: ${GREY_5} !important;
+          }
+
+          &:not(:hover) {
+            > a {
+              @media (hover: hover) {
+                display: none;
+              }
+            }
+          }
+        }
+
+        > ol,
+        > ul {
+          ${listStyles.styles}
+          code {
+            ${codeStyles.styles}
+          }
         }
 
         > img {
           ${imageStyles.styles}
         }
-      }
 
-      p {
-        code {
-          ${codeStyles.styles}
-        }
-      }
-
-      > table,
-      th,
-      td {
-        code {
-          ${codeStyles.styles}
-        }
-      }
-
-      a:not([class]) {
-        ${linkStyles.styles}
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        > a {
-          color: ${GREY_5} !important;
-        }
-
-        &:not(:hover) {
-          > a {
-            @media (hover: hover) {
-              display: none;
-            }
+        span {
+          code {
+            ${codeStyles.styles}
           }
         }
-      }
 
-      > ol,
-      > ul {
-        ${listStyles.styles}
-        code {
-          ${codeStyles.styles}
+        > div:not(.mdx-style-override) {
+          margin-top: 29px;
+          margin-bottom: 29px;
         }
-      }
 
-      > img {
-        ${imageStyles.styles}
-      }
-
-      span {
-        code {
-          ${codeStyles.styles}
+        blockQuote {
+          ${blockQuoteStyles.styles}
         }
-      }
-
-      > div:not(.mdx-style-override) {
-        margin-top: 29px;
-        margin-bottom: 29px;
-      }
-
-      blockQuote {
-        ${blockQuoteStyles.styles}
-      }
-    `}
-  >
-    {children}
-  </div>
-);
+      `}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default MDXStyleWrapper;

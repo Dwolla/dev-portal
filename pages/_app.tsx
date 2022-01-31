@@ -16,7 +16,7 @@ import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
 
-const GoogleTagManager = () => {
+function GoogleTagManager() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       TagManager.initialize({ gtmId: "GTM-WRT5LD6" });
@@ -34,7 +34,7 @@ const GoogleTagManager = () => {
       ></iframe>
     </noscript>
   );
-};
+}
 
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
@@ -144,7 +144,7 @@ const LANGUAGE_OPTIONS = [
   { value: "bash", label: "Raw" },
 ];
 
-const AppWithHooks = ({ router, Component, pageProps }: any) => {
+function AppWithHooks({ router, Component, pageProps }: any) {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
 
   const url = createUrl(router);
@@ -158,6 +158,7 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
   return (
     <AnchorsProvider>
       <LanguageContext.Provider
+        // eslint-disable-next-line react/jsx-no-constructed-context-values
         value={{
           selectedLanguage,
           setSelectedLanguage,
@@ -177,7 +178,7 @@ const AppWithHooks = ({ router, Component, pageProps }: any) => {
       </LanguageContext.Provider>
     </AnchorsProvider>
   );
-};
+}
 
 export default class MyApp extends App {
   render() {

@@ -157,7 +157,7 @@ type SectionLinkProps = {
   isActive: boolean;
 };
 
-const SectionLink = ({ linkProps, isActive }: SectionLinkProps) => {
+function SectionLink({ linkProps, isActive }: SectionLinkProps) {
   const { href, IconSvg, isSection, text } = linkProps;
 
   return (
@@ -207,7 +207,7 @@ const SectionLink = ({ linkProps, isActive }: SectionLinkProps) => {
       </a>
     </Link>
   );
-};
+}
 
 const CategoriesWrap = styled.ul`
   margin: 10px 0 0 34px;
@@ -259,48 +259,6 @@ const GroupCaret = styled.img`
   max-width: 7px;
 `;
 
-type DocGroupProps = {
-  title: string;
-  docs: Page[];
-};
-
-const DocGroup = ({ title, docs }: DocGroupProps) => {
-  const { pathname } = useRouter();
-  const [isExpanded, setIsExpanded] = useState(
-    !!docs.find((d) => d.id === pathname)
-  );
-  useEffect(() => {
-    setIsExpanded(docs.find((d) => d.id === pathname) ? true : isExpanded);
-  }, [pathname]);
-
-  return (
-    <>
-      <GroupToggle
-        tabIndex={0}
-        onClick={() => setIsExpanded(!isExpanded)}
-        onKeyPress={(e) =>
-          e.key === "Enter" ? setIsExpanded(!isExpanded) : false
-        } // eslint-disable-line react/jsx-curly-newline
-      >
-        {title}
-
-        {isExpanded ? (
-          <GroupCaret src={caretUp} alt="" />
-        ) : (
-          <GroupCaret src={caretDown} alt="" />
-        )}
-      </GroupToggle>
-
-      {isExpanded &&
-        docs.sort(byGuideStep).map((d) => (
-          <DocLink key={d.id} grouped href={d.id} active={d.id === pathname}>
-            {d.title}
-          </DocLink>
-        ))}
-    </>
-  );
-};
-
 interface DocLinkProps {
   active: boolean;
   children: string;
@@ -335,6 +293,48 @@ function DocLink(props: DocLinkProps) {
   );
 }
 
+type DocGroupProps = {
+  title: string;
+  docs: Page[];
+};
+
+function DocGroup({ title, docs }: DocGroupProps) {
+  const { pathname } = useRouter();
+  const [isExpanded, setIsExpanded] = useState(
+    !!docs.find((d) => d.id === pathname)
+  );
+  useEffect(() => {
+    setIsExpanded(docs.find((d) => d.id === pathname) ? true : isExpanded);
+  }, [pathname]);
+
+  return (
+    <>
+      <GroupToggle
+        tabIndex={0}
+        onClick={() => setIsExpanded(!isExpanded)}
+        onKeyPress={(e) =>
+          e.key === "Enter" ? setIsExpanded(!isExpanded) : false
+        } // eslint-disable-line react/jsx-curly-newline
+      >
+        {title}
+
+        {isExpanded ? (
+          <GroupCaret src={caretUp} alt="" />
+        ) : (
+          <GroupCaret src={caretDown} alt="" />
+        )}
+      </GroupToggle>
+
+      {isExpanded &&
+        docs.sort(byGuideStep).map((d) => (
+          <DocLink key={d.id} grouped href={d.id} active={d.id === pathname}>
+            {d.title}
+          </DocLink>
+        ))}
+    </>
+  );
+}
+
 const MobileWrap = styled.div`
   margin-top: 17px;
   padding-top: 17px;
@@ -345,11 +345,11 @@ const MobileWrap = styled.div`
   }
 `;
 
-const MobileLink = ({ href, external, text, active }: MobileLinkProps) => {
+function MobileLink({ href, external, text, active }: MobileLinkProps) {
   return (
     <Link href={href} passHref>
       <a
-        target={external && "_blank"}
+        target={external ? "_blank" : undefined}
         className={classnames({ active })}
         css={css`
           display: flex;
@@ -386,13 +386,13 @@ const MobileLink = ({ href, external, text, active }: MobileLinkProps) => {
       </a>
     </Link>
   );
-};
+}
 
 const MobileButtonWrap = styled.div`
   padding: 17px 20px;
 `;
 
-const MobileItems = ({ links, button }: MobileItemProps) => {
+function MobileItems({ links, button }: MobileItemProps) {
   const { pathname } = useRouter();
 
   return (
@@ -410,9 +410,9 @@ const MobileItems = ({ links, button }: MobileItemProps) => {
       </MobileButtonWrap>
     </>
   );
-};
+}
 
-const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
+function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
   const { pathname } = useRouter();
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
@@ -513,6 +513,6 @@ const SideNav = ({ sectionLinks, pages, mobileItems }: SideNavProps) => {
       </Slide>
     </Container>
   );
-};
+}
 
 export default SideNav;

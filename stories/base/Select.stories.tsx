@@ -21,13 +21,13 @@ const PurpleBackground = styled.div`
   background-color: ${PURPLE_DARKER};
 `;
 
-const SelectWrap = ({
+function SelectWrap({
   autoWidth = false,
   variant = "default",
 }: {
   autoWidth?: boolean;
   variant?: "default" | "code";
-}) => {
+}) {
   const options = [
     { value: "javascript", label: "JavaScript" },
     { value: "php", label: "PHP" },
@@ -48,7 +48,7 @@ const SelectWrap = ({
       />
     </SelectWrapContainer>
   );
-};
+}
 
 storiesOf("base|Select", module)
   .addDecorator(centered)

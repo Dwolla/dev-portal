@@ -109,8 +109,6 @@ const PageTop = styled.div`
   }
 `;
 
-type Heading = { key: string; level: number; title: string };
-
 function OnThisPage({
   topOfPageOffset = TOP_BAR_HEIGHT,
 }: {
