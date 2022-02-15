@@ -12,25 +12,24 @@ meta:
 
 Regardless of which drop-in component is being used by your application, the dwolla-web.js JavaScript library will require a unique “client-token” or a server side route that is used to generate a client token to be passed in on [configuration](/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs). A client token contains granular permissions and is scoped to the end-user/Customer that is performing the action within your web application.
 
-Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.
+Client-tokens are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and be valid at one time.
 
-#### Token vs. Token URL
+## Token URL vs Token
 
-For flow components like Business Verified Customers, Personal Verified Customers, and Payins, it is recommended to use `tokenUrl` when configuring the dwolla-web library. With flow components such as these, the dwolla-web library will make multiple http calls to an endpoint you have setup as the `tokenUrl`, which was added as a convenience that allows you to just supply a URL path if you're simply POSTing to a URL and using cookies for authentication.
+The drop-in components have multiple isolated functions connected together into a single user flow. Throughout the flow of a component, the dwolla-web library will make multiple http calls to an endpoint you have set up on your server side for fetching client-tokens as needed.
 
-Flow components were designed to support drop-ins that have multiple isolated functions connected together into a single user flow. Creating a server-side endpoint that can be called by the dwolla-web library when an action needs to be performed within the flow simplifies the integration experience.
+There are two to configure your drop-ins components for fetching client-tokens -
 
-For isolated functions or non-flow components, a single [client token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) can be utilized. With `token` you can supply a function that we can call that returns a promise containing a token.
+- [Using Token URL](#using-token-url)
+- [Using Token](#using-token)
 
-### Setup a token endpoint server side
+### Using Token URL
 
-Flow components, such as [create a Business Verified Customer](/concepts/drop-in-components#create-a-business-verified-customer), require a token endpoint to be setup server-side. This is necessary and allows for fetching `client-tokens` as needed throughout the customer onboarding process.
+Create a server-side `tokenUrl` endpoint that can be called by the dwolla-web library when an action needs to be performed within the flow. This is necessary and allows for fetching client-tokens as needed throughout the flow. This endpoint should simply act as a passthrough to the client-tokens endpoint. It takes in the request body and makes a client-token call. Upon success, it returns a JSON-encoded string token in the response. Then configure the drop-in to use the `tokenUrl` parameter and pass it your server-side URL. More information on configuration of dwolla-web.js can be found on [step 3](https://developers.dwolla.com/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs).
 
-This endpoint should simply act as a passthrough to the [client-tokens endpoint](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token). It takes in the request body and makes a client-token call. Upon success, it returns JSON-encoded string token in the response.
+#### Example of setting up a token endpoint server side using Express
 
-### Example usage of tokenUrl using Express
-
-In this example we’re using Express.js to set up a token URL which will be called by `dwolla-web.js` when the component that’s being used needs to generate a client token that’s being performed in the flow. Configuration of dwolla-web.js can be found on [step 3](https://developers.dwolla.com/guides/drop-ins/using-drop-in-components#configure-dwolla-webjs).
+In this example we’re using Express.js to set up a token URL which will be called by `dwolla-web.js` when the component that’s being used needs to generate a client token that’s being performed in the flow.
 
 ```javascript
 /**
@@ -57,4 +56,71 @@ function generateClientTokenWithBody(body) {
       return error;
     });
 }
+```
+
+##### Example configuration using `tokenUrl`
+
+```javascript
+<script>
+  dwolla.configure({
+      environment: "sandbox",
+      // styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+  });
+</script>
+```
+
+### Using Token
+
+Create a function that calls your server-side `tokenUrl` endpoint and returns a promise containing a token. Then set up the configuration of the drop-in with a `token` parameter which calls that function. This allows passing custom headers when calling your server-side endpoint for added protection and authentication.
+
+#### Example of setting up a function to call `tokenUrl` using Express
+
+```javascript
+function dwollaAPIToken(req, additional) {
+  const tokenUrl = "/tokenUrl";
+  const data = {
+    action: req.action,
+  };
+  if (req.links) {
+    data._links = req.links;
+  }
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "X-Requested-With": "Dwolla-Drop-Ins-Library",
+  };
+  return fetch(`${tokenUrl}`, {
+    credentials: "include",
+    method: "POST",
+    body: JSON.stringify(data),
+    headers,
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((error) => {
+      console.log(error);
+      return error;
+    });
+}
+```
+
+##### Example configuration using `token`
+
+```javascript
+<script>
+  dwolla.configure({
+      environment: "sandbox",
+      // styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      token: (req) => Promise.resolve(dwollaAPIToken(req, {blah: "abcd"})),
+  });
+</script>
 ```
