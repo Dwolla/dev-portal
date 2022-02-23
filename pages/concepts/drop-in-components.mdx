@@ -810,3 +810,16 @@ dwolla-payin-title
 Leveraging Dwolla’s UI Components library is a great way to expedite your integration with the Dwolla Platform by limiting the amount of custom code that you would be required to write.
 
 Get started building with drop-in components by checking out the [getting started guide](/guides/drop-ins) and the [API Reference documentation](https://developers.dwolla.com/api-reference/drop-in-components).
+
+## Changelog
+
+### Latest `v2.1.8`
+
+The latest version of **dwolla-web.js** is `2.1.8`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.1.8` in order to take advantage of the following feature updates and bug fixes:
+
+- Added optional `correlationId` field to `<dwolla-customer-create>`, `<dwolla-business-vcr>` and `<dwolla-personal-vcr>` drop-ins.
+- Added optional `businessName` field to `<dwolla-customer-create>` drop-in.
+- Added optional `hideDBAField` attribute to `<dwolla-business-vcr>` drop-in.
+- Made `EIN` optional in the `<dwolla-business-vcr>` drop-in for Business Verified Customers of type Sole Proprietorship.
+- All components are now flow-type components requiring multiple calls to the `client-tokens` endpoint for granularly scoped actions.
+- Implemented hard-versioning of dwolla-web.js; to use the latest version, you will need to import the exact version rather than just the major version using the CDN script.
