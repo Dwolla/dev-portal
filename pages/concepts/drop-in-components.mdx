@@ -62,13 +62,48 @@ Dwolla's UI components library contains a variety of supported components that r
   href="/guides/drop-ins/"
 />
 
-### Create a Receive Only Customer
+### Create a Receive Only User
 
-The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a receive only customer with `type = "receive-only"`. Receive Only customers are restriced to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a Receive Only user with `type = "receive-only"`. Receive Only users are restriced to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
-##### CSS Classes for Create a Receive Only Customer
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-customer-create type="receive-only"></dwolla-customer-create>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `firstName`
+- `lastName`
+- `email`
+- `businessName`
+- `ipAddress`
+- `correlationId`
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#receive-only-user---request-parameters).
+
+##### CSS Classes for Create a Receive Only User
 
 ```css
 /* Available css classes for customization*/
@@ -89,6 +124,8 @@ dwolla-error,
 dwolla-error-message
 ```
 
+##### Example Create a Receive Only User UI
+
 <Image
   src={createCustomerDropIn}
   alt="Create a Customer Drop-in Component"
@@ -101,6 +138,47 @@ dwolla-error-message
 The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
+
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-customer-create
+      terms="www.yourterms.com"
+      privacy="www.yourprivacy.com"
+    >
+    </dwolla-customer-create>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `firstName`
+- `lastName`
+- `email`
+- `businessName`
+- `ipAddress`
+- `correlationId`
+- `terms`
+- `privacy`
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#unverified-customer---request-parameters).
 
 ##### CSS Classes for Create an Unverified Customer
 
@@ -137,6 +215,48 @@ dwolla-error-message
 The `dwolla-customer-update` component is used to upgrade an Unverified Customer into a Personal Verified Customer. Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.update`
+
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/upgrade-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/upgrade-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-customer-update
+      customerId="{{ customerId }}"
+      terms="www.yourterms.com"
+      privacy="www.yourprivacy.com"
+    >
+    </dwolla-customer-update>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId`
+- `firstName`
+- `lastName`
+- `email`
+- `ipAddress`
+- `correlationId`
+- `terms`
+- `privacy`
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/customers/update#upgrade-an-unverified-customer-to-verified-customer).
 
 ##### CSS Classes for Upgrade an Unverified Customer
 
@@ -181,6 +301,46 @@ The `dwolla-personal-vcr` component is used to display a form to collect the req
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-personal-vcr
+      terms="www.yourterms.com"
+      privacy="www.yourprivacy.com"
+    >
+    </dwolla-personal-vcr>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `firstName`
+- `lastName`
+- `email`
+- `ipAddress`
+- `correlationId`
+- `terms`
+- `privacy`
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#verified-personal-customer---request-parameters).
+
 ##### CSS Classes for Create a Personal Verified Customer
 
 ```css
@@ -219,11 +379,73 @@ dwolla-info-message
   height="75%"
 />
 
+<AlertBar variation="warning">
+  If you are using Virtual Account Numbers (VAN) feature, then your users must
+  also agree to the Evolve{" "}
+  <a
+    target="_blank"
+    href="https://www.dwolla.com/legal/virtual-account-number-personal-account-demand-deposit-agreement/#legal-content"
+  >
+    Personal Account Terms
+  </a>{" "}
+  and{" "}
+  <a
+    target="_blank"
+    href="https://assets.getevolved.com/cdnevolve/privacy-policy/Consumer-Privacy-Policy-Notice---9.15.20-Final.pdf"
+  >
+    Privacy Notice
+  </a>
+  . This agreement needs to be handled outside of the <code>
+    dwolla-personal-vcr
+  </code> drop-in component flow.
+</AlertBar>
+
 ### Create a Business Verified Customer
 
 The `dwolla-business-vcr` component is used to display a form to collect the required information needed to create a Business Verified Customer. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
+
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-business-vcr
+      terms="www.yourterms.com"
+      privacy="www.yourprivacy.com"
+    >
+    </dwolla-business-vcr>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `firstName`
+- `lastName`
+- `email`
+- `ipAddress`
+- `correlationId`
+- `terms`
+- `privacy`
+- `hideDBAField` (use this to hide 'Doing Business As' field from the form)
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#verified-business-customer-sole-proprietorship-only---request-parameters).
 
 ##### CSS Classes for Create a Business Verified Customer
 
@@ -285,13 +507,65 @@ tooltip-shift,
   height="75%"
 />
 
+<AlertBar variation="warning">
+  If you are using Virtual Account Numbers (VAN) feature, then your users must
+  also agree to the Evolve{" "}
+  <a
+    target="_blank"
+    href="https://www.dwolla.com/legal/virtual-account-number-business-account-demand-deposit-agreement-2/#legal-content"
+  >
+    Business Account Terms
+  </a>{" "}
+  and{" "}
+  <a
+    target="_blank"
+    href="https://assets.getevolved.com/cdnevolve/privacy-policy/Consumer-Privacy-Policy-Notice---9.15.20-Final.pdf"
+  >
+    Privacy Notice
+  </a>
+  . This agreement needs to be handled outside of the <code>
+    dwolla-business-vcr
+  </code> drop-in component flow.
+</AlertBar>
+
 ### Create Beneficial Owners
 
 The `dwolla-beneficial-owners` component is used to display a form to collect the required information needed to [add Beneficial Owners](/guides/business-verified-customer/add-beneficial-owners#step-3-adding-beneficial-owners) after the creation of a Business Verified Customer. This component can be paired with the `dwolla-business-vcr` component or be used in isolation. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) possible actions: `beneficialowners.create`, `beneficialownership.read`, `customer.read`, `beneficialownership.certify`, `beneficialowners.update`, `beneficialowner.documents.create`, `beneficialowner.delete`
 
-##### CSS Classes for Add Beneficial Owners
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-beneficial-owners customerId="{{ customerId }}">
+    </dwolla-beneficial-owners>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId`
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/beneficial-owners/create#request-parameters).
+
+##### CSS Classes for Beneficial Owners
 
 ```css
 /* Available css classes for customization*/
@@ -352,7 +626,38 @@ The `dwolla-document-upload` component can be used if a Verified Customer or a B
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.documents.create` or `beneficialowner.documents.create`
 
-##### CSS Classes for Upload a Document
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/document-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/document-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-document-upload customerId="{{ customerId }}">
+    </dwolla-document-upload>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId`
+
+View all required vs. optional paramaters in our [API Reference](/api-reference/documents/create-document-for-customer#request-parameters).
+
+##### CSS Classes for Document Upload
 
 ```css
 /* Available css classes for customization*/
@@ -381,7 +686,36 @@ The `dwolla-balance-display` component can be used for any customer who already 
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.fundingsources.read`
 
-##### CSS Classes for Create a Personal Verified Customer
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/document-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/document-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-balance-display customerId="{{ customerId }}">
+    </dwolla-balance-display>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId`
+
+##### CSS Classes for Balance Display
 
 ```css
 /* Available css classes for customization*/
@@ -413,6 +747,41 @@ In order to add a funding source and verify it, you can:
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.transfers.send`
 
+##### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/document-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/document-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <dwolla-payin
+      customerId="{{ customerId }}"
+      blob="{{ blob }}"
+      token="{{ token }}"
+    ></dwolla-payin>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId`
+- `amount`
+- `blob=`
+- `token"`
+
 ##### CSS Classes for Pay-In
 
 ```css
@@ -427,7 +796,7 @@ dwolla-funding-sources,
 dwolla-payin-title
 ```
 
-##### Example Balance Display UI
+##### Example Pay-In UI
 
 <Image
   src={payInDropIn}
@@ -441,3 +810,16 @@ dwolla-payin-title
 Leveraging Dwolla’s UI Components library is a great way to expedite your integration with the Dwolla Platform by limiting the amount of custom code that you would be required to write.
 
 Get started building with drop-in components by checking out the [getting started guide](/guides/drop-ins) and the [API Reference documentation](https://developers.dwolla.com/api-reference/drop-in-components).
+
+## Changelog
+
+### Latest `v2.1.8`
+
+The latest version of **dwolla-web.js** is `2.1.8`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.1.8` in order to take advantage of the following feature updates and bug fixes:
+
+- Added optional `correlationId` field to `<dwolla-customer-create>`, `<dwolla-business-vcr>` and `<dwolla-personal-vcr>` drop-ins.
+- Added optional `businessName` field to `<dwolla-customer-create>` drop-in.
+- Added optional `hideDBAField` attribute to `<dwolla-business-vcr>` drop-in.
+- Made `EIN` optional in the `<dwolla-business-vcr>` drop-in for Business Verified Customers of type Sole Proprietorship.
+- All components are now flow-type components requiring multiple calls to the `client-tokens` endpoint for granularly scoped actions.
+- Implemented hard-versioning of dwolla-web.js; to use the latest version, you will need to import the exact version rather than just the major version using the CDN script.
