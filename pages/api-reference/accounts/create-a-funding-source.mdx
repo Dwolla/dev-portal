@@ -13,22 +13,18 @@ import guideIcon from "../../../assets/images/content-images/content-icons/guide
 
 This section details how to add a bank account and a Virtual Account Number, or `VAN`, to a Dwolla Master Account.
 
-The bank account will have a status of `unverified` upon creation. Before a Dwolla Master Account is eligible to transfer money from their bank or credit union account they need to verify ownership of the account via micro-deposit verification.
+To add a bank account as a Funding Source, you provide the account number and a routing number. A Virtual Account Number, or `VAN`, is a way to add a funding source by providing one number that acts as both account number and routing number.
 
-<InlineCTA
-  icon={guideIcon}
-  text="For more information on micro-deposit verification, reference our step by step guide."
-  href="/guides/micro-deposit-verification"
-/>
+VANs can be utilized outside of the Dwolla Platform to route ACH transactions both to and from a Dwolla Balance. Because a `VAN` behaves as a route to a Dwolla Balance, the only customers eligible to create a VAN funding source are the following:
 
-The Virtual Account Number, or `VAN`, will have a status of `verified` by default upon creation, and can be used only outside of the Dwolla Platform to route ACH payments both to and from the Dwolla Balance.
+- Master Dwolla Accounts
+- [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types).
+
+Typically, a bank account that you add to a Dwolla Master Balance will have a status of “unverified”. In order to transfer money to and from your bank or credit union account to and from Dwolla Master Balance, you will need to [verify ownership of the account](https://developers.dwolla.com/guides/micro-deposit-verification). However, when you create a VAN, it will have a status of `verified` by default.
 
 <AlertBar variation="warning">
-  Because VANs behave as a route to a Dwolla Balance, only{" "}
-  <a href="/concepts/customer-types#verified-customer">Verified Customers</a> and
-  Dwolla Master Accounts are eligible to create one. VANs count toward a total
-  funding source limit and is a premium feature. To learn more about pricing and
-  enabling this functionality, please{" "}
+  VANs count toward a total funding source limit and is a premium feature. To
+  learn more about pricing and enabling this functionality, please{" "}
   <a href="hhttps://www.dwolla.com/contact?b=apidocs">contact Sales</a>.
 </AlertBar>
 

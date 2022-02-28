@@ -13,18 +13,18 @@ There are two methods available for adding a bank or credit union account to a C
 
 Before a Dwolla account or Dwolla API Customer is eligible to transfer money from their bank or credit union account they need to verify ownership of the account, either via Instant Account Verification (IAV) or micro-deposits. For more information on bank account verification, reference this [funding source verification](https://developers.dwolla.com/concepts/bank-funding-source#bank-addition--verification-methods) resource article.
 
-[Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) also have the ability to add Virtual Account Numbers, or `VANs`. A `VAN` can only be used outside of the Dwolla Platform to route ACH payments both to and from the Dwolla Balance.
+##### Virtual Account Numbers
+
+Just as your [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) can add bank accounts as Funding Sources, they also have the ability to add Virtual Account Numbers, or `VANs` as Funding Sources. Similarly, VANs that your VCRs create will also have a status of `verified` by default.
 
 <AlertBar variation="warning">
   Because VANs behave as a route to a Dwolla Balance, only{" "}
-  <a href="/concepts/customer-types#verified-customer">Verified Customers</a> and
-  Dwolla Master Accounts are eligible to create one. VANs count toward a total
-  funding source limit and is a premium feature. To learn more about pricing and
-  enabling this functionality, please{" "}
+  <a href="/concepts/customer-types#verified-customer">Verified Customers</a>{" "}
+  and Dwolla Master Accounts are eligible to create one. VANs count toward a
+  total funding source limit and is a premium feature. To learn more about
+  pricing and enabling this functionality, please{" "}
   <a href="hhttps://www.dwolla.com/contact?b=apidocs">contact Sales</a>.
 </AlertBar>
-
-Customers can have a maximum of 2 active funding sources.
 
 ## Bank
 
