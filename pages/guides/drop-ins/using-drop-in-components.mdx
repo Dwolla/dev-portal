@@ -16,28 +16,44 @@ Next, you’ll create a custom HTML container that the drop-in component will re
 
 ### Configure dwolla-web.js
 
-Configuration of the dwolla object includes: your generated client-token or tokenUrl, environment, optional styles, along with success and error overrides.
+Configuration of the dwolla object includes: token or tokenUrl, environment, optional styles, along with success and error overrides.
 
 #### Configure options object
 
-| Parameter   | Type     | Description                                                                                                                                                                      |
-| ----------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| environment | string   | Acceptable values of: `sandbox` or `production`                                                                                                                                  |
-| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles.                                                                                 |
-| token       | function | A JSON object that contains a key value pair for `token` - a generated single-use client-token. <br /> Example usage: `token: (req) => Promise.resolve({token: 'token123abcd'})` |
-| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token.                                                                                              |
-| success     | function | A function that gets called upon a successful request from the Component.                                                                                                        |
-| error       | function | A function that gets called when an error occurs in the Component.                                                                                                               |
+| Parameter   | Type     | Description                                                                                                                                                                                         |
+| ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| environment | string   | Acceptable values of: `sandbox` or `production`                                                                                                                                                     |
+| styles      | string   | Optional. A relative or absolute URL linking to a hosted stylesheet containing component styles.                                                                                                    |
+| token       | function | A function that gets called by the component for fetching client-tokens as needed throughout the flow. <br /> Example usage: `token: (req) => Promise.resolve(dwollaAPIToken(req, {blah: "abcd"}))` |
+| tokenUrl    | function | A URL pointing to a server-side endpoint that can be used to generate client-token. <br /> Example usage: `tokenUrl: "tokenUrl"`                                                                    |
+| success     | function | A function that gets called upon a successful request from the Component.                                                                                                                           |
+| error       | function | A function that gets called when an error occurs in the Component.                                                                                                                                  |
+
+Using `tokenUrl`
 
 ```javascript
 <script>
-    dwolla.configure({
-        environment: "sandbox",
-        styles: "/styles/update-custom.css",
-        tokenUrl: "/tokenUrl",
-        success: (res) => Promise.resolve(res),
-        error: (err) => Promise.resolve(err),
-    });
+  dwolla.configure({
+    environment: "sandbox",
+    styles: "/styles/update-custom.css",
+    tokenUrl: "/tokenUrl",
+    success: (res) => Promise.resolve(res),
+    error: (err) => Promise.resolve(err),
+  });
+</script>
+```
+
+Using `token`
+
+```javascript
+<script>
+  dwolla.configure({
+    environment: "sandbox",
+    styles: "/styles/update-custom.css",
+    token: (req) => Promise.resolve(dwollaAPIToken(req, {blah: "abcd"})),
+    success: (res) => Promise.resolve(res),
+    error: (err) => Promise.resolve(err),
+  });
 </script>
 ```
 
@@ -65,15 +81,70 @@ When loading the page containing the component, you should see the following:
   height="75%"
 />
 
-### Handle component success and errors
+## Handle component success and errors
 
 Upon submission of form components, a user facing message will be displayed to the end user on success or error. These user facing messages can be styled via custom div and span CSS classes corresponding to:
 
 - `dwolla-success` and `dwolla-success-message`
 - `dwolla-error` and `dwolla-error-message`
 
-On ‘success’ the creation of a new resource will result in a JSON response that’s returned with a `location` key:value pair including a link to the created resource. For example:
+### Error callback
 
-`{ location: https://api.dwolla.com/documents/{id} }`
+The error callback function catches any exceptions encountered with the component and returns a string.
+Example: `We have encountered an issue fetching a token.`
 
-Updates to an existing resource will result in the actual JSON response which corresponds to the action that occurred.
+### Success callback
+
+The success callback function is called when the component makes a request to the API. However, it doesn't necessarily mean that the API request itself was successful. It means that the component was implemented correctly and no exceptions were encountered.
+
+The success function returns a JSON object that contains a `resource` which denotes the resource in the API related to the action being performed, and a `response` which contains any relevant information from the API response. If the component creates a new resource in the API, the `response` will contain a `location` key:value pair including a link to the created resource. Otherwise, it will contain the JSON response body from the API that corresponds to the action that occurred.
+
+Here are some example responses you can expect in the success callback:
+
+##### Example - HTTP 201 Created - New Customer creation
+
+```bash
+{
+   "resource": "customers",
+   "response": {
+      "location": "https://api-sandbox.dwolla.com/customers/e169aa24-92ad-4dd2-acdf-6803bb09c63e"
+   }
+}
+```
+
+##### Example - HTTP 200 Ok - Beneficial Ownership certification
+
+```bash
+{
+  "resource": "customers/ffbbc743-5e5c-4c54-b675-06ddf4bc4029/beneficial-ownership"
+  "response": {
+    "_links": {
+        "self": {
+          "href": "https://api-sandbox.dwolla.com/customers/ffbbc743-5e5c-4c54-b675-06ddf4bc4029/beneficial-ownership",
+          "type": "application/vnd.dwolla.v1.hal+json",
+          "resource-type": "beneficial-ownership"
+        }
+    },
+    "status": "certified"
+  }
+}
+```
+
+##### Example - HTTP 400 Error - Duplicate Document upload
+
+```bash
+{
+  "resource": "customers/f4a8b9f1-ad93-40d6-8115-7ed228780282/documents",
+  "response": {
+    "code": "DuplicateResource",
+    "message": "Document already exists.",
+    "_links": {
+      "about": {
+        "href": "https://api-sandbox.dwolla.com/documents/a8c89bb1-df17-4d23-8a8c-e0c6b65a0909",
+        "type": "application/vnd.dwolla.v1.hal+json",
+        "resource-type": "document"
+      }
+    }
+  }
+}
+```
