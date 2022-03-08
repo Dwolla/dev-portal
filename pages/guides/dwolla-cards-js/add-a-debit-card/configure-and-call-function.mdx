@@ -60,38 +60,54 @@ Once your customer clicks "Add Card", your application will call dwolla.cards.st
 - Any specified styling options
 
 ```html
-<html><head>
-<script type="text/javascript" src="https://cdn-b.dwolla.com/1/dwolla-cards.js"></script>
-</head><body>
-
-<div class="action">
-    <span>Add a payment card so that you can start doing something today!</span>
-    <div style="padding-bottom: 25px">
-        <input type="text" placeholder="funding source token" id="authTokenInput"
-value="token goes here">
-        <input type="button" id="startButton" value="Add Card">
+<html>
+  <head>
+    <script
+      type="text/javascript"
+      src="https://cdn-b.dwolla.com/1/dwolla-cards.js"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <span
+        >Add a payment card so that you can start doing something today!</span
+      >
+      <div style="padding-bottom: 25px">
+        <input
+          type="text"
+          placeholder="funding source token"
+          id="authTokenInput"
+          value="token goes here"
+        />
+        <input type="button" id="startButton" value="Add Card" />
         <div id="cardContainer"></div>
-    </div>
+      </div>
 
-    <div id="result"><span>Card has been added!</span></div>
-    <script type="text/javascript">
-        dwolla.configure('sandbox');
-        document.getElementById("startButton").addEventListener("click", e => {
+      <div id="result"><span>Card has been added!</span></div>
+      <script type="text/javascript">
+        dwolla.configure("sandbox");
+        document
+          .getElementById("startButton")
+          .addEventListener("click", (e) => {
             e.preventDefault();
             const token = document.getElementById("authTokenInput").value;
-            dwolla.cards.start('cardContainer', token, options)((err, res) => {
-                console.log(err);
-                console.log(res);
-                document.getElementById('cardContainer').style.display = 'none';
-                document.getElementById('result').style.display = 'block';
+            dwolla.cards.start(
+              "cardContainer",
+              token,
+              options
+            )((err, res) => {
+              console.log(err);
+              console.log(res);
+              document.getElementById("cardContainer").style.display = "none";
+              document.getElementById("result").style.display = "block";
             });
-        });
-    </script>
-</div>
+          });
+      </script>
+    </div>
     <pre id="preview"></pre>
     <pre id="bin"></pre>
-</div>
-</body></html>
+  </body>
+</html>
 ```
 
 ##### Example styled form
