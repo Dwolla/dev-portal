@@ -15,7 +15,6 @@ test("Footer", () => {
       { text: "Resources", href: "https://www.dwolla.com/resources/" },
       { text: "Features", href: "https://www.dwolla.com/features/" },
       { text: "Case Studies", href: "https://www.dwolla.com/case-studies/" },
-      { text: "Integrations", href: "https://www.dwolla.com/integrations/" },
     ],
     Developers: [
       {
