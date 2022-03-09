@@ -142,16 +142,6 @@ exports[`Footer 1`] = `
             Case Studies
           </a>
         </li>
-        <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
-        >
-          <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
-            href="https://www.dwolla.com/integrations/"
-          >
-            Integrations
-          </a>
-        </li>
       </ul>
     </div>
     <div
