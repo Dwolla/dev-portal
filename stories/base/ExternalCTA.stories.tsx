@@ -4,7 +4,7 @@ import centered from "@storybook/addon-centered/react";
 import ExternalCTA from "../../app/components/base/ExternalCTA";
 import developerCommunityIcon from "../../assets/images/content-images/content-icons/developer-community-icon.svg";
 
-storiesOf("base|External CTA", module)
+storiesOf("base/External CTA", module)
   .addDecorator(centered)
   .add("Default", () => (
     <ExternalCTA

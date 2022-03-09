@@ -9,7 +9,7 @@ const CardWrapper = styled.div`
   width: 300px;
 `;
 
-storiesOf("base|Card", module)
+storiesOf("base/Card", module)
   .addDecorator(centered)
   .add("default", () => (
     <Card

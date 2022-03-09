@@ -8,7 +8,7 @@ const Container = styled.div`
   margin: 50px;
 `;
 
-storiesOf("base|NumberedPagination", module).add("default", () => (
+storiesOf("base/NumberedPagination", module).add("default", () => (
   <Container>
     <NumberedPagination totalPages={9} newerLabel="Newer" olderLabel="Older" />
   </Container>

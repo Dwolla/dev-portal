@@ -28,7 +28,7 @@ const PaginationWrapper = styled.div`
   }
 `;
 
-storiesOf("base|Pagination", module)
+storiesOf("base/Pagination", module)
   .add("Next", () => (
     <PaginationWrapper className="center">
       <Paginaton variant="next" variantText="NEXT" href="#">

@@ -5,7 +5,7 @@ import InlineCTA from "../../app/components/base/InlineCTA";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../../assets/images/content-images/content-icons/concepts-icon.svg";
 
-storiesOf("base|Inline CTA", module)
+storiesOf("base/Inline CTA", module)
   .addDecorator(centered)
   .add("Default", () => (
     <>

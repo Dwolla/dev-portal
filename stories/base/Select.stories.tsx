@@ -50,7 +50,7 @@ function SelectWrap({
   );
 }
 
-storiesOf("base|Select", module)
+storiesOf("base/Select", module)
   .addDecorator(centered)
   .add("autoWidth", () => <SelectWrap autoWidth />)
   .add("inheritWidth", () => <SelectWrap />)

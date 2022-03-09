@@ -11,7 +11,7 @@ const StyledDiv = styled.div`
   align-items: center;
 `;
 
-storiesOf("base|Tooltip", module).add("default", () => (
+storiesOf("base/Tooltip", module).add("default", () => (
   <StyledDiv>
     <Tooltip text="This is a Tooltip" hasArrow position="top">
       Tooltip to the top.

@@ -96,7 +96,7 @@ const partnerContent = [
   },
 ];
 
-storiesOf("base|LogoLinks", module)
+storiesOf("base/LogoLinks", module)
   .add("languages", () => (
     <Container>
       <LogoLinks tabs={languageContent} />

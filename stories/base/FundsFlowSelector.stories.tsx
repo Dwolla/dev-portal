@@ -29,7 +29,7 @@ const receiverDestinationOptions = [
   { value: "card", label: "Debit Card" },
 ];
 
-storiesOf("base|FundsFlowSelector", module)
+storiesOf("base/FundsFlowSelector", module)
   .addDecorator(centered)
   .add("default", () => {
     const [setState] = React.useState();

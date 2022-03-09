@@ -25,7 +25,7 @@ const TABS = [
   { value: "features", label: "FEATURES" },
 ];
 
-storiesOf("base|FilterTabs", module)
+storiesOf("base/FilterTabs", module)
   .addDecorator(centered)
   .addParameters({ backgrounds: [{ name: "dark", value: PURPLE_DARK }] })
   .add("default", () => {

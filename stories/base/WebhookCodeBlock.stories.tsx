@@ -46,7 +46,7 @@ const dummyJson = {
   },
 };
 
-storiesOf("base|WebhookCodeBlock", module).add("default", () => (
+storiesOf("base/WebhookCodeBlock", module).add("default", () => (
   <ParentDiv>
     <WebhookCodeBlock
       topic={dummyJson.webhookTopic}

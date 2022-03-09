@@ -52,7 +52,7 @@ const orderedlList = [
 ];
 
 // Stories
-storiesOf("base|Typography", module)
+storiesOf("base/Typography", module)
   .addDecorator(centered)
   // All variations of Typography in light background
   .add("Default", () => (

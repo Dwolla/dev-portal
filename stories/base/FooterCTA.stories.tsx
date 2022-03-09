@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import FooterCTA from "../../app/components/base/FooterCTA";
 
-storiesOf("base|FooterCTA", module).add("default", () => (
+storiesOf("base/FooterCTA", module).add("default", () => (
   <FooterCTA
     topic="Test in the Sandbox for free today."
     description="Use sandbox environment to test API requests."

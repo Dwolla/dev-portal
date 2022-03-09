@@ -15,7 +15,7 @@ const ParentDiv = styled.div`
   justify-content: center;
 `;
 
-storiesOf("base|IFrame", module).add("Default", () => (
+storiesOf("base/IFrame", module).add("Default", () => (
   <ParentDiv>
     <IFrame src="https://go.dwolla.com/l/391342/2018-10-30/n92nqn" />
   </ParentDiv>

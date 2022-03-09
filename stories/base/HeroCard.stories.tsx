@@ -11,7 +11,7 @@ const DivStyle = styled.div`
   }
 `;
 
-storiesOf("base|HeroCard", module)
+storiesOf("base/HeroCard", module)
   .add("default", () => (
     <DivStyle>
       <HeroCard
