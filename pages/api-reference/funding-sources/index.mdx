@@ -33,9 +33,9 @@ Funding sources of type `bank` include an additional attribute, `bankAccountType
 
 The [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source) can be utilized as a digital "wallet", storing USD funds for the Customer or Account with Dwolla’s financial institution partners. Additionally, the Dwolla Balance can be pre-loaded with funds for quicker outgoing ACH transfers to destination funding sources. To get a more in-depth overview of the Dwolla Balance, including functionality and other benefits, check out our [developer resource article](https://developers.dwolla.com/concepts/balance-funding-source) or view our [webinar](https://www.dwolla.com/resources/balance-webinar/).
 
-##### VAN funding source
+##### Virtual account funding source
 
-The Virtual Account Number, or `VAN`, funding source is a funding source that upon creation contains both an account number and routing number which can be utilized outside of the Dwolla Platform to route ACH payments both to and from a Dwolla Balance. VANs cannot be used as a source or destination in `POST` requests to the `/transfers` endpoint as they can only be associated with activity that originates from outside of the Dwolla Platform. Because a `VAN` behaves as a route to a Dwolla balance, only Master Dwolla Accounts and [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) are eligible to create a `VAN` funding source.
+The Virtual Account Number, or `VAN`, is a funding source that upon creation contains both an account number and routing number which can be utilized outside of the Dwolla Platform to route ACH payments both to and from a Dwolla Balance. VANs cannot be used as a source or destination in `POST` requests to the `/transfers` endpoint as they can only be associated with activity that originates from outside of the Dwolla Platform. Because a `VAN` behaves as a route to a Dwolla balance, only Master Dwolla Accounts and [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) are eligible to create a `VAN` funding source.
 
 ##### Card funding source
 
