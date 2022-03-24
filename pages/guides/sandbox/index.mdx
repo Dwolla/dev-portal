@@ -249,9 +249,9 @@ To create a Real-time payment (RTP) transfer, you need to attach a funding-sourc
   Real bank account numbers should not be used in a testing environment like Sandbox.
 </AlertBar>
 
-### Test Virtual Account Numbers (VANs) Transfer
+### Test Virtual Account Number transfers
 
-External transfers can be simulated in the Sandbox by using the sandbox-simulations endpoint with a non-blank body and a type field set to `virtual`. Up to 10 transfers at a time can be included in one call to the sandbox simulations endpoint. Transfers will be created in a `pending` or `failed` status depending on whether the VAN has been removed or the Customer has been `deactivated` or `suspended`. Pending transfers will be processed automatically during the following times (all in Central Time),
+External transfers can be simulated in the Dwolla Sandbox by using the sandbox-simulations endpoint with a request body that includes: a `type` field set to `virtual` and a `transfers` field with a list of transfers to process (see example below). Up to 10 transfers at a time can be included in one call to the sandbox simulations endpoint. Transfers will be created in an initial status of `pending` and be updated to a `processed` based on the times outlined below. A `failed` status can occur when virtual account number (VAN) has been removed, the Customer has been `deactivated` or `suspended`, or when an ACH return code is assigned. Reference the Testing Virtual Account Transfer Failures section for more information on how to replicate a `failed` status. Pending transfers will be processed automatically during the following times (all in Central Time):
 
 - 2 AM
 - 5 AM
@@ -267,17 +267,7 @@ External transfers can be simulated in the Sandbox by using the sandbox-simulati
   (Central Time).
 </AlertBar>
 
-##### Optional fields and default values for VAN transfers
-
-| Optional Field           | Default Value                                                                                                                                        |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| companyEntryDescription  | `""` **Note:** The default value is an empty string. To simulate how a reversal transaction would look, set `companyEntryDescription` to "REVERSAL". |
-| routingNumber            | `"222222226"`                                                                                                                                        |
-| addenda                  | `"addenda"`                                                                                                                                          |
-| beneficiaryName          | `"Fake name"`                                                                                                                                        |
-| companyDiscretionaryData | `"Fake discretionary data"`                                                                                                                          |
-| companyId                | `"random integer value"`                                                                                                                             |
-| companyName              | `"Fake company name"`                                                                                                                                |
+##### Example VANs transfer processing
 
 ```bash
 POST https://api-sandbox.dwolla.com/sandbox-simulations
@@ -315,6 +305,18 @@ Authorization: Bearer {Your access token}
 
 HTTP/1.1 202 Accepted
 ```
+
+##### Optional fields and default values for VAN transfers
+
+| Optional Field           | Default Value                                                                                                                                        |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| companyEntryDescription  | **Note:** The default value is an empty string `""` . To simulate how a reversal transaction would look, set `companyEntryDescription` to "REVERSAL". |
+| routingNumber            | `"222222226"`                                                                                                                                        |
+| addenda                  | `"addenda"`                                                                                                                                          |
+| beneficiaryName          | `"Fake name"`                                                                                                                                        |
+| companyDiscretionaryData | `"Fake discretionary data"`                                                                                                                          |
+| companyId                | `"random integer value"`                                                                                                                             |
+| companyName              | `"Fake company name"`                                                                                                                                |
 
 ### Test bank transfer failures
 
@@ -388,9 +390,9 @@ var requestBody = {
 dwolla.post(fundingSourceUrl, requestBody).then((res) => res.body.name); // => "R03"
 ```
 
-### Test VANs transfer failures
+### Test Virtual Account Number transfer failures
 
-Similar to [testing ACH bank transfer failures](#test-bank-transfer-failures), you can test VANs transfer failures by specifying an "R" code in the "name" parameter when creating a VAN (e.g. “R08 Failure Test VAN”). The return code must be at the beginning of the VAN funding source’s name. **Note** that it is not case sensitive.
+Similar to [testing ACH bank transfer failures](#test-bank-transfer-failures), you can test VANs transfer failures by specifying an "R" code in the "name" parameter when creating a VAN (e.g. “R08 Failure Test VAN”). The return code must be at the beginning of the VAN funding source’s name. **Note:** the value is case is case-insensitive. 
 
 ##### List of codes for testing VAN transfer failures
 
