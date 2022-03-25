@@ -88,14 +88,14 @@ Additional details about an external transaction will be available in the [achDe
 
 #### ACH Details Optional Fields
 
-| Name                      | Description                                                                                                                                                                  |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| companyEntryDescription   | Describes the purpose of the transaction. Valid values include: `REVERSAL`, `RECLAIM`, `NO CHECK`, `AUTOENROLL`, `REDEPCHECK`, `RETURN FEE`, `RETRY PMNT`, and `HEALTHCARE`. |
-| routingNumber             | Routing number of Original Depository Financial Institution (ODFI)                                                                                                           |
-| beneficiaryName           | Beneficiary of the transaction's name. In general, should match the user onboarded to the Platform's name.                                                                   |
-| companyDiscrestionaryData | Used internally by ODFI to describe the transaction.                                                                                                                         |
-| companyId                 | Numeric identifier of originator.                                                                                                                                            |
-| companyName               | Name of the originator.                                                                                                                                                      |
+| Name                      | Description                                                                                                                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| companyEntryDescription   | Describes the purpose of the transaction. Values can include but are not limited to: `REVERSAL`, `RECLAIM`, `NO CHECK`, `AUTOENROLL`, `REDEPCHECK`, `RETURN FEE`, `RETRY PMNT`, and `HEALTHCARE`. |
+| routingNumber             | Routing number of Originating Depository Financial Institution (ODFI)                                                                                                                             |
+| beneficiaryName           | Beneficiary of the transaction's name. In general, should match the user onboarded to the Platform's name.                                                                                        |
+| companyDiscrestionaryData | Used internally by ODFI to describe the transaction.                                                                                                                                              |
+| companyId                 | Numeric identifier of originator.                                                                                                                                                                 |
+| companyName               | Name of the originator.                                                                                                                                                                           |
 
 #### Example Response Object
 
@@ -110,6 +110,7 @@ Additional details about an external transaction will be available in the [achDe
         ]
       },
       "beneficiaryName": "string",
+      "companyId": "string",
       "companyName": "string",
       "companyEntryDescription": "PAYMENT",  // will differ depending on originator
       "effectiveDate": "YYYY-MM-DD",
