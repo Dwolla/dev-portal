@@ -9,6 +9,15 @@ open http://localhost:3000
 open dev-portal.code-workspace
 ```
 
+## Using Docker
+
+Ensure [Docker](https://docs.docker.com/get-docker/) is installed on your machine before following these steps.
+
+```bash
+docker build -t dwolla/dev-portal:0.1.0 .
+docker run -p 3000:3000 dwolla/dev-portal:0.1.0
+```
+
 ## Commands
 
 - `yarn install` - Install dependencies
