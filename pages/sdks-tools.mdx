@@ -18,12 +18,11 @@ import kotlinColor from "../assets/images/content-images/content-icons/language-
 import kotlinGray from "../assets/images/content-images/content-icons/language-logos/kotlin-logo-gray.svg";
 import nodeColor from "../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
 import nodeGray from "../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
-import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
-import sqsMvIcon from "../assets/images/content-images/content-icons/tools/sqs-mv.svg";
-import webhookProvisionerIcon from "../assets/images/content-images/content-icons/tools/webhook-provisioner.svg";
 import webhookReceiverIcon from "../assets/images/content-images/content-icons/tools/webhook-receiver.svg";
-import webhookHandlerIcon from "../assets/images/content-images/content-icons/tools/webhook-handler.svg";
 import postmanIcon from "../assets/images/content-images/content-icons/tools/postman.svg";
+import csvExportIcon from "../assets/images/content-images/content-icons/tools/csv-export-sample.svg";
+import dropInComponentsIcon from "../assets/images/content-images/content-icons/drop-in-components.svg";
+import sendFundsIcon from "../assets/images/content-images/content-icons/send-funds.svg";
 
 # SDKs & Tools
 
@@ -170,34 +169,31 @@ dependencies \{
 
 <CardGrid variant="default" maxColumns={3}>
   <Card
-    icon={webhookProvisionerIcon}
+    icon={dropInComponentsIcon}
     link={{
-      href: "https://github.com/Dwolla/webhook-provisioner",
+      href: "https://github.com/Dwolla/drop-ins-examples",
       external: true,
     }}
-    topic="Webhook Provisioner"
-    description="Lambda functions to create, update, and delete partner-specific webhook SQS queues and Lambda handlers using code from webhook-handler."
+    topic="Drop-In Components"
+    description="A sample app using Express.js that shows the usage of Dwolla's Drop-In UI Components."
   />
   <Card
-    icon={webhookHandlerIcon}
-    link={{ href: "https://github.com/Dwolla/webhook-handler", external: true }}
-    topic="Webhook Handler"
-    description="An AWS Lambda function that POSTs Dwolla webhook Events to partner APIs and sends the result to SQS."
-  />
-  <Card
-    icon={webhookReceiverIcon}
+    icon={sendFundsIcon}
     link={{
-      href: "https://github.com/Dwolla/webhook-receiver",
+      href: "https://github.com/Dwolla/send-money-starter-kit",
       external: true,
     }}
-    topic="Webhook Receiver"
-    description="This sample app shows how to create a Dwolla Webhook Subscription and verify its signature."
+    topic="Send Money Starter Kit"
+    description='A starter-kit app that illustrates Dwolla&apos;s "Send Money" funds-flow by enabling a business to transfer funds to their end-users.'
   />
   <Card
-    icon={sqsMvIcon}
-    link={{ href: "https://github.com/Dwolla/sqs-mv", external: true }}
-    topic="SQS-MV"
-    description="An AWS Lambda function that moves SQS messages from one queue to another."
+    icon={csvExportIcon}
+    link={{
+      href: "https://github.com/Dwolla/transactions-csv-export-sample",
+      external: true,
+    }}
+    topic="Transactions CSV Export Sample"
+    description="A sample app for exporting transaction reports to a CSV file using Python."
   />
   <Card
     icon={postmanIcon}
@@ -207,5 +203,14 @@ dependencies \{
     }}
     topic="Postman Collection"
     description="All individual Dwolla requests grouped into a single Postman collection for testing."
+  />
+  <Card
+    icon={webhookReceiverIcon}
+    link={{
+      href: "https://github.com/Dwolla/webhook-receiver",
+      external: true,
+    }}
+    topic="Webhook Receiver"
+    description="This sample app shows how to create a Dwolla Webhook Subscription and verify its signature."
   />
 </CardGrid>
