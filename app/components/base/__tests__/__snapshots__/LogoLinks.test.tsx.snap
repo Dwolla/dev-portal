@@ -2,13 +2,13 @@
 
 exports[`LogoLinks 1`] = `
 <div
-  className="css-1w40n55-Container e1k29u6g0"
+  className="css-1w40n55-Container e1k29u6g2"
 >
   <ul
     className="css-1qwgtli-StyledTabList e1k29u6g1"
   >
     <a
-      className="css-1wymnmd-StyledLink e1k29u6g2"
+      className="css-mxi3yk-StyledLink e1k29u6g0"
       href="https://github.com/Dwolla/dwolla-v2-node"
       onBlur={[Function]}
       onFocus={[Function]}
@@ -25,7 +25,7 @@ exports[`LogoLinks 1`] = `
       </li>
     </a>
     <a
-      className="css-1wymnmd-StyledLink e1k29u6g2"
+      className="css-mxi3yk-StyledLink e1k29u6g0"
       href="https://github.com/Dwolla/dwolla-v2-ruby"
       onBlur={[Function]}
       onFocus={[Function]}
@@ -42,7 +42,7 @@ exports[`LogoLinks 1`] = `
       </li>
     </a>
     <a
-      className="css-1wymnmd-StyledLink e1k29u6g2"
+      className="css-mxi3yk-StyledLink e1k29u6g0"
       href="https://github.com/Dwolla/dwolla-v2-python"
       onBlur={[Function]}
       onFocus={[Function]}
@@ -59,7 +59,7 @@ exports[`LogoLinks 1`] = `
       </li>
     </a>
     <a
-      className="css-1wymnmd-StyledLink e1k29u6g2"
+      className="css-mxi3yk-StyledLink e1k29u6g0"
       href="https://github.com/Dwolla/dwolla-swagger-php"
       onBlur={[Function]}
       onFocus={[Function]}
@@ -76,7 +76,7 @@ exports[`LogoLinks 1`] = `
       </li>
     </a>
     <a
-      className="css-1wymnmd-StyledLink e1k29u6g2"
+      className="css-mxi3yk-StyledLink e1k29u6g0"
       href="https://github.com/Dwolla/dwolla-v2-csharp"
       onBlur={[Function]}
       onFocus={[Function]}
@@ -93,7 +93,7 @@ exports[`LogoLinks 1`] = `
       </li>
     </a>
     <a
-      className="css-1wymnmd-StyledLink e1k29u6g2"
+      className="css-mxi3yk-StyledLink e1k29u6g0"
       href="https://github.com/Dwolla/dwolla-v2-kotlin"
       onBlur={[Function]}
       onFocus={[Function]}

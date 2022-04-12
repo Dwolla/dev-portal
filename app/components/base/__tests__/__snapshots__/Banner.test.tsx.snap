@@ -2,18 +2,18 @@
 
 exports[`Banner - no icon 1`] = `
 <div
-  className="default css-qc8b1t-StyledBanner e1el1emo0"
+  className="default css-qc8b1t-StyledBanner e1el1emo5"
 >
   <div
-    className="css-2ux9ul-BannerContentWrap e1el1emo1"
+    className="css-1trg8gg-BannerContentWrap e1el1emo4"
   >
     <div
-      className="css-izwvz-StyledTopic e1el1emo3"
+      className="css-izwvz-StyledTopic e1el1emo2"
     >
       Comprehensive API documentation for developers and businesses.
     </div>
     <div
-      className="css-wbadgb-StyledDescription e1el1emo4"
+      className="css-wbadgb-StyledDescription e1el1emo1"
     >
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
@@ -23,23 +23,23 @@ exports[`Banner - no icon 1`] = `
 
 exports[`Banner - with Button 1`] = `
 <div
-  className="default css-qc8b1t-StyledBanner e1el1emo0"
+  className="default css-qc8b1t-StyledBanner e1el1emo5"
 >
   <div
-    className="css-2ux9ul-BannerContentWrap e1el1emo1"
+    className="css-1trg8gg-BannerContentWrap e1el1emo4"
   >
     <div
-      className="css-izwvz-StyledTopic e1el1emo3"
+      className="css-izwvz-StyledTopic e1el1emo2"
     >
       Comprehensive API documentation for developers and businesses.
     </div>
     <div
-      className="css-wbadgb-StyledDescription e1el1emo4"
+      className="css-wbadgb-StyledDescription e1el1emo1"
     >
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
     <a
-      className="primary large  css-1hcx8qk-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="primary large  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
       href="https://accounts-sandbox.dwolla.com/login"
       target="_blank"
     >
@@ -51,23 +51,23 @@ exports[`Banner - with Button 1`] = `
 
 exports[`Banner - with Extra Padding for Overlapping Cards 1`] = `
 <div
-  className="overlapped css-qc8b1t-StyledBanner e1el1emo0"
+  className="overlapped css-qc8b1t-StyledBanner e1el1emo5"
 >
   <div
-    className="css-2ux9ul-BannerContentWrap e1el1emo1"
+    className="css-1trg8gg-BannerContentWrap e1el1emo4"
   >
     <div
-      className="css-izwvz-StyledTopic e1el1emo3"
+      className="css-izwvz-StyledTopic e1el1emo2"
     >
       Comprehensive API documentation for developers and businesses.
     </div>
     <div
-      className="css-wbadgb-StyledDescription e1el1emo4"
+      className="css-wbadgb-StyledDescription e1el1emo1"
     >
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
     <a
-      className="primary large  css-1hcx8qk-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="primary large  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
       href="https://accounts-sandbox.dwolla.com/login"
       target="_blank"
     >
@@ -79,32 +79,32 @@ exports[`Banner - with Extra Padding for Overlapping Cards 1`] = `
 
 exports[`Banner - with Filters 1`] = `
 <div
-  className="filters default css-qc8b1t-StyledBanner e1el1emo0"
+  className="filters default css-qc8b1t-StyledBanner e1el1emo5"
 >
   <div
-    className="css-2ux9ul-BannerContentWrap e1el1emo1"
+    className="css-1trg8gg-BannerContentWrap e1el1emo4"
   >
     <img
       alt=""
-      className="css-dt0gsi-StyledIcon e1el1emo2"
+      className="css-1fky7ck-StyledIcon e1el1emo3"
       src="test-image-stub"
     />
     <div
-      className="css-izwvz-StyledTopic e1el1emo3"
+      className="css-izwvz-StyledTopic e1el1emo2"
     >
       Guides
     </div>
     <div
-      className="css-wbadgb-StyledDescription e1el1emo4"
+      className="css-wbadgb-StyledDescription e1el1emo1"
     >
       Step-by-step instructions to get you set up in the Dwolla API
     </div>
   </div>
   <div
-    className="css-1wmc1h7-StyledFilter e1el1emo5"
+    className="css-1r5qd2q-StyledFilter e1el1emo0"
   >
     <ul
-      className="css-ckmwo8-TabsContainerStyle ercic660"
+      className="css-ckmwo8-TabsContainerStyle ercic662"
     >
       <li
         className="is-active css-y9jj0p-TabStyle ercic661"
@@ -140,7 +140,7 @@ exports[`Banner - with Filters 1`] = `
       </li>
     </ul>
     <div
-      className="css-18difvw-SelectWrapper ercic662"
+      className="css-18difvw-SelectWrapper ercic660"
     >
       <div
         className=" css-k377xg-container"
@@ -186,7 +186,7 @@ exports[`Banner - with Filters 1`] = `
             >
               <img
                 alt=""
-                className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+                className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
                 src="test-image-stub"
               />
             </div>
@@ -200,23 +200,23 @@ exports[`Banner - with Filters 1`] = `
 
 exports[`Default Banner 1`] = `
 <div
-  className="default css-qc8b1t-StyledBanner e1el1emo0"
+  className="default css-qc8b1t-StyledBanner e1el1emo5"
 >
   <div
-    className="css-2ux9ul-BannerContentWrap e1el1emo1"
+    className="css-1trg8gg-BannerContentWrap e1el1emo4"
   >
     <img
       alt=""
-      className="css-dt0gsi-StyledIcon e1el1emo2"
+      className="css-1fky7ck-StyledIcon e1el1emo3"
       src="test-image-stub"
     />
     <div
-      className="css-izwvz-StyledTopic e1el1emo3"
+      className="css-izwvz-StyledTopic e1el1emo2"
     >
       Guides
     </div>
     <div
-      className="css-wbadgb-StyledDescription e1el1emo4"
+      className="css-wbadgb-StyledDescription e1el1emo1"
     >
       Step-by-step instructions to get you set up in the Dwolla API
     </div>

@@ -2,7 +2,7 @@
 
 exports[`Collapsible Webhook Variant 1`] = `
 <div
-  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc0"
+  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc2"
   onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
@@ -11,11 +11,11 @@ exports[`Collapsible Webhook Variant 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1642807409836"
+      aria-controls="collapsible-content-1649797328144"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1642807409836"
+      id="collapsible-trigger-1649797328144"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -29,7 +29,7 @@ exports[`Collapsible Webhook Variant 1`] = `
           width={9}
         />
         <div
-          className="css-1vsgzd0-flexStyles"
+          className="css-gfgg4i-flexStyles"
         >
           <div>
             customer_transfer_created
@@ -42,10 +42,10 @@ exports[`Collapsible Webhook Variant 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1642807409836"
+      aria-labelledby="collapsible-trigger-1649797328144"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1642807409836"
+      id="collapsible-content-1649797328144"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -62,7 +62,7 @@ exports[`Collapsible Webhook Variant 1`] = `
         className="Collapsible__contentInner"
       >
         <div
-          className="visuallyhidden webhook css-1lrge1l-InnerContentWrapper e1jgqqjc2"
+          className="visuallyhidden webhook css-1lrge1l-InnerContentWrapper e1jgqqjc0"
         >
           Code Block child
         </div>
@@ -74,7 +74,7 @@ exports[`Collapsible Webhook Variant 1`] = `
 
 exports[`Collapsible list 1`] = `
 <div
-  className="css-dzay3o-CollapsibleWrapper e1jgqqjc0"
+  className="css-dzay3o-CollapsibleWrapper e1jgqqjc2"
   onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
@@ -83,11 +83,11 @@ exports[`Collapsible list 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1642807409801"
+      aria-controls="collapsible-content-1649797328134"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1642807409801"
+      id="collapsible-trigger-1649797328134"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -100,16 +100,16 @@ exports[`Collapsible list 1`] = `
         My Customer has a retry status. What activity would they be able to engage in while being in ‘retry’ status, as it relates to the Dwolla Platform?
         <img
           alt="Open collapsible content"
-          className="css-gup190-ImageStyles"
+          className="css-15ya10a-ImageStyles"
           src="test-image-stub"
         />
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1642807409801"
+      aria-labelledby="collapsible-trigger-1649797328134"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1642807409801"
+      id="collapsible-content-1649797328134"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -126,10 +126,10 @@ exports[`Collapsible list 1`] = `
         className="Collapsible__contentInner"
       >
         <div
-          className="visuallyhidden css-1lrge1l-InnerContentWrapper e1jgqqjc2"
+          className="visuallyhidden css-1lrge1l-InnerContentWrapper e1jgqqjc0"
         >
           <ul
-            className=" css-1fruo89-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
+            className=" css-1jdzm12-baseTextStyles-baseTextStyles-listStyles-listStyles-UnorderedList-UnorderedList"
           >
             <li>
               Send funds - No
@@ -153,7 +153,7 @@ exports[`Collapsible list 1`] = `
 
 exports[`Collapsible paragraph 1`] = `
 <div
-  className="css-dzay3o-CollapsibleWrapper e1jgqqjc0"
+  className="css-dzay3o-CollapsibleWrapper e1jgqqjc2"
   onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
@@ -162,11 +162,11 @@ exports[`Collapsible paragraph 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1642807409825"
+      aria-controls="collapsible-content-1649797328142"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1642807409825"
+      id="collapsible-trigger-1649797328142"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -179,16 +179,16 @@ exports[`Collapsible paragraph 1`] = `
         My Customer has a document status. Can I submit more than one document via the API?
         <img
           alt="Open collapsible content"
-          className="css-gup190-ImageStyles"
+          className="css-15ya10a-ImageStyles"
           src="test-image-stub"
         />
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1642807409825"
+      aria-labelledby="collapsible-trigger-1649797328142"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1642807409825"
+      id="collapsible-content-1649797328142"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -205,10 +205,10 @@ exports[`Collapsible paragraph 1`] = `
         className="Collapsible__contentInner"
       >
         <div
-          className="visuallyhidden css-1lrge1l-InnerContentWrapper e1jgqqjc2"
+          className="visuallyhidden css-1lrge1l-InnerContentWrapper e1jgqqjc0"
         >
           <p
-            className=" css-1n0n1up-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
+            className=" css-12vslxq-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles"
           >
             Yes, although this is not necessary, nor recommended. Dwolla manually reviews all documents, so sending more documents than necessary may slow down the verification process for your Customers.
           </p>

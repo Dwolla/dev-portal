@@ -2,7 +2,7 @@
 
 exports[`FundsFlowSelector 1`] = `
 <div
-  className="css-1pis8ym-StyledContainer e7p8rnk0"
+  className="css-1pis8ym-StyledContainer e7p8rnk2"
 >
   <div
     className="css-kpql9x-StyledTitle e7p8rnk1"
@@ -10,7 +10,7 @@ exports[`FundsFlowSelector 1`] = `
     Sender:
   </div>
   <div
-    className="css-17bdsbe-StyledType e7p8rnk2"
+    className="css-17bdsbe-StyledType e7p8rnk0"
   >
     Sender Type
   </div>
@@ -103,7 +103,7 @@ exports[`FundsFlowSelector 1`] = `
         >
           <img
             alt=""
-            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
             src="test-image-stub"
           />
         </div>
@@ -111,7 +111,7 @@ exports[`FundsFlowSelector 1`] = `
     </div>
   </div>
   <div
-    className="css-17bdsbe-StyledType e7p8rnk2"
+    className="css-17bdsbe-StyledType e7p8rnk0"
   >
     Sender Source
   </div>
@@ -204,7 +204,7 @@ exports[`FundsFlowSelector 1`] = `
         >
           <img
             alt=""
-            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
             src="test-image-stub"
           />
         </div>
@@ -217,7 +217,7 @@ exports[`FundsFlowSelector 1`] = `
     Receiver:
   </div>
   <div
-    className="css-17bdsbe-StyledType e7p8rnk2"
+    className="css-17bdsbe-StyledType e7p8rnk0"
   >
     Receiver Type
   </div>
@@ -310,7 +310,7 @@ exports[`FundsFlowSelector 1`] = `
         >
           <img
             alt=""
-            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
             src="test-image-stub"
           />
         </div>
@@ -318,7 +318,7 @@ exports[`FundsFlowSelector 1`] = `
     </div>
   </div>
   <div
-    className="css-17bdsbe-StyledType e7p8rnk2"
+    className="css-17bdsbe-StyledType e7p8rnk0"
   >
     Receiver Destination
   </div>
@@ -411,7 +411,7 @@ exports[`FundsFlowSelector 1`] = `
         >
           <img
             alt=""
-            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+            className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
             src="test-image-stub"
           />
         </div>

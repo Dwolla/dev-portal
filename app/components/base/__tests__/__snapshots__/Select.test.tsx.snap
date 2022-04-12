@@ -98,7 +98,7 @@ exports[`AutoWidth Select 1`] = `
       >
         <img
           alt=""
-          className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+          className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
           src="test-image-stub"
         />
       </div>
@@ -205,7 +205,7 @@ exports[`Default Select 1`] = `
       >
         <img
           alt=""
-          className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+          className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
           src="test-image-stub"
         />
       </div>

@@ -3,7 +3,7 @@
 exports[`default 1`] = `
 Array [
   <ul
-    className="css-ckmwo8-TabsContainerStyle ercic660"
+    className="css-ckmwo8-TabsContainerStyle ercic662"
   >
     <li
       className="is-active css-y9jj0p-TabStyle ercic661"
@@ -39,7 +39,7 @@ Array [
     </li>
   </ul>,
   <div
-    className="css-18difvw-SelectWrapper ercic662"
+    className="css-18difvw-SelectWrapper ercic660"
   >
     <div
       className=" css-k377xg-container"
@@ -85,7 +85,7 @@ Array [
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>
@@ -99,7 +99,7 @@ Array [
 exports[`sidebar 1`] = `
 Array [
   <ul
-    className="sidebar css-ckmwo8-TabsContainerStyle ercic660"
+    className="sidebar css-ckmwo8-TabsContainerStyle ercic662"
   >
     <li
       className="sidebar is-active css-y9jj0p-TabStyle ercic661"
@@ -135,7 +135,7 @@ Array [
     </li>
   </ul>,
   <div
-    className="sidebar css-18difvw-SelectWrapper ercic662"
+    className="sidebar css-18difvw-SelectWrapper ercic660"
   >
     <div
       className=" css-k377xg-container"
@@ -181,7 +181,7 @@ Array [
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>

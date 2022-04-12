@@ -2,10 +2,10 @@
 
 exports[`Footer 1`] = `
 <div
-  className="css-betm3h-Container eg0edpy0"
+  className="css-betm3h-Container eg0edpy12"
 >
   <div
-    className="css-549mvs-LogoContainer eg0edpy1"
+    className="css-549mvs-LogoContainer eg0edpy11"
   >
     <a
       href="/"
@@ -14,22 +14,22 @@ exports[`Footer 1`] = `
     >
       <img
         alt=""
-        className="css-1ty6c2n-Logo eg0edpy2"
+        className="css-1289bd9-Logo eg0edpy10"
         src="test-image-stub"
       />
     </a>
     <div
-      className="css-1neb9ej-Copyright eg0edpy3"
+      className="css-1neb9ej-Copyright eg0edpy9"
     >
       2022
        All Rights Reserved
     </div>
   </div>
   <div
-    className="css-1g5yeab-LinkContainer eg0edpy4"
+    className="css-1g5yeab-LinkContainer eg0edpy8"
   >
     <div
-      className="css-n2kuza-LinkGroup eg0edpy5"
+      className="css-n2kuza-LinkGroup eg0edpy7"
     >
       <h3
         className="css-ve8wjm-LinkGroupHeading eg0edpy6"
@@ -37,63 +37,63 @@ exports[`Footer 1`] = `
         Dwolla
       </h3>
       <ul
-        className="css-fqkv27-LinkGroupList eg0edpy7"
+        className="css-1wxmwh7-LinkGroupList eg0edpy5"
       >
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/about/"
           >
             About
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/updates/"
           >
             Blog
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/pricing/"
           >
             Pricing
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/contact/"
           >
             Contact Sales
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/legal/tos/"
           >
             Terms of Service
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/legal/privacy/"
           >
             Privacy Policy
@@ -102,7 +102,7 @@ exports[`Footer 1`] = `
       </ul>
     </div>
     <div
-      className="css-n2kuza-LinkGroup eg0edpy5"
+      className="css-n2kuza-LinkGroup eg0edpy7"
     >
       <h3
         className="css-ve8wjm-LinkGroupHeading eg0edpy6"
@@ -110,33 +110,33 @@ exports[`Footer 1`] = `
         Product
       </h3>
       <ul
-        className="css-fqkv27-LinkGroupList eg0edpy7"
+        className="css-1wxmwh7-LinkGroupList eg0edpy5"
       >
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/resources/"
           >
             Resources
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/features/"
           >
             Features
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://www.dwolla.com/case-studies/"
           >
             Case Studies
@@ -145,7 +145,7 @@ exports[`Footer 1`] = `
       </ul>
     </div>
     <div
-      className="css-n2kuza-LinkGroup eg0edpy5"
+      className="css-n2kuza-LinkGroup eg0edpy7"
     >
       <h3
         className="css-ve8wjm-LinkGroupHeading eg0edpy6"
@@ -153,43 +153,43 @@ exports[`Footer 1`] = `
         Developers
       </h3>
       <ul
-        className="css-fqkv27-LinkGroupList eg0edpy7"
+        className="css-1wxmwh7-LinkGroupList eg0edpy5"
       >
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://developers.dwolla.com/api-reference/"
           >
             API Reference
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://discuss.dwolla.com/"
           >
             Support Forum
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="#sdks-and-tools"
           >
             SDKs and Tools
           </a>
         </li>
         <li
-          className="css-13i1lc7-LinkGroupItem eg0edpy8"
+          className="css-146nff3-LinkGroupItem eg0edpy4"
         >
           <a
-            className="css-1yfy9it-LinkGroupLink eg0edpy9"
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
             href="https://github.com/Dwolla/"
           >
             Github Repos
@@ -199,15 +199,15 @@ exports[`Footer 1`] = `
     </div>
   </div>
   <div
-    className="css-1kena77-LegalContainer eg0edpy10"
+    className="css-1kena77-LegalContainer eg0edpy2"
   >
     <strong
-      className="css-31ngrj-LegalTitle eg0edpy11"
+      className="css-31ngrj-LegalTitle eg0edpy1"
     >
       Financial institutions play an important role in our network.
     </strong>
     <p
-      className="css-g8suin-LegalDesc eg0edpy12"
+      className="css-g8suin-LegalDesc eg0edpy0"
     >
       All funds transfers made using the Dwolla Platform are performed by a financial institution partner, and any funds held in a Dwolla Balance are held by a financial institution partner.
        

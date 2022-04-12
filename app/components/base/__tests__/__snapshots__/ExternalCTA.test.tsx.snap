@@ -2,12 +2,12 @@
 
 exports[`External CTA 1`] = `
 <a
-  className="css-1npw29w-StyledLink e8b2hpr0"
+  className="css-1npw29w-StyledLink e8b2hpr5"
   href="https://discuss.dwolla.com/"
   target="_blank"
 >
   <div
-    className="css-6lgn94-IconWrapper e8b2hpr1"
+    className="css-xcen1z-IconWrapper e8b2hpr4"
   >
     <img
       alt=""
@@ -15,21 +15,21 @@ exports[`External CTA 1`] = `
     />
   </div>
   <div
-    className="css-1m6i3g5-TextContainer e8b2hpr2"
+    className="css-1q1au6c-TextContainer e8b2hpr3"
   >
     <div
-      className="css-6x8wkn-StyledTitle e8b2hpr3"
+      className="css-6x8wkn-StyledTitle e8b2hpr2"
     >
       Developer Support
     </div>
     <div
-      className="css-hn4nzi-StyledDescription e8b2hpr4"
+      className="css-hn4nzi-StyledDescription e8b2hpr1"
     >
       Interact with the developer community and Dwolla developer support to find answers to your technical questions.
     </div>
   </div>
   <div
-    className="css-howqhj-StyledNewTab e8b2hpr5"
+    className="css-howqhj-StyledNewTab e8b2hpr0"
   >
     <svg
       width={13}
@@ -40,12 +40,12 @@ exports[`External CTA 1`] = `
 
 exports[`No title 1`] = `
 <a
-  className="css-1npw29w-StyledLink e8b2hpr0"
+  className="css-1npw29w-StyledLink e8b2hpr5"
   href="https://discuss.dwolla.com/"
   target="_blank"
 >
   <div
-    className="css-6lgn94-IconWrapper e8b2hpr1"
+    className="css-xcen1z-IconWrapper e8b2hpr4"
   >
     <img
       alt=""
@@ -53,16 +53,16 @@ exports[`No title 1`] = `
     />
   </div>
   <div
-    className="css-1m6i3g5-TextContainer e8b2hpr2"
+    className="css-1q1au6c-TextContainer e8b2hpr3"
   >
     <div
-      className="css-hn4nzi-StyledDescription e8b2hpr4"
+      className="css-hn4nzi-StyledDescription e8b2hpr1"
     >
       Interact with the developer community and Dwolla developer support to find answers to your technical questions.
     </div>
   </div>
   <div
-    className="css-howqhj-StyledNewTab e8b2hpr5"
+    className="css-howqhj-StyledNewTab e8b2hpr0"
   >
     <svg
       width={13}
