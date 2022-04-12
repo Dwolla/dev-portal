@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import { DefaultMDXWrapper } from "./index";
 import Pages from "../app/modules/pages";

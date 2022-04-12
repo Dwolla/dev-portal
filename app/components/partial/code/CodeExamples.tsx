@@ -1,4 +1,10 @@
-import { Children, useContext, useMemo, useState, useEffect } from "react";
+import React, {
+  Children,
+  useContext,
+  useMemo,
+  useState,
+  useEffect,
+} from "react";
 import sortBy from "lodash.sortby";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { getLanguage } from "../../util/groupCodeExamples";
