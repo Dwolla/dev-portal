@@ -1,4 +1,4 @@
-import hljs from "highlight.js/lib/core";
+import hljs from "highlight.js";
 
 export type Language =
   | "javascript"
@@ -44,5 +44,5 @@ registerLanguage("xml", require("highlight.js/lib/languages/xml"));
 hljs.registerLanguage("css", require("highlight.js/lib/languages/css"));
 
 export default function highlight(code: string, language: string) {
-  return hljs.highlight(language || "plaintext", code).value;
+  return hljs.highlight(code, { language: language || "plaintext" }).value;
 }
