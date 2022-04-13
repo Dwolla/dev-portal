@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-/** @jsx jsx */
 import { useState } from "react";
 import ReactCollapsible from "react-collapsible";
 import styled from "@emotion/styled";
-import { css, jsx } from "@emotion/core";
+import { css } from "@emotion/react";
 import classnames from "classnames";
 import plusIcon from "../../../assets/images/component-icons/plus-circle-icon.svg";
 import minusIcon from "../../../assets/images/component-icons/minus-circle-icon.svg";

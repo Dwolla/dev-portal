@@ -2,26 +2,26 @@
 
 exports[`Inline CTA 1`] = `
 <a
-  className="css-kunpmx-StyledLink e4d1mpi0"
+  className="css-2om2dx-StyledLink e4d1mpi4"
   href="https://developers.dwolla.com/guides/personal-verified-customer"
   onClick={[Function]}
   onMouseEnter={[Function]}
 >
   <div
-    className="css-l9xmrb-Container e4d1mpi1"
+    className="css-l9xmrb-Container e4d1mpi3"
   >
     <img
       alt=""
-      className="css-1lfxg9z-StyledIcon e4d1mpi2"
+      className="css-15p1syb-StyledIcon e4d1mpi2"
       src="test-image-stub"
     />
     <div
-      className="css-cj8isa-TextStyle e4d1mpi3"
+      className="css-cj8isa-TextStyle e4d1mpi1"
     >
       For more information on creating a Verified Personal Customer, reference our step by step guide.
     </div>
     <div
-      className="css-1qk15us-ArrowStyle e4d1mpi4"
+      className="css-1qk15us-ArrowStyle e4d1mpi0"
     >
       <svg
         width={13}

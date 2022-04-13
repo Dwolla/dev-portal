@@ -5,7 +5,7 @@ import Head from "next/head";
 import { css, Global } from "@emotion/core";
 import styled from "@emotion/styled";
 import classnames from "classnames";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   disableBodyScroll,

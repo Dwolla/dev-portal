@@ -2,10 +2,10 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-16rtae5-Container e1psldpd0"
+  className="css-67tr3t-Container e1psldpd7"
 >
   <div
-    className="css-hafdn5-StyledLogoWrap e1psldpd1"
+    className="css-hafdn5-StyledLogoWrap e1psldpd6"
   >
     <a
       href="/"
@@ -14,16 +14,16 @@ exports[`TopBar 1`] = `
     >
       <img
         alt=""
-        className="css-g6dikn-StyledLogo e1psldpd2"
+        className="css-g6dikn-StyledLogo e1psldpd5"
         src="test-image-stub"
       />
     </a>
   </div>
   <div
-    className="css-ffwcst-LinksWrapper e1psldpd3"
+    className="css-ffwcst-LinksWrapper e1psldpd4"
   >
     <a
-      className=" css-skf8jj-StyledLink e1psldpd6"
+      className=" css-c59abo-StyledLink e1psldpd1"
       href="https://docs.dwolla.com"
       target="_blank"
     >
@@ -39,7 +39,7 @@ exports[`TopBar 1`] = `
       />
     </a>
     <a
-      className="active css-skf8jj-StyledLink e1psldpd6"
+      className="active css-c59abo-StyledLink e1psldpd1"
       href="/changelog"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -51,7 +51,7 @@ exports[`TopBar 1`] = `
       </span>
     </a>
     <a
-      className="active css-skf8jj-StyledLink e1psldpd6"
+      className="active css-c59abo-StyledLink e1psldpd1"
       href="/manually-active"
       onClick={[Function]}
       onMouseEnter={[Function]}
@@ -64,7 +64,7 @@ exports[`TopBar 1`] = `
     </a>
   </div>
   <div
-    className="css-zhv85h-SelectWrapper e1psldpd5"
+    className="css-p48gnw-SelectWrapper e1psldpd2"
   >
     <div
       className=" css-k377xg-container"
@@ -110,7 +110,7 @@ exports[`TopBar 1`] = `
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>
@@ -119,10 +119,10 @@ exports[`TopBar 1`] = `
     </div>
   </div>
   <div
-    className="css-1as8qu1-ButtonWrapper e1psldpd4"
+    className="css-1as8qu1-ButtonWrapper e1psldpd3"
   >
     <a
-      className="primary standard  css-1hcx8qk-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="primary standard  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
       href="https://accounts-sandbox.dwolla.com/login"
       target="_blank"
     >

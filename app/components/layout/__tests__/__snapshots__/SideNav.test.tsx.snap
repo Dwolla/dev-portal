@@ -2,26 +2,26 @@
 
 exports[`SideNav 1`] = `
 <div
-  className="css-88n5j3-Container e1qiqw1s0"
+  className="css-yeohq5-Container e1qiqw1s13"
 >
   <div
-    className="css-11sjyxp-Slide e1qiqw1s1"
+    className="css-kibqvq-Slide e1qiqw1s12"
   >
     <div
-      className="left css-1jc4k7f-SlidePane e1qiqw1s2"
+      className="left css-1jc4k7f-SlidePane e1qiqw1s11"
       id="body-scroll-lock-side-nav"
     >
       <div
-        className="css-kgvw59-SectionWrap e1qiqw1s3"
+        className="css-kgvw59-SectionWrap e1qiqw1s10"
       >
         <a
-          className="active css-kyteuo-SectionLink-SectionLink"
+          className="active css-ovadr3-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className="css-thlorg-SectionIconWrap e1qiqw1s5"
+            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -32,13 +32,13 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className=" css-kyteuo-SectionLink-SectionLink"
+          className=" css-ovadr3-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className="css-thlorg-SectionIconWrap e1qiqw1s5"
+            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -48,7 +48,7 @@ exports[`SideNav 1`] = `
           </div>
           Guides
           <div
-            className="css-y8ea5i-SectionCaretWrap e1qiqw1s6"
+            className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
           >
             <svg
               height={10}
@@ -57,13 +57,13 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-kyteuo-SectionLink-SectionLink"
+          className=" css-ovadr3-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className="css-thlorg-SectionIconWrap e1qiqw1s5"
+            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -73,7 +73,7 @@ exports[`SideNav 1`] = `
           </div>
           Concepts
           <div
-            className="css-y8ea5i-SectionCaretWrap e1qiqw1s6"
+            className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
           >
             <svg
               height={10}
@@ -82,13 +82,13 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-kyteuo-SectionLink-SectionLink"
+          className=" css-ovadr3-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className="css-thlorg-SectionIconWrap e1qiqw1s5"
+            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -100,11 +100,11 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-nasyo1-MobileWrap e1qiqw1s12"
+        className="css-nasyo1-MobileWrap e1qiqw1s1"
       >
         <a
-          className=" css-1twa2js-MobileLink-MobileLink"
-          href="https://docs.dwolla.com"
+          className=" css-8xg7u8-MobileLink"
+          href="https://docs.dwolla.com/"
           onClick={[Function]}
           onMouseEnter={[Function]}
           target="_blank"
@@ -121,7 +121,7 @@ exports[`SideNav 1`] = `
           />
         </a>
         <a
-          className=" css-1twa2js-MobileLink-MobileLink"
+          className=" css-8xg7u8-MobileLink"
           href="/changelog"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -133,10 +133,10 @@ exports[`SideNav 1`] = `
           </span>
         </a>
         <div
-          className="css-vogkcz-MobileButtonWrap e1qiqw1s13"
+          className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
         >
           <a
-            className="primary block  css-1hcx8qk-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+            className="primary block  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
             href="https://accounts-sandbox.dwolla.com/login"
             target="_blank"
           >

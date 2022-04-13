@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import { css, Global } from "@emotion/core";
+import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import classnames from "../../modules/classnames";
 import { GREY_1, GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";

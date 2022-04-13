@@ -2,15 +2,15 @@
 
 exports[`Default HeroCard 1`] = `
 <div
-  className="css-14nx622-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis5"
 >
   <div
-    className="css-103e74w-StyledTitle e1s1ktis1"
+    className="css-103e74w-StyledTitle e1s1ktis4"
   >
     Save development time with Drop-in Components
   </div>
   <div
-    className="css-13ktynt-StyledDescription e1s1ktis2"
+    className="css-13ktynt-StyledDescription e1s1ktis3"
   >
     Integrate with the Dwolla API with just a few lines of code 
   </div>
@@ -19,23 +19,23 @@ exports[`Default HeroCard 1`] = `
 
 exports[`HeroCard - with Button 1`] = `
 <div
-  className="css-14nx622-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis5"
 >
   <div
-    className="css-103e74w-StyledTitle e1s1ktis1"
+    className="css-103e74w-StyledTitle e1s1ktis4"
   >
     Save development time with Drop-in Components
   </div>
   <div
-    className="css-13ktynt-StyledDescription e1s1ktis2"
+    className="css-13ktynt-StyledDescription e1s1ktis3"
   >
     Integrate with the Dwolla API with just a few lines of code 
   </div>
   <div
-    className="css-1bb6rlt-StyledButton e1s1ktis3"
+    className="css-bmqhrd-StyledButton e1s1ktis2"
   >
     <a
-      className="hollow-white standard  css-1hcx8qk-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="hollow-white standard  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
       href="https://www.dwolla.com"
     >
       View Walkthrough Guide
@@ -46,33 +46,33 @@ exports[`HeroCard - with Button 1`] = `
 
 exports[`HeroCard - with Button and Links 1`] = `
 <div
-  className="css-14nx622-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis5"
 >
   <div
-    className="css-103e74w-StyledTitle e1s1ktis1"
+    className="css-103e74w-StyledTitle e1s1ktis4"
   >
     Save development time with Drop-in Components
   </div>
   <div
-    className="css-13ktynt-StyledDescription e1s1ktis2"
+    className="css-13ktynt-StyledDescription e1s1ktis3"
   >
     Integrate with the Dwolla API with just a few lines of code 
   </div>
   <div
-    className="css-1bb6rlt-StyledButton e1s1ktis3"
+    className="css-bmqhrd-StyledButton e1s1ktis2"
   >
     <a
-      className="hollow-white standard  css-1hcx8qk-StyledLink-buttonStyles-buttonStyles ek3ainu1"
+      className="hollow-white standard  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
       href="https://www.dwolla.com"
     >
       View Walkthrough Guide
     </a>
   </div>
   <div
-    className="css-1spkmsc-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis1"
   >
     <a
-      className="css-uc36zz-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis0"
       href="https://www.dwolla.com"
     >
       Technical Documentation
@@ -80,10 +80,10 @@ exports[`HeroCard - with Button and Links 1`] = `
     </a>
   </div>
   <div
-    className="css-1spkmsc-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis1"
   >
     <a
-      className="css-uc36zz-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis0"
       href="https://www.dwolla.com"
       target="_blank"
     >
@@ -96,23 +96,23 @@ exports[`HeroCard - with Button and Links 1`] = `
 
 exports[`HeroCard - with Links 1`] = `
 <div
-  className="css-14nx622-Container e1s1ktis0"
+  className="css-14nx622-Container e1s1ktis5"
 >
   <div
-    className="css-103e74w-StyledTitle e1s1ktis1"
+    className="css-103e74w-StyledTitle e1s1ktis4"
   >
     Save development time with Drop-in Components
   </div>
   <div
-    className="css-13ktynt-StyledDescription e1s1ktis2"
+    className="css-13ktynt-StyledDescription e1s1ktis3"
   >
     Integrate with the Dwolla API with just a few lines of code 
   </div>
   <div
-    className="css-1spkmsc-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis1"
   >
     <a
-      className="css-uc36zz-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis0"
       href="https://www.dwolla.com"
     >
       Technical Documentation
@@ -120,10 +120,10 @@ exports[`HeroCard - with Links 1`] = `
     </a>
   </div>
   <div
-    className="css-1spkmsc-StyledLink e1s1ktis4"
+    className="css-1spkmsc-StyledLink e1s1ktis1"
   >
     <a
-      className="css-uc36zz-StyledAnchor e1s1ktis5"
+      className="css-uc36zz-StyledAnchor e1s1ktis0"
       href="https://www.dwolla.com"
       target="_blank"
     >
