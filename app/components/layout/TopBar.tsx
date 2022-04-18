@@ -184,9 +184,8 @@ export default function TopBar({
   links,
   onHamburgerClick,
 }: TopBarProps) {
-  const { selectedLanguage, setSelectedLanguage, languageOptions } = useContext(
-    LanguageContext
-  );
+  const { selectedLanguage, setSelectedLanguage, languageOptions } =
+    useContext(LanguageContext);
 
   const [isFocused, setIsFocused] = useState(false);
 
