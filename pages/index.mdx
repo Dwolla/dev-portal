@@ -1,9 +1,9 @@
 ---
-title: "Integrate with Dwolla and move money smarter."
-description: "From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
+title: "Tools for Integrating a Payment API"
+description: "Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!"
 meta:
-  title: "Dwolla Payments Platform | Integrate with Dwolla and move money smarter."
-  description: "From ideation, to implementation, and beyond, the Dwolla API is your connection to the US banking system."
+  title: Tools for Integrating a Payment API | Account to Account Technology | Dwolla API
+  description: Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!
 ---
 
 import Link from "next/link";
@@ -195,32 +195,31 @@ export default function HomePage() {
       <HeroBannerContainer>
         <HeroCardWrapper>
           <HeroCard
-            topic="Save development time with Drop-in Components"
-            description="Integrate with the Dwolla API with just a few lines of code"
+            topic="Tools for Getting Started With the Dwolla API"
+            description="Your starting point for integrating an account-to-account payment solution."
             button={{
-              text: "View Walkthrough Guide",
+              text: "Drop-in Components",
               link: {
                 href:
-                  "https://developers.dwolla.com/guides/drop-ins#building-with-drop-in-components",
-                external: false,
+                  "https://developers.dwolla.com/concepts/drop-in-components",
+                external: true,
               },
             }}
             links={[
               {
-                text: "Technical Documentation",
-                href:
-                  "https://developers.dwolla.com/api-reference/drop-in-components",
+                text: "Generate an Access Token",
+                href: "https://developers.dwolla.com/guides/auth",
                 external: true,
               },
               {
-                text: "Learn about the components",
-                href:
-                  "https://developers.dwolla.com/concepts/drop-in-components#ui-components-library",
-                external: false,
+                text: "Test in the Sandbox",
+                href: "https://developers.dwolla.com/guides/sandbox",
+                external: true,
               },
               {
-                text: "Drop-in Examples",
-                href: "https://github.com/Dwolla/drop-ins-examples",
+                text: "Transfer Lifecycle",
+                href:
+                  "https://developers.dwolla.com/concepts/transfer-lifecycle",
                 external: true,
               },
             ]}
@@ -240,20 +239,20 @@ export default function HomePage() {
           <CardGrid variant="home">
             <Card
               icon={apiReferenceIcon}
-              topic="API Reference"
-              description="View details for all of Dwolla’s API endpoints with a complete reference."
+              topic="API Reference Docs"
+              description="Technical documentation for using Dwolla’s API to connect your software to the banking infrastructure."
               link={{ href: "/api-reference" }}
             />
             <Card
               icon={guideIcon}
               topic="Guides"
-              description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
+              description="Step-by-step walkthroughs ensure your application is built to best practices."
               link={{ href: "/guides" }}
             />
             <Card
               icon={conceptIcon}
               topic="Concepts"
-              description="Transform your use case to business and functional requirements."
+              description="Understand the fundamental building blocks of integrating with the Dwolla Platform."
               link={{ href: "/concepts" }}
             />
           </CardGrid>
@@ -262,13 +261,13 @@ export default function HomePage() {
           <ExternalCTA
             icon={developerCommunityIcon}
             title="Developer Support"
-            description="Interact with the developer community and Dwolla developer support to find answers to your technical questions."
+            description="Find answers to your technical questions from a community of developers and Dwolla engineers."
             href="https://discuss.dwolla.com/"
           />
           <ExternalCTA
             icon={demoAppIcon}
             title="Interactive Demo"
-            description="Check out this interactive demo to learn about how Dwolla can be integrated into your platform."
+            description="Visualize how the Dwolla API can be integrated into your platform."
             href="https://demo.dwolla.com/"
           />
         </CardGrid>
@@ -291,10 +290,10 @@ export default function HomePage() {
         <IFrame hubSpotFormId="4337f9a2-cd52-442f-89c8-d382704dedae" />
       </ContentContainer>
       <FooterCTA
-        topic="Test in the Sandbox for free today."
+        topic="Start Testing in the Dwolla Sandbox"
         description="Use sandbox environment to test API requests."
         button={{
-          text: "Get a Sandbox Account",
+          text: "Create a Sandbox Account",
           link: {
             href: "https://accounts-sandbox.dwolla.com/sign-up",
             external: true,
