@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  dev_portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dwolla_dev_portal
+    image: dwolla/dev-portal:0.1.0
+    restart: always
+    ports:
+      - "3000:3000/tcp"
+    volumes:
+      - ./:/app
+      - /app/.mdx-data
+      - /app/.next
+      - /app/node_modules

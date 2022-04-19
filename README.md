@@ -2,11 +2,47 @@
 
 ## Getting Started
 
+If you choose to get started without Docker, ensure that you are building `dev-portal` with Node v16. Otherwise, to use Docker, 
+refer to the following section, [Using Docker](#using-docker).
+
 ```bash
 yarn install
 yarn dev
 open http://localhost:3000
 open dev-portal.code-workspace
+```
+
+## Using Docker
+
+Ensure [Docker](https://docs.docker.com/get-docker/) is installed on your machine before following these steps. To use Docker with 
+this repository, you can either use Docker's CLI or Docker Compose, both of which are defined in more detail below:
+
+### Docker CLI
+
+```bash
+# Build Docker Container
+$ docker build -t dwolla/dev-portal:0.1.0 .
+
+# Start Docker Container
+$ docker run [-d] -p 3000:3000 \
+  -v "$(pwd)"/:/app \
+  -v /app/.mdx-data \
+  -v /app/.next \
+  -v /app/node_modules \
+  dwolla/dev-portal:0.1.0
+```
+
+### Docker Compose
+
+```bash
+# Build Docker Container
+$ docker-compose build
+
+# Start Docker Container
+$ docker-compose up [-d]
+
+# Destroy Docker Container
+$ docker-compose down
 ```
 
 ## Commands
