@@ -339,3 +339,73 @@ Webhooks notification events will be processed in the same sequence as an ACH tr
 | customer_funding_source_rtp_disabled | Sent when an RTP eligible funding source is later identified as RTP ineligible |
 
 _\*Based on responses from TCH and Cross River Bank, we will provide more descriptive failure reasons._
+
+### Error Codes
+
+Error codes provide the reason a message did not complete and can be found on the payment `result.code`. The `result.code` will be OK if the payment was successfully sent/received.
+
+| Code | Description                                                                                                |
+| ---- | ---------------------------------------------------------------------------------------------------------- |
+| 650  | Cannot parse the message                                                                                   |
+| 690  | Signature mismatch or verification error                                                                   |
+| BLKD | Payment has been blocked                                                                                   |
+| AC02 | Debtor account is invalid                                                                                  |
+| AC03 | Creditor account is invalid                                                                                |
+| AC04 | Account closed                                                                                             |
+| AC06 | Account is blocked                                                                                         |
+| AC07 | Creditor account closed                                                                                    |
+| AC10 | Debtor account currency is invalid or missing                                                              |
+| AC11 | Creditor account currency is invalid or missing                                                            |
+| AC13 | Debtor account type missing or invalid                                                                     |
+| AC14 | Creditor account type missing or invalid                                                                   |
+| AG01 | Transaction is forbidden on this type of account                                                           |
+| AG03 | Transaction type is not supported/authorization on this account                                            |
+| AGNT | Incorrect Agent                                                                                            |
+| AM02 | Specific transaction/message amount is greater than allowed maximum                                        |
+| AM04 | Amount of funds available to cover specified message amount is insufficient                                |
+| AM09 | Amount received is not the amount agreed or expected                                                       |
+| AM11 | Transaction currency is invalid or missing                                                                 |
+| AM12 | Amount is invalid or missing                                                                               |
+| AM13 | Transaction amount exceeds limits set by clearing system                                                   |
+| AM14 | Transaction amount exceeds limits agreed between bank and client                                           |
+| BE04 | Specification of creditor's address, which is required for payment, is missing/not correct                 |
+| BE06 | End customer specified is not known at associated Sort/National Bank Code or no longer exists in the books |
+| BE07 | Specification of debtor's address, which is required for payment, is missing/not correct                   |
+| BE10 | Debtor country code is missing or invalid                                                                  |
+| BE11 | Creditor country code is missing or invalid                                                                |
+| BE13 | Country code of debtor's residence is missing or invalid                                                   |
+| BE14 | Country code of creditor's residence is missing or invalid                                                 |
+| BE16 | Debtor identification code missing or invalid                                                              |
+| BE17 | Creditor identification code missing or invalid                                                            |
+| DS24 | Waiting time expired due to incomplete order                                                               |
+| DT04 | Future date is not supported                                                                               |
+| DUPL | Payment is a duplicate of another payment                                                                  |
+| DS0H | Signer is not allowed to sign for this account                                                             |
+| FF02 | Syntax error reason is provided as narrative information in the additional reason information              |
+| FF03 | Invalid Payment Type Information                                                                           |
+| FF08 | End to End ID is missing or invalid                                                                        |
+| MD07 | End customer is deceased                                                                                   |
+| NARR | Reason is provided as narrative information in the additional reason information                           |
+| RC01 | Bank identifier code specified in the message has an incorrect format                                      |
+| RC02 | Bank identified is invalid or missing                                                                      |
+| RC03 | Debtor FI identified is invalid or missing                                                                 |
+| RC04 | Creditor FI identified is invalid or missing                                                               |
+| TM01 | Invalid Cut Off Time                                                                                       |
+| TK01 | Invalid Token                                                                                              |
+| TK02 | Sender Token Not Found                                                                                     |
+| TK03 | Receiver Token Not Found                                                                                   |
+| TK04 | Token Expired                                                                                              |
+| TK05 | Token Found with Counterparty Mismatch                                                                     |
+| TK06 | Token Found with Value Limit Rule Violation                                                                |
+| TK07 | Single Use Token Already Used                                                                              |
+| TK08 | Token Suspended                                                                                            |
+| NOAT | Receiving Customer Account does not support/accept this message type                                       |
+| OK   | Completed                                                                                                  |
+| 1100 | Any Other Reasons Reason is provided as narrative in the additional information                            |
+| 9909 | Central Switch (RTP) system malfunction                                                                    |
+| 9910 | Instructed Agent signed-off                                                                                |
+| 9912 | Recipient connection is not available                                                                      |
+| 9934 | Instructing Agent signed-off                                                                               |
+| 9946 | Instructing Agent suspended                                                                                |
+| 9947 | Instructed Agent suspended                                                                                 |
+| 9948 | Central Switch (RTP) service is suspended                                                                  |
