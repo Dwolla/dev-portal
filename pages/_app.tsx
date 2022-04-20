@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import App, { createUrl } from "next/app";
+import App, { AppProps } from "next/app";
 import useSWR from "swr";
 import TagManager from "react-gtm-module";
 import Layout from "../app/components/layout/Layout";
@@ -143,16 +143,14 @@ const LANGUAGE_OPTIONS = [
   { value: "bash", label: "Raw" },
 ];
 
-function AppWithHooks({ router, Component, pageProps }: any) {
+function AppWithHooks({ router, Component, pageProps }: AppProps) {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
-
-  const url = createUrl(router);
 
   const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
     refreshInterval: 60000,
   }).data?.status;
 
-  useTrackPageViews(url.pathname);
+  useTrackPageViews(router.pathname);
 
   return (
     <AnchorsProvider>
@@ -172,7 +170,7 @@ function AppWithHooks({ router, Component, pageProps }: any) {
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
         >
-          <Component {...pageProps} url={url} />
+          <Component {...pageProps} url={router.pathname} />
         </Layout>
       </LanguageContext.Provider>
     </AnchorsProvider>
@@ -181,7 +179,7 @@ function AppWithHooks({ router, Component, pageProps }: any) {
 
 export default class MyApp extends App {
   render() {
-    const { router, Component, pageProps } = this.props;
+    const { router, Component, pageProps }: AppProps = this.props;
     return (
       <>
         <GoogleTagManager />

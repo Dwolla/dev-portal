@@ -1,11 +1,10 @@
 import {
-  createContext,
-  useState,
-  useEffect,
-  useContext,
   Children,
   cloneElement,
-  useLayoutEffect,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
 } from "react";
 import { useRouter } from "next/router";
 import GithubSlugger from "github-slugger";
@@ -95,7 +94,7 @@ export function AnchorsSetter(props) {
     };
   }, [router?.pathname]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let raf: number;
     const anchorEls = anchors.map((a: Anchor) => document.getElementById(a.id));
 
@@ -131,7 +130,7 @@ export function AnchorsSetter(props) {
     };
   }, [router?.pathname]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (activeAnchor) {
       window.history.replaceState(
         null,
