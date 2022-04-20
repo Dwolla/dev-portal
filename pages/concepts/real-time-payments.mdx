@@ -203,12 +203,10 @@ transfer.headers['location'] # => 'https://api-sandbox.dwolla.com/transfers/636d
 var requestBody = {
   _links: {
     source: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
+      href: "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
     },
     destination: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
+      href: "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
     },
   },
   amount: {
@@ -342,7 +340,7 @@ _\*Based on responses from TCH and Cross River Bank, we will provide more descri
 
 ### Error Codes
 
-Error codes provide the reason a message did not complete and can be found on the payment `result.code`. The `result.code` will be OK if the payment was successfully sent/received.
+Error codes provide the reason a message did not complete and can be found on the payment `Result.Code`. The `Result.Code` will be OK if the payment was successfully sent/received.
 
 | Code | Description                                                                                                |
 | ---- | ---------------------------------------------------------------------------------------------------------- |
@@ -359,7 +357,7 @@ Error codes provide the reason a message did not complete and can be found on th
 | AC13 | Debtor account type missing or invalid                                                                     |
 | AC14 | Creditor account type missing or invalid                                                                   |
 | AG01 | Transaction is forbidden on this type of account                                                           |
-| AG03 | Transaction type is not supported/authorization on this account                                            |
+| AG03 | Transaction type is not supported/authorized on this account                                               |
 | AGNT | Incorrect Agent                                                                                            |
 | AM02 | Specific transaction/message amount is greater than allowed maximum                                        |
 | AM04 | Amount of funds available to cover specified message amount is insufficient                                |
@@ -388,8 +386,8 @@ Error codes provide the reason a message did not complete and can be found on th
 | NARR | Reason is provided as narrative information in the additional reason information                           |
 | RC01 | Bank identifier code specified in the message has an incorrect format                                      |
 | RC02 | Bank identified is invalid or missing                                                                      |
-| RC03 | Debtor FI identified is invalid or missing                                                                 |
-| RC04 | Creditor FI identified is invalid or missing                                                               |
+| RC03 | Debtor FI identifier is invalid or missing                                                                 |
+| RC04 | Creditor FI identifier is invalid or missing                                                               |
 | TM01 | Invalid Cut Off Time                                                                                       |
 | TK01 | Invalid Token                                                                                              |
 | TK02 | Sender Token Not Found                                                                                     |
