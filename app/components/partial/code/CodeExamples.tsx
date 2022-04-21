@@ -65,9 +65,8 @@ export default function CodeExamples({
   title?: string;
   children: JSX.Element | JSX.Element[];
 }) {
-  const examples: CodeExampleProps[] = Children.toArray(children).map(
-    toCodeExampleProps
-  );
+  const examples: CodeExampleProps[] =
+    Children.toArray(children).map(toCodeExampleProps);
 
   const ctx = useContext(LanguageContext);
 
