@@ -3,10 +3,10 @@
 exports[`multiple examples 1`] = `
 <div>
   <div
-    className="code-block-bar-default  css-vlw6pb-CodeBlockBar e112hlxu2"
+    className="code-block-bar-default  css-gg0qww-CodeBlockBar e112hlxu5"
   >
     <div
-      className="css-1t0sur2-BarItems e112hlxu4"
+      className="css-1tafalo-BarItems e112hlxu3"
     >
       <div
         className=" css-k377xg-container"
@@ -59,7 +59,7 @@ exports[`multiple examples 1`] = `
         </div>
       </div>
       <button
-        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        className="css-1al8qxm-CodeBlockButton e112hlxu2"
         disabled={false}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -71,7 +71,7 @@ exports[`multiple examples 1`] = `
       </button>
       <button
         autoFocus={false}
-        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        className="css-1al8qxm-CodeBlockButton e112hlxu2"
         onClick={[Function]}
         onKeyDown={[Function]}
         type="button"
@@ -85,7 +85,7 @@ exports[`multiple examples 1`] = `
     </div>
   </div>
   <div
-    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
+    className="code-block-default css-11rgbtc-CodeBlockContent e112hlxu0"
   >
     <pre>
       <code
@@ -105,18 +105,18 @@ exports[`multiple examples 1`] = `
 exports[`single example 1`] = `
 <div>
   <div
-    className="code-block-bar-default  css-vlw6pb-CodeBlockBar e112hlxu2"
+    className="code-block-bar-default  css-gg0qww-CodeBlockBar e112hlxu5"
   >
     <div
-      className="css-1t0sur2-BarItems e112hlxu4"
+      className="css-1tafalo-BarItems e112hlxu3"
     >
       <div
-        className="css-1vovl9e-BarText e112hlxu6"
+        className="css-1vovl9e-BarText e112hlxu1"
       >
         javascript
       </div>
       <button
-        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        className="css-1al8qxm-CodeBlockButton e112hlxu2"
         disabled={false}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -128,7 +128,7 @@ exports[`single example 1`] = `
       </button>
       <button
         autoFocus={false}
-        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        className="css-1al8qxm-CodeBlockButton e112hlxu2"
         onClick={[Function]}
         onKeyDown={[Function]}
         type="button"
@@ -142,7 +142,7 @@ exports[`single example 1`] = `
     </div>
   </div>
   <div
-    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
+    className="code-block-default css-11rgbtc-CodeBlockContent e112hlxu0"
   >
     <pre>
       <code
@@ -162,23 +162,23 @@ exports[`single example 1`] = `
 exports[`single example with title 1`] = `
 <div>
   <div
-    className="code-block-bar-default title css-vlw6pb-CodeBlockBar e112hlxu2"
+    className="code-block-bar-default title css-gg0qww-CodeBlockBar e112hlxu5"
   >
     <div
-      className="css-1v0t4mu-BarTitle e112hlxu3"
+      className="css-1v0t4mu-BarTitle e112hlxu4"
     >
       Title goes here
     </div>
     <div
-      className="css-1t0sur2-BarItems e112hlxu4"
+      className="css-1tafalo-BarItems e112hlxu3"
     >
       <div
-        className="css-1vovl9e-BarText e112hlxu6"
+        className="css-1vovl9e-BarText e112hlxu1"
       >
         javascript
       </div>
       <button
-        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        className="css-1al8qxm-CodeBlockButton e112hlxu2"
         disabled={false}
         onClick={[Function]}
         onKeyDown={[Function]}
@@ -190,7 +190,7 @@ exports[`single example with title 1`] = `
       </button>
       <button
         autoFocus={false}
-        className="css-5uu5vc-CodeBlockButton e112hlxu5"
+        className="css-1al8qxm-CodeBlockButton e112hlxu2"
         onClick={[Function]}
         onKeyDown={[Function]}
         type="button"
@@ -204,7 +204,7 @@ exports[`single example with title 1`] = `
     </div>
   </div>
   <div
-    className="code-block-default css-1wvz7mj-CodeBlockContent e112hlxu7"
+    className="code-block-default css-11rgbtc-CodeBlockContent e112hlxu0"
   >
     <pre>
       <code

@@ -2,19 +2,19 @@
 
 exports[`TransferWorkflow 1`] = `
 <div
-  className="css-1bvvi3d-StyledContainer evg26n40"
+  className="css-1bvvi3d-StyledContainer evg26n46"
 >
   <div
-    className="css-vrkopy-StyledTimelineContainer evg26n41"
+    className="css-vrkopy-StyledTimelineContainer evg26n45"
   >
     <div
-      className="css-urymb5-StyledHeader evg26n42"
+      className="css-urymb5-StyledHeader evg26n44"
     >
       Select a funds flow
     </div>
   </div>
   <div
-    className="css-1pis8ym-StyledContainer e7p8rnk0"
+    className="css-1pis8ym-StyledContainer e7p8rnk2"
   >
     <div
       className="css-kpql9x-StyledTitle e7p8rnk1"
@@ -22,7 +22,7 @@ exports[`TransferWorkflow 1`] = `
       Sender:
     </div>
     <div
-      className="css-17bdsbe-StyledType e7p8rnk2"
+      className="css-17bdsbe-StyledType e7p8rnk0"
     >
       Sender Type
     </div>
@@ -115,7 +115,7 @@ exports[`TransferWorkflow 1`] = `
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>
@@ -123,7 +123,7 @@ exports[`TransferWorkflow 1`] = `
       </div>
     </div>
     <div
-      className="css-17bdsbe-StyledType e7p8rnk2"
+      className="css-17bdsbe-StyledType e7p8rnk0"
     >
       Sender Source
     </div>
@@ -216,7 +216,7 @@ exports[`TransferWorkflow 1`] = `
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>
@@ -229,7 +229,7 @@ exports[`TransferWorkflow 1`] = `
       Receiver:
     </div>
     <div
-      className="css-17bdsbe-StyledType e7p8rnk2"
+      className="css-17bdsbe-StyledType e7p8rnk0"
     >
       Receiver Type
     </div>
@@ -322,7 +322,7 @@ exports[`TransferWorkflow 1`] = `
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>
@@ -330,7 +330,7 @@ exports[`TransferWorkflow 1`] = `
       </div>
     </div>
     <div
-      className="css-17bdsbe-StyledType e7p8rnk2"
+      className="css-17bdsbe-StyledType e7p8rnk0"
     >
       Receiver Destination
     </div>
@@ -423,7 +423,7 @@ exports[`TransferWorkflow 1`] = `
           >
             <img
               alt=""
-              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+              className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
               src="test-image-stub"
             />
           </div>
@@ -432,10 +432,10 @@ exports[`TransferWorkflow 1`] = `
     </div>
   </div>
   <div
-    className="css-1sz0iw5-StyledBottomContainer evg26n46"
+    className="css-1sz0iw5-StyledBottomContainer evg26n40"
   >
     <button
-      className="primary standard disabled css-1m5tpkq-StyledButton-buttonStyles-buttonStyles ek3ainu0"
+      className="primary standard disabled css-jn0a30-StyledButton-buttonStyles-buttonStyles ek3ainu1"
       disabled={true}
       onClick={[Function]}
       type="button"

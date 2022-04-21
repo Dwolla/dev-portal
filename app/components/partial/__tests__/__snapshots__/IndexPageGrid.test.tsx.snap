@@ -3,35 +3,35 @@
 exports[`IndexPageGrid 1`] = `
 Array [
   <div
-    className="mdx-style-override css-h63dfz-BannerWrap er14vms0"
+    className="mdx-style-override css-h63dfz-BannerWrap er14vms1"
   >
     <div
-      className="filters default css-qc8b1t-StyledBanner e1el1emo0"
+      className="filters default css-qc8b1t-StyledBanner e1el1emo5"
     >
       <div
-        className="css-2ux9ul-BannerContentWrap e1el1emo1"
+        className="css-1trg8gg-BannerContentWrap e1el1emo4"
       >
         <img
           alt=""
-          className="css-dt0gsi-StyledIcon e1el1emo2"
+          className="css-1fky7ck-StyledIcon e1el1emo3"
           src="guides-icon.svg"
         />
         <div
-          className="css-izwvz-StyledTopic e1el1emo3"
+          className="css-izwvz-StyledTopic e1el1emo2"
         >
           Guides
         </div>
         <div
-          className="css-wbadgb-StyledDescription e1el1emo4"
+          className="css-wbadgb-StyledDescription e1el1emo1"
         >
           Step-by-step instructions to get you set up in the Dwolla API
         </div>
       </div>
       <div
-        className="css-1wmc1h7-StyledFilter e1el1emo5"
+        className="css-1r5qd2q-StyledFilter e1el1emo0"
       >
         <ul
-          className="css-ckmwo8-TabsContainerStyle ercic660"
+          className="css-ckmwo8-TabsContainerStyle ercic662"
         >
           <li
             className="is-active css-y9jj0p-TabStyle ercic661"
@@ -51,7 +51,7 @@ Array [
           </li>
         </ul>
         <div
-          className="css-18difvw-SelectWrapper ercic662"
+          className="css-18difvw-SelectWrapper ercic660"
         >
           <div
             className=" css-k377xg-container"
@@ -97,7 +97,7 @@ Array [
                 >
                   <img
                     alt=""
-                    className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc0"
+                    className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
                     src="test-image-stub"
                   />
                 </div>
@@ -109,30 +109,30 @@ Array [
     </div>
   </div>,
   <div
-    className="css-1ujvi4q-CardGridWrap er14vms1"
+    className="css-9gb00l-CardGridWrap er14vms0"
   >
     <div
-      className="css-6hqskf-StyledGrid e1rcoxlj0"
+      className="css-6hqskf-StyledGrid e1rcoxlj1"
     >
       <div
-        className="css-191vh89-CardWrapper e1rcoxlj1"
+        className="css-17j21yk-CardWrapper e1rcoxlj0"
       >
         <a
-          className="css-kunpmx-StyledLink ejy78ug1"
+          className="css-2om2dx-StyledLink ejy78ug6"
           href="/guides/send-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className=" css-124xk26-CardStyle ejy78ug0"
+            className=" css-dgsc3e-CardStyle ejy78ug7"
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon ejy78ug2"
+              className=" css-142sfdf-StyledIcon ejy78ug5"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-vz2qld-BadgeStyle ejy78ug3"
+              className="css-1hyoydr-BadgeStyle ejy78ug4"
             >
               <div
                 className="css-1dspmwm-StyledBadge e1sxbycx0"
@@ -141,12 +141,12 @@ Array [
               </div>
             </div>
             <div
-              className=" css-zefd21-TopicStyle ejy78ug6"
+              className=" css-zefd21-TopicStyle ejy78ug1"
             >
               Send Money to your Users
             </div>
             <div
-              className=" css-mk6kj1-DescriptionStyle ejy78ug7"
+              className=" css-mk6kj1-DescriptionStyle ejy78ug0"
             >
               Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.
             </div>
@@ -154,24 +154,24 @@ Array [
         </a>
       </div>
       <div
-        className="css-191vh89-CardWrapper e1rcoxlj1"
+        className="css-17j21yk-CardWrapper e1rcoxlj0"
       >
         <a
-          className="css-kunpmx-StyledLink ejy78ug1"
+          className="css-2om2dx-StyledLink ejy78ug6"
           href="/guides/receive-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className=" css-124xk26-CardStyle ejy78ug0"
+            className=" css-dgsc3e-CardStyle ejy78ug7"
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon ejy78ug2"
+              className=" css-142sfdf-StyledIcon ejy78ug5"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-vz2qld-BadgeStyle ejy78ug3"
+              className="css-1hyoydr-BadgeStyle ejy78ug4"
             >
               <div
                 className="css-1dspmwm-StyledBadge e1sxbycx0"
@@ -180,12 +180,12 @@ Array [
               </div>
             </div>
             <div
-              className=" css-zefd21-TopicStyle ejy78ug6"
+              className=" css-zefd21-TopicStyle ejy78ug1"
             >
               Receive Money from your Users
             </div>
             <div
-              className=" css-mk6kj1-DescriptionStyle ejy78ug7"
+              className=" css-mk6kj1-DescriptionStyle ejy78ug0"
             >
               Accept ACH transfers. Covers both Access API and Transfer integrations.
             </div>
@@ -193,24 +193,24 @@ Array [
         </a>
       </div>
       <div
-        className="css-191vh89-CardWrapper e1rcoxlj1"
+        className="css-17j21yk-CardWrapper e1rcoxlj0"
       >
         <a
-          className="css-kunpmx-StyledLink ejy78ug1"
+          className="css-2om2dx-StyledLink ejy78ug6"
           href="/guides/transfer-money-between-users/obtain-access-token"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className=" css-124xk26-CardStyle ejy78ug0"
+            className=" css-dgsc3e-CardStyle ejy78ug7"
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon ejy78ug2"
+              className=" css-142sfdf-StyledIcon ejy78ug5"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-vz2qld-BadgeStyle ejy78ug3"
+              className="css-1hyoydr-BadgeStyle ejy78ug4"
             >
               <div
                 className="css-1dspmwm-StyledBadge e1sxbycx0"
@@ -219,12 +219,12 @@ Array [
               </div>
             </div>
             <div
-              className=" css-zefd21-TopicStyle ejy78ug6"
+              className=" css-zefd21-TopicStyle ejy78ug1"
             >
               Transfer Money Between Users
             </div>
             <div
-              className=" css-mk6kj1-DescriptionStyle ejy78ug7"
+              className=" css-mk6kj1-DescriptionStyle ejy78ug0"
             >
               Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments. Features Access API integration.
             </div>

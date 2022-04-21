@@ -2,11 +2,11 @@
 
 exports[`Pagination next 1`] = `
 <div
-  className="next css-88mn7o-Container erl4udx0"
+  className="next css-88mn7o-Container erl4udx4"
 >
   <a
-    className="css-83egvd-StyledAnchor erl4udx1"
-    href="#"
+    className="css-n6yx7v-StyledAnchor erl4udx3"
+    href="/#"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
@@ -14,12 +14,12 @@ exports[`Pagination next 1`] = `
       className="css-1s13nga-Card erl4udx2"
     >
       <div
-        className="css-17qbf5t-ArrowDiv erl4udx3"
+        className="css-17qbf5t-ArrowDiv erl4udx1"
       >
         NEXT
         <img
           alt="Next"
-          className="css-a41acm-ArrowIcon erl4udx4"
+          className="css-1w05nfw-ArrowIcon erl4udx0"
           src="test-image-stub"
         />
       </div>
@@ -33,11 +33,11 @@ exports[`Pagination next 1`] = `
 
 exports[`Pagination previous 1`] = `
 <div
-  className="previous css-88mn7o-Container erl4udx0"
+  className="previous css-88mn7o-Container erl4udx4"
 >
   <a
-    className="css-83egvd-StyledAnchor erl4udx1"
-    href="#"
+    className="css-n6yx7v-StyledAnchor erl4udx3"
+    href="/#"
     onClick={[Function]}
     onMouseEnter={[Function]}
   >
@@ -45,11 +45,11 @@ exports[`Pagination previous 1`] = `
       className="css-1s13nga-Card erl4udx2"
     >
       <div
-        className="css-17qbf5t-ArrowDiv erl4udx3"
+        className="css-17qbf5t-ArrowDiv erl4udx1"
       >
         <img
           alt="Previous"
-          className="css-a41acm-ArrowIcon erl4udx4"
+          className="css-1w05nfw-ArrowIcon erl4udx0"
           src="test-image-stub"
         />
         PREVIOUS

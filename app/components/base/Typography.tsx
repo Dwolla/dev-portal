@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import styled from "@emotion/styled";
-import { css, jsx } from "@emotion/core";
+import { css } from "@emotion/react";
 import classnames from "../../modules/classnames";
 import { POPPINS, ROBOTO, MONACO } from "../typography";
 import {

@@ -31,6 +31,7 @@ import {
   AnchoredH5,
   AnchoredH6,
 } from "../app/components/base/AnchoredHeading";
+import { Props } from "./types";
 
 const MDXContainer = styled.div`
   display: flex;
@@ -40,11 +41,6 @@ const ContentWrapper = styled.div`
   min-width: 70%;
   flex-grow: 1;
 `;
-
-type Props = {
-  children: any;
-  frontMatter: any;
-};
 
 const MDX_COMPONENTS = {
   AlertBar,
@@ -108,11 +104,8 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
   );
 }
 
-export default (frontMatter) => {
-  // eslint-disable-next-line func-names
-  return function ({ children: content }: { children: any }) {
-    return (
-      <DefaultMDXWrapper frontMatter={frontMatter}>{content}</DefaultMDXWrapper>
-    );
-  };
-};
+export default function MainLayout({ children, frontMatter }: Props) {
+  return (
+    <DefaultMDXWrapper frontMatter={frontMatter}>{children}</DefaultMDXWrapper>
+  );
+}

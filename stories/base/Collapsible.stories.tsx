@@ -34,8 +34,7 @@ const Answer1 = (
       { id: "2", text: "Send funds - No" },
       {
         id: "3",
-        text:
-          "Receive funds - Yes - Note that funds will only process to their balance and the transfer will stay pending until the Customer has been verified. Add and verify a bank funding source - Yes",
+        text: "Receive funds - Yes - Note that funds will only process to their balance and the transfer will stay pending until the Customer has been verified. Add and verify a bank funding source - Yes",
       },
       { id: "4", text: "Add and verify a bank funding source - Yes" },
     ]}

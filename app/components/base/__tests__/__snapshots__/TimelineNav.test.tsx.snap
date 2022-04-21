@@ -10,67 +10,67 @@ exports[`TimelineNav 1`] = `
   }
 >
   <div
-    className="css-b3ypt0-StyledDiv e92fyip0"
+    className="css-ec7nrl-StyledDiv e92fyip3"
   >
     <div
-      className="active css-zr8nux-StyledStep e92fyip3"
+      className="active css-zr8nux-StyledStep e92fyip0"
     >
       <div
-        className="active css-e0ruun-StyledStepNum e92fyip1"
+        className="active css-e0ruun-StyledStepNum e92fyip2"
         id={0}
       >
         0
       </div>
       <div
-        className="active css-1g7t0p2-StyledText e92fyip2"
+        className="active css-1g7t0p2-StyledText e92fyip1"
       >
         Create Transfer
       </div>
     </div>
     <div
-      className="css-zr8nux-StyledStep e92fyip3"
+      className="css-zr8nux-StyledStep e92fyip0"
     >
       <div
-        className="css-e0ruun-StyledStepNum e92fyip1"
+        className="css-e0ruun-StyledStepNum e92fyip2"
         id={1}
         onClick={[Function]}
       >
         1
       </div>
       <div
-        className="css-1g7t0p2-StyledText e92fyip2"
+        className="css-1g7t0p2-StyledText e92fyip1"
       >
         First Leg
       </div>
     </div>
     <div
-      className="css-zr8nux-StyledStep e92fyip3"
+      className="css-zr8nux-StyledStep e92fyip0"
     >
       <div
-        className="css-e0ruun-StyledStepNum e92fyip1"
+        className="css-e0ruun-StyledStepNum e92fyip2"
         id={2}
         onClick={[Function]}
       >
         2
       </div>
       <div
-        className="css-1g7t0p2-StyledText e92fyip2"
+        className="css-1g7t0p2-StyledText e92fyip1"
       >
         Second Leg
       </div>
     </div>
     <div
-      className="css-zr8nux-StyledStep e92fyip3"
+      className="css-zr8nux-StyledStep e92fyip0"
     >
       <div
-        className="css-e0ruun-StyledStepNum e92fyip1"
+        className="css-e0ruun-StyledStepNum e92fyip2"
         id={3}
         onClick={[Function]}
       >
         3
       </div>
       <div
-        className="css-1g7t0p2-StyledText e92fyip2"
+        className="css-1g7t0p2-StyledText e92fyip1"
       >
         Third Leg
       </div>

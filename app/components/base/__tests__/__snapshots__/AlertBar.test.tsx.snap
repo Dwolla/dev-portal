@@ -2,10 +2,10 @@
 
 exports[`AlertBar - info 1`] = `
 <div
-  className="info css-1lx65zb-StyledAlertBar e1qi2q2u0"
+  className="info css-1lx65zb-StyledAlertBar e1qi2q2u2"
 >
   <div
-    className="css-113bhac-ImageWrapper e1qi2q2u1"
+    className="css-12td5vw-ImageWrapper e1qi2q2u1"
   >
     <img
       alt="Info"
@@ -13,7 +13,7 @@ exports[`AlertBar - info 1`] = `
     />
   </div>
   <div
-    className="css-5sjqr3-TextWrapper e1qi2q2u2"
+    className="css-5sjqr3-TextWrapper e1qi2q2u0"
   >
     Here is an info. The file must be either a .jpg, .jpeg, .png, or .pdf. Files must be no larger than 10MB in size.
   </div>
@@ -22,10 +22,10 @@ exports[`AlertBar - info 1`] = `
 
 exports[`AlertBar - warning 1`] = `
 <div
-  className="warning css-1lx65zb-StyledAlertBar e1qi2q2u0"
+  className="warning css-1lx65zb-StyledAlertBar e1qi2q2u2"
 >
   <div
-    className="css-113bhac-ImageWrapper e1qi2q2u1"
+    className="css-12td5vw-ImageWrapper e1qi2q2u1"
   >
     <img
       alt="Warning"
@@ -33,7 +33,7 @@ exports[`AlertBar - warning 1`] = `
     />
   </div>
   <div
-    className="css-5sjqr3-TextWrapper e1qi2q2u2"
+    className="css-5sjqr3-TextWrapper e1qi2q2u0"
   >
     This is a warning! You need to gather 
     <strong>
