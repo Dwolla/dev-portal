@@ -58,7 +58,7 @@ const content = [
   },
 ];
 
-storiesOf("base|TabBarPanel", module).add("Default", () => (
+storiesOf("base/TabBarPanel", module).add("Default", () => (
   <Container>
     <TabBarPanel tabs={content} />
   </Container>

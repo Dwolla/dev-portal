@@ -17,7 +17,7 @@ function MockMDXCreateElement({
   return createElement(originalType, props);
 }
 
-storiesOf("partial|CodeExamples", module)
+storiesOf("partial/CodeExamples", module)
   .addDecorator((story) => (
     <LanguageContext.Provider
       value={{

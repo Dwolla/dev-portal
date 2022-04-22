@@ -37,7 +37,7 @@ function LangaugeContextAccessor() {
   return <h2>Selected Language: {selectedLanguage.label}</h2>;
 }
 
-storiesOf("layout|TopBar", module)
+storiesOf("layout/TopBar", module)
   .addDecorator(LanguageContextDecorator)
   .add("default", () => (
     <TopBar

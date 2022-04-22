@@ -76,7 +76,7 @@ const Answer4 = (
   </>
 );
 
-storiesOf("base|Collapsible", module)
+storiesOf("base/Collapsible", module)
   .add("default", () => (
     <ParentDiv>
       <Collapsible triggerText={Question1}>{Answer1}</Collapsible>

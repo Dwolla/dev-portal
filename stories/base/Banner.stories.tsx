@@ -20,7 +20,7 @@ const TABS = [
   { value: "features", label: "FEATURES" },
 ];
 
-storiesOf("base|Banner", module)
+storiesOf("base/Banner", module)
   .add("default", () => (
     <Banner
       icon={guideIcon}

@@ -10,7 +10,14 @@ exports[`ImageDownload - with filename 1`] = `
     <div
       className="css-dp88vl-DownloadIconWrapper ehymm3l1"
     >
-      <div>
+      <div
+        className=""
+        style={
+          Object {
+            "display": "inline",
+          }
+        }
+      >
         <a
           download="test-document-upload-success"
           href="test-image-stub"
@@ -41,7 +48,14 @@ exports[`ImageDownload - without filename 1`] = `
     <div
       className="css-dp88vl-DownloadIconWrapper ehymm3l1"
     >
-      <div>
+      <div
+        className=""
+        style={
+          Object {
+            "display": "inline",
+          }
+        }
+      >
         <a
           download=""
           href="test-image-stub"

@@ -2,7 +2,7 @@
 
 exports[`WebhookCodeBlock 1`] = `
 <div
-  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc2"
+  className="webhook css-dzay3o-CollapsibleWrapper e1jgqqjc4"
   onClick={[Function]}
   onKeyDown={[Function]}
   tabIndex={0}
@@ -11,11 +11,11 @@ exports[`WebhookCodeBlock 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1649797328291"
+      aria-controls="collapsible-content-1650648319688"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1649797328291"
+      id="collapsible-trigger-1650648319688"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -23,13 +23,13 @@ exports[`WebhookCodeBlock 1`] = `
       tabIndex={null}
     >
       <div
-        className="webhook css-1ywf0fz-StyledTrigger e1jgqqjc1"
+        className="webhook css-1ywf0fz-StyledTrigger e1jgqqjc3"
       >
         <svg
           width={9}
         />
         <div
-          className="css-gfgg4i-flexStyles"
+          className="css-91lw8d-StyledFlexDiv e1jgqqjc2"
         >
           <div>
             customer_transfer_completed
@@ -42,10 +42,10 @@ exports[`WebhookCodeBlock 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1649797328291"
+      aria-labelledby="collapsible-trigger-1650648319688"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1649797328291"
+      id="collapsible-content-1650648319688"
       onTransitionEnd={[Function]}
       role="region"
       style={

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered/react";
 import Select from "../../app/components/base/select/Select";
 import { PURPLE_DARKER } from "../../app/components/colors";
 
@@ -50,8 +49,7 @@ function SelectWrap({
   );
 }
 
-storiesOf("base|Select", module)
-  .addDecorator(centered)
+storiesOf("base/Select", module)
   .add("autoWidth", () => <SelectWrap autoWidth />)
   .add("inheritWidth", () => <SelectWrap />)
   .add("codeBlockVariant - autoWidth", () => (

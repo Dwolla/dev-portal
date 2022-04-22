@@ -109,7 +109,7 @@ exports[`with Center Align and Badge 1`] = `
 exports[`with Center Align and Link 1`] = `
 <a
   className="css-2om2dx-StyledLink ejy78ug6"
-  href="https://www.dwolla.com/"
+  href="https://www.dwolla.com"
   onClick={[Function]}
   onMouseEnter={[Function]}
   rel="noopener noreferrer"
@@ -147,7 +147,7 @@ exports[`with Center Align and Link 1`] = `
 exports[`with Center Align, Link and Badge 1`] = `
 <a
   className="css-2om2dx-StyledLink ejy78ug6"
-  href="https://www.dwolla.com/"
+  href="https://www.dwolla.com"
   onClick={[Function]}
   onMouseEnter={[Function]}
   rel="noopener noreferrer"
@@ -255,7 +255,7 @@ exports[`with Flex and Badge 1`] = `
 exports[`with Flex, Link and Badge 1`] = `
 <a
   className="css-2om2dx-StyledLink ejy78ug6"
-  href="https://www.dwolla.com/"
+  href="https://www.dwolla.com"
   onClick={[Function]}
   onMouseEnter={[Function]}
   rel="noopener noreferrer"
@@ -306,7 +306,7 @@ exports[`with Flex, Link and Badge 1`] = `
 exports[`with Link 1`] = `
 <a
   className="css-2om2dx-StyledLink ejy78ug6"
-  href="https://www.dwolla.com/"
+  href="https://www.dwolla.com"
   onClick={[Function]}
   onMouseEnter={[Function]}
   rel="noopener noreferrer"
@@ -344,7 +344,7 @@ exports[`with Link 1`] = `
 exports[`with Link and Badge 1`] = `
 <a
   className="css-2om2dx-StyledLink ejy78ug6"
-  href="https://www.dwolla.com/"
+  href="https://www.dwolla.com"
   onClick={[Function]}
   onMouseEnter={[Function]}
   rel="noopener noreferrer"

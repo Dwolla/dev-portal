@@ -1,12 +1,10 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered/react";
 import ImageDownload from "../../app/components/base/ImageDownload";
 import imageFail from "../../assets/images/content-images/test-document-upload-fail.png";
 import imageSuccess from "../../assets/images/content-images/test-document-upload-success.png";
 
-storiesOf("base|ImageDownload", module)
-  .addDecorator(centered)
+storiesOf("base/ImageDownload", module)
   .add("default - without filename", () => (
     <ImageDownload tooltipText="Download">{imageFail}</ImageDownload>
   ))

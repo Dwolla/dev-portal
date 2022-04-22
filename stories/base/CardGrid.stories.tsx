@@ -9,7 +9,7 @@ const Container = styled.div`
   padding: 30px;
 `;
 
-storiesOf("base|CardGrid", module).add("default", () => (
+storiesOf("base/CardGrid", module).add("default", () => (
   <Container>
     <CardGrid variant="default">
       <Card

@@ -15,7 +15,7 @@ const ParentDiv = styled.div`
   justify-content: center;
 `;
 
-storiesOf("base|AlertBar", module)
+storiesOf("base/AlertBar", module)
   .add("Warning", () => (
     <ParentDiv>
       <AlertBar variation="warning">
