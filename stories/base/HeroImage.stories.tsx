@@ -12,7 +12,7 @@ const DivStyle = styled.div`
   }
 `;
 
-storiesOf("base|HeroImage", module).add("default", () => (
+storiesOf("base/HeroImage", module).add("default", () => (
   <DivStyle>
     <HeroImage
       heroImage={{

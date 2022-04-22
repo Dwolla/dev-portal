@@ -2,7 +2,6 @@
 import { useState } from "react";
 import ReactCollapsible from "react-collapsible";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import classnames from "classnames";
 import plusIcon from "../../../assets/images/component-icons/plus-circle-icon.svg";
 import minusIcon from "../../../assets/images/component-icons/minus-circle-icon.svg";
@@ -69,14 +68,14 @@ const StyledTrigger = styled.div`
   }
 `;
 
-const flexStyles = css`
+const StyledFlexDiv = styled.div`
   padding-left: 14px;
   width: 100%;
   display: flex;
   justify-content: space-between;
 `;
 
-const ImageStyles = css`
+const StyledImage = styled.img`
   margin-left: 28px;
   width: 24px;
 `;
@@ -123,14 +122,14 @@ function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
     variant === "webhook" ? (
       <StyledTrigger className={variant}>
         <CaretRightIcon width={9} />
-        <div css={flexStyles}>
+        <StyledFlexDiv>
           <div>{triggerText}</div> <div>{extraTrigger}</div>
-        </div>
+        </StyledFlexDiv>
       </StyledTrigger>
     ) : (
       <StyledTrigger>
         {triggerText}
-        <img css={ImageStyles} src={plusIcon} alt="Open collapsible content" />
+        <StyledImage src={plusIcon} alt="Open collapsible content" />
       </StyledTrigger>
     );
 
@@ -143,18 +142,14 @@ function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
           transform="rotate(90)"
           style={{ transitionDuration: "0.2s" }}
         />
-        <div css={flexStyles}>
+        <StyledFlexDiv>
           <div>{triggerText}</div> <div>{extraTrigger}</div>
-        </div>
+        </StyledFlexDiv>
       </StyledTrigger>
     ) : (
       <StyledTrigger>
         {triggerText}
-        <img
-          css={ImageStyles}
-          src={minusIcon}
-          alt="Close collapsible content"
-        />
+        <StyledImage src={minusIcon} alt="Close collapsible content" />
       </StyledTrigger>
     );
 

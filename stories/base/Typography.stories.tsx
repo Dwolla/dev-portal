@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "@emotion/styled";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered/react";
 import {
   PreHeader,
   H1,
@@ -52,8 +51,7 @@ const orderedlList = [
 ];
 
 // Stories
-storiesOf("base|Typography", module)
-  .addDecorator(centered)
+storiesOf("base/Typography", module)
   // All variations of Typography in light background
   .add("Default", () => (
     <DivStyle>

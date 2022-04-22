@@ -13,7 +13,7 @@ function Heading(props: {
   return createElement(props.originalType, props);
 }
 
-storiesOf("layout|OnThisPage", module).add("default", () => (
+storiesOf("layout/OnThisPage", module).add("default", () => (
   <AnchorsProvider>
     <div style={{ display: "flex" }}>
       <div style={{ minWidth: "70%", flexGrow: 1 }}>

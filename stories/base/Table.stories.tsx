@@ -60,7 +60,7 @@ const tableData = (
     </tbody>
   </table>
 );
-storiesOf("base|Table", module).add("default", () => (
+storiesOf("base/Table", module).add("default", () => (
   <ParentDiv>
     <Table>{tableData}</Table>
   </ParentDiv>

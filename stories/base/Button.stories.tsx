@@ -1,11 +1,8 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered/react";
 import Button from "../../app/components/base/Button";
 
-storiesOf("base|Button", module)
-  .addDecorator(centered)
-  .addParameters({ backgrounds: [{ name: "dark", value: "#2d2d47" }] })
+storiesOf("base/Button", module)
   .add("Primary Tiny", () => (
     <Button text="Button" size="tiny" variant="primary" />
   ))

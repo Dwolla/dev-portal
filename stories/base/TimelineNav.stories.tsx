@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import TimelineNav from "../../app/components/base/TimelineNav";
 
-storiesOf("base|TimelineNav", module).add("default", () => {
+storiesOf("base/TimelineNav", module).add("default", () => {
   const [active, setActive] = React.useState(1);
   return (
     <TimelineNav

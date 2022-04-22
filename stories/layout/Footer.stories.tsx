@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import Footer from "../../app/components/layout/Footer";
 
-storiesOf("layout|Footer", module).add("default", () => (
+storiesOf("layout/Footer", module).add("default", () => (
   <Footer
     links={{
       Discover: [

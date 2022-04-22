@@ -1,6 +1,5 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import centered from "@storybook/addon-centered/react";
 import styled from "@emotion/styled";
 import FilterTabs from "../../app/components/base/FilterTabs";
 import { PURPLE_DARK } from "../../app/components/colors";
@@ -25,9 +24,7 @@ const TABS = [
   { value: "features", label: "FEATURES" },
 ];
 
-storiesOf("base|FilterTabs", module)
-  .addDecorator(centered)
-  .addParameters({ backgrounds: [{ name: "dark", value: PURPLE_DARK }] })
+storiesOf("base/FilterTabs", module)
   .add("default", () => {
     const [filter, setFilter] = React.useState(TABS[0]);
     return (
