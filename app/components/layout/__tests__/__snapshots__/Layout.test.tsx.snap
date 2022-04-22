@@ -138,7 +138,7 @@ Array [
             >
               <a
                 className=" css-8xg7u8-MobileLink"
-                href="https://docs.dwolla.com/"
+                href="https://docs.dwolla.com"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
                 target="_blank"
