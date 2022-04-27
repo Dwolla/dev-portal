@@ -100,22 +100,26 @@ export function AnchorsSetter(props) {
 
     const handleScroll = () => {
       raf = requestAnimationFrame(() => {
-        const anchorId = anchorEls.reduce(
-          (acc: { score: number; el: { id: string } }, next) => {
-            const { y } = next.getBoundingClientRect();
-            const nextScore = Math.abs(SCROLL_OFFSET - y);
+        if (anchorEls && anchorEls.length > 0) {
+          const anchorId = anchorEls.reduce(
+            (acc: { score: number; el: { id: string } }, next) => {
+              const { y } = next.getBoundingClientRect();
+              const nextScore = Math.abs(SCROLL_OFFSET - y);
 
-            if (!acc) {
-              return { el: next, score: nextScore };
-            }
+              if (!acc) {
+                return { el: next, score: nextScore };
+              }
 
-            return nextScore < acc.score ? { el: next, score: nextScore } : acc;
-          },
-          null
-        ).el.id;
+              return nextScore < acc.score
+                ? { el: next, score: nextScore }
+                : acc;
+            },
+            null
+          ).el.id;
 
-        if (anchorId !== activeAnchor?.id) {
-          setActiveAnchor(anchors.find((a: Anchor) => a.id === anchorId));
+          if (anchorId !== activeAnchor?.id) {
+            setActiveAnchor(anchors.find((a: Anchor) => a.id === anchorId));
+          }
         }
       });
     };
