@@ -17,6 +17,7 @@ import balanceDisplayDropIn from "../../assets/images/content-images/drop-in-bal
 import documentUploadDropIn from "../../assets/images/content-images/drop-in-document-upload.png";
 import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a-pvc.png";
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
+import createCustomerIsbusinessDropIn from "../../assets/images/content-images/drop-in-create-a-ucr-business.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
@@ -135,7 +136,7 @@ dwolla-error-message
 
 ### Create an Unverified Customer
 
-The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To allow users to enter a Business Name, include the optional attribute `isBusiness` in the drop-in component. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types#unverified-customer) on concepts.
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
@@ -163,9 +164,22 @@ The `dwolla-customer-create` component is used to display a form to collect the 
       privacy="www.yourprivacy.com"
     >
     </dwolla-customer-create>
+    <!-- Example using `isBusiness` attribute -->
+    <!-- 
+      <dwolla-customer-create
+        terms="www.yourterms.com"
+        privacy="www.yourprivacy.com"
+        isBusiness
+      >
+      </dwolla-customer-create> 
+    -->
   </div>
 </body>
 ```
+
+##### Optional attributes
+
+- `isBusiness` - Prompts the user to enter a business name
 
 ##### Fields available for pre-filling existing information
 
@@ -206,6 +220,15 @@ dwolla-error-message
 <Image
   src={createCustomerDropIn}
   alt="Create a Customer Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+##### Example Unverified Customer with Business Name
+
+<Image
+  src={createCustomerIsbusinessDropIn}
+  alt="Create an Unverified Business Customer Drop-in Component"
   width="75%"
   height="75%"
 />
