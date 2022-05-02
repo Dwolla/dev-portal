@@ -165,13 +165,13 @@ The `dwolla-customer-create` component is used to display a form to collect the 
     >
     </dwolla-customer-create>
     <!-- Example using `isBusiness` attribute -->
-    <!-- 
+    <!--
       <dwolla-customer-create
         terms="www.yourterms.com"
         privacy="www.yourprivacy.com"
         isBusiness
       >
-      </dwolla-customer-create> 
+      </dwolla-customer-create>
     -->
   </div>
 </body>
@@ -730,13 +730,26 @@ The `dwolla-balance-display` component can be used for any customer who already 
   <div class="container">
     <dwolla-balance-display customerId="{{ customerId }}">
     </dwolla-balance-display>
+
+    <!-- Example hiding balance if $0.00 -->
+    <!--
+      <dwolla-balance-display
+        customerId="{{ customerId }}"
+        hideZeroBalance
+      >
+      </dwolla-balance-display>
+    -->
   </div>
 </body>
 ```
 
 ##### Fields available for pre-filling existing information
 
-- `customerId`
+- `customerId` — The ID of the customer whose balance will be shown
+
+##### Optional Attributes
+
+- `hideZeroBalance` — If present, the customer's balance will not be shown if it is equal to $0.00
 
 ##### CSS Classes for Balance Display
 
