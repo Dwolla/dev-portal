@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "jsx": "preserve",
     "downlevelIteration": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "incremental": true
   },
   "exclude": ["node_modules"],
   "include": [
