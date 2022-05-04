@@ -12,7 +12,6 @@ module.exports = (phase) =>
           providerImportSource: "@mdx-js/react",
         },
       })({
-        target: "serverless",
         env: {
           isDev: phase === PHASE_DEVELOPMENT_SERVER,
         },
