@@ -42,7 +42,7 @@ The `topic` field of an event holds [a description](https://developers.dwolla.co
 
 ### Step A. Authenticating the webhook request
 
-Before we process any data from the webhook we’ll want to validate that the request really came from Dwolla and not someone pretending to be Dwolla. Dwolla signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-Sha-256` header and is a SHA256 HMAC hash of the request body with the key being your webhook secret.
+Before we process any data from the webhook we’ll want to validate that the request really came from Dwolla and not someone pretending to be Dwolla. Dwolla signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-SHA-256` header and is a SHA256 HMAC hash of the request body with the key being your webhook secret.
 
 <AlertBar variation="info">
   As a best practice, we recommend validating webhooks by generating the same
