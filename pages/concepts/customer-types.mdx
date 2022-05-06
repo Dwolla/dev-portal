@@ -6,13 +6,13 @@ category: Customers
 concept:
   icon: "customer-types.svg"
 meta:
-  title: Customer Types | Dwolla API Documentation
-  description: Determining your Customer type is the first step to a successful integration.
+  title: Customer Types in the Dwolla API | Developer Tools | Dwolla
+  description: A Dwolla API customer is created programmatically via the Create a Customer endpoint. Start your integration today!
 ---
 
 # Customer types
 
-A Dwolla API customer is created programmatically by your CIP verified Dwolla Master Account via the [Create a Customer](https://developers.dwolla.com/api-reference/customers/create) endpoint. All of the Customer's required information will be handled through the API and the Customer will interact directly with your application to manage their account. As a developer, you will want to create a Customer that best suits the business case of your application. Below is a very high level detailing of the Customer types available with Dwolla.
+A Dwolla API Customer is created programmatically by your CIP verified Dwolla Master Account via the [Create a Customer](https://developers.dwolla.com/api-reference/customers/create) endpoint. All of the Customer's required information will be handled through the API and the Customer will interact directly with your application to manage their account. As a developer, you will want to create the Customer type that best suits the business case of your application. Below is a very high level detailing of the Customer types available with Dwolla.
 
 <AlertBar variation="info">
   Regardless of which Customer type(s) you choose to create for your
@@ -34,7 +34,7 @@ A Dwolla API customer is created programmatically by your CIP verified Dwolla Ma
 - By default, there is no limit for receiving funds.
 </AlertBar>
 
-As you decide what Customer types to create for your application, a good thing to keep in mind is [Customer Identification Program (CIP) Verification](https://www.dwolla.com/updates/guide-to-cip-customer-identification-program-dwolla-payments-api/). Remember that regardless of your application type, a transfer between two parties requires that at least one party must be CIP verified. It is your decision about which party completes this process based on your business model. Your own Dwolla Master Account can count as a verified party. You may also consider having both parties complete CIP verification, as we also require CIP verification in order for a customer to hold funds in the Dwolla network in the form of a balance.
+As you decide what type of customer to create for your application, a good thing to keep in mind is [Customer Identification Program (CIP) Verification](https://www.dwolla.com/updates/guide-to-cip-customer-identification-program-dwolla-payments-api/). Remember that regardless of your application type, a transfer between two parties requires that at least one party must be CIP verified. It is your decision about which party completes this process based on your business model. Your own Dwolla Master Account can count as a verified party. You may also consider having both parties complete CIP verification, as we also require CIP verification in order for a customer to hold funds in the Dwolla network in the form of a balance.
 
 ## Verified Customer
 
@@ -44,25 +44,25 @@ There are two types of verified Customer types your Customer can sign up as: `Pe
 
 ### Personal Verified Customer
 
-Personal verified Customers can be used in any funds flows, as they can both send and receive funds. This Customer type can also hold a balance. The individual being onboarded as a personal Verified Customer will need to complete the identity verification process prior to being able to send or receive funds from/to their bank account. CIP verification involves passing Customer data to verify them, including their name, date of birth, and last four digits of their social security number. For more information about verifying this Customer type in our [Customer verification guide](/guides/personal-verified-customer/create-a-customer).
+Personal Verified Customers can be used in any funds flows, as they can both send and receive funds. This Customer type can also hold a balance. The individual being onboarded as a personal Verified Customer will need to complete the identity verification process prior to being able to send or receive funds from/to their bank account. CIP verification involves passing Customer data to verify them, including their name, date of birth, and last four digits of their social security number. For more information about verifying this Customer type in our [Customer verification guide](/guides/personal-verified-customer/create-a-customer).
 
 With a per-transaction default send limit of $5,000, this Customer type is able to interact with Dwolla and your application seamlessly.
 
 ### Business Verified Customer
 
-Business verified Customers are unique in their sign up flow, as they need multiple parties to be verified. These will include:
+Business Verified Customers are unique in their sign up flow, as they need multiple parties to be verified. These will include:
 
-- The business (required)
-- The controller (conditionally required)
-- The beneficial owner (conditionally required)
+- The Business (required)
+- The Controller (Conditionally Required)
+- The Beneficial Owner (Conditionally Required)
 
-Business verified Customers will need an Account Admin to signup the company during the onboarding process. This Account Admin is not identity verified. To become fully verified, a controller and/or a beneficial owner may need to be identity verified. A controller is any natural individual who holds significant responsibilities to control, manage, or direct a company or other corporate entity (i.e. CEO, CFO, General Partner, President, etc). A company may have more than one controller, but only one controller’s information must be collected. A beneficial owner is any natural person who, directly or indirectly, owns 25% or more of the equity interests of the company.
+Business Verified Customers will need an Account Admin to sign up the company during the onboarding process. This Account Admin is not identity verified. To become a fully verified Customer, a controller and/or a beneficial owner may need to be identity verified. A controller is any natural individual who holds significant responsibilities to control, manage, or direct a company or other corporate entity (i.e. CEO, CFO, General Partner, President, etc). A company may have more than one controller, but only one controller’s information must be collected. A beneficial owner is any natural person who, directly or indirectly, owns 25% or more of the equity interests of the company.
 
 The Controller will need to provide information to be fully identity verified. This includes their last four SSN and date of birth for identity verification purposes. For certain business types, a business’ EIN will also need to be provided as part of the CIP process. For more information about adding a controller, check out our [business verified Customer creation article](/guides/business-verified-customer/create-a-customer).
 
 Certain business types may also need to add and certify beneficial ownership. You can find more information about adding beneficial owners in our [developer resource article](/guides/business-verified-customer/add-beneficial-owners). To learn more about certifying beneficial ownership, reference the [certify beneficial ownership](/guides/business-verified-customer/certify-beneficial-ownership) section in the business verified customer guide.
 
-For a full series steps that goes in depth on business verified Customers, take a look at our [Customer verification guide](/guides/business-verified-customer). This guide also goes into detail on the identity verification process for controllers and beneficial owners.
+For a full series of steps that goes in depth on business verified Customers, take a look at our [Customer verification guide](/guides/business-verified-customer). This guide also goes into detail on the identity verification process for controllers and beneficial owners.
 
 ## Unverified Customer
 
