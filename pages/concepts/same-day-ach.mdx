@@ -12,7 +12,7 @@ meta:
 
 # Same Day ACH
 
-Use the Dwolla API for faster payments to enable your application to take advantage of [Same Day ACH](https://www.dwolla.com/features/same-day-ach/) credit or debit transfers on a [per transfer request](https://developers.dwolla.com/api-reference/transfers/initiate) basis. A `clearing` request parameter is supplied in the request to the Dwolla API which tells Dwolla to expedite clearing for the source or the destination account involved in the transaction. Same Day ACH is a simple and powerful feature for platforms looking to differentiate themselves, streamline cash flows, and improve their end-user experiences.
+Use the Dwolla API for faster payments to enable your application to take advantage of [Same Day ACH](https://www.dwolla.com/features/same-day-ach/) credit or debit transfers on a [per transfer request](https://developers.dwolla.com/api-reference/transfers/initiate) basis. A `clearing` request parameter is supplied in the request to the Dwolla API which tells Dwolla to expedite clearing for the source or the destination account involved in the transaction. Same Day ACH is a simple and powerful feature for platforms looking to differentiate themselves, streamline cash flows, and improve their end user experiences.
 
 There are two types of Same Day ACH transfers:
 
@@ -164,12 +164,10 @@ transfer.headers['location'] # => 'https://api-sandbox.dwolla.com/transfers/636d
 var requestBody = {
   _links: {
     source: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
+      href: "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
     },
     destination: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
+      href: "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
     },
   },
   amount: {
@@ -303,12 +301,10 @@ transfer.headers['location'] # => 'https://api-sandbox.dwolla.com/transfers/636d
 var requestBody = {
   _links: {
     source: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
+      href: "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
     },
     destination: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
+      href: "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
     },
   },
   amount: {

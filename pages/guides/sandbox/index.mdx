@@ -131,7 +131,7 @@ Dwolla requires a valid U.S. routing number and a random account number between 
 
 ### Simulate IAV success and error scenarios in Sandbox
 
-Dwolla's Sandbox environment uses a [fake service](https://www.dwolla.com/updates/fake-it-as-you-make-it-why-fake-services-are-awesome-for-developers/) which allows you to simulate the end-user experience for adding and verifying a bank account within the IAV flow. The default "success" scenario is a happy path flow that includes: a single set of MFA questions, presentation of two valid accounts and one account without a routing number. Any text can be entered in the input fields to allow you to proceed through the IAV flow.
+Dwolla's Sandbox environment uses a [fake service](https://www.dwolla.com/updates/fake-it-as-you-make-it-why-fake-services-are-awesome-for-developers/) which allows you to simulate the end user experience for adding and verifying a bank account within the IAV flow. The default "success" scenario is a happy path flow that includes: a single set of MFA questions, presentation of two valid accounts and one account without a routing number. Any text can be entered in the input fields to allow you to proceed through the IAV flow.
 
 To help you test error scenarios, a flag and an option can be used in the first field (usually username or ID) for the bank you are trying to authenticate. The remaining input fields in the flow can be any string of text, as we allow you to proceed through the flow regardless of the information entered.
 
