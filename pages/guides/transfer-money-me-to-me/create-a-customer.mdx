@@ -12,7 +12,7 @@ meta:
 
 ## Choose the Customer Type for Your Funds Flow
 
-Before your end-user can send or receive funds to their connected bank account, they must be created as a Customer via the Dwolla API. With this funds flow, however, the only eligible Customer types are:
+Before your end user can send or receive funds to their connected bank account, they must be created as a Customer via the Dwolla API. With this funds flow, however, the only eligible Customer types are:
 
 - Verified Personal Customers
 - Verified Business Customers
@@ -176,7 +176,7 @@ dwolla
 When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating webhooks that are triggered for the user in the Dwolla system.
 
 <AlertBar variation="info">
-  Providing the IP address of the end-user accessing your application as the
+  Providing the IP address of the end user accessing your application as the
   <code> ipAddress</code> parameter. This enhances fraud detection and tracking.
 </AlertBar>
 
@@ -188,7 +188,7 @@ If you have an active webhook subscription, you will receive the `customer_creat
 
 ### Customer Statuses
 
-Not all Customers will have a `verified` status upon initial Customer creation. In production, you may run into an instance where more information is needed from your end-user in order for Dwolla to fully verify their identity. Other statuses your Customer may be placed in include, `retry`, `document`, `deactivated`, or `suspended`. For more information on these statuses, refer to our developer resource article.
+Not all Customers will have a `verified` status upon initial Customer creation. In production, you may run into an instance where more information is needed from your end user in order for Dwolla to fully verify their identity. Other statuses your Customer may be placed in include, `retry`, `document`, `deactivated`, or `suspended`. For more information on these statuses, refer to our developer resource article.
 
 ### Balance Funding Source
 
