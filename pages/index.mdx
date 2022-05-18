@@ -161,35 +161,6 @@ export const languageContent = [
   },
 ];
 
-<!-- Partners and Integrations LogoLink props -->
-
-export const partnerContent = [
-  {
-    label: "Plaid",
-    icon: plaidGray,
-    iconActive: plaidColor,
-    href: "https://www.dwolla.com/integrations/plaid/",
-  },
-  {
-    label: "Sift",
-    icon: siftGray,
-    iconActive: siftColor,
-    href: "https://www.dwolla.com/integrations/sift/",
-  },
-  {
-    label: "Slack",
-    icon: slackGray,
-    iconActive: slackColor,
-    href: "https://www.dwolla.com/integrations/slack/",
-  },
-  {
-    label: "Quickbooks",
-    icon: quickbooksGray,
-    iconActive: quickbooksColor,
-    href: "https://www.dwolla.com/integrations/quickbooks/",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
@@ -280,10 +251,6 @@ export default function HomePage() {
         </H3>
         <LogoLinksWrapper>
           <LogoLinks tabs={languageContent} />
-        </LogoLinksWrapper>
-        <H3>Integration With Other Platforms</H3>
-        <LogoLinksWrapper>
-          <LogoLinks tabs={partnerContent} />
         </LogoLinksWrapper>
         <H3>Get API Updates</H3>
         <IFrame hubSpotFormId="4337f9a2-cd52-442f-89c8-d382704dedae" />
