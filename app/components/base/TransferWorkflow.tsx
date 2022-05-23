@@ -134,9 +134,24 @@ const StyledBottomContainer = styled.div`
 // selectable options for FundsFlowSelector component
 
 const senderTypeOptions = [
-  { value: "account", label: "Account", sources: ["balance", "bank"] },
-  { value: "vcr", label: "Verified Customer", sources: ["balance", "bank"] },
-  { value: "cr", label: "Unverified Customer", sources: ["bank"] },
+  {
+    value: "account",
+    label: "Account",
+    sources: ["balance", "bank"],
+    canTransactWith: ["vcr", "cr", "ro"],
+  },
+  {
+    value: "vcr",
+    label: "Verified Customer",
+    sources: ["balance", "bank"],
+    canTransactWith: ["account", "vcr", "cr", "ro"],
+  },
+  {
+    value: "cr",
+    label: "Unverified Customer",
+    sources: ["bank"],
+    canTransactWith: ["account", "vcr"],
+  },
 ];
 
 const senderSourceOptions = [
@@ -145,10 +160,14 @@ const senderSourceOptions = [
 ];
 
 const receiverTypeOptions = [
-  { value: "account", label: "Account" },
-  { value: "vcr", label: "Verified Customer" },
-  { value: "cr", label: "Unverified Customer" },
-  { value: "ro", label: "Receive-Only User" },
+  { value: "account", label: "Account", destinations: ["balance", "bank"] },
+  {
+    value: "vcr",
+    label: "Verified Customer",
+    destinations: ["balance", "bank"],
+  },
+  { value: "cr", label: "Unverified Customer", destinations: ["bank"] },
+  { value: "ro", label: "Receive-Only User", destinations: ["bank"] },
 ];
 
 const receiverDestinationOptions = [
@@ -197,6 +216,9 @@ const fundsFlowCombinations = {
 
 function TransferWorkflow() {
   const [allowedSenderSources, setAllowedSenderSources] = useState(null);
+  const [allowedReceiverDestinations, setAllowedReceiverDestinations] =
+    useState(null);
+  const [allowedReceivers, setAllowedReceivers] = useState(null);
   const [selectedSender, setSelectedSender] = useState(null);
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedReceiver, setSelectedReceiver] = useState(null);
@@ -219,6 +241,30 @@ function TransferWorkflow() {
     setSelectedSender(sender);
     setAllowedSenderSources(
       senderSourceOptions.filter(({ value }) => sender.sources.includes(value))
+    );
+    /**
+     * Update `allowedReceivers` to only include the Receiver Types that a Sender is able to
+     * transact with. For example, when a CR is selected as the Sender, the Receiver options will
+     * be limited to Account and VCR.
+     */
+    setAllowedReceivers(
+      receiverTypeOptions.filter(({ value }) =>
+        sender.canTransactWith.includes(value)
+      )
+    );
+  }
+
+  /**
+   * Similar to `handleSenderChanged`, update `allowedReceiverDestinations` when a Receiver Type
+   * updates. This will allow the Receiver Destination to get updated with only options that are
+   * allowed for a given workflow.
+   */
+  function handleReceiverChanged(reciever): void {
+    setSelectedReceiver(reciever);
+    setAllowedReceiverDestinations(
+      receiverDestinationOptions.filter(({ value }) =>
+        reciever.destinations.includes(value)
+      )
     );
   }
 
@@ -401,11 +447,11 @@ function TransferWorkflow() {
         <FundsFlowSelector
           senderTypeOptions={senderTypeOptions}
           senderSourceOptions={allowedSenderSources}
-          receiverTypeOptions={receiverTypeOptions}
-          receiverDestinationOptions={receiverDestinationOptions}
+          receiverTypeOptions={allowedReceivers}
+          receiverDestinationOptions={allowedReceiverDestinations}
           setSelectedSender={handleSenderChanged}
           setSelectedSource={setSelectedSource}
-          setSelectedReceiver={setSelectedReceiver}
+          setSelectedReceiver={handleReceiverChanged}
           setSelectedDestination={setSelectedDestination}
           isReceiverDisabled={!(selectedSender && selectedSource)}
         />
