@@ -137,19 +137,19 @@ const senderTypeOptions = [
   {
     value: "account",
     label: "Account",
-    sources: ["balance", "bank"],
+    hasSources: ["balance", "bank"],
     canTransactWith: ["vcr", "cr", "ro"],
   },
   {
     value: "vcr",
     label: "Verified Customer",
-    sources: ["balance", "bank"],
+    hasSources: ["balance", "bank"],
     canTransactWith: ["account", "vcr", "cr", "ro"],
   },
   {
     value: "cr",
     label: "Unverified Customer",
-    sources: ["bank"],
+    hasSources: ["bank"],
     canTransactWith: ["account", "vcr"],
   },
 ];
@@ -160,14 +160,14 @@ const senderSourceOptions = [
 ];
 
 const receiverTypeOptions = [
-  { value: "account", label: "Account", destinations: ["balance", "bank"] },
+  { value: "account", label: "Account", hasDestinations: ["balance", "bank"] },
   {
     value: "vcr",
     label: "Verified Customer",
-    destinations: ["balance", "bank"],
+    hasDestinations: ["balance", "bank"],
   },
-  { value: "cr", label: "Unverified Customer", destinations: ["bank"] },
-  { value: "ro", label: "Receive-Only User", destinations: ["bank"] },
+  { value: "cr", label: "Unverified Customer", hasDestinations: ["bank"] },
+  { value: "ro", label: "Receive-Only User", hasDestinations: ["bank"] },
 ];
 
 const receiverDestinationOptions = [
@@ -240,7 +240,9 @@ function TransferWorkflow() {
   function handleSenderChanged(sender): void {
     setSelectedSender(sender);
     setAllowedSenderSources(
-      senderSourceOptions.filter(({ value }) => sender.sources.includes(value))
+      senderSourceOptions.filter(({ value }) =>
+        sender.hasSources.includes(value)
+      )
     );
     /**
      * Update `allowedReceivers` to only include the Receiver Types that a Sender is able to
@@ -259,11 +261,11 @@ function TransferWorkflow() {
    * updates. This will allow the Receiver Destination to get updated with only options that are
    * allowed for a given workflow.
    */
-  function handleReceiverChanged(reciever): void {
-    setSelectedReceiver(reciever);
+  function handleReceiverChanged(receiver): void {
+    setSelectedReceiver(receiver);
     setAllowedReceiverDestinations(
       receiverDestinationOptions.filter(({ value }) =>
-        reciever.destinations.includes(value)
+        receiver.hasDestinations.includes(value)
       )
     );
   }
@@ -408,6 +410,8 @@ function TransferWorkflow() {
       setUnsupportedFundsFlow(false);
       setWebhookJsonData(undefined);
       setAllowedSenderSources(null);
+      setAllowedReceivers(null);
+      setAllowedReceiverDestinations(null);
       setSelectedSender(null);
       setSelectedSource(null);
       setSelectedReceiver(null);

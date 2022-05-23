@@ -195,7 +195,7 @@ function FundsFlowSelector({
         components={{ DropdownIndicator, Option }}
         placeholder="Select Receiver Destination"
         onChange={setSelectedDestination}
-        isDisabled={isReceiverDisabled}
+        isDisabled={!receiverDestinationOptions}
       />
     </StyledContainer>
   );
