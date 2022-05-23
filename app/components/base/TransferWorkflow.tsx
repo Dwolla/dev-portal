@@ -134,9 +134,9 @@ const StyledBottomContainer = styled.div`
 // selectable options for FundsFlowSelector component
 
 const senderTypeOptions = [
-  { value: "account", label: "Account" },
-  { value: "vcr", label: "Verified Customer" },
-  { value: "cr", label: "Unverified Customer" },
+  { value: "account", label: "Account", sources: ["balance", "bank"] },
+  { value: "vcr", label: "Verified Customer", sources: ["balance", "bank"] },
+  { value: "cr", label: "Unverified Customer", sources: ["bank"] },
 ];
 
 const senderSourceOptions = [
@@ -196,6 +196,7 @@ const fundsFlowCombinations = {
 // TransferWorkflow component
 
 function TransferWorkflow() {
+  const [allowedSenderSources, setAllowedSenderSources] = useState(null);
   const [selectedSender, setSelectedSender] = useState(null);
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedReceiver, setSelectedReceiver] = useState(null);
@@ -206,6 +207,20 @@ function TransferWorkflow() {
   const [webhookJsonData, setWebhookJsonData] = useState<any | undefined>(
     undefined
   );
+
+  /**
+   * Update `allowedSenderSources` when a Sender Type updates. This will allow the
+   * Sender Source to get updated with only options that are allowed for a given workflow.
+   *
+   * For example, if the user selects Unverified Customer as their Sender Type, then only
+   * Bank should be shown as a Sender Source option, since Balance is would be an illegal value.
+   */
+  function handleSenderChanged(sender): void {
+    setSelectedSender(sender);
+    setAllowedSenderSources(
+      senderSourceOptions.filter(({ value }) => sender.sources.includes(value))
+    );
+  }
 
   // function to handle Start button
 
@@ -346,6 +361,7 @@ function TransferWorkflow() {
       setSelectedFundsFlow([]);
       setUnsupportedFundsFlow(false);
       setWebhookJsonData(undefined);
+      setAllowedSenderSources(null);
       setSelectedSender(null);
       setSelectedSource(null);
       setSelectedReceiver(null);
@@ -384,13 +400,14 @@ function TransferWorkflow() {
         // display FundsFlowSelector component when activeStep is 0
         <FundsFlowSelector
           senderTypeOptions={senderTypeOptions}
-          senderSourceOptions={senderSourceOptions}
+          senderSourceOptions={allowedSenderSources}
           receiverTypeOptions={receiverTypeOptions}
           receiverDestinationOptions={receiverDestinationOptions}
-          setSelectedSender={setSelectedSender}
+          setSelectedSender={handleSenderChanged}
           setSelectedSource={setSelectedSource}
           setSelectedReceiver={setSelectedReceiver}
           setSelectedDestination={setSelectedDestination}
+          isReceiverDisabled={!(selectedSender && selectedSource)}
         />
       ) : // check if Funds Flow is unsupported, otherwise display code block component
       unsupportedFundsFlow ? (
