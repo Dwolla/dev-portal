@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const { merge } = require("webpack-merge");
 
 function getPackageDir(filepath) {
   let currDir = path.dirname(require.resolve(filepath));
@@ -19,6 +18,9 @@ function getPackageDir(filepath) {
 }
 
 module.exports = {
+  core: {
+    builder: "webpack5",
+  },
   // import all files ending in *.stories.tsx or *.stories.mdx
   stories: ["../stories/**/*.stories.@(tsx|mdx)"],
   addons: [
@@ -27,16 +29,11 @@ module.exports = {
     "@storybook/addon-backgrounds",
   ],
   framework: "@storybook/react",
-  // create alias to to resolve emotion modules that were renamed in emotion11
+  // create alias to resolve emotion modules that were renamed in emotion 11
   webpackFinal: async (config) => {
-    return merge(config, {
-      resolve: {
-        alias: {
-          "@emotion/core": getPackageDir("@emotion/react"),
-          "@emotion/styled": getPackageDir("@emotion/styled"),
-          "emotion-theming": getPackageDir("@emotion/react"),
-        },
-      },
-    });
+    config.resolve.alias["@emotion/core"] = getPackageDir("@emotion/react");
+    config.resolve.alias["@emotion/styled"] = getPackageDir("@emotion/styled");
+    config.resolve.alias["emotion-theming"] = getPackageDir("@emotion/react");
+    return config;
   },
 };
