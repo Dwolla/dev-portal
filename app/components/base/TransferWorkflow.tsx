@@ -134,9 +134,24 @@ const StyledBottomContainer = styled.div`
 // selectable options for FundsFlowSelector component
 
 const senderTypeOptions = [
-  { value: "account", label: "Account" },
-  { value: "vcr", label: "Verified Customer" },
-  { value: "cr", label: "Unverified Customer" },
+  {
+    value: "account",
+    label: "Account",
+    hasSources: ["balance", "bank"],
+    canTransactWith: ["vcr", "cr", "ro"],
+  },
+  {
+    value: "vcr",
+    label: "Verified Customer",
+    hasSources: ["balance", "bank"],
+    canTransactWith: ["account", "vcr", "cr", "ro"],
+  },
+  {
+    value: "cr",
+    label: "Unverified Customer",
+    hasSources: ["bank"],
+    canTransactWith: ["account", "vcr"],
+  },
 ];
 
 const senderSourceOptions = [
@@ -145,10 +160,14 @@ const senderSourceOptions = [
 ];
 
 const receiverTypeOptions = [
-  { value: "account", label: "Account" },
-  { value: "vcr", label: "Verified Customer" },
-  { value: "cr", label: "Unverified Customer" },
-  { value: "ro", label: "Receive-Only User" },
+  { value: "account", label: "Account", hasDestinations: ["balance", "bank"] },
+  {
+    value: "vcr",
+    label: "Verified Customer",
+    hasDestinations: ["balance", "bank"],
+  },
+  { value: "cr", label: "Unverified Customer", hasDestinations: ["bank"] },
+  { value: "ro", label: "Receive-Only User", hasDestinations: ["bank"] },
 ];
 
 const receiverDestinationOptions = [
@@ -196,6 +215,10 @@ const fundsFlowCombinations = {
 // TransferWorkflow component
 
 function TransferWorkflow() {
+  const [allowedSenderSources, setAllowedSenderSources] = useState(null);
+  const [allowedReceiverDestinations, setAllowedReceiverDestinations] =
+    useState(null);
+  const [allowedReceivers, setAllowedReceivers] = useState(null);
   const [selectedSender, setSelectedSender] = useState(null);
   const [selectedSource, setSelectedSource] = useState(null);
   const [selectedReceiver, setSelectedReceiver] = useState(null);
@@ -206,6 +229,46 @@ function TransferWorkflow() {
   const [webhookJsonData, setWebhookJsonData] = useState<any | undefined>(
     undefined
   );
+
+  /**
+   * Update `allowedSenderSources` when a Sender Type updates. This will allow the
+   * Sender Source to get updated with only options that are allowed for a given workflow.
+   *
+   * For example, if the user selects Unverified Customer as their Sender Type, then only
+   * Bank should be shown as a Sender Source option, since Balance is would be an illegal value.
+   */
+  function handleSenderChanged(sender): void {
+    setSelectedSender(sender);
+    setAllowedSenderSources(
+      senderSourceOptions.filter(({ value }) =>
+        sender.hasSources.includes(value)
+      )
+    );
+    /**
+     * Update `allowedReceivers` to only include the Receiver Types that a Sender is able to
+     * transact with. For example, when a CR is selected as the Sender, the Receiver options will
+     * be limited to Account and VCR.
+     */
+    setAllowedReceivers(
+      receiverTypeOptions.filter(({ value }) =>
+        sender.canTransactWith.includes(value)
+      )
+    );
+  }
+
+  /**
+   * Similar to `handleSenderChanged`, update `allowedReceiverDestinations` when a Receiver Type
+   * updates. This will allow the Receiver Destination to get updated with only options that are
+   * allowed for a given workflow.
+   */
+  function handleReceiverChanged(receiver): void {
+    setSelectedReceiver(receiver);
+    setAllowedReceiverDestinations(
+      receiverDestinationOptions.filter(({ value }) =>
+        receiver.hasDestinations.includes(value)
+      )
+    );
+  }
 
   // function to handle Start button
 
@@ -346,6 +409,9 @@ function TransferWorkflow() {
       setSelectedFundsFlow([]);
       setUnsupportedFundsFlow(false);
       setWebhookJsonData(undefined);
+      setAllowedSenderSources(null);
+      setAllowedReceivers(null);
+      setAllowedReceiverDestinations(null);
       setSelectedSender(null);
       setSelectedSource(null);
       setSelectedReceiver(null);
@@ -384,13 +450,14 @@ function TransferWorkflow() {
         // display FundsFlowSelector component when activeStep is 0
         <FundsFlowSelector
           senderTypeOptions={senderTypeOptions}
-          senderSourceOptions={senderSourceOptions}
-          receiverTypeOptions={receiverTypeOptions}
-          receiverDestinationOptions={receiverDestinationOptions}
-          setSelectedSender={setSelectedSender}
+          senderSourceOptions={allowedSenderSources}
+          receiverTypeOptions={allowedReceivers}
+          receiverDestinationOptions={allowedReceiverDestinations}
+          setSelectedSender={handleSenderChanged}
           setSelectedSource={setSelectedSource}
-          setSelectedReceiver={setSelectedReceiver}
+          setSelectedReceiver={handleReceiverChanged}
           setSelectedDestination={setSelectedDestination}
+          isReceiverDisabled={!(selectedSender && selectedSource)}
         />
       ) : // check if Funds Flow is unsupported, otherwise display code block component
       unsupportedFundsFlow ? (

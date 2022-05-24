@@ -144,6 +144,7 @@ type Props = {
   setSelectedSource: any;
   setSelectedReceiver: any;
   setSelectedDestination: any;
+  isReceiverDisabled?: boolean;
 };
 
 function FundsFlowSelector({
@@ -155,6 +156,7 @@ function FundsFlowSelector({
   setSelectedSource,
   setSelectedReceiver,
   setSelectedDestination,
+  isReceiverDisabled,
 }: Props) {
   return (
     <StyledContainer>
@@ -174,6 +176,7 @@ function FundsFlowSelector({
         components={{ DropdownIndicator, Option }}
         placeholder="Select Sender Source"
         onChange={setSelectedSource}
+        isDisabled={!senderSourceOptions}
       />
       <StyledTitle>Receiver:</StyledTitle>
       <StyledType>Receiver Type</StyledType>
@@ -183,6 +186,7 @@ function FundsFlowSelector({
         components={{ DropdownIndicator, Option }}
         placeholder="Select Receiver Type"
         onChange={setSelectedReceiver}
+        isDisabled={isReceiverDisabled}
       />
       <StyledType>Receiver Destination</StyledType>
       <Select
@@ -191,6 +195,7 @@ function FundsFlowSelector({
         components={{ DropdownIndicator, Option }}
         placeholder="Select Receiver Destination"
         onChange={setSelectedDestination}
+        isDisabled={!receiverDestinationOptions}
       />
     </StyledContainer>
   );
