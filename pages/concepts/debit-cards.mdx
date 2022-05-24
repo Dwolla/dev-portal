@@ -143,7 +143,7 @@ dwolla.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'Unknow
 
 ## Creating a Debit Card Funding Source
 
-Create a debit card as a funding source type via the dwolla-cards.js client-side library. Similarly to Dwolla.js+IAV functionality, this allows you to securely transmit sensitive customer card data without the data passing through your server.
+Create a debit card as a funding source type via the dwolla-cards.js client-side library. This library will allow your application to securely transmit sensitive customer card data without the data passing through your server.
 
 <AlertBar variation="info">
   For more information on implementing our dwolla-cards.js library into your
