@@ -17,10 +17,10 @@ This section details how to create a webhook subscription to deliver [webhooks](
 
 ### Request parameters
 
-| Parameter | Required | Type   | Description                                                                                                                                                                                                                                              |
-| --------- | -------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| url       | yes      | string | Where Dwolla should deliver the webhook notification.                                                                                                                                                                                                    |
-| secret    | yes      | string | A random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity](https://developers.dwolla.com/guides/webhooks/validating-webhooks) of the webhook request from Dwolla. |
+| Parameter | Required | Type   | Description                                                                                                                                                                                                            |
+| --------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url       | yes      | string | Where Dwolla should deliver the webhook notification.                                                                                                                                                                  |
+| secret    | yes      | string | A random, secret key, only known by your application. This secret key should be securely stored and used later when [processing and validating](/guides/webhooks/process-validate) the webhook request is from Dwolla. |
 
 ### HTTP status and error codes
 
