@@ -1,90 +1,62 @@
 ---
 layout: guides
-title: "Step 1: Create subscription"
+title: "Step 1: Create Subscription"
 guide:
   step: 1
 meta:
-  title: Webhooks - Create Subscription| Dwolla API Documentation
-  description: Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees.
+  title: Creating a Webhook Subscription | Dwolla API Documentation
+  description: Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees. Start today!
 ---
 
-# Step 1: Create a webhook subscription
+# Step 1: Create a Webhook Subscription
 
-Each application can have multiple subscriptions associated to it. While one subscription is sufficient, you can create up to ten for redundancy.
+First, you will need to have a URL that is publicly accessible where Dwolla can send webhooks in the form of HTTP requests. This also means that anyone on the Internet can hit your endpoint. As such, here are some security concerns:
 
-Security considerations:
+- Your webhook endpoint should only be accessible over [TLS (HTTPS)](https://www.dwolla.com/updates/improving-transport-layer-security/) and your server should have a valid SSL certificate.
+- Your subscription should include a random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity of the webhook request](/guides/webhooks/process-validate#authentication) from Dwolla.
 
-Your webhook endpoint should only be accessible over TLS (HTTPS) and your server should have a valid certificate. Your subscription should include a random, secret key, only known by your application. This secret key should be securely stored and used later when validating the authenticity of the webhook request from Dwolla.
+### Request Parameters
 
-```bash
+| Parameters | Required | Type   | Description                                                                                                                                                                                                                     |
+| ---------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url        | yes      | string | The publicly-accessible URL where Dwolla should deliver the webhook notification.                                                                                                                                               |
+| secret     | yes      | string | A random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity of the webhook](/guides/webhooks/process-validate#authentication) from Dwolla. |
+
+### Request and Response
+
+```raw
 POST https://api-sandbox.dwolla.com/webhook-subscriptions
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 {
-    "url": "http://myapplication.com/webhooks",
+    "url": "https://myapplication.com/webhooks",
     "secret": "sshhhhhh"
 }
+
+
+...
+
+HTTP/1.1 201 Created
+Location:
+https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589
 ```
 
-```ruby
-request_body = {
-  :url => "http://myawesomeapplication.com/destination",
-  :secret => "your webhook secret"
-}
+When the webhook subscription is created, you will receive a `201 Created` HTTP response with an empty response body. You can refer to the `Location` header to retrieve a link to the newly-created subscription.
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-subscription = app_token.post "webhook-subscriptions", request_body
-subscription.response_headers[:location] # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
+## Webhook Subscription Resource
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-subscription = DwollaSwagger::WebhooksubscriptionsApi.create(:body => request_body)
-subscription # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
-```
+| Parameter | Description                                                                                                                                                                                                                                                                                                                                  |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | Unique webhook subscription identifier assigned by Dwolla.                                                                                                                                                                                                                                                                                   |
+| url       | Subscribed URL where Dwolla will deliver webhook notifications.                                                                                                                                                                                                                                                                              |
+| paused    | A boolean `true` or `false` value indicating if a webhook subscription is paused. A webhook subscription will be automatically paused after 400 consecutive failures. In addition, a subscription can be paused or unpaused by calling [this endpoint](https://developers.dwolla.com/api-reference/webhook-subscriptions/update) in our API. |
+| created   | [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp this webhook subscription was created                                                                                                                                                                                                                                           |
 
-```javascript
-var requestBody = {
-  url: "http://myawesomeapplication.com/destination",
-  secret: "your webhook secret",
-};
+### Request and Response
 
-applicationToken
-  .post("webhook-subscriptions", requestBody)
-  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
-```
-
-```python
-request_body = {
-  'url': 'http://myapplication.com/webhooks',
-  'secret': 'sshhhhhh'
-}
-
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-retries = app_token.post('webhook-subscriptions', request_body)
-retries.body['total'] # => 1
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-webhook_api = dwollaswagger.WebhooksubscriptionsApi(client)
-subscription = webhook_api.create(body = request_body)
-subscription # => 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
-```
-
-```php
-<?php
-$webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
-
-$subscription = $webhookApi->create(array (
-  'url' => 'http://myapplication.com/webhooks',
-  'secret' => 'sshhhhhh',
-));
-$subscription; # => "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216"
-?>
-```
-
-You can retrieve your newly created subscription by its resource location:
-
-```bash
-GET https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216
+```raw
+GET https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -100,48 +72,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
     }
   },
   "id": "077dfffb-4852-412f-96b6-0fe668066589",
-  "url": "http://myapplication.com/webhooks",
-  "created": "2015-10-28T16:20:47+00:00"
+  "url": "https://myapplication.com/webhooks",
+  "created": "2022-01-20T16:20:47+00:00"
 }
-```
-
-```ruby
-webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
-
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-webhook_subscription = app_token.get webhook_subscription_url
-webhook_subscription.created # => 2015-10-28T16:20:47+00:00
-
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-webhook_subscription = DwollaSwagger::WebhooksubscriptionApi.id webhook_subscription_url
-webhook_subscription.created # => 2015-10-28T16:20:47+00:00
-```
-
-```javascript
-var webhookSubscriptionUrl =
-  "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
-
-applicationToken.get(webhookSubscriptionUrl).then((res) => res.body.created); // => '2016-04-20T15:49:50.340Z'
-```
-
-```python
-webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
-
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-webhook_subscription = app_token.get(webhook_subscription_url)
-webhook_subscription.body['created'] # => '2015-10-28T16:20:47+00:00'
-
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-webhook_api = dwollaswagger.WebhooksubscriptionsApi(client)
-retrieved = webhook_api.id(webhook_subscription_url)
-retrieved.created # => 2015-10-28T16:20:47+00:00
-```
-
-```php
-<?php
-$webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
-$retrieved = $webhookApi->id('https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216');
-
-$retrieved->created; # => 2015-10-28T16:20:47+00:00
-?>
 ```
