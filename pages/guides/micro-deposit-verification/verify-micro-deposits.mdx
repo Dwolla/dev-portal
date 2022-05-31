@@ -111,11 +111,11 @@ $fsApi->microDeposits([
 
 ### Handle failed verification attempts
 
-Your customer will have only three attempts to correctly input the two posted micro-deposit amounts. If your customer reaches the max attempts allowed, a `microdeposits_maxattempts` [event](https://developers.dwolla.com/api-reference/events) will be triggered and a `failed-verification-micro-deposits` link will be returned in the response for the funding-source. As a result, they will no longer be allowed to verify the funding source using those same two posted micro-deposit amounts. In order to retry bank account verification via micro-deposits, the following steps will need to be taken by your customer and application:
+Your [customer](/api-reference/customers) will have only three attempts to correctly input the two posted micro-deposit amounts. If your customer reaches the max attempts allowed, a `microdeposits_maxattempts` [event](/api-reference/events) will be triggered and a `failed-verification-micro-deposits` link will be returned in the [response for the funding source](/api-reference/funding-sources#funding-source-links). As a result, they will no longer be allowed to verify the funding source using the same two posted micro-deposit amounts. In order to retry bank account verification via micro-deposits, the following steps will need to be taken by your customer and application:
 
 1. [Removal of the funding source](https://developers.dwolla.com/api-reference/funding-sources/remove) with failed micro-deposit verification attempts.
 2. Wait 48 hours after the initial funding source was added to re-add the funding source.
-3. Initiate new micro-deposits to the funding source.
-4. Verify the funding source using the new posted micro-deposit amounts.
+3. [Initiate micro-deposits](/api-reference/funding-sources/initiate-micro-deposits) to the funding source created in the previous step.
+4. [Verify the funding source](/api-reference/funding-sources/verify-micro-deposits) using the new posted micro-deposit amounts.
 
-Links returned on the funding source resource, either `initiate-micro-deposits` or `verify-micro-deposits`, will give your application insight into whether the funding source is eligible to receive or verify micro-deposits.
+Links returned on the funding source resource, e.g. `failed-verification-micro-deposits`, `initiate-micro-deposits` or `verify-micro-deposits`, will give your application insight into whether the funding source is eligible to receive or verify micro-deposits, or if it has already failed micro-deposit verification.
