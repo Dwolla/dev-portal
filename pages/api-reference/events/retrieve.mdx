@@ -59,7 +59,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 event_url = 'https://api-sandbox.dwolla.com/events/81f6e13c-557c-4449-9331-da5c65e61095'
 
 event = app_token.get event_url
@@ -68,6 +68,7 @@ event.topic # => "customer_transfer_created"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $eventUrl = 'https://api-sandbox.dwolla.com/events/81f6e13c-557c-4449-9331-da5c65e61095';
 
 $eventsApi = new DwollaSwagger\EventsApi($apiClient);
@@ -86,6 +87,7 @@ event.body['topic'] # => 'customer_transfer_created'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var eventUrl =
   "https://api-sandbox.dwolla.com/events/81f6e13c-557c-4449-9331-da5c65e61095";
 

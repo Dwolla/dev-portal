@@ -55,7 +55,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 business_classification_url = 'https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203'
 
 business_classification = app_token.get business_classification_url
@@ -64,6 +64,7 @@ business_classification.name # => "Entertainment and media"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $businessClassificationUrl = 'https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203';
 
 $businessClassificationsApi = new DwollaSwagger\BusinessclassificationsApi($apiClient);
@@ -82,6 +83,7 @@ busClassification.body['name']
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var businessClassificationUrl =
   "https://api-sandbox.dwolla.com/business-classifications/9ed3a866-7d6f-11e3-a0ce-5404a6144203";
 

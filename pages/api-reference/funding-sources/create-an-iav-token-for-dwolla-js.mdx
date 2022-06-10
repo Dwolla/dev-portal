@@ -50,7 +50,7 @@ HTTP/1.1 200 OK
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6'
 
 customer = app_token.post "#{customer_url}/iav-token"
@@ -74,6 +74,7 @@ app_token.post('%s/iav-token' % customer_url)
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $iavToken = $customersApi->getCustomerIavToken("https://api-sandbox.dwolla.com/customers/06b51d56-7a6c-4535-a0cc-2c0106f56ba6");

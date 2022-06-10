@@ -98,6 +98,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $labelUrl = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc';
 
 $labelsApi = new DwollaSwagger\LabelsApi($apiClient);
@@ -108,7 +109,7 @@ $ledgerEntries->_embedded->{'ledger-entries'}[0]->id; # => "32d68709-62dd-43d6-a
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 label_url = 'https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc'
 
 ledger_entries = app_token.get "#{label_url}/ledger-entries"
@@ -124,6 +125,7 @@ ledger_entries.body['_embedded']['ledger-entries'][0]['id'] # => '32d68709-62dd-
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var labelUrl =
   "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc";
 

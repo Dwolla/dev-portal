@@ -162,7 +162,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 account_url = 'https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966'
 
 transfers = app_token.get "#{account_url}/transfers"
@@ -171,6 +171,7 @@ transfers._embedded['transfers'][0].status # => "processed"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $accountUrl = 'https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966';
 
 $transfersApi = new DwollaSwagger\TransfersApi($apiClient);
@@ -189,6 +190,7 @@ transfers.body['_embedded']['transfers'][0]['status'] # => "processed"
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966";
 

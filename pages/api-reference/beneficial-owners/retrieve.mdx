@@ -38,7 +38,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfB8'
 
 beneficial_owner = app_token.get beneficial_owner_url
@@ -47,6 +47,7 @@ beneficial_owner.firstName # => "Jane"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
 
 $beneficialOwnerUrl = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfB8';
@@ -63,6 +64,7 @@ beneficial_owner.body['firstName']
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8";
 

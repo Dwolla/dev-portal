@@ -41,7 +41,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
 
 app_token.post "#{funding_source_url}/micro-deposits"
@@ -63,6 +63,7 @@ app_token.post('%s/micro-deposits' % funding_source_url)
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/e52006c3-7560-4ff1-99d5-b0f3a6f4f909';
 
 $fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);

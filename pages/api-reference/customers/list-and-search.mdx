@@ -101,13 +101,14 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customers = app_token.get "customers", limit: 10
 customers._embedded.['customers'][0].firstName # => "Jane"
 ```
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $customers = $customersApi->_list(10, 0);
@@ -122,6 +123,7 @@ customer.body['_embedded']['customers'][0]['firstName'] # => 'Jane'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 dwolla
   .get("customers", { limit: 10 })
   .then((res) => res.body._embedded["customers"][0].firstName); // => 'Jane'

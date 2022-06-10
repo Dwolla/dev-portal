@@ -81,7 +81,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2'
 
 documents = token.get "#{beneficial_owner_url}/documents"
@@ -90,6 +90,7 @@ documents._embedded['documents'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9c
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
 $beneficialOwner = 'https://api-sandbox.dwolla.com/beneficial-owners/55469604-40ab-44b6-962f-de2c0837ba98';
 $listDocsBeneficialOwner = $beneficialOwnersApi->getBeneficialOwnerDocuments($beneficialOwner);
@@ -105,6 +106,7 @@ documents.body['total'] # => 2
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/176878b8-ecdb-469b-a82b-43ba5e8704b2";
 

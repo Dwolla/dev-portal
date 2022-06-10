@@ -73,6 +73,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
 
 $fundingSource = $fundingApi->createFundingSource([
@@ -86,7 +87,7 @@ $fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-63
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   routingNumber: '222222226',
   accountNumber: '123456789',
@@ -112,6 +113,7 @@ funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   routingNumber: "222222226",
   accountNumber: "123456789",
@@ -165,6 +167,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
 
 $fundingSource = $fundingApi->createFundingSource([
@@ -177,7 +180,7 @@ $fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-63
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   name: 'My First VAN',
   type: 'virtual',
@@ -201,6 +204,7 @@ funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   name: "My First VAN",
   type: "virtual",

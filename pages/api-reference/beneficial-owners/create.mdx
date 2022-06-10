@@ -81,6 +81,7 @@ Location: https://api.dwolla.com/beneficial-owners/FC451A7A-AE30-4404-AB95-E3553
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 $verified_customer = 'https://api-sandbox.dwolla.com/customers/81696e5d-a593-45a6-8863-3c20ad634de5';
 
@@ -104,7 +105,7 @@ $addOwner = $customersApi->addBeneficialOwner([
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/81696e5d-a593-45a6-8863-3c20ad634de5'
 request_body = {
   :firstName => 'John',
@@ -146,6 +147,7 @@ beneficial_owner.headers['location'] # => 'https://api-sandbox.dwolla.com/benefi
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var customerUrl = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
 var requestBody = {
   firstName: 'John',

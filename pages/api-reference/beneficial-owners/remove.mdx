@@ -63,13 +63,14 @@ HTTP 200 OK
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c'
 
 app_token.delete beneficial_owner_url
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var beneficialOwnerUrl =
   "https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 
@@ -85,6 +86,7 @@ app_token.delete(beneficial_owner_url)
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
 $beneficialOwner = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c';
 $deletedBeneficialOwner = $beneficialOwnersApi->deleteById($beneficialOwner);

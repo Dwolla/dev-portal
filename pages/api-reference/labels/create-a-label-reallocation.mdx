@@ -51,6 +51,7 @@ Location: https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $labelReallocationsApi = new DwollaSwagger\LabelreallocationsApi($apiClient);
 
 $labelReallocation = $labelReallocationsApi->reallocateLabel([
@@ -72,7 +73,7 @@ $labelReallocation; # => "https://api-sandbox.dwolla.com/label-reallocations/fd3
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   :_links => {
     :from => {
@@ -114,15 +115,14 @@ labelReallocation.headers['location'] # => 'https://api-sandbox.dwolla.com/label
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   _links: {
     from: {
-      href:
-        "https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45",
+      href: "https://api-sandbox.dwolla.com/labels/c91c501c-f49b-48be-a93b-12b45e152d45",
     },
     to: {
-      href:
-        "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
+      href: "https://api-sandbox.dwolla.com/labels/7e042ffe-e25e-40d2-b86e-748b98845ecc",
     },
   },
   amount: {
