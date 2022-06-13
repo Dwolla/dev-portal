@@ -23,7 +23,7 @@ There are currently two ways of adding a bank to a Customer with the Dwolla API.
 
 ## Step 2A: Add a Bank to a Verified Personal Customer
 
-Next, you will create and attach a verified funding source to your Customer, which will be done using Plaid Link, a third-part bank verification provider. This method will give your Customers the ability to add and verify their bank account in a matter of seconds by authenticating using their online banking credentials.
+Next, you will create and attach a verified funding source to your Customer, which will be done using Plaid Link, a third-party bank verification provider. This method will give your Customers the ability to add and verify their bank account in a matter of seconds by authenticating using their online banking credentials.
 
 Once your Customer reaches the page in your application to add a bank account, you will first use Plaid Link to authenticate the user's bank account, exchange the `public_token` for a `processor_token`, and then send the `processor_token` to Dwolla to create the funding source.
 
