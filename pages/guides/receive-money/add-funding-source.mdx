@@ -31,6 +31,6 @@ Once your Customer reaches the page in your application to add a bank account, y
 
 To integrate Dwolla with Plaid, we recommend checking out our [Add a Bank via Dwolla + Plaid Integration](/guides/plaid) guide. Additionally, if you would like to see a working example that creates a Dwolla funding source and instantly verifies it via Plaid Link (using Next.js/React), we recommend checking out our [dwolla-plaid-funding-source](https://github.com/Dwolla/integration-examples/blob/main/dwolla-plaid-funding-source) integration example on our GitHub profile.
 
-## Step 2B: Handling Webhooks
+## Step 2B: Handle Webhooks
 
 Similar to creating a funding source manually and verifying it via microdeposits, when a funding source is created and instantly verified via Plaid Link, you will receive two webhooks: `customer_funding_source_added` and `customer_funding_source_verified`. The former is sent when the funding source is created, whereas the latter is sent when the funding source has been verified via your integration with Plaid.
