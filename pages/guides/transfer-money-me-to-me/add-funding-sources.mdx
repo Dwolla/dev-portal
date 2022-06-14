@@ -27,7 +27,7 @@ Next, you will create and attach a verified funding source to your Customer, whi
 
 Once your Customer reaches the page in your application to add a bank account, you will first use Plaid Link to authenticate the user's bank account, exchange the `public_token` for a `processor_token`, and then send the `processor_token` to Dwolla to create the funding source.
 
-To integrate Dwolla with Plaid, we recommend checking out our [Add a Bank via Dwolla + Plaid Integration](/guides/plaid) guide. Additionally, if you would like to see a working example that creates a Dwolla funding source and instantly verifies it via Plaid Link (using Next.js/React), we recommend checking out our [dwolla-plaid-funding-source](https://github.com/Dwolla/integration-examples/blob/main/dwolla-plaid-funding-source) integration example on our GitHub profile.
+To integrate Dwolla with Plaid, we recommend checking out our [Add a Bank via Dwolla + Plaid Integration](/guides/plaid) guide. Additionally, if you would like to see a working example that verifies a bank via Plaid Link (using Next.js/React) and attaches it as a verified funding-source to a Dwolla Customer, please check out our [dwolla-plaid-funding-source](https://github.com/Dwolla/integration-examples/blob/main/dwolla-plaid-funding-source) integration example on our GitHub profile.
 
 ## Step 2B: Handle Webhooks
 
