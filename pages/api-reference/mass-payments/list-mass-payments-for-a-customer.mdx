@@ -89,7 +89,13 @@ mass_payments._embedded['mass-payments'][0].status # => "complete"
 ```
 
 ```php
-https://
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$customerUrl = 'http://api-sandbox.dwolla.com/customers/01B47CB2-52AC-42A7-926C-6F1F50B1F271';
+$masspaymentsApi = new DwollaSwagger\MasspaymentsApi($apiClient);
+$masspayments = $masspaymentsApi->getByCustomer($customerUrl);
+$masspayments->_embedded->{'mass-payments'}[0]->status; # => "complete"
+?>
 ```
 
 ```python
