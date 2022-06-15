@@ -35,7 +35,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 
 request_body = {
@@ -46,6 +46,7 @@ subscription = app_token.post "#{webhook_subscription_url}", request_body
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var webhookSubscriptionUrl =
   "https://api-sandbox.dwolla.com/webhook-subscriptions/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 
@@ -70,6 +71,7 @@ subscription.body['paused'] # => true
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $webhookSubscriptionUrl = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 
 $webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);

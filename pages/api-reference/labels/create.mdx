@@ -52,6 +52,7 @@ Location: https://api-sandbox.dwolla.com/labels/e217bcac-628a-456d-a375-6cc51230
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $label = $customersApi->createLabel([
@@ -65,7 +66,7 @@ $label; # => "https://api-sandbox.dwolla.com/labels/375c6781-2a17-476c-84f7-db7d
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   :amount => {
@@ -93,6 +94,7 @@ label.headers['location'] # => 'https://api-sandbox.dwolla.com/labels/375c6781-2
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {

@@ -54,6 +54,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $labelReallocationUrl = 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21';
 
 $labelReallocationsApi = new DwollaSwagger\LabelreallocationsApi($apiClient);
@@ -64,7 +65,7 @@ $labelReallocation->created; # => "2019-05-16T13:41:31.036Z"
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 label_reallocation_url = 'https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21'
 
 label_reallocation = app_token.get label_reallocation_url
@@ -80,6 +81,7 @@ label_reallocation.body['created'] # => '2019-05-16T13:41:31.036Z'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var labelReallocationUrl =
   "https://api-sandbox.dwolla.com/label-reallocations/fd36b78c-42f3-4e21-8efb-09196fccbd21";
 

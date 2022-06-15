@@ -101,7 +101,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 account_url = 'https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
 
 funding_sources = app_token.get "#{account_url}/funding-sources"
@@ -110,6 +110,7 @@ funding_sources._embedded['funding-sources'][0].name # => "Jane Doe's Checking"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $accountUrl = 'https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
 
 $fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
@@ -128,6 +129,7 @@ funding_sources.body['_embedded']['funding-sources'][0]['name'] # => 'Jane Doeâ€
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
 

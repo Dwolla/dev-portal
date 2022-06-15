@@ -71,6 +71,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
 
 $fundingSource = $fundingApi->createCustomerFundingSource([
@@ -84,7 +85,7 @@ $fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   routingNumber: '222222226',
@@ -112,6 +113,7 @@ customer.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-source
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {
@@ -151,6 +153,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
 
 $fundingSource = $fundingApi->createCustomerFundingSource([
@@ -169,7 +172,7 @@ $fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   _links: {
@@ -207,13 +210,13 @@ customer.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-source
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {
   _links: {
     "on-demand-authorization": {
-      href:
-        "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388",
+      href: "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388",
     },
   },
   routingNumber: "222222226",
@@ -268,6 +271,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
 
 $fundingSource = $fundingApi->createCustomerFundingSource([
@@ -280,7 +284,7 @@ $fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   name: 'My First VAN',
   type: 'virtual',
@@ -304,6 +308,7 @@ funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   name: "My First VAN",
   type: "virtual",

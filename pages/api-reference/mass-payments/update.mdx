@@ -45,7 +45,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 mass_payment_url = 'https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c'
 request_body = {
       "status" => "pending",
@@ -73,6 +73,7 @@ mass_payments.body['status'] # => 'pending'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var massPaymentUrl =
   "https://api-sandbox.dwolla.com/mass-payments/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 var requestBody = {

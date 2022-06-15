@@ -250,7 +250,7 @@ Location: https://api-sandbox.dwolla.com/mass-payments/d093bcd1-d0c1-41c2-bcb5-a
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   :_links => {
     :source => {
@@ -333,6 +333,7 @@ mass_payment.response_headers[:location] # => "https://api-sandbox.dwolla.com/ma
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $massPaymentsApi = new DwollaSwagger\MasspaymentsApi($apiClient);
 
 $massPayment = $massPaymentsApi->create([
@@ -509,11 +510,11 @@ mass_payment.headers['location'] # => 'https://api-sandbox.dwolla.com/mass-payme
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   _links: {
     source: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+      href: "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
     },
   },
   achDetails: {
@@ -530,8 +531,7 @@ var requestBody = {
     {
       _links: {
         destination: {
-          href:
-            "https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db",
+          href: "https://api-sandbox.dwolla.com/funding-sources/9c7f8d57-cd45-4e7a-bf7a-914dbd6131db",
         },
       },
       amount: {
@@ -559,8 +559,7 @@ var requestBody = {
     {
       _links: {
         destination: {
-          href:
-            "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd",
+          href: "https://api-sandbox.dwolla.com/funding-sources/b442c936-1f87-465d-a4e2-a982164b26bd",
         },
       },
       amount: {

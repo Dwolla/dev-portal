@@ -62,6 +62,7 @@ Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275af
 ```
 
 ```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/1de32eC7-ff0b-4c0c-9f09-19629e6788ce'
 
 file = Faraday::UploadIO.new('mclovin.jpg', 'image/jpeg')
@@ -84,6 +85,8 @@ document.headers['location'] # => 'https://api-sandbox.dwolla.com/documents/fb91
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+// Using form-data - https://github.com/form-data/form-data (Not Maintained By Dwolla)
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/1de32eC7-ff0b-4c0c-9f09-19629e6788ce";
 

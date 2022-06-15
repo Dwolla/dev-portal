@@ -50,12 +50,14 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 on_demand_authorization = app_token.post "on-demand-authorizations"
 on_demand_authorization.buttonText # => "Agree & Continue"
 ```
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $onDemandApi = new DwollaSwagger\OndemandauthorizationsApi($apiClient);
 
 $onDemandAuth = $onDemandApi->createAuthorization();
@@ -70,5 +72,6 @@ on_demand_authorization.body['buttonText'] # => 'Agree & Continue'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 dwolla.post("on-demand-authorizations").then((res) => res.body.buttonText); // => "Agree & Continue"
 ```

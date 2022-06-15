@@ -230,6 +230,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $customerUrl = 'https://api.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f';
@@ -253,7 +254,7 @@ $customer->id; # => "53863b11-1758-47c8-821f-00e6a126f97f"
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f'
 request_body = {
       "firstName" => "John",
@@ -297,6 +298,7 @@ customer.body.id # => '53863b11-1758-47c8-821f-00e6a126f97f'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/53863b11-1758-47c8-821f-00e6a126f97f";
 var requestBody = {

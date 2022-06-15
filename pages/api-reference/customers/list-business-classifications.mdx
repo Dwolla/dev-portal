@@ -58,13 +58,14 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 business_classifications = app_token.get "business-classifications"
 business_classifications._embedded['business-classifications'][0].name # => "Food retail and service"
 ```
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $businessClassificationsApi = new DwollaSwagger\BusinessclassificationsApi($apiClient);
 
 $busClassifications = $businessClassificationsApi->_list();
@@ -79,6 +80,7 @@ business_classifications.body['_embedded']['business-classifications'][0]['name'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 dwolla
   .get("business-classifications")
   .then((res) => res.body._embedded["business-classifications"][0].name); // => 'Food retail and service'

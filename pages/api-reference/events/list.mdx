@@ -112,13 +112,14 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 events = app_token.get "events"
 events.total # => 3
 ```
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $eventsApi = new DwollaSwagger\EventsApi($apiClient);
 
 $events = $eventsApi->events();
@@ -133,5 +134,6 @@ events.body['total'] # => 3
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 dwolla.get("events").then((res) => res.body.total); // => 3
 ```

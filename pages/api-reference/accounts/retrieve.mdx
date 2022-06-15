@@ -64,7 +64,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 account_url = 'https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
 
 account = app_token.get account_url
@@ -73,6 +73,7 @@ account.name # => "Jane Doe"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $accountUrl = 'https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
 
 $accountsApi = new DwollaSwagger\AccountsApi($apiClient);
@@ -91,6 +92,7 @@ account.body['name']
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var accountUrl =
   "https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b";
 

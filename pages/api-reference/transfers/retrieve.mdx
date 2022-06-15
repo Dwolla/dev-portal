@@ -88,7 +88,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 transfer_url = 'https://api.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8'
 
 transfer = app_token.get transfer_url
@@ -97,6 +97,7 @@ transfer.status # => "pending"
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $transferUrl = 'https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8';
 
 $transfersApi = new DwollaSwagger\TransfersApi($apiClient);
@@ -115,6 +116,7 @@ transfer.body['status'] # => 'pending'
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var transferUrl =
   "https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8";
 

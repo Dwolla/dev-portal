@@ -120,7 +120,7 @@ Location: https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34
 ```
 
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 request_body = {
   :_links => {
     :source => {
@@ -162,6 +162,7 @@ transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/74c9
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $transfersApi = new DwollaSwagger\TransfersApi($apiClient);
 
 $transfer = $transfersApi->create([
@@ -232,15 +233,14 @@ transfer.headers['location'] # => 'https://api.dwolla.com/transfers/74c9129b-d14
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var requestBody = {
   _links: {
     source: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+      href: "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
     },
     destination: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C",
+      href: "https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C",
     },
   },
   amount: {

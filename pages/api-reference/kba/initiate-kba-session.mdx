@@ -36,6 +36,7 @@ Location: https://api.dwolla.com/kba/33aa88b1-97df-424a-9043-d5f85809858b
 ```
 
 ```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 customer_url = 'https://api-sandbox.dwolla.com/customers/ca22d192-48f1-4b72-b29d-681e9e20795d'
 
 kba = app_token.post "#{customer_url}/kba"
@@ -44,6 +45,7 @@ kba.response_headers[:location] # => "https://api-sandbox.dwolla.com/kba/70b0e9c
 
 ```php
 <?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $customersApi = new DwollaSwagger\CustomersApi($apiClient);
 
 $customerUrl = "https://api.dwolla.com/customers/ca22d192-48f1-4b72-b29d-681e9e20795d"
@@ -54,6 +56,7 @@ $kba; # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4de2-9a82-a2281afa4
 ```
 
 ```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
 customer_url = 'https://api-sandbox.dwolla.com/customers/61a74e62-e27d-46f1-9fa6-a8e57226bb3e'
 
 kba = app_token.post('%s/kba' % customer_url)
@@ -61,6 +64,7 @@ kba.headers['location'] # => "https://api-sandbox.dwolla.com/kba/70b0e9cc-020d-4
 ```
 
 ```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var customerUrl =
   "https://api-sandbox.dwolla.com/customers/61a74e62-e27d-46f1-9fa6-a8e57226bb3e";
 
