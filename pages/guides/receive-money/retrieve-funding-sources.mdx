@@ -24,19 +24,19 @@ In order to find your Customer’s available bank and balance funding sources, y
 #### Request and response (view schema in ‘raw’)
 
 ```bash
-GET https://api-sandbox.dwolla.com/customers/4BB512E4-AD4D-4F7E-BFD0-A232007F21A1/funding-sources
+GET https://api-sandbox.dwolla.com/customers/2e09d295-e0b4-48e1-9ad0-69eafd47f212/funding-sources
 Accept: application/vnd.dwolla.v1.hal+json
-Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+Authorization: Bearer [YOUR_OAUTH_TOKEN_HERE]
 
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/customers/d8a443b3-c7b2-4a0a-86a2-0a03dfbca24c/funding-sources?removed=false",
+            "href": "https://api-sandbox.dwolla.com/customers/2e09d295-e0b4-48e1-9ad0-69eafd47f212/funding-sources?removed=false",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         },
         "customer": {
-            "href": "https://api-sandbox.dwolla.com/customers/d8a443b3-c7b2-4a0a-86a2-0a03dfbca24c",
+            "href": "https://api-sandbox.dwolla.com/customers/2e09d295-e0b4-48e1-9ad0-69eafd47f212",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "customer"
         }
@@ -50,13 +50,8 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "transfer"
                     },
-                    "on-demand-authorization": {
-                        "href": "https://api-sandbox.dwolla.com/on-demand-authorizations/df2dde3c-d194-e811-810d-97e8a429c2fb",
-                        "type": "application/vnd.dwolla.v1.hal+json",
-                        "resource-type": "on-demand-authorization"
-                    },
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/b7b3d4ef-8191-4c4b-bdec-b4bf719fbfa6",
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/c4805686-dee2-4f5a-ae8c-f269e29658b2",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
@@ -65,23 +60,18 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "transfer"
                     },
-                    "balance": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/b7b3d4ef-8191-4c4b-bdec-b4bf719fbfa6/balance",
-                        "type": "application/vnd.dwolla.v1.hal+json",
-                        "resource-type": "balance"
-                    },
                     "transfer-send": {
                         "href": "https://api-sandbox.dwolla.com/transfers",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "transfer"
                     },
                     "remove": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/b7b3d4ef-8191-4c4b-bdec-b4bf719fbfa6",
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/c4805686-dee2-4f5a-ae8c-f269e29658b2",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
                     "customer": {
-                        "href": "https://api-sandbox.dwolla.com/customers/d8a443b3-c7b2-4a0a-86a2-0a03dfbca24c",
+                        "href": "https://api-sandbox.dwolla.com/customers/2e09d295-e0b4-48e1-9ad0-69eafd47f212",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "customer"
                     },
@@ -91,20 +81,19 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
                         "resource-type": "transfer"
                     }
                 },
-                "id": "b7b3d4ef-8191-4c4b-bdec-b4bf719fbfa6",
+                "id": "c4805686-dee2-4f5a-ae8c-f269e29658b2",
                 "status": "verified",
                 "type": "bank",
                 "bankAccountType": "checking",
-                "name": "Incomplete Account #1 - CHECKING",
-                "created": "2018-07-31T14:51:41.000Z",
+                "name": "Plaid Test",
+                "created": "2022-06-01T20:50:17.276Z",
                 "removed": false,
                 "channels": [
-                    "ach"
+                    "ach",
+                    "real-time-payments"
                 ],
                 "bankName": "SANDBOX TEST BANK",
-                "iavAccountHolders": {
-                    "selected": "account holder"
-                }
+                "fingerprint": "dcd236c37358c1e4a306e6fb1b37dac85e0b2cc9925d4719f1e72d7731a80923"
             }
         ]
     }
