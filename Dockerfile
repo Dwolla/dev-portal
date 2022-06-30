@@ -1,5 +1,5 @@
 # Create image from node v16
-FROM node:16
+FROM node:18
 
 # All further commands to happen in /app directory (WORKDIR is similar to cd)
 WORKDIR /app
