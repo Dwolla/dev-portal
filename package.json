@@ -46,7 +46,7 @@
     "@types/react-scroll": "^1.5.4",
     "@types/react-test-renderer": "^17.0.2",
     "@types/scroll-to-element": "^2.0.0",
-    "autoprefixer": "^10.4.4",
+    "autoprefixer": "^10.4.7",
     "babel-jest": "^25.1.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-import-glob-array": "^0.2.0",
