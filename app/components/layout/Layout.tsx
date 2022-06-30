@@ -30,6 +30,7 @@ import { breakUp, breakDown } from "../breakpoints";
 import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
+import AlertBar from "../base/AlertBar";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import dwollaDevLogo from "../../../assets/images/dwolla-developers-logo.svg";
 
@@ -169,6 +170,7 @@ export default function Layout({
   footerLegal,
   topBarProps,
   apiStatus,
+  announcement,
 }: {
   children: JSX.Element;
   pages: Page[];
@@ -180,6 +182,7 @@ export default function Layout({
   };
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
+  announcement?: string;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
@@ -313,6 +316,11 @@ export default function Layout({
       </LeftSidebar>
 
       <MainArea>
+        {announcement && (
+          <AlertBar variation="announcement" isClosable>
+            {announcement}
+          </AlertBar>
+        )}
         <TopBarWrapper>
           <TopBar {...topBarProps} onHamburgerClick={showSidebar} />
         </TopBarWrapper>
