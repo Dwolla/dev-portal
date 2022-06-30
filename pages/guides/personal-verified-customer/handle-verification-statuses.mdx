@@ -628,16 +628,17 @@ If the document was found to be fraudulent or doesn’t match the identity of th
 
 A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` array of `reason`s and `description`s is also returned :
 
-| Failure reason                      | Description                                                            |
-| ----------------------------------- | ---------------------------------------------------------------------- |
-| <code>ScanNotReadable</code>        | Image blurry, too dark, or obscured by glare                           |
-| <code>ScanNotUploaded</code>        | Scan not uploaded                                                      |
-| <code>ScanIdExpired</code>          | ID is expired                                                          |
-| <code>ScanIdTypeNotSupported</code> | ID may be a military ID, firearm license, or other unsupported ID type |
-| <code>ScanIdUnrecognized</code>     | ID is not recognized                                                   |
-| <code>ScanNameMismatch</code>       | Name mismatch                                                          |
-| <code>ScanDobMismatch</code>        | Date of birth mismatch                                                 |
-| <code>ScanFailedOther</code>        | ID may be fraudulent or a generic example ID image                     |
+| Failure reason                         | Description                                                            |
+| -------------------------------------- | ---------------------------------------------------------------------- |
+| <code>ForeignPassportNotAllowed</code> | The passport's country of origin was not the United States of America  |
+| <code>ScanNotReadable</code>           | Image blurry, too dark, or obscured by glare                           |
+| <code>ScanNotUploaded</code>           | Scan not uploaded                                                      |
+| <code>ScanIdExpired</code>             | ID is expired                                                          |
+| <code>ScanIdTypeNotSupported</code>    | ID may be a military ID, firearm license, or other unsupported ID type |
+| <code>ScanIdUnrecognized</code>        | ID is not recognized                                                   |
+| <code>ScanNameMismatch</code>          | Name mismatch                                                          |
+| <code>ScanDobMismatch</code>           | Date of birth mismatch                                                 |
+| <code>ScanFailedOther</code>           | ID may be fraudulent or a generic example ID image                     |
 
 ##### Request and response
 
