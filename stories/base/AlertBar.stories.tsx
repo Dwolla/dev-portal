@@ -36,11 +36,7 @@ storiesOf("base/AlertBar", module)
   .add("Announcement", () => (
     <ParentDiv>
       <AlertBar variation="announcement" isClosable>
-        Deprecation Announcement: At the end of 2022, Dwolla will sunset our
-        Instant Account Verification (IAV) product, which is powered by
-        Dwolla.js. As an alternative bank account verification option, we
-        recommend utilizing one of our third-party data providers (e.g. Plaid)
-        prior to December 31, 2022.
+        This is an important announcement.
       </AlertBar>
     </ParentDiv>
   ));
