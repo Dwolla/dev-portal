@@ -41,7 +41,7 @@ module.exports = {
     "no-confusing-arrow": "off",
     // prettier
     "no-undef": "off",
-    //tyescript
+    //typescript
     "nonblock-statement-body-position": "off",
     // prettier
     "object-curly-newline": "off",
