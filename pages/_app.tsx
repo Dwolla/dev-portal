@@ -117,6 +117,9 @@ const FOOTER_LEGAL_COPY = {
   ),
 };
 
+const ANNOUNCEMENT_COPY =
+  "Deprecation Announcement: At the end of 2022, Dwolla will sunset our Instant Account Verification (IAV) product, which is powered by Dwolla.js. As an alternative bank account verification option, we recommend utilizing one of our third-party data providers (e.g. Plaid) prior to December 31, 2022.";
+
 const TOP_BAR_PROPS = {
   button: {
     text: "Get API Keys",
@@ -169,6 +172,7 @@ function AppWithHooks({ router, Component, pageProps }: AppProps) {
           sideNavLinks={SIDE_NAV_LINKS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
+          announcement={ANNOUNCEMENT_COPY}
         >
           <Component {...pageProps} url={router.pathname} />
         </Layout>

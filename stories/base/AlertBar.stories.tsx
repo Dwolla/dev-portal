@@ -32,4 +32,11 @@ storiesOf("base/AlertBar", module)
         Files must be no larger than 10MB in size.
       </AlertBar>
     </ParentDiv>
+  ))
+  .add("Announcement", () => (
+    <ParentDiv>
+      <AlertBar variation="announcement" isClosable>
+        This is an important announcement.
+      </AlertBar>
+    </ParentDiv>
   ));

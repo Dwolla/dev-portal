@@ -55,3 +55,8 @@ export const API_STATUS_BAR_RED = "#e84d3d";
 
 // Overlay Colors
 export const BLACK_OVERLAY = "rgba(0, 0, 0, 0.4)";
+
+// Announcement Bar Colors
+export const ANNOUNCEMENT_BACKGROUND_BLUE = "#e5f6fd";
+export const ANNOUNCEMENT_ICON_BLUE = "#0288d1";
+export const ANNOUNCEMENT_TEXT_BLUE = "#115482";

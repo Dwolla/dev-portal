@@ -1,49 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AlertBar - announcement 1`] = `null`;
+
 exports[`AlertBar - info 1`] = `
 <div
-  className="info css-1lx65zb-StyledAlertBar e1qi2q2u2"
+  className="info css-3wqs3s-StyledAlertBar e1qi2q2u3"
 >
   <div
-    className="css-12td5vw-ImageWrapper e1qi2q2u1"
+    className="css-12td5vw-ImageWrapper e1qi2q2u2"
   >
     <img
-      alt="Info"
+      alt="info"
       src="test-image-stub"
     />
   </div>
   <div
-    className="css-5sjqr3-TextWrapper e1qi2q2u0"
+    className="css-by2jis-TextWrapper e1qi2q2u1"
   >
     Here is an info. The file must be either a .jpg, .jpeg, .png, or .pdf. Files must be no larger than 10MB in size.
   </div>
 </div>
 `;
 
-exports[`AlertBar - warning 1`] = `
-<div
-  className="warning css-1lx65zb-StyledAlertBar e1qi2q2u2"
->
-  <div
-    className="css-12td5vw-ImageWrapper e1qi2q2u1"
-  >
-    <img
-      alt="Warning"
-      src="test-image-stub"
-    />
-  </div>
-  <div
-    className="css-5sjqr3-TextWrapper e1qi2q2u0"
-  >
-    This is a warning! You need to gather 
-    <strong>
-      new
-    </strong>
-     information if the Customer is placed into the 
-    <code>
-      retry
-    </code>
-     status; simply passing the same information will result in the same insufficient scores.
-  </div>
-</div>
-`;
+exports[`AlertBar - warning 1`] = `null`;

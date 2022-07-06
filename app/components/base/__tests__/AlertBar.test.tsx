@@ -28,3 +28,13 @@ test("AlertBar - info", () => {
 
   expect(tree).toMatchSnapshot();
 });
+
+test("AlertBar - announcement", () => {
+  const tree = renderer
+    .create(
+      <AlertBar variation="announcement">This is an announcement.</AlertBar>
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
