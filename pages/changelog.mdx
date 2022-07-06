@@ -53,7 +53,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 **ADDED**
 
 - Added client-side form validation to the `Add a Debit Card` form in `dwolla-cards.js`. This enables the form to display helpful error messages to the user whenever they enter invalid data.
-- Check out our [Developer documentation](https://developers.dwolla.com/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function#dwolla-cardsjs-styling) for more information on styling the `<span>` element that displays the validation error messages.
+- Check out our [Developer documentation](/guides/dwolla-cards-js/add-a-debit-card/configure-and-call-function#dwolla-cardsjs-styling) for more information on styling the `<span>` element that displays the validation error messages.
 
 ### 2021-08-27
 
@@ -61,7 +61,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 - Added new Business document failure reasons to the API - `BusinessDocNotSupported`, `BusinessNameMismatch`, `BusinessTypeMismatch`.
 - Updated failure descriptions for `ScanFailedOther` and `ScanNameMismatch` to provide more details about the failure reason.
-- Check out our [Developer documentation](https://developers.dwolla.com/resources/business-verified-customer/handling-controller-and-customer-statuses.html#document-failure).
+- Check out our [Developer documentation](/guides/business-verified-customer/handle-verification-statuses#document-failure).
 
 ### 2021-03-10
 
@@ -73,7 +73,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 **ADDED**
 
-- Added support for creating [access-tokens](https://developers.dwolla.com/api-reference/authorization/application-authorization) and [client-tokens](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) in the dwolla-swagger-php SDK. Check it out on [Github](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.6.0).
+- Added support for creating [access-tokens](/api-reference/authorization/application-authorization) and [client-tokens](/api-reference/drop-in-components/create-client-token) in the dwolla-swagger-php SDK. Check it out on [Github](https://github.com/Dwolla/dwolla-swagger-php/releases/tag/1.6.0).
 
 ### 2020-12-08
 
@@ -85,7 +85,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 **ADDED**
 
-- Added support for simulating `document` status for Business Verified Customers in Sandbox. Check out our [Testing in the Sandbox](https://developers.dwolla.com/guides/sandbox#testing-customers) guide to learn more.
+- Added support for simulating `document` status for Business Verified Customers in Sandbox. Check out our [Testing in the Sandbox](/guides/sandbox#testing-customers) guide to learn more.
 
 ### 2020-09-15
 
@@ -97,13 +97,13 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 **UPDATED**
 
-- Updated the [List of possible return codes, descriptions, and actions](https://developers.dwolla.com/concepts/transfer-failures#list-of-possible-return-codes-descriptions-and-actions) table with a new column for determining if certain ACH return codes cause a Funding Source with a `verified` status to become `unverified`.
+- Updated the [List of possible return codes, descriptions, and actions](/concepts/transfer-failures#list-of-possible-return-codes-descriptions-and-actions) table with a new column for determining if certain ACH return codes cause a Funding Source with a `verified` status to become `unverified`.
 
 ### 2020-03-10
 
 **CHANGED/ADDED**
 
-- Removed support for [uploading personal identification documents](https://developers.dwolla.com/api-reference/documents/create-document-for-customer) in the file format of `.pdf`. A validation error will be returned with a `code` of `"Invalid"` and a `message` of `"Invalid file type"`.
+- Removed support for [uploading personal identification documents](/api-reference/documents/create-document-for-customer) in the file format of `.pdf`. A validation error will be returned with a `code` of `"Invalid"` and a `message` of `"Invalid file type"`.
 
 ### 2020-03-06
 
@@ -117,7 +117,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 - Added a new Knowledge-based Authentication (`KBA`) resource to the API.
 - KBA is a component of verifying the identity of Personal Verified Customers.
-- Head over to our [API Docs](https://developers.dwolla.com/api-reference/kba) or check out our [blog post](https://www.dwolla.com/updates/kba-streamline-user-onboarding-individuals/) to learn more.
+- Head over to our [API Docs](/api-reference/kba) or check out our [blog post](https://www.dwolla.com/updates/kba-streamline-user-onboarding-individuals/) to learn more.
 
 ### 2019-10-09
 
@@ -125,21 +125,21 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 - Added support for including the `clearing` JSON object when creating a mass payment.
 - The `clearing` object allows for the clearing time of individual mass payment items to be upgraded or downgraded from the default ACH processing time.
-- Head over to our [API Docs](https://developers.dwolla.com/api-reference/mass-payments) to learn more.
+- Head over to our [API Docs](/api-reference/mass-payments) to learn more.
 
 ### 2019-09-06
 
 **CHANGED**
 
 - Added a new JSON object called `allFailureReasons` to the Document resource, which helps with further identifying the reason for the rejection of an identity verification document uploaded for a Verified Customer.
-- Check out our [Developer documentation](https://developers.dwolla.com/api-reference/documents#document-resource).
+- Check out our [Developer documentation](/api-reference/documents#document-resource).
 
 ### 2019-08-26
 
 **CHANGED**
 
 - Updated the me-to-me funds flow to support creating transfers between two banks of a Customer with a single transfer request.
-- Check out our [Resource Article](https://developers.dwolla.com/guides/me-to-me/) to learn more.
+- Check out our [Resource Article](/guides/transfer-money-me-to-me) to learn more.
 
 ### 2019-08-26
 
@@ -154,7 +154,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 - Added a new `total` attribute to the Balance object in the API.
 - Introducing total and available balance amounts for a Dwolla Balance.
-- Head over to our [API Docs](https://developers.dwolla.com/api-reference/funding-sources/retrieve-funding-source-balance) or check out our [resource article](https://developers.dwolla.com/concepts/balance-funding-source#retrieve-the-balance-amount) to learn more.
+- Head over to our [API Docs](/api-reference/funding-sources/retrieve-funding-source-balance) or check out our [resource article](/concepts/balance-funding-source#retrieve-the-balance-amount) to learn more.
 
 ### 2019-05-16
 
@@ -162,14 +162,14 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 - Added a new `Labels` resource to the API.
 - A Label represents a designated portion of funds within a Verified Customer’s balance.
-- Head over to our [API Docs](https://developers.dwolla.com/api-reference/labels) or check out our blog post [to learn more](https://www.dwolla.com/updates/real-time-usd-ledger-labels/).
+- Head over to our [API Docs](/api-reference/labels) or check out our blog post [to learn more](https://www.dwolla.com/updates/real-time-usd-ledger-labels/).
 
 ### 2019-03-01
 
 **ADDED**
 
 - Added a new attribute called `traceId` to the `achDetails` object within the Transfer resource, which helps with further identifying a transfer to/from a user’s bank account.
-  Jump to our [API Docs](https://developers.dwolla.com/api-reference/transfers) or view the full dev docs commit changes on our [Github](https://github.com/Dwolla/v2-ach-api-docs).
+  Jump to our [API Docs](/api-reference/transfers).
 
 ### 2019-02-21
 
@@ -179,7 +179,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 - Previously, applications made a call to `https://www.dwolla.com/oauth/v2/token` and specified the `application/x-www-form-urlencoded` `Content-Type` header, passing their client credentials (App Key and App Secret) through the body of the HTTP message sent to Dwolla.
 - With this update, the token URL as well as the manner in which an application’s client credentials are sent to Dwolla, will change to be inline with OAuth spec.
 - The new Dwolla token exchange endpoint is `https://api.dwolla.com/token`
-- Reference our [API Reference Docs](https://developers.dwolla.com/api-reference/authorization/application-authorization) to learn more.
+- Reference our [API Reference Docs](/api-reference/authorization/application-authorization) to learn more.
 
 ### 2019-01-07
 
@@ -207,14 +207,13 @@ Keep up to date on new product features and enhancements, API docs, tools change
 **UPDATED**
 
 - Dwolla has discontinued support for `.tif` file upload.
-- View dev docs commit changes on our [Github](https://github.com/Dwolla/v2-ach-api-docs/pull/113/commits/a2fb0e48abda154e5949efab87c9f732f648cce9)
 
 ### 2018-05-30
 
 **UPDATED**/**ADDED**
 
 - New webhook `funding_source_negative` and `customer_funding_source_negative`
-- Jump to our [dev docs](https://developers.dwolla.com/api-reference/events) or view the full dev docs commit changes on our [Github](https://github.com/Dwolla/v2-ach-api-docs/pull/112)
+- Jump to our [dev docs](/api-reference/events).
 
 ### 2018-05-30
 
@@ -231,14 +230,14 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 **CHANGED**
 
-- Change in verified business Customer creation flow across Platform. Check out our [developer guide](https://developers.dwolla.com/guides/business-verified-customer) to learn how to create this Customer type within the new flow.
+- Change in verified business Customer creation flow across Platform. Check out our [developer guide](/guides/business-verified-customer) to learn how to create this Customer type within the new flow.
 - In order to comply with United States Federal law, Dwolla also requires beneficial owners to be added to a Customer. Read our [blog post](https://www.dwolla.com/updates/understanding-impacts-benefits-customer-due-diligence-rule/) to learn more about why we need to comply with US customer due diligence rules.
 
 ### 2018-04-11
 
 **CHANGED**
 
-- Verified business Customers creation flow has changed in sandbox. Check out our [developer guide](https://developers.dwolla.com/guides/business-verified-customer) to learn how to create this Customer type within the new flow.
+- Verified business Customers creation flow has changed in sandbox. Check out our [developer guide](/guides/business-verified-customer) to learn how to create this Customer type within the new flow.
 - In order to comply with United States Federal law, Dwolla also requires beneficial owners to be added to a Customer. Read our [blog post](https://www.dwolla.com/updates/understanding-impacts-benefits-customer-due-diligence-rule/) to learn more about why we need to comply with US customer due diligence rules.
 - Please note that this change will go live in across platform on May 11th, 2018.
 
@@ -247,28 +246,26 @@ Keep up to date on new product features and enhancements, API docs, tools change
 **ADDED** - Developer Guide
 
 - Added a new Developer Guide that goes over the new business verified Customer creation flow with Dwolla.
-- [Click here](https://developers.dwolla.com/guides/business-verified-customer) to view the article
+- [Click here](/guides/business-verified-customer) to view the article
 
 ### 2018-04-11
 
 **UPDATED/ADDED** - Dev Docs update
 
-- Updated Customer endpoints to reflect the [new business verified Customer flow change](https://developers.dwolla.com/api-reference/customers).
-- Added the new [beneficial owners endpoints](https://developers.dwolla.com/api-reference/beneficial-owners) and [webhooks](https://developers.dwolla.com/api-reference/events#customer-account-event-topics).
+- Updated Customer endpoints to reflect the [new business verified Customer flow change](/api-reference/customers).
+- Added the new [beneficial owners endpoints](/api-reference/beneficial-owners) and [webhooks](/api-reference/events#customer-account-event-topics).
 
 ### 2018-04-03
 
 **UPDATED** - Dev Docs update
 
 - Added method and URL to Documents section
-- View commit changes on our [Github](https://github.com/Dwolla/v2-ach-api-docs/commit/b8ccd4fe9fa0988b54843a9ed6b3d3c8799f9290)
 
 ### 2018-03-30
 
 **UPDATED** - Developer Resources Article
 
 - Changed screenshot to reflect the proper On-Demand Auth Language.
-- View commit changes on our [Github](https://github.com/Dwolla/v2-ach-api-docs/commit/b8ccd4fe9fa0988b54843a9ed6b3d3c8799f9290)
 
 ### 2018-03-28
 
@@ -282,13 +279,12 @@ Keep up to date on new product features and enhancements, API docs, tools change
 **UPDATED** - Dev Docs update
 
 - Updated docs to reflect business name updates.
-- View commit changes on our [Github](https://github.com/Dwolla/v2-ach-api-docs/commit/b27ffe0abcd419cdd2ce44ef3dbd86e8ed29e492)
 
 ### 2017-11-16
 
 **CHANGED**
 
-- Bank [balance check](https://developers.dwolla.com/api-reference/funding-sources/retrieve-funding-source-balance) functionality changing to be asynchronous and immediately return an HTTP 202. The response body for the 202 will contain a status relating to the processing of this request. Subsequent requests to this endpoint will return a 202 up until processing completes and then either return an HTTP 200 with the current balance or an HTTP 400 if there was an error (i.e. `UnsupportedBank`).
+- Bank [balance check](/api-reference/funding-sources/retrieve-funding-source-balance) functionality changing to be asynchronous and immediately return an HTTP 202. The response body for the 202 will contain a status relating to the processing of this request. Subsequent requests to this endpoint will return a 202 up until processing completes and then either return an HTTP 200 with the current balance or an HTTP 400 if there was an error (i.e. `UnsupportedBank`).
 
 ### 2017-11-16
 
@@ -312,7 +308,7 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 **ADDED**
 
-- Release support for a new (optional) `backButton` and `subscriber` options for IAV within [dwolla.js](https://developers.dwolla.com/guides/dwolla-js/instant-account-verification/configure-and-call-function#options-and-customization). Note: Dwolla.js is a premium feature only available for Dwolla [API](https://www.dwolla.com/platform) customers.
+- Release support for a new (optional) `backButton` and `subscriber` options for IAV within [dwolla.js](/guides/dwolla-js/instant-account-verification/configure-and-call-function#options-and-customization). Note: Dwolla.js is a premium feature only available for Dwolla [API](https://www.dwolla.com/platform) customers.
 
 ### 2017-04-27
 
@@ -324,25 +320,25 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 **ADDED**
 
-- Release support for a new `clearing` request parameter when [initiating a transfer](https://developers.dwolla.com/api-reference/transfers/initiate). Clearing is a JSON object that supports specifying same-day and standard ACH clearing per API request. Note: The clearing request parameter is a premium feature available for Dwolla API customers.
+- Release support for a new `clearing` request parameter when [initiating a transfer](/api-reference/transfers/initiate). Clearing is a JSON object that supports specifying same-day and standard ACH clearing per API request. Note: The clearing request parameter is a premium feature available for Dwolla API customers.
 
 ### 2016-12-01
 
 **DEPRECATED**
 
-- Remove the `scope` attribute from the [application access token](https://developers.dwolla.com/api-reference/authorization/application-authorization) response.
+- Remove the `scope` attribute from the [application access token](/api-reference/authorization/application-authorization) response.
 
 ### 2016-12-01
 
 **CHANGED**
 
-- Automatic pause of webhook subscriptions after 400 consecutive failed delivery attempts. Reference the [API docs](https://developers.dwolla.com/api-reference/webhook-subscriptions) for more information.
+- Automatic pause of webhook subscriptions after 400 consecutive failed delivery attempts. Reference the [API docs](/api-reference/webhook-subscriptions) for more information.
 
 ### 2016-10-19
 
 **CHANGED**
 
-- Change the `phone` request parameter from required to optional when [creating a Customer](https://developers.dwolla.com/api-reference/customers/create).
+- Change the `phone` request parameter from required to optional when [creating a Customer](/api-reference/customers/create).
 
 ### 2016-10-19
 
@@ -366,9 +362,9 @@ Remove the `profileId` request parameter from the Off-Site Gateway in API v1.
 
 **CHANGED/DEPRECATED**
 
-- Change in functionality for [removing a funding source](https://developers.dwolla.com/api-reference/funding-sources/remove) in API v2. The method for removing a funding source changes from a `DELETE` to a `POST` with the need to supply `{"removed": true}` in the body of the request.
-- A `removed` attribute is added to the [funding source object](https://developers.dwolla.com/api-reference/funding-sources#funding-source-resource).
-- A `removed` querystring request parameter is supplied when listing an [Account](https://developers.dwolla.com/api-reference/accounts/list-funding-sources) or [Customer’s](https://developers.dwolla.com/api-reference/funding-sources/list-funding-sources-for-a-customer) funding sources. By default, all funding sources are returned from the listing unless the `removed` request parameter is set to `false`.
+- Change in functionality for [removing a funding source](/api-reference/funding-sources/remove) in API v2. The method for removing a funding source changes from a `DELETE` to a `POST` with the need to supply `{"removed": true}` in the body of the request.
+- A `removed` attribute is added to the [funding source object](/api-reference/funding-sources#funding-source-resource).
+- A `removed` querystring request parameter is supplied when listing an [Account](/api-reference/accounts/list-funding-sources) or [Customer’s](/api-reference/funding-sources/list-funding-sources-for-a-customer) funding sources. By default, all funding sources are returned from the listing unless the `removed` request parameter is set to `false`.
 
 ### 2016-02-29
 
