@@ -22,7 +22,7 @@
     "@babel/core": "^7.8.7",
     "@babel/helper-define-map": "^7.16.7",
     "@babel/helper-regex": "^7.10.5",
-    "@babel/plugin-transform-typescript": "^7.8.7",
+    "@babel/plugin-transform-typescript": "^7.18.8",
     "@emotion/babel-plugin": "^11.9.2",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/core": "^10.3.1",
