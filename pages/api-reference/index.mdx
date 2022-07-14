@@ -43,6 +43,18 @@ All requests require either an OAuth access token or a `client_id` and `client_s
 
 **Sandbox:** `https://api-sandbox.dwolla.com`
 
+### Rate Limits
+
+Dwolla imposes a rate limit for any applications that make requests to our API. Currently, there are two types of rate limits that we define:
+
+- Concurrency-based that is imposed for transfers that, when created, are sourced from a [Dwolla Balance](/concepts/balance-funding-source) associated with a Dwolla [Account](/api-reference/accounts) or [Customer](/api-reference/customers). Applications that attempt to [initiate transfers](/api-reference/transfers/initiate) sourced from the same [balance funding source](/concepts/balance-funding-source) in quick succession may receive an HTTP `429 Too Many Requests` status code.
+
+- Volume-based that is imposed for **all Dwolla endpoints**. At this time, these thresholds are defined as outside the range of what we consider normal API usage. If the rate limit is reached for an endpoint, subsequent requests to the same endpoint will result in an HTTP `429 Too Many Requests` status code. This rate limit will persist for 5 minutes.
+
+Dwolla recommends building a mechanism into your application for `429 Too Many Requests` responses, which would retry the request following an exponential backoff schedule to reduce request volume, and utilizes [idempotency keys](/api-reference#idempotency-key), where applicable. This ensures actions only perform once and prevents creation of duplicate records.
+
+If you believe that your application will require a high rate of API calls, please contact support@dwolla.com for further assistance.
+
 ## Idempotency key
 
 To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key and request body won't result in multiple resources being created. It is recommended to use a random value for the idempotency key, like a UUID (i.e. - `Idempotency-Key: d2adcbab-4e4e-430b-9181-ac9346be723a`).
