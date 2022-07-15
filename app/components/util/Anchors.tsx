@@ -148,8 +148,12 @@ export function AnchorsSetter(props) {
 }
 
 export const scrollTo = (anchorId: string) => {
-  scrollToElement(`#${anchorId}`, {
-    offset: -SCROLL_OFFSET + 1,
-    duration: SCROLL_DURATION,
-  });
+  const element = document.getElementById(anchorId);
+
+  if (element) {
+    scrollToElement(element, {
+      offset: -SCROLL_OFFSET + 1,
+      duration: SCROLL_DURATION,
+    });
+  }
 };
