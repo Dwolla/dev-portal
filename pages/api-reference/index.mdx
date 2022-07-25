@@ -55,6 +55,29 @@ Dwolla recommends building a mechanism into your application for `429 Too Many R
 
 If you believe that your application will require a high rate of API calls, please contact support@dwolla.com for further assistance.
 
+### IP Allowlist
+
+IP allowlisting enables you to define IP addresses from which you want to allow access to the Dwolla API. This helps to prevent unauthorized networks from performing actions on behalf of your application.
+
+**Things to remember:**
+
+- The IP Allowlist option is made available once an application has completed the application approval process.
+- If you are logged in as a sub-user, you will need Edit permissions for Applications to be able to edit the IP allowlist.
+
+To set up IP allowlisting navigate to the Applications tab in the Dashboard. Locate your application for which you want to specify a list of IP addresses, then click on Allow List. You can then specify an IP address or a range of IP addresses and add a description for that entry.
+
+**Production** - https://dashboard.dwolla.com/applications <br />
+**Sandbox** - https://dashboard-sandbox.dwolla.com/applications
+
+Immediately after adding your first IP address, any attempt to make a call to the API from an IP address not in the list will result in a `403 Forbidden` HTTP error code with the following response body:
+
+```bash
+{
+  "code": "InvalidIpAddress",
+  "message": "Access to this resource is forbidden from this network location."
+}
+```
+
 ## Idempotency key
 
 To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key and request body won't result in multiple resources being created. It is recommended to use a random value for the idempotency key, like a UUID (i.e. - `Idempotency-Key: d2adcbab-4e4e-430b-9181-ac9346be723a`).
