@@ -27,7 +27,10 @@ storiesOf("base/Card", module)
   ))
   .add("`link`", () => (
     <Card
-      link={{ href: "https://www.dwolla.com", external: true }}
+      link={{
+        href: "https://www.dwolla.com",
+        external: true,
+      }}
       icon={guideIcon}
       topic="This is the Topic"
       description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
@@ -43,7 +46,10 @@ storiesOf("base/Card", module)
   ))
   .add("`link` and `badge`", () => (
     <Card
-      link={{ href: "https://www.dwolla.com", external: true }}
+      link={{
+        href: "https://www.dwolla.com",
+        external: true,
+      }}
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic"
@@ -61,7 +67,10 @@ storiesOf("base/Card", module)
   .add("`centerAlign` + `link`", () => (
     <Card
       centerAlign
-      link={{ href: "https://www.dwolla.com", external: true }}
+      link={{
+        href: "https://www.dwolla.com",
+        external: true,
+      }}
       icon={guideIcon}
       topic="This is the Topic for center aligned cards reperesenting CTAs."
       description="This is a short description."
@@ -79,7 +88,10 @@ storiesOf("base/Card", module)
   .add("`centerAlign` + `link` + `badge`", () => (
     <Card
       centerAlign
-      link={{ href: "https://www.dwolla.com", external: true }}
+      link={{
+        href: "https://www.dwolla.com",
+        external: true,
+      }}
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic for center aligned cards reperesenting CTAs."
@@ -89,7 +101,10 @@ storiesOf("base/Card", module)
   .add("`isFlex`", () => (
     <Card
       isFlex
-      link={{ href: "https://www.dwolla.com", external: true }}
+      link={{
+        href: "https://www.dwolla.com",
+        external: true,
+      }}
       icon={guideIcon}
       topic="This is the Topic."
       description="This is a  description.An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
@@ -107,10 +122,26 @@ storiesOf("base/Card", module)
   .add("`isFlex` + badge + link", () => (
     <Card
       isFlex
-      link={{ href: "https://www.dwolla.com", external: true }}
+      link={{
+        href: "https://www.dwolla.com",
+        external: true,
+      }}
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic."
       description="This is a  description.An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
     />
+  ))
+  .add("with languages", () => (
+    <CardWrapper>
+      <Card
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
+        topic="Dwolla Transaction Reports"
+        description="An example app that allows clients to get transactions for a specific customer."
+        languages={["javascript", "python", "html", "css"]}
+      />
+    </CardWrapper>
   ));
