@@ -6,7 +6,7 @@ Array [
     className="css-ckmwo8-TabsContainerStyle ercic662"
   >
     <li
-      className="is-active css-y9jj0p-TabStyle ercic661"
+      className="is-active css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -14,7 +14,7 @@ Array [
       ALL
     </li>
     <li
-      className=" css-y9jj0p-TabStyle ercic661"
+      className=" css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -22,7 +22,7 @@ Array [
       GET BUILDING
     </li>
     <li
-      className=" css-y9jj0p-TabStyle ercic661"
+      className=" css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -30,7 +30,7 @@ Array [
       PREREQUISITES
     </li>
     <li
-      className=" css-y9jj0p-TabStyle ercic661"
+      className=" css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -102,7 +102,7 @@ Array [
     className="sidebar css-ckmwo8-TabsContainerStyle ercic662"
   >
     <li
-      className="sidebar is-active css-y9jj0p-TabStyle ercic661"
+      className="sidebar is-active css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -110,7 +110,7 @@ Array [
       ALL
     </li>
     <li
-      className="sidebar css-y9jj0p-TabStyle ercic661"
+      className="sidebar css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -118,7 +118,7 @@ Array [
       GET BUILDING
     </li>
     <li
-      className="sidebar css-y9jj0p-TabStyle ercic661"
+      className="sidebar css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}
@@ -126,7 +126,7 @@ Array [
       PREREQUISITES
     </li>
     <li
-      className="sidebar css-y9jj0p-TabStyle ercic661"
+      className="sidebar css-1vt6dm1-TabStyle ercic661"
       onClick={[Function]}
       onKeyDown={[Function]}
       tabIndex={0}

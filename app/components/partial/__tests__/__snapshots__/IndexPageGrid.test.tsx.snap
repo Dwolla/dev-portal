@@ -34,7 +34,7 @@ Array [
           className="css-ckmwo8-TabsContainerStyle ercic662"
         >
           <li
-            className="is-active css-y9jj0p-TabStyle ercic661"
+            className="is-active css-1vt6dm1-TabStyle ercic661"
             onClick={[Function]}
             onKeyDown={[Function]}
             tabIndex={0}
@@ -42,7 +42,7 @@ Array [
             All
           </li>
           <li
-            className=" css-y9jj0p-TabStyle ercic661"
+            className=" css-1vt6dm1-TabStyle ercic661"
             onClick={[Function]}
             onKeyDown={[Function]}
             tabIndex={0}
@@ -118,30 +118,30 @@ Array [
         className="css-17j21yk-CardWrapper e1rcoxlj0"
       >
         <a
-          className="css-2om2dx-StyledLink ejy78ug6"
+          className="css-2om2dx-StyledLink ejy78ug7"
           href="/guides/send-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className=" css-dgsc3e-CardStyle ejy78ug7"
+            className=" css-dgsc3e-CardStyle ejy78ug8"
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon ejy78ug5"
+              className=" css-142sfdf-StyledIcon ejy78ug6"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-1hyoydr-BadgeStyle ejy78ug4"
+              className="css-1hyoydr-BadgeStyle ejy78ug5"
             >
               <div
-                className="css-1dspmwm-StyledBadge e1sxbycx0"
+                className="css-1x0r73o-StyledBadge e1sxbycx0"
               >
                 Get Building
               </div>
             </div>
             <div
-              className=" css-zefd21-TopicStyle ejy78ug1"
+              className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
             >
               Send Money to your Users
             </div>
@@ -157,30 +157,30 @@ Array [
         className="css-17j21yk-CardWrapper e1rcoxlj0"
       >
         <a
-          className="css-2om2dx-StyledLink ejy78ug6"
+          className="css-2om2dx-StyledLink ejy78ug7"
           href="/guides/receive-money"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className=" css-dgsc3e-CardStyle ejy78ug7"
+            className=" css-dgsc3e-CardStyle ejy78ug8"
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon ejy78ug5"
+              className=" css-142sfdf-StyledIcon ejy78ug6"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-1hyoydr-BadgeStyle ejy78ug4"
+              className="css-1hyoydr-BadgeStyle ejy78ug5"
             >
               <div
-                className="css-1dspmwm-StyledBadge e1sxbycx0"
+                className="css-1x0r73o-StyledBadge e1sxbycx0"
               >
                 Get Building
               </div>
             </div>
             <div
-              className=" css-zefd21-TopicStyle ejy78ug1"
+              className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
             >
               Receive Money from your Users
             </div>
@@ -196,30 +196,30 @@ Array [
         className="css-17j21yk-CardWrapper e1rcoxlj0"
       >
         <a
-          className="css-2om2dx-StyledLink ejy78ug6"
+          className="css-2om2dx-StyledLink ejy78ug7"
           href="/guides/transfer-money-between-users/obtain-access-token"
           onClick={[Function]}
           onMouseEnter={[Function]}
         >
           <div
-            className=" css-dgsc3e-CardStyle ejy78ug7"
+            className=" css-dgsc3e-CardStyle ejy78ug8"
           >
             <img
               alt=""
-              className=" css-142sfdf-StyledIcon ejy78ug5"
+              className=" css-142sfdf-StyledIcon ejy78ug6"
               src="/assets/images/content-images/content-icons/guides-icon.svg"
             />
             <div
-              className="css-1hyoydr-BadgeStyle ejy78ug4"
+              className="css-1hyoydr-BadgeStyle ejy78ug5"
             >
               <div
-                className="css-1dspmwm-StyledBadge e1sxbycx0"
+                className="css-1x0r73o-StyledBadge e1sxbycx0"
               >
                 Get Building
               </div>
             </div>
             <div
-              className=" css-zefd21-TopicStyle ejy78ug1"
+              className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
             >
               Transfer Money Between Users
             </div>
