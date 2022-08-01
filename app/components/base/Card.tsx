@@ -8,12 +8,12 @@ import { ReactComponent as NewTabIcon } from "../../../assets/images/component-i
 import {
   GREY_2,
   GREY_4,
-  WHITE_PRIMARY,
   HEADLINE_TEXT,
   PARAGRAPH_TEXT,
+  WHITE_PRIMARY,
 } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
-import { ROBOTO, POPPINS } from "../typography";
+import { POPPINS, ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
 
 const CardStyle = styled.div`
@@ -65,6 +65,13 @@ const BadgeStyle = styled.div`
   right: 30px;
 `;
 
+const LanguageBadgeStyle = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
 const LinkIconStyle = styled.div`
   position: absolute;
   top: 8px;
@@ -86,13 +93,15 @@ const TopicStyle = styled.div`
   font-family: ${POPPINS};
   font-size: 18px;
   line-height: 26px;
-  margin-top: 30px;
   margin-bottom: 15px;
   &.center {
     margin: 11px auto;
   }
   &.flex {
     margin-top: unset;
+  }
+  &.hasIcon {
+    margin-top: 30px;
   }
 `;
 
@@ -107,14 +116,28 @@ const DescriptionStyle = styled.div`
   }
 `;
 
+export type LanguageProp =
+  | "css"
+  | "handlebars"
+  | "html"
+  | "java"
+  | "javascript"
+  | "kotlin"
+  | "php"
+  | "python"
+  | "ruby"
+  | "shell"
+  | "typescript";
+
 type Props = {
   link?: { href?: string; external?: boolean };
   centerAlign?: boolean;
   isFlex?: boolean;
-  icon: string;
+  icon?: string;
   badge?: string;
   topic: string;
   description: string;
+  languages?: Array<LanguageProp>;
 };
 
 function CoreCard({
@@ -125,16 +148,19 @@ function CoreCard({
   icon,
   link,
   topic,
+  languages,
 }: Props) {
   return (
     <CardStyle
       className={classnames({ center: centerAlign }, { flex: isFlex })}
     >
-      <StyledIcon
-        src={icon}
-        alt=""
-        className={classnames({ center: centerAlign })}
-      />
+      {icon && (
+        <StyledIcon
+          src={icon}
+          alt=""
+          className={classnames({ center: centerAlign })}
+        />
+      )}
 
       {badge && (
         <BadgeStyle>
@@ -152,13 +178,24 @@ function CoreCard({
         wrapper={(children) => <StyledFlexDiv>{children}</StyledFlexDiv>}
       >
         <TopicStyle
-          className={classnames({ center: centerAlign }, { flex: isFlex })}
+          className={classnames(
+            { center: centerAlign },
+            { flex: isFlex },
+            { hasIcon: icon }
+          )}
         >
           {topic}
         </TopicStyle>
 
         <DescriptionStyle className={classnames({ center: centerAlign })}>
           {description}
+          {languages && (
+            <LanguageBadgeStyle>
+              {languages.map((lang) => (
+                <Badge text={lang} variant="orange" />
+              ))}
+            </LanguageBadgeStyle>
+          )}
         </DescriptionStyle>
       </ConditionalWrapper>
     </CardStyle>

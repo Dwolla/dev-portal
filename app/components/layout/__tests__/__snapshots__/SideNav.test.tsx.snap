@@ -15,7 +15,7 @@ exports[`SideNav 1`] = `
         className="css-kgvw59-SectionWrap e1qiqw1s10"
       >
         <a
-          className="active css-ovadr3-SectionLink"
+          className="active css-yka8go-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -32,7 +32,7 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className=" css-ovadr3-SectionLink"
+          className=" css-yka8go-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -57,7 +57,7 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-ovadr3-SectionLink"
+          className=" css-yka8go-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -82,7 +82,7 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-ovadr3-SectionLink"
+          className=" css-yka8go-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -103,7 +103,7 @@ exports[`SideNav 1`] = `
         className="css-nasyo1-MobileWrap e1qiqw1s1"
       >
         <a
-          className=" css-8xg7u8-MobileLink"
+          className=" css-x7nrnw-MobileLink"
           href="https://docs.dwolla.com"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -121,7 +121,7 @@ exports[`SideNav 1`] = `
           />
         </a>
         <a
-          className=" css-8xg7u8-MobileLink"
+          className=" css-x7nrnw-MobileLink"
           href="/changelog"
           onClick={[Function]}
           onMouseEnter={[Function]}

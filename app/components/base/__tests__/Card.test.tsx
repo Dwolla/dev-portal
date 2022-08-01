@@ -14,7 +14,10 @@ test("with Link", () => {
   const tree = renderer
     .create(
       <Card
-        link={{ href: "https://www.dwolla.com", external: true }}
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
         icon={icon}
         topic="topic"
         description="Description"
@@ -44,7 +47,10 @@ test("with Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link={{ href: "https://www.dwolla.com", external: true }}
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
@@ -70,7 +76,10 @@ test("with Center Align and Link", () => {
   const tree = renderer
     .create(
       <Card
-        link={{ href: "https://www.dwolla.com", external: true }}
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
         centerAlign
         icon={icon}
         topic="topic"
@@ -102,7 +111,10 @@ test("with Center Align, Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link={{ href: "https://www.dwolla.com", external: true }}
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
         centerAlign
         badge="BADGETEXT"
         icon={icon}
@@ -143,12 +155,45 @@ test("with Flex, Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link={{ href: "https://www.dwolla.com", external: true }}
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
         isFlex
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
         description="Description"
+      />
+    )
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});
+
+test("with Languages", () => {
+  const tree = renderer
+    .create(
+      <Card
+        link={{
+          href: "https://www.dwolla.com",
+          external: true,
+        }}
+        topic="topic"
+        description="Description"
+        languages={[
+          "css",
+          "handlebars",
+          "html",
+          "java",
+          "javascript",
+          "kotlin",
+          "php",
+          "python",
+          "ruby",
+          "shell",
+          "typescript",
+        ]}
       />
     )
     .toJSON();

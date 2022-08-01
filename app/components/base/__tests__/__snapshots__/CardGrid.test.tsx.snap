@@ -8,15 +8,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -31,15 +31,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -54,15 +54,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -77,15 +77,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -100,15 +100,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -123,15 +123,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -146,15 +146,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>
@@ -169,15 +169,15 @@ exports[`CardGrid 1`] = `
     className="css-17j21yk-CardWrapper e1rcoxlj0"
   >
     <div
-      className=" css-dgsc3e-CardStyle ejy78ug7"
+      className=" css-dgsc3e-CardStyle ejy78ug8"
     >
       <img
         alt=""
-        className=" css-142sfdf-StyledIcon ejy78ug5"
+        className=" css-142sfdf-StyledIcon ejy78ug6"
         src="test-image-stub"
       />
       <div
-        className=" css-zefd21-TopicStyle ejy78ug1"
+        className="hasIcon css-2bmr44-TopicStyle ejy78ug1"
       >
         This is the Topic
       </div>

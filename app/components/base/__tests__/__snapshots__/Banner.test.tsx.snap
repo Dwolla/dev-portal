@@ -107,7 +107,7 @@ exports[`Banner - with Filters 1`] = `
       className="css-ckmwo8-TabsContainerStyle ercic662"
     >
       <li
-        className="is-active css-y9jj0p-TabStyle ercic661"
+        className="is-active css-1vt6dm1-TabStyle ercic661"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -115,7 +115,7 @@ exports[`Banner - with Filters 1`] = `
         ALL
       </li>
       <li
-        className=" css-y9jj0p-TabStyle ercic661"
+        className=" css-1vt6dm1-TabStyle ercic661"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -123,7 +123,7 @@ exports[`Banner - with Filters 1`] = `
         GET BUILDING
       </li>
       <li
-        className=" css-y9jj0p-TabStyle ercic661"
+        className=" css-1vt6dm1-TabStyle ercic661"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}
@@ -131,7 +131,7 @@ exports[`Banner - with Filters 1`] = `
         PREREQUISITES
       </li>
       <li
-        className=" css-y9jj0p-TabStyle ercic661"
+        className=" css-1vt6dm1-TabStyle ercic661"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}

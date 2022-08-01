@@ -20,7 +20,7 @@ Array [
         />
       </a>
       <div
-        className=" css-3djgvj-StyledCloseIcon e1ijxxr34"
+        className=" css-1d6ymyd-StyledCloseIcon e1ijxxr34"
         onBlur={[Function]}
         onClick={[Function]}
         onFocus={[Function]}
@@ -49,7 +49,7 @@ Array [
               className="css-kgvw59-SectionWrap e1qiqw1s10"
             >
               <a
-                className="active css-ovadr3-SectionLink"
+                className="active css-yka8go-SectionLink"
                 href="/"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
@@ -66,7 +66,7 @@ Array [
                 Home
               </a>
               <a
-                className=" css-ovadr3-SectionLink"
+                className=" css-yka8go-SectionLink"
                 href="/guides"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
@@ -91,7 +91,7 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-ovadr3-SectionLink"
+                className=" css-yka8go-SectionLink"
                 href="/concepts"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
@@ -116,7 +116,7 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-ovadr3-SectionLink"
+                className=" css-yka8go-SectionLink"
                 href="/sdks-tools"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
@@ -137,7 +137,7 @@ Array [
               className="css-nasyo1-MobileWrap e1qiqw1s1"
             >
               <a
-                className=" css-8xg7u8-MobileLink"
+                className=" css-x7nrnw-MobileLink"
                 href="https://docs.dwolla.com"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
@@ -155,7 +155,7 @@ Array [
                 />
               </a>
               <a
-                className=" css-8xg7u8-MobileLink"
+                className=" css-x7nrnw-MobileLink"
                 href="/changelog"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
@@ -221,7 +221,7 @@ Array [
           className="css-ffwcst-LinksWrapper e1psldpd4"
         >
           <a
-            className=" css-c59abo-StyledLink e1psldpd1"
+            className=" css-13w1jmk-StyledLink e1psldpd1"
             href="https://docs.dwolla.com"
             target="_blank"
           >
@@ -237,7 +237,7 @@ Array [
             />
           </a>
           <a
-            className=" css-c59abo-StyledLink e1psldpd1"
+            className=" css-13w1jmk-StyledLink e1psldpd1"
             href="/changelog"
             onClick={[Function]}
             onMouseEnter={[Function]}
@@ -552,7 +552,7 @@ Array [
             Financial institutions play an important role in our network.
           </strong>
           <p
-            className="css-g8suin-LegalDesc eg0edpy0"
+            className="css-b6puy4-LegalDesc eg0edpy0"
           >
             All funds transfers made using the Dwolla Platform are performed by a financial institution partner, and any funds held in a Dwolla Balance are held by a financial institution partner.
              
