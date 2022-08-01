@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Banner from "../base/Banner";
 import FilterTabs from "../base/FilterTabs";
 import CardGrid from "../base/CardGrid";
-import Card from "../base/Card";
+import Card, { LanguageProp } from "../base/Card";
 import { slugify } from "../../modules/helpers";
 import { contentIcons } from "../../modules/images.import";
 import { breakDown } from "../breakpoints";
@@ -24,9 +24,11 @@ const CardGridWrap = styled.div`
 type CardType = {
   topic: string;
   description: string;
-  icon: string;
+  icon?: string;
   category?: string;
   href: string;
+  external?: boolean;
+  languages?: Array<LanguageProp>;
 };
 type Props = {
   unfilteredCards: Array<CardType>;
@@ -88,9 +90,10 @@ function IndexPageGrid({ unfilteredCards, bannerProps }: Props) {
             <Card
               {...card}
               badge={card.category}
-              icon={contentIcons[card.icon].default}
-              link={{ href: card.href }}
+              icon={card.icon ? contentIcons[card.icon].default : null}
+              link={{ href: card.href, external: card.external }}
               key={`${card.topic}-${card.href}`}
+              languages={card.languages}
             />
           ))}
         </CardGrid>

@@ -70,6 +70,12 @@ const SIDE_NAV_LINKS = [
     isSection: false,
     text: "SDKs & Tools",
   },
+  {
+    href: "/code-samples",
+    IconSvg: SdksToolsIcon,
+    isSection: false,
+    text: "Code Samples",
+  },
 ];
 
 const FOOTER_LINKS = {
