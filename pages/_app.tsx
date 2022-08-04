@@ -12,6 +12,7 @@ import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-i
 import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
+import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
@@ -31,7 +32,7 @@ function GoogleTagManager() {
         height="0"
         width="0"
         style={{ display: "none", visibility: "hidden" }}
-      ></iframe>
+      />
     </noscript>
   );
 }
@@ -69,6 +70,12 @@ const SIDE_NAV_LINKS = [
     IconSvg: SdksToolsIcon,
     isSection: false,
     text: "SDKs & Tools",
+  },
+  {
+    href: "/code-samples",
+    IconSvg: CodeSamplesIcon,
+    isSection: false,
+    text: "Code Samples",
   },
 ];
 
