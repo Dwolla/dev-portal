@@ -192,7 +192,7 @@ function CoreCard({
           {languages && (
             <LanguageBadgeStyle>
               {languages.map((lang) => (
-                <Badge text={lang} variant="orange" />
+                <Badge key={lang} text={lang} variant="orange" />
               ))}
             </LanguageBadgeStyle>
           )}
