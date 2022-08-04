@@ -18,40 +18,78 @@ export const CodeSamplesPageGrid = () => {
   const codeSampleCards = [
     {
       topic: "Dwolla + Plaid Integration Example",
-      description:
-        "Example app built using Next.js to demonstrate how to add a verified bank funding source using the tokenized integration between Dwolla and Plaid.",
+      description: (
+        <>
+          Example app built using Next.js to demonstrate how to add a verified
+          bank funding source using the{" "}
+          <a href={"./guides/plaid"}>tokenized integration</a> between Dwolla
+          and Plaid.
+        </>
+      ),
       href: "https://github.com/Dwolla/integration-examples/tree/main/dwolla-plaid-funding-source",
       external: true,
       languages: ["javascript", "typescript"],
     },
     {
       topic: "Webhook Receiver Example",
-      description:
-        "A TypeScript example that demonstrates how to create a webhook subscription for Dwolla events and deploy to AWS via Lambda function.",
+      description: (
+        <>
+          A TypeScript example that demonstrates how to{" "}
+          <a href={"./guides/webhooks/create-subscription"}>
+            create a webhook subscription
+          </a>{" "}
+          Dwolla events and deploy to AWS via Lambda function.
+        </>
+      ),
       href: "https://github.com/Dwolla/webhook-receiver",
       external: true,
       languages: ["typescript", "javascript", "shell"],
     },
     {
       topic: "Drop Ins Next.js Example",
-      description:
-        "Example app built using Next.js that demonstrates how to use Dwolla's Drop-in components using React.",
+      description: (
+        <>
+          Example app built using Next.js that demonstrates how to use{" "}
+          <a href={"./concepts/drop-in-components"}>
+            Dwolla's Drop-in components
+          </a>{" "}
+          using React.
+        </>
+      ),
       href: "https://github.com/Dwolla/drop-ins-nextjs-example",
       external: true,
       languages: ["css", "javascript"],
     },
     {
       topic: "Send Money App",
-      description:
-        "A Next.js starter app illustrating the send funds flow, where a Dwolla Client (business) sends money to its end-users.",
+      description: (
+        <>
+          A Next.js starter app illustrating the{" "}
+          <a href={"./guides/send-money"}>send funds flow</a>, where a Dwolla
+          Client (business) sends money to its end-users.
+        </>
+      ),
       href: "https://github.com/Dwolla/send-money-app",
       external: true,
       languages: ["javascript", "css", "shell"],
     },
     {
       topic: "Transactions CSV Export App",
-      description:
-        "A sample app that lets you retrieve transactions for a specific customer filtered by certain parameters such as `startDate`, `endDate`, and `amount` and export them into a csv file.",
+      description: (
+        <>
+          A sample app that lets you{" "}
+          <a
+            href={
+              "./api-reference/transfers/list-and-search-transfers-for-a-customer"
+            }
+          >
+            retrieve transactions for a specific customer
+          </a>{" "}
+          filtered by certain parameters such as <code>startDate</code>,{" "}
+          <code>endDate</code>, and <code>amount</code> and export them into a
+          csv file.
+        </>
+      ),
       href: "https://github.com/Dwolla/transactions-csv-export-app",
       external: true,
       languages: ["javascript", "python", "html", "css"],
