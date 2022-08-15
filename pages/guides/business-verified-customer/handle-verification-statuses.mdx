@@ -233,7 +233,7 @@ $retryCustomer = $customersApi->updateCustomer([
       'lastName'=> 'Controller',
       'title' => 'CEO',
       'dateOfBirth' => '1990-10-10',
-      'ssn' => '123-456-7890',
+      'ssn' => '123-45-6789',
       'address' =>
       [
           'address1' => '18749 18th st',
@@ -270,7 +270,7 @@ request_body = {
       :lastName => 'Controller',
       :title => 'CEO',
       :dateOfBirth => '1980-01-01',
-      :ssn => '1234'
+      :ssn => '123-45-6789'
       :address => {
         :address1 => '1749 18th st',
         :address2 => 'apt 12',
@@ -307,7 +307,7 @@ request_body = {
       'lastName': 'Controller',
       'title': 'CEO',
       'dateOfBirth': '1980-01-01',
-      'ssn': '1234'
+      'ssn': '123-45-6789'
       'address': {
         'address1': '1749 18th st',
         'address2': 'apt12',
@@ -328,42 +328,41 @@ customer.body.id # => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
 ```
 
 ```javascript
-var customerUrl = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5';
+var customerUrl =
+  "https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5";
 var requestBody = {
-  firstName: 'Jane',
-  lastName: 'Merchant',
-  email: 'accountAdmin@email.com',
-  type: 'business',
-  address1: '123 Corrected Address St',
-  city: 'Some City',
-  state: 'NY',
-  postalCode: '11101',
+  firstName: "Jane",
+  lastName: "Merchant",
+  email: "accountAdmin@email.com",
+  type: "business",
+  address1: "123 Corrected Address St",
+  city: "Some City",
+  state: "NY",
+  postalCode: "11101",
   controller: {
-      firstName: 'John',
-      lastName: 'Controller',
-      title: 'CEO',
-      dateOfBirth: '1980-01-01',
-      ssn: '1234'
-      address: {
-        address1: '1749 18th st',
-        address2: 'apt 12',
-        city: 'Des Moines',
-        stateProvinceRegion: 'IA',
-        postalCode: '50266',
-        country: 'US'
-      }
+    firstName: "John",
+    lastName: "Controller",
+    title: "CEO",
+    dateOfBirth: "1980-01-01",
+    ssn: "123-45-6789",
+    address: {
+      address1: "1749 18th st",
+      address2: "apt 12",
+      city: "Des Moines",
+      stateProvinceRegion: "IA",
+      postalCode: "50266",
+      country: "US",
+    },
   },
-  businessClassification: '9ed38155-7d6f-11e3-83c3-5404a6144203',
-  businessType: 'llc',
-  businessName: 'Jane Corp',
-  ein: '12-3456789'
+  businessClassification: "9ed38155-7d6f-11e3-83c3-5404a6144203",
+  businessType: "llc",
+  businessName: "Jane Corp",
+  ein: "12-3456789",
 };
 
-dwolla
-  .post(customerUrl, requestBody)
-  .then(function(res) {
-    res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
-  });
+dwolla.post(customerUrl, requestBody).then(function (res) {
+  res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+});
 ```
 
 ## Handling `document` status
