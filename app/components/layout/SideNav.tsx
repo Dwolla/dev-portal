@@ -4,7 +4,7 @@ import Link from "next/link";
 import classnames from "classnames";
 import groupby from "lodash.groupby";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
+import { css } from "@emotion/react";
 import sortBy from "lodash.sortby";
 import uniqBy from "lodash.uniqby";
 import {
