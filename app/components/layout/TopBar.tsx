@@ -3,17 +3,18 @@ import styled from "@emotion/styled";
 import classnames from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import openInNewTabIcon from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import { GREY_2, GREY_6, ORANGE_PRIMARY } from "../colors";
 import { POPPINS } from "../typography";
 import Button from "../base/Button";
-import Select from "../base/select/Select";
 import { LanguageContext } from "../util/Contexts";
-import { breakUp, breakDown } from "../breakpoints";
+import { breakDown, breakUp } from "../breakpoints";
 import dwollaDevLogo from "../../../assets/images/dwolla-developers-logo.svg";
 import ga from "../../modules/ga";
 
 export const TOP_BAR_HEIGHT = 68;
+const GLOBAL_LANGUAGE_SELECTOR_ID = "global-language-selector";
 
 const Container = styled.div`
   display: flex;
@@ -192,6 +193,7 @@ export default function TopBar({
   function onHamburgerKeydown(e) {
     if (e.key === "Enter") onHamburgerClick();
   }
+
   const router = useRouter();
 
   return (
@@ -215,15 +217,26 @@ export default function TopBar({
       </LinksWrapper>
 
       <SelectWrapper>
-        <Select
-          options={languageOptions}
-          selectedValue={selectedLanguage}
-          setSelectedValue={(language) => {
-            setSelectedLanguage(language);
-            ga("global language select", "language change", language.value);
-          }}
-          autoWidth
-        />
+        <FormControl sx={{ minWidth: 200 }} size="small">
+          <InputLabel id={GLOBAL_LANGUAGE_SELECTOR_ID}>
+            Snippet Language
+          </InputLabel>
+          <Select
+            label="Snippet Language"
+            labelId={GLOBAL_LANGUAGE_SELECTOR_ID}
+            onChange={({ target: { value } }) => {
+              setSelectedLanguage(
+                languageOptions.find((obj) => obj.value === value)
+              );
+              ga("global language select", "language change", value);
+            }}
+            value={selectedLanguage.value}
+          >
+            {languageOptions.map(({ label, value }) => (
+              <MenuItem value={value}>{label}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
       </SelectWrapper>
 
       <ButtonWrapper>
