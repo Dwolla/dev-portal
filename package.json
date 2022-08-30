@@ -42,7 +42,7 @@
     "@types/lodash.sortby": "^4.7.6",
     "@types/lodash.uniqby": "^4.7.6",
     "@types/node": "^13.7.0",
-    "@types/react": "^17.0.2",
+    "@types/react": "^18.0.18",
     "@types/react-scroll": "^1.8.4",
     "@types/react-test-renderer": "^17.0.2",
     "@types/scroll-to-element": "^2.0.0",
@@ -108,8 +108,5 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,json,mdx}": "prettier --write",
     "*.{js,jsx,ts,tsx}": "eslint --fix"
-  },
-  "resolutions": {
-    "@types/react": "^17.0.2"
   }
 }

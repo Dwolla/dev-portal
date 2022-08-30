@@ -32,7 +32,7 @@ import Section from "../../modules/section";
 // proptypes
 export interface SideNavLinkProps {
   href: string;
-  IconSvg: React.SFC<React.SVGProps<SVGSVGElement>>;
+  IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   isSection: boolean;
   text: string;
 }
