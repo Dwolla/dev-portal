@@ -21,12 +21,12 @@ A limited set of information can be updated on an existing created Customer. **N
 
 ##### Request parameters - unverified Customer and receive-only User
 
-| Parameter    | Required | Type   | Description                                                                         |
-| ------------ | -------- | ------ | ----------------------------------------------------------------------------------- |
-| firstName    | no       | string | Customer's first name.                                                              |
-| lastName     | no       | string | Customer's last name.                                                               |
-| email        | no       | string | Customer's email address.                                                           |
-| businessName | no       | string | Customer's registered business name. An empty string value will unset businessName. |
+| Parameter    | Required | Type   | Description                                                                                                                                                                     |
+| ------------ | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| firstName    | no       | string | Customer's first name.                                                                                                                                                          |
+| lastName     | no       | string | Customer's last name.                                                                                                                                                           |
+| email        | no       | string | Customer's email address.                                                                                                                                                       |
+| businessName | no       | string | Customer's registered business name. If supplied, name must be 255 characters or fewer, and cannot include any special characters. An empty string value will unset this field. |
 
 ##### Request parameters - verified Customer
 
