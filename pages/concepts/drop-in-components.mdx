@@ -73,7 +73,7 @@ The `dwolla-customer-create` component is used to display a form to collect the 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -144,7 +144,7 @@ The `dwolla-customer-create` component is used to display a form to collect the 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -243,7 +243,7 @@ The `dwolla-customer-update` component is used to upgrade an Unverified Customer
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/upgrade-custom.css" />
   <script>
     dwolla.configure({
@@ -328,7 +328,7 @@ The `dwolla-personal-vcr` component is used to display a form to collect the req
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -433,7 +433,7 @@ The `dwolla-business-vcr` component is used to display a form to collect the req
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -561,7 +561,7 @@ The `dwolla-beneficial-owners` component is used to display a form to collect th
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -653,7 +653,7 @@ The `dwolla-document-upload` component can be used if a Verified Customer or a B
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -713,7 +713,7 @@ The `dwolla-balance-display` component can be used for any customer who already 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -786,7 +786,7 @@ In order to add a funding source and verify it, you can:
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.8/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -848,9 +848,16 @@ Get started building with drop-in components by checking out the [getting starte
 
 ## Changelog
 
-### Latest `v2.1.8`
+### Latest `v2.1.9`
 
-The latest version of **dwolla-web.js** is `2.1.8`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.1.8` in order to take advantage of the following feature updates and bug fixes:
+The latest version of **dwolla-web.js** is `2.1.9`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.1.9`.
+
+- Fixed `Submit` button double-click issue on customer creation drop-ins.
+- Improve SSN field validation.
+- Added optional `hideZeroBalance` attribute to `<dwolla-balance-display>` drop-in.
+- Added new Account Opening drop-in `<dwolla-account-opening>`.
+
+### `v2.1.8`
 
 - Added optional `correlationId` field to `<dwolla-customer-create>`, `<dwolla-business-vcr>` and `<dwolla-personal-vcr>` drop-ins.
 - Added optional `businessName` field to `<dwolla-customer-create>` drop-in.
@@ -858,3 +865,24 @@ The latest version of **dwolla-web.js** is `2.1.8`. If you are currently using `
 - Made `EIN` optional in the `<dwolla-business-vcr>` drop-in for Business Verified Customers of type Sole Proprietorship.
 - All components are now flow-type components requiring multiple calls to the `client-tokens` endpoint for granularly scoped actions.
 - Implemented hard-versioning of dwolla-web.js; to use the latest version, you will need to import the exact version rather than just the major version using the CDN script.
+
+### `v2.1.6`
+
+- Changed `success` callback response structure. In previous versions, upon successful creation of a resource, the `location` of the newly created resource is returned. In v2.1.6 and onwards, the success JSON response will contain a top-level `resource` and a `response` object with the location to the newly created resource.
+
+```raw
+# Used to be:
+{
+   "location":"https://api-sandbox.dwolla.com/customers/c81cf726-77ff-4a2a-bfde-1fb1fb90cefd"
+}
+
+
+
+# Changed to:
+{
+   "resource":"customers",
+   "response":{
+      "location":"https://api-sandbox.dwolla.com/customers/c81cf726-77ff-4a2a-bfde-1fb1fb90cefd"
+   }
+}
+```
