@@ -2,17 +2,17 @@
 
 exports[`SideNav 1`] = `
 <div
-  className="css-yeohq5-Container e1qiqw1s13"
+  className="css-yeohq5-Container e1qiqw1s14"
 >
   <div
-    className="css-kibqvq-Slide e1qiqw1s12"
+    className="css-kibqvq-Slide e1qiqw1s13"
   >
     <div
-      className="left css-1jc4k7f-SlidePane e1qiqw1s11"
+      className="left css-1jc4k7f-SlidePane e1qiqw1s12"
       id="body-scroll-lock-side-nav"
     >
       <div
-        className="css-kgvw59-SectionWrap e1qiqw1s10"
+        className="css-1lugamu-SectionWrap e1qiqw1s11"
       >
         <a
           className="active css-yka8go-SectionLink"
@@ -100,38 +100,11 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
+        className="css-10a5zt7-ExternalSectionWrap e1qiqw1s10"
+      />
+      <div
         className="css-nasyo1-MobileWrap e1qiqw1s1"
       >
-        <a
-          className=" css-x7nrnw-MobileLink"
-          href="https://docs.dwolla.com"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          target="_blank"
-        >
-          <span
-            className="text"
-          >
-            API Docs
-          </span>
-          <img
-            alt="Open in new tab"
-            className="icon"
-            src="test-image-stub"
-          />
-        </a>
-        <a
-          className=" css-x7nrnw-MobileLink"
-          href="/changelog"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <span
-            className="text"
-          >
-            Changelog
-          </span>
-        </a>
         <div
           className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
         >
