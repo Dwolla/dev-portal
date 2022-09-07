@@ -48,10 +48,6 @@ storiesOf("layout/TopBar", module)
           external: true,
         },
       }}
-      links={[
-        { text: "API Docs", href: "https://docs.dwolla.com", external: true },
-        { text: "Changelog", href: "/changelog" },
-      ]}
     />
   ))
   .add("active link", () => (
@@ -63,10 +59,6 @@ storiesOf("layout/TopBar", module)
           external: true,
         },
       }}
-      links={[
-        { text: "API Docs", href: "https://docs.dwolla.com", external: true },
-        { text: "Changelog", href: "/changelog", active: true },
-      ]}
     />
   ))
   .add("accessing language selection", () => (
@@ -79,10 +71,6 @@ storiesOf("layout/TopBar", module)
             external: true,
           },
         }}
-        links={[
-          { text: "API Docs", href: "https://docs.dwolla.com", external: true },
-          { text: "Changelog", href: "/changelog" },
-        ]}
       />
       <LangaugeContextAccessor />
     </>

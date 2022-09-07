@@ -24,11 +24,6 @@ test("TopBar", () => {
             external: true,
           },
         }}
-        links={[
-          { text: "API Docs", href: "https://docs.dwolla.com", external: true },
-          { text: "Changelog", href: "/changelog" },
-          { text: "Manually Active", href: "/manually-active", active: true },
-        ]}
       />
     )
     .toJSON();

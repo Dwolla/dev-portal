@@ -9,11 +9,11 @@ import sortBy from "lodash.sortby";
 import uniqBy from "lodash.uniqby";
 import {
   TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
-  TopBarLinkProps as MobileLinkProps, // eslint-disable-line no-unused-vars
 } from "./TopBar";
 import Button from "../base/Button";
 import {
   ORANGE_PRIMARY,
+  PURPLE_PRIMARY,
   WHITE_PRIMARY,
   GREY_1,
   GREY_2,
@@ -24,17 +24,18 @@ import { breakUp, breakDown } from "../breakpoints";
 import { slideInFromLeft, slideInFromRight } from "../keyframes";
 import { ReactComponent as BackIcon } from "../../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
+import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import caretUp from "../../../assets/images/component-icons/caret-up.svg";
 import caretDown from "../../../assets/images/component-icons/caret-down.svg";
-import openInNewTabIcon from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import Section from "../../modules/section";
 
 // proptypes
 export interface SideNavLinkProps {
   href: string;
-  IconSvg: React.SFC<React.SVGProps<SVGSVGElement>>;
-  isSection: boolean;
+  IconSvg?: React.SFC<React.SVGProps<SVGSVGElement>>;
+  isSection?: boolean;
   text: string;
+  isExternal?: boolean;
 }
 
 interface SideNavProps {
@@ -118,9 +119,15 @@ const SlidePane = styled.div`
 `;
 
 const SectionWrap = styled.div`
+  padding-bottom: 10px;
   @media (${breakDown("md")}) {
     padding-top: 17px;
   }
+`;
+
+const ExternalSectionWrap = styled.div`
+  padding-top: 10px;
+  border-top: 1px solid ${PURPLE_PRIMARY};
 `;
 
 const StickySectionWrap = styled.div`
@@ -158,11 +165,12 @@ type SectionLinkProps = {
 };
 
 function SectionLink({ linkProps, isActive }: SectionLinkProps) {
-  const { href, IconSvg, isSection, text } = linkProps;
+  const { href, IconSvg, isSection, text, isExternal } = linkProps;
 
   return (
     <Link href={href} passHref>
       <a
+        target={isExternal ? "_blank" : undefined}
         className={classnames({ active: isActive })}
         css={css`
           display: flex;
@@ -194,7 +202,11 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
         `}
       >
         <SectionIconWrap>
-          <IconSvg className="section-icon" width={17} height={17} />
+          {!isExternal ? (
+            <IconSvg className="section-icon" width={17} height={17} />
+          ) : (
+            <NewTabIcon className="section-icon" width={15} height={15} />
+          )}
         </SectionIconWrap>
 
         {text}
@@ -345,70 +357,15 @@ const MobileWrap = styled.div`
   }
 `;
 
-function MobileLink({ href, external, text, active }: MobileLinkProps) {
-  return (
-    <Link href={href} passHref>
-      <a
-        target={external ? "_blank" : undefined}
-        className={classnames({ active })}
-        css={css`
-          display: flex;
-          height: 30px;
-          padding: 0 20px;
-          align-items: center;
-          justify-content: flex-start;
-          font-family: ${POPPINS};
-          font-size: 14px;
-          color: ${GREY_6};
-          text-decoration: none;
-
-          &:hover {
-            background-color: ${GREY_1};
-          }
-
-          &.active {
-            font-weight: 500;
-            color: ${ORANGE_PRIMARY};
-          }
-
-          .icon {
-            margin-left: 15px;
-            width: 13px;
-            height: 13px;
-          }
-        `}
-      >
-        <span className="text">{text}</span>
-
-        {external && (
-          <img className="icon" src={openInNewTabIcon} alt="Open in new tab" />
-        )}
-      </a>
-    </Link>
-  );
-}
-
 const MobileButtonWrap = styled.div`
   padding: 17px 20px;
 `;
 
-function MobileItems({ links, button }: MobileItemProps) {
-  const { pathname } = useRouter();
-
+function MobileItems({ button }: MobileItemProps) {
   return (
-    <>
-      {links.map((l) => (
-        <MobileLink
-          key={l.href}
-          {...l}
-          active={l.active || l.href === pathname}
-        />
-      ))}
-
-      <MobileButtonWrap>
-        <Button {...button} size="block" variant="primary" />
-      </MobileButtonWrap>
-    </>
+    <MobileButtonWrap>
+      <Button {...button} size="block" variant="primary" />
+    </MobileButtonWrap>
   );
 }
 
@@ -436,13 +393,17 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
         >
           {!(activeSection && activeSection.isSection) ? (
             <SectionWrap>
-              {sectionLinks.map((l) => (
-                <SectionLink
-                  key={l.href}
-                  isActive={l.href === pathname}
-                  linkProps={l}
-                />
-              ))}
+              {/* Filter sectionLinks based on the 'isExternal' prop so that only internal links
+              are passed to the SectionLink component*/}
+              {sectionLinks
+                .filter((l) => !l.isExternal)
+                .map((l) => (
+                  <SectionLink
+                    key={l.href}
+                    isActive={l.href === pathname}
+                    linkProps={l}
+                  />
+                ))}
             </SectionWrap>
           ) : (
             <>
@@ -505,6 +466,20 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
               </CategoriesWrap>
             </>
           )}
+
+          <ExternalSectionWrap>
+            {/* Filter sectionLinks based on the 'isExternal' prop so that only external links
+            are passedto the SectionLink component */}
+            {sectionLinks
+              .filter((el) => el.isExternal)
+              .map((el) => (
+                <SectionLink
+                  key={el.href}
+                  isActive={el.href === pathname}
+                  linkProps={el}
+                />
+              ))}
+          </ExternalSectionWrap>
 
           <MobileWrap>
             <MobileItems {...mobileItems} />

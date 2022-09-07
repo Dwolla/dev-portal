@@ -13,6 +13,7 @@ import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/s
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
+import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
@@ -77,6 +78,18 @@ const SIDE_NAV_LINKS = [
     isSection: false,
     text: "Code Samples",
   },
+  {
+    href: "/changelog",
+    IconSvg: ChangelogIcon,
+    isSection: false,
+    text: "Changelog",
+    isExternal: false,
+  },
+  {
+    href: "https://discuss.dwolla.com/",
+    text: "Community",
+    isExternal: true,
+  },
 ];
 
 const FOOTER_LINKS = {
@@ -135,14 +148,6 @@ const TOP_BAR_PROPS = {
       external: true,
     },
   },
-  links: [
-    {
-      text: "Community",
-      href: "https://discuss.dwolla.com/c/api-support/",
-      external: true,
-    },
-    { text: "Changelog", href: "/changelog" },
-  ],
 };
 
 const LANGUAGE_OPTIONS = [
