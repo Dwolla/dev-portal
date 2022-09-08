@@ -21,6 +21,7 @@ import {
   GREY_8,
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
+  PURPLE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
   PURPLE_PRIMARY_HOVER,
   PURPLE_PRIMARY_ACTIVE,
@@ -46,7 +47,7 @@ const LeftSidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid ${GREY_2};
+  border-right: 1px solid ${PURPLE_PRIMARY};
   transition: opacity 300ms;
   opacity: 0;
   pointer-events: none;
@@ -258,16 +259,13 @@ export default function Layout({
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.5.0/modern-normalize.min.css"
-        ></link>
+        />
         <link
           href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
           rel="stylesheet"
-        ></link>
+        />
         <link rel="canonical" href={router?.pathname} />
-        <script
-          type="text/javascript"
-          src="//js.hsforms.net/forms/v2.js"
-        ></script>
+        <script type="text/javascript" src="//js.hsforms.net/forms/v2.js" />
       </Head>
 
       <LeftSidebar

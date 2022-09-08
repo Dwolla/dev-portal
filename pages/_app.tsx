@@ -6,6 +6,7 @@ import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
 import { LanguageContext } from "../app/components/util/Contexts";
+import { SideNavLinkProps } from "../app/components/layout/SideNav";
 import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
@@ -13,6 +14,7 @@ import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/s
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
+import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
@@ -40,42 +42,60 @@ function GoogleTagManager() {
 const STATUS_PAGE_SUMMARY_URL =
   "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
 
-const SIDE_NAV_LINKS = [
+const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
     href: "/",
     IconSvg: HomeIcon,
     isSection: false,
     text: "Home",
+    isExternal: false,
   },
   {
     href: "/api-reference",
     IconSvg: ApiReferenceIcon,
     isSection: true,
     text: "API Reference",
+    isExternal: false,
   },
   {
     href: "/guides",
     IconSvg: GuidesIcon,
     isSection: true,
     text: "Guides",
+    isExternal: false,
   },
   {
     href: "/concepts",
     IconSvg: ConceptsIcon,
     isSection: true,
     text: "Concepts",
+    isExternal: false,
   },
   {
     href: "/sdks-tools",
     IconSvg: SdksToolsIcon,
     isSection: false,
     text: "SDKs & Tools",
+    isExternal: false,
   },
   {
     href: "/code-samples",
     IconSvg: CodeSamplesIcon,
     isSection: false,
     text: "Code Samples",
+    isExternal: false,
+  },
+  {
+    href: "/changelog",
+    IconSvg: ChangelogIcon,
+    isSection: false,
+    text: "Changelog",
+    isExternal: false,
+  },
+  {
+    href: "https://discuss.dwolla.com/",
+    text: "Community",
+    isExternal: true,
   },
 ];
 
@@ -135,14 +155,6 @@ const TOP_BAR_PROPS = {
       external: true,
     },
   },
-  links: [
-    {
-      text: "Community",
-      href: "https://discuss.dwolla.com/c/api-support/",
-      external: true,
-    },
-    { text: "Changelog", href: "/changelog" },
-  ],
 };
 
 const LANGUAGE_OPTIONS = [
