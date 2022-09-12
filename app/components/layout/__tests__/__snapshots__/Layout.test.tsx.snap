@@ -3,7 +3,7 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className="visuallyHidden css-k40rxn-LeftSidebar e1ijxxr37"
+    className="visuallyHidden css-1pznub6-LeftSidebar e1ijxxr37"
   >
     <div
       className="css-wvabyo-LogoWrapper e1ijxxr36"
@@ -12,10 +12,11 @@ Array [
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         <img
           alt="Dwolla Developers Logo"
-          className="css-12emuhn-Layout"
+          className="css-1wij0m6-Layout-Layout"
           src="test-image-stub"
         />
       </a>
@@ -49,10 +50,11 @@ Array [
               className="css-kgvw59-SectionWrap e1qiqw1s10"
             >
               <a
-                className="active css-yka8go-SectionLink"
+                className="active css-1ooxgh-SectionLink-SectionLink"
                 href="/"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -66,10 +68,11 @@ Array [
                 Home
               </a>
               <a
-                className=" css-yka8go-SectionLink"
+                className=" css-1ooxgh-SectionLink-SectionLink"
                 href="/guides"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -91,10 +94,11 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-yka8go-SectionLink"
+                className=" css-1ooxgh-SectionLink-SectionLink"
                 href="/concepts"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -116,10 +120,11 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-yka8go-SectionLink"
+                className=" css-1ooxgh-SectionLink-SectionLink"
                 href="/sdks-tools"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -137,10 +142,11 @@ Array [
               className="css-nasyo1-MobileWrap e1qiqw1s1"
             >
               <a
-                className=" css-x7nrnw-MobileLink"
+                className=" css-1x6taet-MobileLink-MobileLink"
                 href="https://docs.dwolla.com"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
                 target="_blank"
               >
                 <span
@@ -155,10 +161,11 @@ Array [
                 />
               </a>
               <a
-                className=" css-x7nrnw-MobileLink"
+                className=" css-1x6taet-MobileLink-MobileLink"
                 href="/changelog"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <span
                   className="text"
@@ -209,6 +216,7 @@ Array [
             href="/"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             <img
               alt=""
@@ -241,6 +249,7 @@ Array [
             href="/changelog"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             <span
               className="text"
@@ -266,9 +275,7 @@ Array [
               >
                 <div
                   className=" css-1me8bqy-singleValue"
-                >
-                  
-                </div>
+                />
                 <input
                   aria-autocomplete="list"
                   className="css-62g3xt-dummyInput"
@@ -327,14 +334,14 @@ Array [
       </div>
     </div>
     <div
-      className=" css-qidz8v-ContentArea e1ijxxr32"
+      className=" css-r2kzr4-ContentArea e1ijxxr32"
     >
       <div>
         page
       </div>
     </div>
     <div
-      className=" css-1x1jpur-FooterWrapper e1ijxxr30"
+      className=" css-1vo9m3u-FooterWrapper e1ijxxr30"
     >
       <div
         className="css-betm3h-Container eg0edpy12"
@@ -346,6 +353,7 @@ Array [
             href="/"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             <img
               alt=""

@@ -2,7 +2,7 @@
 
 exports[`MDXStyleWrapper 1`] = `
 <div
-  className="css-1n5zfuf-global-global-codeStyles-codeStyles-h1-h2-h3-h4-h5-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles-codeStyles-codeStyles-imageStyles-imageStyles-codeStyles-codeStyles-codeStyles-codeStyles-linkStyles-linkStyles-baseTextStyles-baseTextStyles-listStyles-listStyles-codeStyles-codeStyles-imageStyles-imageStyles-codeStyles-codeStyles-codeStyles-codeStyles-blockQuoteStyles-blockQuoteStyles"
+  className="css-ofjp3p-global-global-codeStyles-codeStyles-h1-h2-h3-h4-h5-baseTextStyles-baseTextStyles-paragraphStyles-paragraphStyles-codeStyles-codeStyles-imageStyles-imageStyles-codeStyles-codeStyles-codeStyles-codeStyles-linkStyles-linkStyles-baseTextStyles-baseTextStyles-listStyles-listStyles-codeStyles-codeStyles-imageStyles-imageStyles-codeStyles-codeStyles-codeStyles-codeStyles-blockQuoteStyles-blockQuoteStyles-MDXStyleWrapper-MDXStyleWrapper"
 >
   <h1>
     This is wrapped in the MDX Style Wrapper

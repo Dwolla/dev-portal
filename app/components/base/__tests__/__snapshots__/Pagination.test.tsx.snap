@@ -9,6 +9,7 @@ exports[`Pagination next 1`] = `
     href="/#"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="css-1s13nga-Card erl4udx2"
@@ -40,6 +41,7 @@ exports[`Pagination previous 1`] = `
     href="/#"
     onClick={[Function]}
     onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
     <div
       className="css-1s13nga-Card erl4udx2"

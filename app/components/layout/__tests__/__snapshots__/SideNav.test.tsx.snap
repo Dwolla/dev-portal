@@ -15,10 +15,11 @@ exports[`SideNav 1`] = `
         className="css-kgvw59-SectionWrap e1qiqw1s10"
       >
         <a
-          className="active css-yka8go-SectionLink"
+          className="active css-1ooxgh-SectionLink-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -32,10 +33,11 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -57,10 +59,11 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -82,10 +85,11 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -103,10 +107,11 @@ exports[`SideNav 1`] = `
         className="css-nasyo1-MobileWrap e1qiqw1s1"
       >
         <a
-          className=" css-x7nrnw-MobileLink"
+          className=" css-1x6taet-MobileLink-MobileLink"
           href="https://docs.dwolla.com"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
           target="_blank"
         >
           <span
@@ -121,10 +126,11 @@ exports[`SideNav 1`] = `
           />
         </a>
         <a
-          className=" css-x7nrnw-MobileLink"
+          className=" css-1x6taet-MobileLink-MobileLink"
           href="/changelog"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <span
             className="text"

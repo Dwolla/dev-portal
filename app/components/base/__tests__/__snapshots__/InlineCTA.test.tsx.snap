@@ -6,6 +6,7 @@ exports[`Inline CTA 1`] = `
   href="https://developers.dwolla.com/guides/personal-verified-customer"
   onClick={[Function]}
   onMouseEnter={[Function]}
+  onTouchStart={[Function]}
 >
   <div
     className="css-l9xmrb-Container e4d1mpi3"

@@ -11,6 +11,7 @@ exports[`Footer 1`] = `
       href="/"
       onClick={[Function]}
       onMouseEnter={[Function]}
+      onTouchStart={[Function]}
     >
       <img
         alt=""
