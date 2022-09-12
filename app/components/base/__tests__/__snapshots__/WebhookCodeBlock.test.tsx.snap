@@ -11,11 +11,11 @@ exports[`WebhookCodeBlock 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1662996725158"
+      aria-controls="collapsible-content-1663003274704"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1662996725158"
+      id="collapsible-trigger-1663003274704"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -42,10 +42,10 @@ exports[`WebhookCodeBlock 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1662996725158"
+      aria-labelledby="collapsible-trigger-1663003274704"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1662996725158"
+      id="collapsible-content-1663003274704"
       onTransitionEnd={[Function]}
       role="region"
       style={
