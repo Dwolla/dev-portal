@@ -408,19 +408,34 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
           }
         >
           {!(activeSection && activeSection.isSection) ? (
-            <SectionWrap>
-              {/* Filter sectionLinks based on the 'isExternal' prop so that only internal links
+            <>
+              <SectionWrap>
+                {/* Filter sectionLinks based on the 'isExternal' prop so that only internal links
               are passed to the SectionLink component*/}
-              {sectionLinks
-                .filter((l) => !l.isExternal)
-                .map((l) => (
-                  <SectionLink
-                    key={l.href}
-                    isActive={l.href === pathname}
-                    linkProps={l}
-                  />
-                ))}
-            </SectionWrap>
+                {sectionLinks
+                  .filter((l) => !l.isExternal)
+                  .map((l) => (
+                    <SectionLink
+                      key={l.href}
+                      isActive={l.href === pathname}
+                      linkProps={l}
+                    />
+                  ))}
+              </SectionWrap>
+              <ExternalSectionWrap>
+                {/* Filter sectionLinks based on the 'isExternal' prop so that only external links
+             are passed to the SectionLink component */}
+                {sectionLinks
+                  .filter((el) => el.isExternal)
+                  .map((el) => (
+                    <SectionLink
+                      key={el.href}
+                      isActive={el.href === pathname}
+                      linkProps={el}
+                    />
+                  ))}
+              </ExternalSectionWrap>
+            </>
           ) : (
             <>
               <StickySectionWrap>
@@ -483,20 +498,6 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
               </CategoriesWrap>
             </>
           )}
-
-          <ExternalSectionWrap>
-            {/* Filter sectionLinks based on the 'isExternal' prop so that only external links
-            are passed to the SectionLink component */}
-            {sectionLinks
-              .filter((el) => el.isExternal)
-              .map((el) => (
-                <SectionLink
-                  key={el.href}
-                  isActive={el.href === pathname}
-                  linkProps={el}
-                />
-              ))}
-          </ExternalSectionWrap>
 
           <MobileWrap>
             <MobileItems {...mobileItems} />
