@@ -2,17 +2,17 @@
 
 exports[`SideNav 1`] = `
 <div
-  className="css-yeohq5-Container e1qiqw1s13"
+  className="css-yeohq5-Container e1qiqw1s14"
 >
   <div
-    className="css-kibqvq-Slide e1qiqw1s12"
+    className="css-kibqvq-Slide e1qiqw1s13"
   >
     <div
-      className="left css-1jc4k7f-SlidePane e1qiqw1s11"
+      className="left css-1jc4k7f-SlidePane e1qiqw1s12"
       id="body-scroll-lock-side-nav"
     >
       <div
-        className="css-kgvw59-SectionWrap e1qiqw1s10"
+        className="css-1lugamu-SectionWrap e1qiqw1s11"
       >
         <a
           className="active css-yka8go-SectionLink"
@@ -30,6 +30,31 @@ exports[`SideNav 1`] = `
             />
           </div>
           Home
+        </a>
+        <a
+          className=" css-yka8go-SectionLink"
+          href="/api-reference"
+          onClick={[Function]}
+          onMouseEnter={[Function]}
+        >
+          <div
+            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+          >
+            <svg
+              className="section-icon"
+              height={17}
+              width={17}
+            />
+          </div>
+          API Reference
+          <div
+            className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
+          >
+            <svg
+              height={10}
+              width={5}
+            />
+          </div>
         </a>
         <a
           className=" css-yka8go-SectionLink"
@@ -100,38 +125,30 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-nasyo1-MobileWrap e1qiqw1s1"
+        className="css-10a5zt7-ExternalSectionWrap e1qiqw1s10"
       >
         <a
-          className=" css-x7nrnw-MobileLink"
-          href="https://docs.dwolla.com"
+          className=" css-yka8go-SectionLink"
+          href="https://discuss.dwolla.com/"
           onClick={[Function]}
           onMouseEnter={[Function]}
           target="_blank"
         >
-          <span
-            className="text"
+          <div
+            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
           >
-            API Docs
-          </span>
-          <img
-            alt="Open in new tab"
-            className="icon"
-            src="test-image-stub"
-          />
+            <svg
+              className="section-icon"
+              height={15}
+              width={15}
+            />
+          </div>
+          Community
         </a>
-        <a
-          className=" css-x7nrnw-MobileLink"
-          href="/changelog"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-        >
-          <span
-            className="text"
-          >
-            Changelog
-          </span>
-        </a>
+      </div>
+      <div
+        className="css-nasyo1-MobileWrap e1qiqw1s1"
+      >
         <div
           className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
         >

@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import {
   API_STATUS_BAR_GREEN,
   GREY_5,
-  GREY_2,
   API_STATUS_BAR_BLUE,
   API_STATUS_BAR_YELLOW,
   API_STATUS_BAR_ORANGE,
   API_STATUS_BAR_RED,
+  PURPLE_PRIMARY,
 } from "../colors";
 
 const ContainerLink = styled.a`
@@ -17,7 +17,7 @@ const ContainerLink = styled.a`
   font-size: 12px;
   font-family: Poppins;
   color: ${GREY_5};
-  border-top: 1px solid ${GREY_2};
+  border-top: 1px solid ${PURPLE_PRIMARY};
   height: 60px;
   padding: 6px 20px;
   text-transform: uppercase;

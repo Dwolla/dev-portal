@@ -11,11 +11,11 @@ exports[`Collapsible Webhook Variant 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1658947187862"
+      aria-controls="collapsible-content-1662653207956"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1658947187862"
+      id="collapsible-trigger-1662653207956"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -42,10 +42,10 @@ exports[`Collapsible Webhook Variant 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1658947187862"
+      aria-labelledby="collapsible-trigger-1662653207956"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1658947187862"
+      id="collapsible-content-1662653207956"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -83,11 +83,11 @@ exports[`Collapsible list 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1658947187838"
+      aria-controls="collapsible-content-1662653207934"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1658947187838"
+      id="collapsible-trigger-1662653207934"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -106,10 +106,10 @@ exports[`Collapsible list 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1658947187838"
+      aria-labelledby="collapsible-trigger-1662653207934"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1658947187838"
+      id="collapsible-content-1662653207934"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -162,11 +162,11 @@ exports[`Collapsible paragraph 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1658947187856"
+      aria-controls="collapsible-content-1662653207952"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1658947187856"
+      id="collapsible-trigger-1662653207952"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -185,10 +185,10 @@ exports[`Collapsible paragraph 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1658947187856"
+      aria-labelledby="collapsible-trigger-1662653207952"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1658947187856"
+      id="collapsible-content-1662653207952"
       onTransitionEnd={[Function]}
       role="region"
       style={
