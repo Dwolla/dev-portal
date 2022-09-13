@@ -21,7 +21,6 @@ import {
   GREY_8,
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
-  PURPLE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
   PURPLE_PRIMARY_HOVER,
   PURPLE_PRIMARY_ACTIVE,
@@ -47,7 +46,7 @@ const LeftSidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid ${PURPLE_PRIMARY};
+  border-right: 1px solid ${GREY_2};
   transition: opacity 300ms;
   opacity: 0;
   pointer-events: none;

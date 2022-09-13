@@ -13,7 +13,6 @@ import {
 import Button from "../base/Button";
 import {
   ORANGE_PRIMARY,
-  PURPLE_PRIMARY,
   WHITE_PRIMARY,
   GREY_1,
   GREY_2,
@@ -143,7 +142,7 @@ const SectionWrap = styled.div`
 
 const ExternalSectionWrap = styled.div`
   padding-top: 10px;
-  border-top: 1px solid ${PURPLE_PRIMARY};
+  border-top: 1px solid ${GREY_2};
 `;
 
 const StickySectionWrap = styled.div`
