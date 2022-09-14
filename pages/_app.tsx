@@ -4,7 +4,7 @@ import useSWR from "swr";
 import TagManager from "react-gtm-module";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import Head from "next/head";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
@@ -224,7 +224,6 @@ export default function MyApp({
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
         <GoogleTagManager />
         <AppWithHooks
           Component={Component}
