@@ -17,7 +17,12 @@ function HubSpotForm({ hubSpotFormId }: { hubSpotFormId: string }) {
     document.body.appendChild(script);
 
     script.addEventListener("load", () => {
-      if (window.hbspt) {
+      if (
+        window &&
+        window.hbspt &&
+        window.hbspt.forms &&
+        window.hbspt.forms.create
+      ) {
         window.hbspt.forms.create({
           portalId: "7996980",
           formId: hubSpotFormId,
