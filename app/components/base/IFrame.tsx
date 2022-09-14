@@ -11,18 +11,20 @@ const IFrameWrap = styled.div`
 
 function HubSpotForm({ hubSpotFormId }: { hubSpotFormId: string }) {
   useEffect(() => {
-    if (
-      window &&
-      window.hbspt &&
-      window.hbspt.forms &&
-      window.hbspt.forms.create
-    ) {
-      window.hbspt.forms.create({
-        portalId: "7996980",
-        formId: hubSpotFormId,
-        target: `#hs-${hubSpotFormId}`,
-      });
-    }
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = "//js.hsforms.net/forms/v2.js";
+    document.body.appendChild(script);
+
+    script.addEventListener("load", () => {
+      if (window.hbspt) {
+        window.hbspt.forms.create({
+          portalId: "7996980",
+          formId: hubSpotFormId,
+          target: `#hs-${hubSpotFormId}`,
+        });
+      }
+    });
   }, []);
 
   return <IFrameWrap id={`hs-${hubSpotFormId}`}></IFrameWrap>;

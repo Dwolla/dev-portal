@@ -1,7 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import createEmotionServer from "@emotion/server/create-instance";
 import React from "react";
-import Script from "next/script";
 import createEmotionCache from "../app/modules/emotion-cache";
 import theme from "../app/theme";
 
@@ -55,7 +54,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <Script src="//js.hsforms.net/forms/v2.js" />
         </body>
       </Html>
     );
