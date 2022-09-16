@@ -3,7 +3,7 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className="visuallyHidden css-1ctxifq-LeftSidebar e1ijxxr37"
+    className="visuallyHidden css-1pznub6-LeftSidebar e1ijxxr37"
   >
     <div
       className="css-wvabyo-LogoWrapper e1ijxxr36"
@@ -207,7 +207,7 @@ Array [
       </div>
     </div>
     <a
-      className="css-1sxwtp5-ContainerLink eyy6ry91"
+      className="css-1u6dojs-ContainerLink eyy6ry91"
       href="https://status.dwolla.com"
       target="_blank"
     >
@@ -547,7 +547,7 @@ Array [
             className="css-b6puy4-LegalDesc eg0edpy0"
           >
             All funds transfers made using the Dwolla Platform are performed by a financial institution partner, and any funds held in a Dwolla Balance are held by a financial institution partner.
-
+             
             <a
               href="https://www.dwolla.com/legal/about-our-financial-institution-partners/#legal-content"
               rel="noreferrer"
