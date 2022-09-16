@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
-import App, { AppProps } from "next/app";
+import React, { useEffect, useState } from "react";
+import { AppProps } from "next/app";
 import useSWR from "swr";
 import TagManager from "react-gtm-module";
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import Head from "next/head";
+import { ThemeProvider } from "@mui/material";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
@@ -18,6 +21,8 @@ import { ReactComponent as ChangelogIcon } from "../assets/images/component-icon
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
+import createEmotionCache from "../app/modules/emotion-cache";
+import theme from "../app/theme";
 
 function GoogleTagManager() {
   useEffect(() => {
@@ -165,7 +170,13 @@ const LANGUAGE_OPTIONS = [
   { value: "bash", label: "Raw" },
 ];
 
-function AppWithHooks({ router, Component, pageProps }: AppProps) {
+const clientSideEmotionCache = createEmotionCache();
+
+interface Props extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+function AppWithHooks({ router, Component, pageProps }: Props) {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
 
   const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
@@ -200,18 +211,26 @@ function AppWithHooks({ router, Component, pageProps }: AppProps) {
   );
 }
 
-export default class MyApp extends App {
-  render() {
-    const { router, Component, pageProps }: AppProps = this.props;
-    return (
-      <>
+export default function MyApp({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+  router,
+}: Props) {
+  return (
+    <CacheProvider value={emotionCache}>
+      <Head>
+        <title>Dwolla Developers</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+      <ThemeProvider theme={theme}>
         <GoogleTagManager />
         <AppWithHooks
-          router={router}
           Component={Component}
           pageProps={pageProps}
+          router={router}
         />
-      </>
-    );
-  }
+      </ThemeProvider>
+    </CacheProvider>
+  );
 }

@@ -11,6 +11,7 @@ exports[`TopBar 1`] = `
       href="/"
       onClick={[Function]}
       onMouseEnter={[Function]}
+      onTouchStart={[Function]}
     >
       <img
         alt=""
@@ -36,9 +37,7 @@ exports[`TopBar 1`] = `
         >
           <div
             className=" css-1me8bqy-singleValue"
-          >
-            
-          </div>
+          />
           <input
             aria-autocomplete="list"
             className="css-62g3xt-dummyInput"

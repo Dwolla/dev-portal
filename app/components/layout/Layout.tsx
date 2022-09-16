@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import Head from "next/head";
-import { css, Global } from "@emotion/core";
+import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import React, { useState, useEffect } from "react";
@@ -253,18 +253,7 @@ export default function Layout({
       />
 
       <Head>
-        <title>Dwolla Developers</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/0.5.0/modern-normalize.min.css"
-        />
-        <link
-          href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
-          rel="stylesheet"
-        />
         <link rel="canonical" href={router?.pathname} />
-        <script type="text/javascript" src="//js.hsforms.net/forms/v2.js" />
       </Head>
 
       <LeftSidebar

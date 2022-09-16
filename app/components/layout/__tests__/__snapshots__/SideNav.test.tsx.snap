@@ -15,10 +15,11 @@ exports[`SideNav 1`] = `
         className="css-1lugamu-SectionWrap e1qiqw1s11"
       >
         <a
-          className="active css-yka8go-SectionLink"
+          className="active css-1ooxgh-SectionLink-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -32,10 +33,11 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/api-reference"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -57,10 +59,11 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -82,10 +85,11 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -107,10 +111,11 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
         >
           <div
             className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -128,10 +133,11 @@ exports[`SideNav 1`] = `
         className="css-qmkwcj-ExternalSectionWrap e1qiqw1s10"
       >
         <a
-          className=" css-yka8go-SectionLink"
+          className=" css-1ooxgh-SectionLink-SectionLink"
           href="https://discuss.dwolla.com/"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onTouchStart={[Function]}
           target="_blank"
         >
           <div

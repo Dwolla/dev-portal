@@ -1,8 +1,12 @@
-import React from "react";
+import React, { FunctionComponent, ReactNode } from "react";
 import { css, Global } from "@emotion/react";
-import { Tooltip as ReactTooltip } from "react-tippy";
+import { Tooltip as ReactTooltip, TooltipProps } from "react-tippy";
 import { WHITE_PRIMARY, GREY_8 } from "../colors";
 import { ROBOTO } from "../typography";
+
+interface CustomTooltipProps extends TooltipProps {
+  children?: ReactNode;
+}
 
 type Props = {
   children: any;
@@ -11,6 +15,9 @@ type Props = {
   position: "top" | "bottom" | "left" | "right";
   distance?: number;
 };
+
+const CustomTooltip: FunctionComponent<CustomTooltipProps> = (props) =>
+  React.cloneElement(<ReactTooltip />, { ...props });
 
 function Tooltip({ children, text, hasArrow, position, distance }: Props) {
   const Arrow = hasArrow || false;
@@ -49,14 +56,14 @@ function Tooltip({ children, text, hasArrow, position, distance }: Props) {
           }
         `}
       ></Global>
-      <ReactTooltip
+      <CustomTooltip
         arrow={Arrow}
         position={position}
         distance={Distance}
         html={<div className="tooltip-content">{text}</div>}
       >
         {children}
-      </ReactTooltip>
+      </CustomTooltip>
     </>
   );
 }
