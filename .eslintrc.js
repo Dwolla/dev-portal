@@ -76,5 +76,12 @@ module.exports = {
     "react/self-closing-comp": "off",
     // prettier
     "spaced-comment": "off", // typescript
+    // emotion (https://emotion.sh/docs/eslint-plugin-react)
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
+    // don't throw error if dependency is only used for testing
+    "import/no-extraneous-dependencies": [
+      "error",
+      { devDependencies: ["**/*.test.ts", "**/*.test.tsx"] },
+    ],
   },
 };

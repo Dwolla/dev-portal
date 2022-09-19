@@ -2,69 +2,26 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-67tr3t-Container e1psldpd7"
+  className="css-67tr3t-Container e1psldpd5"
 >
   <div
-    className="css-hafdn5-StyledLogoWrap e1psldpd6"
+    className="css-hafdn5-StyledLogoWrap e1psldpd4"
   >
     <a
       href="/"
       onClick={[Function]}
       onMouseEnter={[Function]}
+      onTouchStart={[Function]}
     >
       <img
         alt=""
-        className="css-g6dikn-StyledLogo e1psldpd5"
+        className="css-g6dikn-StyledLogo e1psldpd3"
         src="test-image-stub"
       />
     </a>
   </div>
   <div
-    className="css-ffwcst-LinksWrapper e1psldpd4"
-  >
-    <a
-      className=" css-13w1jmk-StyledLink e1psldpd1"
-      href="https://docs.dwolla.com"
-      target="_blank"
-    >
-      <span
-        className="text"
-      >
-        API Docs
-      </span>
-      <img
-        alt="Open in new tab"
-        className="icon"
-        src="test-image-stub"
-      />
-    </a>
-    <a
-      className="active css-13w1jmk-StyledLink e1psldpd1"
-      href="/changelog"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-    >
-      <span
-        className="text"
-      >
-        Changelog
-      </span>
-    </a>
-    <a
-      className="active css-13w1jmk-StyledLink e1psldpd1"
-      href="/manually-active"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-    >
-      <span
-        className="text"
-      >
-        Manually Active
-      </span>
-    </a>
-  </div>
-  <div
-    className="css-p48gnw-SelectWrapper e1psldpd2"
+    className="css-p48gnw-SelectWrapper e1psldpd1"
   >
     <div
       className=" css-k377xg-container"
@@ -80,9 +37,7 @@ exports[`TopBar 1`] = `
         >
           <div
             className=" css-1me8bqy-singleValue"
-          >
-            
-          </div>
+          />
           <input
             aria-autocomplete="list"
             className="css-62g3xt-dummyInput"
@@ -119,7 +74,7 @@ exports[`TopBar 1`] = `
     </div>
   </div>
   <div
-    className="css-1as8qu1-ButtonWrapper e1psldpd3"
+    className="css-1as8qu1-ButtonWrapper e1psldpd2"
   >
     <a
       className="primary standard  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"

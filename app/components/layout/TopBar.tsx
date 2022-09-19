@@ -2,11 +2,8 @@ import { useContext, useState } from "react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
-import openInNewTabIcon from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
-import { GREY_2, GREY_6, ORANGE_PRIMARY } from "../colors";
-import { POPPINS } from "../typography";
+import { GREY_2 } from "../colors";
 import Button from "../base/Button";
 import { LanguageContext } from "../util/Contexts";
 import { breakDown, breakUp } from "../breakpoints";
@@ -43,14 +40,6 @@ const StyledLogo = styled.img`
   }
 `;
 
-const LinksWrapper = styled.div`
-  height: 100%;
-
-  @media (${breakDown("md")}) {
-    display: none;
-  }
-`;
-
 const ButtonWrapper = styled.div`
   margin-left: auto;
   padding-right: 20px;
@@ -64,75 +53,6 @@ const SelectWrapper = styled.div`
   padding-left: 20px;
 `;
 
-const StyledLink = styled.a`
-  font-family: ${POPPINS};
-  font-size: 14px;
-  color: ${GREY_6};
-  display: inline-flex;
-  align-items: center;
-  padding: 0 20px;
-  height: 100%;
-  text-decoration: none;
-
-  > .text {
-    display: inline-flex;
-    align-items: center;
-    height: 100%;
-    border-bottom: 3px solid transparent;
-  }
-
-  > .icon {
-    margin-left: 5px;
-    width: 13px;
-    height: 13px;
-  }
-
-  &.active > .text {
-    color: ${ORANGE_PRIMARY};
-    border-bottom-color: ${ORANGE_PRIMARY};
-  }
-
-  :hover:not(.active) > .text {
-    text-decoration: underline;
-  }
-`;
-
-export type TopBarLinkProps = {
-  href: string;
-  external?: boolean;
-  text: string;
-  // manually set a link as active as opposed to relying on useRouter().pathname
-  active?: boolean;
-};
-
-const ConditionalLinkWrapper = ({ external, linkWrapper, children }) =>
-  external ? children : linkWrapper(children);
-
-export function TopBarLink({ href, external, text, active }: TopBarLinkProps) {
-  return (
-    <ConditionalLinkWrapper
-      external={external}
-      linkWrapper={(children) => (
-        <Link href={href} passHref>
-          {children}
-        </Link>
-      )}
-    >
-      <StyledLink
-        href={external ? href : ""}
-        target={external ? "_blank" : undefined}
-        className={classnames({ active })}
-      >
-        <span className="text">{text}</span>
-
-        {external && (
-          <img className="icon" src={openInNewTabIcon} alt="Open in new tab" />
-        )}
-      </StyledLink>
-    </ConditionalLinkWrapper>
-  );
-}
-
 export type TopBarButtonProps = {
   text: string;
   link: {
@@ -143,7 +63,6 @@ export type TopBarButtonProps = {
 
 export type TopBarProps = {
   button: TopBarButtonProps;
-  links: TopBarLinkProps[];
   onHamburgerClick?: () => void;
 };
 
@@ -180,11 +99,7 @@ const Hamburger = styled.div`
   }
 `;
 
-export default function TopBar({
-  button,
-  links,
-  onHamburgerClick,
-}: TopBarProps) {
+export default function TopBar({ button, onHamburgerClick }: TopBarProps) {
   const { selectedLanguage, setSelectedLanguage, languageOptions } =
     useContext(LanguageContext);
 
@@ -193,8 +108,6 @@ export default function TopBar({
   function onHamburgerKeydown(e) {
     if (e.key === "Enter") onHamburgerClick();
   }
-
-  const router = useRouter();
 
   return (
     <Container>
@@ -205,16 +118,6 @@ export default function TopBar({
           </a>
         </Link>
       </StyledLogoWrap>
-
-      <LinksWrapper>
-        {links.map((l) => (
-          <TopBarLink
-            key={l.href}
-            {...l}
-            active={l.active || l.href === router?.pathname}
-          />
-        ))}
-      </LinksWrapper>
 
       <SelectWrapper>
         <FormControl sx={{ minWidth: 200 }} size="small">

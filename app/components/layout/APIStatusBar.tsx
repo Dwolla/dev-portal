@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 import {
   API_STATUS_BAR_GREEN,
-  GREY_5,
   GREY_2,
+  GREY_5,
   API_STATUS_BAR_BLUE,
   API_STATUS_BAR_YELLOW,
   API_STATUS_BAR_ORANGE,

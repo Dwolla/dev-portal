@@ -3,7 +3,7 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className="visuallyHidden css-k40rxn-LeftSidebar e1ijxxr37"
+    className="visuallyHidden css-1pznub6-LeftSidebar e1ijxxr37"
   >
     <div
       className="css-wvabyo-LogoWrapper e1ijxxr36"
@@ -12,10 +12,11 @@ Array [
         href="/"
         onClick={[Function]}
         onMouseEnter={[Function]}
+        onTouchStart={[Function]}
       >
         <img
           alt="Dwolla Developers Logo"
-          className="css-12emuhn-Layout"
+          className="css-1wij0m6-Layout-Layout"
           src="test-image-stub"
         />
       </a>
@@ -36,23 +37,24 @@ Array [
       className="css-6qgefa-SideNavWrapper e1ijxxr35"
     >
       <div
-        className="css-yeohq5-Container e1qiqw1s13"
+        className="css-yeohq5-Container e1qiqw1s14"
       >
         <div
-          className="css-kibqvq-Slide e1qiqw1s12"
+          className="css-kibqvq-Slide e1qiqw1s13"
         >
           <div
-            className="left css-1jc4k7f-SlidePane e1qiqw1s11"
+            className="left css-1jc4k7f-SlidePane e1qiqw1s12"
             id="body-scroll-lock-side-nav"
           >
             <div
-              className="css-kgvw59-SectionWrap e1qiqw1s10"
+              className="css-1lugamu-SectionWrap e1qiqw1s11"
             >
               <a
-                className="active css-yka8go-SectionLink"
+                className="active css-1ooxgh-SectionLink-SectionLink"
                 href="/"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -66,10 +68,37 @@ Array [
                 Home
               </a>
               <a
-                className=" css-yka8go-SectionLink"
+                className=" css-1ooxgh-SectionLink-SectionLink"
+                href="/api-reference"
+                onClick={[Function]}
+                onMouseEnter={[Function]}
+                onTouchStart={[Function]}
+              >
+                <div
+                  className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+                >
+                  <svg
+                    className="section-icon"
+                    height={17}
+                    width={17}
+                  />
+                </div>
+                API Reference
+                <div
+                  className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
+                >
+                  <svg
+                    height={10}
+                    width={5}
+                  />
+                </div>
+              </a>
+              <a
+                className=" css-1ooxgh-SectionLink-SectionLink"
                 href="/guides"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -91,10 +120,11 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-yka8go-SectionLink"
+                className=" css-1ooxgh-SectionLink-SectionLink"
                 href="/concepts"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -116,10 +146,11 @@ Array [
                 </div>
               </a>
               <a
-                className=" css-yka8go-SectionLink"
+                className=" css-1ooxgh-SectionLink-SectionLink"
                 href="/sdks-tools"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
@@ -134,38 +165,31 @@ Array [
               </a>
             </div>
             <div
-              className="css-nasyo1-MobileWrap e1qiqw1s1"
+              className="css-qmkwcj-ExternalSectionWrap e1qiqw1s10"
             >
               <a
-                className=" css-x7nrnw-MobileLink"
-                href="https://docs.dwolla.com"
+                className=" css-1ooxgh-SectionLink-SectionLink"
+                href="https://discuss.dwolla.com/"
                 onClick={[Function]}
                 onMouseEnter={[Function]}
+                onTouchStart={[Function]}
                 target="_blank"
               >
-                <span
-                  className="text"
+                <div
+                  className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
                 >
-                  API Docs
-                </span>
-                <img
-                  alt="Open in new tab"
-                  className="icon"
-                  src="test-image-stub"
-                />
+                  <svg
+                    className="section-icon"
+                    height={15}
+                    width={15}
+                  />
+                </div>
+                Community
               </a>
-              <a
-                className=" css-x7nrnw-MobileLink"
-                href="/changelog"
-                onClick={[Function]}
-                onMouseEnter={[Function]}
-              >
-                <span
-                  className="text"
-                >
-                  Changelog
-                </span>
-              </a>
+            </div>
+            <div
+              className="css-nasyo1-MobileWrap e1qiqw1s1"
+            >
               <div
                 className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
               >
@@ -200,57 +224,26 @@ Array [
       className="css-t4xvp2-TopBarWrapper e1ijxxr31"
     >
       <div
-        className="css-67tr3t-Container e1psldpd7"
+        className="css-67tr3t-Container e1psldpd5"
       >
         <div
-          className="css-hafdn5-StyledLogoWrap e1psldpd6"
+          className="css-hafdn5-StyledLogoWrap e1psldpd4"
         >
           <a
             href="/"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             <img
               alt=""
-              className="css-g6dikn-StyledLogo e1psldpd5"
+              className="css-g6dikn-StyledLogo e1psldpd3"
               src="test-image-stub"
             />
           </a>
         </div>
         <div
-          className="css-ffwcst-LinksWrapper e1psldpd4"
-        >
-          <a
-            className=" css-13w1jmk-StyledLink e1psldpd1"
-            href="https://docs.dwolla.com"
-            target="_blank"
-          >
-            <span
-              className="text"
-            >
-              API Docs
-            </span>
-            <img
-              alt="Open in new tab"
-              className="icon"
-              src="test-image-stub"
-            />
-          </a>
-          <a
-            className=" css-13w1jmk-StyledLink e1psldpd1"
-            href="/changelog"
-            onClick={[Function]}
-            onMouseEnter={[Function]}
-          >
-            <span
-              className="text"
-            >
-              Changelog
-            </span>
-          </a>
-        </div>
-        <div
-          className="css-p48gnw-SelectWrapper e1psldpd2"
+          className="css-p48gnw-SelectWrapper e1psldpd1"
         >
           <div
             className=" css-k377xg-container"
@@ -266,9 +259,7 @@ Array [
               >
                 <div
                   className=" css-1me8bqy-singleValue"
-                >
-                  
-                </div>
+                />
                 <input
                   aria-autocomplete="list"
                   className="css-62g3xt-dummyInput"
@@ -305,7 +296,7 @@ Array [
           </div>
         </div>
         <div
-          className="css-1as8qu1-ButtonWrapper e1psldpd3"
+          className="css-1as8qu1-ButtonWrapper e1psldpd2"
         >
           <a
             className="primary standard  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
@@ -327,14 +318,14 @@ Array [
       </div>
     </div>
     <div
-      className=" css-qidz8v-ContentArea e1ijxxr32"
+      className=" css-r2kzr4-ContentArea e1ijxxr32"
     >
       <div>
         page
       </div>
     </div>
     <div
-      className=" css-1x1jpur-FooterWrapper e1ijxxr30"
+      className=" css-1vo9m3u-FooterWrapper e1ijxxr30"
     >
       <div
         className="css-betm3h-Container eg0edpy12"
@@ -346,6 +337,7 @@ Array [
             href="/"
             onClick={[Function]}
             onMouseEnter={[Function]}
+            onTouchStart={[Function]}
           >
             <img
               alt=""
