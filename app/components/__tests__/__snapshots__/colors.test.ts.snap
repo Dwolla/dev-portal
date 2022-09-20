@@ -35,7 +35,9 @@ Object {
   "GREY_7": "#3e4e67",
   "GREY_8": "#354153",
   "GREY_9": "#2e3745",
+  "GREY_HOVER": "#efeff0",
   "HEADLINE_TEXT": "#2a2d38",
+  "LAYOUT_BORDER": "rgba(45, 45, 72, 0.25)",
   "ORANGE_PRIMARY": "#ca4c24",
   "PARAGRAPH_TEXT": "#6a7282",
   "PINK_SECONDARY_ACTIVE": "#be406c",
@@ -44,10 +46,11 @@ Object {
   "PURPLE_DARK": "#2d2d47",
   "PURPLE_DARKER": "#242438",
   "PURPLE_MEDIUM": "#4a4a5e",
-  "PURPLE_PRIMARY": "#483d66",
+  "PURPLE_PRIMARY": "#2d2d48",
   "PURPLE_PRIMARY_ACTIVE": "#524467",
   "PURPLE_PRIMARY_BUTTON": "#5e4e76",
   "PURPLE_PRIMARY_HOVER": "#6a5885",
+  "VERTICAL_GRADIENT": "180deg, #E98453 4.14%, #D46E62 55.07%, #BE5771 100%",
   "WHITE_PRIMARY": "#ffffff",
 }
 `;
