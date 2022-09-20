@@ -1,13 +1,15 @@
 import styled from "@emotion/styled";
 import {
   API_STATUS_BAR_GREEN,
-  GREY_2,
-  GREY_5,
   API_STATUS_BAR_BLUE,
   API_STATUS_BAR_YELLOW,
   API_STATUS_BAR_ORANGE,
   API_STATUS_BAR_RED,
+  PURPLE_PRIMARY,
+  LAYOUT_BORDER,
 } from "../colors";
+
+export const API_STATUS_BAR_HEIGHT = "60px";
 
 const ContainerLink = styled.a`
   background: rgba(255, 255, 255, 0.98);
@@ -16,9 +18,9 @@ const ContainerLink = styled.a`
   align-items: center;
   font-size: 12px;
   font-family: Poppins;
-  color: ${GREY_5};
-  border-top: 1px solid ${GREY_2};
-  height: 60px;
+  color: ${PURPLE_PRIMARY};
+  border-top: 1px solid ${LAYOUT_BORDER};
+  height: ${API_STATUS_BAR_HEIGHT};
   padding: 6px 20px;
   text-transform: uppercase;
   text-decoration: none;
