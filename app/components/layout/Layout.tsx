@@ -13,7 +13,7 @@ import {
 } from "body-scroll-lock";
 import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { BOX_SHADOW_6 } from "../shadowDepths";
 import {
   GREY_2,
@@ -22,8 +22,8 @@ import {
   PURPLE_PRIMARY_BUTTON,
   PURPLE_PRIMARY_HOVER,
   PURPLE_PRIMARY_ACTIVE,
-  HEADLINE_TEXT,
   LAYOUT_BORDER,
+  PURPLE_PRIMARY,
 } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
 import { Z_TOB_BAR } from "../zIndexes";
@@ -170,7 +170,7 @@ export default function Layout({
 
           #dwollaCookieConsent {
             font-family: ${ROBOTO};
-            color: ${HEADLINE_TEXT};
+            color: ${PURPLE_PRIMARY};
             line-height: 22px;
 
             a {
@@ -184,7 +184,7 @@ export default function Layout({
 
             div {
               button {
-                font-family: ${POPPINS};
+                font-family: ${ROBOTO};
                 background-color: ${PURPLE_PRIMARY_BUTTON};
                 border-color: transparent;
 

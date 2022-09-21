@@ -1,7 +1,7 @@
 import { createTheme } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { PURPLE_PRIMARY, ORANGE_PRIMARY } from "./components/colors";
-import { POPPINS } from "./components/typography";
+import { ROBOTO } from "./components/typography";
 
 export default createTheme({
   palette: {
@@ -17,7 +17,7 @@ export default createTheme({
   },
   typography: {
     button: {
-      fontFamily: POPPINS,
+      fontFamily: ROBOTO,
       fontWeight: 400,
       fontSize: "14px",
       lineHeight: "24px",

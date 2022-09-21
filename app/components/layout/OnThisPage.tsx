@@ -11,7 +11,7 @@ import {
   WHITE_PRIMARY,
   VERTICAL_GRADIENT,
 } from "../colors";
-import { ROBOTO, POPPINS } from "../typography";
+import { ROBOTO } from "../typography";
 import { useAnchors, scrollTo } from "../util/Anchors";
 import { TOP_BAR_HEIGHT } from "./TopBar";
 import { breakDown } from "../breakpoints";
@@ -42,7 +42,7 @@ const Container = styled.div`
     display: block;
     padding-top: 8px;
     padding-bottom: 8px;
-    color: ${GREY_6};
+    color: ${PURPLE_PRIMARY};
     font-family: ${ROBOTO};
     font-size: 13px;
     line-height: 19px;
@@ -53,12 +53,12 @@ const Container = styled.div`
     transition: border-color 200ms ease;
 
     :hover {
-      color: ${HEADLINE_TEXT};
+      color: ${GREY_6};
     }
 
     :focus {
       outline: none;
-      color: ${HEADLINE_TEXT};
+      color: ${GREY_6};
       background-color: ${GREY_1};
     }
 
@@ -93,7 +93,7 @@ const Container = styled.div`
 const Heading = styled.div`
   height: 16px;
   color: ${PURPLE_PRIMARY};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 11px;
   font-weight: 500;
   line-height: 17px;
@@ -101,7 +101,7 @@ const Heading = styled.div`
 `;
 
 const PageTop = styled.div`
-  color: ${GREY_6};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 13px;
   line-height: 19px;
@@ -109,7 +109,7 @@ const PageTop = styled.div`
   cursor: pointer;
 
   :hover {
-    color: ${HEADLINE_TEXT};
+    color: ${GREY_6};
   }
 `;
 

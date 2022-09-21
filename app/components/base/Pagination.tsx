@@ -5,7 +5,7 @@ import arrowLeft from "../../../assets/images/component-icons/arrow-left.svg";
 import arrowRight from "../../../assets/images/component-icons/arrow-right.svg";
 import { GREY_2, GREY_5, GREY_6, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
-import { ROBOTO, POPPINS } from "../typography";
+import { ROBOTO } from "../typography";
 import { breakUp } from "../breakpoints";
 
 // Styles
@@ -55,7 +55,7 @@ const ArrowDiv = styled.div`
   justify-content: space-between;
   color: ${GREY_5};
   text-transform: uppercase;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.79px;

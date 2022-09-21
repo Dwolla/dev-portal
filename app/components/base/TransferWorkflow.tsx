@@ -8,7 +8,7 @@ import TimelineNav from "./TimelineNav";
 import Button from "./Button";
 import { GREY_1, GREY_3, HEADLINE_TEXT, PURPLE_DARK } from "../colors";
 import { breakDown } from "../breakpoints";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 
 // Import JSON data to be used in the interactive component
 import a1 from "../../../assets/transfer-workflow-data/a1-account-bank-to-account-balance.json";
@@ -73,7 +73,7 @@ const StyledTimelineContainer = styled.div`
 
 const StyledHeader = styled.div`
   margin: auto;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   text-align: center;
   font-style: normal;
   font-weight: normal;
@@ -84,7 +84,7 @@ const StyledHeader = styled.div`
 
 const StyledTitle = styled.div`
   height: 33px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

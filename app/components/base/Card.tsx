@@ -13,7 +13,7 @@ import {
   WHITE_PRIMARY,
 } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
 
 const CardStyle = styled.div`
@@ -90,7 +90,7 @@ const StyledFlexDiv = styled.div`
 
 const TopicStyle = styled.div`
   color: ${HEADLINE_TEXT};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 18px;
   line-height: 26px;
   margin-bottom: 15px;

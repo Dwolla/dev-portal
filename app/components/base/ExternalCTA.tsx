@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
@@ -9,7 +8,7 @@ import {
   PARAGRAPH_TEXT,
 } from "../colors";
 import { BOX_SHADOW_7 } from "../shadowDepths";
-import { ROBOTO, POPPINS } from "../typography";
+import { ROBOTO } from "../typography";
 
 const StyledLink = styled.a`
   text-decoration: none;
@@ -39,7 +38,7 @@ const TextContainer = styled.div`
 `;
 const StyledTitle = styled.div`
   color: ${HEADLINE_TEXT};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 18px;
   letter-spacing: 0;
   line-height: 26px;

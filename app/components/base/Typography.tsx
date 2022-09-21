@@ -1,25 +1,23 @@
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import classnames from "../../modules/classnames";
-import { POPPINS, ROBOTO, MONACO } from "../typography";
+import { ROBOTO, MONACO } from "../typography";
 import {
-  HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
   PURPLE_DARK,
   GREY_1,
   GREY_3,
   GREY_4,
-  GREY_5,
   GREY_14,
+  PURPLE_PRIMARY,
 } from "../colors";
 
 // Heading styles
 export const headingStyles = {
   global: css`
-    color: ${HEADLINE_TEXT};
-    font-family: ${POPPINS};
+    color: ${PURPLE_PRIMARY};
+    font-family: ${ROBOTO};
     font-weight: 300;
     &.dark {
       color: ${WHITE_PRIMARY};
@@ -52,7 +50,6 @@ export const headingStyles = {
   h5: css`
     text-transform: uppercase;
     font-size: 14px;
-    font-weight: 500;
     letter-spacing: 1px;
     margin-top: 36px;
     margin-bottom: 26px;
@@ -60,9 +57,9 @@ export const headingStyles = {
 };
 
 const StyledPreHeader = styled.p`
-  color: ${GREY_5};
+  color: ${PURPLE_PRIMARY};
   text-transform: uppercase;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 1.14px;
@@ -76,7 +73,7 @@ const StyledPreHeader = styled.p`
 
 // Paragraph syles
 const baseTextStyles = css`
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   &.dark {
     color: ${GREY_4};
@@ -101,7 +98,7 @@ export const paragraphStyles = css`
 `;
 
 export const codeStyles = css`
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${MONACO};
   font-size: 13px;
   line-height: 20px;
@@ -119,7 +116,7 @@ export const blockQuoteStyles = css`
   margin: auto;
   code {
     ${codeStyles}
-    color: ${HEADLINE_TEXT};
+    color: ${PURPLE_PRIMARY};
     background-color: ${GREY_14};
     border-color: ${GREY_4};
   }

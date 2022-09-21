@@ -14,7 +14,7 @@ import {
   HEADLINE_TEXT,
   PARAGRAPH_TEXT,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { BOX_SHADOW_7, BOX_SHADOW_4 } from "../shadowDepths";
 
 // Styles
@@ -31,7 +31,7 @@ const CollapsibleWrapper = styled.div`
     border: 1px solid ${GREY_2};
     border-radius: 5px;
     background-color: ${WHITE_PRIMARY};
-    font-family: ${POPPINS};
+    font-family: ${ROBOTO};
     font-size: 18px;
     line-height: 27px;
     :hover {

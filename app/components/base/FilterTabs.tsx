@@ -10,7 +10,7 @@ import {
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import classnames from "../../modules/classnames";
 import { slugify } from "../../modules/helpers";
@@ -38,7 +38,7 @@ const TabsContainerStyle = styled.ul`
 export const TabStyle = styled.li`
   height: 25px;
   color: ${GREY_4};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 13px;
   font-weight: 500;
   line-height: 20px;

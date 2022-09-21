@@ -1,13 +1,8 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import map from "lodash.map";
-import {
-  HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
-  ORANGE_PRIMARY,
-  LAYOUT_BORDER,
-} from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ORANGE_PRIMARY, LAYOUT_BORDER, PURPLE_PRIMARY } from "../colors";
+import { ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import logo from "../../../assets/images/dwolla-developers-logo.svg";
 
@@ -45,7 +40,7 @@ const Copyright = styled.div`
   font-family: ${ROBOTO};
   font-size: 12px;
   line-height: 21px;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   margin-top: 14px;
 `;
 
@@ -75,9 +70,9 @@ const LinkGroup = styled.div`
 `;
 
 const LinkGroupHeading = styled.h3`
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-weight: 600;
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
   text-transform: uppercase;
   font-size: 11px;
 `;
@@ -98,7 +93,7 @@ const LinkGroupLink = styled.a`
   font-family: ${ROBOTO};
   font-size: 14px;
   line-height: 20px;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   text-decoration: none;
 
   &:hover {
@@ -118,7 +113,7 @@ const LegalContainer = styled.div`
 const LegalTitle = styled.strong`
   font-family: ${ROBOTO};
   font-weight: 600;
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-size: 12px;
 `;
 
@@ -126,7 +121,7 @@ const LegalDesc = styled.p`
   font-family: ${ROBOTO};
   font-size: 12px;
   line-height: 21px;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   a {
     color: ${ORANGE_PRIMARY};
     text-decoration: none;

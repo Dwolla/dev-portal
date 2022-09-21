@@ -16,7 +16,7 @@ import {
   CODE_BLOCK_GREY_COMMENT,
   BLACK_OVERLAY,
 } from "../../colors";
-import { POPPINS } from "../../typography";
+import { ROBOTO } from "../../typography";
 import { fadeIn, fadeOut, slideIn, slideOut } from "../../keyframes";
 import { breakDown } from "../../breakpoints";
 
@@ -89,7 +89,7 @@ export const CodeBlockBar = styled.div`
 `;
 
 export const BarTitle = styled.div`
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: normal;
   font-size: 11px;
@@ -114,7 +114,7 @@ export const CodeBlockButton = styled.button`
   color: ${GREY_10};
   border-radius: 5px;
   font-size: 11px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   text-transform: uppercase;
   letter-spacing: 0.79px;
   height: 27px;
@@ -135,7 +135,7 @@ export const CodeBlockButton = styled.button`
 export const BarText = styled.div`
   color: ${GREY_4};
   font-size: 11px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   text-transform: uppercase;
   letter-spacing: 0.79px;
   height: 27px;

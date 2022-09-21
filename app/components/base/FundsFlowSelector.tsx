@@ -13,7 +13,7 @@ import {
   GREY_6,
   GREY_12,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
 import {
   StyledDefaultDropdownIcon,
@@ -30,7 +30,7 @@ const StyledContainer = styled.div`
 
 const StyledTitle = styled.div`
   height: 33px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: normal;
   font-size: 14px;

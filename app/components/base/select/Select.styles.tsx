@@ -11,7 +11,7 @@ import {
   CODE_BLOCK_BLACK,
 } from "../../colors";
 import { BOX_SHADOW_2 } from "../../shadowDepths";
-import { POPPINS } from "../../typography";
+import { ROBOTO } from "../../typography";
 
 export const StyledDefaultDropdownIcon = styled.img`
   transform: scaleY(-1);
@@ -70,7 +70,7 @@ export const defaultCustomStyles = {
   singleValue: (styles) => ({
     ...styles,
     color: "inherit",
-    fontFamily: POPPINS,
+    fontFamily: ROBOTO,
     fontSize: 13,
     fontWeight: 500,
     letterSpacing: 0,
@@ -100,7 +100,7 @@ export const defaultCustomStyles = {
   }),
   option: (styles, { isFocused }) => ({
     ...styles,
-    fontFamily: POPPINS,
+    fontFamily: ROBOTO,
     fontSize: 13,
     fontWeight: 500,
     letterSpacing: 0,
@@ -157,7 +157,7 @@ export const codeCustomStyles = {
   singleValue: (styles) => ({
     ...styles,
     color: "inherit",
-    fontFamily: POPPINS,
+    fontFamily: ROBOTO,
     fontSize: 11,
     letterSpacing: 0.79,
     lineHeight: "17px",
@@ -191,7 +191,7 @@ export const codeCustomStyles = {
   }),
   option: (styles, { isFocused, isSelected }) => ({
     ...styles,
-    fontFamily: POPPINS,
+    fontFamily: ROBOTO,
     fontSize: 11,
     letterSpacing: 0.79,
     lineHeight: "17px",

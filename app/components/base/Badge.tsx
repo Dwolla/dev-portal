@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { GREY_5, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
-import { POPPINS } from "../typography";
+import { ROBOTO } from "../typography";
 
 const StyledBadge = styled.div`
   text-transform: uppercase;
   color: ${GREY_5};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 10px;
   font-weight: 500;
   font-style: normal;

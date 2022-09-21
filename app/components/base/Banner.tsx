@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import classnames from "../../modules/classnames";
 import Button from "./Button";
 import { PURPLE_DARK, WHITE_PRIMARY, GREY_4 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
 
 // Styled Banner component
@@ -43,7 +43,7 @@ const StyledIcon = styled.img`
 const StyledTopic = styled.div`
   max-width: 749px;
   color: ${WHITE_PRIMARY};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-size: 42px;
   font-weight: 200;
   line-height: 52px;

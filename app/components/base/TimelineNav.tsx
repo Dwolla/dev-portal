@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
 import { ReactComponent as CheckMarkIcon } from "../../../assets/images/component-icons/check-mark.svg";
-import { GREY_3, CODE_BLOCK_ORANGE, PURPLE_DARK } from "../colors";
-import { POPPINS } from "../typography";
+import {
+  GREY_3,
+  CODE_BLOCK_ORANGE,
+  PURPLE_DARK,
+  ORANGE_PRIMARY,
+} from "../colors";
+import { ROBOTO } from "../typography";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -13,7 +18,7 @@ const StyledDiv = styled.div`
 const StyledStepNum = styled.div`
   width: 25px;
   height: 25px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -25,17 +30,17 @@ const StyledStepNum = styled.div`
   border-radius: 50%;
   margin: 14px 7px 9px;
   &.active {
-    border-color: ${CODE_BLOCK_ORANGE};
-    color: ${CODE_BLOCK_ORANGE};
+    border-color: ${ORANGE_PRIMARY};
+    color: ${ORANGE_PRIMARY};
   }
   &.completed {
-    border-color: ${CODE_BLOCK_ORANGE};
-    color: ${CODE_BLOCK_ORANGE};
+    border-color: ${ORANGE_PRIMARY};
+    color: ${ORANGE_PRIMARY};
   }
 `;
 
 const StyledText = styled.div`
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   text-align: center;
   font-style: normal;
   font-weight: normal;

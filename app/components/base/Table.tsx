@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { ROBOTO } from "../typography";
-import { HEADLINE_TEXT, PARAGRAPH_TEXT, GREY_1, GREY_2 } from "../colors";
+import { GREY_1, GREY_2, PURPLE_PRIMARY } from "../colors";
 import { breakUp } from "../breakpoints";
 
 // Styles for Table
@@ -22,7 +22,7 @@ const StyledTable = styled.div`
     font-family: ${ROBOTO};
   }
   th {
-    color: ${HEADLINE_TEXT};
+    color: ${PURPLE_PRIMARY};
     font-size: 13px;
     font-weight: 500;
     line-height: 17px;
@@ -30,7 +30,7 @@ const StyledTable = styled.div`
     text-align: left;
   }
   td {
-    color: ${PARAGRAPH_TEXT};
+    color: ${PURPLE_PRIMARY};
     font-size: 14px;
     line-height: 20px;
     padding: 17px 21px;

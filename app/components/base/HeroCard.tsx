@@ -9,7 +9,7 @@ import {
   GREY_13,
   GREY_1,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 
 const Container = styled.div`
   width: auto;
@@ -17,7 +17,7 @@ const Container = styled.div`
   background: ${PURPLE_MEDIUM};
   border-radius: 4px;
   padding: 25px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
 
   @media (${breakDown("sm")}) {
     width: auto;
@@ -28,7 +28,7 @@ const Container = styled.div`
 `;
 
 const StyledTitle = styled.div`
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: 200;
   font-size: 24px;
@@ -60,7 +60,7 @@ const StyledLink = styled.div`
 
 const StyledAnchor = styled.a`
   height: 11px;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: normal;
   font-size: 12px;

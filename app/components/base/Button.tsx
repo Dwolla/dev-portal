@@ -14,11 +14,11 @@ import {
   PURPLE_DARK,
 } from "../colors";
 import { BOX_SHADOW_6 } from "../shadowDepths";
-import { POPPINS } from "../typography";
+import { ROBOTO } from "../typography";
 
 const buttonStyles = css`
   color: ${WHITE_PRIMARY};
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-style: thin;
   border-radius: 5px;
   cursor: pointer;

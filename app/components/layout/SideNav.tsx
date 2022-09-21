@@ -22,7 +22,7 @@ import {
   GREY_HOVER,
   VERTICAL_GRADIENT,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
+import { ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
 import { slideInFromLeft, slideInFromRight } from "../keyframes";
 import { ReactComponent as BackIcon } from "../../../assets/images/component-icons/side-nav/back-nav-icon.svg";
@@ -259,7 +259,7 @@ const Category = styled.li`
 
 const CategoryHeading = styled.div`
   text-transform: uppercase;
-  font-family: ${POPPINS};
+  font-family: ${ROBOTO};
   font-weight: 600;
   color: #354153;
   font-size: 11px;
