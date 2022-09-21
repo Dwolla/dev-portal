@@ -26,6 +26,7 @@ import {
   LAYOUT_BORDER,
 } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
+import { Z_TOB_BAR } from "../zIndexes";
 import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
@@ -49,11 +50,9 @@ const LeftSidebar = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid ${LAYOUT_BORDER};
   transition: opacity 300ms;
   opacity: 0;
   pointer-events: none;
-  z-index: 999;
 
   @media (${breakUp("lg")}) {
     right: 75%;
@@ -84,6 +83,7 @@ const SideNavWrapper = styled.div`
 
 const MainArea = styled.div`
   width: 100vw;
+  border-left: 1px solid ${LAYOUT_BORDER};
 
   @media (${breakUp("lg")}) {
     width: 75vw;
@@ -102,13 +102,12 @@ const ContentArea = styled.div`
 const TopBarWrapper = styled.div`
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: ${Z_TOB_BAR};
 `;
 
 const FooterWrapper = styled.div`
   border-top: 1px solid ${GREY_2};
   background: ${WHITE_PRIMARY};
-  z-index: 9;
 
   @media (${breakUp("xxl")}) {
     padding-right: 40px;

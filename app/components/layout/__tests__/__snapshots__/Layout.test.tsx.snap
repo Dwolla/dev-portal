@@ -3,7 +3,7 @@
 exports[`Layout 1`] = `
 Array [
   <div
-    className="css-t4xvp2-TopBarWrapper e1ijxxr31"
+    className="css-1h0fusp-TopBarWrapper e1ijxxr31"
   >
     <div
       className="css-1q4no5g-Container e1psldpd5"
@@ -110,7 +110,7 @@ Array [
     className="css-1lvinfx-LayoutContainer e1ijxxr36"
   >
     <div
-      className="visuallyHidden css-e1jpp7-LeftSidebar e1ijxxr35"
+      className="visuallyHidden css-2f16hk-LeftSidebar e1ijxxr35"
     >
       <div
         className="css-6qgefa-SideNavWrapper e1ijxxr34"
@@ -310,7 +310,7 @@ Array [
       </a>
     </div>
     <div
-      className="css-172deo2-MainArea e1ijxxr33"
+      className="css-3pk9qh-MainArea e1ijxxr33"
     >
       <div
         className=" css-x5ql3q-ContentArea e1ijxxr32"
@@ -320,7 +320,7 @@ Array [
         </div>
       </div>
       <div
-        className=" css-1vo9m3u-FooterWrapper e1ijxxr30"
+        className=" css-17pvfhk-FooterWrapper e1ijxxr30"
       >
         <div
           className="css-1q6ftt6-Container eg0edpy12"

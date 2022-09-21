@@ -151,7 +151,6 @@ const StickySectionWrap = styled.div`
   position: sticky;
   top: 0;
   background-color: ${WHITE_PRIMARY};
-  z-index: 9;
 
   @media (${breakDown("md")}) {
     padding-top: 17px;
@@ -252,7 +251,6 @@ const CategoriesWrap = styled.ul`
   margin: 10px 0 0 34px;
   padding: 0;
   border-left: 1px solid ${GREY_2};
-  z-index: 8;
 `;
 
 const Category = styled.li`
