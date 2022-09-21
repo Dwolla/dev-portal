@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "@emotion/styled";
 import caretLeft from "../../../assets/images/component-icons/caret-left.svg";
 import { breakDown } from "../breakpoints";
@@ -6,10 +5,10 @@ import {
   GREY_1,
   GREY_2,
   GREY_5,
-  PARAGRAPH_TEXT,
   CODE_BLOCK_BLACK,
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
+  PURPLE_PRIMARY,
 } from "../colors";
 import { ROBOTO } from "../typography";
 
@@ -30,7 +29,7 @@ const StyledArrowDiv = styled.div`
   height: 19px;
   margin: 0 10px;
   opacity: 0.5;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 14px;
   letter-spacing: 0;

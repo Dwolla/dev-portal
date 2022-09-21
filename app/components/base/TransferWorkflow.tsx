@@ -6,7 +6,7 @@ import FundsFlowSelector from "./FundsFlowSelector";
 import WebhookCodeBlock from "./WebhookCodeBlock";
 import TimelineNav from "./TimelineNav";
 import Button from "./Button";
-import { GREY_1, GREY_3, HEADLINE_TEXT, PURPLE_DARK } from "../colors";
+import { GREY_1, GREY_3, PURPLE_DARK, PURPLE_PRIMARY } from "../colors";
 import { breakDown } from "../breakpoints";
 import { ROBOTO } from "../typography";
 
@@ -78,7 +78,7 @@ const StyledHeader = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  color: ${GREY_3};
+  color: ${PURPLE_PRIMARY};
   color: ${PURPLE_DARK};
 `;
 
@@ -88,7 +88,7 @@ const StyledTitle = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
   line-height: 24px;
   text-align: center;
   letter-spacing: 0.02em;
@@ -101,7 +101,7 @@ const StyledDescription = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
   line-height: 21px;
   text-align: center;
   letter-spacing: 0.02em;

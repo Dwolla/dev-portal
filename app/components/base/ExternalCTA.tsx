@@ -1,12 +1,6 @@
 import styled from "@emotion/styled";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
-import {
-  GREY_2,
-  GREY_4,
-  WHITE_PRIMARY,
-  HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
-} from "../colors";
+import { GREY_2, GREY_4, PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_7 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
 
@@ -37,7 +31,7 @@ const TextContainer = styled.div`
   margin: 0 10px 0 30px;
 `;
 const StyledTitle = styled.div`
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 18px;
   letter-spacing: 0;
@@ -46,7 +40,7 @@ const StyledTitle = styled.div`
 `;
 
 const StyledDescription = styled.div`
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 15px;
   letter-spacing: 0;

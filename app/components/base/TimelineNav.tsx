@@ -5,6 +5,7 @@ import {
   CODE_BLOCK_ORANGE,
   PURPLE_DARK,
   ORANGE_PRIMARY,
+  PURPLE_PRIMARY,
 } from "../colors";
 import { ROBOTO } from "../typography";
 
@@ -26,7 +27,7 @@ const StyledStepNum = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid ${GREY_3};
-  color: ${GREY_3};
+  color: ${PURPLE_PRIMARY};
   border-radius: 50%;
   margin: 14px 7px 9px;
   &.active {
@@ -46,7 +47,7 @@ const StyledText = styled.div`
   font-weight: normal;
   font-size: 12px;
   width: 105px;
-  color: ${GREY_3};
+  color: ${PURPLE_PRIMARY};
   &.active {
     color: ${PURPLE_DARK};
   }

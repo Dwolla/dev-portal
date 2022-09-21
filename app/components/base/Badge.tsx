@@ -1,11 +1,10 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { GREY_5, GREY_4, WHITE_PRIMARY, ORANGE_PRIMARY } from "../colors";
+import { WHITE_PRIMARY, ORANGE_PRIMARY, PURPLE_PRIMARY } from "../colors";
 import { ROBOTO } from "../typography";
 
 const StyledBadge = styled.div`
   text-transform: uppercase;
-  color: ${GREY_5};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 10px;
   font-weight: 500;
@@ -15,7 +14,7 @@ const StyledBadge = styled.div`
   text-align: center;
   box-sizing: border-box;
   height: 20px;
-  border: 1px solid ${GREY_4};
+  border: 1px solid ${PURPLE_PRIMARY};
   border-radius: 10px;
   padding: 2px 5.15px;
   &.orange {

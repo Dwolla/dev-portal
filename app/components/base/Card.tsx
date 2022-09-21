@@ -5,13 +5,7 @@ import classnames from "../../modules/classnames";
 import ConditionalWrapper from "../util/ConditionalWrapper";
 import Badge from "./Badge";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
-import {
-  GREY_2,
-  GREY_4,
-  HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
-  WHITE_PRIMARY,
-} from "../colors";
+import { GREY_2, GREY_4, PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_4 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
@@ -89,7 +83,7 @@ const StyledFlexDiv = styled.div`
 `;
 
 const TopicStyle = styled.div`
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 18px;
   line-height: 26px;
@@ -106,7 +100,7 @@ const TopicStyle = styled.div`
 `;
 
 const DescriptionStyle = styled.div`
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 15px;
   line-height: 25px;

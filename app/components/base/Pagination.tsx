@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import arrowLeft from "../../../assets/images/component-icons/arrow-left.svg";
 import arrowRight from "../../../assets/images/component-icons/arrow-right.svg";
-import { GREY_2, GREY_5, GREY_6, WHITE_PRIMARY } from "../colors";
+import { GREY_2, PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
 import { breakUp } from "../breakpoints";
@@ -35,7 +35,7 @@ const Card = styled.div`
   background-color: ${WHITE_PRIMARY};
   padding: 21px;
   span {
-    color: ${GREY_6};
+    color: ${PURPLE_PRIMARY};
     font-family: ${ROBOTO};
     font-size: 13px;
     line-height: 21px;
@@ -53,7 +53,7 @@ const Card = styled.div`
 const ArrowDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  color: ${GREY_5};
+  color: ${PURPLE_PRIMARY};
   text-transform: uppercase;
   font-family: ${ROBOTO};
   font-size: 11px;

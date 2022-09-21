@@ -1,12 +1,11 @@
-import React from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { ReactComponent as ArrowIcon } from "../../../assets/images/component-icons/arrow-right.svg";
 import {
   GREY_2,
   ORANGE_PRIMARY,
+  PURPLE_PRIMARY,
   WHITE_PRIMARY,
-  PARAGRAPH_TEXT,
 } from "../colors";
 import { BOX_SHADOW_5 } from "../shadowDepths";
 import { ROBOTO } from "../typography";
@@ -35,7 +34,7 @@ const StyledIcon = styled.img`
 `;
 
 const TextStyle = styled.div`
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 15px;
   font-weight: 500;

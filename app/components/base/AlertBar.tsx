@@ -9,10 +9,10 @@ import {
   GREY_1,
   GREY_2,
   API_STATUS_BAR_YELLOW,
-  PARAGRAPH_TEXT,
   ANNOUNCEMENT_BACKGROUND_BLUE,
   ANNOUNCEMENT_ICON_BLUE,
   ANNOUNCEMENT_TEXT_BLUE,
+  PURPLE_PRIMARY,
 } from "../colors";
 import { ROBOTO } from "../typography";
 
@@ -54,7 +54,7 @@ const ImageWrapper = styled.div`
 const TextWrapper = styled.div`
   flex-grow: 2;
   padding-left: 13px;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 15px;
   font-weight: 500;

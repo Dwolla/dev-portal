@@ -1,10 +1,8 @@
-import React from "react";
 import styled from "@emotion/styled";
 import Select, { components } from "react-select";
 import dropdownArrowSingle from "../../../assets/images/component-icons/dropdown-arrow-single.svg";
 import { ReactComponent as CheckMarkIcon } from "../../../assets/images/component-icons/check-mark.svg";
 import {
-  HEADLINE_TEXT,
   PARAGRAPH_TEXT,
   WHITE_PRIMARY,
   GREY_1,
@@ -12,6 +10,7 @@ import {
   GREY_4,
   GREY_6,
   GREY_12,
+  PURPLE_PRIMARY,
 } from "../colors";
 import { ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
@@ -37,7 +36,7 @@ const StyledTitle = styled.div`
   line-height: 21px;
   text-align: center;
   letter-spacing: 0.02em;
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_PRIMARY};
 `;
 
 const StyledType = styled.div`
@@ -47,7 +46,7 @@ const StyledType = styled.div`
   font-size: 11px;
   line-height: 13px;
   padding: 16px 10px;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
 `;
 
 const sharedTextStyles = {

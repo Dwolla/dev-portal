@@ -5,7 +5,6 @@ import classnames from "classnames";
 import {
   GREY_2,
   GREY_6,
-  HEADLINE_TEXT,
   GREY_1,
   PURPLE_PRIMARY,
   WHITE_PRIMARY,
@@ -81,7 +80,7 @@ const Container = styled.div`
     }
 
     &.is-active {
-      color: ${HEADLINE_TEXT};
+      color: ${PURPLE_PRIMARY};
       background: linear-gradient(${WHITE_PRIMARY}, ${WHITE_PRIMARY})
           padding-box,
         linear-gradient(${VERTICAL_GRADIENT}) border-box;

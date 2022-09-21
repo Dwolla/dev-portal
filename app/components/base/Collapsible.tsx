@@ -10,9 +10,8 @@ import {
   GREY_1,
   GREY_2,
   GREY_4,
+  PURPLE_PRIMARY,
   WHITE_PRIMARY,
-  HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
 } from "../colors";
 import { ROBOTO } from "../typography";
 import { BOX_SHADOW_7, BOX_SHADOW_4 } from "../shadowDepths";
@@ -64,7 +63,7 @@ const StyledTrigger = styled.div`
     font-size: 14px;
     line-height: 152.19%;
     letter-spacing: 0.02em;
-    color: ${HEADLINE_TEXT};
+    color: ${PURPLE_PRIMARY};
   }
 `;
 
@@ -85,7 +84,7 @@ const InnerContentWrapper = styled.div`
   * {
     margin: unset;
   }
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 16px;
   letter-spacing: 0;

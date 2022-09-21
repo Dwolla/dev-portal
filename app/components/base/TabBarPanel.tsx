@@ -4,7 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import classnames from "../../modules/classnames";
-import { GREY_1, GREY_2, WHITE_PRIMARY, PARAGRAPH_TEXT } from "../colors";
+import { GREY_1, GREY_2, PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
 import { ROBOTO } from "../typography";
 
 const StyledIcon = styled.img`
@@ -17,7 +17,7 @@ const ContentContainer = styled.div`
   border: 1px solid ${GREY_2};
   border-radius: 0 0 5px 5px;
   border-top: unset;
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_PRIMARY};
   font-family: ${ROBOTO};
   font-size: 16px;
   line-height: 28px;
