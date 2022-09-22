@@ -7,7 +7,7 @@ import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
 import Select from "../base/select/Select";
 import { LanguageContext } from "../util/Contexts";
 import { breakUp, breakDown } from "../breakpoints";
-import dwollaDevLogo from "../../../assets/images/logo-developers.svg";
+import dwollaDevLogo from "../../../assets/images/logo-developers.png";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
 
@@ -26,11 +26,10 @@ const Container = styled.div`
 `;
 
 const StyledLogo = styled.img`
-  max-height: 100%;
-  width: 13rem;
+  width: 15rem;
 
   @media (${breakDown("xs")}) {
-    max-width: 115px;
+    max-width: 13rem;
   }
 `;
 
@@ -45,6 +44,10 @@ const ButtonWrapper = styled.div`
 
 const SelectWrapper = styled.div`
   padding-left: 20px;
+
+  @media (${breakDown("xs")}) {
+    display: none;
+  }
 `;
 
 export type TopBarButtonProps = {

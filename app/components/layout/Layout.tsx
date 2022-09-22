@@ -83,10 +83,10 @@ const SideNavWrapper = styled.div`
 
 const MainArea = styled.div`
   width: 100vw;
-  border-left: 1px solid ${LAYOUT_BORDER};
 
   @media (${breakUp("lg")}) {
     width: 75vw;
+    border-left: 1px solid ${LAYOUT_BORDER};
   }
 `;
 
