@@ -3,7 +3,7 @@
 exports[`TimelineNav 1`] = `
 <div
   style={
-    Object {
+    {
       "display": "flex",
       "justifyContent": "center",
     }

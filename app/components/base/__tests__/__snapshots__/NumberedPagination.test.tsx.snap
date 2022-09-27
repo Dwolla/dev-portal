@@ -81,7 +81,7 @@ exports[`NumberedPagination 1`] = `
       className="css-11q9lja-ArrowIcon eapsrr02"
       src="test-image-stub"
       style={
-        Object {
+        {
           "transform": "rotate(180deg)",
         }
       }
