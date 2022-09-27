@@ -116,8 +116,8 @@ type Props = {
 // Collapsible component
 function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
   const [active, setActive] = useState(false);
-  const collapsibleContentId = useId();
-  const collapsibleTriggerId = useId();
+  const collapsibleContentId = `collapsible-content-${useId()}`;
+  const collapsibleTriggerId = `collapsible-trigger-${useId()}`;
 
   // Main content when collapsible is closed
   const closedTrigger =
