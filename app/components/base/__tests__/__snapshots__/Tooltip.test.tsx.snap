@@ -4,7 +4,7 @@ exports[`Tooltip 1`] = `
 <div
   className=""
   style={
-    Object {
+    {
       "display": "inline",
     }
   }
