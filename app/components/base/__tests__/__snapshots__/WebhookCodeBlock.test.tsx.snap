@@ -11,11 +11,11 @@ exports[`WebhookCodeBlock 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls="collapsible-content-1663338950249"
+      aria-controls=":r0:"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id="collapsible-trigger-1663338950249"
+      id=":r1:"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -42,14 +42,14 @@ exports[`WebhookCodeBlock 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby="collapsible-trigger-1663338950249"
+      aria-labelledby=":r1:"
       className="Collapsible__contentOuter"
       hidden={false}
-      id="collapsible-content-1663338950249"
+      id=":r0:"
       onTransitionEnd={[Function]}
       role="region"
       style={
-        Object {
+        {
           "WebkitTransition": "height 200ms linear",
           "height": 0,
           "msTransition": "height 200ms linear",
@@ -114,33 +114,33 @@ exports[`WebhookCodeBlock 1`] = `
                 <code
                   className="language-raw"
                   dangerouslySetInnerHTML={
-                    Object {
+                    {
                       "__html": "{
-  <span class=\\"hljs-string\\">&quot;_links&quot;</span>: {
-    <span class=\\"hljs-string\\">&quot;account&quot;</span>: {
-      <span class=\\"hljs-string\\">&quot;href&quot;</span>: <span class=\\"hljs-string\\">&quot;https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;resource-type&quot;</span>: <span class=\\"hljs-string\\">&quot;account&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;type&quot;</span>: <span class=\\"hljs-string\\">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
+  <span class="hljs-string">&quot;_links&quot;</span>: {
+    <span class="hljs-string">&quot;account&quot;</span>: {
+      <span class="hljs-string">&quot;href&quot;</span>: <span class="hljs-string">&quot;https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3&quot;</span>,
+      <span class="hljs-string">&quot;resource-type&quot;</span>: <span class="hljs-string">&quot;account&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
     },
-    <span class=\\"hljs-string\\">&quot;customer&quot;</span>: {
-      <span class=\\"hljs-string\\">&quot;href&quot;</span>: <span class=\\"hljs-string\\">&quot;https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;resource-type&quot;</span>: <span class=\\"hljs-string\\">&quot;customer&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;type&quot;</span>: <span class=\\"hljs-string\\">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
+    <span class="hljs-string">&quot;customer&quot;</span>: {
+      <span class="hljs-string">&quot;href&quot;</span>: <span class="hljs-string">&quot;https://api-sandbox.dwolla.com/customers/70088704-f2f1-443e-bd41-f20305d6c912&quot;</span>,
+      <span class="hljs-string">&quot;resource-type&quot;</span>: <span class="hljs-string">&quot;customer&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
     },
-    <span class=\\"hljs-string\\">&quot;resource&quot;</span>: {
-      <span class=\\"hljs-string\\">&quot;href&quot;</span>: <span class=\\"hljs-string\\">&quot;https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;type&quot;</span>: <span class=\\"hljs-string\\">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
+    <span class="hljs-string">&quot;resource&quot;</span>: {
+      <span class="hljs-string">&quot;href&quot;</span>: <span class="hljs-string">&quot;https://api-sandbox.dwolla.com/transfers/949df329-c23f-e911-8116-917813db6033&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
     },
-    <span class=\\"hljs-string\\">&quot;self&quot;</span>: {
-      <span class=\\"hljs-string\\">&quot;href&quot;</span>: <span class=\\"hljs-string\\">&quot;https://api-sandbox.dwolla.com/events/19670af8-67df-46cf-be46-9eb2f77a0c7a&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;resource-type&quot;</span>: <span class=\\"hljs-string\\">&quot;event&quot;</span>,
-      <span class=\\"hljs-string\\">&quot;type&quot;</span>: <span class=\\"hljs-string\\">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
+    <span class="hljs-string">&quot;self&quot;</span>: {
+      <span class="hljs-string">&quot;href&quot;</span>: <span class="hljs-string">&quot;https://api-sandbox.dwolla.com/events/19670af8-67df-46cf-be46-9eb2f77a0c7a&quot;</span>,
+      <span class="hljs-string">&quot;resource-type&quot;</span>: <span class="hljs-string">&quot;event&quot;</span>,
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;application/vnd.dwolla.v1.hal+json&quot;</span>
     }
   },
-  <span class=\\"hljs-string\\">&quot;created&quot;</span>: <span class=\\"hljs-string\\">&quot;2019-03-06T03:46:13.645Z&quot;</span>,
-  <span class=\\"hljs-string\\">&quot;id&quot;</span>: <span class=\\"hljs-string\\">&quot;19670af8-67df-46cf-be46-9eb2f77a0c7a&quot;</span>,
-  <span class=\\"hljs-string\\">&quot;resourceId&quot;</span>: <span class=\\"hljs-string\\">&quot;949df329-c23f-e911-8116-917813db6033&quot;</span>,
-  <span class=\\"hljs-string\\">&quot;topic&quot;</span>: <span class=\\"hljs-string\\">&quot;customer_transfer_completed&quot;</span>
+  <span class="hljs-string">&quot;created&quot;</span>: <span class="hljs-string">&quot;2019-03-06T03:46:13.645Z&quot;</span>,
+  <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;19670af8-67df-46cf-be46-9eb2f77a0c7a&quot;</span>,
+  <span class="hljs-string">&quot;resourceId&quot;</span>: <span class="hljs-string">&quot;949df329-c23f-e911-8116-917813db6033&quot;</span>,
+  <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;customer_transfer_completed&quot;</span>
 }",
                     }
                   }

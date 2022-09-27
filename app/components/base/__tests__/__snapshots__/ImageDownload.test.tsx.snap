@@ -13,7 +13,7 @@ exports[`ImageDownload - with filename 1`] = `
       <div
         className=""
         style={
-          Object {
+          {
             "display": "inline",
           }
         }
@@ -51,7 +51,7 @@ exports[`ImageDownload - without filename 1`] = `
       <div
         className=""
         style={
-          Object {
+          {
             "display": "inline",
           }
         }

@@ -27,7 +27,7 @@ exports[`Image with expand 1`] = `
       onClick={[Function]}
       src="image-src"
       style={
-        Object {
+        {
           "cursor": "pointer",
           "maxHeight": "100%",
           "maxWidth": "100%",

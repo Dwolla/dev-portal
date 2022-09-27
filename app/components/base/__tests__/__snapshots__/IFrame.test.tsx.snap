@@ -7,7 +7,7 @@ exports[`IFrame 1`] = `
   <iframe
     src="https://go.dwolla.com/l/391342/2018-10-30/n92nqn"
     style={
-      Object {
+      {
         "border": 0,
         "minWidth": "100%",
         "width": "1px",

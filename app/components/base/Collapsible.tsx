@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import { useState } from "react";
+import { useId, useState } from "react";
 import ReactCollapsible from "react-collapsible";
 import styled from "@emotion/styled";
 import classnames from "classnames";
@@ -116,6 +116,8 @@ type Props = {
 // Collapsible component
 function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
   const [active, setActive] = useState(false);
+  const collapsibleContentId = useId();
+  const collapsibleTriggerId = useId();
 
   // Main content when collapsible is closed
   const closedTrigger =
@@ -173,6 +175,8 @@ function Collapsible({ triggerText, extraTrigger, variant, children }: Props) {
       className={variant}
     >
       <ReactCollapsible
+        contentElementId={collapsibleContentId}
+        triggerElementProps={{ id: collapsibleTriggerId }}
         trigger={closedTrigger}
         triggerWhenOpen={openTrigger}
         transitionTime={transitionTime}

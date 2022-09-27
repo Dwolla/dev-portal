@@ -1,8 +1,8 @@
 // https://github.com/zeit/next.js/tree/canary/examples/with-jest
 module.exports = {
   transform: {
+    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
     "^.+\\.(md|mdx)$": "<rootDir>/.jest/jest-transformer-next-mdx-enhanced",
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
   },
   collectCoverageFrom: [
     "{app,components}/**/*.{js,jsx,ts,tsx}",
@@ -11,6 +11,7 @@ module.exports = {
     "!**/*.import.js",
   ],
   setupFilesAfterEnv: ["<rootDir>/.jest/jest.setup.js"],
+  testEnvironment: "jsdom",
   testPathIgnorePatterns: ["/node_modules/", "/.next/"],
   transformIgnorePatterns: [
     "/node_modules/",
