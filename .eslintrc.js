@@ -81,7 +81,14 @@ module.exports = {
     // don't throw error if dependency is only used for testing
     "import/no-extraneous-dependencies": [
       "error",
-      { devDependencies: ["**/*.test.ts", "**/*.test.tsx"] },
+      {
+        devDependencies: [
+          "**/.storybook/**/*.*",
+          "**/stories/**/*.*",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+        ],
+      },
     ],
     // override eslint use before define in favor of typescript-eslint
     // (https://typescript-eslint.io/rules/no-use-before-define)
