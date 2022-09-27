@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithRef } from "react";
+import React, { ComponentPropsWithRef, useId } from "react";
 import { InputLabel, MenuItem, Select } from "@mui/material";
 
 export interface SelectMuiOption {
@@ -31,16 +31,14 @@ export default function SelectMui({
   options,
   value,
 }: SelectMuiProps): JSX.Element {
-  const labelId = `SelectMui-label-${Math.random()
-    .toString(36)
-    .substring(2, 8)}`;
+  const id = useId();
 
   return (
     <>
-      <InputLabel id={labelId}>{label}</InputLabel>
+      <InputLabel id={id}>{label}</InputLabel>
       <Select<SelectMuiValue>
         label={label}
-        labelId={labelId}
+        labelId={id}
         onChange={({ target: { value: selectedValue } }) => {
           if (onChange) {
             onChange(options.find((obj) => obj.value === selectedValue));
@@ -49,7 +47,9 @@ export default function SelectMui({
         value={isOption(value) ? value.value : value}
       >
         {options.map(({ label: itemLabel, value: itemValue }) => (
-          <MenuItem value={itemValue}>{itemLabel}</MenuItem>
+          <MenuItem key={useId()} value={itemValue}>
+            {itemLabel}
+          </MenuItem>
         ))}
       </Select>
     </>
