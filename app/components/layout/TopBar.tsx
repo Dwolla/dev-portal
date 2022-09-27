@@ -2,16 +2,16 @@ import { useContext, useState } from "react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import Link from "next/link";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { FormControl } from "@mui/material";
 import { GREY_2 } from "../colors";
 import Button from "../base/Button";
 import { LanguageContext } from "../util/Contexts";
 import { breakDown, breakUp } from "../breakpoints";
 import dwollaDevLogo from "../../../assets/images/dwolla-developers-logo.svg";
 import ga from "../../modules/ga";
+import SelectMui from "../base/SelectMui";
 
 export const TOP_BAR_HEIGHT = 68;
-const GLOBAL_LANGUAGE_SELECTOR_ID = "global-language-selector";
 
 const Container = styled.div`
   display: flex;
@@ -121,24 +121,15 @@ export default function TopBar({ button, onHamburgerClick }: TopBarProps) {
 
       <SelectWrapper>
         <FormControl sx={{ minWidth: 200 }} size="small">
-          <InputLabel id={GLOBAL_LANGUAGE_SELECTOR_ID}>
-            Snippet Language
-          </InputLabel>
-          <Select
-            label="Snippet Language"
-            labelId={GLOBAL_LANGUAGE_SELECTOR_ID}
-            onChange={({ target: { value } }) => {
-              setSelectedLanguage(
-                languageOptions.find((obj) => obj.value === value)
-              );
+          <SelectMui
+            label="Select Language"
+            onChange={(value) => {
+              setSelectedLanguage(value);
               ga("global language select", "language change", value);
             }}
+            options={languageOptions}
             value={selectedLanguage.value}
-          >
-            {languageOptions.map(({ label, value }) => (
-              <MenuItem value={value}>{label}</MenuItem>
-            ))}
-          </Select>
+          />
         </FormControl>
       </SelectWrapper>
 

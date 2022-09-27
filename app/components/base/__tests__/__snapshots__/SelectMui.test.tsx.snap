@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectMui Default 1`] = `
+Array [
+  <label
+    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary css-9npbnl-MuiFormLabel-root-MuiInputLabel-root"
+    id="SelectMui-label-ve3u0y"
+  >
+    Select Language
+  </label>,
+  <div
+    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+    onClick={[Function]}
+  >
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      aria-labelledby="SelectMui-label-ve3u0y"
+      className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      JavaScript
+    </div>
+    <input
+      aria-hidden={true}
+      className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+      onAnimationStart={[Function]}
+      onChange={[Function]}
+      tabIndex={-1}
+      value="javascript"
+    />
+    <svg
+      aria-hidden={true}
+      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+      data-testid="ArrowDropDownIcon"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M7 10l5 5 5-5z"
+      />
+    </svg>
+    <fieldset
+      aria-hidden={true}
+      className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+    >
+      <legend
+        className="css-yjsfm1"
+      >
+        <span>
+          Select Language
+        </span>
+      </legend>
+    </fieldset>
+  </div>,
+]
+`;

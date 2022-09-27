@@ -83,5 +83,9 @@ module.exports = {
       "error",
       { devDependencies: ["**/*.test.ts", "**/*.test.tsx"] },
     ],
+    // override eslint use before define in favor of typescript-eslint
+    // (https://typescript-eslint.io/rules/no-use-before-define)
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "warn",
   },
 };
