@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectMui Default 1`] = `
-Array [
+[
   <label
     className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary css-9npbnl-MuiFormLabel-root-MuiInputLabel-root"
-    id="SelectMui-label-ve3u0y"
+    id=":r0:"
   >
     Select Language
   </label>,
@@ -15,7 +15,7 @@ Array [
     <div
       aria-expanded="false"
       aria-haspopup="listbox"
-      aria-labelledby="SelectMui-label-ve3u0y"
+      aria-labelledby=":r0:"
       className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
       onBlur={[Function]}
       onFocus={[Function]}
@@ -50,7 +50,7 @@ Array [
       className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
     >
       <legend
-        className="css-yjsfm1"
+        className="css-1ftyaf0"
       >
         <span>
           Select Language
