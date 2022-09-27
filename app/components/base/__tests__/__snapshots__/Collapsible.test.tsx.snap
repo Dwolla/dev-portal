@@ -11,11 +11,11 @@ exports[`Collapsible Webhook Variant 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls=":r4:"
+      aria-controls="collapsible-content-:r4:"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id=":r5:"
+      id="collapsible-trigger-:r5:"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -42,10 +42,10 @@ exports[`Collapsible Webhook Variant 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby=":r5:"
+      aria-labelledby="collapsible-trigger-:r5:"
       className="Collapsible__contentOuter"
       hidden={false}
-      id=":r4:"
+      id="collapsible-content-:r4:"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -83,11 +83,11 @@ exports[`Collapsible list 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls=":r0:"
+      aria-controls="collapsible-content-:r0:"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id=":r1:"
+      id="collapsible-trigger-:r1:"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -106,10 +106,10 @@ exports[`Collapsible list 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby=":r1:"
+      aria-labelledby="collapsible-trigger-:r1:"
       className="Collapsible__contentOuter"
       hidden={false}
-      id=":r0:"
+      id="collapsible-content-:r0:"
       onTransitionEnd={[Function]}
       role="region"
       style={
@@ -162,11 +162,11 @@ exports[`Collapsible paragraph 1`] = `
     className="Collapsible"
   >
     <span
-      aria-controls=":r2:"
+      aria-controls="collapsible-content-:r2:"
       aria-disabled={false}
       aria-expanded={false}
       className="Collapsible__trigger is-closed"
-      id=":r3:"
+      id="collapsible-trigger-:r3:"
       onClick={[Function]}
       onKeyPress={[Function]}
       role="button"
@@ -185,10 +185,10 @@ exports[`Collapsible paragraph 1`] = `
       </div>
     </span>
     <div
-      aria-labelledby=":r3:"
+      aria-labelledby="collapsible-trigger-:r3:"
       className="Collapsible__contentOuter"
       hidden={false}
-      id=":r2:"
+      id="collapsible-content-:r2:"
       onTransitionEnd={[Function]}
       role="region"
       style={
