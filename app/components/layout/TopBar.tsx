@@ -159,6 +159,7 @@ export default function TopBar({
       <SelectWrapper>
         <FormControl sx={{ minWidth: 200 }} size="small">
           <SelectMui
+            color="white"
             label="Select Language"
             onChange={(value) => {
               setSelectedLanguage(value);

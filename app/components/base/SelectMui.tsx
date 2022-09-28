@@ -1,12 +1,13 @@
 import React, { ComponentPropsWithRef, useId } from "react";
-import { InputLabel, MenuItem, Select } from "@mui/material";
+import { InputLabel, MenuItem, Select, SxProps } from "@mui/material";
 
 export interface SelectMuiOption {
   label: string;
   value: SelectMuiValue;
 }
 
-interface SelectMuiProps {
+export interface SelectMuiProps {
+  color?: string;
   label: string;
   // eslint-disable-next-line no-unused-vars
   onChange: (value: SelectMuiOption) => MaybePromise<void>;
@@ -14,10 +15,20 @@ interface SelectMuiProps {
   value: SelectMuiOption | SelectMuiValue;
 }
 
-// MUI MenuItem does allow additional properties other than li (the default)...
-// If a custom element were to be chosen, though, then this type would also
-// need to change to accommodate whether the component allows value(s) as prop
 type SelectMuiValue = ComponentPropsWithRef<"li">["value"];
+
+function getColor(color?: string): SxProps | undefined {
+  return color
+    ? {
+        color,
+        "&.MuiOutlinedInput-root": {
+          "& fieldset": { borderColor: color },
+          "&:hover fieldset": { borderColor: color, borderWidth: "0.15rem" },
+          "& svg": { color },
+        },
+      }
+    : undefined;
+}
 
 function isOption(
   obj: SelectMuiOption | SelectMuiValue
@@ -26,6 +37,7 @@ function isOption(
 }
 
 export default function SelectMui({
+  color,
   label,
   onChange,
   options,
@@ -35,7 +47,9 @@ export default function SelectMui({
 
   return (
     <>
-      <InputLabel id={id}>{label}</InputLabel>
+      <InputLabel id={id} sx={getColor(color)}>
+        {label}
+      </InputLabel>
       <Select<SelectMuiValue>
         label={label}
         labelId={id}
@@ -44,7 +58,9 @@ export default function SelectMui({
             onChange(options.find((obj) => obj.value === selectedValue));
           }
         }}
+        sx={getColor(color)}
         value={isOption(value) ? value.value : value}
+        variant="outlined"
       >
         {options.map(({ label: itemLabel, value: itemValue }) => (
           <MenuItem key={useId()} value={itemValue}>
