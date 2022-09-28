@@ -4,11 +4,12 @@ import Link from "next/link";
 import classnames from "classnames";
 import {
   GREY_2,
-  GREY_5,
   GREY_6,
   HEADLINE_TEXT,
-  ORANGE_PRIMARY,
   GREY_1,
+  PURPLE_PRIMARY,
+  WHITE_PRIMARY,
+  VERTICAL_GRADIENT,
 } from "../colors";
 import { ROBOTO, POPPINS } from "../typography";
 import { useAnchors, scrollTo } from "../util/Anchors";
@@ -81,14 +82,17 @@ const Container = styled.div`
 
     &.is-active {
       color: ${HEADLINE_TEXT};
-      border-left: 1px solid ${ORANGE_PRIMARY};
+      background: linear-gradient(${WHITE_PRIMARY}, ${WHITE_PRIMARY})
+          padding-box,
+        linear-gradient(${VERTICAL_GRADIENT}) border-box;
+      border-left: 1px solid transparent;
     }
   }
 `;
 
 const Heading = styled.div`
   height: 16px;
-  color: ${GREY_5};
+  color: ${PURPLE_PRIMARY};
   font-family: ${POPPINS};
   font-size: 11px;
   font-weight: 500;

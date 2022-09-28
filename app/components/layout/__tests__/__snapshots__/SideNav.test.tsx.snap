@@ -12,17 +12,17 @@ exports[`SideNav 1`] = `
       id="body-scroll-lock-side-nav"
     >
       <div
-        className="css-1lugamu-SectionWrap e1qiqw1s11"
+        className="css-kgvw59-SectionWrap e1qiqw1s11"
       >
         <a
-          className="active css-1ooxgh-SectionLink-SectionLink"
+          className="active css-1pzv1z2-SectionLink-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -33,14 +33,14 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className=" css-1ooxgh-SectionLink-SectionLink"
+          className=" css-1pzv1z2-SectionLink-SectionLink"
           href="/api-reference"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -59,14 +59,14 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1ooxgh-SectionLink-SectionLink"
+          className=" css-1pzv1z2-SectionLink-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -85,14 +85,14 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1ooxgh-SectionLink-SectionLink"
+          className=" css-1pzv1z2-SectionLink-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -111,14 +111,14 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1ooxgh-SectionLink-SectionLink"
+          className=" css-1pzv1z2-SectionLink-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -130,10 +130,10 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-qmkwcj-ExternalSectionWrap e1qiqw1s10"
+        className="css-1o94x0z-ExternalSectionWrap e1qiqw1s10"
       >
         <a
-          className=" css-1ooxgh-SectionLink-SectionLink"
+          className=" css-1pzv1z2-SectionLink-SectionLink"
           href="https://discuss.dwolla.com/"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -141,7 +141,7 @@ exports[`SideNav 1`] = `
           target="_blank"
         >
           <div
-            className="css-1uyhva7-SectionIconWrap e1qiqw1s8"
+            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
           >
             <svg
               className="section-icon"
@@ -153,14 +153,27 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-nasyo1-MobileWrap e1qiqw1s1"
+        className="css-1kdywir-MobileWrap e1qiqw1s1"
       >
         <div
           className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
         >
           <a
-            className="primary block  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
+            className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth css-mrzqee-MuiButtonBase-root-MuiButton-root"
             href="https://accounts-sandbox.dwolla.com/login"
+            onBlur={[Function]}
+            onContextMenu={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
             target="_blank"
           >
             Get API Keys

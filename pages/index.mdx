@@ -14,13 +14,13 @@ import Card from "../app/components/base/Card";
 import HeroCard from "../app/components/base/HeroCard";
 import HeroImage from "../app/components/base/HeroImage";
 import ExternalCTA from "../app/components/base/ExternalCTA";
-import Banner from "../app/components/base/Banner";
 import LogoLinks from "../app/components/base/LogoLinks";
 import FooterCTA from "../app/components/base/FooterCTA";
 import IFrame from "../app/components/base/IFrame";
 import { H3 } from "../app/components/base/Typography";
 import { HEADLINE_TEXT } from "../app/components/colors";
 import { breakDown } from "../app/components/breakpoints";
+import { Z_HERO_CARD } from "../app/components/zIndexes";
 import dropInsHeroImage from "../assets/images/content-images/hero-image-drop-ins.png";
 import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
 import conceptIcon from "../assets/images/content-images/content-icons/concepts-icon.svg";
@@ -41,15 +41,6 @@ import kotlinColor from "../assets/images/content-images/content-icons/language-
 import kotlinGray from "../assets/images/content-images/content-icons/language-logos/kotlin-logo-gray.svg";
 import nodeColor from "../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
 import nodeGray from "../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
-// Partner logos in gray and in color
-import quickbooksColor from "../assets/images/content-images/content-icons/partner-logos/quickbooks-logo.svg";
-import quickbooksGray from "../assets/images/content-images/content-icons/partner-logos/quickbooks-logo-gray.svg";
-import plaidColor from "../assets/images/content-images/content-icons/partner-logos/plaid-logo.svg";
-import plaidGray from "../assets/images/content-images/content-icons/partner-logos/plaid-logo-gray.svg";
-import siftColor from "../assets/images/content-images/content-icons/partner-logos/sift-logo.svg";
-import siftGray from "../assets/images/content-images/content-icons/partner-logos/sift-logo-gray.svg";
-import slackColor from "../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
-import slackGray from "../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
 
 export const HeroBannerContainer = styled.div`
   padding: 40px 60px 0;
@@ -65,6 +56,7 @@ export const HeroBannerContainer = styled.div`
 export const HeroCardWrapper = styled.div`
   min-width: 289px;
   max-width: 315px;
+  z-index: ${Z_HERO_CARD};
   @media (${breakDown("sm")}) {
     min-width: unset;
     max-width: unset;
@@ -73,7 +65,6 @@ export const HeroCardWrapper = styled.div`
 export const HeroImageWrapper = styled.div`
   max-height: 100%;
   margin-left: -225px;
-  z-index: -1;
   overflow: hidden;
   @media (${breakDown("sm")}) {
     display: none;

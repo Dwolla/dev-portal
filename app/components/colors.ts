@@ -13,6 +13,7 @@ export const GREY_11 = "#f8fafc";
 export const GREY_12 = "#5f738c";
 export const GREY_13 = "#eaeaeb";
 export const GREY_14 = "#d9e0e4";
+export const GREY_HOVER = "#efeff0";
 
 // Text Colors
 export const HEADLINE_TEXT = "#2a2d38";
@@ -20,7 +21,7 @@ export const PARAGRAPH_TEXT = "#6a7282";
 
 // Primary Colors
 export const ORANGE_PRIMARY = "#ca4c24";
-export const PURPLE_PRIMARY = "#483d66";
+export const PURPLE_PRIMARY = "#2d2d48";
 export const PURPLE_PRIMARY_BUTTON = "#5e4e76";
 export const PURPLE_PRIMARY_HOVER = "#6a5885";
 export const PURPLE_PRIMARY_ACTIVE = "#524467";
@@ -60,3 +61,11 @@ export const BLACK_OVERLAY = "rgba(0, 0, 0, 0.4)";
 export const ANNOUNCEMENT_BACKGROUND_BLUE = "#e5f6fd";
 export const ANNOUNCEMENT_ICON_BLUE = "#0288d1";
 export const ANNOUNCEMENT_TEXT_BLUE = "#115482";
+
+// Layout border colors
+export const LAYOUT_BORDER = "rgba(45, 45, 72, 0.25)";
+
+// Gradients
+// Light Orange to Dark Purple Vertical
+export const VERTICAL_GRADIENT =
+  "180deg, #E98453 4.14%, #D46E62 55.07%, #BE5771 100%";

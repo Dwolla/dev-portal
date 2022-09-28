@@ -1,24 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
-import classnames from "classnames";
 import Link from "next/link";
 import { FormControl } from "@mui/material";
-import { GREY_2 } from "../colors";
-import Button from "../base/Button";
 import { LanguageContext } from "../util/Contexts";
 import { breakDown, breakUp } from "../breakpoints";
-import dwollaDevLogo from "../../../assets/images/dwolla-developers-logo.svg";
+import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
+import dwollaDevLogo from "../../../assets/images/logo-developers.png";
+import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
 import SelectMui from "../base/SelectMui";
 
-export const TOP_BAR_HEIGHT = 68;
+export const TOP_BAR_HEIGHT = 66;
 
 const Container = styled.div`
   display: flex;
   align-items: center;
   height: ${TOP_BAR_HEIGHT}px;
-  border-bottom: 1px solid ${GREY_2};
-  background: rgba(255, 255, 255, 0.98);
+  background-color: ${PURPLE_PRIMARY};
   padding: 0 20px;
 
   @media (${breakDown("md")}) {
@@ -26,17 +25,11 @@ const Container = styled.div`
   }
 `;
 
-const StyledLogoWrap = styled.div`
-  @media (${breakUp("lg")}) {
-    display: none;
-  }
-`;
-
 const StyledLogo = styled.img`
-  max-height: 100%;
+  width: 15rem;
 
   @media (${breakDown("xs")}) {
-    max-width: 115px;
+    max-width: 13rem;
   }
 `;
 
@@ -51,6 +44,10 @@ const ButtonWrapper = styled.div`
 
 const SelectWrapper = styled.div`
   padding-left: 20px;
+
+  @media (${breakDown("xs")}) {
+    display: none;
+  }
 `;
 
 export type TopBarButtonProps = {
@@ -63,7 +60,8 @@ export type TopBarButtonProps = {
 
 export type TopBarProps = {
   button: TopBarButtonProps;
-  onHamburgerClick?: () => void;
+  sidebarToggled?: boolean;
+  setSidebarToggled?: Function;
 };
 
 const Hamburger = styled.div`
@@ -73,16 +71,16 @@ const Hamburger = styled.div`
   cursor: pointer;
   background-image: linear-gradient(
     to bottom,
-    #000,
-    #000 16.67%,
+    ${GREY_2},
+    ${GREY_2} 16.67%,
     transparent 16.67%,
     transparent 41.67%,
-    #000 41.67%,
-    #000 58.33%,
+    ${GREY_2} 41.67%,
+    ${GREY_2} 58.33%,
     transparent 58.33%,
     transparent 83.33%,
-    #000 83.33%,
-    #000 100%
+    ${GREY_2} 83.33%,
+    ${GREY_2} 100%
   );
 
   @media (${breakUp("lg")}) {
@@ -91,6 +89,7 @@ const Hamburger = styled.div`
 
   :focus {
     outline: none;
+    opacity: 0.5;
   }
 
   &:hover,
@@ -99,25 +98,63 @@ const Hamburger = styled.div`
   }
 `;
 
-export default function TopBar({ button, onHamburgerClick }: TopBarProps) {
+const StyledCloseIcon = styled.div`
+  cursor: pointer;
+  margin-left: auto;
+  svg {
+    * {
+      fill: ${GREY_2};
+    }
+  }
+
+  :hover {
+    svg {
+      * {
+        fill: ${GREY_4};
+      }
+    }
+  }
+
+  :focus {
+    outline: none;
+    svg {
+      * {
+        fill: ${GREY_4};
+      }
+    }
+  }
+
+  @media (${breakUp("lg")}) {
+    display: none;
+  }
+`;
+
+export default function TopBar({
+  button,
+  sidebarToggled,
+  setSidebarToggled,
+}: TopBarProps) {
   const { selectedLanguage, setSelectedLanguage, languageOptions } =
     useContext(LanguageContext);
 
-  const [isFocused, setIsFocused] = useState(false);
+  const showSidebar = () => setSidebarToggled(true);
+  const hideSidebar = () => setSidebarToggled(false);
 
   function onHamburgerKeydown(e) {
-    if (e.key === "Enter") onHamburgerClick();
+    if (e.key === "Enter") showSidebar();
+  }
+
+  function onCloseIconKeydown(e) {
+    if (e.key === "Enter") hideSidebar();
   }
 
   return (
     <Container>
-      <StyledLogoWrap>
-        <Link href="/">
-          <a>
-            <StyledLogo src={dwollaDevLogo} alt="" />
-          </a>
-        </Link>
-      </StyledLogoWrap>
+      <Link href="/">
+        <a>
+          <StyledLogo src={dwollaDevLogo} alt="" />
+        </a>
+      </Link>
 
       <SelectWrapper>
         <FormControl sx={{ minWidth: 200 }} size="small">
@@ -134,19 +171,37 @@ export default function TopBar({ button, onHamburgerClick }: TopBarProps) {
       </SelectWrapper>
 
       <ButtonWrapper>
-        <Button {...button} size="standard" variant="primary" />
+        <Button
+          variant="contained"
+          href={button.link.href}
+          target={button.link.external ? "_blank" : undefined}
+          color="secondary"
+          size="medium"
+        >
+          {button.text}
+        </Button>
       </ButtonWrapper>
 
-      {onHamburgerClick && (
+      {sidebarToggled === false ? (
         <Hamburger
           tabIndex={0}
           aria-labelledby="Open menu"
-          className={classnames({ isFocused })}
-          onClick={onHamburgerClick}
+          onClick={showSidebar}
           onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
+          // onFocus={() => setIsFocused(true)}
+          // onBlur={() => setIsFocused(false)}
         />
+      ) : (
+        <StyledCloseIcon
+          tabIndex={0}
+          aria-labelledby="Close menu"
+          onClick={hideSidebar}
+          onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
+          // onFocus={() => setIsFocused(true)}
+          // onBlur={() => setIsFocused(false)}
+        >
+          <CloseIcon width={14} />
+        </StyledCloseIcon>
       )}
     </Container>
   );

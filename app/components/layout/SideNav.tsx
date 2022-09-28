@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Button } from "@mui/material";
+// import { styled } from '@mui/material/styles';
 import { useRouter } from "next/router";
 import Link from "next/link";
 import classnames from "classnames";
@@ -10,13 +12,15 @@ import uniqBy from "lodash.uniqby";
 import {
   TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
 } from "./TopBar";
-import Button from "../base/Button";
+// import Button from "../base/Button";
 import {
   ORANGE_PRIMARY,
   WHITE_PRIMARY,
-  GREY_1,
   GREY_2,
-  GREY_6,
+  PURPLE_PRIMARY,
+  LAYOUT_BORDER,
+  GREY_HOVER,
+  VERTICAL_GRADIENT,
 } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakUp, breakDown } from "../breakpoints";
@@ -134,22 +138,19 @@ const SlidePane = styled.div`
 `;
 
 const SectionWrap = styled.div`
-  padding-bottom: 10px;
   @media (${breakDown("md")}) {
     padding-top: 17px;
   }
 `;
 
 const ExternalSectionWrap = styled.div`
-  padding-top: 10px;
-  border-top: 1px solid ${GREY_2};
+  border-top: 1px solid ${LAYOUT_BORDER};
 `;
 
 const StickySectionWrap = styled.div`
   position: sticky;
   top: 0;
   background-color: ${WHITE_PRIMARY};
-  z-index: 9;
 
   @media (${breakDown("md")}) {
     padding-top: 17px;
@@ -161,7 +162,13 @@ const SectionIconWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 7px;
+  margin-right: 20px;
+
+  svg {
+    * {
+      fill: ${PURPLE_PRIMARY};
+    }
+  }
 `;
 
 const SectionCaretWrap = styled.div`
@@ -189,30 +196,34 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
         className={classnames({ active: isActive })}
         css={css`
           display: flex;
-          height: 30px;
-          padding: 0 20px;
+          height: 53px;
+          padding: 0 15px;
+          margin-left: 3px;
           align-items: center;
           justify-content: flex-start;
-          font-family: ${POPPINS};
+          font-family: ${ROBOTO};
+          font-weight: 400;
           font-size: 14px;
-          color: ${GREY_6};
+          line-height: 16px;
+          color: ${PURPLE_PRIMARY};
           text-decoration: none;
 
           &:hover,
           &:focus {
-            background-color: ${GREY_1};
+            margin-left: unset;
+            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
+                padding-box,
+              linear-gradient(${VERTICAL_GRADIENT}) border-box;
+            border-left: 3px solid transparent;
             outline: none;
           }
 
           &.active {
-            font-weight: 500;
-            color: ${ORANGE_PRIMARY};
-
-            .section-icon {
-              path {
-                fill: ${ORANGE_PRIMARY};
-              }
-            }
+            margin-left: unset;
+            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
+                padding-box,
+              linear-gradient(${VERTICAL_GRADIENT}) border-box;
+            border-left: 3px solid transparent;
           }
         `}
       >
@@ -240,7 +251,6 @@ const CategoriesWrap = styled.ul`
   margin: 10px 0 0 34px;
   padding: 0;
   border-left: 1px solid ${GREY_2};
-  z-index: 8;
 `;
 
 const Category = styled.li`
@@ -261,16 +271,16 @@ const groupToggleDocLinkStyles = css`
   font-size: 14px;
   line-height: 140%;
   font-family: ${ROBOTO};
-  color: #52627b;
+  color: ${PURPLE_PRIMARY};
   padding: 4px 20px 4px 10px;
   border-left: 1px solid transparent;
   margin-left: -1px;
 
   &:hover,
   &:focus {
-    border-left: 1px solid ${GREY_6};
-    background-color: ${GREY_1};
     outline: none;
+    margin-left: -1px;
+    background-color: ${GREY_HOVER};
   }
 `;
 
@@ -303,8 +313,10 @@ function DocLink(props: DocLinkProps) {
           text-decoration: none;
 
           &.active {
-            font-weight: 500;
-            border-left: 1px solid ${ORANGE_PRIMARY};
+            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
+                padding-box,
+              linear-gradient(${VERTICAL_GRADIENT}) border-box;
+            border-left: 1px solid transparent;
             color: ${ORANGE_PRIMARY};
           }
 
@@ -365,7 +377,7 @@ function DocGroup({ title, docs }: DocGroupProps) {
 const MobileWrap = styled.div`
   margin-top: 17px;
   padding-top: 17px;
-  border-top: 1px solid ${GREY_2};
+  border-top: 1px solid ${LAYOUT_BORDER};
 
   @media (${breakUp("lg")}) {
     display: none;
@@ -379,7 +391,16 @@ const MobileButtonWrap = styled.div`
 function MobileItems({ button }: MobileItemProps) {
   return (
     <MobileButtonWrap>
-      <Button {...button} size="block" variant="primary" />
+      <Button
+        variant="contained"
+        href={button.link.href}
+        target={button.link.external ? "_blank" : undefined}
+        color="secondary"
+        size="medium"
+        fullWidth
+      >
+        {button.text}
+      </Button>
     </MobileButtonWrap>
   );
 }
