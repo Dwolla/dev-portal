@@ -46,7 +46,7 @@ const LeftSidebar = styled.div`
   bottom: 0;
   left: 0;
   overflow-y: auto;
-  height: 90vh;
+  height: calc(100vh - ${TOP_BAR_HEIGHT}px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;

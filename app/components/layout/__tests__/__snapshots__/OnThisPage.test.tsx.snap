@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`with anchors 1`] = `
-Array [
+[
   <h1
     id="hello-1"
     originalType="h1"

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`colors 1`] = `
-Object {
+{
   "ANNOUNCEMENT_BACKGROUND_BLUE": "#e5f6fd",
   "ANNOUNCEMENT_ICON_BLUE": "#0288d1",
   "ANNOUNCEMENT_TEXT_BLUE": "#115482",
