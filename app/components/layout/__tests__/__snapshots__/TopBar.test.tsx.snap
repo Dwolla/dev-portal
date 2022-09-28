@@ -2,26 +2,22 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-67tr3t-Container e1psldpd5"
+  className="css-1q4no5g-Container e1psldpd5"
 >
-  <div
-    className="css-hafdn5-StyledLogoWrap e1psldpd4"
+  <a
+    href="/"
+    onClick={[Function]}
+    onMouseEnter={[Function]}
+    onTouchStart={[Function]}
   >
-    <a
-      href="/"
-      onClick={[Function]}
-      onMouseEnter={[Function]}
-      onTouchStart={[Function]}
-    >
-      <img
-        alt=""
-        className="css-g6dikn-StyledLogo e1psldpd3"
-        src="test-image-stub"
-      />
-    </a>
-  </div>
+    <img
+      alt=""
+      className="css-av9y92-StyledLogo e1psldpd4"
+      src="test-image-stub"
+    />
+  </a>
   <div
-    className="css-p48gnw-SelectWrapper e1psldpd1"
+    className="css-p48gnw-SelectWrapper e1psldpd2"
   >
     <div
       className=" css-k377xg-container"
@@ -74,15 +70,39 @@ exports[`TopBar 1`] = `
     </div>
   </div>
   <div
-    className="css-1as8qu1-ButtonWrapper e1psldpd2"
+    className="css-1as8qu1-ButtonWrapper e1psldpd3"
   >
     <a
-      className="primary standard  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
+      className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
       href="https://accounts-sandbox.dwolla.com/login"
+      onBlur={[Function]}
+      onContextMenu={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
       target="_blank"
     >
       Get API Keys
     </a>
+  </div>
+  <div
+    aria-labelledby="Close menu"
+    className="css-1lsryf8-StyledCloseIcon e1psldpd0"
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    tabIndex={0}
+  >
+    <svg
+      width={14}
+    />
   </div>
 </div>
 `;

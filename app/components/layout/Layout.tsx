@@ -6,7 +6,6 @@ import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -18,39 +17,42 @@ import { POPPINS, ROBOTO } from "../typography";
 import { BOX_SHADOW_6 } from "../shadowDepths";
 import {
   GREY_2,
-  GREY_8,
   WHITE_PRIMARY,
   ORANGE_PRIMARY,
   PURPLE_PRIMARY_BUTTON,
   PURPLE_PRIMARY_HOVER,
   PURPLE_PRIMARY_ACTIVE,
   HEADLINE_TEXT,
+  LAYOUT_BORDER,
 } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
+import { Z_TOB_BAR } from "../zIndexes";
 import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
-import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
-import dwollaDevLogo from "../../../assets/images/dwolla-developers-logo.svg";
 
-export const LEFT_SIDEBAR_PADDING_X = "20px";
+const LayoutContainer = styled.div`
+  @media (${breakUp("lg")}) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
 const LeftSidebar = styled.div`
-  position: fixed;
-  top: 0;
+  position: sticky;
+  top: ${TOP_BAR_HEIGHT}px;
   right: 0;
   bottom: 0;
   left: 0;
   overflow-y: auto;
+  height: calc(100vh - ${TOP_BAR_HEIGHT}px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-right: 1px solid ${GREY_2};
   transition: opacity 300ms;
   opacity: 0;
   pointer-events: none;
-  z-index: 999;
 
   @media (${breakUp("lg")}) {
     right: 75%;
@@ -66,23 +68,8 @@ const LeftSidebar = styled.div`
   /* Hides sidebar on smaller screens when not toggled. Not tabbable when not in view  */
   &.visuallyHidden {
     @media (${breakDown("md")}) {
-      visibility: hidden;
+      display: none;
     }
-  }
-`;
-
-const LogoWrapper = styled.div`
-  padding: 12px ${LEFT_SIDEBAR_PADDING_X};
-  background: white;
-  flex-shrink: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  @media (${breakDown("md")}) {
-    border-bottom: 1px solid ${GREY_2};
-    height: ${TOP_BAR_HEIGHT}px;
-    min-height: ${TOP_BAR_HEIGHT}px;
   }
 `;
 
@@ -94,43 +81,16 @@ const SideNavWrapper = styled.div`
   flex-direction: column;
 `;
 
-const StyledCloseIcon = styled.div`
-  cursor: pointer;
-  svg {
-    * {
-      fill: ${ORANGE_PRIMARY};
-    }
-  }
-
-  :hover,
-  &.isFocused {
-    svg {
-      * {
-        fill: ${GREY_8};
-      }
-    }
-  }
-
-  :focus {
-    outline: none;
-  }
-
-  @media (${breakUp("lg")}) {
-    display: none;
-  }
-`;
-
 const MainArea = styled.div`
+  width: 100vw;
+
   @media (${breakUp("lg")}) {
-    margin-left: 25%;
+    width: 75vw;
+    border-left: 1px solid ${LAYOUT_BORDER};
   }
 `;
 
 const ContentArea = styled.div`
-  @media (${breakUp("lg")}) {
-    margin-right: 40px;
-  }
-
   /* Hides ContentArea on smaller screens when SideBar is toggled. Not tabbable when not in view  */
   &.visuallyhidden {
     @media (${breakDown("md")}) {
@@ -142,13 +102,12 @@ const ContentArea = styled.div`
 const TopBarWrapper = styled.div`
   position: sticky;
   top: 0;
-  z-index: 99;
+  z-index: ${Z_TOB_BAR};
 `;
 
 const FooterWrapper = styled.div`
   border-top: 1px solid ${GREY_2};
   background: ${WHITE_PRIMARY};
-  z-index: 9;
 
   @media (${breakUp("xxl")}) {
     padding-right: 40px;
@@ -185,7 +144,6 @@ export default function Layout({
   announcement?: string;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
-  const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
     if (document) {
@@ -199,13 +157,6 @@ export default function Layout({
       clearAllBodyScrollLocks();
     };
   }, [sidebarToggled]);
-
-  const showSidebar = () => setSidebarToggled(true);
-  const hideSidebar = () => setSidebarToggled(false);
-
-  function onKeydown(e) {
-    if (e.key === "Enter") hideSidebar();
-  }
 
   const router = useRouter();
 
@@ -256,71 +207,49 @@ export default function Layout({
         <link rel="canonical" href={router?.pathname} />
       </Head>
 
-      <LeftSidebar
-        className={classnames(sidebarToggled ? "toggled" : "visuallyHidden")}
-      >
-        <LogoWrapper>
-          <Link href="/">
-            <a>
-              <img
-                src={dwollaDevLogo}
-                alt="Dwolla Developers Logo"
-                css={css`
-                  @media (${breakDown("md")}) {
-                    max-height: 100%;
-                  }
+      <TopBarWrapper>
+        <TopBar
+          {...topBarProps}
+          sidebarToggled={sidebarToggled}
+          setSidebarToggled={setSidebarToggled}
+        />
+      </TopBarWrapper>
 
-                  @media (${breakDown("xs")}) {
-                    max-width: 115px;
-                  }
-                `}
-              />
-            </a>
-          </Link>
-
-          <StyledCloseIcon
-            tabIndex={0}
-            className={classnames({ isFocused })}
-            onClick={hideSidebar}
-            onKeyDown={(keyPress) => onKeydown(keyPress)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          >
-            <CloseIcon width={14} />
-          </StyledCloseIcon>
-        </LogoWrapper>
-
-        <SideNavWrapper>
-          <SideNav
-            sectionLinks={sideNavLinks}
-            pages={pages}
-            mobileItems={topBarProps}
-          />
-        </SideNavWrapper>
-
-        <APIStatusBar apiStatus={apiStatus} />
-      </LeftSidebar>
-
-      <MainArea>
-        {announcement && (
-          <AlertBar variation="announcement" isClosable>
-            {announcement}
-          </AlertBar>
-        )}
-        <TopBarWrapper>
-          <TopBar {...topBarProps} onHamburgerClick={showSidebar} />
-        </TopBarWrapper>
-
-        <ContentArea className={classnames({ visuallyhidden: sidebarToggled })}>
-          {children}
-        </ContentArea>
-
-        <FooterWrapper
-          className={classnames({ visuallyhidden: sidebarToggled })}
+      <LayoutContainer>
+        <LeftSidebar
+          className={classnames(sidebarToggled ? "toggled" : "visuallyHidden")}
         >
-          <Footer links={footerLinks} legal={footerLegal} />
-        </FooterWrapper>
-      </MainArea>
+          <SideNavWrapper>
+            <SideNav
+              sectionLinks={sideNavLinks}
+              pages={pages}
+              mobileItems={topBarProps}
+            />
+          </SideNavWrapper>
+
+          <APIStatusBar apiStatus={apiStatus} />
+        </LeftSidebar>
+
+        <MainArea>
+          {announcement && (
+            <AlertBar variation="announcement" isClosable>
+              {announcement}
+            </AlertBar>
+          )}
+
+          <ContentArea
+            className={classnames({ visuallyhidden: sidebarToggled })}
+          >
+            {children}
+          </ContentArea>
+
+          <FooterWrapper
+            className={classnames({ visuallyhidden: sidebarToggled })}
+          >
+            <Footer links={footerLinks} legal={footerLegal} />
+          </FooterWrapper>
+        </MainArea>
+      </LayoutContainer>
     </>
   );
 }

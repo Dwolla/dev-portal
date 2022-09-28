@@ -13,10 +13,10 @@ exports[`TimelineNav 1`] = `
     className="css-ec7nrl-StyledDiv e92fyip3"
   >
     <div
-      className="active css-zr8nux-StyledStep e92fyip0"
+      className="active css-vmfbrz-StyledStep e92fyip0"
     >
       <div
-        className="active css-e0ruun-StyledStepNum e92fyip2"
+        className="active css-gvl6jb-StyledStepNum e92fyip2"
         id={0}
       >
         0
@@ -28,10 +28,10 @@ exports[`TimelineNav 1`] = `
       </div>
     </div>
     <div
-      className="css-zr8nux-StyledStep e92fyip0"
+      className="css-vmfbrz-StyledStep e92fyip0"
     >
       <div
-        className="css-e0ruun-StyledStepNum e92fyip2"
+        className="css-gvl6jb-StyledStepNum e92fyip2"
         id={1}
         onClick={[Function]}
       >
@@ -44,10 +44,10 @@ exports[`TimelineNav 1`] = `
       </div>
     </div>
     <div
-      className="css-zr8nux-StyledStep e92fyip0"
+      className="css-vmfbrz-StyledStep e92fyip0"
     >
       <div
-        className="css-e0ruun-StyledStepNum e92fyip2"
+        className="css-gvl6jb-StyledStepNum e92fyip2"
         id={2}
         onClick={[Function]}
       >
@@ -60,10 +60,10 @@ exports[`TimelineNav 1`] = `
       </div>
     </div>
     <div
-      className="css-zr8nux-StyledStep e92fyip0"
+      className="css-vmfbrz-StyledStep e92fyip0"
     >
       <div
-        className="css-e0ruun-StyledStepNum e92fyip2"
+        className="css-gvl6jb-StyledStepNum e92fyip2"
         id={3}
         onClick={[Function]}
       >
