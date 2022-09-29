@@ -58,7 +58,8 @@ const colorMap: SelectMuiColorMap = {
  * This includes the text color, both in a default and in a focused state.
  */
 function getInputColor(color?: SelectMuiColor): SxProps | undefined {
-  const { color: muiColor, focusedColor: muiFocusedColor } = colorMap[color];
+  const { color: muiColor, focusedColor: muiFocusedColor } =
+    colorMap[color] || {};
 
   return (
     muiColor &&
@@ -76,7 +77,8 @@ function getInputColor(color?: SelectMuiColor): SxProps | undefined {
  * thickness, and the color of both the text and the embedded svg element.
  */
 function getSelectColor(color?: SelectMuiColor): SxProps | undefined {
-  const { color: muiColor, focusedColor: muiFocusedColor } = colorMap[color];
+  const { color: muiColor, focusedColor: muiFocusedColor } =
+    colorMap[color] || {};
 
   return (
     muiColor &&
@@ -85,7 +87,7 @@ function getSelectColor(color?: SelectMuiColor): SxProps | undefined {
       "&.MuiOutlinedInput-root": {
         "& fieldset": { borderColor: muiColor },
         "&.Mui-focused fieldset": { borderColor: muiFocusedColor },
-        "&:hover fieldset": { borderColor: muiColor, borderWidth: "0.2rem" },
+        "&:hover fieldset": { borderColor: muiColor, borderWidth: "2px" },
         "& svg": { color },
       },
     }
