@@ -2,14 +2,14 @@ import { useContext } from "react";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
-// import Button from "../base/Button";
-import Select from "../base/select/Select";
+import { FormControl } from "@mui/material";
 import { LanguageContext } from "../util/Contexts";
-import { breakUp, breakDown } from "../breakpoints";
+import { breakDown, breakUp } from "../breakpoints";
+import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
 import dwollaDevLogo from "../../../assets/images/logo-developers.png";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
+import SelectMui from "../base/SelectMui";
 
 export const TOP_BAR_HEIGHT = 66;
 
@@ -157,15 +157,18 @@ export default function TopBar({
       </Link>
 
       <SelectWrapper>
-        <Select
-          options={languageOptions}
-          selectedValue={selectedLanguage}
-          setSelectedValue={(language) => {
-            setSelectedLanguage(language);
-            ga("global language select", "language change", language.value);
-          }}
-          autoWidth
-        />
+        <FormControl sx={{ minWidth: 200 }} size="small">
+          <SelectMui
+            color="white"
+            label="Select Language"
+            onChange={(value) => {
+              setSelectedLanguage(value);
+              ga("global language select", "language change", value);
+            }}
+            options={languageOptions}
+            value={selectedLanguage.value}
+          />
+        </FormControl>
       </SelectWrapper>
 
       <ButtonWrapper>

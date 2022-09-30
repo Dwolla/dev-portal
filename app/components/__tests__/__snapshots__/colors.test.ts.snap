@@ -38,6 +38,7 @@ exports[`colors 1`] = `
   "GREY_HOVER": "#efeff0",
   "HEADLINE_TEXT": "#2a2d38",
   "LAYOUT_BORDER": "rgba(45, 45, 72, 0.25)",
+  "MUI_DROPDOWN_FOCUS": "#03A9F4",
   "ORANGE_PRIMARY": "#ca4c24",
   "PARAGRAPH_TEXT": "#6a7282",
   "PINK_SECONDARY_ACTIVE": "#be406c",

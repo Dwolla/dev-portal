@@ -32,6 +32,7 @@ export const PINK_SECONDARY_BUTTON = "#C9457E";
 export const PINK_SECONDARY_HOVER = "#e24d80";
 export const PINK_SECONDARY_ACTIVE = "#be406c";
 export const WHITE_PRIMARY = "#ffffff";
+export const MUI_DROPDOWN_FOCUS = "#03A9F4";
 
 // Code Block Colors
 export const CODE_BLOCK_BUTTON = "#383c4c";

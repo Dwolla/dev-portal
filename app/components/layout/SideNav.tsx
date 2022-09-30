@@ -50,7 +50,7 @@ type ConditionalSideNavLinkProps =
   | {
       isExternal: true;
       IconSvg?: never;
-      isSection?: never;
+      isSection?: false;
     };
 
 // Combined type of common and conditional props

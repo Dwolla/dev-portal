@@ -76,5 +76,23 @@ module.exports = {
     "react/self-closing-comp": "off",
     // prettier
     "spaced-comment": "off", // typescript
+    // emotion (https://emotion.sh/docs/eslint-plugin-react)
+    "react/no-unknown-property": ["error", { ignore: ["css"] }],
+    // don't throw error if dependency is only used for testing
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        devDependencies: [
+          "**/.storybook/**/*.*",
+          "**/stories/**/*.*",
+          "**/*.test.ts",
+          "**/*.test.tsx",
+        ],
+      },
+    ],
+    // override eslint use before define in favor of typescript-eslint
+    // (https://typescript-eslint.io/rules/no-use-before-define)
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "warn",
   },
 };
