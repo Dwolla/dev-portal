@@ -12,25 +12,25 @@ exports[`TopBar 1`] = `
   >
     <img
       alt=""
-      className="css-av9y92-StyledLogo e1psldpd4"
+      className="css-6cn7c0-StyledLogo e1psldpd4"
       src="test-image-stub"
     />
   </a>
   <div
-    className="css-p48gnw-SelectWrapper e1psldpd2"
+    className="css-s9e6kp-SelectWrapper e1psldpd2"
   >
     <div
       className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary css-1pysi21-MuiFormLabel-root-MuiInputLabel-root"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary css-1fwwx10-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={false}
         id=":r0:"
       >
         Select Language
       </label>
       <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1cjzvsm-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         onClick={[Function]}
       >
         <div
@@ -77,7 +77,7 @@ exports[`TopBar 1`] = `
           className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
         >
           <legend
-            className="css-1ftyaf0"
+            className="css-yjsfm1"
           >
             <span>
               Select Language

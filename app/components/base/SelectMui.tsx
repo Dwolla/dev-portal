@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithRef, useId } from "react";
 import { InputLabel, MenuItem, Select, SxProps } from "@mui/material";
+import { MUI_DROPDOWN_FOCUS, WHITE_PRIMARY } from "../colors";
 
 /**
  * Defines a `<select>` option that was chosen, returning both its label and value.
@@ -46,8 +47,8 @@ type SelectMuiValue = ComponentPropsWithRef<"li">["value"];
  */
 const colorMap: SelectMuiColorMap = {
   white: {
-    color: "#FFFFFF",
-    focusedColor: "#0288D1",
+    color: WHITE_PRIMARY,
+    focusedColor: MUI_DROPDOWN_FOCUS,
   },
 };
 
