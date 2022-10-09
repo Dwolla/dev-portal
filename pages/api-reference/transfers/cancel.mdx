@@ -131,5 +131,5 @@ var requestBody = {
   status: "cancelled",
 };
 
-dwolla.post("transfers", requestBody).then((res) => res.body.status); // => "cancelled"
+dwolla.post(transfer_url, requestBody).then((res) => res.body.status); // => "cancelled"
 ```
