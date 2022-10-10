@@ -3,7 +3,7 @@ import Table from "../Table";
 import { InlineCode } from "../Typography";
 
 const tableData = (
-  <table>
+  <>
     <tr>
       <th>Parameter</th>
       <th>Required?</th>
@@ -48,7 +48,7 @@ const tableData = (
       <td>string</td>
       <td>Customer&apos;s IP address</td>
     </tr>
-  </table>
+  </>
 );
 
 test("Table", () => {

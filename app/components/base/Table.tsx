@@ -5,7 +5,7 @@ import { HEADLINE_TEXT, PARAGRAPH_TEXT, GREY_1, GREY_2 } from "../colors";
 import { breakUp } from "../breakpoints";
 
 // Styles for Table
-const StyledTable = styled.div`
+const StyledTable = styled.table`
   overflow-x: auto;
   white-space: nowrap;
   /* This allows text within cells to wrap around on larger screens */
