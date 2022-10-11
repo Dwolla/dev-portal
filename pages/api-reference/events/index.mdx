@@ -17,14 +17,14 @@ When the state of a resource changes, Dwolla creates a new event resource to rec
 
 ### Events resource
 
-| Parameter     | Description                                                                                                                                                                                                                                |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| \_links       | Contains links to the event, associated resource, and the Account associated with the event.                                                                                                                                               |
-| id            | Event ID                                                                                                                                                                                                                                   |
-| created       | ISO-8601 timestamp when event was created                                                                                                                                                                                                  |
-| topic         | Type of event                                                                                                                                                                                                                              |
-| resourceId    | ID of the resource associated with the event.                                                                                                                                                                                              |
-| correlationId | Unique ID that was specified, if any, when a [transfer was created](/api-reference/transfers/initiate#request-parameters).<br/>This value is only present for [Account transfer](#transfers) and [Customer transfer](#transfers-1) events. |
+| Parameter     | Description                                                                                                                                                                                                                                    |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links       | Contains links to the event, associated resource, and the Account associated with the event.                                                                                                                                                   |
+| id            | Event ID                                                                                                                                                                                                                                       |
+| created       | ISO-8601 timestamp when event was created                                                                                                                                                                                                      |
+| topic         | Type of event                                                                                                                                                                                                                                  |
+| resourceId    | ID of the resource associated with the event.                                                                                                                                                                                                  |
+| correlationId | Unique ID that was specified, if any, when a [transfer was created](/api-reference/transfers/initiate#request-parameters).<br/>**This value is only present for [Account transfer](#transfers) and [Customer transfer](#transfers-1) events.** |
 
 ```bash
 {
