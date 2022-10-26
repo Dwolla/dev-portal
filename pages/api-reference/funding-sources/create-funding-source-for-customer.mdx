@@ -34,22 +34,25 @@ Just as your [Verified Customers](https://developers.dwolla.com/concepts/custome
 
 ### Request parameters - bank funding source
 
-| Parameter       | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| --------------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links         | no       | object | A <code>\_links</code> JSON object containing an [`on-demand-authorization`](https://developers.dwolla.com/api-reference/transfers/create-an-on-demand-transfer-authorization) link relation. See example bash request and response below.                                                                                                                                                                                                                                                                                                                                                                                  |
-| routingNumber   | yes      | string | A bank routing number that identifies a bank or credit union in the U.S. **Note:** Validation of the routing number includes: a checksum, the first two digits of the routing number must fall within the range "01" through "12", or "21" through "32", and the string value must consist of nine digits.                                                                                                                                                                                                                                                                                                                  |
-| accountNumber   | yes      | string | The bank account number. **Note:** The account number is validated to check if it is a numeric string of 4-17 digits.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| bankAccountType | yes      | string | Type of bank account: `checking`, `savings`, `general-ledger` or `loan`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| name            | yes      | string | Arbitrary nickname for the funding source. Must be 50 characters or less.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| plaidToken      | no       | string | A processor token obtained from Plaid for `adding and verifying` a bank. Reference our [Plaid Link developer guide](https://developers.dwolla.com/guides/plaid) to learn more about this integration.                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| channels        | no       | array  | An array containing a list of processing channels. ACH is the default processing channel for bank transfers. Acceptable value for channels is: "wire". e.g. `“channels”: [ “wire” ]`. A funding source (Bank Account) added using the wire channel only supports a funds transfer going to the bank account from a balance. As a result, wire as a destination funding source can only be added where the Customer account type is a Verified Customer. **Note:** `channels` is a premium feature that must be enabled on your account and is only available to select [Dwolla](https://www.dwolla.com/platform) customers. |
+| Parameter       | Required    | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------- | ----------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links         | conditional | object | A <code>\_links</code> JSON object containing an [on-demand-authorization](https://developers.dwolla.com/api-reference/transfers/create-an-on-demand-transfer-authorization) and/or [exchange](https://developers.dwolla.com/concepts/secure-exchange) link relation. See example bash request and response below.                                                                                                                                                                                                                                                                                                          |
+| routingNumber   | yes         | string | A bank routing number that identifies a bank or credit union in the U.S. **Note:** Validation of the routing number includes: a checksum, the first two digits of the routing number must fall within the range "01" through "12", or "21" through "32", and the string value must consist of nine digits.                                                                                                                                                                                                                                                                                                                  |
+| accountNumber   | yes         | string | The bank account number. **Note:** The account number is validated to check if it is a numeric string of 4-17 digits.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| bankAccountType | yes         | string | Type of bank account: `checking`, `savings`, `general-ledger` or `loan`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| name            | yes         | string | Arbitrary nickname for the funding source. Must be 50 characters or less.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| plaidToken      | no          | string | A processor token obtained from Plaid for `adding and verifying` a bank. Reference our [Plaid Link developer guide](https://developers.dwolla.com/guides/plaid) to learn more about this integration.                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| channels        | no          | array  | An array containing a list of processing channels. ACH is the default processing channel for bank transfers. Acceptable value for channels is: "wire". e.g. `“channels”: [ “wire” ]`. A funding source (Bank Account) added using the wire channel only supports a funds transfer going to the bank account from a balance. As a result, wire as a destination funding source can only be added where the Customer account type is a Verified Customer. **Note:** `channels` is a premium feature that must be enabled on your account and is only available to select [Dwolla](https://www.dwolla.com/platform) customers. |
 
 ### HTTP status and error codes - bank funding source
 
-| HTTP Status | Code            | Description                                                                                                 |
-| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------- |
-| 400         | ValidationError | Can be: Duplicate funding source or validation error. Authorization already associated to a funding source. |
-| 403         | Forbidden       | Not authorized to create funding source.                                                                    |
+| HTTP Status | Code                 | Description                                                                                                                                                       |
+| ----------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400         | InactiveExchange     | The Exchange was removed or disabled.                                                                                                                             |
+| 400         | InvalidExchangeToken | The exchange token is not valid to perform this operation. Either the token is expired, invalid, or the products permissions to the token are invalid or expired. |
+| 400         | ValidationError      | Can be: Duplicate funding source or validation error. Authorization already associated to a funding source.                                                       |
+| 403         | Forbidden            | Not authorized to create funding source.                                                                                                                          |
+| 404         | NotFound             | Customer ID not found. Check Customer ID.                                                                                                                         |
 
 ### Request and response - bank funding source
 
@@ -143,7 +146,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
   },
   "routingNumber": "222222226",
   "accountNumber": "123456789",
-  "type": "checking",
+  "bankAccountType": "checking",
   "name": "Jane Doe - Checking"
 }
 
@@ -215,12 +218,104 @@ var customerUrl =
   "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {
   _links: {
-    "on-demand-authorization": {
+    exchange: {
       href: "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388",
     },
   },
   routingNumber: "222222226",
   accountNumber: "123456789",
+  bankAccountType: "checking",
+  name: "Jane Doe’s Checking",
+};
+
+dwolla
+  .post(`${customerUrl}/funding-sources`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+### Request and response - using an exchange resource
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+{
+  "_links": {
+    "exchange": {
+      "href": "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+    }
+  },
+  "bankAccountType": "checking",
+  "name": "Jane Doe - Checking"
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fundingApi->createCustomerFundingSource([
+  "_links" => [
+    "exchange" => [
+      "href" => "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+    ]
+  ],
+  "bankAccountType" => "checking",
+  "name" => "Jane Doe’s Checking"
+], "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C");
+$fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+?>
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  _links: {
+    'exchange': {
+      href: "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+    }
+  },
+  bankAccountType: 'checking',
+  name: 'Jane Doe’s Checking'
+}
+
+funding_source = app_token.post "#{customer_url}/funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  '_links': {
+    'exchange': {
+      'href': 'https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65'
+    }
+  },
+  'bankAccountType': 'checking',
+  'name': 'Jane Doe’s Checking'
+}
+
+funding_source = app_token.post('%s/funding-sources' % customer_url, request_body)
+funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
+var requestBody = {
+  _links: {
+    "on-demand-authorization": {
+      href: "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388",
+    },
+  },
   bankAccountType: "checking",
   name: "Jane Doe’s Checking",
 };

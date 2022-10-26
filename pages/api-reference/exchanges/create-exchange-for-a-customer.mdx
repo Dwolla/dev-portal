@@ -24,39 +24,44 @@ This section contains information on how to create an exchange for an end-user/C
 | token     | conditional | string | A third party provider processor token. Required for MX integration.                                                                                                                                 |
 | finicity  | conditional | object | Finicity resource object containing access key **receipt** information. Required for Finicity integration. See #finicity-json-object below (including nested product and accessPeriod JSON objects). |
 
-##### Finicity JSON Object
+#### `finicity` JSON Object
 
-| Parameter | Type    | Description                                                |
-| --------- | ------- | ---------------------------------------------------------- |
-| profile   | integer | Int value obtained by the party integrating with Finicity. |
+| Parameter      | Type    | Description                                                                                                                                                              |
+| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| profile        | integer | Int value obtained by the party integrating with Finicity.                                                                                                               |
+| version        | string  | String value obtained by the party integrating with Finicity.                                                                                                            |
+| receiptId      | string  | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                      |
+| receiptVersion | string  | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                      |
+| customerId     | string  | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                      |
+| partnerId      | integer | Int value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                         |
+| products       | object  | Array of Finicity Product objects obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response. |
 
-| version
-| string | String value obtained by the party integrating with Finicity |
-| receiptId | string | String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
-| receiptVersion | string | String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
-| customerId | string | String value obtained by the party integrating with Finicity.From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
-| partnerId | integer | Int value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
-| products | object | Array of Finicity Product objects obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
+#### Finicity `product` JSON Object
 
-##### Finicity product JSON Object
+| **Parameter** | **Type** | **Description**                                                                                                                                                       |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| product       | string   | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                   |
+| accountId     | string   | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                   |
+| accessPeriod  | object   | Finicity Access Period objects obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response. |
 
-| **Parameter** | **Type** | **Description**                                                                                                                                                   |
-| ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| product       | string   | String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response                   |
-| accountId     | string   | String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response                   |
-| accessPeriod  | object   | Finicity Access Period objects obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
+#### Finicity `accessPeriod` JSON object
 
-##### Finicity accessPeriod JSON object
+| **Parameter** | **Type** | **Description**                                                                                                                                     |
+| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type          | string   | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response. |
+| startTime     | integer  | Int value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.    |
+| endTime       | integer  | Int value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.    |
 
-| **Parameter** | **Type** | **Description**                                                                                                                                 |
-| ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| type          | string   | String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response |
-| startTime     | integer  | Int value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response    |
-| endTime       | integer  | Int value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response    |
+### HTTP Status and Error Codes
 
-##### HTTP Status and Error Codes
+| HTTP Status | Code            | Description                                                                                                                                                                   |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created         | The Dwolla API accepted the request and created an exchange resource. You can reference the Location header to retrieve a link that represents the created exchange resource. |
+| 400         | ValidationError | Reference the [errors section](https://developers.dwolla.com/api-reference#validation-errors) for list of possible \_embedded validation errors.                              |
+| 401         | InvalidScope    | The scopes for creating an exchange resource for a customer is not enabled for this application. Reach out to Dwolla for more information.                                    |
+| 404         | NotFound        | Customer ID not found. Check Customer ID.                                                                                                                                     |
 
-##### Request and Response (MX)
+### Request and Response (MX)
 
 ```bash
 POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
@@ -133,7 +138,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
 ```
 
-##### Request and Response (Finicity)
+### Request and Response (Finicity)
 
 ```bash
 POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
@@ -169,8 +174,8 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
     }
 }
 
- HTTP/1.1 201 Created
- Location: https://api.dwolla.com/exchanges/{id}
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 ```
 
 ```php
@@ -218,30 +223,30 @@ exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd1
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
 customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
 request_body = {
-  '_links' => {
-    'exchange-partner' => {
-      'href' => "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+  '_links': {
+    'exchange-partner': {
+      'href': "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
     }
   },
-  'finicity' => {
-    'profile' => 3,
-    'version' => "1",
-    'receiptId' => "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
-    'receiptVersion' => "1",
-    'customerId' => "5454874858510164117",
-    'partnerId' => 2445583946651,
-    'products' => [
+  'finicity': {
+    'profile': 3,
+    'version': "1",
+    'receiptId': "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    'receiptVersion': "1",
+    'customerId': "5454874858510164117",
+    'partnerId': 2445583946651,
+    'products': [
       {
-        'product' => "moneyTransferDetails",
-        'accountId' => "1015199035827334916",
-        'accessPeriod' => {
-          'type' => "timeframe",
-          'startTime' => "2022-07-06",
-          'endTime' => "2022-08-16T06:06:20Z"
+        'product': "moneyTransferDetails",
+        'accountId': "1015199035827334916",
+        'accessPeriod': {
+          'type': "timeframe",
+          'startTime': "2022-07-06",
+          'endTime': "2022-08-16T06:06:20Z"
         }
       }
     ],
-    'timestamp' => "2022-07-11T06:06:23Z"
+    'timestamp': "2022-07-11T06:06:23Z"
   }
 }
 
