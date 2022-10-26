@@ -1,0 +1,50 @@
+---
+layout: concepts
+title: "Secure Exchange"
+description: The Secure Exchange solution connects clients with integrated ecosystem partners to seamlessly share data and initiate account-to-account payments.
+category: Features
+concept:
+  icon: "secure-exchange.svg"
+meta:
+  title: Secure Exchange | Concept Article | Dwolla Documentation
+  description: The Secure Exchange solution is a tokenized approach to a more interconnected payment experience among trusted third-party data providers.
+---
+
+import secureExchangeImage from "../../assets/images/content-images/secure-exchange-flow-diagram.png";
+
+# Secure Exchange
+
+The Secure Exchange solution connects clients and reseller partners with integrated ecosystem partners to seamlessly share data for the purposes of initiating account-to-account transactions. With Dwolla’s Secure Exchange solution, programmatically perform actions for end-users such as connecting bank accounts without needing to store or handle sensitive data like account and routing number.
+The creation of an exchange establishes a secure channel for data retrieval between Dwolla and a trusted ecosystem partner. The exchange contains a limited set of permissions that grants Dwolla the ability to perform requests to an integrated ecosystem partner based on what is designated by you as the client. The end user can be very intentional about what data they share and who they share it with. The client—or partner—can connect with the Secure Exchange solution to make sure the data that is shared is done so in a safe, seamless way.
+Quick overview of the benefits of the Secure Exchange solution for your business and end users:
+
+- Generate limited permission tokenized access between ecosystem partner and Dwolla.
+- Create an exchange for an end-user or your Dwolla client account.
+- Perform action in the Dwolla API using Secure Exchange solution.
+
+<Image
+  src={secureExchangeImage}
+  alt="Flow of exchange between integrated ecosystem partners"
+  width="50%"
+  height="50%"
+/>
+
+#### Key Benefits:
+
+- Dwolla clients and reseller partners don’t need to receive and store sensitive data.
+- Improved developer experience through tokenized integration.
+- Feature expansion by leveraging trusted ecosystem partners.
+
+## Exchange Partners
+
+Dwolla’s Secure Exchange solution facilitates account verification connections with leading data aggregation partners by providing a tokenized solution. Supported ecosystem partners can be found by calling the [exchange partners API](https://developers.dwolla.com/api-reference/exchanges/list-exchange-partners), which contains a catalog of activated partners. Each exchange partner contains a unique ID that can be used to reference when creating and interacting with the exchange.
+
+| Partner  | Documentation                                                                                                                                                                                                                       | Additional Resources                                                                                                                                                                                                                                    |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Finicity | Contact Finicity                                                                                                                                                                                                                    | Dwolla supported [sample application](https://github.com/Dwolla/integration-examples/tree/main/packages/finicity-token-exchange).                                                                                                                       |
+| MX       | <ul><li>API Reference - [Client Processor Token Endpoint](https://docs.mx.com/api#processor_token_client_endpoints)</li><li>Quickstart Guide - [Processor Token](https://docs.mx.com/processor_token/guides/client_guide)</li></ul> | <ul><li>MX supported [sample application](https://github.com/mxenabled/processor-tokens-client-quickstart)</li><li>Dwolla supported [sample application](https://github.com/Dwolla/integration-examples/tree/main/packages/mx-token-exchange)</li></ul> |
+
+## Creating an Exchange
+
+The creation of an exchange serves as the “hand-shake” between Dwolla and a trusted ecosystem partner. Depending on the integration partner, there may be fine-grained permissions applied to the exchange which limits the scope of data that can be accessed on an end-user’s behalf. Refer to the relevant ecosystem partner documentation for more information such as access duration, API call limits and product functionality.
+Currently Dwolla only supports connections with certain data aggregators for the purposes of retrieving ACH account details.
