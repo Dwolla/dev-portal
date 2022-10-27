@@ -218,7 +218,7 @@ var customerUrl =
   "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {
   _links: {
-    exchange: {
+    "on-demand-authorization": {
       href: "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388",
     },
   },
@@ -312,8 +312,8 @@ var customerUrl =
   "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {
   _links: {
-    "on-demand-authorization": {
-      href: "https://api-sandbox.dwolla.com/on-demand-authorizations/30e7c028-0bdf-e511-80de-0aa34a9b2388",
+    exchange: {
+      href: "https://api-sandbox.dwolla.com/exchanges/30e7c028-0bdf-e511-80de-0aa34a9b2388",
     },
   },
   bankAccountType: "checking",

@@ -18,48 +18,48 @@ This section contains information on how to create an exchange for an end-user/C
 
 ### Request parameters
 
-| Parameter | Required    | Type   | Description                                                                                                                                                                                          |
-| --------- | ----------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                               |
-| token     | conditional | string | A third party provider processor token. Required for MX integration.                                                                                                                                 |
-| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. Required for Finicity integration. See #finicity-json-object below (including nested product and accessPeriod JSON objects). |
+| Parameter | Required    | Type   | Description                                                                                                                                                                                                   |
+| --------- | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                        |
+| token     | conditional | string | A third party provider processor token. Required for MX integration.                                                                                                                                          |
+| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Finicity integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects). |
 
-#### `finicity` JSON Object
+### Finicity JSON Object
 
-| Parameter      | Type    | Description                                                                                                                                                              |
-| -------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| profile        | integer | Int value obtained by the party integrating with Finicity.                                                                                                               |
-| version        | string  | String value obtained by the party integrating with Finicity.                                                                                                            |
-| receiptId      | string  | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                      |
-| receiptVersion | string  | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                      |
-| customerId     | string  | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                      |
-| partnerId      | integer | Int value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                         |
-| products       | object  | Array of Finicity Product objects obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response. |
+| Parameter      | Type    | Description                                                                                                                                                             |
+| -------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| profile        | integer | Int value obtained by the party integrating with Finicity.                                                                                                              |
+| version        | string  | String value obtained by the party integrating with Finicity.                                                                                                           |
+| receiptId      | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
+| receiptVersion | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
+| customerId     | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
+| partnerId      | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                         |
+| products       | object  | Array of Finicity Product objects obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response. |
 
-#### Finicity `product` JSON Object
+#### Finicity product JSON Object
 
-| **Parameter** | **Type** | **Description**                                                                                                                                                       |
-| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| product       | string   | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                   |
-| accountId     | string   | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.                   |
-| accessPeriod  | object   | Finicity Access Period objects obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response. |
+| Parameter    | Type   | Description                                                                                                                                                         |
+| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| product      | string | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response                   |
+| accountId    | string | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response                   |
+| accessPeriod | object | Finicity Access Period objects obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response |
 
-#### Finicity `accessPeriod` JSON object
+#### Finicity accessPeriod JSON object
 
-| **Parameter** | **Type** | **Description**                                                                                                                                     |
-| ------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type          | string   | String value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response. |
-| startTime     | integer  | Int value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.    |
-| endTime       | integer  | Int value obtained by the party integrating with Finicity. From [Finicity](https://api.finicity.com/aggregation/v1/partners/accessKey) response.    |
+| Parameter | Type    | Description                                                                                                                                       |
+| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type      | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response |
+| startTime | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response    |
+| endTime   | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response    |
 
-### HTTP Status and Error Codes
+### HTTP status and error codes
 
 | HTTP Status | Code            | Description                                                                                                                                                                   |
 | ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201         | Created         | The Dwolla API accepted the request and created an exchange resource. You can reference the Location header to retrieve a link that represents the created exchange resource. |
-| 400         | ValidationError | Reference the [errors section](https://developers.dwolla.com/api-reference#validation-errors) for list of possible \_embedded validation errors.                              |
-| 401         | InvalidScope    | The scopes for creating an exchange resource for a customer is not enabled for this application. Reach out to Dwolla for more information.                                    |
-| 404         | NotFound        | Customer ID not found. Check Customer ID.                                                                                                                                     |
+| 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                       |
+| 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                             |
+| 404         | NotFound        | The requested resource was not found.                                                                                                                                         |
 
 ### Request and Response (MX)
 
