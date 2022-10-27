@@ -1,0 +1,107 @@
+---
+layout: guides
+title: "List exchanges for an account"
+guide:
+  step: 7
+meta:
+  title: "List Documents For Customers | Dwolla API Documentation"
+  description: Retrieve a list of documents that belong to a Customer.
+---
+
+# List exchanges for an Account
+
+This section contains information on how to retrieve the list of exchanges associated with a Dwolla Account.
+
+### HTTP request
+
+> `GET https://api.dwolla.com/exchanges`
+
+### HTTP status and error codes
+
+| HTTP Status | Code | Description                                                  |
+| ----------- | ---- | ------------------------------------------------------------ |
+| 200         | Ok   | The Dwolla API accepted the request and returned a response. |
+
+### Request and response
+
+```bash
+GET https://api.dwolla.com/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/exchanges",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange"
+        }
+    },
+    "_embedded": {
+        "exchanges": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/exchanges/8df845fc-80e0-404a-8912-b02603627e29",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange"
+                    },
+                    "exchange-partner": {
+                        "href": "https://api-sandbox.dwolla.com/exchange-partners/9b55a4b3-34ae-4607-b2d1-622f1eed77f9",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange-partner"
+                    }
+                },
+                "id": "8df845fc-80e0-404a-8912-b02603627e29",
+                "status": "active",
+                "created": "2022-05-25T16:07:34.906Z"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/exchanges/80764434-5391-4c6e-89fa-2f96662e9a3a",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange"
+                    },
+                    "exchange-partner": {
+                        "href": "https://api-sandbox.dwolla.com/exchange-partners/9b55a4b3-34ae-4607-b2d1-622f1eed77f9",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange-partner"
+                    }
+                },
+                "id": "80764434-5391-4c6e-89fa-2f96662e9a3a",
+                "status": "active",
+                "created": "2022-05-25T15:57:18.209Z"
+            },
+        ]
+    },
+    "total": 2
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+exchanges = app_token.get "exchanges"
+exchanges._embedded['exchanges'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+// No example for this language yet
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+exchanges = app_token.get('exchanges')
+exchanges.body['_embedded']['exchanges'][0]['id'] # => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+token.get("exchanges").then((res) => res.body._embedded["exchanges"][0].id); // => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+```
