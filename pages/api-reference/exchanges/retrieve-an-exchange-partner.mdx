@@ -69,7 +69,11 @@ exchange_partner.id # => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
 ```php
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
-// No example for this language yet
+$exchangePartnersApi = new ExchangepartnersApi($apiClient);
+
+$exchangePartner = $exchangePartnersApi->id("e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a");
+$exchangePartner->id; # => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
+?>
 ```
 
 ```python

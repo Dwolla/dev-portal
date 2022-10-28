@@ -92,7 +92,11 @@ exchange_partners._embedded['exchange-partners'][0].id # => "292317ec-e252-47d8-
 ```php
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
-// No example for this language yet
+$exchangePartnersApi = new ExchangepartnersApi($apiClient);
+
+$exchangePartners = $exchangePartnersApi->_list();
+$exchangePartners->_embedded->{"exchange-partners"}[0]->id; # => "292317ec-e252-47d8-93c3-2d128e037aa4"
+?>
 ```
 
 ```python
