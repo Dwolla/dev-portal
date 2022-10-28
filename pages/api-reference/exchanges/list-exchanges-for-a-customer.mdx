@@ -2,10 +2,10 @@
 layout: guides
 title: "List exchanges for a customer"
 guide:
-  step: 6
+step: 6
 meta:
-  title: "List exchanges for a Customer | Dwolla API Documentation"
-  description: Retrieve a list of exchanges that belong to a Customer.
+title: "List exchanges for a Customer | Dwolla API Documentation"
+description: Retrieve a list of exchanges that belong to a Customer.
 ---
 
 # List exchanges for a Customer
@@ -88,8 +88,9 @@ exchanges._embedded['exchanges'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9c
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $exchangesApi = new ExchangesApi($apiClient);
+$customerUrl = "https://api-sandbox.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
 
-$exchanges = $exchangesApi->getCustomerExchanges("176878b8-ecdb-469b-a82b-43ba5e8704b2");
+$exchanges = $exchangesApi->getCustomerExchanges($customerUrl);
 $exchanges->_embedded->{"exchanges"}[0]->id; # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
 ?>
 ```

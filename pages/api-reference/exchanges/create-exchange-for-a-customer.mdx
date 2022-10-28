@@ -86,6 +86,7 @@ Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $exchangesApi = new ExchangesApi($apiClient);
+$customerUrl = "https://api-sandbox.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
 
 $exchange = $exchangesApi->createCustomerExchange(new CreateExchangeRequest([
     "_links" => [
@@ -94,7 +95,7 @@ $exchange = $exchangesApi->createCustomerExchange(new CreateExchangeRequest([
         ]
     ],
     "token" => "someMXProcessorToken"
-]), "74a207b2-b7b7-4efa-8bf8-582148e7b980");
+]), $customerUrl);
 
 $exchange; # => https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 ?>
@@ -194,6 +195,7 @@ Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $exchangesApi = new ExchangesApi($apiClient);
+$customerUrl = "https://api-sandbox.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
 
 $exchange = $exchangesApi->createCustomerExchange(new CreateExchangeRequest([
     "_links" => [
@@ -221,7 +223,7 @@ $exchange = $exchangesApi->createCustomerExchange(new CreateExchangeRequest([
         ],
         "timestamp" => "2022-07-11T06:06:23Z"
     ]
-]), "74a207b2-b7b7-4efa-8bf8-582148e7b980");
+]), $customerUrl);
 
 $exchange; # => https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 ?>

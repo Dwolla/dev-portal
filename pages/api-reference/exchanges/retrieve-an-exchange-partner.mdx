@@ -70,8 +70,9 @@ exchange_partner.id # => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $exchangePartnersApi = new ExchangepartnersApi($apiClient);
+$exchangePartnerUrl = "https://api.dwolla.com/exchange-partners/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a";
 
-$exchangePartner = $exchangePartnersApi->id("e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a");
+$exchangePartner = $exchangePartnersApi->id($exchangePartnerUrl);
 $exchangePartner->id; # => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
 ?>
 ```
