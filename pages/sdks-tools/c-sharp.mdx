@@ -1,0 +1,163 @@
+---
+title: "C#"
+description: "<Pending feedback from marketing>"
+meta:
+  title: "C# | Dwolla API Documentation"
+  description: "<Pending feedback from marketing>"
+---
+
+## Getting Started
+
+### Installation
+
+To begin using this SDK, you will first need to download it to your machine. We use
+[NuGet](https://www.nuget.org/packages/Dwolla.Client) to distribute this package. Check out the
+[Microsoft](https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-visual-studio)
+documentation for more information on how to install and manage packages from Nuget using Visual Studio.
+
+Here's an example using the
+[Package Manager Console](https://docs.microsoft.com/en-us/nuget/consume-packages/install-use-packages-powershell?view=vsmac-2022)
+
+```shell
+$ Install-Package Dwolla.Client -Version 5.2.2
+```
+
+### Initialization
+
+Before any API requests can be made, you must first determine which environment you will be using,
+as well as fetch the application key and secret. To fetch your application key and secret, please
+visit one of the following links:
+
+- Production: https://dashboard.dwolla.com/applications
+- Sandbox: https://dashboard-sandbox.dwolla.com/applications
+
+Finally, you can create an instance of `DwollaClient` by specifying which environment you will be using—Production or Sandbox—via the `isSandbox` boolean flag.
+
+```csharp
+var client = DwollaClient.Create(isSandbox: true);
+```
+
+#### Tokens
+
+Application access tokens are used to authenticate against the API on behalf of an application.
+Application tokens can be used to access resources in the API that either belong to the application
+itself (`webhooks`, `events`, `webhook-subscriptions`) or the Dwolla Account that owns the
+application (`accounts`, `customers`, `funding-sources`, etc.). Application tokens are obtained by
+using the [`client_credentials`](https://tools.ietf.org/html/rfc6749#section-4.4) OAuth grant type:
+
+```csharp
+var tokenRes = await client.PostAuthAsync<AppTokenRequest, TokenResponse>(
+    new Uri($"{client.AuthBaseAddress}/token"),
+    new AppTokenRequest {Key = "...", Secret = "..."});
+```
+
+_Application access tokens are short-lived: 1 hour. They do not include a `refresh_token`. When it
+expires, generate a new one using `AppTokenRequest`._
+
+## Making Requests
+
+Once you've created a `DwollaClient`, currently, you can make low-level HTTP requests.
+
+### Low-Level Requests
+
+To make low-level HTTP requests, you can use the `GetAsync()`, `PostAsync()`, `UploadAsync()` and
+`DeleteAsync()` methods with the available
+[request models](https://github.com/Dwolla/dwolla-v2-csharp/blob/main/Dwolla.Client/Models/Requests).
+These methods will return responses that can be mapped to one of the available
+[response models](https://github.com/Dwolla/dwolla-v2-csharp/blob/main/Dwolla.Client/Models/Responses).
+
+#### Setting Headers
+
+To specify headers for a request (e.g., `Authorization`), you can pass a `Headers` object as the last argument.
+
+```csharp
+var headers = new Headers {{"Authorization", $"Bearer {tokenRes.Content.Token}"}};
+client.GetAsync<GetCustomersResponse>(url, headers);
+```
+
+#### `GET`
+
+```csharp
+// GET api.dwolla.com/customers
+var url = new Uri("https://api.dwolla.com/customers");
+client.GetAsync<GetCustomersResponse>(url);
+```
+
+#### `POST`
+
+```csharp
+// POST api.dwolla.com/customers
+var url = new Uri("https://api.dwolla.com/customers/");
+var request = new CreateCustomerRequest
+{
+  FirstName = "Jane",
+  LastName = "Doe",
+  Email = "jane.doe@email.com"
+};
+var res = await PostAsync<CreateCustomerRequest, EmptyResponse>(url, request, headers);
+//res.Response.Headers.Location => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f
+// POST api.dwolla.com/customers/{id}/documents multipart/form-data foo=...
+var url = new Uri("https://api-sandbox.dwolla.com/customers/{id}/documents");
+var request = new UploadDocumentRequest
+{
+    DocumentType = "idCard",
+    Document = new File
+    {
+        ContentType = "image/png",
+        Filename = "filename.jpg",
+        Stream = fileStream
+    }
+};
+client.UploadAsync<UploadDocumentRequest, EmptyResponse>(url, request, headers);
+```
+
+#### `DELETE`
+
+```csharp
+// DELETE api.dwolla.com/resource
+var url = "https://api.dwolla.com/labels/{id}"
+client.DeleteAsync<object>(url, null);
+```
+
+### Example App
+
+Take a look at the
+[Example Application](https://github.com/Dwolla/dwolla-v2-csharp/tree/main/ExampleApp) for
+examples on how to use the available C# models to call the Dwolla API. Before you can begin using the app, however, you will need to specify a `DWOLLA_APP_KEY` and
+`DWOLLA_APP_SECRET` environment variable.
+
+#### Docker
+
+If you prefer to use Docker to run ExampleApp locally, a Dockerfile file is included in the root directory. You can either build the Docker image with your API key and secret (by passing the values via CLI), or you can specify the values for the `app_key` and `app_secret` build arguments in Dockerfile. Finally, you will need to build and run the Docker image. More information on this topic can be found on [Docker's website](https://docs.docker.com/build/hellobuild/), or you can find some example commands below.
+
+##### Building Docker Container
+
+```shell
+# Building container by specifying build arguments.
+# In this configuration, you will not need to modify Dockerfile. All of the
+# necessary arguments are passed via Docker's `--build-arg` option.
+$ docker build \
+    --build-arg app_key=YOUR_API_KEY \
+    --build-arg app_secret=YOUR_APP_SECRET \
+    -t dwolla/csharp-example-app:latest .
+
+# Building container without specifying build arguments.
+# In this configuration, you will need to specify your account API key and
+# secret (retrieved from Dwolla) in the Dockerfile file.
+$ docker build -t dwolla/csharp-example-app:latest .
+```
+
+##### Running Container Instance
+
+```shell
+# Running Docker container in interactive shell
+$ docker run --init -it dwolla/csharp-example-app:latest
+```
+
+## Community
+
+- If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or
+  by [creating a GitHub issue](https://github.com/Dwolla/dwolla-v2-csharp/issues/new).
+- If you would like to contribute to this library,
+  [bug reports](https://github.com/Dwolla/dwolla-v2-csharp/issues) and
+  [pull requests](https://github.com/Dwolla/dwolla-v2-csharp/pulls) are always appreciated!

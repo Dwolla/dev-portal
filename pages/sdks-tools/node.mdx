@@ -1,0 +1,151 @@
+---
+title: "Node"
+description: "<Pending feedback from marketing>"
+meta:
+  title: "Node | Dwolla API Documentation"
+  description: "<Pending feedback from marketing>"
+---
+
+# Node
+
+## Getting Started
+
+### Installation
+
+To begin using this SDK, you will first need to download and install it on your machine. We use [npm](https://www.npmjs.com/package/dwolla-v2) to distribute this package.
+
+```shell
+# npm
+$ npm install --save dwolla-v2
+
+# yarn
+$ yarn add dwolla-v2
+
+# pnpm
+$ pnpm add dwolla-v2
+```
+
+### Initialization
+
+Before any API requests can be made, you must first determine which environment you will be using, as well as fetch the application key and secret. To fetch your application key and secret, please visit one of the following links:
+
+- Production: https://dashboard.dwolla.com/applications
+- Sandbox: https://dashboard-sandbox.dwolla.com/applications
+
+Finally, you can create an instance of `Client` with `key` and `secret` replaced with the application key and secret that you fetched from one of the aforementioned links, respectively.
+
+```javascript
+const Client = require("dwolla-v2").Client;
+
+const dwolla = new Client({
+  environment: "sandbox", // Defaults to "production"
+  key: process.env.DWOLLA_APP_KEY,
+  secret: process.env.DWOLLA_APP_SECRET,
+});
+```
+
+## Making Requests
+
+Once you've created a `Client`, currently, you can make low-level HTTP requests. High-level abstraction is planned for this SDK; however, at the time of writing, it has not yet been fully implemented.
+
+### Low-Level Requests
+
+To make low-level HTTP requests, you can use the [`get()`](#get), [`post()`](#post), and [`delete()`](#delete) methods. These methods will return a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) containing the response object.
+
+The following snippet defines Dwolla's response object, both with a successful and errored response. Although the snippet uses [`try`/`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch), you can also use [`.then()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)/[`.catch()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch) if you prefer.
+
+An errored response is returned when Dwolla's servers respond with a status code that is greater than or equal to 400, whereas a successful response is when Dwolla's servers respond with a 200-level status code.
+
+```javascript
+try {
+  const response = await dwolla.get("customers");
+  // response.body      => Object or String depending on response type
+  // response.headers   => Headers { ... }
+  // response.status    => 200
+} catch (error) {
+  // error.body       => Object or String depending on response type
+  // error.headers    => Headers { ... }
+  // error.status     => 400
+}
+```
+
+#### `GET`
+
+```javascript
+// GET https://api.dwolla.com/customers?offset=20&limit=10
+const response = await dwolla.get("customers", {
+  offset: 20,
+  limit: 10,
+});
+
+console.log("Response Total: ", response.body.total);
+```
+
+#### `POST`
+
+```javascript
+// POST https://api.dwolla.com/customers body={ ... }
+// This request is not idempotent since `Idempotecy-Key` is not passed as a header
+const response = await dwolla.post("customers", {
+  firstName: "Jane",
+  lastName: "Doe",
+  email: "jane.doe@example.com",
+});
+
+console.log("Created Resource: ", response.headers.get("Location"));
+
+// POST https://api.dwolla.com/customers/{id}/documents multipart/form-data ...
+// Note: Requires form-data peer dependency to be downloaded and installed
+const formData = new FormData();
+formData.append("documentType", "license");
+formData.append(
+  "file",
+  ffs.createReadStream("mclovin.jpg", {
+    contentType: "image/jpeg",
+    filename: "mclovin.jpg",
+    knownLength: fs.statSync("mclovin.jpg").size,
+  })
+);
+
+const response = await dwolla.post(`${customerUrl}/documents`, formData);
+console.log("Created Resource: ", response.headers.get("Location"));
+```
+
+#### `DELETE`
+
+```javascript
+// DELETE https://api.dwolla.com/[resource]
+await dwolla.delete("resource");
+```
+
+#### Setting Headers
+
+When a request is sent to Dwolla, a few headers are automatically sent (e.g., `Accept`, `Content-Type`, `User-Agent`); however, if you would like to send additional headers, such as `Idempotency-Key`, this can be done by passing in a third (3rd) argument for `POST` requests.
+
+To learn more about how to make your requests idempotent, check out our [developer documentation](https://developers.dwolla.com/api-reference#idempotency-key) on this topic!
+
+```javascript
+// POST https://api.dwolla.com/customers body={ ... }  headers={ ..., Idempotency-Key=... }
+// This request is idempotent since `Idempotency-Key` is passed as a header
+const response = await dwolla.post(
+  "customers",
+  {
+    firstName: "Jane",
+    lastName: "Doe",
+    email: "jane.doe@example.com",
+  },
+  {
+    "Idempotency-Key": "[RANDOMLY_GENERATED_KEY_HERE]",
+  }
+);
+```
+
+## Community
+
+- If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-v2-node/issues/new).
+- If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-v2-node/issues) and [pull requests](https://github.com/Dwolla/dwolla-v2-node/pulls) are always appreciated!
+
+## Docker
+
+If you prefer to use Docker to run dwolla-v2-node locally, a Dockerfile is included at the root directory.
+Follow these instructions from [Docker's website](https://docs.docker.com/build/hellobuild/) to create a Docker image from the Dockerfile, and run it.
