@@ -79,7 +79,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
     href: "/sdks-tools",
     IconSvg: SdksToolsIcon,
-    isSection: false,
+    isSection: true,
     text: "SDKs & Tools",
     isExternal: false,
   },
