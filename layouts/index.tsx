@@ -1,11 +1,11 @@
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { MDXProvider } from "@mdx-js/react";
+import Button from "@mui/material/Button";
 import { AnchorsSetter } from "../app/components/util/Anchors";
 import MDXStyleWrapper from "../app/components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../app/components/util/groupCodeExamples";
 import AlertBar from "../app/components/base/AlertBar";
-import Button from "../app/components/base/Button";
 import Card from "../app/components/base/Card";
 import CardGrid from "../app/components/base/CardGrid";
 import CodeExamples, {
