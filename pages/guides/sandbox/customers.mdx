@@ -15,7 +15,7 @@ import guidesIcon from "../../../assets/images/content-images/content-icons/guid
 
 # Testing Customers
 
-#### Manage Customers
+### Manage Customers in the Dashboard
 
 The [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) allows you to manage Customers, as well as transfers associated with the Customers that belong to your Sandbox account. Once your application has [created its Customers](https://developers.dwolla.com/api-reference/customers/create), you can access the [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) to validate that the request was recorded properly in our test environment.
 
@@ -25,9 +25,7 @@ The [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) allows you to mana
   href="/concepts/customer-types"
 />
 
-##### **Verified Customers**
-
-## Simulate identity verification statuses
+### Simulate identity verification statuses
 
 There are various reasons a [Verified Customer](/concepts/customer-types#verified-customer) may have a status other than `verified` after the initial Customer creation. You will want your app to be prepared to handle these alternative statuses.
 
@@ -40,7 +38,7 @@ In production, Dwolla will place the Verified Customer in either the `retry`, `k
 With business Verified Customers, documents may be needed for the Controller, the business, or both the Controller and business. To simulate the `document` status for the controller, submit `document` in the **controller firstName** parameter.
 Similarly, to simulate the `document` status for the business, submit `document` in the **businessName** parameter. To simulate both the Controller and the business in `document`, submit `document` in both the **controller firstName** and the **businessName** parameters.
 
-## Simulate KBA verified and failed events
+### Simulate KBA verified and failed events
 
 If a Personal Verified Customer isn’t systematically identity-verified after their second attempt to retry their information, the Customer may be placed in a `kba` status and will be required to successfully answer at least three out of four knowledge based authentication (KBA) questions in order to pass verification.
 
@@ -54,7 +52,7 @@ To simulate the `customer_kba_verification_passed` event as the result of KBA su
 
 To simulate the `customer_kba_verification_failed` event as the result of KBA failure in Sandbox, answer the questions with any answer choices other than “None of the above” or “I have never been associated with this vehicle”. As a result, the Customer will be placed in a document status and the `customer_verification_document_needed` event is triggered.
 
-## Simulate document upload approved and failed events
+### Simulate document upload approved and failed events
 
 If a Verified Customer isn't systematically identity-verified, the Customer may be placed in a `document` status and will require an identifying document to be uploaded and reviewed. Reference either the [personal customer verification](/guides/personal-verified-customer/handle-verification-statuses#document-types) or [business customer verification](/guides/business-verified-customer/handle-verification-statuses#document-types) guide for acceptable forms of identifying documents for `Verified Customers`.
 
