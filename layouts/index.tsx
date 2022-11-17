@@ -1,6 +1,8 @@
+import React from "react";
 import styled from "@emotion/styled";
 import Head from "next/head";
 import { MDXProvider } from "@mdx-js/react";
+import { useRouter } from "next/router";
 import { AnchorsSetter } from "../app/components/util/Anchors";
 import MDXStyleWrapper from "../app/components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../app/components/util/groupCodeExamples";
@@ -32,6 +34,7 @@ import {
   AnchoredH6,
 } from "../app/components/base/AnchoredHeading";
 import { Props } from "./types";
+import OpenGraph from "../app/modules/opengraph";
 
 const MDXContainer = styled.div`
   display: flex;
@@ -70,6 +73,9 @@ const MDX_COMPONENTS = {
 };
 
 export function DefaultMDXWrapper({ children, frontMatter }: Props) {
+  const router = useRouter();
+  const openGraph = OpenGraph(frontMatter);
+
   return (
     <MDXContainer>
       {frontMatter.meta && (
@@ -83,6 +89,33 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
               key="description"
             />
           )}
+
+          {/** Open Graph Implementation **/}
+          {!!openGraph.get("type") && (
+            <meta property="og:type" content={openGraph.get("type")} />
+          )}
+
+          <meta
+            property="og:title"
+            content={openGraph.getTitleOrMetaDefault()}
+          />
+
+          {!!openGraph.getDescriptionOrMetaDefault() && (
+            <meta
+              property="og:description"
+              content={openGraph.getDescriptionOrMetaDefault()}
+            />
+          )}
+
+          <meta
+            property="og:url"
+            content={openGraph.getUrlOrCanonicalDefault(router)}
+          />
+
+          <meta
+            property="og:site_name"
+            content={openGraph.getSiteNameOrElse("Dwolla Developers")}
+          />
         </Head>
       )}
 
