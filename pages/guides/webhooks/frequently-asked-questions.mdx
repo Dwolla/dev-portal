@@ -86,9 +86,7 @@ meta:
 </Collapsible>
 
 <Collapsible
-  triggerText={
-    <span>Q: My webhook subscription was paused. What are the next steps?</span>
-  }
+  triggerText={<span>Q: My webhook subscription was paused. Why?</span>}
 >
   <p>
     Dwolla automatically{" "}
@@ -101,15 +99,54 @@ meta:
     <a href="/api-reference/webhook-subscriptions#acknowledgement-and-retries">
       address the issue that’s causing failures
     </a>
-    ,{" "}
-    <a href="/api-reference/webhook-subscriptions/update#update-a-webhook-subscription">
+    , <a href="/api-reference/webhook-subscriptions/update#update-a-webhook-subscription">
       unpause the subscription
-    </a>{" "}
-    and{" "}
-    <a href="/api-reference/webhooks/retry#retry-a-webhook">
+    </a> and <a href="/api-reference/webhooks/retry#retry-a-webhook">
       retry missed webhooks
+    </a>.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Will webhooks be automatically retried if my subscription was
+      previously paused or unavailable?
+    </span>
+  }
+>
+  <p>
+    No. If your webhook subscription was previously paused or unavailable,
+    Dwolla will not attempt to re-deliver webhooks. In this case, you can{" "}
+    <a href="/api-reference/webhook-subscriptions/list-webhooks">
+      list all webhooks by subscription
+    </a>
+    , filtering all that have zero attempts (in other words, the `attempts`
+    array is empty), and{" "}
+    <a href="/api-reference/webhooks/retry">
+      retrying each webhook individually
     </a>
     .
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: How do I know if a webhook request failed and needs to be retried?
+    </span>
+  }
+>
+  <p>
+    When{" "}
+    <a href="/api-reference/webhook-subscriptions/list-webhooks">
+      listing all webhooks by webhook subscription
+    </a>
+    , an embedded <code>attempts</code> array will include a{" "}
+    <code>response</code> object that includes a <code>statusCode</code>{" "}
+    property indicating the HTTP status code that Dwolla received when the
+    webhook attempt was made. If the status code that Dwolla received was >=300,
+    then the attempt was considered to have failed.
   </p>
 </Collapsible>
 
