@@ -11,6 +11,8 @@ meta:
   description: "Create, list, cancel, or retrieve transfer details for a Customer."
 ---
 
+import conceptIcon from "../../../assets/images/content-images/content-icons/concepts-icon.svg";
+
 # Transfers
 
 A transfer represents money being transferred from a `source` to a `destination`. Transfers are available for the `Customer` and `Account` resources.
@@ -116,7 +118,13 @@ A transfer represents money being transferred from a `source` to a `destination`
 
 The facilitator fee is a feature allowing for a flat rate amount to be removed from a payment as a fee, and sent to the creator of the Dwolla application. The fee does not affect the original payment amount, and exists as a separate [Transfer resource](https://developers.dwolla.com/api-reference/transfers#transfer-resource) with a unique transfer ID. Within a transfer request you can specify an optional `fees` request parameter, which is an array of [fee objects](https://developers.dwolla.com/api-reference/transfers#facilitator-fee-json-object) that can represent many unique fee transfers.
 
-For more information on collecting fees on payments, reference the [facilitator fee](https://developers.dwolla.com/concepts/facilitator-fee) resource article.
+<InlineCTA
+  icon={conceptIcon}
+  text="For more information on collecting fees on payments, reference the facilitator fee resource article."
+  href="https://developers.dwolla.com/concepts/facilitator-fee"
+/>
+
+<br />
 
 | Parameter | Description                                                                                                                           |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------- |
