@@ -91,6 +91,8 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
           )}
 
           {/** Open Graph Implementation **/}
+          <meta property="og:locale" content="en_US" />
+
           {!!openGraph.get("type") && (
             <meta property="og:type" content={openGraph.get("type")} />
           )}
@@ -116,6 +118,28 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
             property="og:site_name"
             content={openGraph.getSiteNameOrElse("Dwolla Developers")}
           />
+
+          {!!openGraph.getImageUrl() && (
+            <meta property="og:image" content={openGraph.getImageUrl()} />
+          )}
+
+          {!!openGraph.getImageMime() && (
+            <meta property="og:image:type" content={openGraph.getImageMime()} />
+          )}
+
+          {!!openGraph.getImageHeight() && (
+            <meta
+              property="og:image:height"
+              content={openGraph.getImageHeight()}
+            />
+          )}
+
+          {!!openGraph.getImageWidth() && (
+            <meta
+              property="og:image:width"
+              content={openGraph.getImageWidth()}
+            />
+          )}
         </Head>
       )}
 
@@ -135,6 +159,14 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
       <OnThisPage />
     </MDXContainer>
   );
+}
+
+export async function getStaticProps(context) {
+  console.log("Context: ", context);
+
+  return {
+    props: {},
+  };
 }
 
 export default function MainLayout({ children, frontMatter }: Props) {

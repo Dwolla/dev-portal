@@ -9,6 +9,23 @@ export interface FrontMatterGuide {
   step?: number;
 }
 
+export interface FrontMatterOpenGraphImage {
+  /**
+   * Required, filename of the image.
+   */
+  filename?: string;
+
+  /**
+   * Optional, the height of the image.
+   */
+  height?: string;
+
+  /**
+   * Optional, the width of the image.
+   */
+  width?: string;
+}
+
 export interface FrontMatterMeta {
   title?: string;
   description?: string;
@@ -37,12 +54,10 @@ export interface FrontMatterOpenGraph {
   description?: string;
 
   /**
-   * Optional, also generates if present:
-   *  - og:image:type (MIME type)
-   *  - og:image:height
-   *  - og:image:width
+   * Optional, includes nested image metadata, such as URL, height, and width.
+   * @see {@link https://ogp.me/#structured Structured Properties - Open Graph}
    */
-  image?: string;
+  image?: FrontMatterOpenGraphImage;
 
   /**
    * Optional, defaults to current page canonical URL.
