@@ -102,12 +102,10 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
             content={openGraph.getTitleOrMetaDefault()}
           />
 
-          {!!openGraph.getDescriptionOrMetaDefault() && (
-            <meta
-              property="og:description"
-              content={openGraph.getDescriptionOrMetaDefault()}
-            />
-          )}
+          <meta
+            property="og:description"
+            content={openGraph.getDescriptionOrMetaDefault()}
+          />
 
           <meta
             property="og:url"
