@@ -161,14 +161,6 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
   );
 }
 
-export async function getStaticProps(context) {
-  console.log("Context: ", context);
-
-  return {
-    props: {},
-  };
-}
-
 export default function MainLayout({ children, frontMatter }: Props) {
   return (
     <DefaultMDXWrapper frontMatter={frontMatter}>{children}</DefaultMDXWrapper>
