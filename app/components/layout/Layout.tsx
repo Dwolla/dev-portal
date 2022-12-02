@@ -141,7 +141,7 @@ export default function Layout({
   };
   topBarProps: TopBarProps;
   apiStatus: APIStatus;
-  announcement?: string;
+  announcement?: JSX.Element;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
 
