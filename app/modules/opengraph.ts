@@ -29,7 +29,8 @@ const getOrElse = <T, D>(tryVal: T, defaultVal: D): T | D =>
 const stripSlashes = (str: string): string => str.replace(/^\/|\/$/g, "");
 
 const OpenGraph = (frontMatter: FrontMatter) => ({
-  get: (key: keyof FrontMatter["og"]) => frontMatter.og?.[key],
+  get: (key: keyof FrontMatter["og"]): string =>
+    frontMatter.og?.[key] as string,
   getDescriptionOrMetaDefault: (): string =>
     getOrElse(frontMatter.og?.description, frontMatter.meta?.description),
   getImageHeight: (): string | undefined => frontMatter.og?.image?.height,
