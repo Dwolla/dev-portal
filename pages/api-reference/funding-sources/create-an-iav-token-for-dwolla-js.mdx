@@ -11,9 +11,18 @@ meta:
 
 <AlertBar variation="warning">
   Deprecation Announcement: At the end of 2022, Dwolla will sunset our Instant
-  Account Verification (IAV) product, which is powered by Dwolla.js. As an
-  alternative bank account verification option, we recommend utilizing one of
-  our third-party data providers (e.g. Plaid) prior to December 31, 2022.
+  Account Verification (IAV) product, which is powered by Dwolla.js. As
+  alternative bank account verification options, we recommend utilizing one of
+  our integrated third-party data providers prior to December 31, 2022 —{" "}
+  <a href="https://github.com/Dwolla/integration-examples/tree/main/packages/finicity-token-exchange">
+    Finicity
+  </a>{" "}
+  or{" "}
+  <a href="https://github.com/Dwolla/integration-examples/tree/main/packages/mx-token-exchange">
+    MX
+  </a>{" "}
+  (via our <a href="/concepts/secure-exchange">Secure Exchange</a>), or{" "}
+  <a href="/guides/plaid">Plaid</a>.
 </AlertBar>
 
 Dwolla.js is a client-side library that allows you to `add and verify` a funding source for your Customer without having any sensitive data hit your server. This section details how to create a token that will be sent to the client and used to authenticate the HTTP request asking Dwolla to `add and verify` a new funding source.
