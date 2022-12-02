@@ -16,15 +16,15 @@ The facilitator fee is a feature allowing for a flat rate amount to be removed f
 
 #### Items to note before charging fees:
 
-- Fees can only be applied to a transaction between two parties
+- Fees cannot be applied on [me-to-me](/guides/transfer-money-me-to-me) transfers where the source is the Customer's Dwolla Balance
 - Facilitator fees can be debited from either the sending or receiving user of the payment
-- The sum of fees cannot exceed 50% of the original transfer amount. 
+- The sum of fees cannot exceed 50% of the original transfer amount
 <AlertBar variation="info">
- This limit can be removed upon further approval from the Dwolla team. If approved, only the sender of the transfer can be charged fees that exceed 50% of the transfer amount. Furthermore, the sum of fees cannot exceed the transaction limit of the sender. Please contact support@dwolla.com or your account manager for approval. 
+ This limit can be removed upon further approval from the Dwolla team. If approved, only the sender of the transfer can be charged fees that exceed 50% of the transfer amount. Furthermore, the sum of fees cannot exceed the transaction limit of the sender. Please contact support@dwolla.com or your account manager for approval.
 </AlertBar>
 - A facilitator fee must be at least $0.01
 - Multiple facilitator fees can be associated with a single payment
-- You must clearly communicate the fee and its payment terms to your end user and obtain the user’s express consent to charge the fee.
+- You must clearly communicate the fee and its payment terms to your end user and obtain the user’s express consent to charge the fee
 
 ### Charging fees on transfers
 
@@ -32,7 +32,7 @@ Fees are programmatically set on an individual transfer API request. Within a tr
 
 A fee object is made up of a `_links` and an `amount` JSON object. The `_links` object contains `charge-to`, which represents the associated source or destination [Customer](https://developers.dwolla.com/api-reference/customers) or [Account](https://developers.dwolla.com/api-reference/accounts) resource that will assume the fee. The `amount` object contains `value` and `currency` keys corresponding to the fee amount and `USD` respectively.
 
-When a facilitator fee is added to a transfer request, it is treated as a separate transfer which does not affect a Customer's weekly, or per transaction limit. 
+When a facilitator fee is added to a transfer request, it is treated as a separate transfer which does not affect a Customer's weekly, or per transaction limit.
 
 #### A fee object:
 

@@ -18,9 +18,18 @@ meta:
 
 <AlertBar variation="warning">
   Deprecation Announcement: At the end of 2022, Dwolla will sunset our Instant
-  Account Verification (IAV) product, which is powered by Dwolla.js. As an
-  alternative bank account verification option, we recommend utilizing one of
-  our third-party data providers (e.g. Plaid) prior to December 31, 2022.
+  Account Verification (IAV) product, which is powered by Dwolla.js. As
+  alternative bank account verification options, we recommend utilizing one of
+  our integrated third-party data providers prior to December 31, 2022 —{" "}
+  <a href="https://github.com/Dwolla/integration-examples/tree/main/packages/finicity-token-exchange">
+    Finicity
+  </a>{" "}
+  or{" "}
+  <a href="https://github.com/Dwolla/integration-examples/tree/main/packages/mx-token-exchange">
+    MX
+  </a>{" "}
+  (via our <a href="/concepts/secure-exchange">Secure Exchange</a>), or{" "}
+  <a href="/guides/plaid">Plaid</a>.
 </AlertBar>
 
 For Dwolla API customers, `dwolla.js` has the added function of facilitating Instant Account Verification (IAV) on their customer's bank or credit union account. This resource guide will walk you through the process of generating an IAV token, and rendering the IAV flow to attach a verified bank funding-source to a Customer account. By calling a separate function `dwolla.iav.start()`, your application can render the IAV flow within a specified container. `dwolla.iav.start()` allows for customization through configurable options such as:
