@@ -121,12 +121,10 @@ meta:
     <a href="/api-reference/webhook-subscriptions/list-webhooks">
       list all webhooks by subscription
     </a>
-    , filtering all that have zero attempts (in other words, the `attempts`
-    array is empty), and{" "}
-    <a href="/api-reference/webhooks/retry">
+    , filtering all that have zero attempts (in other words, the `attempts` array
+    is empty), and <a href="/api-reference/webhooks/retry">
       retrying each webhook individually
-    </a>
-    .
+    </a>.
   </p>
 </Collapsible>
 
@@ -142,11 +140,12 @@ meta:
     <a href="/api-reference/webhook-subscriptions/list-webhooks">
       listing all webhooks by webhook subscription
     </a>
-    , an embedded <code>attempts</code> array will include a{" "}
-    <code>response</code> object that includes a <code>statusCode</code>{" "}
-    property indicating the HTTP status code that Dwolla received when the
-    webhook attempt was made. If the status code that Dwolla received was >=300,
-    then the attempt was considered to have failed.
+    , an embedded <code>attempts</code> array will include a <code>
+      response
+    </code> object that includes a <code>statusCode</code> property indicating the
+    HTTP status code that Dwolla received when the webhook attempt was made. If the
+    status code that Dwolla received was >=300, then the attempt was considered to
+    have failed.
   </p>
 </Collapsible>
 
