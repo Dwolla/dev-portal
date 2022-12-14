@@ -137,10 +137,19 @@ const LegalDesc = styled.p`
   }
 `;
 
-export interface FooterLink {
+interface SharedFooterLink {
   text: string;
+}
+
+interface FooterLinkWithHyperlink extends SharedFooterLink {
   href: string;
 }
+
+interface FooterLinkWithOnClick<T = void> extends SharedFooterLink {
+  onClick: () => MaybePromise<T>;
+}
+
+export type FooterLink = FooterLinkWithHyperlink | FooterLinkWithOnClick;
 
 interface FooterProps {
   links: Record<string, FooterLink[]>;
@@ -169,8 +178,13 @@ export default function Footer(props: FooterProps) {
 
             <LinkGroupList>
               {v.map((i) => (
-                <LinkGroupItem key={i.href}>
-                  <LinkGroupLink href={i.href}>{i.text}</LinkGroupLink>
+                <LinkGroupItem key={i.text}>
+                  <LinkGroupLink
+                    href={(i as FooterLinkWithHyperlink)?.href || "#"}
+                    onClick={(i as FooterLinkWithOnClick)?.onClick}
+                  >
+                    {i.text}
+                  </LinkGroupLink>
                 </LinkGroupItem>
               ))}
             </LinkGroupList>

@@ -5,6 +5,7 @@ import TagManager from "react-gtm-module";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material";
+import Script from "next/script";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
@@ -23,6 +24,7 @@ import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
 import createEmotionCache from "../app/modules/emotion-cache";
 import theme from "../app/theme";
+import { FooterLink } from "../app/components/layout/Footer";
 
 function GoogleTagManager() {
   useEffect(() => {
@@ -104,7 +106,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   },
 ];
 
-const FOOTER_LINKS = {
+const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Dwolla: [
     { text: "About", href: "https://www.dwolla.com/about/" },
     { text: "Blog", href: "https://www.dwolla.com/updates/" },
@@ -112,6 +114,11 @@ const FOOTER_LINKS = {
     { text: "Contact Sales", href: "https://www.dwolla.com/contact/" },
     { text: "Terms of Service", href: "https://www.dwolla.com/legal/tos/" },
     { text: "Privacy Policy", href: "https://www.dwolla.com/legal/privacy/" },
+    {
+      text: "Privacy Options",
+      onClick: () =>
+        window.Osano.cm.showDialog("osano-cm-dom-info-dialog-open"),
+    },
   ],
   Product: [
     { text: "Support", href: "https://support.dwolla.com/s/" },
@@ -246,6 +253,10 @@ export default function MyApp({
           router={router}
         />
       </ThemeProvider>
+      <Script
+        strategy="beforeInteractive"
+        src="https://cmp.osano.com/AzqJMPTLxS9IY2EXW/246df7a7-bd5d-4e24-bc61-0e96824367c8/osano.js"
+      />
     </CacheProvider>
   );
 }

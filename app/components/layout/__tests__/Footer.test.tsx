@@ -10,6 +10,11 @@ test("Footer", () => {
       { text: "Contact Sales", href: "https://www.dwolla.com/contact/" },
       { text: "Terms of Service", href: "https://www.dwolla.com/legal/tos/" },
       { text: "Privacy Policy", href: "https://www.dwolla.com/legal/privacy/" },
+      {
+        text: "Privacy Options",
+        onClick: () =>
+          window.Osano.cm.showDialog("osano-cm-dom-info-dialog-open"),
+      },
     ],
     Product: [
       { text: "Resources", href: "https://www.dwolla.com/resources/" },
