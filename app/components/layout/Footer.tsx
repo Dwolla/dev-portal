@@ -3,12 +3,12 @@ import Link from "next/link";
 import map from "lodash.map";
 import {
   HEADLINE_TEXT,
-  LAYOUT_BORDER,
-  ORANGE_PRIMARY,
   PARAGRAPH_TEXT,
+  ORANGE_PRIMARY,
+  LAYOUT_BORDER,
 } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
-import { breakDown, breakUp } from "../breakpoints";
+import { breakUp, breakDown } from "../breakpoints";
 import logo from "../../../assets/images/dwolla-developers-logo.svg";
 
 const Container = styled.div`
