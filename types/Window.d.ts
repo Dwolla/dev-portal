@@ -6,4 +6,9 @@ interface Window {
       create: Function;
     };
   };
+  Osano: {
+    cm: {
+      showDialog: Function;
+    };
+  };
 }

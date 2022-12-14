@@ -168,6 +168,10 @@ export default function Layout({
             box-sizing: border-box;
           }
 
+          .osano-cm-widget {
+            display: none;
+          }
+
           #dwollaCookieConsent {
             font-family: ${ROBOTO};
             color: ${HEADLINE_TEXT};
