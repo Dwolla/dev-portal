@@ -13,18 +13,7 @@ import {
 } from "body-scroll-lock";
 import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { POPPINS, ROBOTO } from "../typography";
-import { BOX_SHADOW_6 } from "../shadowDepths";
-import {
-  GREY_2,
-  WHITE_PRIMARY,
-  ORANGE_PRIMARY,
-  PURPLE_PRIMARY_BUTTON,
-  PURPLE_PRIMARY_HOVER,
-  PURPLE_PRIMARY_ACTIVE,
-  HEADLINE_TEXT,
-  LAYOUT_BORDER,
-} from "../colors";
+import { GREY_2, WHITE_PRIMARY, LAYOUT_BORDER } from "../colors";
 import { breakUp, breakDown } from "../breakpoints";
 import { Z_TOB_BAR } from "../zIndexes";
 import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
@@ -170,39 +159,6 @@ export default function Layout({
 
           .osano-cm-widget {
             display: none;
-          }
-
-          #dwollaCookieConsent {
-            font-family: ${ROBOTO};
-            color: ${HEADLINE_TEXT};
-            line-height: 22px;
-
-            a {
-              color: ${ORANGE_PRIMARY};
-              text-decoration: none;
-
-              &:hover {
-                text-decoration: underline;
-              }
-            }
-
-            div {
-              button {
-                font-family: ${POPPINS};
-                background-color: ${PURPLE_PRIMARY_BUTTON};
-                border-color: transparent;
-
-                :hover,
-                :focus {
-                  background-color: ${PURPLE_PRIMARY_HOVER};
-                  box-shadow: ${BOX_SHADOW_6};
-                }
-
-                :active {
-                  background-color: ${PURPLE_PRIMARY_ACTIVE};
-                }
-              }
-            }
           }
         `}
       />
