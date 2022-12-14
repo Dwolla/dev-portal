@@ -100,6 +100,17 @@ exports[`Footer 1`] = `
             Privacy Policy
           </a>
         </li>
+        <li
+          className="css-146nff3-LinkGroupItem eg0edpy4"
+        >
+          <a
+            className="css-1yfy9it-LinkGroupLink eg0edpy3"
+            href="#"
+            onClick={[Function]}
+          >
+            Privacy Options
+          </a>
+        </li>
       </ul>
     </div>
     <div
