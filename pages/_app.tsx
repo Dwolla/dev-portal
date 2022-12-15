@@ -117,7 +117,7 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
     {
       text: "Privacy Options",
       onClick: () =>
-        window.Osano.cm.showDialog("osano-cm-dom-info-dialog-open"),
+        window.Osano.cm.showDrawer("osano-cm-dom-info-dialog-open"),
     },
   ],
   Product: [

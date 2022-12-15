@@ -8,7 +8,7 @@ interface Window {
   };
   Osano: {
     cm: {
-      showDialog: Function;
+      showDrawer: Function;
     };
   };
 }
