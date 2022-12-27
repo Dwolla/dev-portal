@@ -8,6 +8,8 @@ meta:
 
 # Ruby
 
+`dwolla_v2` is available on [RubyGems](https://rubygems.org/gems/dwolla_v2) with [source code](https://github.com/Dwolla/dwolla-v2-ruby) available on our GitHub page.
+
 ## Getting Started
 
 ### Installation
@@ -110,13 +112,13 @@ $dwolla.post "customers", { firstName: "John", lastName: "Doe", email: "jd@doe.c
                           { 'Idempotency-Key': 'a52fcf63-0730-41c3-96e8-7147b5d1fb01' }
 ```
 
-#### Responses
+### Responses
 
 The following snippets demonstrate successful and errored responses from the Dwolla API.
 
 An errored response is returned when Dwolla's servers respond with a status code that is greater than or equal to 400, whereas a successful response is when Dwolla's servers respond with a 200-level status code.
 
-##### Success
+#### Success
 
 Successful requests return a `DwollaV2::Response`.
 
@@ -131,7 +133,7 @@ res._links.events.href
 # => "https://api-sandbox.dwolla.com/events"
 ```
 
-##### Error
+#### Error
 
 If the server returns an error, a `DwollaV2::Error` (or one of its subclasses) will be raised.
 `DwollaV2::Error`s are similar to `DwollaV2::Response`s.
@@ -153,7 +155,7 @@ rescue DwollaV2::Error => e
 end
 ```
 
-###### `DwollaV2::Error` subclasses:
+##### `DwollaV2::Error` subclasses:
 
 _See https://developers.dwolla.com/api-reference#errors for more info._
 

@@ -9,6 +9,9 @@ meta:
 
 # Python
 
+`dwollav2` is available on [PyPi](https://pypi.python.org/pypi/dwollav2) with
+[source code](https://github.com/Dwolla/dwolla-v2-python) available on our GitHub page.
+
 ## Getting Started
 
 ### Installation
@@ -120,6 +123,14 @@ token.post('customers', { 'firstName': 'John', 'lastName': 'Doe', 'email': 'jd@d
                         { 'Idempotency-Key': 'a52fcf63-0730-41c3-96e8-7147b5d1fb01' })
 ```
 
+### Responses
+
+The following snippets demonstrate successful and errored responses from the Dwolla API.
+
+An errored response is returned when Dwolla's servers respond with a status code that is greater than or equal to 400, whereas a successful response is when Dwolla's servers respond with a 200-level status code.
+
+#### Success
+
 ```python
 res = token.get('/')
 
@@ -133,7 +144,7 @@ res.body['_links']['events']['href']
 # => 'https://api-sandbox.dwolla.com/events'
 ```
 
-##### Error
+#### Error
 
 If the server returns an error, a `dwollav2.Error` (or one of its subclasses) will be raised.
 `dwollav2.Error`s are similar to `Response`s.
@@ -154,7 +165,7 @@ except dwollav2.Error:
   # ...
 ```
 
-###### `dwollav2.Error` subclasses:
+##### `dwollav2.Error` subclasses:
 
 _See https://developers.dwolla.com/api-reference#errors for more info._
 

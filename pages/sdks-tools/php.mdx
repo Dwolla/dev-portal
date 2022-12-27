@@ -1,0 +1,157 @@
+---
+title: "PHP"
+description: "Use Dwolla’s SDK for PHP to build applications that interact with the Dwolla API to perform account-to-account payment functions."
+meta:
+  title: "PHP | Dwolla API Documentation"
+  description: "Use Dwolla’s SDK for PHP to build applications that interact with the Dwolla API to perform account-to-account payment functions."
+---
+
+# PHP
+
+`dwolla-swagger-php` is available on [Packagist](https://packagist.org/packages/dwolla/dwollaswagger) with [source code](https://github.com/Dwolla/dwolla-swagger-php) available on our GitHub page.
+
+## Getting Started
+
+### Installation
+
+To begin using this SDK, you will first need to download it to your machine. We use [Packagist](https://packagist.org/packages/dwolla/dwollaswagger) to distribute this package, which allows it to be downloaded via [Composer](https://getcomposer.org/).
+
+```shell
+$ composer require dwolla/dwollaswagger
+$ composer install
+```
+
+To use, just `require` your Composer `autoload.php` file.
+
+```php
+require("../path/to/vendor/autoload.php");
+```
+
+### Initialization
+
+Before any API requests can be made, you must first determine which environment you will be using, as well as fetch the application key and secret. To fetch your application key and secret, please visit one of the following links:
+
+- Production: https://dashboard.dwolla.com/applications
+- Sandbox: https://dashboard-sandbox.dwolla.com/applications
+
+Finally, you can create an instance of `ApiClient` after configuring the `username` and `password` values as the application key and secret that you fetched from one of the aforementioned links, respectively.
+
+```php
+DwollaSwagger\Configuration::$username = "API_KEY";
+DwollaSwagger\Configuration::$password = "API_SECRET";
+
+# For Sandbox
+$apiClient = new DwollaSwagger\ApiClient("https://api-sandbox.dwolla.com");
+
+# For Production
+$apiClient = new DwollaSwagger\ApiClient("https://api.dwolla.com");
+```
+
+#### Tokens
+
+Application access tokens are used to authenticate against the API on behalf of an application. Application tokens can be used to access resources in the API that either belong to the application itself (`webhooks`, `events`, `webhook-subscriptions`) or the Dwolla Account that owns the application (`accounts`, `customers`, `funding-sources`, etc.). Application tokens are obtained by using the [`client_credentials`](https://tools.ietf.org/html/rfc6749#section-4.4) OAuth grant type:
+
+```php
+$tokensApi = new DwollaSwagger\TokensApi($apiClient);
+$appToken = $tokensApi->token();
+```
+
+_Application access tokens are short-lived: 1 hour. They do not include a `refresh_token`. When it expires, generate a new one using `$tokensApi->token()`._
+
+## Making Requests
+
+The Dwolla client provides high-level methods for interacting with the Dwolla API.
+
+### High-Level Requests
+
+High-level methods make development easier by embedding information you would typically refer to [Dwolla's API reference](https://developers.dwolla.com/api-reference) for in the SDK itself, such as endpoints, request arguments, and response deserialization. `DwollaSwagger` contains the `API` module, which allows the user to make requests, as well as `models`, which are [data access objects](https://en.wikipedia.org/wiki/Data_access_object) that the library uses to deserialize responses.
+
+Each model represents the different kinds of requests and responses that can be made with the Dwolla API. View the full list in the [`models` directory](https://github.com/Dwolla/dwolla-swagger-php/tree/master/lib/models).
+
+The following API modules are available:
+
+- [Accounts](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Accounts.md)
+- [Beneficial Owners](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/BeneficialOwnersApi.md)
+- [Business Classifications](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/BusinessClassifications.md)
+- [Customers](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Customers.md)
+- [Documents](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Documents.md)
+- [Events](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Events.md)
+- [Funding Sources](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/FundingSources.md)
+- [Knowledge-Based Authentication (KBA)](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/KBAs.md)
+- [Labels](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Labels.md)
+- [Label Reallocations](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/LabelReallocations.md)
+- [Ledger Entries](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/LedgerEntries.md)
+- [Mass Payment Items](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/MassPaymentItems.md)
+- [On-Demand Authorizations](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/OnDemandAuthorizations.md)
+- [Root](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Root.md)
+- [Sandbox](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Sandbox.md)
+- [Tokens](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Tokens.md)
+- [Transfers](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Transfers.md)
+- [Webhooks](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/Webhooks.md)
+- [Webhook Subscriptions](https://github.com/Dwolla/dwolla-swagger-php/blob/main/docs/snippets/WebhookSubscriptions.md)
+
+#### Setting Headers
+
+You can pass custom headers in your requests as per the schema of the API models. Here is an example of creating a Customer with an [Idempotency-Key](https://developers.dwolla.com/api-reference#idempotency-key) header.
+
+```php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->create([
+  "firstName" => "Jane",
+  "lastName" => "Merchant",
+  "email" => "jmerchant@nomail.net",
+  "type" => "receive-only",
+  "businessName" => "Jane Corp llc",
+  "ipAddress" => "99.99.99.99"
+], [
+  "Idempotency-Key" => "51a62-3403-11e6-ac61-9e71128cae77"
+]);
+$customer; # => "https://api-sandbox.dwolla.com/customers/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+```
+
+### Responses
+
+#### Success
+
+```php
+# Retrieve an Account by ID
+$accountsApi = new DwollaSwagger\AccountsApi($apiClient);
+$account = $accountsApi->id("8a2cdc8d-629d-4a24-98ac-40b735229fe2");
+
+# Retrieve a Customer by ID
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customer = $customersApi->getCustomer($customerUrl);
+
+# Create a customer funding source
+$customerUrl = "https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C";
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fsApi->createCustomerFundingSource([
+  "routingNumber" => "222222226",
+  "accountNumber" => "123456789",
+  "bankAccountType" => "checking",
+  "name" => "Jane Doe’s Checking"
+], $customerUrl);
+$fundingSource; # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+#### Errors
+
+You can wrap your requests in a try/catch block to handle errors.
+
+```php
+try{
+    $new_customer = $customersApi->create([
+        //request_body
+    ]);
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getResponseBody(), "\n";
+}
+```
+
+## Community
+
+- If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-swagger-php/issues/new).
+- If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-swagger-php/issues) and [pull requests](https://github.com/Dwolla/dwolla-swagger-php/pulls) are always appreciated!
