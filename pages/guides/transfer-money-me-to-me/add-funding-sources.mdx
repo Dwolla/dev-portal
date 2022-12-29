@@ -14,12 +14,15 @@ Within Dwolla, the sending party must always [verify their bank account](/guides
 
 ## Bank Addition and Verification Methods
 
-There are currently two ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
+There are multiple ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
 
-| Bank Addition Method                                                                                                       | Will the bank be verified?    | Required Information            |
-| -------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------- |
-| API - Account & Routing Number                                                                                             | Optional - With Microdeposits | Bank Account and Routing Number |
-| Third Party - Plaid Link ([Example](https://github.com/Dwolla/integration-examples/tree/main/dwolla-plaid-funding-source)) | Yes                           | Online Bank Credentials         |
+| Bank Addition Method                                           | Will the bank be verified?    | Required Information            |
+| -------------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| API - Account & Routing Number                                 | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Dwolla.js](/guides/dwolla-js/add-a-bank-account)              | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Dwolla + Plaid integration](/guides/plaid)                    | Yes                           | Online banking Credentials      |
+| [Dwolla + Secure Exchange solution](/concepts/secure-exchange) | Yes                           | Online banking credentials      |
+| Other Approved Third-party Provider                            | Yes                           | Variable                        |
 
 ## Step 2A: Add a Bank to a Verified Personal Customer
 

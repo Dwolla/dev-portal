@@ -9,13 +9,13 @@ meta:
 
 # Create a funding source for a customer
 
-There are two methods available for adding a bank or credit union account to a Customer. You can either collect the Customer's bank account information and pass it to Dwolla via the Create a Customer Funding Source endpoint, or you can send the Customer through the the [Instant Account Verification](https://developers.dwolla.com/guides/dwolla-js/instant-account-verification) (IAV) flow which will add and verify a bank account within seconds.
+There are multiple methods available for adding a bank or credit union account to a Customer. This section outlines how to create a funding-source via the API.
 
-Before a Dwolla account or Dwolla API Customer is eligible to transfer money from their bank or credit union account they need to verify ownership of the account, either via Instant Account Verification (IAV) or micro-deposits. For more information on bank account verification, reference this [funding source verification](https://developers.dwolla.com/concepts/bank-funding-source#bank-addition--verification-methods) resource article.
+Before a Dwolla account or Dwolla API Customer is eligible to transfer money from their bank or credit union account they need to verify ownership of the account. For more information on bank account verification, reference this [funding source verification](https://developers.dwolla.com/concepts/bank-funding-source#bank-addition--verification-methods) resource article.
 
 ##### Virtual Account Numbers
 
-Just as your [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) can add bank accounts as Funding Sources, they also have the ability to add Virtual Account Numbers, or `VANs` as Funding Sources. Similarly, VANs that your VCRs create will also have a status of `verified` by default.
+Just as your [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) can add bank accounts as Funding Sources, they also have the ability to add Virtual Account Numbers, or `VANs` as Funding Sources. VANs will have a status of `verified` by default.
 
 <AlertBar variation="warning">
   Because VANs behave as a route to a Dwolla Balance, only{" "}
