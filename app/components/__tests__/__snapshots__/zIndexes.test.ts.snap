@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`zIndexes 1`] = `
-Object {
+{
   "Z_HERO_CARD": 20,
   "Z_TOB_BAR": 30,
 }
