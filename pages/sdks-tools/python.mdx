@@ -1,0 +1,216 @@
+---
+title: "Python"
+description: "Use Dwolla’s SDK for Python to build applications that interact with the Dwolla API to perform account-to-account payment functions."
+
+meta:
+  title: "Python | Dwolla API Documentation"
+  description: "Use Dwolla’s SDK for Python to build applications that interact with the Dwolla API to perform account-to-account payment functions."
+---
+
+# Python
+
+`dwollav2` is available on [PyPi](https://pypi.python.org/pypi/dwollav2) with
+[source code](https://github.com/Dwolla/dwolla-v2-python) available on our GitHub page.
+
+## Getting Started
+
+### Installation
+
+To begin using this SDK, you will first need to download it to your machine. We use [PyPi](https://pypi.python.org/pypi/dwollav2) to distribute this package from where you can automagically download it via [pip](https://pip.pypa.io/en/stable/installing/).
+
+```shell
+$ pip install dwollav2
+```
+
+### Initialization
+
+Before any API requests can be made, you must first determine which environment you will be using, as well as fetch the application key and secret. To fetch your application key and secret, please visit one of the following links:
+
+- Production: https://dashboard.dwolla.com/applications
+- Sandbox: https://dashboard-sandbox.dwolla.com/applications
+
+Finally, you can create an instance of `Client` with `key` and `secret` replaced with the application key and secret that you fetched from one of the aforementioned links, respectively.
+
+```python
+client = dwollav2.Client(
+  key = os.environ['DWOLLA_APP_KEY'],
+  secret = os.environ['DWOLLA_APP_SECRET'],
+  environment = 'sandbox', # defaults to 'production'
+  requests = {'timeout': 0.001}
+)
+```
+
+##### Configure an `on_grant` callback (optional)
+
+An `on_grant` callback is useful for storing new tokens when they are granted. The `on_grant`
+callback is called with the `Token` that was just granted by the server.
+
+```python
+client = dwollav2.Client(
+  key = os.environ['DWOLLA_APP_KEY'],
+  secret = os.environ['DWOLLA_APP_SECRET'],
+  on_grant = lambda t: save(t)
+)
+```
+
+It is highly recommended that you encrypt any token data you store.
+
+#### Tokens
+
+##### Generating New Access Tokens
+
+Application access tokens are used to authenticate against the API on behalf of an application. Application tokens can be used to access resources in the API that either belong to the application itself (`webhooks`, `events`, `webhook-subscriptions`) or the Dwolla Account that owns the application (`accounts`, `customers`, `funding-sources`, etc.). Application tokens are obtained by using the [`client_credentials`](https://tools.ietf.org/html/rfc6749#section-4.4) OAuth grant type:
+
+```python
+application_token = client.Auth.client()
+```
+
+_Application access tokens are short-lived: 1 hour. They do not include a `refresh_token`. When it expires, generate a new one using `client.Auth.client()`._
+
+##### Initializing Pre-Existing Tokens:
+
+The [Dwolla Sandbox Dashboard](https://dashboard-sandbox.dwolla.com/applications-legacy) allows you to generate tokens for your application. A `Token` can be initialized with the following attributes:
+
+```python
+client.Token(access_token = '...',
+             expires_in = 123)
+```
+
+## Making Requests
+
+Once you've created a `Token`, currently, you can make low-level HTTP requests.
+
+### Low-level Requests
+
+To make low-level HTTP requests, you can use the `get()`, `post()`, and `delete()` methods. These methods will return a `Response` object.
+
+#### `GET`
+
+```python
+# GET api.dwolla.com/resource?foo=bar
+token.get('resource', foo = 'bar')
+
+# GET requests can also use objects as parameters
+# GET api.dwolla.com/resource?foo=bar
+token.get('resource', {'foo' = 'bar', 'baz' = 'foo'})
+```
+
+#### `POST`
+
+```python
+# POST api.dwolla.com/resource {"foo":"bar"}
+token.post('resource', foo = 'bar')
+
+# POST api.dwolla.com/resource multipart/form-data foo=...
+token.post('resource', foo = ('mclovin.jpg', open('mclovin.jpg', 'rb'), 'image/jpeg'))
+```
+
+#### `DELETE`
+
+```python
+# DELETE api.dwolla.com/resource
+token.delete('resource')
+```
+
+#### Setting headers
+
+To set additional headers on a request you can pass a `dict` of headers as the 3rd argument.
+
+For example:
+
+```python
+token.post('customers', { 'firstName': 'John', 'lastName': 'Doe', 'email': 'jd@doe.com' },
+                        { 'Idempotency-Key': 'a52fcf63-0730-41c3-96e8-7147b5d1fb01' })
+```
+
+### Responses
+
+The following snippets demonstrate successful and errored responses from the Dwolla API.
+
+An errored response is returned when Dwolla's servers respond with a status code that is greater than or equal to 400, whereas a successful response is when Dwolla's servers respond with a 200-level status code.
+
+#### Success
+
+```python
+res = token.get('/')
+
+res.status
+# => 200
+
+res.headers
+# => {'server'=>'cloudflare-nginx', 'date'=>'Mon, 28 Mar 2016 15:30:23 GMT', 'content-type'=>'application/vnd.dwolla.v1.hal+json; charset=UTF-8', 'content-length'=>'150', 'connection'=>'close', 'set-cookie'=>'__cfduid=d9dcd0f586c166d36cbd45b992bdaa11b1459179023; expires=Tue, 28-Mar-17 15:30:23 GMT; path=/; domain=.dwolla.com; HttpOnly', 'x-request-id'=>'69a4e612-5dae-4c52-a6a0-2f921e34a88a', 'cf-ray'=>'28ac1f81875941e3-MSP'}
+
+res.body['_links']['events']['href']
+# => 'https://api-sandbox.dwolla.com/events'
+```
+
+#### Error
+
+If the server returns an error, a `dwollav2.Error` (or one of its subclasses) will be raised.
+`dwollav2.Error`s are similar to `Response`s.
+
+```python
+try:
+  token.get('/not-found')
+except dwollav2.NotFoundError as e:
+  e.status
+  # => 404
+
+  e.headers
+  # => {"server"=>"cloudflare-nginx", "date"=>"Mon, 28 Mar 2016 15:35:32 GMT", "content-type"=>"application/vnd.dwolla.v1.hal+json; profile=\"http://nocarrier.co.uk/profiles/vnd.error/\"; charset=UTF-8", "content-length"=>"69", "connection"=>"close", "set-cookie"=>"__cfduid=da1478bfdf3e56275cd8a6a741866ccce1459179332; expires=Tue, 28-Mar-17 15:35:32 GMT; path=/; domain=.dwolla.com; HttpOnly", "access-control-allow-origin"=>"*", "x-request-id"=>"667fca74-b53d-43db-bddd-50426a011881", "cf-ray"=>"28ac270abca64207-MSP"}
+
+  e.body.code
+  # => "NotFound"
+except dwollav2.Error:
+  # ...
+```
+
+##### `dwollav2.Error` subclasses:
+
+_See https://developers.dwolla.com/api-reference#errors for more info._
+
+- `dwollav2.AccessDeniedError`
+- `dwollav2.InvalidCredentialsError`
+- `dwollav2.NotFoundError`
+- `dwollav2.BadRequestError`
+- `dwollav2.InvalidGrantError`
+- `dwollav2.RequestTimeoutError`
+- `dwollav2.ExpiredAccessTokenError`
+- `dwollav2.InvalidRequestError`
+- `dwollav2.ServerError`
+- `dwollav2.ForbiddenError`
+- `dwollav2.InvalidResourceStateError`
+- `dwollav2.TemporarilyUnavailableError`
+- `dwollav2.InvalidAccessTokenError`
+- `dwollav2.InvalidScopeError`
+- `dwollav2.UnauthorizedClientError`
+- `dwollav2.InvalidAccountStatusError`
+- `dwollav2.InvalidScopesError`
+- `dwollav2.UnsupportedGrantTypeError`
+- `dwollav2.InvalidApplicationStatusError`
+- `dwollav2.InvalidVersionError`
+- `dwollav2.UnsupportedResponseTypeError`
+- `dwollav2.InvalidClientError`
+- `dwollav2.MethodNotAllowedError`
+- `dwollav2.ValidationError`
+- `dwollav2.TooManyRequestsError`
+- `dwollav2.ConflictError`
+
+### Example App
+
+Take a look at the
+[Sample Application](https://github.com/Dwolla/dwolla-v2-python/tree/main/sample_app) for examples
+on how to use this SDK to call the Dwolla API. Before you can begin using the app, however,
+you will need to specify a `DWOLLA_APP_KEY` and `DWOLLA_APP_SECRET` environment variable.
+
+## Community
+
+- If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-v2-python/issues/new).
+- If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-v2-python/issues) and [pull requests](https://github.com/Dwolla/dwolla-v2-python/pulls) are always appreciated!
+  - After checking out the repo, run `pip install -r requirements.txt` to install dependencies. Then, run `python setup.py` test to run the tests.
+  - To install this gem onto your local machine, `run pip install -e .`.
+
+## Docker
+
+If you prefer to use Docker to run dwolla-v2-python locally, a Dockerfile is included at the root directory.
+Follow these instructions from [Docker's website](https://docs.docker.com/build/hellobuild/) to create a Docker image from the Dockerfile, and run it.

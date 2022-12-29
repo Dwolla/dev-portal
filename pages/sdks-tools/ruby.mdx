@@ -1,0 +1,199 @@
+---
+title: "Ruby"
+description: "Use Dwolla’s SDK for Ruby to build applications that interact with the Dwolla API to perform account-to-account payment functions."
+meta:
+  title: "Ruby | Dwolla API Documentation"
+  description: "Use Dwolla’s SDK for Ruby to build applications that interact with the Dwolla API to perform account-to-account payment functions."
+---
+
+# Ruby
+
+`dwolla_v2` is available on [RubyGems](https://rubygems.org/gems/dwolla_v2) with [source code](https://github.com/Dwolla/dwolla-v2-ruby) available on our GitHub page.
+
+## Getting Started
+
+### Installation
+
+To begin using this SDK, you will first need to download it to your machine. We use [RubyGems](https://rubygems.org/gems/dwolla_v2) to distribute this package.
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'dwolla_v2', '~> 3.1'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install dwolla_v2
+
+### Initialization
+
+Before any API requests can be made, you must first determine which environment you will be using, as well as fetch the application key and secret. To fetch your application key and secret, please visit one of the following links:
+
+- Production: https://dashboard.dwolla.com/applications
+- Sandbox: https://dashboard-sandbox.dwolla.com/applications
+
+Finally, you can create an instance of `Client` with `key` and `secret` replaced with the application key and secret that you fetched from one of the aforementioned links, respectively.
+
+```ruby
+# config/initializers/dwolla.rb
+$dwolla = DwollaV2::Client.new(
+  key: ENV["DWOLLA_APP_KEY"],
+  secret: ENV["DWOLLA_APP_SECRET"],
+  environment: :sandbox # defaults to :production
+)
+```
+
+#### Configure Faraday (Optional)
+
+Dwolla for Ruby uses [Faraday][faraday] to make HTTP requests. You can configure your own
+[Faraday middleware][faraday-middleware] and adapter when configuring your client. Remember to
+always include an adapter last, even if you want to use the default adapter.
+
+[faraday]: https://github.com/lostisland/faraday
+[faraday-middleware]: https://github.com/lostisland/faraday_middleware
+
+```ruby
+# config/initializers/dwolla.rb
+$dwolla = DwollaV2::Client.new(
+  key: ENV["DWOLLA_APP_KEY"],
+  secret: ENV["DWOLLA_APP_SECRET"]
+) do |config|
+  config.faraday do |faraday|
+    faraday.response :logger
+    faraday.adapter Faraday.default_adapter
+  end
+end
+```
+
+## Making Requests
+
+Once you've created a `Client`, currently, you can make low-level HTTP requests.
+
+### Low-level Requests
+
+To make low-level HTTP requests, you can use the [`get()`](#get), [`post()`](#post), and [`delete()`](#delete) methods.
+
+#### `GET`
+
+```ruby
+# GET api.dwolla.com/resource?foo=bar
+$dwolla.get "resource", foo: "bar"
+```
+
+#### `POST`
+
+```ruby
+# POST api.dwolla.com/resource {"foo":"bar"}
+$dwolla.post "resource", foo: "bar"
+# POST api.dwolla.com/resource multipart/form-data foo=...
+$dwolla.post "resource", foo: Faraday::UploadIO.new("/path/to/bar.png", "image/png")
+```
+
+#### `DELETE`
+
+```ruby
+# DELETE api.dwolla.com/resource
+$dwolla.delete "resource"
+```
+
+##### Setting Headers
+
+To set additional headers on a request, you can pass a `Hash` of headers as the 3rd argument.
+
+For example:
+
+```ruby
+$dwolla.post "customers", { firstName: "John", lastName: "Doe", email: "jd@doe.com" },
+                          { 'Idempotency-Key': 'a52fcf63-0730-41c3-96e8-7147b5d1fb01' }
+```
+
+### Responses
+
+The following snippets demonstrate successful and errored responses from the Dwolla API.
+
+An errored response is returned when Dwolla's servers respond with a status code that is greater than or equal to 400, whereas a successful response is when Dwolla's servers respond with a 200-level status code.
+
+#### Success
+
+Successful requests return a `DwollaV2::Response`.
+
+```ruby
+res = $dwolla.get "/"
+# => #<DwollaV2::Response response_status=200 response_headers={"server"=>"cloudflare-nginx", "date"=>"Mon, 28 Mar 2016 15:30:23 GMT", "content-type"=>"application/vnd.dwolla.v1.hal+json; charset=UTF-8", "content-length"=>"150", "connection"=>"close", "set-cookie"=>"__cfduid=d9dcd0f586c166d36cbd45b992bdaa11b1459179023; expires=Tue, 28-Mar-17 15:30:23 GMT; path=/; domain=.dwolla.com; HttpOnly", "x-request-id"=>"69a4e612-5dae-4c52-a6a0-2f921e34a88a", "cf-ray"=>"28ac1f81875941e3-MSP"} {"_links"=>{"events"=>{"href"=>"https://api-sandbox.dwolla.com/events"}, "webhook-subscriptions"=>{"href"=>"https://api-sandbox.dwolla.com/webhook-subscriptions"}}}>
+res.response_status
+# => 200
+res.response_headers
+# => {"server"=>"cloudflare-nginx", "date"=>"Mon, 28 Mar 2016 15:30:23 GMT", "content-type"=>"application/vnd.dwolla.v1.hal+json; charset=UTF-8", "content-length"=>"150", "connection"=>"close", "set-cookie"=>"__cfduid=d9dcd0f586c166d36cbd45b992bdaa11b1459179023; expires=Tue, 28-Mar-17 15:30:23 GMT; path=/; domain=.dwolla.com; HttpOnly", "x-request-id"=>"69a4e612-5dae-4c52-a6a0-2f921e34a88a", "cf-ray"=>"28ac1f81875941e3-MSP"}
+res._links.events.href
+# => "https://api-sandbox.dwolla.com/events"
+```
+
+#### Error
+
+If the server returns an error, a `DwollaV2::Error` (or one of its subclasses) will be raised.
+`DwollaV2::Error`s are similar to `DwollaV2::Response`s.
+
+```ruby
+begin
+  $dwolla.get "/not-found"
+rescue DwollaV2::NotFoundError => e
+  e
+  # => #<DwollaV2::NotFoundError response_status=404 response_headers={"server"=>"cloudflare-nginx", "date"=>"Mon, 28 Mar 2016 15:35:32 GMT", "content-type"=>"application/vnd.dwolla.v1.hal+json; profile=\"http://nocarrier.co.uk/profiles/vnd.error/\"; charset=UTF-8", "content-length"=>"69", "connection"=>"close", "set-cookie"=>"__cfduid=da1478bfdf3e56275cd8a6a741866ccce1459179332; expires=Tue, 28-Mar-17 15:35:32 GMT; path=/; domain=.dwolla.com; HttpOnly", "access-control-allow-origin"=>"*", "x-request-id"=>"667fca74-b53d-43db-bddd-50426a011881", "cf-ray"=>"28ac270abca64207-MSP"} {"code"=>"NotFound", "message"=>"The requested resource was not found."}>
+  e.response_status
+  # => 404
+  e.response_headers
+  # => {"server"=>"cloudflare-nginx", "date"=>"Mon, 28 Mar 2016 15:35:32 GMT", "content-type"=>"application/vnd.dwolla.v1.hal+json; profile=\"http://nocarrier.co.uk/profiles/vnd.error/\"; charset=UTF-8", "content-length"=>"69", "connection"=>"close", "set-cookie"=>"__cfduid=da1478bfdf3e56275cd8a6a741866ccce1459179332; expires=Tue, 28-Mar-17 15:35:32 GMT; path=/; domain=.dwolla.com; HttpOnly", "access-control-allow-origin"=>"*", "x-request-id"=>"667fca74-b53d-43db-bddd-50426a011881", "cf-ray"=>"28ac270abca64207-MSP"}
+  e.code
+  # => "NotFound"
+rescue DwollaV2::Error => e
+  # ...
+end
+```
+
+##### `DwollaV2::Error` subclasses:
+
+_See https://developers.dwolla.com/api-reference#errors for more info._
+
+- `DwollaV2::AccessDeniedError`
+- `DwollaV2::InvalidCredentialsError`
+- `DwollaV2::NotFoundError`
+- `DwollaV2::BadRequestError`
+- `DwollaV2::InvalidGrantError`
+- `DwollaV2::RequestTimeoutError`
+- `DwollaV2::ExpiredAccessTokenError`
+- `DwollaV2::InvalidRequestError`
+- `DwollaV2::ServerError`
+- `DwollaV2::ForbiddenError`
+- `DwollaV2::InvalidResourceStateError`
+- `DwollaV2::TemporarilyUnavailableError`
+- `DwollaV2::InvalidAccessTokenError`
+- `DwollaV2::InvalidScopeError`
+- `DwollaV2::UnauthorizedClientError`
+- `DwollaV2::InvalidAccountStatusError`
+- `DwollaV2::InvalidScopesError`
+- `DwollaV2::UnsupportedGrantTypeError`
+- `DwollaV2::InvalidApplicationStatusError`
+- `DwollaV2::InvalidVersionError`
+- `DwollaV2::UnsupportedResponseTypeError`
+- `DwollaV2::InvalidClientError`
+- `DwollaV2::MethodNotAllowedError`
+- `DwollaV2::ValidationError`
+- `DwollaV2::TooManyRequestsError`
+- `DwollaV2::ConflictError`
+
+## Community
+
+- If you have any feedback, please reach out to us on [our forums](https://discuss.dwolla.com/) or by [creating a GitHub issue](https://github.com/Dwolla/dwolla-v2-ruby/issues/new).
+- If you would like to contribute to this library, [bug reports](https://github.com/Dwolla/dwolla-v2-ruby/issues) and [pull requests](https://github.com/Dwolla/dwolla-v2-ruby/pulls) are always appreciated!
+  - After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+  - To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+## Docker
+
+If you prefer to use Docker to run dwolla-v2-python locally, a Dockerfile is included at the root directory.
+Follow these instructions from [Docker's website](https://docs.docker.com/build/hellobuild/) to create a Docker image from the Dockerfile, and run it.
