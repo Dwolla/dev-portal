@@ -156,24 +156,6 @@ const FOOTER_LEGAL_COPY = {
   ),
 };
 
-const ANNOUNCEMENT_COPY = (
-  <>
-    Deprecation Announcement: At the end of 2022, Dwolla will sunset our Instant
-    Account Verification (IAV) product, which is powered by Dwolla.js. As
-    alternative bank account verification options, we recommend utilizing one of
-    our integrated third-party data providers prior to December 31, 2022 —{" "}
-    <a href="https://github.com/Dwolla/integration-examples/tree/main/packages/finicity-token-exchange">
-      Finicity
-    </a>{" "}
-    or{" "}
-    <a href="https://github.com/Dwolla/integration-examples/tree/main/packages/mx-token-exchange">
-      MX
-    </a>{" "}
-    (via our <a href="/concepts/secure-exchange">Secure Exchange</a>), or{" "}
-    <a href="/guides/plaid">Plaid</a>.
-  </>
-);
-
 const TOP_BAR_PROPS = {
   button: {
     text: "Get API Keys",
@@ -224,7 +206,6 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           sideNavLinks={SIDE_NAV_LINKS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
-          announcement={ANNOUNCEMENT_COPY}
         >
           <Component {...pageProps} url={router.pathname} />
         </Layout>

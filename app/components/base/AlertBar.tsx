@@ -108,7 +108,8 @@ function AlertBar({ variation, isClosable, children }: Props) {
 
   /* Hides Alertbar and sets "dwolla_announcement_cookie" cookie when the announcement alertbar
   is closed by mouseclick of keyboard enter key.
-  max-age=31536000 means the cookie will expire in year. */
+  max-age=31536000 means the cookie will expire in a year.
+  Change max-age value as needed. */
   const hideAlert = () => {
     setShowAlert(false);
     document.cookie = "dwolla_announcement_cookie=1; max-age=31536000";

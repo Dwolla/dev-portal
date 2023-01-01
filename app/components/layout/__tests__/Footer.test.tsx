@@ -13,7 +13,7 @@ test("Footer", () => {
       {
         text: "Privacy Options",
         onClick: () =>
-          window.Osano.cm.showDialog("osano-cm-dom-info-dialog-open"),
+          window.Osano.cm.showDrawer("osano-cm-dom-info-dialog-open"),
       },
     ],
     Product: [
