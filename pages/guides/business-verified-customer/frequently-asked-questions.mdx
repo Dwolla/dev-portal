@@ -15,6 +15,49 @@ meta:
 <Collapsible
   triggerText={
     <span>
+      Q: How do I determine if my Customer is fully verified and eligible to
+      start transacting?
+    </span>
+  }
+>
+  <p>
+    You can determine the eligibility of the customer to start transacting in
+    the Dwolla platform by the presence of the <code>send</code> and{" "}
+    <code>receive</code> links in the customer resource.
+    <br /> <br />
+    <code>send</code> - Denotes that the customer is eligible to start sending
+    funds if they have a verified funding-source attached.
+    <br /> <br />
+    <code>receive</code> - Denotes that the customer is eligible to receive
+    funds into their Dwolla balance or an attached bank funding-source.{" "}
+    <strong>Note:</strong> Until the following actions have been completed, any
+    funds received by the Customer will remain in their Dwolla Balance unable to
+    be withdrawn or sent to another Customer or Account:
+    <ul>
+      <li>
+        <a
+          href="https://developers.dwolla.com/guides/business-verified-customer/add-beneficial-owners"
+          target="_blank"
+        >
+          Addition and verification of beneficial owners
+        </a>{" "}
+        (if applicable)
+      </li>
+      <li>
+        <a
+          href="https://developers.dwolla.com/guides/business-verified-customer/certify-beneficial-ownership"
+          target="_blank"
+        >
+          Certification of beneficial ownership
+        </a>
+      </li>
+    </ul>
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
       Q: My Customer has a <code>retry</code> status. What activity would they
       be able to engage in while being in <code>retry</code> status, as it
       relates to the Dwolla Platform?
