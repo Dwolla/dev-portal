@@ -4270,6 +4270,10 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+algolia-search-components@Dwolla/algolia-search-components#72d699f:
+  version "1.0.0"
+  resolved "https://codeload.github.com/Dwolla/algolia-search-components/tar.gz/72d699f4147a3828eeb1b587f84c8b76ed26eff1"
+
 ansi-align@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-3.0.1.tgz#0cdf12e111ace773a86e9a1fad1225c43cb19a59"
