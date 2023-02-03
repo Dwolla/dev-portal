@@ -74,9 +74,107 @@ A VAN can be [removed](/api-reference/funding-sources/remove) at any time via th
 
 Externally initiated transactions will be represented by transfers that are automatically created and available in the transaction listing endpoint when Dwolla is notified of the transaction by the ACH Network.
 
-Adding funds into a balance will be represented by a new transfer where the **source** is the VAN funding source and the **destination** is the Dwolla Balance funding source.
+Adding funds into a balance will be represented by a new transfer where the **source** is the VAN funding source and the **destination** is the Customer.
 
-Withdrawals from the Dwolla Balance will be represented by a new transfer where the **source** is the Dwolla Balance and the **destination** is the VAN funding source. Each new transfer will trigger a `bank_transfer_created` or `customer_bank_transfer_created` webhook. The creation webhooks will be triggered approximately 30 minutes prior to any completed webhook event of `bank_transfer_completed` or `customer_bank_transfer_completed`.
+#### Example Response Object
+
+```raw
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/transfers/c7149132-c552-ec11-813a-ebf9f1240ece",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/533e2de1-bc59-4301-a081-a431ef023fbd",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/customers/af6eb65c-ab64-4510-8ce3-56076b6ab3a9",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "c7149132-c552-ec11-813a-ebf9f1240ece",
+    "status": "processed",
+    "amount": {
+        "value": "10.00",
+        "currency": "USD"
+    },
+    "created": "2021-12-01T16:39:06.200Z",
+    "achDetails": {
+        "source": {
+            "addenda": {
+                "values": [
+                    "addenda"
+                ]
+            },
+            "beneficiaryName": "Fake name",
+            "companyName": "Fake company name",
+            "companyEntryDescription": "PAYMENT",
+            "effectiveDate": "2021-12-01",
+            "postingData": "Fake company name:Fake discretionary data:Fake name",
+            "routingNumber": "222222226",
+            "traceId": "222222225926346"
+        },
+        "destination": {}
+    }
+}
+```
+
+Withdrawals from the Dwolla Balance will be represented by a new transfer where the **source** is the Customer and the **destination** is the VAN funding source.
+
+#### Example Response Object
+
+```raw
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/transfers/c7149132-c552-ec11-813a-ebf9f1240ece",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/customers/af6eb65c-ab64-4510-8ce3-56076b6ab3a9",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/533e2de1-bc59-4301-a081-a431ef023fbd",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "c7149132-c552-ec11-813a-ebf9f1240ece",
+    "status": "processed",
+    "amount": {
+        "value": "10.00",
+        "currency": "USD"
+    },
+    "created": "2021-12-01T16:39:06.200Z",
+    "achDetails": {
+        "source": {},
+        "destination": {
+            "addenda": {
+                "values": [
+                    "addenda"
+                ]
+            },
+            "beneficiaryName": "Fake name",
+            "companyName": "Fake company name",
+            "companyEntryDescription": "PAYMENT",
+            "effectiveDate": "2021-12-01",
+            "postingData": "Fake company name:Fake discretionary data:Fake name",
+            "routingNumber": "222222226",
+            "traceId": "222222225926346"
+        }
+    }
+}
+```
+
+Each new transfer will trigger a `bank_transfer_created` or `customer_bank_transfer_created` webhook. The creation webhooks will be triggered approximately 30 minutes prior to any completed webhook event of `bank_transfer_completed` or `customer_bank_transfer_completed`.
 
 Transfers will be created in a `pending` or `failed` status depending on whether the customer record or VAN has been deactivated, suspended, or removed. Pending transfers will be processed automatically during the following times (subject to change).
 
@@ -97,7 +195,7 @@ Additional details about an external transaction will be available in the [achDe
 | companyId                 | Numeric identifier of originator.                                                                                                                                                                 |
 | companyName               | Name of the originator.                                                                                                                                                                           |
 
-#### Example Response Object
+#### Example `achDetails` Object
 
 ```raw
 {
