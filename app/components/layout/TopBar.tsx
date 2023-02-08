@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { FormControl } from "@mui/material";
+import { FormControl, styled as muiStyled } from "@mui/material";
+import { AlgoliaAutocomplete } from "algolia-search-components";
+import algoliasearch from "algoliasearch/lite";
 import { LanguageContext } from "../util/Contexts";
 import { breakDown, breakUp } from "../breakpoints";
 import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
@@ -33,7 +35,13 @@ const StyledLogo = styled.img`
   }
 `;
 
-const ButtonWrapper = styled.div`
+const AlgoliaSearchWrapper = muiStyled("div", { name: "SearchWrapper" })({
+  display: "inline-block",
+  paddingRight: "16px",
+  verticalAlign: "middle",
+});
+
+const RightAlignWrapper = styled.div`
   margin-left: auto;
   padding-right: 20px;
 
@@ -42,7 +50,7 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const SelectWrapper = styled.div`
+const LeftAlignWrapper = styled.div`
   padding-left: 20px;
 
   @media (${breakDown("xs")}) {
@@ -137,6 +145,11 @@ export default function TopBar({
   const { selectedLanguage, setSelectedLanguage, languageOptions } =
     useContext(LanguageContext);
 
+  const searchClient = algoliasearch(
+    "4C7VLPQA76",
+    "a9cfed5acb56143690b612167d89a1b5"
+  );
+
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
 
@@ -156,7 +169,7 @@ export default function TopBar({
         </a>
       </Link>
 
-      <SelectWrapper>
+      <LeftAlignWrapper>
         <FormControl sx={{ minWidth: 200 }} size="small">
           <SelectMui
             color="white"
@@ -169,9 +182,19 @@ export default function TopBar({
             value={selectedLanguage.value}
           />
         </FormControl>
-      </SelectWrapper>
+      </LeftAlignWrapper>
 
-      <ButtonWrapper>
+      <RightAlignWrapper>
+        <AlgoliaSearchWrapper>
+          <AlgoliaAutocomplete
+            branch="master"
+            searchClient={searchClient}
+            siteId="9209706f-d5b7-46e2-bb88-5d6bedd2823f"
+            searchOptions={{ analytics: true, hitsPerPage: 5 }}
+            panelPlacement="input-wrapper-width"
+          />
+        </AlgoliaSearchWrapper>
+
         <Button
           variant="contained"
           href={button.link.href}
@@ -181,7 +204,7 @@ export default function TopBar({
         >
           {button.text}
         </Button>
-      </ButtonWrapper>
+      </RightAlignWrapper>
 
       {sidebarToggled === false ? (
         <Hamburger
