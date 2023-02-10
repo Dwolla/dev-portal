@@ -3,8 +3,10 @@ import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { FormControl, styled as muiStyled } from "@mui/material";
-import { AlgoliaAutocomplete } from "algolia-search-components";
-import algoliasearch from "algoliasearch/lite";
+import {
+  AlgoliaAutocomplete,
+  AlgoliaAutocompleteProps,
+} from "algolia-search-components";
 import { LanguageContext } from "../util/Contexts";
 import { breakDown, breakUp } from "../breakpoints";
 import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
@@ -67,6 +69,7 @@ export type TopBarButtonProps = {
 };
 
 export type TopBarProps = {
+  algoliaSearch?: AlgoliaAutocompleteProps;
   button: TopBarButtonProps;
   sidebarToggled?: boolean;
   setSidebarToggled?: Function;
@@ -138,17 +141,13 @@ const StyledCloseIcon = styled.div`
 `;
 
 export default function TopBar({
+  algoliaSearch,
   button,
   sidebarToggled,
   setSidebarToggled,
 }: TopBarProps) {
   const { selectedLanguage, setSelectedLanguage, languageOptions } =
     useContext(LanguageContext);
-
-  const searchClient = algoliasearch(
-    "4C7VLPQA76",
-    "a9cfed5acb56143690b612167d89a1b5"
-  );
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
@@ -185,15 +184,11 @@ export default function TopBar({
       </LeftAlignWrapper>
 
       <RightAlignWrapper>
-        <AlgoliaSearchWrapper>
-          <AlgoliaAutocomplete
-            branch="master"
-            searchClient={searchClient}
-            siteId="9209706f-d5b7-46e2-bb88-5d6bedd2823f"
-            searchOptions={{ analytics: true, hitsPerPage: 5 }}
-            panelPlacement="input-wrapper-width"
-          />
-        </AlgoliaSearchWrapper>
+        {algoliaSearch && (
+          <AlgoliaSearchWrapper>
+            <AlgoliaAutocomplete {...algoliaSearch} />
+          </AlgoliaSearchWrapper>
+        )}
 
         <Button
           variant="contained"
