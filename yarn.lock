@@ -4404,9 +4404,9 @@ ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-algolia-search-components@Dwolla/algolia-search-components#f5b0dd0:
+algolia-search-components@Dwolla/algolia-search-components#61ae921:
   version "1.0.0"
-  resolved "https://codeload.github.com/Dwolla/algolia-search-components/tar.gz/f5b0dd0b47b0a31097dada429f2c754c4d70baaa"
+  resolved "https://codeload.github.com/Dwolla/algolia-search-components/tar.gz/61ae921224c3620befb681bd8674b025da9c9362"
 
 algoliasearch@^4.14.3:
   version "4.14.3"

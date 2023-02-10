@@ -46,7 +46,7 @@
     "@types/react": "^18.0.18",
     "@types/react-scroll": "^1.8.4",
     "@types/scroll-to-element": "^2.0.0",
-    "algolia-search-components": "Dwolla/algolia-search-components#f5b0dd0",
+    "algolia-search-components": "Dwolla/algolia-search-components#61ae921",
     "algoliasearch": "^4.14.3",
     "autoprefixer": "^10.4.8",
     "babel-loader": "^8.0.6",
