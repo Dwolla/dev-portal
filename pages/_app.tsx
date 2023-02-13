@@ -6,6 +6,7 @@ import { CacheProvider, EmotionCache } from "@emotion/react";
 import Head from "next/head";
 import { ThemeProvider } from "@mui/material";
 import Script from "next/script";
+import algoliasearch from "algoliasearch/lite";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
@@ -25,6 +26,7 @@ import useTrackPageViews from "../app/hooks/useTrackPageViews";
 import createEmotionCache from "../app/modules/emotion-cache";
 import theme from "../app/theme";
 import { FooterLink } from "../app/components/layout/Footer";
+import { TopBarProps } from "../app/components/layout/TopBar";
 
 function GoogleTagManager() {
   useEffect(() => {
@@ -156,7 +158,16 @@ const FOOTER_LEGAL_COPY = {
   ),
 };
 
-const TOP_BAR_PROPS = {
+const TOP_BAR_PROPS: TopBarProps = {
+  algoliaSearch: {
+    branch: "main-algolia",
+    searchClient: algoliasearch(
+      "L2PPGO4SBB",
+      "6a6c05b578da5aa729df7f53776e9f76"
+    ),
+    siteId: "e19df9e6-7024-443d-8ec0-26e8312ce0f9",
+    searchOptions: { hitsPerPage: 5 },
+  },
   button: {
     text: "Get API Keys",
     link: {
