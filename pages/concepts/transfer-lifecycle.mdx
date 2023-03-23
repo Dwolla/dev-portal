@@ -16,9 +16,8 @@ When you create a transfer using the Dwolla API, there are various steps involve
 
 <AlertBar variation="info">
   This resource currently features ACH as the primary method for funds
-  transfers. We will be adding other methods such as push-to-debit and real-time
-  payment transfers in the future, as well as including unhappy paths for all
-  transfer types.
+  transfers. We will be adding other methods such as real-time payment transfers
+  in the future, as well as including unhappy paths for all transfer types.
 </AlertBar>
 
 ## Key Terminology:
@@ -136,12 +135,10 @@ transfer.headers['location'] # => 'https://api.dwolla.com/transfers/93f78ae0-1f4
 var requestBody = {
   _links: {
     source: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c",
+      href: "https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c",
     },
     destination: {
-      href:
-        "https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6",
+      href: "https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6",
     },
   },
   amount: {
