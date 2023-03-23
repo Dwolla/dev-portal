@@ -24,8 +24,10 @@
 /guides/sandbox-setup/    /guides/sandbox
 /guides/webhooks/obtain-authorization.html    /guides/webhooks
 /guides/webhooks/create-subscription.html    /guides/webhooks/create-subscription
-/guides/webhooks/validating-webhooks.html    /guides/webhooks/validating-webhooks
-/guides/webhooks/process-webhooks.html    /guides/webhooks/process-webhooks
+/guides/webhooks/validating-webhooks.html    /guides/webhooks/process-validate
+/guides/webhooks/process-webhooks.html    /guides/webhooks/process-validate
+/guides/webhooks/process-webhooks    /guides/webhooks/process-validate
+/guides/webhooks/validating-webhooks    /guides/webhooks/process-validate
 /resources/personal-verified-customer.html    /guides/personal-verified-customer
 /resources/personal-verified-customer/create-personal-verified-customers.html    /guides/personal-verified-customer/create-a-customer
 /resources/personal-verified-customer/handling-verification-statuses-personal.html    /guides/personal-verified-customer/handle-verification-statuses
