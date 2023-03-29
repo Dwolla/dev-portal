@@ -249,30 +249,3 @@ Similar to [testing ACH bank transfer failures](#test-bank-transfer-failures), y
 | R02  | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (credit). The funding source will be automatically removed from Dwolla when this return code is triggered. | During processing of pending transactions.                                          |
 | R08  | Payment Stopped: The person who owns the account has placed a stop payment with their bank.                                                                                                                                            | “Immediately” triggered upon transfer creation by funding source naming convention. |
 | R10  | Customer Advises Unauthorized, Improper, Ineligible, or Part of an Incomplete Transaction: The person who owns the bank account has told their bank account that the transaction was unauthorized.                                     | “Immediately” triggered upon transfer creation by funding source naming convention. |
-
-### Test Push-to-debit transfer failures
-
-[Push-to-debit](/concepts/debit-cards#push-to-debit-failures) transfers can fail for a number of reasons (e.g. LostOrStolenCard, SuspectedFraud, etc.). When a transfer is created to a debit card that is ineligible to receive funds, a transfer failed event is triggered in Dwolla, and the transfer's status is updated from `pending` to `failed` in a matter of seconds without having to simulate bank transfer processing.
-
-You can trigger various push-to-debit transfer failure scenarios by specifying a specific amount when creating a transfer to a debit card.
-
-##### List of amounts for testing Push-to-debit transfer failures
-
-| Amount  | Description              |
-| ------- | ------------------------ |
-| `$0.11` | InvalidInstrument        |
-| `$0.21` | ExceedsIssuerAmountLimit |
-| `$0.31` | ExceedsIssuerCountLimit  |
-| `$0.41` | CallIssuer               |
-| `$0.51` | Unknown                  |
-| `$0.61` | LostOrStolenCard         |
-| `$0.71` | SuspectedFraud           |
-| `$0.81` | ComplianceViolation      |
-
-<br />
-
-<InlineCTA
-  icon={conceptsIcon}
-  text="Use our concept article for more information on Push to Debit transfer failures, and a list of common failure reasons."
-  href="/concepts/debit-cards#push-to-debit-failures"
-/>

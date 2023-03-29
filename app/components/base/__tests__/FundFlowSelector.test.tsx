@@ -24,7 +24,6 @@ const receiverDestinationOptions = [
   { value: "balance", label: "Balance" },
   { value: "bank", label: "Bank" },
   { value: "r03", label: "R03-Bank" },
-  { value: "card", label: "Debit Card" },
 ];
 
 test("FundsFlowSelector", () => {
