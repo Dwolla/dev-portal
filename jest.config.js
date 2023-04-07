@@ -12,8 +12,9 @@ module.exports = {
   ],
   setupFilesAfterEnv: ["<rootDir>/.jest/jest.setup.js"],
   testEnvironment: "jsdom",
-  testPathIgnorePatterns: ["/node_modules/", "/.next/"],
+  testPathIgnorePatterns: ["/.pnpm-store/", "/node_modules/", "/.next/"],
   transformIgnorePatterns: [
+    "/.pnpm-store/",
     "/node_modules/",
     "^.+\\.module\\.(css|sass|scss)$",
   ],

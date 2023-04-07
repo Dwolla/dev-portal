@@ -3,7 +3,7 @@
 exports[`SelectMui Default 1`] = `
 [
   <label
-    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary css-9npbnl-MuiFormLabel-root-MuiInputLabel-root"
+    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-animated css-9npbnl-MuiFormLabel-root-MuiInputLabel-root"
     id=":r0:"
   >
     Select Language
@@ -28,6 +28,7 @@ exports[`SelectMui Default 1`] = `
     </div>
     <input
       aria-hidden={true}
+      aria-invalid={false}
       className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
       onAnimationStart={[Function]}
       onChange={[Function]}
