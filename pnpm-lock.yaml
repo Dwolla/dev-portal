@@ -92,8 +92,8 @@ dependencies:
     specifier: ^10.4.14
     version: 10.4.14(postcss@8.4.21)
   babel-loader:
-    specifier: ^9.1.2
-    version: 9.1.2(@babel/core@7.21.4)(webpack@5.79.0)
+    specifier: ^8.3.0
+    version: 8.3.0(@babel/core@7.21.4)(webpack@5.79.0)
   babel-plugin-import-glob-array:
     specifier: ^0.2.0
     version: 0.2.0
@@ -207,6 +207,9 @@ devDependencies:
   '@types/react-test-renderer':
     specifier: ^18.0.0
     version: 18.0.0
+  '@types/webpack-env':
+    specifier: ^1.18.0
+    version: 1.18.0
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.58.0
     version: 5.58.0(@typescript-eslint/parser@5.58.0)(eslint@8.38.0)(typescript@4.9.5)
@@ -5099,7 +5102,6 @@ packages:
 
   /@types/webpack-env@1.18.0:
     resolution: {integrity: sha512-56/MAlX5WMsPVbOg7tAxnYvNYMMWr/QJiIp6BxVSW3JJXUVzzOn64qW8TzQyMSqSUFM2+PVI4aUHcHOzIz/1tg==}
-    dev: false
 
   /@types/yargs-parser@21.0.0:
     resolution: {integrity: sha512-iO9ZQHkZxHn4mSakYV0vFHAVDyEOIJQrV2uZ06HxEPcx+mt8swXoZHIbaaJ2crJYFfErySgktuTZ3BeLz+XmFA==}
