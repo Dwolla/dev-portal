@@ -48,7 +48,7 @@
     "@types/scroll-to-element": "^2.0.0",
     "algolia-search-components": "Dwolla/algolia-search-components#203de1c",
     "algoliasearch": "^4.14.3",
-    "autoprefixer": "^10.4.8",
+    "autoprefixer": "^10.4.14",
     "babel-loader": "^8.0.6",
     "babel-plugin-import-glob-array": "^0.2.0",
     "babel-preset-react-app": "^9.1.1",
