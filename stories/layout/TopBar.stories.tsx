@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { storiesOf } from "@storybook/react";
+import algoliasearch from "algoliasearch/lite";
 import TopBar from "../../app/components/layout/TopBar";
 import { LanguageContext } from "../../app/components/util/Contexts";
 
@@ -74,4 +75,24 @@ storiesOf("layout/TopBar", module)
       />
       <LangaugeContextAccessor />
     </>
+  ))
+  .add("with global search form", () => (
+    <TopBar
+      algoliaSearch={{
+        branch: "main-algolia",
+        searchClient: algoliasearch(
+          "L2PPGO4SBB",
+          "6a6c05b578da5aa729df7f53776e9f76"
+        ),
+        siteId: "e19df9e6-7024-443d-8ec0-26e8312ce0f9",
+        searchOptions: { hitsPerPage: 5 },
+      }}
+      button={{
+        text: "Get API Keys",
+        link: {
+          href: "https://accounts-sandbox.dwolla.com/sign-up",
+          external: true,
+        },
+      }}
+    />
   ));
