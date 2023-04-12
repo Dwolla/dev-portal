@@ -31,7 +31,7 @@
     "@emotion/styled": "^11.10.6",
     "@mdx-js/loader": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@mui/material": "^5.11.16",
+    "@mui/material": "^5.12.0",
     "@next/env": "^12.3.4",
     "@storybook/addon-backgrounds": "^6.5.16",
     "@storybook/addon-postcss": "^2.0.0",
@@ -43,7 +43,7 @@
     "@types/lodash.sortby": "^4.7.7",
     "@types/lodash.uniqby": "^4.7.7",
     "@types/node": "^13.13.52",
-    "@types/react": "^18.0.34",
+    "@types/react": "^18.0.35",
     "@types/react-scroll": "^1.8.6",
     "@types/scroll-to-element": "^2.0.2",
     "autoprefixer": "^10.4.14",
@@ -105,7 +105,7 @@
     "next-sitemap": "^1.9.12",
     "prettier": "^2.8.7",
     "react-test-renderer": "^18.2.0",
-    "webpack": "^5.78.0"
+    "webpack": "^5.79.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,json,mdx}": "prettier --write",
