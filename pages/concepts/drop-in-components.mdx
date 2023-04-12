@@ -73,7 +73,7 @@ The `dwolla-customer-create` component is used to display a form to collect the 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -144,7 +144,7 @@ The `dwolla-customer-create` component is used to display a form to collect the 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -243,7 +243,7 @@ The `dwolla-customer-update` component is used to upgrade an Unverified Customer
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/upgrade-custom.css" />
   <script>
     dwolla.configure({
@@ -328,7 +328,7 @@ The `dwolla-personal-vcr` component is used to display a form to collect the req
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -433,7 +433,7 @@ The `dwolla-business-vcr` component is used to display a form to collect the req
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -561,7 +561,7 @@ The `dwolla-beneficial-owners` component is used to display a form to collect th
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -653,7 +653,7 @@ The `dwolla-document-upload` component can be used if a Verified Customer or a B
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -713,7 +713,7 @@ The `dwolla-balance-display` component can be used for any customer who already 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -786,7 +786,7 @@ In order to add a funding source and verify it, you can:
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -848,9 +848,15 @@ Get started building with drop-in components by checking out the [getting starte
 
 ## Changelog
 
-### Latest `v2.1.9`
+### Latest `v2.2.0`
 
-The latest version of **dwolla-web.js** is `2.1.9`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.1.9`.
+The latest version of **dwolla-web.js** is `2.2.0`. If you are currently using `v2`, we recommend [upgrading](/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.2.0`.
+
+- Added `dwolla-funding-source-create` component
+- Added `dwolla-micro-deposits-verify` component
+- Updated `dwolla.configure` `token` callback function to pass in `_links`, `action`, and `links`, rather than just `action` and `links`. This will allow immediate pass-through without modification to the Dwolla API while maintaining backwards compatibility for existing implementations.
+
+### `v2.1.9`
 
 - Fixed `Submit` button double-click issue on customer creation drop-ins.
 - Improve SSN field validation.
