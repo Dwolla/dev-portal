@@ -854,7 +854,7 @@ The latest version of **dwolla-web.js** is `2.2.0`. If you are currently using `
 
 - Added `<dwolla-funding-source-create>` drop-in component
 - Added `<dwolla-micro-deposits-verify>` drop-in component
-- Updated `dwolla.configure` `token` callback function to receive `_links`, `action`, and `links`, rather than just `action` and `links`. This will allow immediate pass-through without modification to the Dwolla API while maintaining backwards compatibility for existing implementations.
+- Updated `dwolla.configure` `token` callback function to receive `{ _links, action, links }`, rather than just `{ action, links }`. This will allow immediate pass-through without modification to the Dwolla API while maintaining backwards compatibility for existing implementations.
 
 ### `v2.1.9`
 
