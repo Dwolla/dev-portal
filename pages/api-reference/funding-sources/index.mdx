@@ -17,7 +17,7 @@ The Funding Sources resource represents payment accounts that can be used to sen
 
 ### Funding source types
 
-The four funding source types available with a Dwolla integration include a `bank`, the Dwolla `balance`, a `virtual` account number, and a debit `card`. Type `bank` represents any bank account attached as a funding source to Account and Customer resources. Type `balance` represents the Dwolla Balance made available to Account and Verified Customer resources. Type `virtual` represents a Virtual Account Number (VAN) funding source which can be used outside of the Dwolla Platform to route ACH payments both to and from a Dwolla Balance. Type `card` represents a reloadable prepaid or bank-issued debit card that can be used as a funding source type to receive funds in near real-time.
+The three funding source types available with a Dwolla integration include a `bank`, the Dwolla `balance`, and a `virtual` account. Type `bank` represents any bank account attached as a funding source to Account and Customer resources. Type `balance` represents the Dwolla Balance made available to Account and Verified Customer resources. Type `virtual` represents a Virtual Account Number (VAN) funding source which can be used outside of the Dwolla Platform to route ACH payments both to and from a Dwolla Balance.
 
 ##### Bank funding source
 
@@ -36,10 +36,6 @@ The [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-sour
 ##### Virtual account funding source
 
 The Virtual Account Number, or `VAN`, is a funding source that upon creation contains both an account number and routing number which can be utilized outside of the Dwolla Platform to route ACH payments both to and from a Dwolla Balance. VANs cannot be used as a source or destination in `POST` requests to the `/transfers` endpoint as they can only be associated with activity that originates from outside of the Dwolla Platform. Because a `VAN` behaves as a route to a Dwolla balance, only Master Dwolla Accounts and [Verified Customers](https://developers.dwolla.com/concepts/customer-types#customer-types) are eligible to create a `VAN` funding source.
-
-##### Card funding source
-
-Adding a debit `card` as a funding source type allows your [Customers](https://developers.dwolla.com/api-reference/customers) to receive funds typically within 30 minutes rather than hours or days. By sending funds from your Master Dwolla Balance funding source, you can directly “push” these funds out in near real-time to a customer’s reloadable prepaid card or bank-issued debit card. To get a more in-depth overview of debit `cards`, including functionality and other benefits, check out our [developer resource article](https://developers.dwolla.com/concepts/debit-cards).
 
 ### Funding source links
 
@@ -63,7 +59,7 @@ Adding a debit `card` as a funding source type allows your [Customers](https://d
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | id                | The funding source unique identifier.                                                                                                                                                                                                                                                                                                                                                               |
 | status            | Possible values are `unverified` or `verified`. Determines if the funding source has completed verification.                                                                                                                                                                                                                                                                                        |
-| type              | Type of funding source. Possible values are `bank`, `balance`, `virtual` or `card`.                                                                                                                                                                                                                                                                                                                 |
+| type              | Type of funding source. Possible values are `bank`, `balance`, or `virtual`.                                                                                                                                                                                                                                                                                                                        |
 | bankAccountType   | An attribute for `bank` funding sources that determines the type of account. Possible values are `checking`, `savings`, `general-ledger` or `loan`.                                                                                                                                                                                                                                                 |
 | name              | Arbitrary nickname for the funding source.                                                                                                                                                                                                                                                                                                                                                          |
 | created           | ISO-8601 timestamp for when the funding source was created.                                                                                                                                                                                                                                                                                                                                         |
@@ -73,17 +69,6 @@ Adding a debit `card` as a funding source type allows your [Customers](https://d
 | bankName          | The financial institution name. This value is generated from its routing number by Dwolla when a funding source is created; it cannot be specified manually.                                                                                                                                                                                                                                        |
 | iavAccountHolders | An optional object that includes optional `selected` and `other` parameters. `selected`, a string with the account holder name(s) on file with the financial institution for the IAV selected account. `other`, a list of strings with name(s) of other accounts on file. Only returned for a Customer that added a bank using Dwolla IAV, and if names are returned for the selected bank account. |
 | fingerprint       | Fingerprint is an optional unique identifying string value returned for funding sources of type `bank`. This attribute can be used to check across all Dwolla API Customers if two bank accounts share the same account number and routing number. Removing a funding source does not remove the `fingerprint`.                                                                                     |
-| cardDetails       | A card details JSON object. Included if the funding-source is of type `card`.                                                                                                                                                                                                                                                                                                                       |
-
-#### cardDetails JSON object
-
-| Parameter       | Description                       |
-| --------------- | --------------------------------- |
-| brand           | The brand of the card.            |
-| lastFour        | The last four digit of the card.  |
-| expirationMonth | The expiration month of the card. |
-| expirationYear  | The expiration year of the card.  |
-| nameOnCard      | The name of the cardholder.       |
 
 #### cardDetails example
 
