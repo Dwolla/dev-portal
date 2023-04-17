@@ -83,8 +83,8 @@ dependencies:
     specifier: github:Dwolla/dwolla-mdx-remark#1.1.0
     version: github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4)
   github-slugger:
-    specifier: ^1.5.0
-    version: 1.5.0
+    specifier: ^2.0.0
+    version: 2.0.0
   highlight.js:
     specifier: ^11.7.0
     version: 11.7.0
@@ -7227,8 +7227,8 @@ packages:
       - supports-color
     dev: false
 
-  /github-slugger@1.5.0:
-    resolution: {integrity: sha512-wIh+gKBI9Nshz2o46B0B3f5k/W+WI9ZAv6y5Dn5WJ5SK1t0TnDimB4WE5rmTD05ZAIn8HALCZVmCsvj0w0v0lw==}
+  /github-slugger@2.0.0:
+    resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
     dev: false
 
   /glob-parent@5.1.2:
