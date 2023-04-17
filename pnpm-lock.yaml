@@ -158,8 +158,8 @@ dependencies:
     specifier: ^7.0.5
     version: 7.0.5
   swr:
-    specifier: ^0.1.18
-    version: 0.1.18(react@18.2.0)
+    specifier: ^2.1.3
+    version: 2.1.3(react@18.2.0)
 
 devDependencies:
   '@algolia/autocomplete-js':
@@ -6847,10 +6847,6 @@ packages:
       - supports-color
     dev: false
 
-  /fast-deep-equal@2.0.1:
-    resolution: {integrity: sha512-bCK/2Z4zLidyB4ReuIsvALH6w31YfAQDmXMqMx6FyfHqvBxtjC0eRumeSu4Bs3XtXwpyIywtSTrVT99BxY1f9w==}
-    dev: false
-
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
 
@@ -11229,13 +11225,13 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /swr@0.1.18(react@18.2.0):
-    resolution: {integrity: sha512-lD31JxsD0bXdT7dyGVIB7MHcwgFp+HbBBOLt075hJT0sEgW01E3+EuCeB6fsavxZ2UjUZ3f+SbNMo9c8pv9uiA==}
+  /swr@2.1.3(react@18.2.0):
+    resolution: {integrity: sha512-g3ApxIM4Fjbd6vvEAlW60hJlKcYxHb+wtehogTygrh6Jsw7wNagv9m4Oj5Gq6zvvZw0tcyhVGL9L0oISvl3sUw==}
     peerDependencies:
-      react: ^16.11.0
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0
     dependencies:
-      fast-deep-equal: 2.0.1
       react: 18.2.0
+      use-sync-external-store: 1.2.0(react@18.2.0)
     dev: false
 
   /symbol-observable@1.2.0:

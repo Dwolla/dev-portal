@@ -203,7 +203,6 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
   return (
     <AnchorsProvider>
       <LanguageContext.Provider
-        // eslint-disable-next-line react/jsx-no-constructed-context-values
         value={{
           selectedLanguage,
           setSelectedLanguage,
