@@ -19,6 +19,7 @@ import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
 import createCustomerIsbusinessDropIn from "../../assets/images/content-images/drop-in-create-a-ucr-business.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+import verifyMicroDepositsDropIn from "../../assets/images/content-images/drop-in-verify-micro-deposits.png";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 # Dwolla Drop-in Components Library
@@ -209,7 +210,7 @@ dwolla-customer-checkbox,
 dwolla-customer-text,
 dwolla-submit,
 dwolla-customer-submit,
-dwolla-success,o
+dwolla-success,
 dwolla-success-message,
 dwolla-error,
 dwolla-error-message
@@ -699,6 +700,71 @@ dwolla-document-submit
 <Image
   src={documentUploadDropIn}
   alt="Document Upload Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Verify Micro Deposits
+
+The `dwolla-micro-deposits-verify` component can be used to display a form to collect the micro-deposit amounts needed to verify a Customer's [bank funding source](/api-reference/funding-sources). It requires the `customerId` and `fundingSourceId` to be passed in as attributes. We recommend presenting this component to the Customer once micro-deposits have successfully posted into their bank funding source. Check out our guide on [verifying a bank with micro-deposits](/guides/micro-deposit-verification) for more information.
+
+[Create client-token](/api-reference/drop-in-components/create-client-token) action(s): `customer.fundingsources.read` and `customer.microdeposits.verify`.
+
+#### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/verify-micro-deposits.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/verify-micro-deposits-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <dwolla-micro-deposits-verify
+      customerId="{{ customerId }}"
+      fundingSourceId="{{fundingSourceId}}"
+    >
+    </dwolla-micro-deposits-verify>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId` — The ID of the customer the funding source belongs to
+- `fundingSourceId` — The ID of the funding source to which micro deposits were initiated
+
+##### CSS Classes for Verify Micro Deposits
+
+```css
+/* Available CSS Classes for Customization */
+dwolla-input-container,
+dwolla-micro-deposits-input,
+dwolla-micro-deposits-amount-one,
+dwolla-micro-deposits-amount-two,
+dwolla-micro-deposits-submit,
+dwolla-loading,
+dwolla-success,
+dwolla-success-message,
+dwolla-error,
+dwolla-error-message,
+dwolla-info,
+dwolla-info-message,
+```
+
+##### Example Create Funding Source UI
+
+<Image
+  src={verifyMicroDepositsDropIn}
+  alt="Verify Micro Deposits Drop-In Component"
   width="75%"
   height="75%"
 />
