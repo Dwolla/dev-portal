@@ -708,6 +708,16 @@ dwolla-document-submit
 
 The `dwolla-funding-source-create` component is used to display a form to collect the required information needed to create a [bank funding source](/api-reference/funding-sources). Currently, this component only allows creating a funding source that is attached to a [customer](/api-reference/customers) record. Optionally, this component can automatically [initiate micro-deposits](/api-reference/funding-sources/initiate-micro-deposits) when the funding source is created, if specified via the `initiateMicroDeposits` attribute.
 
+<AlertBar variation="warning">
+  This component currently does not support{" "}
+  <a href="/api-reference/transfers/create-an-on-demand-transfer-authorization">
+    on-demand authorization
+  </a>{" "}
+  when creating a funding source. Instead, if you wish to make use of this
+  feature, the interaction between the API and the customer must happen outside
+  of the drop-ins component library at this time.
+</AlertBar>
+
 [Create client-token](/api-reference/drop-in-components/create-client-token) action(s): `customer.fundingsources.create` and, if `initiateMicroDeposits` is set to true, `customer.microdeposits.create`.
 
 #### Example Configuration and Usage
