@@ -33,11 +33,9 @@ module.exports = {
     const jsx = mdx.sync(withFrontMatter);
     const toTransform = `import { mdx } from "@mdx-js/react";${jsx}`;
 
-    const output = await createTransformer(babelOptions).processAsync(
+    return await createTransformer(babelOptions).processAsync(
       toTransform,
       ...rest
     );
-    console.log("Output: ", output);
-    return output;
   },
 };
