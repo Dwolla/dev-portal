@@ -1,4 +1,6 @@
 // https://github.com/zeit/next.js/tree/canary/examples/with-jest
+const esModules = ["github-slugger"];
+
 module.exports = {
   transform: {
     "^.+\\.(js|jsx|ts|tsx)$": "babel-jest",
@@ -15,7 +17,7 @@ module.exports = {
   testPathIgnorePatterns: ["/.pnpm-store/", "/node_modules/", "/.next/"],
   transformIgnorePatterns: [
     "/.pnpm-store/",
-    "/node_modules/",
+    `node_modules/(?!(?:.pnpm/)?(${esModules.join("|")}))`,
     "^.+\\.module\\.(css|sass|scss)$",
   ],
   moduleNameMapper: {

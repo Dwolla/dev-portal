@@ -20,6 +20,7 @@ jest.mock("next/router", () => ({
   },
 }));
 jest.mock("../../../modules/images.import");
+jest.mock("../../../modules/pages.import");
 
 const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
