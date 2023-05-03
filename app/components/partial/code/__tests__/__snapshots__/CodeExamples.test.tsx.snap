@@ -9,32 +9,46 @@ exports[`multiple examples 1`] = `
       className="css-1tafalo-BarItems e112hlxu3"
     >
       <div
-        className=" css-k377xg-container"
+        className=" css-14mys1s-container"
         onKeyDown={[Function]}
       >
+        <span
+          className="css-1f43avz-a11yText-A11yText"
+          id="react-select-2-live-region"
+        />
+        <span
+          aria-atomic="false"
+          aria-live="polite"
+          aria-relevant="additions text"
+          className="css-1f43avz-a11yText-A11yText"
+        />
         <div
-          className=" css-ypb917-control"
+          className=" css-o2aeqk-control"
           onMouseDown={[Function]}
           onTouchEnd={[Function]}
         >
           <div
-            className=" css-1fpxn2j-ValueContainer"
+            className=" css-1ap8b8q-ValueContainer"
           >
             <div
-              className=" css-gn3biy-singleValue"
+              className=" css-1khq0o6-singleValue"
             >
               PHP
             </div>
             <input
               aria-autocomplete="list"
-              className="css-62g3xt-dummyInput"
+              aria-expanded={false}
+              aria-haspopup={true}
+              aria-readonly={true}
+              className="css-mohuvp-dummyInput-DummyInput"
               disabled={false}
               id="react-select-2-input"
+              inputMode="none"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
-              readOnly={true}
-              tabIndex="0"
+              role="combobox"
+              tabIndex={0}
               value=""
             />
           </div>
@@ -42,11 +56,11 @@ exports[`multiple examples 1`] = `
             className=" css-1hb7zxy-IndicatorsContainer"
           >
             <span
-              className=" css-43ykx9-indicatorSeparator"
+              className=" css-1uei4ir-indicatorSeparator"
             />
             <div
               aria-hidden="true"
-              className=" css-1hkylt5-indicatorContainer"
+              className=" css-1m7k5ev-indicatorContainer"
               onMouseDown={[Function]}
               onTouchEnd={[Function]}
             >
