@@ -12,12 +12,12 @@ exports[`TabBarPanel 1`] = `
     role="tablist"
   >
     <li
-      aria-controls="react-tabs-1"
+      aria-controls="panel:r0:0"
       aria-disabled="false"
       aria-selected="true"
       className="tab is-active react-tabs__tab--selected"
       data-rttab={true}
-      id="react-tabs-0"
+      id="tab:r0:0"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="tab"
@@ -30,12 +30,12 @@ exports[`TabBarPanel 1`] = `
       />
     </li>
     <li
-      aria-controls="react-tabs-3"
+      aria-controls="panel:r0:1"
       aria-disabled="false"
       aria-selected="false"
       className="tab"
       data-rttab={true}
-      id="react-tabs-2"
+      id="tab:r0:1"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="tab"
@@ -48,12 +48,12 @@ exports[`TabBarPanel 1`] = `
       />
     </li>
     <li
-      aria-controls="react-tabs-5"
+      aria-controls="panel:r0:2"
       aria-disabled="false"
       aria-selected="false"
       className="tab"
       data-rttab={true}
-      id="react-tabs-4"
+      id="tab:r0:2"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="tab"
@@ -66,12 +66,12 @@ exports[`TabBarPanel 1`] = `
       />
     </li>
     <li
-      aria-controls="react-tabs-7"
+      aria-controls="panel:r0:3"
       aria-disabled="false"
       aria-selected="false"
       className="tab"
       data-rttab={true}
-      id="react-tabs-6"
+      id="tab:r0:3"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="tab"
@@ -84,12 +84,12 @@ exports[`TabBarPanel 1`] = `
       />
     </li>
     <li
-      aria-controls="react-tabs-9"
+      aria-controls="panel:r0:4"
       aria-disabled="false"
       aria-selected="false"
       className="tab"
       data-rttab={true}
-      id="react-tabs-8"
+      id="tab:r0:4"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="tab"
@@ -102,12 +102,12 @@ exports[`TabBarPanel 1`] = `
       />
     </li>
     <li
-      aria-controls="react-tabs-11"
+      aria-controls="panel:r0:5"
       aria-disabled="false"
       aria-selected="false"
       className="tab"
       data-rttab={true}
-      id="react-tabs-10"
+      id="tab:r0:5"
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
       role="tab"
@@ -121,9 +121,9 @@ exports[`TabBarPanel 1`] = `
     </li>
   </ul>
   <div
-    aria-labelledby="react-tabs-0"
+    aria-labelledby="tab:r0:0"
     className="react-tabs__tab-panel react-tabs__tab-panel--selected"
-    id="react-tabs-1"
+    id="panel:r0:0"
     role="tabpanel"
   >
     <div
@@ -133,33 +133,33 @@ exports[`TabBarPanel 1`] = `
     </div>
   </div>
   <div
-    aria-labelledby="react-tabs-2"
+    aria-labelledby="tab:r0:1"
     className="react-tabs__tab-panel"
-    id="react-tabs-3"
+    id="panel:r0:1"
     role="tabpanel"
   />
   <div
-    aria-labelledby="react-tabs-4"
+    aria-labelledby="tab:r0:2"
     className="react-tabs__tab-panel"
-    id="react-tabs-5"
+    id="panel:r0:2"
     role="tabpanel"
   />
   <div
-    aria-labelledby="react-tabs-6"
+    aria-labelledby="tab:r0:3"
     className="react-tabs__tab-panel"
-    id="react-tabs-7"
+    id="panel:r0:3"
     role="tabpanel"
   />
   <div
-    aria-labelledby="react-tabs-8"
+    aria-labelledby="tab:r0:4"
     className="react-tabs__tab-panel"
-    id="react-tabs-9"
+    id="panel:r0:4"
     role="tabpanel"
   />
   <div
-    aria-labelledby="react-tabs-10"
+    aria-labelledby="tab:r0:5"
     className="react-tabs__tab-panel"
-    id="react-tabs-11"
+    id="panel:r0:5"
     role="tabpanel"
   />
 </div>

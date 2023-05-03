@@ -143,8 +143,8 @@ dependencies:
     specifier: 5.7.2
     version: 5.7.2(@types/react@18.2.0)(react-dom@18.2.0)(react@18.2.0)
   react-tabs:
-    specifier: ^3.2.3
-    version: 3.2.3(react@18.2.0)
+    specifier: ^6.0.1
+    version: 6.0.1(react@18.2.0)
   react-tippy:
     specifier: ^1.4.0
     version: 1.4.0
@@ -9967,10 +9967,10 @@ packages:
       react-is: 18.2.0
     dev: true
 
-  /react-tabs@3.2.3(react@18.2.0):
-    resolution: {integrity: sha512-jx325RhRVnS9DdFbeF511z0T0WEqEoMl1uCE3LoZ6VaZZm7ytatxbum0B8bCTmaiV0KsU+4TtLGTGevCic7SWg==}
+  /react-tabs@6.0.1(react@18.2.0):
+    resolution: {integrity: sha512-XE5D/iCcwUsr06wf6fWrjA/HbUaj3G2+6NMVJygZuKALHkWYp+D3ZPcG2VctuaOHHzMU48eSOuxwBALBnuXldA==}
     peerDependencies:
-      react: ^16.3.0 || ^17.0.0-0
+      react: ^18.0.0
     dependencies:
       clsx: 1.2.1
       prop-types: 15.8.1

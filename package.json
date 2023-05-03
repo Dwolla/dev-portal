@@ -66,7 +66,7 @@
     "react-modal-image": "^2.6.0",
     "react-scroll": "^1.8.9",
     "react-select": "5.7.2",
-    "react-tabs": "^3.2.3",
+    "react-tabs": "^6.0.1",
     "react-tippy": "^1.4.0",
     "scroll-to-element": "^2.0.3",
     "storybook": "^7.0.7",
