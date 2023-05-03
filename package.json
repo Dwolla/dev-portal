@@ -65,7 +65,7 @@
     "react-gtm-module": "^2.0.11",
     "react-modal-image": "^2.6.0",
     "react-scroll": "^1.8.9",
-    "react-select": "5.7.2",
+    "react-select": "^5.7.3",
     "react-tabs": "^6.0.1",
     "react-tippy": "^1.4.0",
     "scroll-to-element": "^2.0.3",
@@ -82,7 +82,7 @@
     "@types/lodash.sortby": "^4.7.7",
     "@types/lodash.uniqby": "^4.7.7",
     "@types/node": "^18.16.3",
-    "@types/react": "^18.2.0",
+    "@types/react": "^18.2.1",
     "@types/react-scroll": "^1.8.7",
     "@types/react-test-renderer": "^18.0.0",
     "@types/scroll-to-element": "^2.0.2",
@@ -101,13 +101,13 @@
     "husky": "^8.0.3",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.5.0",
-    "lint-staged": "13.2.1",
+    "lint-staged": "^13.2.2",
     "next-sitemap": "^4.0.9",
     "prettier": "^2.8.8",
     "react-test-renderer": "^18.2.0",
     "typescript": "^5.0.4",
     "url-loader": "^4.1.1",
-    "webpack": "^5.81.0"
+    "webpack": "^5.82.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,css,scss,json,mdx}": "prettier --write",
