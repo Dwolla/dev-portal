@@ -19,6 +19,7 @@ import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
 import createCustomerIsbusinessDropIn from "../../assets/images/content-images/drop-in-create-a-ucr-business.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+import createFundingSourceDropIn from "../../assets/images/content-images/drop-in-create-funding-source.png";
 import verifyMicroDepositsDropIn from "../../assets/images/content-images/drop-in-verify-micro-deposits.png";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
@@ -30,7 +31,7 @@ The library comes with a collection of low-code components that solve for a vari
 
 Each drop-in component contains built-in features such as responsive design, custom styling, error handling and more. These components allow developers to ship more with fewer lines of code— while improving readability and maintainability of their application’s code.
 
-As the library continues to grow, Dwolla will evaluate adding support for other frameworks and languages based on feedback from the community.
+This is a language-agnostic library, meaning that any webpage that supports client-side JavaScript will support drop-in components! For ease of use, however, we also offer [JSX/TSX bindings](https://github.com/Dwolla/react-drop-ins) if you are developing using React or a React-based environment (such as Next). As the library continues to grow, Dwolla will evaluate adding support for other frameworks based on community feedback.
 
 ## Workflow
 
@@ -74,7 +75,7 @@ The `dwolla-customer-create` component is used to display a form to collect the 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -145,7 +146,7 @@ The `dwolla-customer-create` component is used to display a form to collect the 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -210,7 +211,7 @@ dwolla-customer-checkbox,
 dwolla-customer-text,
 dwolla-submit,
 dwolla-customer-submit,
-dwolla-success,
+dwolla-success,o
 dwolla-success-message,
 dwolla-error,
 dwolla-error-message
@@ -244,7 +245,7 @@ The `dwolla-customer-update` component is used to upgrade an Unverified Customer
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/upgrade-custom.css" />
   <script>
     dwolla.configure({
@@ -329,7 +330,7 @@ The `dwolla-personal-vcr` component is used to display a form to collect the req
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -434,7 +435,7 @@ The `dwolla-business-vcr` component is used to display a form to collect the req
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -562,7 +563,7 @@ The `dwolla-beneficial-owners` component is used to display a form to collect th
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -654,7 +655,7 @@ The `dwolla-document-upload` component can be used if a Verified Customer or a B
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -704,6 +705,96 @@ dwolla-document-submit
   height="75%"
 />
 
+### Create a Funding Source
+
+The `dwolla-funding-source-create` component is used to display a form to collect the required information needed to create a [bank funding source](/api-reference/funding-sources). Currently, this component only allows creating a funding source that is attached to a [customer](/api-reference/customers) record. Optionally, this component can automatically [initiate micro-deposits](/api-reference/funding-sources/initiate-micro-deposits) when the funding source is created, if specified via the `initiateMicroDeposits` attribute.
+
+<AlertBar variation="warning">
+  This component currently does not support{" "}
+  <a href="/api-reference/transfers/create-an-on-demand-transfer-authorization">
+    on-demand authorization
+  </a>{" "}
+  when creating a funding source. Instead, if you wish to make use of this
+  feature, the interaction between the API and the customer must happen outside
+  of the drop-ins component library at this time.
+</AlertBar>
+
+[Create client-token](/api-reference/drop-in-components/create-client-token) action(s): `customer.fundingsources.create` and, if `initiateMicroDeposits` is set to true, `customer.microdeposits.create`.
+
+#### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-funding-sources-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-funding-sources-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Example without automatic micro-deposit initiation -->
+    <dwolla-funding-source-create customerId="{{ customerId }}">
+    </dwolla-funding-source-create>
+
+    <!-- Example with automatic micro-deposit initiation -->
+    <dwolla-funding-source-create
+      customerId="{{ customerId }}"
+      initiateMicroDeposits
+    >
+    </dwolla-funding-source-create>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId` — The ID of the customer this funding source will attach to
+
+##### Optional Attributes
+
+- `initiateMicroDeposits` — If present, micro deposits will be automatically initiated _if the funding source is created successfully_
+
+View all required vs. optional parameters in our [API Reference](/api-reference/funding-sources/create-funding-source-for-customer).
+
+##### CSS Selectors for Create Funding Source
+
+<!-- prettier-ignore -->
+```css
+/* Input Form */
+.dwolla-input-container,
+.dwolla-funding-source-input,
+.dwolla-funding-source-name,
+.dwolla-funding-source-type,
+.dwolla-funding-source-routingNumber,
+.dwolla-funding-source-accountNumber,
+.dwolla-funding-source-submit
+
+/* Error Messaging */
+#dwolla-error,
+#dwolla-error-message
+
+/* Success Messaging */
+#dwolla-success,
+#dwolla-success-message
+```
+
+##### Example Create Funding Source UI
+
+<Image
+  src={createFundingSourceDropIn}
+  alt="Create Funding Source Drop-In Component"
+  width="75%"
+  height="75%"
+/>
+
 ### Verify Micro Deposits
 
 The `dwolla-micro-deposits-verify` component can be used to display a form to collect the micro-deposit amounts needed to verify a Customer's [bank funding source](/api-reference/funding-sources). It requires the `customerId` and `fundingSourceId` to be passed in as attributes. We recommend presenting this component to the Customer once micro-deposits have successfully posted into their bank funding source. Check out our guide on [verifying a bank with micro-deposits](/guides/micro-deposit-verification) for more information.
@@ -744,6 +835,7 @@ The `dwolla-micro-deposits-verify` component can be used to display a form to co
 
 ##### CSS Classes for Verify Micro Deposits
 
+<!-- prettier-ignore -->
 ```css
 /* Available CSS Classes for Customization */
 dwolla-input-container,
@@ -752,12 +844,18 @@ dwolla-micro-deposits-amount-one,
 dwolla-micro-deposits-amount-two,
 dwolla-micro-deposits-submit,
 dwolla-loading,
+
+/* Success Messaging */
 dwolla-success,
 dwolla-success-message,
+
+/* Error Messaging */
 dwolla-error,
 dwolla-error-message,
+
+/* Info Messaging */
 dwolla-info,
-dwolla-info-message,
+dwolla-info-message
 ```
 
 ##### Example Create Funding Source UI
@@ -779,7 +877,7 @@ The `dwolla-balance-display` component can be used for any customer who already 
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -852,7 +950,7 @@ In order to add a funding source and verify it, you can:
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.1.9/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -914,9 +1012,15 @@ Get started building with drop-in components by checking out the [getting starte
 
 ## Changelog
 
-### Latest `v2.1.9`
+### Latest `v2.2.0`
 
-The latest version of **dwolla-web.js** is `2.1.9`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.1.9`.
+The latest version of **dwolla-web.js** is `2.2.0`. If you are currently using `v2`, we recommend [upgrading](/guides/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.2.0`.
+
+- Added `<dwolla-funding-source-create>` drop-in component
+- Added `<dwolla-micro-deposits-verify>` drop-in component
+- Updated `dwolla.configure` `token` callback function to receive `{ _links, action, links }`, rather than just `{ action, links }`. This will allow immediate pass-through without modification to the Dwolla API while maintaining backwards compatibility for existing implementations.
+
+### `v2.1.9`
 
 - Fixed `Submit` button double-click issue on customer creation drop-ins.
 - Improve SSN field validation.
