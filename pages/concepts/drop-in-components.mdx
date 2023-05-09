@@ -19,6 +19,7 @@ import createPVCDropIn from "../../assets/images/content-images/drop-in-create-a
 import createCustomerDropIn from "../../assets/images/content-images/drop-in-create-a-customer.png";
 import createCustomerIsbusinessDropIn from "../../assets/images/content-images/drop-in-create-a-ucr-business.png";
 import customerUpgradeDropIn from "../../assets/images/content-images/drop-in-upgrade-unverified-customer.png";
+import createFundingSourceDropIn from "../../assets/images/content-images/drop-in-create-funding-source.png";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 
 # Dwolla Drop-in Components Library
@@ -699,6 +700,96 @@ dwolla-document-submit
 <Image
   src={documentUploadDropIn}
   alt="Document Upload Drop-in Component"
+  width="75%"
+  height="75%"
+/>
+
+### Create a Funding Source
+
+The `dwolla-funding-source-create` component is used to display a form to collect the required information needed to create a [bank funding source](/api-reference/funding-sources). Currently, this component only allows creating a funding source that is attached to a [customer](/api-reference/customers) record. Optionally, this component can automatically [initiate micro-deposits](/api-reference/funding-sources/initiate-micro-deposits) when the funding source is created, if specified via the `initiateMicroDeposits` attribute.
+
+<AlertBar variation="warning">
+  This component currently does not support{" "}
+  <a href="/api-reference/transfers/create-an-on-demand-transfer-authorization">
+    on-demand authorization
+  </a>{" "}
+  when creating a funding source. Instead, if you wish to make use of this
+  feature, the interaction between the API and the customer must happen outside
+  of the drop-ins component library at this time.
+</AlertBar>
+
+[Create client-token](/api-reference/drop-in-components/create-client-token) action(s): `customer.fundingsources.create` and, if `initiateMicroDeposits` is set to true, `customer.microdeposits.create`.
+
+#### Example Configuration and Usage
+
+```html
+<head>
+  <script src="//cdn.dwolla.com/v2.2.0/dwolla-web.js"></script>
+  <link rel="stylesheet" href="/styles/create-funding-sources-custom.css" />
+  <script>
+    dwolla.configure({
+      environment: "sandbox",
+      styles: "/styles/create-funding-sources-custom.css",
+      success: (res) => Promise.resolve(),
+      error: (err) => Promise.resolve(),
+      tokenUrl: "/tokenUrl",
+    });
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Example without automatic micro-deposit initiation -->
+    <dwolla-funding-source-create customerId="{{ customerId }}">
+    </dwolla-funding-source-create>
+
+    <!-- Example with automatic micro-deposit initiation -->
+    <dwolla-funding-source-create
+      customerId="{{ customerId }}"
+      initiateMicroDeposits
+    >
+    </dwolla-funding-source-create>
+  </div>
+</body>
+```
+
+##### Fields available for pre-filling existing information
+
+- `customerId` — The ID of the customer this funding source will attach to
+
+##### Optional Attributes
+
+- `initiateMicroDeposits` — If present, micro deposits will be automatically initiated _if the funding source is created successfully_
+
+View all required vs. optional parameters in our [API Reference](/api-reference/funding-sources/create-funding-source-for-customer).
+
+##### CSS Selectors for Create Funding Source
+
+<!-- prettier-ignore -->
+```css
+/* Input Form */
+.dwolla-input-container,
+.dwolla-funding-source-input,
+.dwolla-funding-source-name,
+.dwolla-funding-source-type,
+.dwolla-funding-source-routingNumber,
+.dwolla-funding-source-accountNumber,
+.dwolla-funding-source-submit
+
+/* Error Messaging */
+#dwolla-error,
+#dwolla-error-message
+
+/* Success Messaging */
+#dwolla-success,
+#dwolla-success-message
+```
+
+##### Example Create Funding Source UI
+
+<Image
+  src={createFundingSourceDropIn}
+  alt="Create Funding Source Drop-In Component"
   width="75%"
   height="75%"
 />
