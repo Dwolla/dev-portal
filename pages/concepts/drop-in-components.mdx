@@ -763,17 +763,26 @@ The `dwolla-funding-source-create` component is used to display a form to collec
 
 View all required vs. optional parameters in our [API Reference](/api-reference/funding-sources/create-funding-source-for-customer).
 
-##### CSS Classes for Create Funding Source
+##### CSS Selectors for Create Funding Source
 
+<!-- prettier-ignore -->
 ```css
-/* Available CSS Classes for Customization */
-dwolla-input-container,
-dwolla-funding-source-input,
-dwolla-funding-source-name,
-dwolla-funding-source-type,
-dwolla-funding-source-routingNumber,
-dwolla-funding-source-accountNumber,
-dwolla-funding-source-submit
+/* Input Form */
+.dwolla-input-container,
+.dwolla-funding-source-input,
+.dwolla-funding-source-name,
+.dwolla-funding-source-type,
+.dwolla-funding-source-routingNumber,
+.dwolla-funding-source-accountNumber,
+.dwolla-funding-source-submit
+
+/* Error Messaging */
+#dwolla-error,
+#dwolla-error-message
+
+/* Success Messaging */
+#dwolla-success,
+#dwolla-success-message
 ```
 
 ##### Example Create Funding Source UI
