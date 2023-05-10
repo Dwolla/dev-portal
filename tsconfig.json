@@ -23,6 +23,6 @@
     "**/*.tsx",
     "next.config.js",
     "custom.d.ts",
-    "next-sitemap.js"
+    "next-sitemap.config.js"
   ]
 }

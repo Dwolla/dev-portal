@@ -1,4 +1,15 @@
-import hljs from "highlight.js";
+import highlightJs from "highlight.js";
+
+import languageJavaScript from "highlight.js/lib/languages/javascript";
+import languageRuby from "highlight.js/lib/languages/ruby";
+import languagePhp from "highlight.js/lib/languages/php";
+import languagePython from "highlight.js/lib/languages/python";
+import languageKotlin from "highlight.js/lib/languages/kotlin";
+import languageJson from "highlight.js/lib/languages/json";
+import languageBash from "highlight.js/lib/languages/bash";
+import languagePlaintext from "highlight.js/lib/languages/plaintext";
+import languageXml from "highlight.js/lib/languages/xml";
+import languageCss from "highlight.js/lib/languages/css";
 
 export type Language =
   | "javascript"
@@ -11,38 +22,26 @@ export type Language =
   | "plaintext"
   | "html"
   | "kotlin"
-  | "xml";
+  | "xml"
+  | "css";
 
-const registerLanguage = (language: Language, hljsLanguage: any) =>
-  hljs.registerLanguage(language, hljsLanguage);
+const registerLanguage = (language: Language | Language[], hljsLanguage: any) =>
+  Array.isArray(language)
+    ? language.map((lang) => registerLanguage(lang, hljsLanguage))
+    : highlightJs.registerLanguage(language, hljsLanguage);
 
-registerLanguage(
-  "javascript",
-  require("highlight.js/lib/languages/javascript")
-);
-
-registerLanguage("ruby", require("highlight.js/lib/languages/ruby"));
-
-registerLanguage("php", require("highlight.js/lib/languages/php"));
-
-registerLanguage("python", require("highlight.js/lib/languages/python"));
-
-registerLanguage("kotlin", require("highlight.js/lib/languages/kotlin"));
-
-registerLanguage("json", require("highlight.js/lib/languages/json"));
-
-registerLanguage("bash", require("highlight.js/lib/languages/bash"));
-
-registerLanguage("raw", require("highlight.js/lib/languages/bash"));
-
-registerLanguage("plaintext", require("highlight.js/lib/languages/plaintext"));
-
-registerLanguage("html", require("highlight.js/lib/languages/xml"));
-
-registerLanguage("xml", require("highlight.js/lib/languages/xml"));
-
-hljs.registerLanguage("css", require("highlight.js/lib/languages/css"));
+registerLanguage("javascript", languageJavaScript);
+registerLanguage("ruby", languageRuby);
+registerLanguage("php", languagePhp);
+registerLanguage("python", languagePython);
+registerLanguage("kotlin", languageKotlin);
+registerLanguage("json", languageJson);
+registerLanguage(["bash", "raw"], languageBash);
+registerLanguage("plaintext", languagePlaintext);
+registerLanguage(["html", "xml"], languageXml);
+registerLanguage("css", languageCss);
 
 export default function highlight(code: string, language: string) {
-  return hljs.highlight(code, { language: language || "plaintext" }).value;
+  return highlightJs.highlight(code, { language: language || "plaintext" })
+    .value;
 }

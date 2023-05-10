@@ -4,9 +4,8 @@
 "use strict";
 
 const matter = require("gray-matter");
-const stringifyObject = require("stringify-object");
 const mdx = require("@mdx-js/mdx");
-const babelJest = require("babel-jest");
+const { createTransformer } = require("babel-jest");
 const path = require("path");
 const cwd = require("process").cwd();
 const fs = require("fs");
@@ -17,8 +16,9 @@ const stringifiedBabelOptions = fs.readFileSync(
 );
 const babelOptions = JSON.parse(stringifiedBabelOptions);
 
-function parseFrontMatter(src, filename) {
+async function parseFrontMatter(src, filename) {
   const { content, data } = matter(src);
+  const { default: stringifyObject } = await import("stringify-object");
 
   return `export const frontMatter = ${stringifyObject({
     ...data,
@@ -28,12 +28,14 @@ ${content}`;
 }
 
 module.exports = {
-  process: (src, ...rest) => {
+  process: async (src, ...rest) => {
     const withFrontMatter = parseFrontMatter(src, ...rest);
     const jsx = mdx.sync(withFrontMatter);
     const toTransform = `import { mdx } from "@mdx-js/react";${jsx}`;
-    return babelJest
-      .createTransformer(babelOptions)
-      .process(toTransform, ...rest);
+
+    return await createTransformer(babelOptions).processAsync(
+      toTransform,
+      ...rest
+    );
   },
 };
