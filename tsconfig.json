@@ -15,7 +15,13 @@
     "jsxImportSource": "@emotion/react",
     "downlevelIteration": true,
     "isolatedModules": true,
-    "incremental": true
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   "exclude": ["node_modules"],
   "include": [
@@ -23,6 +29,7 @@
     "**/*.tsx",
     "next.config.js",
     "custom.d.ts",
-    "next-sitemap.config.js"
+    "next-sitemap.config.js",
+    ".next/types/**/*.ts"
   ]
 }

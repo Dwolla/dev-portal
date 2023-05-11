@@ -1,9 +1,8 @@
 const withDwollaMdx = require("dwolla-mdx-remark");
 const withImages = require("next-images");
-const { PHASE_DEVELOPMENT_SERVER } = require("next/constants");
 const withYaml = require("next-plugin-yaml");
 
-module.exports = (phase) =>
+module.exports = () =>
   withYaml(
     withImages(
       withDwollaMdx({
@@ -12,13 +11,19 @@ module.exports = (phase) =>
           providerImportSource: "@mdx-js/react",
         },
       })({
-        env: {
-          isDev: phase === PHASE_DEVELOPMENT_SERVER,
+        compiler: {
+          emotion: true,
+        },
+        experimental: {
+          swcPlugins: [["WASM_TARGET", {}]],
         },
         images: {
           disableStaticImages: true,
         },
         pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+        typescript: {
+          ignoreBuildErrors: true,
+        },
         webpack: (config) => {
           config.module.rules.unshift({
             test: /\.svg$/,
