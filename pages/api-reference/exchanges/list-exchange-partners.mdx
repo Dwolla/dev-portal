@@ -25,7 +25,7 @@ This section contains information on how to retrieve the list of exchange partne
 ### Request and response
 
 ```bash
-GET https://api-sandbox.dwolla.com/exchange-partners
+GET https://api.dwolla.com/exchange-partners
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -76,10 +76,28 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
                 "name": "MX",
                 "status": "active",
                 "created": "2022-08-30T19:31:59.106Z"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange-partner"
+                    },
+                    "funding-source": {
+                        "href": "https://api.dwolla.com/funding-sources",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    }
+                },
+                "id": "a0b22a57-68df-4450-b507-47c937e64e89",
+                "name": "Flinks",
+                "status": "active",
+                "created": "2023-05-15T14:43:47.615Z"
             }
         ]
     },
-    "total": 2
+    "total": 3
 }
 ```
 
