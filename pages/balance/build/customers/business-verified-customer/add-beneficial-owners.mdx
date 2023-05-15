@@ -1,0 +1,602 @@
+---
+layout: guides
+title: "Step 3: Add beneficial owners"
+guide:
+  step: 3
+meta:
+  title: Adding Beneficial Owners | Dwolla API Documentation
+  description: Conditionally required, create a beneficial owner to a verified business Customer to advance them to a transactable state.
+---
+
+# Step 3: Adding Beneficial Owner(s)
+
+## The Basics
+
+To help the government fight financial crime, the existing United States Federal customer due diligence rules were amended to clarify and strengthen [customer due diligence requirements.](https://www.federalregister.gov/documents/2016/05/11/2016-10567/customer-due-diligence-requirements-for-financial-institutions#footnote-44-p29407) The customer due diligence rule imposes a requirement for verifying the identity of beneficial owner(s) of Dwolla’s partners and users that are not natural persons. These legal entities can be abused to disguise involvement in terrorist financing, money laundering, tax evasion, corruption, fraud, and other financial crimes. Requiring the disclosure of key individuals who ultimately own or control a legal entity (i.e., the beneficial owners) helps law enforcement investigate and prosecute these crimes.
+
+<AlertBar variation="info">
+  If your business is exempt or if there is no individual with at least 25%
+  ownership, your Customer can go straight to
+  <a href="/guides/business-verified-customer/certify-beneficial-ownership">
+    {" "}
+    certifying{" "}
+  </a>
+  that there are no beneficial owners
+</AlertBar>
+
+### How do I know what business structure is required to add Beneficial Owners?
+
+| If my Customer's business structure is... | ...are they required to add beneficial owners? |
+| ----------------------------------------- | ---------------------------------------------- |
+| Sole proprietorships                      | No (exempt)                                    |
+| Unincorporated association                | No (exempt)                                    |
+| Trust                                     | No (exempt)                                    |
+| Corporation                               | Yes (if owns 25% or more)                      |
+| Publicly traded corporations              | No (exempt)                                    |
+| Non-profits                               | No (exempt)                                    |
+| LLCs                                      | Yes (if owns 25% or more)                      |
+| Partnerships, LP's, LLP's                 | Yes (if owns 25% or more)                      |
+
+## Create a beneficial owner for a Business Verified Customer
+
+To create a beneficial owner, use the [create a beneficial owner](https://developers.dwolla.com/api-reference/beneficial-owners/create) endpoint.
+
+## Events
+
+As a developer, you can expect these events to be triggered when a beneficial owner is successfully created and systematically verified:
+
+1. `customer_beneficial_owner_created`
+2. `customer_beneficial_owner_verified`
+
+### Request Parameters
+
+| Parameter   | Required    | Type   | Description                                                                                                              |
+| ----------- | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------ |
+| firstName   | yes         | string | The legal first name of the Beneficial Owner.                                                                            |
+| lastName    | yes         | string | The legal last name of the Beneficial Owner.                                                                             |
+| ssn         | conditional | string | Full nine digits of Beneficial Owner’s social security number.                                                           |
+| dateOfBirth | Yes         | string | Beneficial owner’s date of birth in `YYYY-MM-DD` format. Must be between 18 to 125 years of age.                         |
+| address     | Yes         | object | Street number, street name of Beneficial Owner’s physical address                                                        |
+| passport    | conditional | object | An optional passport JSON object. Required for foreign individuals. Includes passport identification number and country. |
+
+### Address JSON object
+
+| Parameter           | Required    | Type   | Description                                                                                                                                                                                                          |
+| ------------------- | ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| address1            | yes         | string | First line of the street address of the beneficial owner's permanent residence. **Note:** PO Boxes are not allowed.                                                                                                  |
+| address2            | no          | string | Second line of the street address of the beneficial owner's permanent residence. **Note:** PO Boxes are not allowed.                                                                                                 |
+| address3            | no          | string | Second line of the street address of the beneficial owner's permanent residence. **Note:** PO Boxes are not allowed.                                                                                                 |
+| city                | yes         | string | City of beneficial owner's permanent residence.                                                                                                                                                                      |
+| stateProvinceRegion | yes         | string | Two-letter US state or territory abbreviation code of Beneficial Owner’s physical address. For two-letter abbreviation reference, check out the [US Postal Service guide](https://pe.usps.com/text/pub28/28apb.htm). |
+| country             | yes         | string | Country of beneficial owner's permanent residence. Two digit ISO code, e.g. `US`.                                                                                                                                    |
+| postalCode          | conditional | string | Postal code of beneficial owner’s permanent residence. Should be a five digit postal code, e.g. `50314`. Optional if beneficial owner is a non-US person.                                                            |
+
+### Passport JSON object
+
+| Parameter | Required    | Type   | Description                                                                                |
+| --------- | ----------- | ------ | ------------------------------------------------------------------------------------------ |
+| number    | conditional | string | Required if Beneficial resides outside of United States and has no Social Security number. |
+| country   | conditional | string | Country of issued passport. Two digit ISO code, e.g. `US`.                                 |
+
+#### Request and Response
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8/beneficial-owners
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "ssn": "123-56-7890",
+  "dateOfBirth": "1960-11-30",
+  "address": {
+    "address1": "123 Main St.",
+    "address2": "Apt 12",
+    "city": "New York",
+    "stateProvinceRegion": "NY",
+    "country": "US",
+    "postalCode": "10005"
+  }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/beneficial-owners/FC451A7A-AE30-4404-AB95-E3553FCD733F
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$verified_customer = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+
+$addOwner = $customersApi->addBeneficialOwner([
+      'firstName' => 'Jane',
+      'lastName'=> 'Doe',
+      'dateOfBirth' => '1960-11-30',
+      'ssn' => '123-56-7890',
+      'address' =>
+      [
+          'address1' => '123 Main St',
+          'address2' => 'Apt 12',
+          'city' => 'New York',
+          'stateProvinceRegion' => 'NY',
+          'postalCode' => '10005',
+          'country' => 'US'
+      ],
+  ], $verified_customer);
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  :firstName => 'Jane',
+  :lastName => 'Doe',
+  :ssn => '123-56-7890',
+  :dateOfBirth => '1960-11-30',
+  :address => {
+    :address1 => '123 Main St',
+    :address2 => 'Apt 12'
+    :city => 'New York',
+    :stateProvinceRegion => 'NY',
+    :country => 'US',
+    :postalCode => '10005'
+  }
+}
+
+beneficial_owner = app_token.post "#{customer_url}/beneficial-owners", request_body
+beneficial_owner.response_headers[:location] # => "https://api-sandbox.dwolla.com/beneficial-owners/AB443D36-3757-44C1-A1B4-29727FB3111C"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  'firstName': 'Jane',
+  'lastName': 'Doe',
+  'dateOfBirth': '1960-11-30',
+  'ssn': '123-56-7890',
+  'address': {
+    'address1': '99-99 33rd St',
+    'address2': 'Apt 12',
+    'city': 'New York',
+    'stateProvinceRegion': 'NY',
+    'country': 'US',
+    'postalCode': '10005'
+  }
+}
+
+beneficial_owner = app_token.post('%s/beneficial-owners' % customer_url, request_body)
+beneficial_owner.headers['location'] # => 'https://api-sandbox.dwolla.com/beneficial-owners/AB443D36-3757-44C1-A1B4-29727FB3111C'
+```
+
+```javascript
+var customerUrl = 'https://api-sandbox.dwolla.com/customers/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+var requestBody = {
+  firstName: 'Jane',
+  lastName: 'Doe',
+  dateOfBirth: '1960-11-30',
+  ssn: '123-56-7890',
+  address: {
+    address1: '99-99 33rd St',
+    address2: 'Apt 12',
+    city: 'Some City',
+    stateProvinceRegion: 'NY',
+    country: 'US'
+    postalCode: '10005'
+  }
+};
+
+dwolla
+  .post(`${customerUrl}/beneficial-owners`, requestBody)
+  .then(res => res.headers.get('location')); // => 'https://api-sandbox.dwolla.com/beneficial-owners/FC451A7A-AE30-4404-AB95-E3553FCD733F'
+
+```
+
+## Check the status of an individual Beneficial Owner
+
+After a beneficial owner has been created, the beneficial owner’s identity needs to go through a verification process. A beneficial owner that has a status of `incomplete` or `document` will impact the business verified Customer's eligibility to send or receive funds. When a beneficial owner has been successfully verified by Dwolla, the beneficial owner's status will be set to verified.
+
+Reference the table below for more information on the events that correspond to each of the beneficial owner statuses:
+
+#### Individual Beneficial Owner statuses and events
+
+| Individual Beneficial Owner Status | Event Topic Name                                | Transaction Restricted? | Description                                                                                                                                                                                                                                                                                                          |
+| ---------------------------------- | ----------------------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Verified                           | customer_beneficial_owner_verified              | No                      | Beneficial owner has been identity verified.                                                                                                                                                                                                                                                                         |
+| Document                           | customer_beneficial_owner_document_needed       | Yes - Cannot send funds | Beneficial owner must upload a document in order to be verified.                                                                                                                                                                                                                                                     |
+| Incomplete                         | customer_beneficial_owner_reverification_needed | Yes - Cannot send funds | The initial verification attempt failed because the information provided did not satisfy our verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with an [update request](https://developers.dwolla.com/api-reference/beneficial-owners/update). |
+
+Let’s check to see if the Owner was successfully verified or not. We are going to use the location of the Beneficial Owner resource that was just created.
+
+#### Request and response - retrieve a beneficial owner status
+
+```bash
+GET https://api-sandbox.dwolla.com/beneficial-owners/07D59716-EF22-4FE6-98E8-F3190233DFB8
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/beneficial-owners/00cb67f2-768c-4ee3-ac81-73bc4faf9c2b",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-owner"
+        },
+        "retry-verification": {
+            "href": "https://api-sandbox.dwolla.com/beneficial-owners/00cb67f2-768c-4ee3-ac81-73bc4faf9c2b",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-owner"
+        }
+    },
+    "id": "00cb67f2-768c-4ee3-ac81-73bc4faf9c2b",
+    "firstName": "Jane",
+    "lastName": "Owner",
+    "address": {
+        "address1": "123 Main St.",
+        "city": "New York",
+        "stateProvinceRegion": "NY",
+        "country": "US",
+        "postalCode": "10005"
+    },
+    "verificationStatus": "verified"
+}
+```
+
+```php
+$beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
+$owner = 'https://api-sandbox.dwolla.com/beneficial-owners/00cb67f2-768c-4ee3-ac81-73bc4faf9c2b';
+$ownerStatus = $beneficialOwnersApi->getById($owner);
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8'
+
+beneficial_owner = app_token.get beneficial_owner_url
+beneficial_owner.verificationStatus # => "verified"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfB8'
+
+beneficial_owner = app_token.get(beneficial_owner_url)
+beneficial_owner.body['status']
+```
+
+```javascript
+var beneficialOwnerUrl =
+  "https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8";
+
+dwolla.get(beneficialOwnerUrl).then((res) => res.body.verificationStatus); // => 'verified'
+```
+
+## Handling an individual beneficial owner Status
+
+Congrats! You have created a beneficial owner for a business verified Customer, however, the successful creation of a beneficial Owner doesn’t necessarily mean they are identity verified. You will want to ensure that the beneficial Owner is `verified`, as the business verified Customer will be unable to send or receive funds until the owner has a verified status.
+
+### Handling `incomplete` status
+
+An `incomplete` status occurs when a beneficial owner's identity scores are too low during the initial verification attempt. Dwolla will trigger a `customer_beneficial_owner_reverification_needed` event which notifies your application to prompt the Customer to [submit another identity verification attempt](https://developers.dwolla.com/api-reference/beneficial-owners/update) for the beneficial owner. The second attempt will give our identity vendor more accurate information in an attempt to receive a sufficient score to approve the beneficial owner. The Customer will only have one opportunity to correct any mistakes.
+
+<AlertBar variation="info">
+  You need to gather new information if the beneficial owner is placed into the{" "}
+  <code>incomplete</code> status; simply passing the same information will
+  result in the same insufficient scores. All fields that were required in the
+  initial beneficial owner creation attempt will be required in the{" "}
+  <code>incomplete</code> attempt.
+</AlertBar>
+
+#### Request and Response - update beneficial owner
+
+```bash
+POST https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "beneficial",
+  "lastName": "owner",
+  "ssn": "123-54-6789",
+  "dateOfBirth": "1963-11-11",
+  "address": {
+    "address1": "123 Corrected St.",
+    "address2": "Apt 123",
+    "city": "Des Moines",
+    "stateProvinceRegion": "IA",
+    "country": "US",
+    "postalCode": "50309"
+  }
+}
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-owner"
+        }
+    },
+    "id": "00cb67f2-768c-4ee3-ac81-73bc4faf9c2b",
+    "firstName": "beneficial",
+    "lastName": "owner",
+    "address": {
+        "address1": "123 Corrected St.",
+        "address2": "Apt 123",
+        "city": "Des Moines",
+        "stateProvinceRegion": "IA",
+        "country": "US",
+        "postalCode": "50309"
+    },
+    "verificationStatus": "verified"
+}
+```
+
+```php
+<?php
+$beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
+
+$beneficialOwnerUrl = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+$updateBeneficialOwner = $beneficialOwnersApi->update([
+      'firstName' => 'beneficial',
+      'lastName'=> 'owner',
+      'dateOfBirth' => '1963-11-11',
+      'ssn' => '123-54-6789',
+      'address' =>
+      [
+          'address1' => '123 Corrected St.',
+          'address2' => 'Apt 123',
+          'city' => 'Des Moines',
+          'stateProvinceRegion' => 'IA',
+          'postalCode' => '50309',
+          'country' => 'US'
+      ],
+  ], $beneficialOwnerUrl);
+
+$updateBeneficialOwner->id; # => "07d59716-ef22-4fe6-98e8-f3190233dfb"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8'
+request_body = {
+  :firstName => 'beneficial',
+  :lastName => 'owner',
+  :ssn => '123-54-6789',
+  :dateOfBirth => '1963-11-11',
+  :address => {
+    :address1 => '123 Corrected St',
+    :city => 'Des Moines',
+    :stateProvinceRegion => 'IA',
+    :country => 'US',
+    :postalCode => '50309'
+  }
+}
+
+update_beneficial_owner = app_token.post beneficial_owner_url, request_body
+update_beneficial_owner.id # => "07d59716-ef22-4fe6-98e8-f3190233dfb8"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8'
+request_body = {
+  'firstName': 'beneficial',
+  'lastName': 'owner',
+  'dateOfBirth': '1963-11-11',
+  'ssn': '123-54-6789',
+  'address': {
+    'address1': '123 Corrected St',
+    'city': 'Des Moines',
+    'stateProvinceRegion': 'IA',
+    'country': 'US',
+    'postalCode': '50309'
+  }
+}
+
+update_beneficial_owner = app_token.post(beneficial_owner_url, request_body)
+update_beneficial_owner.body.id # => '07d59716-ef22-4fe6-98e8-f3190233dfb8'
+```
+
+```javascript
+var beneficialOwnerUrl = 'https://api-sandbox.dwolla.com/beneficial-owners/07d59716-ef22-4fe6-98e8-f3190233dfb8';
+var requestBody = {
+  firstName: 'beneficial',
+  lastName: 'owner',
+  dateOfBirth: '1963-11-11',
+  ssn: '123-54-6789',
+  address: {
+    address1: '123 Corrected St',
+    city: 'Des Moines',
+    stateProvinceRegion: 'IA',
+    country: 'US'
+    postalCode: '50309'
+  }
+};
+
+dwolla
+  .post(beneficialOwnerUrl, requestBody)
+  .then(res => res.body.id); // => '07d59716-ef22-4fe6-98e8-f3190233dfb8'
+```
+
+Check the beneficial owner's status again. The beneficial owner will either be in the `verified` or `document` state of verification.
+
+### Handling `document` status
+
+If a beneficial owner is not verified after being placed in `incomplete` status and submitting a second verification attempt, the only other state the beneficial owner can be in is `document`. If the beneficial owner has a status of `document`, they will need to upload additional pieces of information in order to verify their identity. Use the [create a document](https://developers.dwolla.com/api-reference/documents/create-document-for-beneficial-owner) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take anywhere from a few seconds up to 1-2 business days if manual verification is required to approve or reject.
+
+You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
+
+- All 4 Edges of the document should be visible
+- A dark/high contrast background should be used
+- At least 90% of the image should be the document
+- Should be at least 300dpi
+- Capture image from directly above the document
+- Make sure that the image is properly aligned, not rotated, tilted or skewed
+- No flash to reduce glare
+- No black and white documents
+- No expired IDs
+
+### Determining verification `documents` needed
+
+#### US persons
+
+A color scanned photo of the Beneficial Owner’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card). Examples include:
+
+- Non-expired State Issued Driver’s License/Identification Card
+- Non-expired US Passport
+- Federal Employment Authorization Card
+- US Visa
+
+#### Non-US persons
+
+A color scanned photo of the Beneficial Owner’s identifying document can be specified as documentType: `passport`. Examples include:
+
+- Non-expired Foreign Passport _**Note:** Foreign Passports are only accepted when the individual does not have an ITIN or SSN and the user must alternatively enter the Passport number_.
+
+### Uploading a document
+
+To upload a color photo of the document, you’ll initiate a multipart form-data POST request from your backend server to the beneficial owners documents endpoint. The file must be either a .jpg, .jpeg, or .png. Files must be no larger than 10MB in size.
+
+You’ll also get a `beneficial_owner_verification_document_uploaded` event to let you know the document was successfully uploaded.
+
+#### Request and Response
+
+```bash
+curl -X POST
+\ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
+\ -H "Accept: application/vnd.dwolla.v1.hal+json"
+\ -H "Cache-Control: no-cache"
+\ -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+\ -F "documentType=passport"
+\ -F "file=@foo.png"
+\ 'https://api-sandbox.dwolla.com/beneficial-owners/1de32ec7-ff0b-4c0c-9f09-19629e6788ce/documents'
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+
+```
+
+```php
+No example for this language yet
+```
+
+```ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/1DE32EC7-FF0B-4C0C-9F09-19629E6788CE'
+
+file = Faraday::UploadIO.new('mclovin.jpg', 'image/jpeg')
+document = app_token.post "#{beneficial_owner_url}/documents", file: file, documentType: 'license'
+document.response_headers[:location] # => "https://api.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/1DE32EC7-FF0B-4C0C-9F09-19629E6788CE'
+
+document = app_token.post('%s/documents' % beneficial_owner_url, file = open('janedoe.jpg', 'rb'), documentType = 'license')
+document.headers['location'] # => 'https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16'
+```
+
+```javascript
+var beneficialOwnerUrl =
+  "https://api-sandbox.dwolla.com/beneficial-owners/1DE32EC7-FF0B-4C0C-9F09-19629E6788CE";
+
+var requestBody = new FormData();
+body.append("file", fs.createReadStream("mclovin.jpg"), {
+  filename: "mclovin.jpg",
+  contentType: "image/jpeg",
+  knownLength: fs.statSync("mclovin.jpg").size,
+});
+body.append("documentType", "license");
+
+dwolla
+  .post(`${beneficialOwnerUrl}/documents`, requestBody)
+  .then((res) => res.headers.get("location")); // => "https://api-sandbox.dwolla.com/documents/fb919e0b-ffbe-4268-b1e2-947b44328a16"
+```
+
+## Update Beneficial Owner Information
+
+Information can only be edited or updated when the Beneficial Owner has a status of `incomplete`.
+
+If an individual beneficial owner with a status of `verified` needs to update their information, that beneficial owner will first need to be removed and re-added.
+
+#### Request and Response
+
+```bash
+DELETE https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/beneficial-owners/0f394602-d714-4d77-9d58-3a3e8394bcdd",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-owner"
+        }
+    },
+    "id": "0f394602-d714-4d77-9d58-3a3e8394bcdd",
+    "firstName": "B",
+    "lastName": "Owner",
+    "address": {
+        "address1": "123 Main St.",
+        "city": "New York",
+        "stateProvinceRegion": "NY",
+        "country": "US",
+        "postalCode": "10005"
+    },
+    "verificationStatus": "verified"
+}
+
+...
+
+HTTP 200 OK
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+
+app_token.delete beneficial_owner_url
+```
+
+```javascript
+var beneficialOwnerUrl =
+  "https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c";
+
+dwolla.delete(beneficialOwnerUrl);
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+beneficial_owner_url = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+
+app_token.delete(beneficial_owner_url)
+```
+
+```php
+<?php
+$beneficialOwnersApi = new DwollaSwagger\BeneficialownersApi($apiClient);
+$beneficialOwner = 'https://api-sandbox.dwolla.com/beneficial-owners/692486f8-29f6-4516-a6a5-c69fd2ce854c';
+$deletedBeneficialOwner = $beneficialOwnersApi->deleteById($beneficialOwner);
+?>
+```
+
+After removal of a Beneficial Owner, they can be re-added and go through the verification process again. You can also remove a beneficial owner if they no longer own 25% or more of the business.
+
+The successful creation and verification of a beneficial owner doesn’t necessarily mean the business verified Customer is verified and ready to send or receive funds. The final step in creating a business verified Customer is to certify that all information provided is correct. Read on to view the procedures on how to certify your owners.
+
+To learn how to certify beneficial owners to your Customer, read on to the next step.

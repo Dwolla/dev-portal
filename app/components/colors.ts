@@ -13,7 +13,6 @@ export const GREY_11 = "#f8fafc";
 export const GREY_12 = "#5f738c";
 export const GREY_13 = "#eaeaeb";
 export const GREY_14 = "#d9e0e4";
-export const GREY_HOVER = "#efeff0";
 
 // Text Colors
 export const HEADLINE_TEXT = "#2a2d38";
@@ -64,9 +63,17 @@ export const ANNOUNCEMENT_ICON_BLUE = "#0288d1";
 export const ANNOUNCEMENT_TEXT_BLUE = "#115482";
 
 // Layout border colors
-export const LAYOUT_BORDER = "rgba(45, 45, 72, 0.25)";
+export const LAYOUT_BORDER = "rgba(244, 247, 251, 1)";
 
 // Gradients
 // Light Orange to Dark Purple Vertical
 export const VERTICAL_GRADIENT =
   "180deg, #E98453 4.14%, #D46E62 55.07%, #BE5771 100%";
+
+// Purple Colors 2023
+export const PURPLE_004 = "rgba(31, 31, 50, 0.04)";
+export const PURPLE_008 = "rgba(31, 31, 50, 0.08)";
+export const PURPLE_012 = "rgba(31, 31, 50, 0.12)";
+export const PURPLE_075 = "rgba(31, 31, 50, 0.75)";
+export const PURPLE_087 = "rgba(31, 31, 50, 0.87)";
+export const PURPLE_100 = "rgba(31, 31, 50, 1)";

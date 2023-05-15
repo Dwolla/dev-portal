@@ -1,0 +1,48 @@
+---
+layout: guides
+title: "Overview"
+group:
+  category: Build
+  title: Transfer Money Me-to-Me
+  description: Move funds between two different bank accounts belonging to a single Verified Customer, e.g. for savings applications that move funds between a Customer’s checking and savings accounts.
+  weight: 5
+custom:
+  step: 4
+guide:
+  step: 0
+  filter: prerequisites
+  icon: me-to-me.svg
+meta:
+  title: Transfer Money Between a Single User | Dwolla API Documentation
+  description: Send money online between banks that belong to a single customer by utilizing our open bank transfer API.
+---
+
+import fundsFlowMeToMe from "../../../../../assets/images/content-images/funds-flow-me-to-me.gif";
+
+# Transfer Money Me-to-Me
+
+This guide is designed to get you up and running quickly through creating a bank to bank transfer between a verified Customer’s two bank accounts. In this guide we’ll cover the basics of integrating this payment flow by walking through the steps needed to onboard your end user as a verified Customer and create the bank to bank transfer.
+
+<Image
+  src={fundsFlowMeToMe}
+  alt="Funds Flow Me-to-Me"
+  width="75%"
+  height="75%"
+/>
+
+In this quickstart guide, you’ll learn the key concepts involved with sending money between a Customer’s bank accounts.
+
+1. Choosing a Customer type and creating a verified Customer record
+2. Attaching a `source` and `destination` funding source (bank account) to the Customer record
+3. Fetching the available funding sources
+4. Sending funds from the Customer’s checking account to the Customer’s savings account
+
+## Before you begin
+
+We encourage you to create a sandbox account, if you haven’t already. This will allow you to follow along with the steps outlined in this guide. Check out our [Sandbox guide](/guides/sandbox) to learn more.
+
+After creating a sandbox account, you’ll obtain your API Key and Secret, which are used to obtain an OAuth access token. An access token is required in order to authenticate against the Dwolla API. Learn more about how to [obtain an access token in our guide](/guides/auth/).
+
+Lastly, in this sandbox walkthrough, we recommend having an active webhook subscription. This will help notify your application of various events that occur within Dwolla. [Check out our guide to learn more](/guides/webhooks/create-subscription).
+
+**Let’s get started!**

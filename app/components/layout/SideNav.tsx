@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-// import { styled } from '@mui/material/styles';
 import { useRouter } from "next/router";
 import Link from "next/link";
 import classnames from "classnames";
@@ -9,21 +8,20 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import sortBy from "lodash.sortby";
 import uniqBy from "lodash.uniqby";
+import { TopBarProps as MobileItemProps } from "./TopBar";
 import {
-  TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
-} from "./TopBar";
-// import Button from "../base/Button";
-import {
-  ORANGE_PRIMARY,
-  WHITE_PRIMARY,
-  GREY_2,
-  PURPLE_PRIMARY,
   LAYOUT_BORDER,
-  GREY_HOVER,
-  VERTICAL_GRADIENT,
+  PURPLE_004,
+  PURPLE_008,
+  PURPLE_012,
+  PURPLE_075,
+  PURPLE_087,
+  PURPLE_100,
+  PURPLE_PRIMARY,
+  WHITE_PRIMARY,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
-import { breakUp, breakDown } from "../breakpoints";
+import { ROBOTO } from "../typography";
+import { breakDown, breakUp } from "../breakpoints";
 import { slideInFromLeft, slideInFromRight } from "../keyframes";
 import { ReactComponent as BackIcon } from "../../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
@@ -162,7 +160,7 @@ const SectionIconWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 34px;
 
   svg {
     * {
@@ -193,37 +191,34 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
     <Link href={href} passHref>
       <a
         target={isExternal ? "_blank" : undefined}
-        className={classnames({ active: isActive })}
+        className={classnames({ active: isActive, section: isSection })}
         css={css`
           display: flex;
-          height: 53px;
-          padding: 0 15px;
+          height: 48px;
+          padding: 8px 16px;
           margin-left: 3px;
           align-items: center;
           justify-content: flex-start;
           font-family: ${ROBOTO};
           font-weight: 400;
-          font-size: 14px;
-          line-height: 16px;
-          color: ${PURPLE_PRIMARY};
+          font-size: 16px;
+          letter-spacing: 0.15px;
+          line-height: 24px;
+          color: ${PURPLE_087};
           text-decoration: none;
 
           &:hover,
           &:focus {
             margin-left: unset;
-            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
-                padding-box,
-              linear-gradient(${VERTICAL_GRADIENT}) border-box;
+            background: ${PURPLE_004};
             border-left: 3px solid transparent;
             outline: none;
           }
 
           &.active {
             margin-left: unset;
-            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
-                padding-box,
-              linear-gradient(${VERTICAL_GRADIENT}) border-box;
-            border-left: 3px solid transparent;
+            background: ${PURPLE_008};
+            border-left: 3px solid ${PURPLE_100};
           }
         `}
       >
@@ -248,9 +243,8 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
 }
 
 const CategoriesWrap = styled.ul`
-  margin: 10px 0 0 34px;
+  margin: 10px 24px 0 16px;
   padding: 0;
-  border-left: 1px solid ${GREY_2};
 `;
 
 const Category = styled.li`
@@ -259,33 +253,40 @@ const Category = styled.li`
 
 const CategoryHeading = styled.div`
   text-transform: uppercase;
-  font-family: ${POPPINS};
-  font-weight: 600;
-  color: #354153;
-  font-size: 11px;
-  margin: 20px 10px 10px;
+  color: ${PURPLE_075};
+  margin: 20px 10px 10px 0px;
+  font-family: ${ROBOTO};
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: 1px;
+  text-align: left;
+`;
+
+const CategoryContent = styled.div`
+  margin-left: 8px;
 `;
 
 const groupToggleDocLinkStyles = css`
-  margin: 6px 0;
   font-size: 14px;
   line-height: 140%;
   font-family: ${ROBOTO};
-  color: ${PURPLE_PRIMARY};
-  padding: 4px 20px 4px 10px;
-  border-left: 1px solid transparent;
-  margin-left: -1px;
+  color: ${PURPLE_075};
+  padding: 10px 20px 10px 24px;
+  margin-left: -2px;
+  border-left: 1.5px solid ${PURPLE_012};
 
   &:hover,
   &:focus {
     outline: none;
-    margin-left: -1px;
-    background-color: ${GREY_HOVER};
+    margin-left: -2px;
+    background-color: ${PURPLE_004};
+  }
   }
 `;
 
 const GroupToggle = styled.div`
-  ${groupToggleDocLinkStyles}
+  ${groupToggleDocLinkStyles};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -294,6 +295,7 @@ const GroupToggle = styled.div`
 
 const GroupCaret = styled.img`
   max-width: 7px;
+  margin-left: 20px;
 `;
 
 interface DocLinkProps {
@@ -308,20 +310,19 @@ function DocLink(props: DocLinkProps) {
     <Link href={props.href} passHref>
       <a
         css={css`
-          ${groupToggleDocLinkStyles}
+          ${groupToggleDocLinkStyles};
           display: block;
           text-decoration: none;
+          padding: 10px 10px 10px 24px;
 
           &.active {
-            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
-                padding-box,
-              linear-gradient(${VERTICAL_GRADIENT}) border-box;
-            border-left: 1px solid transparent;
-            color: ${ORANGE_PRIMARY};
+            background: ${PURPLE_008};
+            border-left: 1.5px solid ${PURPLE_100};
+            color: ${PURPLE_087};
           }
 
           &.grouped {
-            padding-left: 30px;
+            margin-left: 24px;
           }
         `}
         className={classnames({ active: props.active, grouped: props.grouped })}
@@ -488,29 +489,31 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
                           <CategoryHeading>{c}</CategoryHeading>
                         )}
 
-                        {sortByWeight(groups).map((g?: PageGroup) => {
-                          const docs = categoryDocs.filter(byDocGroup(g?.id));
-                          const ungroupedGroup = typeof g === "undefined";
+                        <CategoryContent>
+                          {sortByWeight(groups).map((g?: PageGroup) => {
+                            const docs = categoryDocs.filter(byDocGroup(g?.id));
+                            const ungroupedGroup = typeof g === "undefined";
 
-                          return (
-                            <div key={g?.id}>
-                              {ungroupedGroup ? (
-                                sortByWeight(docs).map((d: Page) => (
-                                  <DocLink
-                                    key={d.id}
-                                    grouped={false}
-                                    href={d.id}
-                                    active={d.id === pathname}
-                                  >
-                                    {d.title}
-                                  </DocLink>
-                                ))
-                              ) : (
-                                <DocGroup title={g?.title} docs={docs} />
-                              )}
-                            </div>
-                          );
-                        })}
+                            return (
+                              <div key={g?.id}>
+                                {ungroupedGroup ? (
+                                  sortByWeight(docs).map((d: Page) => (
+                                    <DocLink
+                                      key={d.id}
+                                      grouped={false}
+                                      href={d.id}
+                                      active={d.id === pathname}
+                                    >
+                                      {d.title}
+                                    </DocLink>
+                                  ))
+                                ) : (
+                                  <DocGroup title={g?.title} docs={docs} />
+                                )}
+                              </div>
+                            );
+                          })}
+                        </CategoryContent>
                       </Category>
                     );
                   }

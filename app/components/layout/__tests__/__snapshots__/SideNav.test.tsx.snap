@@ -2,27 +2,27 @@
 
 exports[`SideNav 1`] = `
 <div
-  className="css-yeohq5-Container e1qiqw1s14"
+  className="css-yeohq5-Container e1qiqw1s15"
 >
   <div
-    className="css-kibqvq-Slide e1qiqw1s13"
+    className="css-kibqvq-Slide e1qiqw1s14"
   >
     <div
-      className="left css-1jc4k7f-SlidePane e1qiqw1s12"
+      className="left css-1jc4k7f-SlidePane e1qiqw1s13"
       id="body-scroll-lock-side-nav"
     >
       <div
-        className="css-kgvw59-SectionWrap e1qiqw1s11"
+        className="css-kgvw59-SectionWrap e1qiqw1s12"
       >
         <a
-          className="active css-1pzv1z2-SectionLink-SectionLink"
+          className="active css-1a6fllo-SectionLink-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+            className="css-cykp80-SectionIconWrap e1qiqw1s9"
           >
             <svg
               className="section-icon"
@@ -33,14 +33,14 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className=" css-1pzv1z2-SectionLink-SectionLink"
+          className="section css-1a6fllo-SectionLink-SectionLink"
           href="/api-reference"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+            className="css-cykp80-SectionIconWrap e1qiqw1s9"
           >
             <svg
               className="section-icon"
@@ -50,7 +50,7 @@ exports[`SideNav 1`] = `
           </div>
           API Reference
           <div
-            className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
+            className="css-y8ea5i-SectionCaretWrap e1qiqw1s8"
           >
             <svg
               height={10}
@@ -59,14 +59,14 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1pzv1z2-SectionLink-SectionLink"
+          className="section css-1a6fllo-SectionLink-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+            className="css-cykp80-SectionIconWrap e1qiqw1s9"
           >
             <svg
               className="section-icon"
@@ -76,7 +76,7 @@ exports[`SideNav 1`] = `
           </div>
           Guides
           <div
-            className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
+            className="css-y8ea5i-SectionCaretWrap e1qiqw1s8"
           >
             <svg
               height={10}
@@ -85,14 +85,14 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1pzv1z2-SectionLink-SectionLink"
+          className="section css-1a6fllo-SectionLink-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+            className="css-cykp80-SectionIconWrap e1qiqw1s9"
           >
             <svg
               className="section-icon"
@@ -102,7 +102,7 @@ exports[`SideNav 1`] = `
           </div>
           Concepts
           <div
-            className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
+            className="css-y8ea5i-SectionCaretWrap e1qiqw1s8"
           >
             <svg
               height={10}
@@ -111,14 +111,14 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1pzv1z2-SectionLink-SectionLink"
+          className=" css-1a6fllo-SectionLink-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
           onTouchStart={[Function]}
         >
           <div
-            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+            className="css-cykp80-SectionIconWrap e1qiqw1s9"
           >
             <svg
               className="section-icon"
@@ -130,10 +130,10 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-1o94x0z-ExternalSectionWrap e1qiqw1s10"
+        className="css-17mreui-ExternalSectionWrap e1qiqw1s11"
       >
         <a
-          className=" css-1pzv1z2-SectionLink-SectionLink"
+          className=" css-1a6fllo-SectionLink-SectionLink"
           href="https://discuss.dwolla.com/"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -141,7 +141,7 @@ exports[`SideNav 1`] = `
           target="_blank"
         >
           <div
-            className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+            className="css-cykp80-SectionIconWrap e1qiqw1s9"
           >
             <svg
               className="section-icon"
@@ -153,7 +153,7 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-1kdywir-MobileWrap e1qiqw1s1"
+        className="css-19j3ofi-MobileWrap e1qiqw1s1"
       >
         <div
           className="css-1rc904k-MobileButtonWrap e1qiqw1s0"

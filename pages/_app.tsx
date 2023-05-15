@@ -13,7 +13,7 @@ import { AnchorsProvider } from "../app/components/util/Anchors";
 import { LanguageContext } from "../app/components/util/Contexts";
 import { SideNavLinkProps } from "../app/components/layout/SideNav";
 import fetcher from "../app/modules/fetcher";
-import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
+import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon-2023-2.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { ReactComponent as GuidesIcon } from "../assets/images/component-icons/side-nav/guides-nav-icon.svg";
 import { ReactComponent as ConceptsIcon } from "../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
@@ -42,7 +42,10 @@ function GoogleTagManager() {
         src="https://www.googletagmanager.com/ns.html?id=GTM-WRT5LD6"
         height="0"
         width="0"
-        style={{ display: "none", visibility: "hidden" }}
+        style={{
+          display: "none",
+          visibility: "hidden",
+        }}
       />
     </noscript>
   );
@@ -60,24 +63,24 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isExternal: false,
   },
   {
+    href: "/balance",
+    IconSvg: GuidesIcon,
+    isSection: true,
+    text: "Dwolla Balance",
+    isExternal: false,
+  },
+  {
+    href: "/connect",
+    IconSvg: ConceptsIcon,
+    isSection: true,
+    text: "Dwolla Connect",
+    isExternal: false,
+  },
+  {
     href: "/api-reference",
     IconSvg: ApiReferenceIcon,
     isSection: true,
     text: "API Reference",
-    isExternal: false,
-  },
-  {
-    href: "/guides",
-    IconSvg: GuidesIcon,
-    isSection: true,
-    text: "Guides",
-    isExternal: false,
-  },
-  {
-    href: "/concepts",
-    IconSvg: ConceptsIcon,
-    isSection: true,
-    text: "Concepts",
     isExternal: false,
   },
   {
@@ -101,21 +104,34 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     text: "Changelog",
     isExternal: false,
   },
-  {
-    href: "https://discuss.dwolla.com/",
-    text: "Community",
-    isExternal: true,
-  },
 ];
 
 const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Dwolla: [
-    { text: "About", href: "https://www.dwolla.com/about/" },
-    { text: "Blog", href: "https://www.dwolla.com/updates/" },
-    { text: "Pricing", href: "https://www.dwolla.com/pricing/" },
-    { text: "Contact Sales", href: "https://www.dwolla.com/contact/" },
-    { text: "Terms of Service", href: "https://www.dwolla.com/legal/tos/" },
-    { text: "Privacy Policy", href: "https://www.dwolla.com/legal/privacy/" },
+    {
+      text: "About",
+      href: "https://www.dwolla.com/about/",
+    },
+    {
+      text: "Blog",
+      href: "https://www.dwolla.com/updates/",
+    },
+    {
+      text: "Pricing",
+      href: "https://www.dwolla.com/pricing/",
+    },
+    {
+      text: "Contact Sales",
+      href: "https://www.dwolla.com/contact/",
+    },
+    {
+      text: "Terms of Service",
+      href: "https://www.dwolla.com/legal/tos/",
+    },
+    {
+      text: "Privacy Policy",
+      href: "https://www.dwolla.com/legal/privacy/",
+    },
     {
       text: "Privacy Options",
       onClick: () =>
@@ -123,19 +139,40 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
     },
   ],
   Product: [
-    { text: "Support", href: "https://support.dwolla.com/s/" },
-    { text: "Resources", href: "https://www.dwolla.com/resources/" },
-    { text: "Features", href: "https://www.dwolla.com/features/" },
-    { text: "Case Studies", href: "https://www.dwolla.com/case-studies/" },
+    {
+      text: "Support",
+      href: "https://support.dwolla.com/s/",
+    },
+    {
+      text: "Resources",
+      href: "https://www.dwolla.com/resources/",
+    },
+    {
+      text: "Features",
+      href: "https://www.dwolla.com/features/",
+    },
+    {
+      text: "Case Studies",
+      href: "https://www.dwolla.com/case-studies/",
+    },
   ],
   Developers: [
     {
       text: "API Reference",
       href: "https://developers.dwolla.com/api-reference/",
     },
-    { text: "Support Forum", href: "https://discuss.dwolla.com/" },
-    { text: "SDKs & Tools", href: "/sdks-tools" },
-    { text: "Github Repos", href: "https://github.com/Dwolla/" },
+    {
+      text: "Support Forum",
+      href: "https://discuss.dwolla.com/",
+    },
+    {
+      text: "SDKs & Tools",
+      href: "/sdks-tools",
+    },
+    {
+      text: "Github Repos",
+      href: "https://github.com/Dwolla/",
+    },
   ],
 };
 
@@ -178,11 +215,26 @@ const TOP_BAR_PROPS: TopBarProps = {
 };
 
 const LANGUAGE_OPTIONS = [
-  { value: "javascript", label: "JavaScript" },
-  { value: "php", label: "PHP" },
-  { value: "ruby", label: "Ruby" },
-  { value: "python", label: "Python" },
-  { value: "bash", label: "Raw" },
+  {
+    value: "javascript",
+    label: "JavaScript",
+  },
+  {
+    value: "php",
+    label: "PHP",
+  },
+  {
+    value: "ruby",
+    label: "Ruby",
+  },
+  {
+    value: "python",
+    label: "Python",
+  },
+  {
+    value: "bash",
+    label: "Raw",
+  },
 ];
 
 const clientSideEmotionCache = createEmotionCache();
