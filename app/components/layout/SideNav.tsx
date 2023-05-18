@@ -191,7 +191,7 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
     <Link href={href} passHref>
       <a
         target={isExternal ? "_blank" : undefined}
-        className={classnames({ active: isActive, section: isSection })}
+        className={classnames({ active: isActive })}
         css={css`
           display: flex;
           height: 48px;
@@ -209,9 +209,7 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
 
           &:hover,
           &:focus {
-            margin-left: unset;
             background: ${PURPLE_004};
-            border-left: 3px solid transparent;
             outline: none;
           }
 
@@ -291,6 +289,11 @@ const GroupToggle = styled.div`
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+
+  &.expanded {
+    color: ${PURPLE_087};
+    font-weight: 500;
+  }
 `;
 
 const GroupCaret = styled.img`
@@ -351,6 +354,7 @@ function DocGroup({ title, docs }: DocGroupProps) {
     <>
       <GroupToggle
         tabIndex={0}
+        className={classnames({ expanded: isExpanded })}
         onClick={() => setIsExpanded(!isExpanded)}
         onKeyPress={(e) =>
           e.key === "Enter" ? setIsExpanded(!isExpanded) : false
