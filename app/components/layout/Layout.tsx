@@ -21,6 +21,8 @@ import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-
 import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
 
+const LEFT_SIDEBAR_WIDTH = "320";
+
 const LayoutContainer = styled.div`
   @media (${breakUp("lg")}) {
     display: grid;
@@ -44,6 +46,7 @@ const LeftSidebar = styled.div`
   pointer-events: none;
 
   @media (${breakUp("lg")}) {
+    width: ${LEFT_SIDEBAR_WIDTH}px;
     right: 75%;
     opacity: 1;
     pointer-events: auto;
@@ -71,10 +74,8 @@ const SideNavWrapper = styled.div`
 `;
 
 const MainArea = styled.div`
-  width: 100vw;
-
   @media (${breakUp("lg")}) {
-    width: 75vw;
+    width: calc(100vw - ${LEFT_SIDEBAR_WIDTH}px);
     border-left: 1px solid ${LAYOUT_BORDER};
   }
 `;
