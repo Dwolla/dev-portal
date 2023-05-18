@@ -15,7 +15,7 @@ exports[`SideNav 1`] = `
         className="css-kgvw59-SectionWrap e1qiqw1s12"
       >
         <a
-          className="active css-1a6fllo-SectionLink-SectionLink"
+          className="active css-1ygfaxr-SectionLink-SectionLink"
           href="/"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -33,7 +33,7 @@ exports[`SideNav 1`] = `
           Home
         </a>
         <a
-          className="section css-1a6fllo-SectionLink-SectionLink"
+          className=" css-1ygfaxr-SectionLink-SectionLink"
           href="/api-reference"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -59,7 +59,7 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className="section css-1a6fllo-SectionLink-SectionLink"
+          className=" css-1ygfaxr-SectionLink-SectionLink"
           href="/guides"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -85,7 +85,7 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className="section css-1a6fllo-SectionLink-SectionLink"
+          className=" css-1ygfaxr-SectionLink-SectionLink"
           href="/concepts"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -111,7 +111,7 @@ exports[`SideNav 1`] = `
           </div>
         </a>
         <a
-          className=" css-1a6fllo-SectionLink-SectionLink"
+          className=" css-1ygfaxr-SectionLink-SectionLink"
           href="/sdks-tools"
           onClick={[Function]}
           onMouseEnter={[Function]}
@@ -133,7 +133,7 @@ exports[`SideNav 1`] = `
         className="css-17mreui-ExternalSectionWrap e1qiqw1s11"
       >
         <a
-          className=" css-1a6fllo-SectionLink-SectionLink"
+          className=" css-1ygfaxr-SectionLink-SectionLink"
           href="https://discuss.dwolla.com/"
           onClick={[Function]}
           onMouseEnter={[Function]}

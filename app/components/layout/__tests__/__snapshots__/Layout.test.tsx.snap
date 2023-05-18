@@ -129,7 +129,7 @@ exports[`Layout 1`] = `
     className="css-1lvinfx-LayoutContainer e1ijxxr36"
   >
     <div
-      className="visuallyHidden css-1ckghpz-LeftSidebar e1ijxxr35"
+      className="visuallyHidden css-j64qsb-LeftSidebar e1ijxxr35"
     >
       <div
         className="css-6qgefa-SideNavWrapper e1ijxxr34"
@@ -148,7 +148,7 @@ exports[`Layout 1`] = `
                 className="css-kgvw59-SectionWrap e1qiqw1s12"
               >
                 <a
-                  className="active css-1a6fllo-SectionLink-SectionLink"
+                  className="active css-1ygfaxr-SectionLink-SectionLink"
                   href="/"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -166,7 +166,7 @@ exports[`Layout 1`] = `
                   Home
                 </a>
                 <a
-                  className="section css-1a6fllo-SectionLink-SectionLink"
+                  className=" css-1ygfaxr-SectionLink-SectionLink"
                   href="/api-reference"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -192,7 +192,7 @@ exports[`Layout 1`] = `
                   </div>
                 </a>
                 <a
-                  className="section css-1a6fllo-SectionLink-SectionLink"
+                  className=" css-1ygfaxr-SectionLink-SectionLink"
                   href="/guides"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -218,7 +218,7 @@ exports[`Layout 1`] = `
                   </div>
                 </a>
                 <a
-                  className="section css-1a6fllo-SectionLink-SectionLink"
+                  className=" css-1ygfaxr-SectionLink-SectionLink"
                   href="/concepts"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -244,7 +244,7 @@ exports[`Layout 1`] = `
                   </div>
                 </a>
                 <a
-                  className=" css-1a6fllo-SectionLink-SectionLink"
+                  className=" css-1ygfaxr-SectionLink-SectionLink"
                   href="/sdks-tools"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -266,7 +266,7 @@ exports[`Layout 1`] = `
                 className="css-17mreui-ExternalSectionWrap e1qiqw1s11"
               >
                 <a
-                  className=" css-1a6fllo-SectionLink-SectionLink"
+                  className=" css-1ygfaxr-SectionLink-SectionLink"
                   href="https://discuss.dwolla.com/"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -329,7 +329,7 @@ exports[`Layout 1`] = `
       </a>
     </div>
     <div
-      className="css-1euptw7-MainArea e1ijxxr33"
+      className="css-1vv1cr5-MainArea e1ijxxr33"
     >
       <div
         className=" css-x5ql3q-ContentArea e1ijxxr32"
