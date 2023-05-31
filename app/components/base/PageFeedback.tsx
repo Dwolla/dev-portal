@@ -71,12 +71,14 @@ export default function PageFeedback(props: PageFeedbackProps) {
     <FeedbackContainer>
       <FeedbackInnerText>{innerText}</FeedbackInnerText>
       <FeedbackButton
+        id="button-feedback-approval"
         onClick={approvalButton.onClick}
         startIcon={<approvalButton.icon />}
       >
         {approvalButton.text}
       </FeedbackButton>
       <FeedbackButton
+        id="button-feedback-disapproval"
         onClick={disapprovalButton.onClick}
         startIcon={<disapprovalButton.icon />}
       >
