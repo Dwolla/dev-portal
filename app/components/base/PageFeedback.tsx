@@ -63,9 +63,7 @@ const DEFAULT_PROPS: PageFeedbackProps = {
 };
 
 export default function PageFeedback(props: PageFeedbackProps) {
-  console.log("Props: ", props);
-  const mergedProps = merge(DEFAULT_PROPS, props);
-  console.log("Merge Props: ", mergedProps);
+  const mergedProps = merge({}, DEFAULT_PROPS, props);
   const { approvalButton, disapprovalButton, feedbackLink, innerText } =
     mergedProps;
 

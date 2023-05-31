@@ -34,7 +34,7 @@ export const WithTextCustomization: Story = {
   },
 };
 
-export const WithHiddenFeedbackLink: Story = merge(WithTextCustomization, {
+export const WithHiddenFeedbackLink: Story = merge({}, WithTextCustomization, {
   args: { feedbackLink: null },
 });
 
