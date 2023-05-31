@@ -1,6 +1,6 @@
 import { Box, Button, styled, Typography } from "@mui/material";
 import {
-  SvgIconComponent,
+  type SvgIconComponent,
   ThumbDownOffAltOutlined,
   ThumbUpOffAltOutlined,
 } from "@mui/icons-material";
