@@ -55,7 +55,8 @@ export const API_STATUS_BAR_GREEN = "#04be5b";
 export const API_STATUS_BAR_RED = "#e84d3d";
 
 // Overlay Colors
-export const BLACK_OVERLAY = "rgba(0, 0, 0, 0.4)";
+export const GREY_040 = "rgba(0, 0, 0, 0.4)";
+export const GREY_054 = "rgba(0, 0, 0, 0.54)";
 
 // Announcement Bar Colors
 export const ANNOUNCEMENT_BACKGROUND_BLUE = "#e5f6fd";
@@ -74,6 +75,7 @@ export const VERTICAL_GRADIENT =
 export const PURPLE_004 = "rgba(31, 31, 50, 0.04)";
 export const PURPLE_008 = "rgba(31, 31, 50, 0.08)";
 export const PURPLE_012 = "rgba(31, 31, 50, 0.12)";
+export const PURPLE_054 = "rgba(31, 31, 50, 0.54)";
 export const PURPLE_075 = "rgba(31, 31, 50, 0.75)";
 export const PURPLE_087 = "rgba(31, 31, 50, 0.87)";
 export const PURPLE_100 = "rgba(31, 31, 50, 1)";

@@ -1,0 +1,142 @@
+---
+layout: concepts
+title: "Transfer Processing Times"
+description: Learn more about transfer clearing times, including `standard` ,`expedited` and `real-time` clearing.
+category: Build
+subCategory: Transfers
+weight: 1
+concept:
+  icon: "transfer-processing-times.svg"
+meta:
+  title: ACH Processing Times | Dwolla API Documentation
+  description: Processing times for Dwolla's ACH API include Standard, Same Day and Next Day.
+---
+
+import achTransferTimeline from "../../../../assets/images/content-images/ach-transfer-timeline-2021.png";
+import achStandardIn from "../../../../assets/images/content-images/ach-standard-in.png";
+import achNextDayIn from "../../../../assets/images/content-images/ach-next-day-In.png";
+import achSameDayIn from "../../../../assets/images/content-images/ach-same-day-In.png";
+import achStandardOut from "../../../../assets/images/content-images/ach-standard-out.png";
+import achSameDayOut from "../../../../assets/images/content-images/ach-same-day-out.png";
+import conceptIcon from "../../../../assets/images/content-images/content-icons/concepts-icon.svg";
+
+# Transfer Processing Times
+
+## Bank-to-bank transfers
+
+When utilizing Dwolla to facilitate bank-to-bank transfers, you can see that there are two steps involved in the movement of funds between banks:
+
+- [ACH Payment In](#bank-to-dwolla-ach-payment-in) (Debit) - Funds moving from the source bank account into the Dwolla Network.
+- [ACH Payment Out](#dwolla-network-to-bank-ach-payment-out) (Credit) - Funds moving into a destination bank account from the Dwolla Network.
+
+Let's illustrate the movement of funds for a bank-to-bank transfer in the diagram below.
+
+<Image src={achTransferTimeline} alt="ACH transfer timeline" expand />
+
+## Bank Into Dwolla Network (ACH Payment In)
+
+Transfers into the Dwolla Network from a bank, including transfers that pass through the network (balance) to another Customer’s bank account, can be canceled up until the transfer is exported out of the Dwolla Network. To determine if a transfer is eligible for cancellation, Dwolla will return a `cancel` link on the [transfer resource](https://developers.dwolla.com/api-reference/transfers/cancel). The export cut off time for Standard and Next-Day ACH transfers is 4 p.m. Central Time. The export cut off time for Same Day ACH is 1 p.m. or 3 p.m. Central Time every business day.
+
+**Note:** This is not a hard cut off. Occasionally, the export out of the Dwolla Network may be delayed or could take time to process, causing transfers created some time after the cut off to be exported in the same batch. We recommend that you use the `cancel` link returned on the transfer resource to determine if a transfer is cancellable rather than relying on the export timing.
+
+##### ACH payment in (Debit)- Standard ACH clearing
+
+Standard ACH transfers from a bank to the Dwolla Network will take 3-4 business days to settle. ACH is known as a next-business day settlement system, however, to account for ACH returns and processing delays by financial institutions the processing timeline is extended. With this ACH processing, funds can be held for 3-4 days to allow for checks on [common return codes](https://www.dwolla.com/resources/ach-return-codes/); including insufficient funds and basic checks for valid bank accounts. If during ACH processing a failure is discovered as funds are held, the transfer will fail and be marked with a return code. To learn more about the various ACH return codes that can be returned systematically on a [transfer failures](https://developers.dwolla.com/concepts/transfer-failures), take a look at our transfer failures developer resource article.
+
+<Image
+  src={achStandardIn}
+  alt="ACH Debit transfer timeline Standard"
+  noborder
+/>
+
+##### ACH payment in (Debit) - Next Day ACH clearing
+
+Dwolla offers expedited clearing into the Dwolla Network from a bank account. Using `next-day` ACH transfers, funds will be made available in the Dwolla Network 1-2 business days after the transfer is created. Next-Day ACH transfers are an account setting that can be enabled on an account-level basis for you and users that send funds on your application. **After receiving proper approval from Dwolla, we will enable transfers into the Dwolla network as `next-day`.** In the case where you would want to slow down the availability of incoming funds to standard ACH, you will need to specify this in the API transfer request. To learn more on how to set transfers to the default standard processing, refer to the `clearing` object in our [API Reference Docs](https://developers.dwolla.com/api-reference/transfers#clearing-json-object).
+
+<AlertBar variation="warning">
+  With Next Day ACH enabled, transfer processing is expedited, meaning that
+  checks for common return codes may not be processed until a later time. This
+  also means that the risk of losses incurred from return codes is higher.
+</AlertBar>
+
+<Image src={achNextDayIn} alt="ACH Debit transfer timeline Next Day" noborder />
+
+##### ACH payment in (Debit) - Same Day ACH clearing
+
+Dwolla offers expedited clearing into the Dwolla Network from a bank account. Using `same-day` ACH Debit transfers, funds will be made available in the Dwolla Network on the same business day. For instance, if a Same Day Debit transfer is created prior to 1 p.m. or 3 p.m. Central Time, the funds will be available in the Dwolla Network by the end of that business day. Same Day Debit transfers are an account setting that can be enabled on an account-level basis for debit transfers. After receiving proper approval from Dwolla, you can create a Same Day Debit on a per-transfer basis by specifying this in the clearing object of an API transfer request.
+
+Refer to the [clearing object](https://developers.dwolla.com/api-reference/transfers) in our API Reference Docs for more information.
+
+<Image src={achSameDayIn} alt="ACH Debit transfer timeline Same Day" noborder />
+
+## Dwolla Network Out To Bank Account (ACH Payment Out)
+
+Transfers out of the Dwolla Network can be canceled at any point until 4 p.m. Central Time on that same business day if the transfer was initiated prior to 4 p.m. Central Time. If a transfer was initiated after 4 p.m. Central Time, it can usually be canceled anytime before 4 p.m. Central Time on the following business day. To determine if a transfer is eligible for cancellation, Dwolla will return a cancel link on the [transfer resource](https://developers.dwolla.com/api-reference/transfers/cancel).
+
+##### ACH payment out (Credit) - Standard ACH clearing
+
+Standard clearing time out of the Dwolla Network to a bank takes 1-2 business days to settle. If a transfer is created prior to our 4 p.m. cutoff time, the funds will be sent through the ACH Network for processing. Transfers created after our 4 p.m. cutoff time will result in the funds being processed out of the Dwolla Network the following day.
+
+<Image
+  src={achStandardOut}
+  alt="ACH Credit transfer timeline Standard Day"
+  noborder
+/>
+
+##### ACH payment out (Credit) - Same-Day ACH clearing
+
+Upgrading exports out of the Dwolla Network to a bank using `same-day` ACH clearing will push funds to the `destination` bank on the same day. For instance, funds moving out of the Dwolla Network prior to 1 p.m. or 3 p.m. Central Time will be available in the recipient’s bank account by the end of the day.
+
+<Image
+  src={achSameDayOut}
+  alt="ACH Credit transfer timeline Same Day"
+  noborder
+/>
+
+For more information on Same Day ACH, reference our Concept article which explains Same Day Debits and Credits in full detail.
+
+### Clearing example
+
+In this bank-to-bank transfer request example we have `next-day` ACH enabled, but we want to slow the transfer clearing into the Dwolla Network back to `standard` ACH. However, we feel comfortable letting this transfer export out of the Dwolla Network with `same-day` ACH clearing to the destination bank.
+
+```json
+{
+  "_links": {
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/9615fc1d-8855-4ac2-ab11-e5469c66c8e8"
+    },
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/b2d83ee5-5834-4cb7-9820-98149aff5063"
+    }
+  },
+  "amount": {
+    "currency": "USD",
+    "value": "10.00"
+  },
+  "clearing": {
+    "source": "standard",
+    "destination": "next-available"
+  }
+}
+```
+
+<InlineCTA
+  icon={conceptIcon}
+  text="For more information on Same Day ACH, reference our Concept article which explains Same Day Debits and Credits in full detail."
+  href="https://developers.dwolla.com/concepts/same-day-ach"
+/>
+
+## Total time to `Processed`
+
+The scenarios in the table below outline the total processing time for a given bank-to-bank transfer.
+
+#### Customer to Customer Bank Transfers
+
+| Bank Account to Dwolla Network Clearing | Dwolla Network to Bank Account Clearing | Time to Dwolla Network | Time to Destination Bank Account | Total time to `processed` |
+| :-------------------------------------- | :-------------------------------------- | :--------------------- | -------------------------------- | :------------------------ |
+| Standard                                | Standard                                | 3-4 business days      | 1-2 business days                | 4-6 business days         |
+| Standard                                | Same-day                                | 3-4 business days      | 0-1 business days                | 3-5 business days         |
+| Next-day                                | Standard                                | 1-2 business days      | 1-2 business days                | 2-4 business days         |
+| Next-day                                | Same-day                                | 1-2 business days      | 0-1 business days                | 1-3 business days         |
+| Same Day ACH                            | Standard ACH                            | 0-1 business days      | 1-2 business days                | 1-3 business days         |
+| Same Day ACH                            | Same Day ACH                            | 0-1 business days      | 0-1 business days                | 1-2 business days         |

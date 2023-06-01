@@ -135,17 +135,17 @@ exports[`Layout 1`] = `
         className="css-6qgefa-SideNavWrapper e1ijxxr34"
       >
         <div
-          className="css-yeohq5-Container e1qiqw1s15"
+          className="css-yeohq5-Container e1qiqw1s16"
         >
           <div
-            className="css-kibqvq-Slide e1qiqw1s14"
+            className="css-kibqvq-Slide e1qiqw1s15"
           >
             <div
-              className="left css-1jc4k7f-SlidePane e1qiqw1s13"
+              className="left css-1jc4k7f-SlidePane e1qiqw1s14"
               id="body-scroll-lock-side-nav"
             >
               <div
-                className="css-kgvw59-SectionWrap e1qiqw1s12"
+                className="css-kgvw59-SectionWrap e1qiqw1s13"
               >
                 <a
                   className="active css-1ygfaxr-SectionLink-SectionLink"
@@ -155,12 +155,12 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-cykp80-SectionIconWrap e1qiqw1s9"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s10"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   Home
@@ -173,21 +173,21 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-cykp80-SectionIconWrap e1qiqw1s9"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s10"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   API Reference
                   <div
-                    className="css-y8ea5i-SectionCaretWrap e1qiqw1s8"
+                    className="css-1qriqu9-SectionCaretWrap e1qiqw1s9"
                   >
                     <svg
-                      height={10}
-                      width={5}
+                      height={18}
+                      width={18}
                     />
                   </div>
                 </a>
@@ -199,21 +199,21 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-cykp80-SectionIconWrap e1qiqw1s9"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s10"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   Guides
                   <div
-                    className="css-y8ea5i-SectionCaretWrap e1qiqw1s8"
+                    className="css-1qriqu9-SectionCaretWrap e1qiqw1s9"
                   >
                     <svg
-                      height={10}
-                      width={5}
+                      height={18}
+                      width={18}
                     />
                   </div>
                 </a>
@@ -225,21 +225,21 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-cykp80-SectionIconWrap e1qiqw1s9"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s10"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   Concepts
                   <div
-                    className="css-y8ea5i-SectionCaretWrap e1qiqw1s8"
+                    className="css-1qriqu9-SectionCaretWrap e1qiqw1s9"
                   >
                     <svg
-                      height={10}
-                      width={5}
+                      height={18}
+                      width={18}
                     />
                   </div>
                 </a>
@@ -251,19 +251,19 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-cykp80-SectionIconWrap e1qiqw1s9"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s10"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   SDKs & Tools
                 </a>
               </div>
               <div
-                className="css-17mreui-ExternalSectionWrap e1qiqw1s11"
+                className="css-17mreui-ExternalSectionWrap e1qiqw1s12"
               >
                 <a
                   className=" css-1ygfaxr-SectionLink-SectionLink"
@@ -274,7 +274,7 @@ exports[`Layout 1`] = `
                   target="_blank"
                 >
                   <div
-                    className="css-cykp80-SectionIconWrap e1qiqw1s9"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s10"
                   >
                     <svg
                       className="section-icon"

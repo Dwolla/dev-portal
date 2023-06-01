@@ -1,0 +1,226 @@
+---
+layout: concepts
+title: "Virtual Account Numbers"
+description: Use a Virtual Account Number to create unique account and routing numbers for receiving external transactions into a Dwolla Balance.
+category: Build
+subCategory: Features
+weight: 0
+concept:
+  icon: "virtual-account-numbers.svg"
+meta:
+  title: Virtual Accounts | Concept Article | Dwolla Documentation
+  description: A virtual account number is a funding source type used to create unique account and routing numbers for receiving external transactions into a Dwolla Balance.
+---
+
+import VANsImage from "../../../../assets/images/content-images/VanBlog_graphics_02_ImprovingProcessWVans.png";
+
+# Virtual Account Numbers
+
+Virtual accounts are virtual subledgers within one physical depository account that can be utilized in a variety of ways. Virtual Account Numbers (VANs) allow clients to provide a routing and account number that can be used to allow ACH transactions to and from a [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source). The routing and account number is tied to a Dwolla Client’s Master Balance, or one of their [Verified Customer](https://developers.dwolla.com/concepts/customer-types#verified-customer)'s balances. Virtual accounts hold no funds—they are simply a mechanism to route funds into a single Dwolla Balance. Dwolla’s Virtual Account Number feature performs two crucial functions:
+
+- Eliminate the need to deposit funds into an intermediary depository account before transferring funds in or out of your Dwolla Balance.
+- Keep transaction data separate and organized within the Dwolla Balance.
+
+<AlertBar variation="info">
+  VANs are a premium feature and count toward a total Funding Source limit. For
+  existing Dwolla clients, you will be required to implement additional
+  requirements in order to be approved for production access. To learn more
+  about pricing and enabling this feature, please{" "}
+  <a href="https://www.dwolla.com/contact?b=apidocs">contact Sales</a>.
+</AlertBar>
+
+<Image
+  src={VANsImage}
+  alt="Send funds directly from a Virtual Account Number"
+  width="75%"
+  height="75%"
+/>
+
+#### Items To Note:
+
+- VANs cannot be used as a source or destination when calling the [/transfers endpoint](https://developers.dwolla.com/api-reference/transfers/initiate).
+- Users that are enabled for VANs will currently not have access to RTP or wire features.
+- Many virtual account numbers can route to a single Dwolla Balance. If you need to designate a portion of funds within a balance, reference the [Labels API](https://developers.dwolla.com/api-reference/labels).
+- Dwolla has no transaction limit for externally initiated transfers.
+
+## Interacting With Virtual Accounts
+
+The Dwolla API supports methods for [creating a VAN for a Verified Customer](/api-reference/funding-sources/create-funding-source-for-customer#virtual-account-number) and [creating a VAN for a Master Account](/api-reference/accounts/create-a-funding-source#virtual-account-number), as well as [retrieving routing details](/api-reference/funding-sources/retrieve-a-van-account-and-routing-number) and [removing a virtual account](/api-reference/funding-sources/remove).
+
+Once a virtual account is created, a unique account and routing number pair will be available for use to create external transactions (reference example below). A virtual account will be represented as a [Funding Source](/api-reference/funding-sources) in the Dwolla API, however, it cannot be used when calling the Dwolla API to initiate transfers. Your Dwolla Balance is the only funding source you can use for transfers using the funds in that account within the Dwolla system, and you'll only be able to use the VAN to initiate transfers affecting the funds in that account from a third party system. Upon creation of a virtual account as a Funding Source, it will immediately be available for use with a `verified` status.
+
+A VAN can be [removed](/api-reference/funding-sources/remove) at any time via the API. A new VAN can be created in its place if needed.
+
+#### Example Routing Details Response:
+
+```raw
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c/ach-routing",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "ach-routing"
+    },
+    "funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/e6d68efb-c49b-43db-8867-e1ca58c6ee8c",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    }
+  },
+  "accountNumber": "9619991490430833",
+  "routingNumber": "084106768"
+}
+```
+
+## Tracking Virtual Account Transfers
+
+Externally initiated transactions will be represented by transfers that are automatically created and available in the transaction listing endpoint when Dwolla is notified of the transaction by the ACH Network.
+
+Adding funds into a balance will be represented by a new transfer where the **source** is the VAN funding source and the **destination** is the Customer.
+
+#### Example Response Object
+
+```raw
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/transfers/c7149132-c552-ec11-813a-ebf9f1240ece",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/533e2de1-bc59-4301-a081-a431ef023fbd",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/customers/af6eb65c-ab64-4510-8ce3-56076b6ab3a9",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "c7149132-c552-ec11-813a-ebf9f1240ece",
+    "status": "processed",
+    "amount": {
+        "value": "10.00",
+        "currency": "USD"
+    },
+    "created": "2021-12-01T16:39:06.200Z",
+    "achDetails": {
+        "source": {
+            "addenda": {
+                "values": [
+                    "addenda"
+                ]
+            },
+            "beneficiaryName": "Fake name",
+            "companyName": "Fake company name",
+            "companyEntryDescription": "PAYMENT",
+            "effectiveDate": "2021-12-01",
+            "postingData": "Fake company name:Fake discretionary data:Fake name",
+            "routingNumber": "222222226",
+            "traceId": "222222225926346"
+        },
+        "destination": {}
+    }
+}
+```
+
+Withdrawals from the Dwolla Balance will be represented by a new transfer where the **source** is the Customer and the **destination** is the VAN funding source.
+
+#### Example Response Object
+
+```raw
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/transfers/c7149132-c552-ec11-813a-ebf9f1240ece",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/customers/af6eb65c-ab64-4510-8ce3-56076b6ab3a9",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/533e2de1-bc59-4301-a081-a431ef023fbd",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "c7149132-c552-ec11-813a-ebf9f1240ece",
+    "status": "processed",
+    "amount": {
+        "value": "10.00",
+        "currency": "USD"
+    },
+    "created": "2021-12-01T16:39:06.200Z",
+    "achDetails": {
+        "source": {},
+        "destination": {
+            "addenda": {
+                "values": [
+                    "addenda"
+                ]
+            },
+            "beneficiaryName": "Fake name",
+            "companyName": "Fake company name",
+            "companyEntryDescription": "PAYMENT",
+            "effectiveDate": "2021-12-01",
+            "postingData": "Fake company name:Fake discretionary data:Fake name",
+            "routingNumber": "222222226",
+            "traceId": "222222225926346"
+        }
+    }
+}
+```
+
+Each new transfer will trigger a `bank_transfer_created` or `customer_bank_transfer_created` webhook. The creation webhooks will be triggered approximately 30 minutes prior to any completed webhook event of `bank_transfer_completed` or `customer_bank_transfer_completed`.
+
+Transfers will be created in a `pending` or `failed` status depending on whether the customer record or VAN has been deactivated, suspended, or removed. Pending transfers will be processed automatically during the following times (subject to change).
+
+- 11 a.m. CT
+- 1:15 p.m. CT
+- 5:45 p.m. CT
+
+Additional details about an external transaction will be available in the [achDetails JSON object](https://developers.dwolla.com/api-reference/transfers#achdetails-and-addenda-object) when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Either the source or the destination will be present in the object depending on the direction of the funds transfer.
+
+#### ACH Details Optional Fields
+
+| Name                      | Description                                                                                                                                                                                       |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| companyEntryDescription   | Describes the purpose of the transaction. Values can include but are not limited to: `REVERSAL`, `RECLAIM`, `NO CHECK`, `AUTOENROLL`, `REDEPCHECK`, `RETURN FEE`, `RETRY PMNT`, and `HEALTHCARE`. |
+| routingNumber             | Routing number of Originating Depository Financial Institution (ODFI)                                                                                                                             |
+| beneficiaryName           | Beneficiary of the transaction's name. In general, should match the user onboarded to the Platform's name.                                                                                        |
+| companyDiscrestionaryData | Used internally by ODFI to describe the transaction.                                                                                                                                              |
+| companyId                 | Numeric identifier of originator.                                                                                                                                                                 |
+| companyName               | Name of the originator.                                                                                                                                                                           |
+
+#### Example `achDetails` Object
+
+```raw
+{
+  ...
+  "achDetails": {
+    "source": {
+      "addenda": {
+        "values": [
+          "string"
+        ]
+      },
+      "beneficiaryName": "string",
+      "companyId": "string",
+      "companyName": "string",
+      "companyEntryDescription": "PAYMENT",  // will differ depending on originator
+      "effectiveDate": "YYYY-MM-DD",
+      "postingData": "string:string:string", // suggested memo line, fields are companyName:companyDiscretionaryData:beneficiaryName
+      "routingNumber": "string",             // of originating bank
+      "traceId": "string"
+    },
+    "destination": {
+      // same fields as source
+    }
+  }
+}
+```

@@ -1,9 +1,9 @@
 # Ignore markdown files which have '$' signs that get excaped.
 # https://github.com/prettier/prettier/issues/6213
 
-pages/concepts/customer-types.mdx
-pages/concepts/facilitator-fee.mdx
-pages/concepts/sift.mdx
+pages/balance/get-started/customer-types.mdx
+pages/balance/build/transfers/facilitator-fee.mdx
+pages/balance/build/integrations/sift.mdx
 
-pages/guides/micro-deposit-verification/index.mdx
+pages/balance/build/funding-sources/micro-deposit-verification/index.mdx
 pages/guides/sandbox/index.mdx

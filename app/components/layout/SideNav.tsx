@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
@@ -10,14 +11,15 @@ import sortBy from "lodash.sortby";
 import uniqBy from "lodash.uniqby";
 import { TopBarProps as MobileItemProps } from "./TopBar";
 import {
+  GREY_054,
   LAYOUT_BORDER,
   PURPLE_004,
   PURPLE_008,
   PURPLE_012,
+  PURPLE_054,
   PURPLE_075,
   PURPLE_087,
   PURPLE_100,
-  PURPLE_PRIMARY,
   WHITE_PRIMARY,
 } from "../colors";
 import { ROBOTO } from "../typography";
@@ -26,8 +28,9 @@ import { slideInFromLeft, slideInFromRight } from "../keyframes";
 import { ReactComponent as BackIcon } from "../../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
-import caretUp from "../../../assets/images/component-icons/caret-up.svg";
-import caretDown from "../../../assets/images/component-icons/caret-down.svg";
+import { ReactComponent as CaretUpIcon } from "../../../assets/images/component-icons/caret-up.svg";
+import { ReactComponent as CaretDownIcon } from "../../../assets/images/component-icons/caret-down.svg";
+
 import Section from "../../modules/section";
 
 // proptypes
@@ -69,6 +72,7 @@ const getPagesInSection = (pages: Page[], section: SideNavLinkProps) =>
   pages.filter(bySection(section.href));
 
 const getCategory = (d) => (d.group ? d.group.category : d.category);
+const getSubCategory = (d) => (d.group ? d.group.subCategory : d.subCategory);
 
 const findSelectedSection = (
   sectionLinks: SideNavLinkProps[],
@@ -100,9 +104,29 @@ const byGuideStep = (a, b) =>
 
 const sortCategories = (sectionHref: string, categories: string[]) => {
   const categoryOrder = Section.categories(sectionHref);
-  return sortBy(categories, (c) => categoryOrder.indexOf(c));
+  return sortBy(categories, (category) => {
+    const categoryObject = categoryOrder.find((item) => item.name === category);
+    return categoryObject ? categoryObject.priority : Infinity;
+  });
 };
 
+const sortSubCategories = (
+  sectionHref: string,
+  category: string,
+  subCategories: string[]
+): string[] | undefined => {
+  const categoryOrder = Section.categories(sectionHref);
+  const categoryObject = categoryOrder.find((item) => item.name === category);
+
+  if (categoryObject && categoryObject.subCategories.length > 0) {
+    const sortedSubCategories = categoryObject.subCategories.filter(
+      (subCategory) => subCategories.includes(subCategory)
+    );
+    return sortedSubCategories.length > 0 ? sortedSubCategories : undefined;
+  }
+
+  return undefined;
+};
 const sortByWeight = (items) => sortBy(items, (i) => i?.weight);
 
 // components
@@ -156,7 +180,7 @@ const StickySectionWrap = styled.div`
 `;
 
 const SectionIconWrap = styled.div`
-  width: 17px;
+  width: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -164,7 +188,7 @@ const SectionIconWrap = styled.div`
 
   svg {
     * {
-      fill: ${PURPLE_PRIMARY};
+      fill: ${GREY_054};
     }
   }
 `;
@@ -173,6 +197,12 @@ const SectionCaretWrap = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
+
+  svg {
+    * {
+      fill: ${PURPLE_054};
+    }
+  }
 
   @media (${breakDown("md")}) {
     display: none;
@@ -222,7 +252,7 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
       >
         <SectionIconWrap>
           {!isExternal ? (
-            <IconSvg className="section-icon" width={17} height={17} />
+            <IconSvg className="section-icon" width={22} height={22} />
           ) : (
             <NewTabIcon className="section-icon" width={15} height={15} />
           )}
@@ -232,7 +262,7 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
 
         {isSection && (
           <SectionCaretWrap>
-            <RightIcon width={5} height={10} />
+            <RightIcon width={18} height={18} />
           </SectionCaretWrap>
         )}
       </a>
@@ -252,7 +282,7 @@ const Category = styled.li`
 const CategoryHeading = styled.div`
   text-transform: uppercase;
   color: ${PURPLE_075};
-  margin: 20px 10px 10px 0px;
+  margin: 10px 10px 10px 0;
   font-family: ${ROBOTO};
   font-size: 12px;
   font-weight: 400;
@@ -263,6 +293,18 @@ const CategoryHeading = styled.div`
 
 const CategoryContent = styled.div`
   margin-left: 8px;
+`;
+
+const SubCategoryHeading = styled.div`
+  width: 288px;
+  margin: 10px 10px 10px -8px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.17px;
+  color: ${PURPLE_087};
 `;
 
 const groupToggleDocLinkStyles = css`
@@ -296,9 +338,17 @@ const GroupToggle = styled.div`
   }
 `;
 
-const GroupCaret = styled.img`
-  max-width: 7px;
+const GroupCaretWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
   margin-left: 20px;
+
+  svg {
+    * {
+      fill: ${PURPLE_054};
+    }
+  }
 `;
 
 interface DocLinkProps {
@@ -363,9 +413,13 @@ function DocGroup({ title, docs }: DocGroupProps) {
         {title}
 
         {isExpanded ? (
-          <GroupCaret src={caretUp} alt="" />
+          <GroupCaretWrap>
+            <CaretUpIcon width={20} height={20} />
+          </GroupCaretWrap>
         ) : (
-          <GroupCaret src={caretDown} alt="" />
+          <GroupCaretWrap>
+            <CaretDownIcon width={20} height={20} />
+          </GroupCaretWrap>
         )}
       </GroupToggle>
 
@@ -421,6 +475,10 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
 
   const categories = activeSection
     ? groupby(getPagesInSection(pages, activeSection), getCategory)
+    : {};
+
+  const subCategories = activeSection
+    ? groupby(getPagesInSection(pages, activeSection), getSubCategory)
     : {};
 
   return (
@@ -483,40 +541,106 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
 
               <CategoriesWrap>
                 {sortCategories(activeSection.href, keys(categories)).map(
-                  (c) => {
+                  (c, index) => {
                     const categoryDocs = categories[c];
                     const groups = groupsFrom(categoryDocs);
 
                     return (
-                      <Category key={c}>
+                      <Category key={index}>
                         {c !== "undefined" && (
-                          <CategoryHeading>{c}</CategoryHeading>
+                          <CategoryHeading key={c}>{c}</CategoryHeading>
                         )}
 
-                        <CategoryContent>
-                          {sortByWeight(groups).map((g?: PageGroup) => {
-                            const docs = categoryDocs.filter(byDocGroup(g?.id));
-                            const ungroupedGroup = typeof g === "undefined";
+                        <CategoryContent key={c + index}>
+                          {sortSubCategories(
+                            activeSection.href,
+                            c,
+                            keys(subCategories)
+                          ) === undefined
+                            ? sortByWeight(groups).map((g?: PageGroup) => {
+                                const docs = categoryDocs.filter(
+                                  byDocGroup(g?.id)
+                                );
+                                const ungroupedGroup = typeof g === "undefined";
 
-                            return (
-                              <div key={g?.id}>
-                                {ungroupedGroup ? (
-                                  sortByWeight(docs).map((d: Page) => (
-                                    <DocLink
-                                      key={d.id}
-                                      grouped={false}
-                                      href={d.id}
-                                      active={d.id === pathname}
-                                    >
-                                      {d.title}
-                                    </DocLink>
-                                  ))
-                                ) : (
-                                  <DocGroup title={g?.title} docs={docs} />
-                                )}
-                              </div>
-                            );
-                          })}
+                                return (
+                                  <div key={g?.id}>
+                                    {ungroupedGroup ? (
+                                      sortByWeight(docs).map((d: Page) => (
+                                        <DocLink
+                                          key={d.id}
+                                          grouped={false}
+                                          href={d.id}
+                                          active={d.id === pathname}
+                                        >
+                                          {d.title}
+                                        </DocLink>
+                                      ))
+                                    ) : (
+                                      <DocGroup
+                                        key={g?.title}
+                                        title={g?.title}
+                                        docs={docs}
+                                      />
+                                    )}
+                                  </div>
+                                );
+                              })
+                            : sortSubCategories(
+                                activeSection.href,
+                                c,
+                                keys(subCategories)
+                              )?.map((sc, scIndex) => {
+                                const subCategoryDocs = subCategories[sc];
+                                const sGroups = groupsFrom(subCategoryDocs);
+
+                                return (
+                                  <React.Fragment key={scIndex}>
+                                    {sc !== "undefined" && (
+                                      <React.Fragment key={sc + scIndex}>
+                                        <SubCategoryHeading key={sc}>
+                                          {sc}
+                                        </SubCategoryHeading>
+                                        {sortByWeight(sGroups).map(
+                                          (g?: PageGroup) => {
+                                            const docs = subCategoryDocs.filter(
+                                              byDocGroup(g?.id)
+                                            );
+                                            const ungroupedGroup =
+                                              typeof g === "undefined";
+
+                                            return (
+                                              <div key={g?.id}>
+                                                {ungroupedGroup ? (
+                                                  sortByWeight(docs).map(
+                                                    (d: Page) => (
+                                                      <DocLink
+                                                        key={d.id}
+                                                        grouped={false}
+                                                        href={d.id}
+                                                        active={
+                                                          d.id === pathname
+                                                        }
+                                                      >
+                                                        {d.title}
+                                                      </DocLink>
+                                                    )
+                                                  )
+                                                ) : (
+                                                  <DocGroup
+                                                    title={g?.title}
+                                                    docs={docs}
+                                                  />
+                                                )}
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                      </React.Fragment>
+                                    )}
+                                  </React.Fragment>
+                                );
+                              })}
                         </CategoryContent>
                       </Category>
                     );

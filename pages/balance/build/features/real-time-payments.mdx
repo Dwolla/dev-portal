@@ -1,0 +1,411 @@
+---
+layout: concepts
+title: "Real-time Payments"
+description: Learn about Real Time Payments, and how to identify and send transfers to RTP-enabled funding-sources.
+category: Build
+subCategory: Features
+weight: 1
+concept:
+  icon: "real-time-payments.svg"
+meta:
+  title: Real-time Payments | Dwolla API Documentation
+  description: The Dwolla API enables use of Real-Time payment credit transfers, a feature for platforms looking to offer expedited transfers and improve end user experience.
+---
+
+import guideIcon from "../../../../assets/images/content-images/content-icons/guides-icon.svg";
+
+# Real-time payments
+
+The RTP® Network is a payments system that was launched by The Clearing House in 2017 as the newest payment rail in the U.S. since the advent of the ACH Network. Payment speed and availability are the primary benefits of utilizing the RTP® Network, as businesses can send and receive payments to eligible bank accounts 24/7/365. In addition, RTP transfers come with other favorable characteristics, such as greater transparency of payment status that provides confirmation of funds availability to the end user sending or receiving a payment.
+
+The core of the Dwolla Platform was built around a simplified connection to the U.S. banking infrastructure for businesses to easily initiate digital payments via the ACH Network. As the Dwolla Platform evolves, RTP adds a new processing channel for businesses, providing flexible payment capabilities to build within their own applications.
+
+While RTP and ACH are similar in many ways, there are some key differences:
+
+| ACH                                                                                         | RTP                                                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Sent via the ACH Network operators (either the Federal Reserve Bank or The Clearing House). | Sent via the RTP® Network operator, The Clearing House.                                                             |
+| Rules and regulations issued by National Automated Clearing House Association (Nacha).      | Rules and regulations issued by The Clearing House (TCH).                                                           |
+| Funds can take 1-3 days to be available.                                                    | Funds made available within seconds.                                                                                |
+| Agreed-upon processes for correcting erroneous transactions (i.e. reversal requests).       | Funds are irrevocable once sent (although not guaranteed or required, a request for return of funds may be issued). |
+
+<AlertBar variation="warning">
+  RTP is a premium feature available for Dwolla customers. Enabling RTP does
+  require additional Dwolla approvals before getting started. Please{" "}
+  <a href="https://www.dwolla.com/contact?b=apidocs">contact Sales</a> or your
+  account manager for more information on enabling this account feature.
+</AlertBar>
+
+### Use cases and characteristics
+
+The RTP® Network supports credit “push” transfers, whereas ACH supports credit push as well as debit pull transfers. RTP is particularly suited to support [disbursement use cases](/guides/send-money). Whether your business is built around B2B, B2C or a combination, you can power your application with RTP.
+
+- **Balance Funded Transfers** - The RTP® Network is a good funds model, and to initiate transfers through the Dwolla Platform, funds must be available in the sender’s Dwolla [balance](/concepts/balance-funding-source).
+- **Credit Sends Only** - RTP transactions are all credits. The RTP® Network does include “Requests for Payment,” but only a very small number of financial institutions support this, and it still relies on a credit to be initiated by the payer upon receiving the request. As adoption of Request for Payment increases among businesses, we expect more FIs will support this feature.
+- **[RTP Enabled Financial Institutions](https://www.theclearinghouse.org/payment-systems/rtp/rtp-participating-financial-institutions)** - More than 56% of FIs support RTP, with adoption growing at an aggressive pace.
+
+### Identifying an RTP-enabled Funding Source
+
+On the Dwolla Platform, Funding Sources allow bank accounts to be added or retrieved. Available for both a Dwolla [Master Account](https://developers.dwolla.com/api-reference/accounts) and [Customers](https://developers.dwolla.com/api-reference/customers) (end users) resources, funding sources have represented payment accounts used for ACH and/or wire activities. Dwolla will be able to identify a bank account as RTP-enabled upon creation of a Funding Source, so no additional information is needed from your end users or application.
+
+#### Retrieving an RTP-enabled Funding Source
+
+When [retrieving an existing Funding Source](https://developers.dwolla.com/api-reference/funding-sources/retrieve) resource from the API, the response will contain a “channels” attribute which represents the different capabilities available for transfers. For a bank account, historically the only values available have been “ach” and “wire”. The example below represents how “real-time-payments” is returned within the “channels” array to identify an RTP-eligible account.
+
+```json
+"channels": [
+  "ach",
+  "real-time-payments"
+]
+```
+
+### Initiating an RTP credit transfer
+
+In order to initiate a transfer with RTP processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
+
+An optional `rtpDetails` object can be included in the transfer request body. This allows additional information to be passed to the payment recipient's bank account about their RTP credit transfer.
+
+<InlineCTA
+  icon={guideIcon}
+  text="Check out our guide to learn how you can simulate an RTP transfer in Sandbox."
+  href="/guides/sandbox/transfers#test-rtp-transfers"
+/>
+
+The following example assumes the sending party has funds pre-loaded to their `balance` Funding Source and that the destination party has a bank account connected that is RTP-enabled.
+
+```bash
+POST https://api-sandbox.dwolla.com/transfers
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
+
+{
+    "_links": {
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7"
+        },
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f"
+        }
+    },
+    "amount": {
+        "currency": "USD",
+        "value": "10000.00"
+    },
+    "processingChannel": {
+        "destination": "real-time-payments"
+    },
+    "rtpDetails": {
+      "destination": {
+         "remittanceData": "ABC_123 Remittance Data"
+      }
+    }
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388
+```
+
+```ruby
+request_body = {
+  :_links => {
+    :source => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7"
+    },
+    :destination => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f"
+    }
+  },
+  :amount => {
+    :currency => "USD",
+    :value => "10000.00"
+  },
+  :metadata => {
+    :paymentId => "12345678",
+    :note => "payment for completed work Dec. 1"
+  },
+  :processingChannel => {
+    :destination => "real-time-payments"
+  },
+  :rtpDetails => {
+    :destination => {
+      :remittanceData => "ABC_123 Remittance Data"
+    }
+  }
+}
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+transfer = app_token.post "transfers", request_body
+transfer.response_headers[:location] # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
+```
+
+```php
+<?php
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->create([
+  '_links' => [
+    'source' => [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7',
+    ],
+    'destination' => [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
+    ]
+  ],
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '10000.00'
+  ],
+  'processingChannel' => [
+    'destination' => 'real-time-payments'
+  ],
+  'rtpDetails' => [
+    'destination' => [
+      'remittanceData' => 'ABC_123 Remittance Data'
+    ]
+  ]
+]);
+$transfer; # => "https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388"
+?>
+```
+
+```python
+request_body = {
+  '_links': {
+    'source': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7'
+    },
+    'destination': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f'
+    }
+  },
+  'amount': {
+    'currency': 'USD',
+    'value': '10000.00'
+  },
+  'processingChannel': {
+    'destination': 'real-time-payments'
+  },
+  'rtpDetails': {
+    'destination': {
+      'remittanceData': 'ABC_123 Remittance Data'
+    }
+  }
+}
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+transfer = app_token.post('transfers', request_body)
+transfer.headers['location'] # => 'https://api-sandbox.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
+```
+
+```javascript
+var requestBody = {
+  _links: {
+    source: {
+      href: "https://api-sandbox.dwolla.com/funding-sources/b268f6b9-db3b-4ecc-83a2-8823a53ec8b7",
+    },
+    destination: {
+      href: "https://api-sandbox.dwolla.com/funding-sources/ecf993e2-fa22-4cea-8022-c7861200288f",
+    },
+  },
+  amount: {
+    currency: "USD",
+    value: "10000.00",
+  },
+  processingChannel: {
+    destination: "real-time-payments",
+  },
+  rtpDetails: {
+    destination: {
+      remittanceData: "ABC_123 Remittance Data",
+    },
+  },
+};
+
+dwolla
+  .post("transfers", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/transfers/636de847-7d02-e711-80ee-0aa34a9b2388'
+```
+
+### Retrieving an RTP credit transfer
+
+When retrieving the [transfer from the API](https://developers.dwolla.com/api-reference/transfers/retrieve), the response will contain an `rtpDetails` object. Within the `rtpDetails` object will be a `destination` JSON object that includes a `remittanceData` key-value pair, depending on if it was included in the original RTP transfer request, and a `networkId` key-value pair.
+
+The `networkId` is a unique identifier for an RTP credit transfer which is passed in the payment request to the recipient's bank. It appears on the transfer API resource once the credit entry clears into the destination bank account.
+
+### Request and response
+
+```bash
+GET https://api-sandbox.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+
+{
+  "_links": {
+    "source": {
+      "href": "https://api-sandbox.dwolla.com/accounts/0ee84069-47c5-455c-b425-633523291dc3",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "account"
+    },
+    "destination-funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/a67d47f0-73de-4a6c-8de4-105d30aad395",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "source-funding-source": {
+      "href": "https://api-sandbox.dwolla.com/funding-sources/7dc2e1df-9a88-4d9a-868f-90b46f1defcc",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "destination": {
+      "href": "https://api-sandbox.dwolla.com/customers/3f65869e-61de-4efb-9b60-f6d0b9f804ed",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    }
+  },
+  "id": "243fd252-3fcf-eb11-8134-d050ab358a03",
+  "status": "processed",
+  "amount": {
+    "value": "1000.00",
+    "currency": "USD"
+  },
+  "created": "2021-06-17T07:40:45.400Z",
+  "processingChannel": {
+    "destination": "real-time-payments"
+  },
+  "rtpDetails": {
+    "destination": {
+      "networkId": "20210617021214273T1BG27487110796028",
+      "remittanceData": "ABC_123 Remittance Data"
+    }
+  }
+}
+```
+
+```ruby
+transfer_url = 'https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03'
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+transfer = app_token.get transfer_url
+transfer.status # => "processed"
+```
+
+```javascript
+var transferUrl =
+  "https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03";
+
+dwolla.get(transferUrl).then(function (res) {
+  res.body.status; // => 'processed'
+});
+```
+
+```python
+transfer_url = 'https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03'
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+fees = app_token.get(transfer_url)
+fees.body['status'] # => 'processed'
+```
+
+```php
+<?php
+$transferUrl = 'https://api.dwolla.com/transfers/243fd252-3fcf-eb11-8134-d050ab358a03';
+
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->byId($transferUrl);
+print($transfer->status); # => "processed"
+?>
+```
+
+### Webhook notifications
+
+Webhooks notification events will be processed in the same sequence as an ACH transfer. The primary difference is that once the transfer is created, the completion or failure events will be triggered moments later rather than days. The specific events include -
+
+| Event Topic                          | Description                                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------------ |
+| customer_bank_transfer_created       | Sent when the RTP transfer is created                                          |
+| customer_bank_transfer_failed        | Sent if the RTP transfer fails\*                                               |
+| customer_bank_transfer_completed     | Sent if the RTP transfer is completed successfully                             |
+| customer_funding_source_rtp_enabled  | Sent when a funding source is identified as RTP eligible                       |
+| customer_funding_source_rtp_disabled | Sent when an RTP eligible funding source is later identified as RTP ineligible |
+
+_\*Based on responses from TCH and Cross River Bank, we will provide more descriptive failure reasons._
+
+### Error Codes
+
+Error codes provide the reason a message did not complete and can be found on the payment `Result.Code`. The `Result.Code` will be OK if the payment was successfully sent/received.
+
+| Code | Description                                                                                                |
+| ---- | ---------------------------------------------------------------------------------------------------------- |
+| 650  | Cannot parse the message                                                                                   |
+| 690  | Signature mismatch or verification error                                                                   |
+| BLKD | Payment has been blocked                                                                                   |
+| AC02 | Debtor account is invalid                                                                                  |
+| AC03 | Creditor account is invalid                                                                                |
+| AC04 | Account closed                                                                                             |
+| AC06 | Account is blocked                                                                                         |
+| AC07 | Creditor account closed                                                                                    |
+| AC10 | Debtor account currency is invalid or missing                                                              |
+| AC11 | Creditor account currency is invalid or missing                                                            |
+| AC13 | Debtor account type missing or invalid                                                                     |
+| AC14 | Creditor account type missing or invalid                                                                   |
+| AG01 | Transaction is forbidden on this type of account                                                           |
+| AG03 | Transaction type is not supported/authorized on this account                                               |
+| AGNT | Incorrect Agent                                                                                            |
+| AM02 | Specific transaction/message amount is greater than allowed maximum                                        |
+| AM04 | Amount of funds available to cover specified message amount is insufficient                                |
+| AM09 | Amount received is not the amount agreed or expected                                                       |
+| AM11 | Transaction currency is invalid or missing                                                                 |
+| AM12 | Amount is invalid or missing                                                                               |
+| AM13 | Transaction amount exceeds limits set by clearing system                                                   |
+| AM14 | Transaction amount exceeds limits agreed between bank and client                                           |
+| BE04 | Specification of creditor's address, which is required for payment, is missing/not correct                 |
+| BE06 | End customer specified is not known at associated Sort/National Bank Code or no longer exists in the books |
+| BE07 | Specification of debtor's address, which is required for payment, is missing/not correct                   |
+| BE10 | Debtor country code is missing or invalid                                                                  |
+| BE11 | Creditor country code is missing or invalid                                                                |
+| BE13 | Country code of debtor's residence is missing or invalid                                                   |
+| BE14 | Country code of creditor's residence is missing or invalid                                                 |
+| BE16 | Debtor identification code missing or invalid                                                              |
+| BE17 | Creditor identification code missing or invalid                                                            |
+| DS24 | Waiting time expired due to incomplete order                                                               |
+| DT04 | Future date is not supported                                                                               |
+| DUPL | Payment is a duplicate of another payment                                                                  |
+| DS0H | Signer is not allowed to sign for this account                                                             |
+| FF02 | Syntax error reason is provided as narrative information in the additional reason information              |
+| FF03 | Invalid Payment Type Information                                                                           |
+| FF08 | End to End ID is missing or invalid                                                                        |
+| MD07 | End customer is deceased                                                                                   |
+| NARR | Reason is provided as narrative information in the additional reason information                           |
+| RC01 | Bank identifier code specified in the message has an incorrect format                                      |
+| RC02 | Bank identified is invalid or missing                                                                      |
+| RC03 | Debtor FI identifier is invalid or missing                                                                 |
+| RC04 | Creditor FI identifier is invalid or missing                                                               |
+| TM01 | Invalid Cut Off Time                                                                                       |
+| TK01 | Invalid Token                                                                                              |
+| TK02 | Sender Token Not Found                                                                                     |
+| TK03 | Receiver Token Not Found                                                                                   |
+| TK04 | Token Expired                                                                                              |
+| TK05 | Token Found with Counterparty Mismatch                                                                     |
+| TK06 | Token Found with Value Limit Rule Violation                                                                |
+| TK07 | Single Use Token Already Used                                                                              |
+| TK08 | Token Suspended                                                                                            |
+| NOAT | Receiving Customer Account does not support/accept this message type                                       |
+| OK   | Completed                                                                                                  |
+| 1100 | Any Other Reasons Reason is provided as narrative in the additional information                            |
+| 9909 | Central Switch (RTP) system malfunction                                                                    |
+| 9910 | Instructed Agent signed-off                                                                                |
+| 9912 | Recipient connection is not available                                                                      |
+| 9934 | Instructing Agent signed-off                                                                               |
+| 9946 | Instructing Agent suspended                                                                                |
+| 9947 | Instructed Agent suspended                                                                                 |
+| 9948 | Central Switch (RTP) service is suspended                                                                  |
