@@ -1,0 +1,180 @@
+---
+layout: guides
+title: "Step 4: Certify beneficial ownership"
+guide:
+  step: 4
+meta:
+  title: Certifying Beneficial Ownership | Dwolla API Documentation
+  description: Conditionally required, certify beneficial ownership to a verified business Customer to advance them to a transactable state.
+---
+
+# Step 4: Certify Beneficial Ownership
+
+## The basics
+
+In order for your business verified Customer to be eligible to send funds, the individual creating the business verified Customer account must certify beneficial owner(s). By certifying that all beneficial owner information is correct, the requirements imposed by the United States Federal customer due diligence rule and Dwolla will be successfully fulfilled.
+
+Certification of beneficial owners should be included as part of the Customer account registration and immediately following the creation of the business Verified Customer and the addition of all owners (unless exempt).
+
+### How do I know what business structure is required to certify Beneficial Ownership?
+
+| If my Customer's business structure is... | ...are they required to certify beneficial ownership? |
+| ----------------------------------------- | ----------------------------------------------------- |
+| Sole proprietorships                      | No (exempt)                                           |
+| Unincorporated association                | No (exempt)                                           |
+| Trust                                     | No (exempt)                                           |
+| Corporation                               | Yes                                                   |
+| Publicly traded corporations              | Yes                                                   |
+| Non-profits                               | Yes                                                   |
+| LLCs                                      | Yes                                                   |
+| Partnerships, LP's, LLP's                 | Yes                                                   |
+
+## Determining Certification needed
+
+When a business verified Customer needs to be `certified`, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/api-reference/customers/retrieve). If no certification link is returned, the Customer is either already `certified`, or is exempt from certification.
+
+| Link name                    | Description                                                  |
+| ---------------------------- | ------------------------------------------------------------ |
+| certify-beneficial-ownership | Indicates that `certification` is required for this Customer |
+
+#### Example response
+
+```json
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "certify-beneficial-ownership": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/beneficial-ownership",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "beneficial-ownership"
+    }
+  },
+  "id": "41432759-6d65-42e5-a6be-400ddd103b78",
+  "firstName": "Account",
+  "lastName": "Admin",
+  "email": "accountAdmin@email.com",
+  "type": "business",
+  "status": "document",
+  "created": "2018-05-10T19:59:22.643Z",
+  "address1": "66 Walnut St",
+  "city": "Des Moines",
+  "state": "IA",
+  "postalCode": "50309",
+  "businessName": "Jane Corp",
+  "controller": {
+    "firstName": "Jim",
+    "lastName": "Controller",
+    "title": "CEO",
+    "address": {
+      "address1": "1749 18th st",
+      "address2": "apt 12",
+      "city": "Des Moines",
+      "stateProvinceRegion": "IA",
+      "country": "US",
+      "postalCode": "50266"
+    }
+  },
+  "businessClassification": "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
+  "businessType": "llc"
+}
+```
+
+### Certification Statuses
+
+| certification_status | Transaction Restricted? | Description                                                                                                                                                                                                            |
+| -------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| uncertified          | Yes - Cannot send funds | New business verified Customers that are not exempt are initially placed in an uncertified status.                                                                                                                     |
+| recertify            | No, for up to 30 days   | Business verified Customers that are certified and change owner information, OR Business verified Customers that Dwolla needs to obtain more information from relating to beneficial owners are placed in this status. |
+| certified            | No                      | Confirms the certification of beneficial owners.                                                                                                                                                                       |
+
+## Certify ownership
+
+To change the certification status of your business verified Customer account, you will want to POST to the beneficial ownership endpoint. By updating the certification status to `certified`, the Account Admin creating the business verified Customer is indicating that all information is correct. After the Account Admin certifies that the information provided is accurate and the information the Account Admin submitted has been verified through the identity verified process, your business verified Customer is now ready to transact within the Dwolla network.
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc/beneficial-ownership
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "status": "certified"
+}
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc/beneficial-ownership",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "beneficial-ownership"
+        }
+    },
+    "status": "certified"
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
+request_body = {
+  :status => "certified"
+}
+
+app_token.post "#{customer_url}/beneficial-ownership", request_body
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909";
+var requestBody = {
+  status: "certified",
+};
+
+dwolla.post(`${customerUrl}/beneficial-ownership`, requestBody);
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909'
+request_body = {
+    "status": "certified"
+}
+
+app_token.post('%s/beneficial-ownership' % customer_url, request_body)
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customerId = 'https://api-sandbox.dwolla.com/customers/e52006c3-7560-4ff1-99d5-b0f3a6f4f909';
+$certifyCustomer = $customersApi->changeOwnershipStatus(['status' => 'certified' ], $customerId);
+?>
+```
+
+### Certification Text Example
+
+Example for certification is as follows:
+
+```plaintext
+"I,____ (name of Account Admin), hereby certify, to the best of my knowledge,
+that the information provided above is complete and correct."
+```
+
+## Handling `recertify` status
+
+If you are adding, removing, or updating information of beneficial owners tied to a business verified Customer account, the certification status will change to `recertify`.
+
+Instances that you will see your `certified` business verified Customer change to `recertify` are as follows:
+
+- Adding a beneficial owner
+- Removing a beneficial owner
+- Updating a beneficial owner in `incomplete` status
+- Uploading a document to a beneficial owner
+
+When a Customer has a `recertify` beneficial ownership status, they will have up to thirty days to update and verify their beneficial owners’ information and update their status to `certified`. If the certification status isn't updated within this timeframe, the business verified Customer will have its `certification_status` changed to `uncertified`, leaving the Customer unable to transact.

@@ -115,6 +115,7 @@ export default function Layout({
   children,
   pages,
   sideNavLinks,
+  stickyReferenceLinks,
   footerLinks,
   footerLegal,
   topBarProps,
@@ -124,6 +125,7 @@ export default function Layout({
   children: JSX.Element;
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
+  stickyReferenceLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
@@ -185,6 +187,7 @@ export default function Layout({
               sectionLinks={sideNavLinks}
               pages={pages}
               mobileItems={topBarProps}
+              stickyReferenceLinks={stickyReferenceLinks}
             />
           </SideNavWrapper>
 

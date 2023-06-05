@@ -8,7 +8,7 @@ exports[`Footer 1`] = `
     className="css-549mvs-LogoContainer eg0edpy11"
   >
     <a
-      href="/"
+      href="/docs"
       onClick={[Function]}
       onMouseEnter={[Function]}
       onTouchStart={[Function]}

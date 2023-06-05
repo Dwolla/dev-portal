@@ -1,0 +1,125 @@
+---
+layout: guides
+title: "Step 2: Add a funding source"
+guide:
+  step: 2
+meta:
+  title: "Send Money - Add a funding source | Dwolla API Documentation"
+  description: Add a bank funding source to a Customer to initiate a pay-out transfer.
+---
+
+# Step 2: Adding a Funding Source
+
+After creating our receive-only User, the next step is to attach a bank funding source. This will be the funding source where they will receive funds.
+
+## Bank Addition and Verification methods
+
+Within Dwolla, the sending party must always verify their bank account in order to be eligible to create a transfer. Although it’s recommended, the party that is receiving the funds does not need to undergo bank verification.
+
+There are three ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
+
+| Bank Addition Method                                                                                                  | Will the bank be `verified`?  | Required Information            |
+| --------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| API - Account & Routing Number                                                                                        | Optional - With Microdeposits | Bank Account and Routing Number |
+| Third Party - Plaid ([Example](https://github.com/Dwolla/integration-examples/tree/main/dwolla-plaid-funding-source)) | Yes                           | Online Bank Credentials         |
+
+## Step 2A: Adding a Bank to the Receive-only User
+
+In this step, we will be adding a bank account to our receive-only user by collecting their bank details within a form on our application. After initial validation of the form fields, the user’s bank details will be submitted to our back-end server where the API request is made to Dwolla to add a bank account.
+
+<AlertBar variation="info">
+  For more information on securely submitting a user’s bank details directly to
+  Dwolla from the client-side of your application, reference our{" "}
+  <a href="/guides/dwolla-js/add-a-bank-account"> helper library dwolla.js </a>.
+</AlertBar>
+
+#### Request Parameters - Create a Funding Source
+
+| Parameter       | Required? | Type   | Description                                                              |
+| --------------- | --------- | ------ | ------------------------------------------------------------------------ |
+| routingNumber   | yes       | string | The bank routing number                                                  |
+| accountNumber   | yes       | string | The bank account number                                                  |
+| bankAccountType | yes       | string | Type of bank account: `checking` or `savings`                            |
+| name            | yes       | string | Arbitrary nickname for the funding source. Must be 50 characters or less |
+
+```bash
+POST https://api.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+{
+    "routingNumber": "222222226",
+    "accountNumber": "123456789",
+    "bankAccountType": "checking",
+    "name": "Jane Merchant - Checking 6789"
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+
+```
+
+```ruby
+customer_url = 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+request_body = {
+  routingNumber: '222222226',
+  accountNumber: '123456789',
+  bankAccountType: 'checking',
+  name: 'Jane Merchant - Checking 6789'
+}
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+funding_source = app_token.post "#{customer_url}/funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+```javascript
+var customerUrl =
+  "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747";
+var requestBody = {
+  routingNumber: "222222226",
+  accountNumber: "123456789",
+  bankAccountType: "checking",
+  name: "Jane Merchant - Checking 6789",
+};
+
+dwolla.post(`${customerUrl}/funding-sources`, requestBody).then(function (res) {
+  res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+});
+```
+
+```python
+customer_url = 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+request_body = {
+  'routingNumber': '222222226',
+  'accountNumber': '123456789',
+  'bankAccountType': 'checking',
+  'name': 'Jane Merchant - Checking 6789'
+}
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer = app_token.post('%s/funding-sources' % customer_url, request_body)
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+```php
+<?php
+$fundingApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$new_fs = $fundingApi->createCustomerFundingSource([
+  "routingNumber" => "222222226",
+  "accountNumber" => "123456789",
+  "bankAccountType" => "checking",
+  "name" => "Jane Merchant - Checking 6789"
+  ], "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
+);
+
+print($new_fs); # => https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+?>
+```
+
+When the funding source is created, you will receive a `201` HTTP response with an empty response body. You can refer to the Location header to retrieve a link to the created funding source resource. We recommend storing the full URL for future use as it will be referenced when creating the transfer to this user’s bank account.
+
+## Step 2B: Handle Webhooks
+
+If you have an active webhook subscription (required in production & optional in Sandbox), you will receive the `customer_funding_source_created` webhook immediately after the resource has been created.

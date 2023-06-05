@@ -1,4 +1,5 @@
 # redirect from                          to
+/    /docs
 /guides/send-money/onboarding.html    /guides/send-money/create-a-customer
 /guides/send-money/add-funding-source.html    /guides/send-money/add-funding-source
 /guides/send-money/retrieve-funding-sources.html    /guides/send-money/retreive-funding-source

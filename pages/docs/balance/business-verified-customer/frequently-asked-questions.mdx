@@ -1,0 +1,235 @@
+---
+layout: guides
+title: "Frequently asked questions"
+guide:
+  step: 5
+meta:
+  title: Business verified Customer FAQ | Dwolla API Documentation
+  description: Find answers to common questions about Verified business Customers in the Dwolla API.
+---
+
+# Frequently Asked Questions
+
+## Customer Eligibility
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: How do I determine if my Customer is fully verified and eligible to
+      start transacting?
+    </span>
+  }
+>
+  <p>
+    You can determine the eligibility of the customer to start transacting in
+    the Dwolla platform by the presence of the <code>send</code> and{" "}
+    <code>receive</code> links in the customer resource.
+    <br /> <br />
+    <code>send</code> - Denotes that the customer is eligible to start sending
+    funds if they have a verified funding-source attached.
+    <br /> <br />
+    <code>receive</code> - Denotes that the customer is eligible to receive
+    funds into their Dwolla balance or an attached bank funding-source.{" "}
+    <strong>Note:</strong> Until the following actions have been completed, any
+    funds received by the Customer will remain in their Dwolla Balance unable to
+    be withdrawn or sent to another Customer or Account:
+    <ul>
+      <li>
+        <a
+          href="https://developers.dwolla.com/guides/business-verified-customer/add-beneficial-owners"
+          target="_blank"
+        >
+          Addition and verification of beneficial owners
+        </a>{" "}
+        (if applicable)
+      </li>
+      <li>
+        <a
+          href="https://developers.dwolla.com/guides/business-verified-customer/certify-beneficial-ownership"
+          target="_blank"
+        >
+          Certification of beneficial ownership
+        </a>
+      </li>
+    </ul>
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My Customer has a <code>retry</code> status. What activity would they
+      be able to engage in while being in <code>retry</code> status, as it
+      relates to the Dwolla Platform?
+    </span>
+  }
+>
+  <ul>
+    <li>Send funds - No</li>
+    <li>
+      Receive funds - Yes - Note that funds will only process to their balance
+      and the transfer will stay <code>pending</code> until the Customer has
+      been verified.
+    </li>
+    <li>Add and verify a bank funding source - Yes</li>
+    <li>Add and verify a Beneficial Owner - Yes</li>
+  </ul>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My Customer has a <code>document</code> status. What activity would
+      they be able to engage in while being in <code>document</code> status, as
+      it relates to the Dwolla Platform?
+    </span>
+  }
+>
+  <ul>
+    <li>Send funds - No</li>
+    <li>
+      Receive funds - Yes - Note that funds will only process to their balance
+      and the transfer will stay <code>pending</code> until the Customer has
+      been verified.{" "}
+    </li>
+    <li>Add and verify a bank funding source - Yes</li>
+    <li>Add and verify a Beneficial Owner - Yes</li>
+  </ul>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My Customer has a <code>deactivated</code> or <code>suspended</code>{" "}
+      status. What activity would they be able to engage in while being in{" "}
+      <code>deactivated</code> or <code>suspended</code> status, as it relates
+      to the Dwolla Platform?
+    </span>
+  }
+>
+  <ul>
+    <li>Send funds - No</li>
+    <li>Receive funds - No</li>
+    <li>Add and verify a bank funding source - No</li>
+    <li>Add and verify a Beneficial Owner - No</li>
+  </ul>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My Customer has a <code>verified</code> status, but is unable to send
+      funds. Why is this?
+    </span>
+  }
+>
+  <p>
+    Your Customer has likely not completed the bank verification process. You
+    can check to see the status of the funding source{" "}
+    <a href="https://developers.dwolla.com/api-reference/funding-sources/list-funding-sources-for-a-customer">
+      {" "}
+      via the API{" "}
+    </a>{" "}
+    or by going into the{" "}
+    <a href="https://www.dwolla.com/platform/dashboard">Dwolla dashboard.</a>
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Can I change a <code>Business Verified</code> Customer type to an{" "}
+      <code>Unverified</code> Customer type?
+    </span>
+  }
+>
+  <p>
+    No. Downgrade functionality is not supported for Dwolla Verified Customers.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My Customer has a <code>document</code> status. Can I submit more than
+      one document via the API?
+    </span>
+  }
+>
+  <p>
+    Yes, although this is not necessary, nor recommended. Dwolla manually
+    reviews all documents, so sending more documents than necessary may slow
+    down the verification process for your Customers.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My end user is not a US resident, can they still create a Personal
+      Verified Customer via the API to access my application?
+    </span>
+  }
+>
+  <p>
+    No. At this time, Dwolla will create Business Verified Customers when they
+    have a proper business EIN or SSN (for Sole Proprietorships only).
+  </p>
+</Collapsible>
+
+## Beneficial Owner Eligibility
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: My Business Verified Customer is <code>verified</code> and my
+      Beneficial Owners are <code>verified</code> but they cannot send funds.
+      Why is this?
+    </span>
+  }
+>
+  <p>
+    Your Customer will need to <code>certify</code> beneficial ownership
+    information before your Customer will be eligible to send funds.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: One of my Business Verified Customer’s Beneficial Owners is not yet in
+      a <code>verified</code> status. What is my Customer’s eligibility for
+      certain actions with Dwolla?
+    </span>
+  }
+>
+  <ul>
+    <li>Send funds - No</li>
+    <li>
+      Receive funds - Yes - Note that funds will only process to their balance
+      and the transfer will stay <code>pending</code> until all of the
+      Beneficial Owners have been verified and certified.
+    </li>
+    <li>Add and verify a bank funding source - Yes</li>
+  </ul>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: When should my Beneficial Owner use <code>ssn</code>? When should they
+      use the <code>passport</code>?
+    </span>
+  }
+>
+  <ul>
+    <li>
+      If your Beneficial Owner is an individual from the United States with a
+      US-issued SSN, your Beneficial Owner will sign up using <code>ssn</code>.
+    </li>
+    <li>
+      If your Beneficial Owner is a non-US individual, they will use the{" "}
+      <code>passport</code> object.
+    </li>
+  </ul>
+</Collapsible>

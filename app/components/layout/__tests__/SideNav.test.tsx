@@ -3,8 +3,7 @@ import SideNav, { SideNavLinkProps } from "../SideNav";
 import Pages from "../../../modules/pages";
 
 import { ReactComponent as HomeIcon } from "../../../../assets/images/component-icons/side-nav/home-nav-icon.svg";
-import { ReactComponent as GuidesIcon } from "../../../../assets/images/component-icons/side-nav/guides-nav-icon.svg";
-import { ReactComponent as ConceptsIcon } from "../../../../assets/images/component-icons/side-nav/concepts-nav-icon.svg";
+import { ReactComponent as DwollaBalanceIcon } from "../../../../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../../../../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../../../../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 
@@ -24,11 +23,20 @@ jest.mock("../../../modules/pages.import");
 
 const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
-    href: "/",
+    href: "/docs",
     IconSvg: HomeIcon,
     isSection: false,
     text: "Home",
     isExternal: false,
+    isDocs: false,
+  },
+  {
+    href: "/docs/balance",
+    IconSvg: DwollaBalanceIcon,
+    isSection: false,
+    text: "Balance",
+    isExternal: false,
+    isDocs: true,
   },
   {
     href: "/api-reference",
@@ -36,20 +44,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "API Reference",
     isExternal: false,
-  },
-  {
-    href: "/guides",
-    IconSvg: GuidesIcon,
-    isSection: true,
-    text: "Guides",
-    isExternal: false,
-  },
-  {
-    href: "/concepts",
-    IconSvg: ConceptsIcon,
-    isSection: true,
-    text: "Concepts",
-    isExternal: false,
+    isDocs: false,
   },
   {
     href: "/sdks-tools",
@@ -62,6 +57,16 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     href: "https://discuss.dwolla.com/",
     text: "Community",
     isExternal: true,
+  },
+];
+
+const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
+  {
+    href: "/api-reference",
+    IconSvg: ApiReferenceIcon,
+    isSection: false,
+    text: "API Reference",
+    isExternal: false,
   },
 ];
 
@@ -81,6 +86,7 @@ test("SideNav", () => {
       <SideNav
         pages={Pages.all()}
         sectionLinks={SIDE_NAV_LINKS}
+        stickyReferenceLinks={STICKY_REFERENCE_LINKS}
         mobileItems={TOP_BAR_PROPS}
       />
     )

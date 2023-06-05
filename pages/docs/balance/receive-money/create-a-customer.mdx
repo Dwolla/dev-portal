@@ -1,0 +1,111 @@
+---
+layout: guides
+title: "Step 1: Create a customer"
+guide:
+  step: 1
+meta:
+  title: Receive Money - Onboarding a Customer | Dwolla API Documentation
+  description: Onboard users to receive money from their bank accounts with the Dwolla API.
+---
+
+# Step 1: Creating your Customer
+
+## Choose the Customer Type for your Funds Flow
+
+Before your end user can send funds, they must be created as a Customer via the Dwolla API. The pay-ins funds flow is flexible in terms of choosing a Customer type to onboard, as both the `unverified` Customer and `verified` Customer types are eligible to send funds. To learn more on the different Customer types and the capabilities of each, check out our [customer types resource article](/concepts/customer-types).
+
+## Step 1A. Create the Customer
+
+While you can use the `verified` Customer type in this funds flow, we will be creating an `unverified` Customer in this guide.
+
+#### Request Parameters - Unverified Customer
+
+| Parameter    | Required?   | Type   | Description                                                             |
+| ------------ | ----------- | ------ | ----------------------------------------------------------------------- |
+| firstName    | yes         | string | Customer's first name                                                   |
+| lastName     | yes         | string | Customer's last name                                                    |
+| email        | yes         | string | Customer's email address                                                |
+| businessName | conditional | string | Customer's registered business name (optional if not a business entity) |
+| ipAddress    | no          | string | Customer's IP address                                                   |
+
+```bash
+POST https://api-sandbox.dwolla.com/customers
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "janeDoe@nomail.net",
+  "ipAddress": "99.99.99.99",
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
+```
+
+```ruby
+request_body = {
+  :firstName => 'Jane',
+  :lastName => 'Doe',
+  :email => 'janeDoe@nomail.net',
+  :ipAddress => '99.99.99.99'
+}
+
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer = app_token.post "customers", request_body
+customer.response_headers[:location] # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
+```
+
+```javascript
+var requestBody = {
+  firstName: "Jane",
+  lastName: "Merchant",
+  email: "jmerchant@nomail.net",
+  ipAddress: "99.99.99.99",
+};
+
+dwolla.post("customers", requestBody).then(function (res) {
+  res.headers.get("location"); // => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+});
+```
+
+```python
+request_body = {
+  'firstName': 'Jane',
+  'lastName': 'Merchant',
+  'email': 'jmerchant@nomail.net',
+  'ipAddress': '99.99.99.99'
+}
+
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer = app_token.post('customers', request_body)
+customer.headers['location'] # => 'https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747'
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+
+$customer = $customersApi->create([
+  'firstName' => 'Jane',
+  'lastName' => 'Merchant',
+  'email' => 'jmerchant@nomail.net',
+  'ipAddress' => '99.99.99.99'
+]);
+
+print($customer); # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747"
+?>
+```
+
+<AlertBar variation="info">
+  Providing the IP address of the end user accessing your application as the
+  <code>ipAddress</code> parameter. This enhances fraud detection and tracking.
+</AlertBar>
+
+When the Customer is successfully created by your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be necessary to complete additional actions, such as attaching a bank or correlating webhooks that are triggered for the end user in the Dwolla system.
+
+## Step 1B. Handle Webhooks
+
+If you have an active webhook subscription, you will receive the `customer_created` webhook immediately after the resource has been created.

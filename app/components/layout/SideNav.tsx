@@ -12,6 +12,7 @@ import uniqBy from "lodash.uniqby";
 import { TopBarProps as MobileItemProps } from "./TopBar";
 import {
   GREY_054,
+  GREY_2,
   LAYOUT_BORDER,
   PURPLE_004,
   PURPLE_008,
@@ -46,12 +47,14 @@ type ConditionalSideNavLinkProps =
   | {
       isExternal: false;
       IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-      isSection: boolean;
+      isSection: boolean; // If true, then the link is a section link which slides out a subnav
+      isDocs?: boolean; // If true, then the StickyReferenceLinks will be shown in the subnav
     }
   | {
       isExternal: true;
       IconSvg?: never;
       isSection?: false;
+      isDocs?: false;
     };
 
 // Combined type of common and conditional props
@@ -62,6 +65,7 @@ interface SideNavProps {
   sectionLinks: SideNavLinkProps[];
   pages: Page[];
   mobileItems: MobileItemProps;
+  stickyReferenceLinks: SideNavLinkProps[];
 }
 
 // helpers
@@ -77,11 +81,17 @@ const getSubCategory = (d) => (d.group ? d.group.subCategory : d.subCategory);
 const findSelectedSection = (
   sectionLinks: SideNavLinkProps[],
   pathname: string
-) =>
-  sectionLinks.find(
+) => {
+  // Sort sectionLinks in descending order of the href length. This way, the function will
+  // first check for the exact match and then check for subpath matches.
+  const sortedSectionLinks = [...sectionLinks].sort(
+    (a, b) => b.href.length - a.href.length
+  );
+  return sortedSectionLinks.find(
     (section) =>
       pathname === section.href || pathname.startsWith(`${section.href}/`)
   );
+};
 
 const keys = (o: Record<string, {}>): string[] => {
   const sorted = Object.keys(o).sort();
@@ -145,6 +155,10 @@ const Slide = styled.div`
 `;
 
 const SlidePane = styled.div`
+  flex-grow: 1;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
   align-self: stretch;
   flex: 1 1 auto;
   overflow-x: hidden;
@@ -212,16 +226,27 @@ const SectionCaretWrap = styled.div`
 type SectionLinkProps = {
   linkProps: SideNavLinkProps;
   isActive: boolean;
+  isStickyReference?: boolean; // If true, the link will be styled as a sticky reference link
+  // at the bottom of the sideNav (used for the 'docs' type sections)
+  newTab?: boolean; // If true, the link will open in a new tab
 };
 
-function SectionLink({ linkProps, isActive }: SectionLinkProps) {
+function SectionLink({
+  linkProps,
+  isActive,
+  isStickyReference,
+  newTab,
+}: SectionLinkProps) {
   const { href, IconSvg, isSection, text, isExternal } = linkProps;
 
   return (
     <Link href={href} passHref>
       <a
-        target={isExternal ? "_blank" : undefined}
-        className={classnames({ active: isActive })}
+        target={isExternal || newTab ? "_blank" : undefined}
+        className={classnames({
+          active: isActive,
+          stickyReference: isStickyReference,
+        })}
         css={css`
           display: flex;
           height: 48px;
@@ -247,6 +272,11 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
             margin-left: unset;
             background: ${PURPLE_008};
             border-left: 3px solid ${PURPLE_100};
+          }
+
+          &.stickyReference {
+            border-top: 1px solid ${GREY_2};
+            background: ${WHITE_PRIMARY};
           }
         `}
       >
@@ -298,13 +328,19 @@ const CategoryContent = styled.div`
 const SubCategoryHeading = styled.div`
   width: 288px;
   margin: 10px 10px 10px -8px;
-  font-family: "Roboto";
+  font-family: ${ROBOTO};
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 143%;
   letter-spacing: 0.17px;
   color: ${PURPLE_087};
+`;
+
+const StickyReferencesWrap = styled.div`
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
 `;
 
 const groupToggleDocLinkStyles = css`
@@ -464,7 +500,12 @@ function MobileItems({ button }: MobileItemProps) {
   );
 }
 
-function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
+function SideNav({
+  sectionLinks,
+  pages,
+  mobileItems,
+  stickyReferenceLinks,
+}: SideNavProps) {
   const { pathname } = useRouter();
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
@@ -524,7 +565,7 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
               <StickySectionWrap>
                 <SectionLink
                   linkProps={{
-                    href: "/",
+                    href: "/docs",
                     IconSvg: BackIcon,
                     isSection: false,
                     text: "Back",
@@ -647,6 +688,21 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
                   }
                 )}
               </CategoriesWrap>
+
+              <StickyReferencesWrap>
+                {/* Only display links
+                when activeSection is a 'docs' type section */}
+                {activeSection.isDocs &&
+                  stickyReferenceLinks.map((l) => (
+                    <SectionLink
+                      key={l.href}
+                      isActive={l.href === pathname}
+                      linkProps={l}
+                      isStickyReference
+                      newTab
+                    />
+                  ))}
+              </StickyReferencesWrap>
             </>
           )}
 

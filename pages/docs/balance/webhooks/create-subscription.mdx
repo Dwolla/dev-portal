@@ -1,0 +1,78 @@
+---
+layout: guides
+title: "Step 1: Create Subscription"
+guide:
+  step: 1
+meta:
+  title: Creating a Webhook Subscription | Dwolla API Documentation
+  description: Create subscription webhooks for payments within your application by utilizing our open bank transfer API with no transaction fees. Start today!
+---
+
+# Step 1: Create a Webhook Subscription
+
+First, you will need to have a URL that is publicly accessible where Dwolla can send webhooks in the form of HTTP requests. This also means that anyone on the Internet can hit your endpoint. As such, here are some security concerns:
+
+- Your webhook endpoint should only be accessible over [TLS (HTTPS)](https://www.dwolla.com/updates/improving-transport-layer-security/) and your server should have a valid SSL certificate.
+- Your subscription should include a random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity of the webhook request](/guides/webhooks/process-validate#authentication) from Dwolla.
+
+### Request Parameters
+
+| Parameters | Required | Type   | Description                                                                                                                                                                                                                     |
+| ---------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| url        | yes      | string | The publicly-accessible URL where Dwolla should deliver the webhook notification.                                                                                                                                               |
+| secret     | yes      | string | A random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity of the webhook](/guides/webhooks/process-validate#authentication) from Dwolla. |
+
+### Request and Response
+
+```raw
+POST https://api-sandbox.dwolla.com/webhook-subscriptions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
+{
+    "url": "https://myapplication.com/webhooks",
+    "secret": "sshhhhhh"
+}
+
+
+...
+
+HTTP/1.1 201 Created
+Location:
+https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589
+```
+
+When the webhook subscription is created, you will receive a `201 Created` HTTP response with an empty response body. You can refer to the `Location` header to retrieve a link to the newly-created subscription.
+
+## Webhook Subscription Resource
+
+| Parameter | Description                                                                                                                                                                                                                                                                                                                                  |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | Unique webhook subscription identifier assigned by Dwolla.                                                                                                                                                                                                                                                                                   |
+| url       | Subscribed URL where Dwolla will deliver webhook notifications.                                                                                                                                                                                                                                                                              |
+| paused    | A boolean `true` or `false` value indicating if a webhook subscription is paused. A webhook subscription will be automatically paused after 400 consecutive failures. In addition, a subscription can be paused or unpaused by calling [this endpoint](https://developers.dwolla.com/api-reference/webhook-subscriptions/update) in our API. |
+| created   | [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp this webhook subscription was created                                                                                                                                                                                                                                           |
+
+### Request and Response
+
+```raw
+GET https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589"
+    },
+    "webhooks": {
+      "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/077dfffb-4852-412f-96b6-0fe668066589/webhooks"
+    }
+  },
+  "id": "077dfffb-4852-412f-96b6-0fe668066589",
+  "url": "https://myapplication.com/webhooks",
+  "created": "2022-01-20T16:20:47+00:00"
+}
+```

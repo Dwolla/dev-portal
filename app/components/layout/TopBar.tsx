@@ -162,7 +162,7 @@ export default function TopBar({
 
   return (
     <Container>
-      <Link href="/">
+      <Link href="/docs">
         <a>
           <StyledLogo src={dwollaDevLogo} alt="" />
         </a>

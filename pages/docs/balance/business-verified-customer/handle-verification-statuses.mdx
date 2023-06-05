@@ -1,0 +1,673 @@
+---
+layout: guides
+title: "Step 2: Handle verification statuses"
+guide:
+  step: 2
+meta:
+  title: Verifying Customer Statuses | Dwolla API Documentation
+  description: Identify the various statuses of a Business Verified Customer creation, including retry, document and suspended.
+---
+
+# Step 2: Handling Business Verified Customer Statuses
+
+## The basics
+
+You have successfully created a business verified Customer; however, there are cases where Dwolla will need more information to fully verify the identity of the Controller and/or Business. Read on to learn more.
+
+<AlertBar variation="info">
+  If your Business and Controller are already identity verified, you can skip to
+  the next step{" "}
+  <a href="/guides/business-verified-customer/add-beneficial-owners">
+    adding beneficial owners
+  </a>{" "}
+  to continue with your business verified Customer onboarding.
+</AlertBar>
+
+## Verification statuses and corresponding events
+
+As a developer, you will want to handle the various Customer statuses that can be returned.
+
+| Customer status | Event Topic Name                      | Transaction restricted?            | Description                                                                                                                                                                                                                                                                                                                                                                                           |
+| --------------- | ------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| verified        | customer_verified                     | No                                 | The identifying information submitted was sufficient in verifying the Customer account.                                                                                                                                                                                                                                                                                                               |
+| retry           | customer_reverification_needed        | Yes - Cannot send funds            | The initial identity verification attempt failed because the information provided did not satisfy Dwolla’s verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with a POST request. All fields are required on the retry attempt. If the additional attempt fails, the resulting status will be either `document` or `suspended`. |
+| document        | customer_verification_document_needed | Yes - Cannot send funds            | Dwolla requires additional documentation to identify the Customer in the document status. Once a document is uploaded it will be reviewed for verification.                                                                                                                                                                                                                                           |
+| suspended       | customer_suspended                    | Yes - Cannot send or receive funds | The Customer is suspended and may neither send nor receive funds. Contact Account Management for more information.                                                                                                                                                                                                                                                                                    |
+
+## Handling `retry` status
+
+A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. Dwolla will require the **full 9-digits** of the Controller’s SSN on the retry attempt in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account. The Customer will have one more opportunity to correct any mistakes.
+
+<AlertBar variation="warning">
+  You need to gather new information if the Customer is placed into the{" "}
+  <code>retry</code>
+  status; simply passing the same information will result in the same insufficient
+  scores.
+</AlertBar>
+
+All fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN.
+
+### Sole Proprietorship - Request and response
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNic+oWhDbQcVSKLRUpGjIdl/YyrHqrDDoRnQwE7Q
+
+{
+    "firstName": "Business",
+    "lastName": "Owner",
+    "email": "solePropBusiness@email.com",
+    "ipAddress": "143.156.7.8",
+    "type": "business",
+    "dateOfBirth": "1980-01-31",
+    "ssn": "123-45-6789",
+    "address1": "99-99 33rd St",
+    "city": "Some City",
+    "state": "NY",
+    "postalCode": "11101",
+    "businessClassification": "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
+    "businessType": "soleProprietorship",
+    "businessName":"Jane Corp",
+    "ein":"00-0000000"
+}
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customerUrl = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5';
+$retryCustomer = $customersApi->updateCustomer([
+    'firstName' => 'Business',
+    'lastName' => 'Owner',
+    'email' => 'solePropBusiness@email.com',
+    'ipAddress' => '143.156.7.8',
+    'type' => 'business',
+    'dateOfBirth' => '1980-01-31',
+    'ssn' => '123-45-6789',
+    'address1' => '99-99 33rd St',
+    'city' => 'Some City',
+    'state' => 'NY',
+    'postalCode' => '11101',
+    'businessClassification' => '9ed3f670-7d6f-11e3-b1ce-5404a6144203',
+    'businessType' => 'soleProprietorship',
+    'businessName' => 'Jane Corp',
+    'ein' => '00-0000000'], $customerUrl);
+
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer_url = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+request_body = {
+    :firstName => 'Business',
+    :lastName => 'Owner',
+    :email => 'solePropBusiness@email.com',
+    :ipAddress => '143.156.7.8',
+    :type => 'business',
+    :dateOfBirth => '1980-01-31',
+    :ssn => '123-45-6789',
+    :address1 => '99-99 33rd St',
+    :city => 'Some City',
+    :state => 'NY',
+    :postalCode => '11101',
+    :businessClassification => '9ed3f670-7d6f-11e3-b1ce-5404a6144203',
+    :businessType => 'soleProprietorship',
+    :businessName => 'Jane Corp',
+    :ein => '00-0000000'
+}
+
+customer = app_token.post customer_url, request_body
+customer.id # => "62c3aa1b-3a1b-46d0-ae90-17304d60c3d5"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+request_body = {
+  'firstName': 'Business',
+  'lastName': 'Owner',
+  'email': 'solePropBusiness@email.com',
+  'ipAddress': '143.156.7.8',
+  'type': 'business',
+  'dateOfBirth': '1980-01-31',
+  'ssn': '123-45-6789',
+  'address1': '99-99 33rd St',
+  'city': 'Some City',
+  'state': 'NY',
+  'postalCode': '11101',
+  'businessClassification': '9ed3f670-7d6f-11e3-b1ce-5404a6144203',
+  'businessType': 'soleProprietorship',
+  'businessName': 'Jane Corp',
+  'ein': '00-0000000'
+}
+
+customer = app_token.post(customer_url, request_body)
+customer.body.id # => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+```
+
+```javascript
+var customerUrl =
+  "https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5";
+var requestBody = {
+  firstName: "Business",
+  lastName: "Owner",
+  email: "solePropBusiness@email.com",
+  ipAddress: "143.156.7.8",
+  type: "business",
+  dateOfBirth: "1980-01-31",
+  ssn: "123-45-6789",
+  address1: "99-99 33rd St",
+  city: "Some City",
+  state: "NY",
+  postalCode: "11101",
+  businessClassification: "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
+  businessType: "soleProprietorship",
+  businessName: "Jane Corp",
+  ein: "00-0000000",
+};
+
+dwolla.post(customerUrl, requestBody).then(function (res) {
+  res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+});
+```
+
+### Business with Controller - Request and response
+
+```bash
+POST https://api-sandbox.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer 0Sn0W6kzNic+oWhDbQcVSKLRUpGjIdl/YyrHqrDDoRnQwE7Q
+
+{
+    "firstName": "Jane",
+    "lastName": "Merchant",
+    "email": "accountAdmin@email.com",
+    "ipAddress": "143.156.7.8",
+    "type": "business",
+    "address1": "123 Corrected Address St",
+    "city": "Some City",
+    "state": "NY",
+    "postalCode": "11101",
+    "controller": {
+        "firstName": "John",
+        "lastName": "Controller",
+        "title": "CEO",
+        "dateOfBirth": "1980-01-01",
+        "ssn": "123-45-6789",
+        "address": {
+            "address1": "1749 18th st",
+            "address2": "apt 12",
+            "city": "Des Moines",
+            "stateProvinceRegion": "IA",
+            "postalCode": "50266",
+            "country": "US"
+        }
+    },
+    "businessClassification": "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
+    "businessType": "llc",
+    "businessName":"Jane Corp",
+    "ein":"00-0000000"
+}
+```
+
+```php
+<?php
+$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customerUrl = 'https://api-sandbox.dwolla.com/customers/b70c3194-35fa-49e8-9243-d55a30e06d1e';
+$retryCustomer = $customersApi->updateCustomer([
+  'firstName' => 'Jane',
+  'lastName' => 'Merchant',
+  'email' => 'accountAdmin@email.com',
+  'type' => 'business',
+  'address1' => '123 Corrected Address St',
+  'city' => 'Some City',
+  'state' => 'NY',
+  'postalCode' => '11101',
+  'controller' =>
+  [
+      'firstName' => 'John',
+      'lastName'=> 'Controller',
+      'title' => 'CEO',
+      'dateOfBirth' => '1990-10-10',
+      'ssn' => '123-45-6789',
+      'address' =>
+      [
+          'address1' => '18749 18th st',
+          'address2' => 'apt 12',
+          'city' => 'Des Moines',
+          'stateProvinceRegion' => 'IA',
+          'postalCode' => '50265',
+          'country' => 'US'
+      ],
+  ],
+  'phone' => '5554321234',
+  'businessClassification' => '9ed3f670-7d6f-11e3-b1ce-5404a6144203',
+  'businessType' => 'llc',
+  'businessName' => 'Jane Corp',
+  'ein' => '00-0000000'], $customerUrl);
+
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+customer_url = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+request_body = {
+  :firstName => 'Jane',
+  :lastName => 'Merchant',
+  :email => 'accountAdmin@email.com',
+  :type => 'business',
+  :address1 => '123 Corrected Address St',
+  :city => 'Some City',
+  :state => 'NY',
+  :postalCode => '11101',
+  :controller => {
+      :firstName => 'John',
+      :lastName => 'Controller',
+      :title => 'CEO',
+      :dateOfBirth => '1980-01-01',
+      :ssn => '123-45-6789'
+      :address => {
+        :address1 => '1749 18th st',
+        :address2 => 'apt 12',
+        :city => 'Des Moines',
+        :stateProvinceRegion => 'IA',
+        :postalCode => '50266',
+        :country => 'US'
+      }
+  },
+  :businessClassification => '9ed38155-7d6f-11e3-83c3-5404a6144203',
+  :businessType => 'llc',
+  :businessName => 'Jane Corp',
+  :ein => '12-3456789'
+}
+
+customer = app_token.post customer_url, request_body
+customer.id # => "62c3aa1b-3a1b-46d0-ae90-17304d60c3d5"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+request_body = {
+  'firstName': 'Jane',
+  'lastName': 'Merchant',
+  'email': 'accountAdmin@email.com',
+  'type': 'business',
+  'address1': '123 Corrected Address St',
+  'city': 'Some City',
+  'state': 'NY',
+  'postalCode': '11101',
+  'controller': {
+      'firstName': 'John',
+      'lastName': 'Controller',
+      'title': 'CEO',
+      'dateOfBirth': '1980-01-01',
+      'ssn': '123-45-6789',
+      'address': {
+        'address1': '1749 18th st',
+        'address2': 'apt12',
+        'city': 'Des Moines',
+        'stateProvinceRegion': 'IA',
+        'postalCode': '50266',
+        'country': 'US'
+      }
+  },
+  'businessClassification': '9ed38155-7d6f-11e3-83c3-5404a6144203',
+  'businessType': 'llc',
+  'businessName': 'Jane Corp',
+  'ein': '12-3456789'
+}
+
+customer = app_token.post(customer_url, request_body)
+customer.body.id # => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+```
+
+```javascript
+var customerUrl =
+  "https://api.dwolla.com/customers/62c3aa1b-3a1b-46d0-ae90-17304d60c3d5";
+var requestBody = {
+  firstName: "Jane",
+  lastName: "Merchant",
+  email: "accountAdmin@email.com",
+  type: "business",
+  address1: "123 Corrected Address St",
+  city: "Some City",
+  state: "NY",
+  postalCode: "11101",
+  controller: {
+    firstName: "John",
+    lastName: "Controller",
+    title: "CEO",
+    dateOfBirth: "1980-01-01",
+    ssn: "123-45-6789",
+    address: {
+      address1: "1749 18th st",
+      address2: "apt 12",
+      city: "Des Moines",
+      stateProvinceRegion: "IA",
+      postalCode: "50266",
+      country: "US",
+    },
+  },
+  businessClassification: "9ed38155-7d6f-11e3-83c3-5404a6144203",
+  businessType: "llc",
+  businessName: "Jane Corp",
+  ein: "12-3456789",
+};
+
+dwolla.post(customerUrl, requestBody).then(function (res) {
+  res.body.id; // => '62c3aa1b-3a1b-46d0-ae90-17304d60c3d5'
+});
+```
+
+## Handling `document` status
+
+If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](https://developers.dwolla.com/api-reference/documents/create-document-for-customer) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
+
+You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
+
+- All 4 Edges of the document should be visible
+- A dark/high contrast background should be used
+- At least 90% of the image should be the document
+- Should be at least 300dpi
+- Capture image from directly above the document
+- Make sure that the image is properly aligned, not rotated, tilted or skewed
+- No flash to reduce glare
+- No black and white documents
+- No expired IDs
+
+### Determining verification documents needed
+
+When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/api-reference/customers/retrieve), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, both the Controller and business, or for the DBA (Doing Business As). Additionally, embedded errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
+
+| Link name                                    | Description                                                                  |
+| -------------------------------------------- | ---------------------------------------------------------------------------- |
+| verify-with-document                         | Identifies if documents are needed only for a Controller.                    |
+| verify-business-with-document                | Identifies if documents are needed only for a business.                      |
+| verify-controller-and-business-with-document | Identifies if documents are needed for both the Controller and business.     |
+| upload-dba-document                          | Identifies if documents are needed for a business's DBA (Doing Business As). |
+
+#### Example response
+
+```json
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "document-form": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
+      "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+      "resource-type": "document"
+    },
+    "upload-dba-document": {
+      "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "document"
+    }
+  },
+  "_embedded": {
+    "errors": [
+      {
+        "code": "Required",
+        "message": "DBA (Doing Business As) document upload required",
+        "_links": {
+          "upload-dba-document": {
+            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78/documents"
+          }
+        }
+      }
+    ]
+  },
+  "id": "41432759-6d65-42e5-a6be-400ddd103b78",
+  "firstName": "Account",
+  "lastName": "Admin",
+  "email": "accountAdmin@email.com",
+  "type": "business",
+  "status": "document",
+  "created": "2018-05-10T19:59:22.643Z",
+  "address1": "66 Walnut St",
+  "city": "Des Moines",
+  "state": "IA",
+  "postalCode": "50309",
+  "businessName": "Jane Corp",
+  "controller": {
+    "firstName": "document",
+    "lastName": "Controller",
+    "title": "CEO",
+    "address": {
+      "address1": "1749 18th st",
+      "address2": "apt 12",
+      "city": "Des Moines",
+      "stateProvinceRegion": "IA",
+      "country": "US",
+      "postalCode": "50266"
+    }
+  },
+  "businessClassification": "9ed3f670-7d6f-11e3-b1ce-5404a6144203",
+  "businessType": "llc"
+}
+```
+
+### Document Types
+
+##### Controllers
+
+**US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card).
+
+Supported Document Examples:
+
+- Non-expired State Issued Driver’s License/Identification Card
+- Non-expired US Passport
+- Federal Employment Authorization Card
+- US Visa
+
+Unsupported Document Examples:
+
+- Military IDs
+- Expired government-issued IDs
+
+**Non-US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `passport`. Examples include:
+
+- Non-expired Foreign Passport _**Note:** Foreign Passports are only accepted when the individual does not have an ITIN or SSN and the user must alternatively enter the Passport number_.
+
+##### Businesses
+
+Documents that are used to help identify a business are specified as documentType `other`. **Note**: A DBA document should be issued by the government and should include the DBA name along with the state registered business name. Business Identifying documents we recommend uploading can include the following:
+
+- **Partnership, General Partnership**: EIN Letter (IRS-issued SS4 confirmation letter).
+- **Limited Liability Corporation (LLC), Corporation**: EIN Letter (IRS-issued SS4 confirmation letter).
+- **Sole Proprietorship**: Sole Proprietorships can be verified by uploading Business documents as well as Personal IDs. Personal IDs need to be specified as documentType `idCard`, `license` or `passport` depending on the type of the ID. Business documents need to be specified as documentType `other`. Acceptable documents include one or more of the following, as applicable to your sole proprietorship:
+
+  - Business documents (documentType `other`):
+    - Fictitious Business Name Statement,
+    - Certificate of Assumed Name; Business License,
+    - Sales/Use Tax License,
+    - Registration of Trade Name,
+    - EIN documentation (IRS-issued SS4 confirmation letter),
+  - Personal documents (documentType `license`, `passport` or `idCard`):
+    - Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
+
+> **Note:** Trusts should be created as Sole Proprietor accounts and will require signed trust documents that include the trust and username that are on file.
+
+Other business documents may be acceptable on a case by case basis with Dwolla approval. These include any US government entity (federal, state, local) issued business formation or licensing exhibiting the name of the business enrolling with Dwolla, or; Any business formation documents exhibiting the name of the business entity in addition to being filed and stamped by a US government entity. Examples include:
+
+- Filed and stamped Articles of Organization or Incorporation
+- Sales/Use Tax License
+- Business License
+- Certificate of Good Standing
+
+### Uploading a document
+
+To upload a color photo of the document, you’ll initiate a multipart form-data POST request from your backend server to `https://api.dwolla.com/customers/{id}/documents`. The file must be either a .jpg, .jpeg, or .png. Files must be no larger than 10MB in size. Additionally, Business Documents can also be uploaded in a .pdf format.
+
+You’ll also get a webhook with a `customer_verification_document_uploaded` event to let you know the document was successfully uploaded.
+
+#### Request and response
+
+```bash
+curl -X POST
+\ -H "Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR"
+\ -H "Accept: application/vnd.dwolla.v1.hal+json"
+\ -H "Cache-Control: no-cache"
+\ -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW"
+\ -F "documentType=passport"
+\ -F "file=@foo.png"
+\ 'https://api-sandbox.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1/documents
+```
+
+```php
+No example for this language yet.
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1'
+
+file = Faraday::UploadIO.new('mclovin.jpg', 'image/jpeg')
+document = app_token.post "#{customer_url}/documents", file: file, documentType: 'license'
+document.response_headers[:location] # => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+customer_url = 'https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1'
+
+document = app_token.post('%s/documents' % customer_url, file = open('mclovin.jpg', 'rb'), documentType = 'license')
+document.headers['location'] # => 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/132681fa-1b4d-4181-8ff2-619ca46235b1";
+
+var requestBody = new FormData();
+body.append("file", fs.createReadStream("mclovin.jpg"), {
+  filename: "mclovin.jpg",
+  contentType: "image/jpeg",
+  knownLength: fs.statSync("mclovin.jpg").size,
+});
+body.append("documentType", "license");
+
+dwolla.post(`${customerUrl}/documents`, requestBody).then(function (res) {
+  res.headers.get("location"); // => "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
+});
+```
+
+If the document was successfully uploaded, the response will be a HTTP 201 Created with the URL of the new document resource contained in the Location header.
+
+```bash
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+```
+
+### Document review process
+
+Once created, the document will be reviewed by Dwolla. When our team has made a decision to approve or reject, which may take up to 1-2 business days, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
+
+If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](#document-types) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
+
+If the document was found to be fraudulent or doesn’t match the identity of the Customer, the Customer will be suspended.
+
+### Document failure
+
+A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned :
+
+| Failure reason            | Description                                                            |
+| ------------------------- | ---------------------------------------------------------------------- |
+| `BusinessDocNotSupported` | Business document not supported                                        |
+| `BusinessNameMismatch`    | Business name on account does not match document                       |
+| `BusinessTypeMismatch`    | Business type chosen does not match document                           |
+| `ScanDobMismatch`         | Scan DOB does not match DOB on account                                 |
+| `ScanFailedOther`         | ID may be fraudulent or a generic example ID image                     |
+| `ScanIdExpired`           | ID is expired or missing expiration date                               |
+| `ScanIdTypeNotSupported`  | ID may be a military ID, firearm license, or other unsupported ID type |
+| `ScanIdUnrecognized`      | ID is not recognized                                                   |
+| `ScanNameMismatch`        | Scan name does not match name on account                               |
+| `ScanNotReadable`         | Image blurry, too dark, or obscured by glare                           |
+| `ScanNotUploaded`         | Scan not uploaded                                                      |
+
+#### Request and response
+
+```bash
+GET https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer tJlyMNW6e3QVbzHjeJ9JvAPsRglFjwnba4NdfCzsYJm7XbckcR
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0"
+    }
+  },
+  "id": "11fe0bab-39bd-42ee-bb39-275afcc050d0",
+  "status": "reviewed",
+  "type": "license",
+  "created": "2016-01-29T21:22:22.000Z",
+  "failureReason": "ScanNotReadable",
+  "allFailureReasons": [
+      {
+          "reason": "ScanDobMismatch",
+          "description": "Date of Birth mismatch"
+      },
+      {
+          "reason": "ScanIdExpired",
+          "description": "ID is expired"
+      }
+  ]
+}
+```
+
+```php
+<?php
+$aDocument = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0';
+
+$documentsApi = DwollaSwagger\DocumentsApi($apiClient);
+
+$retrieved = $documentsApi->getCustomer($aDocument);
+print($retrieved->failureReason); # => "ScanNotReadable"
+?>
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+document_url = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0'
+
+document = app_token.get document_url
+document.failureReason # => "ScanNotReadable"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+document_url = 'https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0'
+
+documents = app_token.get(document_url)
+documents.body['failureReason'] # => 'ScanNotReadable'
+```
+
+```javascript
+var documentUrl =
+  "https://api.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275afcc050d0";
+
+dwolla.get(document_url).then(function (res) {
+  res.body.failureReason; // => "ScanNotReadable"
+});
+```
+
+## Handling status: suspended
+
+If the Customer is `suspended`, there’s no further action you can take to correct this using the API. You’ll need to contact support@dwolla.com or your account manager for assistance.
+
+## Next steps: Beneficial Owners
+
+The successful creation of a business verified Customer and Controller doesn’t necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you. To learn how to add beneficial owner(s) to your Customer, read on in the next step.

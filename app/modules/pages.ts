@@ -33,39 +33,6 @@ const ALL_PAGES: Page[] = pages
     ];
   }, []);
 
-// const ALL_PAGES: Page[] = pages
-//   .map((p) => {
-//     const { __resourcePath: resourcePath, ...rest } = p;
-//     return {
-//       id: resourcePathToId(resourcePath),
-//       ...rest,
-//     };
-//   })
-//   .reduce((pagesWithGroups: Page[], thisPage: Page, _: number, all: Page[]) => {
-//     if (thisPage.group) {
-//       return [
-//         ...pagesWithGroups,
-//         { ...thisPage, group: { id: thisPage.id, ...thisPage.group } },
-//       ];
-//     }
-//
-//     const thisPageGroupId = thisPage.id.split("/").slice(0, -1).join("/");
-//
-//     const groupPage = all.find((p) => p.id === thisPageGroupId);
-//
-//     if (groupPage?.group) {
-//       return [
-//         ...pagesWithGroups,
-//         { ...thisPage, group: { id: groupPage.id, ...groupPage.group } },
-//       ];
-//     } else {
-//       return [
-//         ...pagesWithGroups,
-//         { ...thisPage, group: { id: thisPageGroupId, ...groupPage?.group } },
-//       ];
-//     }
-//   }, []);
-
 const Pages = {
   all(): Page[] {
     return ALL_PAGES;

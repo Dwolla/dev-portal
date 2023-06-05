@@ -55,18 +55,20 @@ const STATUS_PAGE_SUMMARY_URL =
 
 const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
-    href: "/",
+    href: "/docs",
     IconSvg: HomeIcon,
     isSection: false,
     text: "Home",
     isExternal: false,
+    isDocs: false,
   },
   {
-    href: "/balance",
+    href: "/docs/balance",
     IconSvg: DwollaBalanceIcon,
     isSection: true,
     text: "Dwolla Balance",
     isExternal: false,
+    isDocs: true,
   },
   {
     href: "/api-reference",
@@ -74,6 +76,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "API Reference",
     isExternal: false,
+    isDocs: false,
   },
   {
     href: "/sdks-tools",
@@ -81,6 +84,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "SDKs & Tools",
     isExternal: false,
+    isDocs: true,
   },
   {
     href: "/code-samples",
@@ -88,12 +92,31 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Code Samples",
     isExternal: false,
+    isDocs: false,
   },
   {
     href: "/changelog",
     IconSvg: ChangelogIcon,
     isSection: false,
     text: "Changelog",
+    isExternal: false,
+    isDocs: false,
+  },
+];
+
+const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
+  {
+    href: "/api-reference",
+    IconSvg: ApiReferenceIcon,
+    isSection: false,
+    text: "API Reference",
+    isExternal: false,
+  },
+  {
+    href: "/code-samples",
+    IconSvg: CodeSamplesIcon,
+    isSection: false,
+    text: "Code Samples",
     isExternal: false,
   },
 ];
@@ -258,6 +281,7 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           footerLegal={FOOTER_LEGAL_COPY}
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
+          stickyReferenceLinks={STICKY_REFERENCE_LINKS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
         >

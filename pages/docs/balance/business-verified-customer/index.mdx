@@ -1,0 +1,46 @@
+---
+layout: guides
+title: "Overview"
+group:
+  category: Build
+  subCategory: Customers
+  title: Create a Business Verified Customer
+  description: Verifying a business’ identity enables increased functionality on the platform. Create a business Customer that can receive funds and send up to $5,000 per transfer (default).
+weight: 0
+guide:
+  step: 0
+  filter: get-building
+  icon: business-customer-verification.svg
+meta:
+  title: ACH Business Customer Verification | Dwolla API Documentation
+  description: Learn how to create a Verified business Customer that can send and receive funds.
+---
+
+# Business Customer Verification
+
+This article will walk through the identity verification process for [Business Verified Customers](/concepts/customer-types#business-verified-customer) within the Dwolla API.
+
+## The basics
+
+A business verified Customer represents a business that intends to send or receive funds on your platform. In any transaction, at least one party—either the sender or the receiver—must complete the [identity verification](https://www.dwolla.com/updates/guide-to-cip-customer-identification-program-dwolla-payments-api/) process as outlined in this article.
+
+### Key Terminology
+
+- **Account Admin** - The representative creating the business verified Customer on behalf of the business and Controller.
+- **Controller** - Any natural individual who holds significant responsibilities to control, manage, or direct a company or other corporate entity (i.e. CEO, CFO, General Partner, President, etc). A company may have more than one controller, but only one controller’s information must be collected.
+- **Beneficial owner** - Any natural person who, directly or indirectly, owns 25% or more of the equity interests of the company.
+- **Beneficial ownership certification** - An action taken by the Account Admin to confirm that the information provided is correct.
+- **EIN (Employer Identification Number)** - A unique identification number that is assigned to a business entity so that they can easily be identified by the Internal Revenue Service.
+
+## Business Verified Customer Quick Guide
+
+| My Customer's business structure | Will sign up in Dwolla as | Are they required to add beneficial owners? | Are they required to add certify beneficial ownership? |
+| -------------------------------- | ------------------------- | ------------------------------------------- | ------------------------------------------------------ |
+| **Sole proprietorships**         | _soleProprietorship_      | No (exempt)                                 | No (exempt)                                            |
+| **Unincorporated association**   | _soleProprietorship_      | No (exempt)                                 | No (exempt)                                            |
+| **Trust**                        | _soleProprietorship_      | No (exempt)                                 | No (exempt)                                            |
+| **Corporation**                  | _corporation_             | Yes (if owns 25% or more)                   | Yes                                                    |
+| **Publicly traded corporations** | _corporation_             | No (exempt)                                 | Yes                                                    |
+| **Non-profits**                  | _corporation_ or _llc_    | No (exempt)                                 | Yes                                                    |
+| **LLCs**                         | _llc_                     | Yes (if owns 25% or more)                   | Yes                                                    |
+| **Partnerships, LP's, LLP's**    | _partnership_             | Yes (if owns 25% or more)                   | Yes                                                    |

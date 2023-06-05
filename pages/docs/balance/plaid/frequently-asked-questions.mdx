@@ -1,0 +1,98 @@
+---
+layout: guides
+title: "Frequently Asked Questions"
+guide:
+  step: 3
+meta:
+  title: Dwolla-Plaid Integration FAQ | Dwolla API Documentation
+  description: Find answers to common questions about integrating Dwolla and Plaid in the Dwolla API.
+---
+
+# Frequently Asked Questions
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: How does Dwolla integrate with Plaid when a{" "}
+      <code>processor_token</code> is received?
+    </span>
+  }
+>
+  <p>
+    When creating a funding source,{" "}
+    <a href="https://developers.dwolla.com/guides/plaid/create-funding-source">
+      a Plaid <code>processor_token</code> value is passed in using the{" "}
+      <code>plaidToken</code> key.
+    </a>{" "}
+    With this information, Dwolla executes a call to Plaid's API to securely
+    retrieve the account and routing number and creates a funding source on your
+    behalf. Upon success, Dwolla returns a URL that represents the new funding
+    source via the <code>Location</code> response header.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Does Plaid work if the user has two-factor authentication (2FA) enabled
+      on their bank account?
+    </span>
+  }
+>
+  <p>
+    Yes, if the end user has 2FA enabled with their bank, Plaid will attempt to
+    mimic their bank's login flow, meaning that the user should receive a 2FA
+    code, and is subsequently prompted to enter it in on the next screen.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: If Plaid's <code>access_token</code> and <code>processor_token</code>{" "}
+      changes or expires, what happens to the Dwolla funding source?
+    </span>
+  }
+>
+  <p>
+    If the <code>processor_token</code> has already been used to create a
+    funding source, then the token changing or expiring will not affect it;
+    Dwolla only uses the <code>processor_token</code> to fetch the account and
+    routing number from Plaid and then immediately discards it.
+  </p>
+  <br />
+  <p>
+    However, if you have not yet used the <code>processor_token</code> to create
+    a funding source, then you will need to follow Plaid's process for creating
+    a new token before sending it over to Dwolla.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Can I use Plaid's micro-deposit solution instead of Dwolla's?
+    </span>
+  }
+>
+  <p>
+    Yes, it is possible to use Plaid Link to both automatically verify bank
+    accounts and manually verify via micro-deposits if the bank is not supported
+    or an error occurs during automatic verification.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Will Dwolla's funding source status change if Plaid's account status
+      changes (e.g., micro-deposit verification)?
+    </span>
+  }
+>
+  <p>
+    No. Since Dwolla only uses Plaid to securely retrieve the account and
+    routing number, any changes to the underlying Plaid account will not affect
+    the funding source(s) that have already been created in Dwolla.
+  </p>
+</Collapsible>
