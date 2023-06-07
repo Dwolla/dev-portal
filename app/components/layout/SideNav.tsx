@@ -314,8 +314,8 @@ const CategoryHeading = styled.div`
   color: ${PURPLE_075};
   margin: 10px 10px 10px 0;
   font-family: ${ROBOTO};
-  font-size: 12px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 32px;
   letter-spacing: 1px;
   text-align: left;
@@ -334,7 +334,7 @@ const SubCategoryHeading = styled.div`
   font-size: 14px;
   line-height: 143%;
   letter-spacing: 0.17px;
-  color: ${PURPLE_087};
+  color: ${PURPLE_075};
 `;
 
 const StickyReferencesWrap = styled.div`
