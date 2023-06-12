@@ -3,34 +3,40 @@ import { storiesOf } from "@storybook/react";
 import styled from "@emotion/styled";
 import Card from "../../app/components/base/Card";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
+import productIcon from "../../assets/images/content-images/content-icons/dwolla-balance-product-icon.svg";
 
 const CardWrapper = styled.div`
-  width: 300px;
+  width: 400px;
 `;
 
 storiesOf("base/Card", module)
   .add("default", () => (
+    <Card
+      topic="This is the Topic"
+      description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
+    />
+  ))
+  .add("Card with icon", () => (
     <Card
       icon={guideIcon}
       topic="This is the Topic"
       description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
     />
   ))
-  .add("Card with Width wrapper", () => (
-    <CardWrapper>
-      <Card
-        icon={guideIcon}
-        topic="This is the Topic"
-        description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
-      />
-    </CardWrapper>
-  ))
-  .add("`link`", () => (
+  .add("`links`", () => (
     <Card
-      link={{
-        href: "https://www.dwolla.com",
-        external: true,
-      }}
+      links={[
+        {
+          text: "Learn more",
+          href: "https://www.dwolla.com",
+          external: false,
+        },
+        {
+          text: "Learn some more",
+          href: "https://www.dwolla.com",
+          external: true,
+        },
+      ]}
       icon={guideIcon}
       topic="This is the Topic"
       description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
@@ -44,17 +50,52 @@ storiesOf("base/Card", module)
       description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
     />
   ))
-  .add("`link` and `badge`", () => (
+  .add("`link` + `badge`", () => (
     <Card
-      link={{
-        href: "https://www.dwolla.com",
-        external: true,
-      }}
+      links={[
+        {
+          text: "Learn more",
+          href: "https://www.dwolla.com",
+          external: true,
+        },
+      ]}
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic"
       description="An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
     />
+  ))
+  .add("`productName` + `link`", () => (
+    <Card
+      links={[
+        {
+          text: "Dwolla Balance",
+          href: "https://www.dwolla.com",
+          external: false,
+        },
+      ]}
+      icon={productIcon}
+      productName="Dwolla Balance"
+      topic="Use our existing bank partnerships"
+      description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    />
+  ))
+  .add("Card with Width wrapper", () => (
+    <CardWrapper>
+      <Card
+        links={[
+          {
+            text: "Dwolla Balance",
+            href: "https://www.dwolla.com",
+            external: false,
+          },
+        ]}
+        icon={productIcon}
+        productName="Dwolla Balance"
+        topic="Use our existing bank partnerships"
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      />
+    </CardWrapper>
   ))
   .add("`centerAlign`", () => (
     <Card
@@ -67,10 +108,13 @@ storiesOf("base/Card", module)
   .add("`centerAlign` + `link`", () => (
     <Card
       centerAlign
-      link={{
-        href: "https://www.dwolla.com",
-        external: true,
-      }}
+      links={[
+        {
+          text: "Learn more",
+          href: "https://www.dwolla.com",
+          external: true,
+        },
+      ]}
       icon={guideIcon}
       topic="This is the Topic for center aligned cards reperesenting CTAs."
       description="This is a short description."
@@ -88,10 +132,13 @@ storiesOf("base/Card", module)
   .add("`centerAlign` + `link` + `badge`", () => (
     <Card
       centerAlign
-      link={{
-        href: "https://www.dwolla.com",
-        external: true,
-      }}
+      links={[
+        {
+          text: "Learn more",
+          href: "https://www.dwolla.com",
+          external: true,
+        },
+      ]}
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic for center aligned cards reperesenting CTAs."
@@ -101,10 +148,13 @@ storiesOf("base/Card", module)
   .add("`isFlex`", () => (
     <Card
       isFlex
-      link={{
-        href: "https://www.dwolla.com",
-        external: true,
-      }}
+      links={[
+        {
+          text: "Learn more",
+          href: "https://www.dwolla.com",
+          external: true,
+        },
+      ]}
       icon={guideIcon}
       topic="This is the Topic."
       description="This is a  description.An existing unverified bank can be verified with microdeposits. Send two small debits and have your Customer verify the amounts."
@@ -122,10 +172,13 @@ storiesOf("base/Card", module)
   .add("`isFlex` + badge + link", () => (
     <Card
       isFlex
-      link={{
-        href: "https://www.dwolla.com",
-        external: true,
-      }}
+      links={[
+        {
+          text: "Learn more",
+          href: "https://www.dwolla.com",
+          external: true,
+        },
+      ]}
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic."
@@ -135,13 +188,16 @@ storiesOf("base/Card", module)
   .add("with languages", () => (
     <CardWrapper>
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
+        links={[
+          {
+            text: "GitHub Repository",
+            href: "https://www.dwolla.com",
+            external: true,
+          },
+        ]}
         topic="Dwolla Transaction Reports"
         description="An example app that allows clients to get transactions for a specific customer."
-        languages={["javascript", "python", "html", "css"]}
+        languages={["JavaScript", "Python", "HTML", "CSS"]}
       />
     </CardWrapper>
   ));

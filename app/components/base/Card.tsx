@@ -1,18 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
-import Link from "next/link";
+import { Button } from "@mui/material";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import classnames from "../../modules/classnames";
 import ConditionalWrapper from "../util/ConditionalWrapper";
 import Badge from "./Badge";
-import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
-  GREY_2,
-  GREY_4,
-  HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
+  PRODUCT_ICON_GRADIENT,
+  PURPLE_023,
+  PURPLE_075,
+  PURPLE_087,
   WHITE_PRIMARY,
 } from "../colors";
-import { BOX_SHADOW_4 } from "../shadowDepths";
 import { POPPINS, ROBOTO } from "../typography";
 import { breakDown } from "../breakpoints";
 
@@ -20,14 +20,10 @@ const CardStyle = styled.div`
   height: 100%;
   padding: 30px;
   box-sizing: border-box;
-  border: 1px solid ${GREY_2};
-  border-radius: 5px;
+  border: 1.3px solid ${PURPLE_023};
+  border-radius: 15px;
   background-color: ${WHITE_PRIMARY};
   position: relative;
-  :hover {
-    cursor: pointer;
-    box-shadow: ${BOX_SHADOW_4};
-  }
 
   &.center {
     max-width: none;
@@ -45,17 +41,30 @@ const CardStyle = styled.div`
   }
 `;
 
-const StyledLink = styled.a`
-  text-decoration: none;
-`;
-
-const StyledIcon = styled.img`
-  height: 48px;
-  width: 48px;
+const StyledIcon = styled.div`
   &.center {
     margin-top: 24px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+  &.productIcon {
+    width: 40px;
+    height: 40px;
+    background: ${PRODUCT_ICON_GRADIENT};
+    border-radius: 50%;
+    display: flex;
+
+    img {
+      margin: auto;
+      width: 25px;
+      height: 25px;
+    }
   }
 `;
 
@@ -66,34 +75,39 @@ const BadgeStyle = styled.div`
 `;
 
 const LanguageBadgeStyle = styled.div`
-  margin-top: 10px;
+  margin: 0px 0px 25px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-`;
-
-const LinkIconStyle = styled.div`
-  position: absolute;
-  top: 8px;
-  right: 8px;
-
-  svg {
-    g {
-      fill: ${GREY_4};
-    }
-  }
 `;
 
 const StyledFlexDiv = styled.div`
   padding: 0 30px;
 `;
 
+export const ProductNameStyle = styled.div`
+  font-family: ${ROBOTO};
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 266%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: ${PURPLE_075};
+  margin: 16px 0;
+`;
+
 const TopicStyle = styled.div`
-  color: ${HEADLINE_TEXT};
+  color: ${PURPLE_087};
   font-family: ${POPPINS};
-  font-size: 18px;
-  line-height: 26px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 123.5%;
+  letter-spacing: 0.25px;
+
   margin-bottom: 15px;
+
   &.center {
     margin: 11px auto;
   }
@@ -101,52 +115,67 @@ const TopicStyle = styled.div`
     margin-top: unset;
   }
   &.hasIcon {
-    margin-top: 30px;
+    margin-top: 22px;
   }
 `;
 
 const DescriptionStyle = styled.div`
-  color: ${PARAGRAPH_TEXT};
+  color: ${PURPLE_075};
   font-family: ${ROBOTO};
-  font-size: 15px;
-  line-height: 25px;
-  margin-top: 15px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 175%;
+  letter-spacing: 0.15px;
+
+  margin-top: 16px;
+
   &.center {
     margin: 11px auto 18px;
   }
 `;
 
+const LinkTextStyle = styled.div`
+  margin-top: 16px;
+  display: inline-grid;
+  justify-items: start;
+`;
+
 export type LanguageProp =
-  | "css"
+  | "CSS"
   | "handlebars"
-  | "html"
-  | "java"
-  | "javascript"
+  | "HTML"
+  | "Java"
+  | "JavaScript"
   | "kotlin"
   | "php"
-  | "python"
+  | "Python"
   | "ruby"
   | "shell"
-  | "typescript";
+  | "TypeScript";
+
+type LinkProp = { text: string; href: string; external?: boolean };
 
 type Props = {
-  link?: { href?: string; external?: boolean };
+  links?: Array<LinkProp>;
   centerAlign?: boolean;
   isFlex?: boolean;
   icon?: string;
   badge?: string;
+  productName?: string;
   topic: string;
   description: string;
   languages?: Array<LanguageProp>;
 };
 
-function CoreCard({
+function Card({
   description,
   badge,
   centerAlign,
   isFlex,
   icon,
-  link,
+  links,
+  productName,
   topic,
   languages,
 }: Props) {
@@ -156,10 +185,13 @@ function CoreCard({
     >
       {icon && (
         <StyledIcon
-          src={icon}
-          alt=""
-          className={classnames({ center: centerAlign })}
-        />
+          className={classnames({
+            center: centerAlign,
+            productIcon: productName,
+          })}
+        >
+          <img src={icon} alt="" />
+        </StyledIcon>
       )}
 
       {badge && (
@@ -168,20 +200,26 @@ function CoreCard({
         </BadgeStyle>
       )}
 
-      {link && link.external && (
-        <LinkIconStyle>
-          <NewTabIcon width={13} />
-        </LinkIconStyle>
-      )}
       <ConditionalWrapper
         condition={isFlex}
         wrapper={(children) => <StyledFlexDiv>{children}</StyledFlexDiv>}
       >
+        {productName && <ProductNameStyle>{productName}</ProductNameStyle>}
+
+        {languages && (
+          <LanguageBadgeStyle>
+            {languages.map((lang) => (
+              <Badge key={lang} text={lang} variant="default" />
+            ))}
+          </LanguageBadgeStyle>
+        )}
+
         <TopicStyle
           className={classnames(
             { center: centerAlign },
             { flex: isFlex },
-            { hasIcon: icon }
+            { hasIcon: icon && !productName },
+            { hasProductName: productName }
           )}
         >
           {topic}
@@ -189,31 +227,25 @@ function CoreCard({
 
         <DescriptionStyle className={classnames({ center: centerAlign })}>
           {description}
-          {languages && (
-            <LanguageBadgeStyle>
-              {languages.map((lang) => (
-                <Badge key={lang} text={lang} variant="orange" />
-              ))}
-            </LanguageBadgeStyle>
-          )}
         </DescriptionStyle>
+
+        {links && (
+          <LinkTextStyle>
+            {links.map((link) => (
+              <Button
+                variant="text"
+                color="secondary"
+                endIcon={
+                  link.external ? <OpenInNewIcon /> : <ArrowForwardIcon />
+                }
+              >
+                {link.text}
+              </Button>
+            ))}
+          </LinkTextStyle>
+        )}
       </ConditionalWrapper>
     </CardStyle>
-  );
-}
-
-function Card({ link, ...rest }: Props) {
-  return link && link.href ? (
-    <Link href={link.href} passHref>
-      <StyledLink
-        target={link.external ? "_blank" : undefined}
-        rel={link.external && "noopener noreferrer"}
-      >
-        <CoreCard link={link} {...rest} />
-      </StyledLink>
-    </Link>
-  ) : (
-    <CoreCard link={link} {...rest} />
   );
 }
 

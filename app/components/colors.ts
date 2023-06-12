@@ -70,6 +70,17 @@ export const LAYOUT_BORDER = "rgba(45, 45, 72, 0.25)";
 // Light Orange to Dark Purple Vertical
 export const VERTICAL_GRADIENT =
   "180deg, #E98453 4.14%, #D46E62 55.07%, #BE5771 100%";
+export const PRODUCT_ICON_GRADIENT =
+  "linear-gradient(45deg, #f3904a 0%, #aa437f 100%)";
+
+// Purple colors 2023
+export const PURPLE_023 = "rgba(31, 31, 50, 0.23)";
+export const PURPLE_075 = "rgba(31, 31, 50, 0.75)";
+export const PURPLE_087 = "rgba(31, 31, 50, 0.87)";
 
 // White RGBA shades
 export const WHITE_070 = "rgba(255, 255, 255, 0.7)";
+
+// Orange RGBA shades
+export const ORANGE_087 = "rgba(202, 76, 36, 0.87)";
+export const ORANGE_100 = "rgba(202, 76, 36, 1)";

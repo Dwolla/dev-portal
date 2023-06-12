@@ -28,7 +28,13 @@ export default function ConceptsLayout({ children, frontMatter }: Props) {
           icon={developerCommunityIcon}
           topic="Still haven’t found what you are looking for?"
           description="Ask the community."
-          link={{ href: "https://discuss.dwolla.com/", external: true }}
+          links={[
+            {
+              href: "https://discuss.dwolla.com/",
+              text: "Community",
+              external: true,
+            },
+          ]}
           centerAlign
         />
       </CardWrap>

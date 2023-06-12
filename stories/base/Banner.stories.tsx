@@ -80,22 +80,25 @@ storiesOf("base/Banner", module)
             icon={guideIcon}
             topic="Guides"
             description="Explore step-by-step walkthroughs to ensure your application is built to best practices."
-            link={{ href: "/guides" }}
+            links={[{ href: "/guides", text: "View Guides" }]}
           />
           <Card
             icon={guideIcon}
             topic="Concepts"
             description="Transform your use case to business and functional requirements."
-            link={{ href: "/concepts" }}
+            links={[{ href: "/concepts", text: "View Concepts" }]}
           />
           <Card
             icon={guideIcon}
             topic="API Reference"
             description="View details for all of Dwolla’s API endpoints with a complete reference"
-            link={{
-              href: "https://developers.dwolla.com/api-reference/",
-              external: true,
-            }}
+            links={[
+              {
+                href: "https://developers.dwolla.com/api-reference/",
+                text: "View API Reference",
+                external: true,
+              },
+            ]}
           />
         </CardGrid>
       </CardGridWrapper>
