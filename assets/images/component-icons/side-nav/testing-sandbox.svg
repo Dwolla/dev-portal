@@ -1,8 +1,12 @@
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 48 48">
   <defs>
     <style>
       .cls-1 {
-        fill: #d9725c;
+        fill: rgba(0, 0, 0, 0.54);
+        stroke: rgba(0, 0, 0, 0.54);
+        stroke-width: 0.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
     </style>
   </defs>
