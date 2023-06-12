@@ -70,3 +70,6 @@ export const LAYOUT_BORDER = "rgba(45, 45, 72, 0.25)";
 // Light Orange to Dark Purple Vertical
 export const VERTICAL_GRADIENT =
   "180deg, #E98453 4.14%, #D46E62 55.07%, #BE5771 100%";
+
+// White RGBA shades
+export const WHITE_070 = "rgba(255, 255, 255, 0.7)";
