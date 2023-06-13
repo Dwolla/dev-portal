@@ -2,7 +2,7 @@
 
 exports[`Badge 1`] = `
 <div
-  className="css-1x0r73o-StyledBadge e1sxbycx0"
+  className="css-usx4aq-StyledBadge e1sxbycx0"
 >
   BADGETEXT
 </div>
@@ -10,7 +10,7 @@ exports[`Badge 1`] = `
 
 exports[`with variant 1`] = `
 <div
-  className="orange css-1x0r73o-StyledBadge e1sxbycx0"
+  className="orange css-usx4aq-StyledBadge e1sxbycx0"
 >
   3
 </div>

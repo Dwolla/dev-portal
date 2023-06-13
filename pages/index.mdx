@@ -111,6 +111,10 @@ export const SingleDivWrapper = styled.div`
   margin: 0 auto 60px;
 `;
 
+export const FooterContainer = styled.div`
+  padding: 0px 64px 64px;
+`;
+
 <!-- SDKs and Tools LogoLink props -->
 
 export const languageContent = [
@@ -246,17 +250,19 @@ export default function HomePage() {
         <H3>Get API Updates</H3>
         <IFrame hubSpotFormId="4337f9a2-cd52-442f-89c8-d382704dedae" />
       </ContentContainer>
-      <FooterCTA
-        topic="Start Testing in the Dwolla Sandbox"
-        description="Use sandbox environment to test API requests."
-        button={{
-          text: "Create a Sandbox Account",
-          link: {
-            href: "https://accounts-sandbox.dwolla.com/sign-up",
-            external: true,
-          },
-        }}
-      />
+      <FooterContainer>
+        <FooterCTA
+          topic="Start Testing in the Dwolla Sandbox"
+          description="Use sandbox environment to test API requests."
+          button={{
+            text: "Create a Sandbox Account",
+            link: {
+              href: "https://accounts-sandbox.dwolla.com/sign-up",
+              external: true,
+            },
+          }}
+        />
+      </FooterContainer>
     </>
   );
 }
