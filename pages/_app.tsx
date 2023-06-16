@@ -159,6 +159,24 @@ const FOOTER_LEGAL_COPY = {
 };
 
 const TOP_BAR_PROPS: TopBarProps = {
+  helpLinks: [
+    {
+      href: "https://discuss.dwolla.com/",
+      text: "Developer Forum",
+    },
+    {
+      href: "https://support.dwolla.com/s/",
+      text: "Support Center",
+    },
+    {
+      href: "https://accounts.dwolla.com/login",
+      text: "Dashboard",
+    },
+    {
+      href: "https://discuss.dwolla.com/c/api-support/other/31",
+      text: "Submit Feedback",
+    },
+  ],
   algoliaSearch: {
     branch: "main-algolia",
     searchClient: algoliasearch(

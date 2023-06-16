@@ -7,10 +7,18 @@ import {
   AlgoliaAutocomplete,
   AlgoliaAutocompleteProps,
 } from "algolia-search-components";
+import Help from "../base/Help";
 import { LanguageContext } from "../util/Contexts";
+import { ROBOTO } from "../typography";
 import { breakDown, breakUp } from "../breakpoints";
-import { GREY_2, GREY_4, PURPLE_PRIMARY } from "../colors";
-import dwollaDevLogo from "../../../assets/images/logo-developers.png";
+import {
+  GREY_2,
+  GREY_4,
+  PURPLE_023,
+  PURPLE_075,
+  WHITE_PRIMARY,
+} from "../colors";
+import dwollaLogo from "../../../assets/images/dwolla-logo-full-color.png";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
 import SelectMui from "../base/SelectMui";
@@ -21,8 +29,10 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   height: ${TOP_BAR_HEIGHT}px;
-  background-color: ${PURPLE_PRIMARY};
+  background-color: ${WHITE_PRIMARY};
   padding: 0 20px;
+
+  border-bottom: 1px solid ${PURPLE_023};
 
   @media (${breakDown("md")}) {
     padding: 12px 20px;
@@ -30,11 +40,27 @@ const Container = styled.div`
 `;
 
 const StyledLogo = styled.img`
-  width: 15rem;
+  width: 9rem;
 
   @media (${breakDown("xs")}) {
-    max-width: 13rem;
+    max-width: 9rem;
   }
+`;
+
+const StyledEm = styled.em`
+  position: relative;
+  bottom: 13px;
+  margin: 0 0 0 8px;
+  padding: 1px 0 1px 8px;
+  border-left: 1px solid ${PURPLE_075};
+  color: ${PURPLE_075};
+
+  font-family: ${ROBOTO};
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 150%;
+  letter-spacing: 0.15px;
 `;
 
 const AlgoliaSearchWrapper = muiStyled("div", { name: "SearchWrapper" })({
@@ -44,8 +70,15 @@ const AlgoliaSearchWrapper = muiStyled("div", { name: "SearchWrapper" })({
 });
 
 const RightAlignWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
   margin-left: auto;
   padding-right: 20px;
+
+  div {
+    margin-right: 10px;
+  }
 
   @media (${breakDown("md")}) {
     display: none;
@@ -53,12 +86,18 @@ const RightAlignWrapper = styled.div`
 `;
 
 const LeftAlignWrapper = styled.div`
-  padding-left: 20px;
+  padding-left: 30px;
+  margin-right: 20px;
 
   @media (${breakDown("xs")}) {
     display: none;
   }
 `;
+
+export type HelpLinkProps = {
+  text: string;
+  href: string;
+};
 
 export type TopBarButtonProps = {
   text: string;
@@ -69,6 +108,7 @@ export type TopBarButtonProps = {
 };
 
 export type TopBarProps = {
+  helpLinks?: HelpLinkProps[];
   algoliaSearch?: AlgoliaAutocompleteProps;
   button: TopBarButtonProps;
   sidebarToggled?: boolean;
@@ -141,6 +181,7 @@ const StyledCloseIcon = styled.div`
 `;
 
 export default function TopBar({
+  helpLinks,
   algoliaSearch,
   button,
   sidebarToggled,
@@ -163,15 +204,25 @@ export default function TopBar({
   return (
     <Container>
       <Link href="/">
-        <a>
-          <StyledLogo src={dwollaDevLogo} alt="" />
+        <a style={{ textDecoration: "none" }}>
+          <StyledLogo src={dwollaLogo} alt="" />
+          <StyledEm> Docs</StyledEm>
         </a>
       </Link>
 
       <LeftAlignWrapper>
+        {algoliaSearch && (
+          <AlgoliaSearchWrapper>
+            <AlgoliaAutocomplete {...algoliaSearch} />
+          </AlgoliaSearchWrapper>
+        )}
+      </LeftAlignWrapper>
+
+      <RightAlignWrapper>
+        {helpLinks && <Help links={helpLinks} />}
+
         <FormControl sx={{ minWidth: 200 }} size="small">
           <SelectMui
-            color="white"
             label="Select Language"
             onChange={(value) => {
               setSelectedLanguage(value);
@@ -181,14 +232,6 @@ export default function TopBar({
             value={selectedLanguage.value}
           />
         </FormControl>
-      </LeftAlignWrapper>
-
-      <RightAlignWrapper>
-        {algoliaSearch && (
-          <AlgoliaSearchWrapper>
-            <AlgoliaAutocomplete {...algoliaSearch} />
-          </AlgoliaSearchWrapper>
-        )}
 
         <Button
           variant="contained"
