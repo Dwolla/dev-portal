@@ -301,7 +301,7 @@ function SectionLink({
 }
 
 const CategoriesWrap = styled.ul`
-  margin: 10px 24px 0 16px;
+  margin: 10px 24px 20px 16px;
   padding: 0;
 `;
 

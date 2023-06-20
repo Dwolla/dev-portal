@@ -21,7 +21,7 @@ import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-
 import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
 
-const LEFT_SIDEBAR_WIDTH = "320";
+const LEFT_SIDEBAR_WIDTH = "420";
 
 const LayoutContainer = styled.div`
   @media (${breakUp("lg")}) {

@@ -129,7 +129,7 @@ exports[`Layout 1`] = `
     className="css-1lvinfx-LayoutContainer e1ijxxr36"
   >
     <div
-      className="visuallyHidden css-j64qsb-LeftSidebar e1ijxxr35"
+      className="visuallyHidden css-kjw9mq-LeftSidebar e1ijxxr35"
     >
       <div
         className="css-6qgefa-SideNavWrapper e1ijxxr34"
@@ -295,7 +295,7 @@ exports[`Layout 1`] = `
       </a>
     </div>
     <div
-      className="css-1vv1cr5-MainArea e1ijxxr33"
+      className="css-1v2y2k5-MainArea e1ijxxr33"
     >
       <div
         className=" css-x5ql3q-ContentArea e1ijxxr32"
