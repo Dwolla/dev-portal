@@ -8,26 +8,20 @@ meta:
 ---
 
 import Link from "next/link";
+import { Typography } from "@mui/material";
 import styled from "@emotion/styled";
 import CardGrid from "../app/components/base/CardGrid";
 import Card from "../app/components/base/Card";
-import HeroCard from "../app/components/base/HeroCard";
-import HeroImage from "../app/components/base/HeroImage";
-import ExternalCTA from "../app/components/base/ExternalCTA";
+import HeroBanner from "../app/components/base/HeroBanner";
 import LogoLinks from "../app/components/base/LogoLinks";
 import FooterCTA from "../app/components/base/FooterCTA";
-import IFrame from "../app/components/base/IFrame";
-import { H3 } from "../app/components/base/Typography";
-import { HEADLINE_TEXT } from "../app/components/colors";
-import { breakDown } from "../app/components/breakpoints";
-import { Z_HERO_CARD } from "../app/components/zIndexes";
-import dropInsHeroImage from "../assets/images/content-images/hero-image-drop-ins.png";
-import guideIcon from "../assets/images/content-images/content-icons/guides-icon.svg";
-import conceptIcon from "../assets/images/content-images/content-icons/concepts-icon.svg";
-import apiReferenceIcon from "../assets/images/content-images/content-icons/api-reference-icon.svg";
-import demoAppIcon from "../assets/images/content-images/content-icons/dwolla-demo-app.svg";
-import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community-icon.svg";
-import { ReactComponent as CaretRightIcon } from "../assets/images/component-icons/caret-right.svg";
+import { PURPLE_087 } from "../app/components/colors";
+import { breakDown, breakUp } from "../app/components/breakpoints";
+import heroImage from "../assets/images/content-images/hero-image-home.svg";
+import dwollaBalanceIcon from "../assets/images/content-images/content-icons/dwolla-balance-product-icon.svg";
+import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community.svg";
+import supportIcon from "../assets/images/content-images/content-icons/support-icon.svg";
+import feedbackIcon from "../assets/images/content-images/content-icons/feedback-icon.svg";
 // Language logos in gray and in color
 import phpColor from "../assets/images/content-images/content-icons/language-logos/php-logo.svg";
 import phpGray from "../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
@@ -43,7 +37,7 @@ import nodeColor from "../assets/images/content-images/content-icons/language-lo
 import nodeGray from "../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
 
 export const HeroBannerContainer = styled.div`
-  padding: 40px 60px 0;
+  padding: 40px 88px 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,30 +47,9 @@ export const HeroBannerContainer = styled.div`
   }
 `;
 
-export const HeroCardWrapper = styled.div`
-  min-width: 289px;
-  max-width: 315px;
-  z-index: ${Z_HERO_CARD};
-  @media (${breakDown("sm")}) {
-    min-width: unset;
-    max-width: unset;
-  }
-`;
-export const HeroImageWrapper = styled.div`
-  max-height: 100%;
-  margin-left: -225px;
-  overflow: hidden;
-  @media (${breakDown("sm")}) {
-    display: none;
-  }
-`;
-
 export const ContentContainer = styled.div`
-  padding: 60px;
-  > h3 {
-    margin: unset;
-    margin: 60px 0px 17px 0px;
-  }
+  overflow: hidden;
+  padding: 0 88px 70px;
   @media (${breakDown("sm")}) {
     padding: 40px;
   }
@@ -86,33 +59,43 @@ export const ContentContainer = styled.div`
 `;
 
 export const CardGridWrapper = styled.div`
+  margin-top: 30px;
   padding-bottom: 60px;
+`;
+
+export const SDKsAndToolsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  @media (${breakDown("lg")}) {
+    display: block;
+  }
 `;
 
 export const StyledLink = styled.a`
   text-decoration: none;
-  color: ${HEADLINE_TEXT};
-  display: inline-flex;
-  align-items: center;
   &:hover {
-    text-decoration: underline;
+    text-decoration: ${PURPLE_087} underline;
   }
-  > svg {
-    margin-left: 5px;
-  }
+`;
+
+export const ParagraphWrapper = styled.div`
+  margin-top: 24px;
 `;
 
 export const LogoLinksWrapper = styled.div`
-  height: 120px;
-  width: 100%;
-`;
-
-export const SingleDivWrapper = styled.div`
-  margin: 0 auto 60px;
+  overflow-y: scroll;
+  height: 80px;
+  @media (${breakUp("lg")}) {
+    width: 100%;
+  }
+  @media (${breakDown("lg")}) {
+    margin-top: 30px;
+  }
 `;
 
 export const FooterContainer = styled.div`
-  padding: 0px 64px 64px;
+  padding: 0 64px 47px;
 `;
 
 <!-- SDKs and Tools LogoLink props -->
@@ -160,95 +143,129 @@ export default function HomePage() {
   return (
     <>
       <HeroBannerContainer>
-        <HeroCardWrapper>
-          <HeroCard
-            topic="Tools for Getting Started With the Dwolla API"
-            description="Your starting point for integrating an account-to-account payment solution."
-            button={{
-              text: "Drop-in Components",
-              link: {
-                href: "https://developers.dwolla.com/concepts/drop-in-components",
-                external: true,
-              },
-            }}
-            links={[
-              {
-                text: "Generate an Access Token",
-                href: "https://developers.dwolla.com/guides/auth",
-                external: true,
-              },
-              {
-                text: "Test in the Sandbox",
-                href: "https://developers.dwolla.com/guides/sandbox",
-                external: true,
-              },
-              {
-                text: "Transfer Lifecycle",
-                href: "https://developers.dwolla.com/concepts/transfer-lifecycle",
-                external: true,
-              },
-            ]}
-          />
-        </HeroCardWrapper>
-        <HeroImageWrapper>
-          <HeroImage
-            heroImage={{
-              src: dropInsHeroImage,
-              alt: "Some alt text",
-            }}
-          />
-        </HeroImageWrapper>
+        <HeroBanner
+          heroImage={{
+            src: heroImage,
+            alt: "Some alt text",
+          }}
+          topic="Build with Dwolla"
+          description="Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform."
+          searchBar
+        />
       </HeroBannerContainer>
       <ContentContainer>
+        <Typography variant="h2">Browse by product</Typography>
         <CardGridWrapper>
-          <CardGrid variant="home">
+          <CardGrid maxColumns="3">
             <Card
-              icon={apiReferenceIcon}
-              topic="API Reference Docs"
-              description="Technical documentation for using Dwolla’s API to connect your software to the banking infrastructure."
-              link={{ href: "/api-reference" }}
+              links={[
+                {
+                  text: "Dwolla Balance",
+                  href: "/docs/balance",
+                  external: false,
+                },
+              ]}
+              icon={dwollaBalanceIcon}
+              productName="Dwolla Balance"
+              topic="Use our existing bank partnerships"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
             <Card
-              icon={guideIcon}
-              topic="Guides"
-              description="Step-by-step walkthroughs ensure your application is built to best practices."
-              link={{ href: "/guides" }}
+              links={[
+                {
+                  text: "Dwolla Connect",
+                  href: "/docs/connect",
+                  external: false,
+                },
+              ]}
+              icon={dwollaBalanceIcon}
+              productName="Dwolla Connect"
+              topic="Bring your own bank"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
             <Card
-              icon={conceptIcon}
-              topic="Concepts"
-              description="Understand the fundamental building blocks of integrating with the Dwolla Platform."
-              link={{ href: "/concepts" }}
+              verticalCenterAlign
+              links={[
+                {
+                  text: "Platform overview",
+                  href: "https://www.dwolla.com",
+                  external: false,
+                },
+              ]}
+              topic="Not sure where to start?"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
             />
           </CardGrid>
         </CardGridWrapper>
-        <CardGrid maxColumns="2">
-          <ExternalCTA
-            icon={developerCommunityIcon}
-            title="Developer Support"
-            description="Find answers to your technical questions from a community of developers and Dwolla engineers."
-            href="https://discuss.dwolla.com/"
-          />
-          <ExternalCTA
-            icon={demoAppIcon}
-            title="Interactive Demo"
-            description="Visualize how the Dwolla API can be integrated into your platform."
-            href="https://demo.dwolla.com/"
-          />
-        </CardGrid>
-        <H3>
-          <Link href="/sdks-tools" passHref>
-            <StyledLink>
-              SDKs &amp; Tools
-              <CaretRightIcon height={11} />
-            </StyledLink>
-          </Link>
-        </H3>
-        <LogoLinksWrapper>
-          <LogoLinks tabs={languageContent} />
-        </LogoLinksWrapper>
-        <H3>Get API Updates</H3>
-        <IFrame hubSpotFormId="4337f9a2-cd52-442f-89c8-d382704dedae" />
+        <Typography variant="h2">
+          Supporting you, every step of the way
+        </Typography>
+        <ParagraphWrapper>
+          <Typography variant="body1">
+            Welcome to the Dwolla API documentation. This API will give you the
+            ability to connect your software to banking infrastructure to move
+            money, store funds, validate customer identities, and verify bank
+            accounts.
+          </Typography>
+        </ParagraphWrapper>
+        <CardGridWrapper>
+          <CardGrid maxColumns="3">
+            <Card
+              links={[
+                {
+                  text: "Developer Community",
+                  href: "https://discuss.dwolla.com/",
+                  external: true,
+                },
+              ]}
+              icon={developerCommunityIcon}
+              topic="Developer Community"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Card
+              links={[
+                {
+                  text: "Support Center",
+                  href: "https://www.dwolla.com",
+                  external: true,
+                },
+              ]}
+              icon={supportIcon}
+              topic="Support Center"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Card
+              links={[
+                {
+                  text: "Give Us Feedback",
+                  href: "https://www.dwolla.com",
+                  external: true,
+                },
+              ]}
+              icon={feedbackIcon}
+              topic="Feedback"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+          </CardGrid>
+        </CardGridWrapper>
+        <SDKsAndToolsWrapper>
+          <div style={{ minWidth: "460px" }}>
+            <Link href="/sdks-tools" passHref>
+              <StyledLink>
+                <Typography variant="h2">SDKS & Tools</Typography>
+              </StyledLink>
+            </Link>
+            <ParagraphWrapper>
+              <Typography variant="body1">
+                Choose from a collection of client libraries and tools to get up
+                and running quickly in a variety of languages.
+              </Typography>
+            </ParagraphWrapper>
+          </div>
+          <LogoLinksWrapper>
+            <LogoLinks tabs={languageContent} />
+          </LogoLinksWrapper>
+        </SDKsAndToolsWrapper>
       </ContentContainer>
       <FooterContainer>
         <FooterCTA

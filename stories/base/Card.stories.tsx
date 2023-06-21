@@ -97,17 +97,17 @@ storiesOf("base/Card", module)
       />
     </CardWrapper>
   ))
-  .add("`centerAlign`", () => (
+  .add("`horizontalCenterAlign`", () => (
     <Card
-      centerAlign
+      horizontalCenterAlign
       icon={guideIcon}
       topic="This is the Topic for center aligned cards reperesenting CTAs."
       description="This is a short description."
     />
   ))
-  .add("`centerAlign` + `link`", () => (
+  .add("`horizontalCenterAlign` + `link`", () => (
     <Card
-      centerAlign
+      horizontalCenterAlign
       links={[
         {
           text: "Learn more",
@@ -120,18 +120,18 @@ storiesOf("base/Card", module)
       description="This is a short description."
     />
   ))
-  .add("`centerAlign` + `badge`", () => (
+  .add("`horizontalCenterAlign` + `badge`", () => (
     <Card
-      centerAlign
+      horizontalCenterAlign
       icon={guideIcon}
       badge="BADGETEXT"
       topic="This is the Topic for center aligned cards reperesenting CTAs."
       description="This is a short description."
     />
   ))
-  .add("`centerAlign` + `link` + `badge`", () => (
+  .add("`horizontalCenterAlign` + `link` + `badge`", () => (
     <Card
-      centerAlign
+      horizontalCenterAlign
       links={[
         {
           text: "Learn more",

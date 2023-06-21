@@ -25,7 +25,7 @@ const CardStyle = styled.div`
   background-color: ${WHITE_PRIMARY};
   position: relative;
 
-  &.center {
+  &.horizontalCenter {
     max-width: none;
     height: auto;
     padding: 0 30px;
@@ -39,6 +39,11 @@ const CardStyle = styled.div`
   &.flex {
     display: flex;
   }
+
+  &.verticalCenter {
+    display: grid;
+    align-content: center;
+  }
 `;
 
 const StyledIcon = styled.div`
@@ -49,8 +54,8 @@ const StyledIcon = styled.div`
   }
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
   }
 
   &.productIcon {
@@ -158,7 +163,8 @@ type LinkProp = { text: string; href: string; external?: boolean };
 
 type Props = {
   links?: Array<LinkProp>;
-  centerAlign?: boolean;
+  horizontalCenterAlign?: boolean;
+  verticalCenterAlign?: boolean;
   isFlex?: boolean;
   icon?: string;
   badge?: string;
@@ -171,7 +177,8 @@ type Props = {
 function Card({
   description,
   badge,
-  centerAlign,
+  horizontalCenterAlign,
+  verticalCenterAlign,
   isFlex,
   icon,
   links,
@@ -181,12 +188,16 @@ function Card({
 }: Props) {
   return (
     <CardStyle
-      className={classnames({ center: centerAlign }, { flex: isFlex })}
+      className={classnames(
+        { horizontalCenter: horizontalCenterAlign },
+        { flex: isFlex },
+        { verticalCenter: verticalCenterAlign }
+      )}
     >
       {icon && (
         <StyledIcon
           className={classnames({
-            center: centerAlign,
+            center: horizontalCenterAlign,
             productIcon: productName,
           })}
         >
@@ -216,7 +227,7 @@ function Card({
 
         <TopicStyle
           className={classnames(
-            { center: centerAlign },
+            { center: horizontalCenterAlign },
             { flex: isFlex },
             { hasIcon: icon && !productName },
             { hasProductName: productName }
@@ -225,7 +236,9 @@ function Card({
           {topic}
         </TopicStyle>
 
-        <DescriptionStyle className={classnames({ center: centerAlign })}>
+        <DescriptionStyle
+          className={classnames({ center: horizontalCenterAlign })}
+        >
           {description}
         </DescriptionStyle>
 

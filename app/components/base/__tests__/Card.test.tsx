@@ -71,7 +71,12 @@ test("with Link and Badge", () => {
 test("with Center Align", () => {
   const tree = renderer
     .create(
-      <Card centerAlign icon={icon} topic="topic" description="Description" />
+      <Card
+        horizontalCenterAlign
+        icon={icon}
+        topic="topic"
+        description="Description"
+      />
     )
     .toJSON();
 
@@ -89,7 +94,7 @@ test("with Center Align and Link", () => {
             external: true,
           },
         ]}
-        centerAlign
+        horizontalCenterAlign
         icon={icon}
         topic="topic"
         description="Description"
@@ -104,7 +109,7 @@ test("with Center Align and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        centerAlign
+        horizontalCenterAlign
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
@@ -127,7 +132,7 @@ test("with Center Align, Link and Badge", () => {
             external: true,
           },
         ]}
-        centerAlign
+        horizontalCenterAlign
         badge="BADGETEXT"
         icon={icon}
         topic="topic"

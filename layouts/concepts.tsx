@@ -35,7 +35,7 @@ export default function ConceptsLayout({ children, frontMatter }: Props) {
               external: true,
             },
           ]}
-          centerAlign
+          horizontalCenterAlign
         />
       </CardWrap>
 

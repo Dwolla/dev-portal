@@ -1,7 +1,12 @@
 import { createTheme } from "@mui/material";
 import { red } from "@mui/material/colors";
-import { ORANGE_PRIMARY, PURPLE_PRIMARY } from "./components/colors";
-import { ROBOTO } from "./components/typography";
+import {
+  ORANGE_PRIMARY,
+  PURPLE_075,
+  PURPLE_087,
+  PURPLE_PRIMARY,
+} from "./components/colors";
+import { POPPINS, ROBOTO } from "./components/typography";
 
 export default createTheme({
   palette: {
@@ -23,6 +28,24 @@ export default createTheme({
       lineHeight: "26px",
       letterSpacing: "0.46px",
       textTransform: "capitalize",
+    },
+    h2: {
+      fontFamily: POPPINS,
+      fontStyle: "normal",
+      fontWeight: 600,
+      fontSize: "32px",
+      lineHeight: "123.5%",
+      letterSpacing: "0.25px",
+      color: PURPLE_087,
+    },
+    body1: {
+      fontFamily: ROBOTO,
+      fontStyle: "normal",
+      fontWeight: 400,
+      fontSize: "16px",
+      lineHeight: "175%",
+      letterSpacing: "0.15px",
+      color: PURPLE_075,
     },
   },
 });
