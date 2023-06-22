@@ -5,7 +5,7 @@ exports[`TopBar 1`] = `
   className="css-1q4no5g-Container e1psldpd5"
 >
   <a
-    href="/"
+    href="/docs"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onTouchStart={[Function]}

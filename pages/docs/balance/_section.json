@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "name": "Get Started",
+      "subCategories": [],
+      "priority": 0
+    },
+    {
+      "name": "Build",
+      "subCategories": [
+        "Quickstarts",
+        "Customers",
+        "Funding Sources",
+        "Transfers",
+        "Notifications",
+        "Features",
+        "Integrations"
+      ],
+      "priority": 1
+    },
+    {
+      "name": "Go Live",
+      "subCategories": [],
+      "priority": 2
+    },
+    {
+      "name": "Extra",
+      "subCategories": [],
+      "priority": 3
+    }
+  ]
+}

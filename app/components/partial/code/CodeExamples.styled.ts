@@ -1,20 +1,20 @@
 import styled from "@emotion/styled";
 import {
-  PURPLE_DARKER,
-  CODE_BLOCK_BUTTON,
-  GREY_10,
-  WHITE_PRIMARY,
-  PURPLE_DARK,
-  GREY_3,
-  CODE_BLOCK_PURPLE,
   CODE_BLOCK_AQUA,
-  CODE_BLOCK_ORANGE,
-  GREY_4,
-  CODE_BLOCK_GREEN_BROWN,
+  CODE_BLOCK_BUTTON,
   CODE_BLOCK_GREEN,
-  CODE_BLOCK_YELLOW,
+  CODE_BLOCK_GREEN_BROWN,
   CODE_BLOCK_GREY_COMMENT,
-  BLACK_OVERLAY,
+  CODE_BLOCK_ORANGE,
+  CODE_BLOCK_PURPLE,
+  CODE_BLOCK_YELLOW,
+  GREY_040,
+  GREY_10,
+  GREY_3,
+  GREY_4,
+  PURPLE_DARK,
+  PURPLE_DARKER,
+  WHITE_PRIMARY,
 } from "../../colors";
 import { POPPINS } from "../../typography";
 import { fadeIn, fadeOut, slideIn, slideOut } from "../../keyframes";
@@ -27,7 +27,7 @@ export const ExpandedOverlay = styled.div`
   right: 0;
   bottom: 0;
   z-index: 99999;
-  background-color: ${BLACK_OVERLAY};
+  background-color: ${GREY_040};
   display: flex;
   flex-direction: column;
   animation: ${fadeIn} 300ms ease-out;

@@ -1,4 +1,9 @@
-Sitemap: http://developers.dwolla.com/sitemap
-
+# *
 User-agent: *
 Allow: /*
+
+# Host
+Host: https://developers.dwolla.com
+
+# Sitemaps
+Sitemap: https://developers.dwolla.com/sitemap.xml

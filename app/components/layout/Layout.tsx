@@ -5,21 +5,23 @@ import Head from "next/head";
 import { css, Global } from "@emotion/react";
 import styled from "@emotion/styled";
 import classnames from "classnames";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  clearAllBodyScrollLocks,
   disableBodyScroll,
   enableBodyScroll,
-  clearAllBodyScrollLocks,
 } from "body-scroll-lock";
 import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { GREY_2, WHITE_PRIMARY, LAYOUT_BORDER } from "../colors";
-import { breakUp, breakDown } from "../breakpoints";
+import { GREY_2, LAYOUT_BORDER, WHITE_PRIMARY } from "../colors";
+import { breakDown, breakUp } from "../breakpoints";
 import { Z_TOB_BAR } from "../zIndexes";
-import TopBar, { TopBarProps, TOP_BAR_HEIGHT } from "./TopBar"; // eslint-disable-line no-unused-vars
+import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
+
+const LEFT_SIDEBAR_WIDTH = "420";
 
 const LayoutContainer = styled.div`
   @media (${breakUp("lg")}) {
@@ -44,6 +46,7 @@ const LeftSidebar = styled.div`
   pointer-events: none;
 
   @media (${breakUp("lg")}) {
+    width: ${LEFT_SIDEBAR_WIDTH}px;
     right: 75%;
     opacity: 1;
     pointer-events: auto;
@@ -71,10 +74,8 @@ const SideNavWrapper = styled.div`
 `;
 
 const MainArea = styled.div`
-  width: 100vw;
-
   @media (${breakUp("lg")}) {
-    width: 75vw;
+    width: calc(100vw - ${LEFT_SIDEBAR_WIDTH}px);
     border-left: 1px solid ${LAYOUT_BORDER};
   }
 `;
@@ -114,6 +115,7 @@ export default function Layout({
   children,
   pages,
   sideNavLinks,
+  stickyReferenceLinks,
   footerLinks,
   footerLegal,
   topBarProps,
@@ -123,6 +125,7 @@ export default function Layout({
   children: JSX.Element;
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
+  stickyReferenceLinks: SideNavLinkProps[];
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
@@ -184,6 +187,7 @@ export default function Layout({
               sectionLinks={sideNavLinks}
               pages={pages}
               mobileItems={topBarProps}
+              stickyReferenceLinks={stickyReferenceLinks}
             />
           </SideNavWrapper>
 

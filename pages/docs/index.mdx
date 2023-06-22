@@ -1,0 +1,262 @@
+---
+title: "Tools for Integrating a Payment API"
+description: "Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!"
+noDefaultLayout: true
+meta:
+  title: Tools for Integrating a Payment API | Account to Account Technology | Dwolla API
+  description: Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!
+---
+
+import Link from "next/link";
+import styled from "@emotion/styled";
+import CardGrid from "../../app/components/base/CardGrid";
+import Card from "../../app/components/base/Card";
+import HeroCard from "../../app/components/base/HeroCard";
+import HeroImage from "../../app/components/base/HeroImage";
+import ExternalCTA from "../../app/components/base/ExternalCTA";
+import LogoLinks from "../../app/components/base/LogoLinks";
+import FooterCTA from "../../app/components/base/FooterCTA";
+import IFrame from "../../app/components/base/IFrame";
+import { H3 } from "../../app/components/base/Typography";
+import { HEADLINE_TEXT } from "../../app/components/colors";
+import { breakDown } from "../../app/components/breakpoints";
+import { Z_HERO_CARD } from "../../app/components/zIndexes";
+import dropInsHeroImage from "../../assets/images/content-images/hero-image-drop-ins.png";
+import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
+import conceptIcon from "../../assets/images/content-images/content-icons/concepts-icon.svg";
+import apiReferenceIcon from "../../assets/images/content-images/content-icons/api-reference-icon.svg";
+import demoAppIcon from "../../assets/images/content-images/content-icons/dwolla-demo-app.svg";
+import developerCommunityIcon from "../../assets/images/content-images/content-icons/developer-community-icon.svg";
+import { ReactComponent as CaretRightIcon } from "../../assets/images/component-icons/caret-right.svg";
+// Language logos in gray and in color
+import phpColor from "../../assets/images/content-images/content-icons/language-logos/php-logo.svg";
+import phpGray from "../../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
+import pythonColor from "../../assets/images/content-images/content-icons/language-logos/python-logo.svg";
+import pythonGray from "../../assets/images/content-images/content-icons/language-logos/python-logo-gray.svg";
+import rubyColor from "../../assets/images/content-images/content-icons/language-logos/ruby-logo.svg";
+import rubyGray from "../../assets/images/content-images/content-icons/language-logos/ruby-logo-gray.svg";
+import cSharpColor from "../../assets/images/content-images/content-icons/language-logos/c-sharp-logo.svg";
+import cSharpGray from "../../assets/images/content-images/content-icons/language-logos/c-sharp-logo-gray.svg";
+import kotlinColor from "../../assets/images/content-images/content-icons/language-logos/kotlin-logo.svg";
+import kotlinGray from "../../assets/images/content-images/content-icons/language-logos/kotlin-logo-gray.svg";
+import nodeColor from "../../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
+import nodeGray from "../../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
+
+export const HeroBannerContainer = styled.div`
+  padding: 40px 60px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (${breakDown("sm")}) {
+    display: block;
+    padding: unset;
+  }
+`;
+
+export const HeroCardWrapper = styled.div`
+  min-width: 289px;
+  max-width: 315px;
+  z-index: ${Z_HERO_CARD};
+  @media (${breakDown("sm")}) {
+    min-width: unset;
+    max-width: unset;
+  }
+`;
+export const HeroImageWrapper = styled.div`
+  max-height: 100%;
+  margin-left: -225px;
+  overflow: hidden;
+  @media (${breakDown("sm")}) {
+    display: none;
+  }
+`;
+
+export const ContentContainer = styled.div`
+  padding: 60px;
+  > h3 {
+    margin: unset;
+    margin: 60px 0px 17px 0px;
+  }
+  @media (${breakDown("sm")}) {
+    padding: 40px;
+  }
+  @media (${breakDown("xs")}) {
+    padding: 20px;
+  }
+`;
+
+export const CardGridWrapper = styled.div`
+  padding-bottom: 60px;
+`;
+
+export const StyledLink = styled.a`
+  text-decoration: none;
+  color: ${HEADLINE_TEXT};
+  display: inline-flex;
+  align-items: center;
+  &:hover {
+    text-decoration: underline;
+  }
+  > svg {
+    margin-left: 5px;
+  }
+`;
+
+export const LogoLinksWrapper = styled.div`
+  height: 120px;
+  width: 100%;
+`;
+
+export const SingleDivWrapper = styled.div`
+  margin: 0 auto 60px;
+`;
+
+<!-- SDKs and Tools LogoLink props -->
+
+export const languageContent = [
+  {
+    label: "Node",
+    icon: nodeGray,
+    iconActive: nodeColor,
+    href: "https://github.com/Dwolla/dwolla-v2-node",
+  },
+  {
+    label: "Ruby",
+    icon: rubyGray,
+    iconActive: rubyColor,
+    href: "https://github.com/Dwolla/dwolla-v2-ruby",
+  },
+  {
+    label: "Python",
+    icon: pythonGray,
+    iconActive: pythonColor,
+    href: "https://github.com/Dwolla/dwolla-v2-python",
+  },
+  {
+    label: "Php",
+    icon: phpGray,
+    iconActive: phpColor,
+    href: "https://github.com/Dwolla/dwolla-swagger-php",
+  },
+  {
+    label: "C-Sharp",
+    icon: cSharpGray,
+    iconActive: cSharpColor,
+    href: "https://github.com/Dwolla/dwolla-v2-csharp",
+  },
+  {
+    label: "Kotlin",
+    icon: kotlinGray,
+    iconActive: kotlinColor,
+    href: "https://github.com/Dwolla/dwolla-v2-kotlin",
+  },
+];
+
+export default function HomePage() {
+  return (
+    <>
+      <HeroBannerContainer>
+        <HeroCardWrapper>
+          <HeroCard
+            topic="Tools for Getting Started With the Dwolla API"
+            description="Your starting point for integrating an account-to-account payment solution."
+            button={{
+              text: "Drop-in Components",
+              link: {
+                href: "https://developers.dwolla.com/concepts/drop-in-components",
+                external: true,
+              },
+            }}
+            links={[
+              {
+                text: "Generate an Access Token",
+                href: "https://developers.dwolla.com/guides/auth",
+                external: true,
+              },
+              {
+                text: "Test in the Sandbox",
+                href: "https://developers.dwolla.com/guides/sandbox",
+                external: true,
+              },
+              {
+                text: "Transfer Lifecycle",
+                href: "https://developers.dwolla.com/concepts/transfer-lifecycle",
+                external: true,
+              },
+            ]}
+          />
+        </HeroCardWrapper>
+        <HeroImageWrapper>
+          <HeroImage
+            heroImage={{
+              src: dropInsHeroImage,
+              alt: "Some alt text",
+            }}
+          />
+        </HeroImageWrapper>
+      </HeroBannerContainer>
+      <ContentContainer>
+        <CardGridWrapper>
+          <CardGrid variant="home">
+            <Card
+              icon={apiReferenceIcon}
+              topic="API Reference Docs"
+              description="Technical documentation for using Dwolla’s API to connect your software to the banking infrastructure."
+              link={{ href: "/api-reference" }}
+            />
+            <Card
+              icon={guideIcon}
+              topic="Guides"
+              description="Step-by-step walkthroughs ensure your application is built to best practices."
+              link={{ href: "/guides" }}
+            />
+            <Card
+              icon={conceptIcon}
+              topic="Concepts"
+              description="Understand the fundamental building blocks of integrating with the Dwolla Platform."
+              link={{ href: "/concepts" }}
+            />
+          </CardGrid>
+        </CardGridWrapper>
+        <CardGrid maxColumns="2">
+          <ExternalCTA
+            icon={developerCommunityIcon}
+            title="Developer Support"
+            description="Find answers to your technical questions from a community of developers and Dwolla engineers."
+            href="https://discuss.dwolla.com/"
+          />
+          <ExternalCTA
+            icon={demoAppIcon}
+            title="Interactive Demo"
+            description="Visualize how the Dwolla API can be integrated into your platform."
+            href="https://demo.dwolla.com/"
+          />
+        </CardGrid>
+        <H3>
+          <Link href="/sdks-tools" passHref>
+            <StyledLink>
+              SDKs &amp; Tools
+              <CaretRightIcon height={11} />
+            </StyledLink>
+          </Link>
+        </H3>
+        <LogoLinksWrapper>
+          <LogoLinks tabs={languageContent} />
+        </LogoLinksWrapper>
+        <H3>Get API Updates</H3>
+        <IFrame hubSpotFormId="4337f9a2-cd52-442f-89c8-d382704dedae" />
+      </ContentContainer>
+      <FooterCTA
+        topic="Start Testing in the Dwolla Sandbox"
+        description="Use sandbox environment to test API requests."
+        button={{
+          text: "Create a Sandbox Account",
+          link: {
+            href: "https://accounts-sandbox.dwolla.com/sign-up",
+            external: true,
+          },
+        }}
+      />
+    </>
+  );
+}
