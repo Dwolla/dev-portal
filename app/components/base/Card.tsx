@@ -246,6 +246,7 @@ function Card({
           <LinkTextStyle>
             {links.map((link) => (
               <Button
+                key={link.text}
                 variant="text"
                 color="secondary"
                 endIcon={

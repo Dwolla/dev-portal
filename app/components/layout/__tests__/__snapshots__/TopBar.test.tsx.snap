@@ -5,7 +5,7 @@ exports[`TopBar 1`] = `
   className="css-y5wall-Container e1psldpd6"
 >
   <a
-    href="/"
+    href="/docs"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onTouchStart={[Function]}

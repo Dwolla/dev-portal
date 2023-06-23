@@ -2,13 +2,12 @@
 
 exports[`Help 1`] = `
 <div>
-  <div
-    className="css-1ycfgt6-StyledHelpContainer e144e6jr1"
-  >
+  <div>
     <button
-      aria-label="help"
+      aria-haspopup="true"
       className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-78trlr-MuiButtonBase-root-MuiIconButton-root"
       disabled={false}
+      id="basic-button"
       onBlur={[Function]}
       onClick={[Function]}
       onContextMenu={[Function]}

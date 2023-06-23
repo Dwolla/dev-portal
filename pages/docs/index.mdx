@@ -1,0 +1,285 @@
+---
+title: "Tools for Integrating a Payment API"
+description: "Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!"
+noDefaultLayout: true
+meta:
+  title: Tools for Integrating a Payment API | Account to Account Technology | Dwolla API
+  description: Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!
+---
+
+import Link from "next/link";
+import { Typography } from "@mui/material";
+import styled from "@emotion/styled";
+import CardGrid from "../../app/components/base/CardGrid";
+import Card from "../../app/components/base/Card";
+import HeroBanner from "../../app/components/base/HeroBanner";
+import LogoLinks from "../../app/components/base/LogoLinks";
+import FooterCTA from "../../app/components/base/FooterCTA";
+import { PURPLE_087 } from "../../app/components/colors";
+import { breakDown, breakUp } from "../../app/components/breakpoints";
+import heroImage from "../../assets/images/content-images/hero-image-home.svg";
+import dwollaBalanceIcon from "../../assets/images/content-images/content-icons/dwolla-balance-product-icon.svg";
+import developerCommunityIcon from "../../assets/images/content-images/content-icons/developer-community.svg";
+import supportIcon from "../../assets/images/content-images/content-icons/support-icon.svg";
+import feedbackIcon from "../../assets/images/content-images/content-icons/feedback-icon.svg";
+// Language logos in gray and in color
+import phpColor from "../../assets/images/content-images/content-icons/language-logos/php-logo.svg";
+import phpGray from "../../assets/images/content-images/content-icons/language-logos/php-logo-gray.svg";
+import pythonColor from "../../assets/images/content-images/content-icons/language-logos/python-logo.svg";
+import pythonGray from "../../assets/images/content-images/content-icons/language-logos/python-logo-gray.svg";
+import rubyColor from "../../assets/images/content-images/content-icons/language-logos/ruby-logo.svg";
+import rubyGray from "../../assets/images/content-images/content-icons/language-logos/ruby-logo-gray.svg";
+import cSharpColor from "../../assets/images/content-images/content-icons/language-logos/c-sharp-logo.svg";
+import cSharpGray from "../../assets/images/content-images/content-icons/language-logos/c-sharp-logo-gray.svg";
+import kotlinColor from "../../assets/images/content-images/content-icons/language-logos/kotlin-logo.svg";
+import kotlinGray from "../../assets/images/content-images/content-icons/language-logos/kotlin-logo-gray.svg";
+import nodeColor from "../../assets/images/content-images/content-icons/language-logos/node-js-logo.svg";
+import nodeGray from "../../assets/images/content-images/content-icons/language-logos/node-js-logo-gray.svg";
+
+export const HeroBannerContainer = styled.div`
+  padding: 40px 88px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (${breakDown("sm")}) {
+    display: block;
+    padding: unset;
+  }
+`;
+
+export const ContentContainer = styled.div`
+  overflow: hidden;
+  padding: 0 88px 70px;
+  @media (${breakDown("sm")}) {
+    padding: 40px;
+  }
+  @media (${breakDown("xs")}) {
+    padding: 20px;
+  }
+`;
+
+export const CardGridWrapper = styled.div`
+  margin-top: 30px;
+  padding-bottom: 60px;
+`;
+
+export const SDKsAndToolsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  @media (${breakDown("lg")}) {
+    display: block;
+  }
+`;
+
+export const StyledLink = styled.a`
+  text-decoration: none;
+  &:hover {
+    text-decoration: ${PURPLE_087} underline;
+  }
+`;
+
+export const ParagraphWrapper = styled.div`
+  margin-top: 24px;
+`;
+
+export const LogoLinksWrapper = styled.div`
+  overflow-y: scroll;
+  height: 80px;
+  @media (${breakUp("lg")}) {
+    width: 100%;
+  }
+  @media (${breakDown("lg")}) {
+    margin-top: 30px;
+  }
+`;
+
+export const FooterContainer = styled.div`
+  padding: 0 64px 47px;
+`;
+
+<!-- SDKs and Tools LogoLink props -->
+
+export const languageContent = [
+  {
+    label: "Node",
+    icon: nodeGray,
+    iconActive: nodeColor,
+    href: "https://github.com/Dwolla/dwolla-v2-node",
+  },
+  {
+    label: "Ruby",
+    icon: rubyGray,
+    iconActive: rubyColor,
+    href: "https://github.com/Dwolla/dwolla-v2-ruby",
+  },
+  {
+    label: "Python",
+    icon: pythonGray,
+    iconActive: pythonColor,
+    href: "https://github.com/Dwolla/dwolla-v2-python",
+  },
+  {
+    label: "Php",
+    icon: phpGray,
+    iconActive: phpColor,
+    href: "https://github.com/Dwolla/dwolla-swagger-php",
+  },
+  {
+    label: "C-Sharp",
+    icon: cSharpGray,
+    iconActive: cSharpColor,
+    href: "https://github.com/Dwolla/dwolla-v2-csharp",
+  },
+  {
+    label: "Kotlin",
+    icon: kotlinGray,
+    iconActive: kotlinColor,
+    href: "https://github.com/Dwolla/dwolla-v2-kotlin",
+  },
+];
+
+export default function HomePage() {
+  return (
+    <>
+      <HeroBannerContainer>
+        <HeroBanner
+          heroImage={{
+            src: heroImage,
+            alt: "Some alt text",
+          }}
+          topic="Build with Dwolla"
+          description="Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform."
+          searchBar
+        />
+      </HeroBannerContainer>
+      <ContentContainer>
+        <Typography variant="h2">Browse by product</Typography>
+        <CardGridWrapper>
+          <CardGrid maxColumns="3">
+            <Card
+              links={[
+                {
+                  text: "Dwolla Balance",
+                  href: "/docs/balance",
+                  external: false,
+                },
+              ]}
+              icon={dwollaBalanceIcon}
+              productName="Dwolla Balance"
+              topic="Use our existing bank partnerships"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Card
+              links={[
+                {
+                  text: "Dwolla Connect",
+                  href: "/docs/connect",
+                  external: false,
+                },
+              ]}
+              icon={dwollaBalanceIcon}
+              productName="Dwolla Connect"
+              topic="Bring your own bank"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Card
+              verticalCenterAlign
+              links={[
+                {
+                  text: "Platform overview",
+                  href: "https://www.dwolla.com",
+                  external: false,
+                },
+              ]}
+              topic="Not sure where to start?"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+          </CardGrid>
+        </CardGridWrapper>
+        <Typography variant="h2">
+          Supporting you, every step of the way
+        </Typography>
+        <ParagraphWrapper>
+          <Typography variant="body1">
+            Welcome to the Dwolla API documentation. This API will give you the
+            ability to connect your software to banking infrastructure to move
+            money, store funds, validate customer identities, and verify bank
+            accounts.
+          </Typography>
+        </ParagraphWrapper>
+        <CardGridWrapper>
+          <CardGrid maxColumns="3">
+            <Card
+              links={[
+                {
+                  text: "Developer Community",
+                  href: "https://discuss.dwolla.com/",
+                  external: true,
+                },
+              ]}
+              icon={developerCommunityIcon}
+              topic="Developer Community"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Card
+              links={[
+                {
+                  text: "Support Center",
+                  href: "https://www.dwolla.com",
+                  external: true,
+                },
+              ]}
+              icon={supportIcon}
+              topic="Support Center"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+            <Card
+              links={[
+                {
+                  text: "Give Us Feedback",
+                  href: "https://www.dwolla.com",
+                  external: true,
+                },
+              ]}
+              icon={feedbackIcon}
+              topic="Feedback"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            />
+          </CardGrid>
+        </CardGridWrapper>
+        <SDKsAndToolsWrapper>
+          <div style={{ minWidth: "460px" }}>
+            <Link href="/sdks-tools" passHref>
+              <StyledLink>
+                <Typography variant="h2">SDKS & Tools</Typography>
+              </StyledLink>
+            </Link>
+            <ParagraphWrapper>
+              <Typography variant="body1">
+                Choose from a collection of client libraries and tools to get up
+                and running quickly in a variety of languages.
+              </Typography>
+            </ParagraphWrapper>
+          </div>
+          <LogoLinksWrapper>
+            <LogoLinks tabs={languageContent} />
+          </LogoLinksWrapper>
+        </SDKsAndToolsWrapper>
+      </ContentContainer>
+      <FooterContainer>
+        <FooterCTA
+          topic="Start Testing in the Dwolla Sandbox"
+          description="Use sandbox environment to test API requests."
+          button={{
+            text: "Create a Sandbox Account",
+            link: {
+              href: "https://accounts-sandbox.dwolla.com/sign-up",
+              external: true,
+            },
+          }}
+        />
+      </FooterContainer>
+    </>
+  );
+}

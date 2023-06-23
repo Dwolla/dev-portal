@@ -1,60 +1,67 @@
-import React, { useState } from "react";
+import React from "react";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
-import styled from "@emotion/styled";
-import {
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
-import { PURPLE_054, WHITE_PRIMARY } from "../colors";
-import { BOX_SHADOW_8 } from "../shadowDepths";
-
-const StyledHelpContainer = styled.div`
-  position: relative;
-`;
-
-const StyledMenu = styled.div`
-  position: absolute;
-  top: 36px;
-  right: -10px;
-  width: max-content;
-  background: ${WHITE_PRIMARY};
-  box-shadow: ${BOX_SHADOW_8};
-  border-radius: 4px;
-`;
+import { IconButton } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { PURPLE_054 } from "../colors";
 
 type LinkProps = { text: string; href: string };
 type Props = { links: LinkProps[] };
 
 function Help({ links }: Props) {
-  const [expanded, setExpanded] = useState(false);
+  // Menu implementation details on MUI's docs - https://mui.com/material-ui/react-menu/#basic-menu
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <div>
-      <StyledHelpContainer>
+      <div>
         <IconButton
-          aria-label="help"
-          onClick={() => setExpanded(!expanded)}
-          onBlur={() => setExpanded(false)}
+          id="basic-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleClick}
         >
           <HelpOutlineRoundedIcon sx={{ color: PURPLE_054 }} />
         </IconButton>
-        {expanded && (
-          <StyledMenu>
-            <List role="toolbar" aria-orientation="vertical">
-              {links.map((link) => (
-                <ListItem key={link.text} disablePadding>
-                  <ListItemButton href={link.href} target="_blank">
-                    <ListItemText primary={link.text} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </StyledMenu>
-        )}
-      </StyledHelpContainer>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+          // Positioning of <Menu> using MUI's Popover
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          {links.map((link) => (
+            <MenuItem
+              key={link.text}
+              onClick={handleClose}
+              component="a"
+              href={link.href}
+              target="_blank"
+            >
+              {link.text}
+            </MenuItem>
+          ))}
+        </Menu>
+      </div>
     </div>
   );
 }

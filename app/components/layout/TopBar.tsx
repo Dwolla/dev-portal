@@ -203,7 +203,7 @@ export default function TopBar({
 
   return (
     <Container>
-      <Link href="/">
+      <Link href="/docs">
         <a style={{ textDecoration: "none" }}>
           <StyledLogo src={dwollaLogo} alt="" />
           <StyledEm> Docs</StyledEm>

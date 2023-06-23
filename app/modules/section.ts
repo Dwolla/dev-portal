@@ -5,8 +5,9 @@ const Section = {
     const s = sections.meta.findIndex(
       ({ absolutePath }) =>
         sectionHref ===
-        (absolutePath.replace(/^.*?pages/, "").replace(/\/_section.yml$/, "") ||
-          "/")
+        (absolutePath
+          .replace(/^.*?pages/, "")
+          .replace(/\/_section.json$/, "") || "/")
     );
 
     return sections.sections[s]?.categories || [];
