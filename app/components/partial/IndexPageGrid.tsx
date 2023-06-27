@@ -21,9 +21,9 @@ const CardGridWrap = styled.div`
   margin-bottom: 20px;
 `;
 
-type CardType = {
+export type CardType = {
   topic: string;
-  description: string;
+  description: any;
   icon?: string;
   category?: string;
   href: string;
@@ -91,7 +91,13 @@ function IndexPageGrid({ unfilteredCards, bannerProps }: Props) {
               {...card}
               badge={card.category}
               icon={card.icon ? contentIcons[card.icon].default : null}
-              link={{ href: card.href, external: card.external }}
+              links={[
+                {
+                  href: card.href,
+                  text: "GitHub Repository",
+                  external: card.external,
+                },
+              ]}
               key={`${card.topic}-${card.href}`}
               languages={card.languages}
             />

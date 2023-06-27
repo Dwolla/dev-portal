@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { GREY_2, WHITE_PRIMARY } from "../colors";
+import { PURPLE_023, WHITE_PRIMARY } from "../colors";
 
 // Styles
 const Container = styled.div`
   height: 100%;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid ${GREY_2};
-  border-radius: 5px;
+  border: 1.3px solid ${PURPLE_023};
+  border-radius: 15px;
   background-color: ${WHITE_PRIMARY};
 `;
 

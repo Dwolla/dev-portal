@@ -4,12 +4,12 @@ import FooterCTA from "../../app/components/base/FooterCTA";
 
 storiesOf("base/FooterCTA", module).add("default", () => (
   <FooterCTA
-    topic="Test in the Sandbox for free today."
+    topic="Start Testing in the Dwolla Sandbox"
     description="Use sandbox environment to test API requests."
     button={{
-      text: "Get a Sandbox Account",
+      text: "Start building",
       link: {
-        href: "https://accounts-sandbox.dwolla.com/sign-up",
+        href: "#",
         external: true,
       },
     }}
