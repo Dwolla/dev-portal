@@ -40,6 +40,8 @@ exports[`colors 1`] = `
   "LAYOUT_BORDER": "rgba(45, 45, 72, 0.25)",
   "MUI_DROPDOWN_FOCUS": "#03A9F4",
   "ORANGE_PRIMARY": "#ca4c24",
+  "PAGE_FEEDBACK_BUTTON": "rgba(0, 0, 0, 0.50)",
+  "PAGE_FEEDBACK_INNER_TEXT": "rgba(106, 114, 130, 1)",
   "PARAGRAPH_TEXT": "#6a7282",
   "PINK_SECONDARY_ACTIVE": "#be406c",
   "PINK_SECONDARY_BUTTON": "#C9457E",
