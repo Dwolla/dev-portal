@@ -6,9 +6,10 @@ import {
 } from "@mui/icons-material";
 import merge from "lodash.merge";
 import { Link } from "./Typography";
+import { PAGE_FEEDBACK_BUTTON, PAGE_FEEDBACK_INNER_TEXT } from "../colors";
 
 const FeedbackButton = styled(Button, { name: "FeedbackButton" })(() => ({
-  color: "rgba(0, 0, 0, 0.50)",
+  color: PAGE_FEEDBACK_BUTTON,
   textTransform: "none",
 }));
 
@@ -21,7 +22,7 @@ const FeedbackContainer = styled(Box, { name: "FeedbackContainer" })(() => ({
 
 const FeedbackInnerText = styled(Typography, { name: "FeedbackInnerText" })(
   () => ({
-    color: "rgba(106, 114, 130, 1)",
+    color: PAGE_FEEDBACK_INNER_TEXT,
     fontWeight: 500,
   })
 );
