@@ -1,5 +1,8 @@
 # Create image from node v16
-FROM node:16
+FROM node:20
+
+# Install pnpm
+RUN npm i -g pnpm
 
 # All further commands to happen in /app directory (WORKDIR is similar to cd)
 WORKDIR /app
@@ -7,11 +10,11 @@ WORKDIR /app
 # Copy package.json and package-lock.json to /app
 COPY package*.json ./
 
-# Copy yarn.lock to /app
-COPY yarn.lock ./
+# Copy pnpm-lock.yaml to /app
+COPY pnpm-lock.yaml ./
 
-# Install npm dependencies with yarn
-RUN yarn install
+# Install npm dependencies with pnpm
+RUN pnpm install
 
 # Copy project files to /app directory
 COPY . .
@@ -20,4 +23,4 @@ COPY . .
 EXPOSE 3000
 
 # Run application
-CMD ["yarn", "dev"]
+CMD ["pnpm", "dev"]
