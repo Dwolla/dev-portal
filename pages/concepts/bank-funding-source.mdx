@@ -70,6 +70,13 @@ Adding a bank with the Dwolla API is easy. Take a look at our documentation to l
 
 ### Dwolla.js
 
+<AlertBar variation="announcement">
+  Sunset notice: Dwolla will be retiring dwolla.js on August 31, 2023. This library should no longer be used, and we recommend migrating to the latest client-side JavaScript library that includes <a href="/concepts/drop-in-components">Drop-in Components</a>. The Drop-in Components library offers an enhanced developer experience and includes functionality that was previously only available in dwolla.js.
+
+For more information, please see the official <a href="https://discuss.dwolla.com/t/may-2023-updates-retiring-dwolla-s-client-side-javascript-library-dwolla-js/8969">announcement</a> and <a href="https://discuss.dwolla.com/t/migration-guide-dwolla-js-to-dwolla-web-js/8968">migration guide</a>.
+
+</AlertBar>
+
 Dwolla.js is a JavaScript library with the primary function of securely transmitting sensitive data (bank account number and routing number) from your application’s front-end to Dwolla without it passing through your server. When you attach a bank account to a Customer, use dwolla.js and let Dwolla help reduce your retention of sensitive data. Additionally, Dwolla.js includes routing number validation built into the library to help prevent invalid routing numbers from being entered.
 Add a Bank with dwolla.js
 
