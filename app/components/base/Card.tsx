@@ -144,6 +144,17 @@ const LinkTextStyle = styled.div`
   margin-top: 16px;
   display: inline-grid;
   justify-items: start;
+
+  &.column {
+    display: flex;
+    flex-flow: row wrap;
+
+    justify-content: space-between;
+  }
+
+  a {
+    flex-basis: 50%;
+  }
 `;
 
 export type LanguageProp =
@@ -243,10 +254,11 @@ function Card({
         </DescriptionStyle>
 
         {links && (
-          <LinkTextStyle>
+          <LinkTextStyle className={classnames({ column: links.length > 4 })}>
             {links.map((link) => (
               <Button
                 key={link.text}
+                href={link.href}
                 variant="text"
                 color="secondary"
                 endIcon={

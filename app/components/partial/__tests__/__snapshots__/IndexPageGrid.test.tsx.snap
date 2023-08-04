@@ -162,11 +162,11 @@ exports[`IndexPageGrid 1`] = `
             Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.
           </div>
           <div
-            className="css-102hsch-LinkTextStyle ejy78ug0"
+            className=" css-1kx7m14-LinkTextStyle ejy78ug0"
           >
-            <button
+            <a
               className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-              disabled={false}
+              href="/guides/send-money"
               onBlur={[Function]}
               onContextMenu={[Function]}
               onDragLeave={[Function]}
@@ -180,7 +180,6 @@ exports[`IndexPageGrid 1`] = `
               onTouchMove={[Function]}
               onTouchStart={[Function]}
               tabIndex={0}
-              type="button"
             >
               GitHub Repository
               <span
@@ -198,7 +197,7 @@ exports[`IndexPageGrid 1`] = `
                   />
                 </svg>
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -236,11 +235,11 @@ exports[`IndexPageGrid 1`] = `
             Accept ACH transfers. Covers both Access API and Transfer integrations.
           </div>
           <div
-            className="css-102hsch-LinkTextStyle ejy78ug0"
+            className=" css-1kx7m14-LinkTextStyle ejy78ug0"
           >
-            <button
+            <a
               className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-              disabled={false}
+              href="/guides/receive-money"
               onBlur={[Function]}
               onContextMenu={[Function]}
               onDragLeave={[Function]}
@@ -254,7 +253,6 @@ exports[`IndexPageGrid 1`] = `
               onTouchMove={[Function]}
               onTouchStart={[Function]}
               tabIndex={0}
-              type="button"
             >
               GitHub Repository
               <span
@@ -272,7 +270,7 @@ exports[`IndexPageGrid 1`] = `
                   />
                 </svg>
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -310,11 +308,11 @@ exports[`IndexPageGrid 1`] = `
             Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments. Features Access API integration.
           </div>
           <div
-            className="css-102hsch-LinkTextStyle ejy78ug0"
+            className=" css-1kx7m14-LinkTextStyle ejy78ug0"
           >
-            <button
+            <a
               className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-              disabled={false}
+              href="/guides/transfer-money-between-users/obtain-access-token"
               onBlur={[Function]}
               onContextMenu={[Function]}
               onDragLeave={[Function]}
@@ -328,7 +326,6 @@ exports[`IndexPageGrid 1`] = `
               onTouchMove={[Function]}
               onTouchStart={[Function]}
               tabIndex={0}
-              type="button"
             >
               GitHub Repository
               <span
@@ -346,7 +343,7 @@ exports[`IndexPageGrid 1`] = `
                   />
                 </svg>
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>

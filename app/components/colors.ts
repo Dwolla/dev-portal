@@ -86,3 +86,14 @@ export const PURPLE_100 = "rgba(31, 31, 50, 1)";
 
 // White RGBA shades
 export const WHITE_070 = "rgba(255, 255, 255, 0.7)";
+
+// Product colors
+
+export const BALANCE_PRIMARY = "#05A1AD";
+export const BALANCE_LIGHT = "#9CD3DC";
+export const BALANCE_DARK = "#00475E";
+export const CONNECT_PRIMARY = "#E23C7B";
+export const CONNECT_LIGHT = "#FFC3DE";
+export const CONNECT_DARK = "#631F3E";
+export const BALANCE_HERO_GRADIENT = `linear-gradient(333.17deg, ${BALANCE_PRIMARY} 24%,  ${BALANCE_DARK} 100%);`;
+export const CONNECT_HERO_GRADIENT = `linear-gradient(333.17deg, ${CONNECT_PRIMARY} 24%,  ${CONNECT_DARK} 100%);`;
