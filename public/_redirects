@@ -126,7 +126,7 @@
 /guides/webhooks/process-validate    /docs/balance/webhooks/process-validate
 /concepts/drop-in-components    /docs/drop-in-components
 /guides/drop-ins/generate-client-token    /docs/drop-ins/generate-client-token
-/guides/drop-ins    /hidden/drop-ins
+/guides/drop-ins    /docs/drop-ins
 /guides/drop-ins/setup-and-configuration    /docs/drop-ins/setup-and-configuration
 /guides/drop-ins/using-drop-in-components    /docs/drop-ins/using-drop-in-components
 /guides/dwolla-js/add-a-bank-account/configure-and-call-function    /docs/dwolla-js/configure-and-call-function
