@@ -1,7 +1,7 @@
 import renderer from "react-test-renderer";
 import { ThemeProvider } from "@mui/material";
 import ProductHeroBanner from "../ProductHeroBanner";
-import { ReactComponent as HeroGraphic } from "../../../../assets/images/product-icons-and-heroes/dwolla-balance_icon_48x48.svg";
+import { ReactComponent as HeroGraphic } from "../../../../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 import theme from "../../../theme";
 
 test("FooterCTA", () => {

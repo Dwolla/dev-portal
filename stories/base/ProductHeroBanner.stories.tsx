@@ -1,7 +1,7 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import ProductHeroBanner from "../../app/components/base/ProductHeroBanner";
-import { ReactComponent as HeroGraphic } from "../../assets/images/product-icons-and-heroes/dwolla-balance_icon_48x48.svg";
+import { ReactComponent as HeroGraphic } from "../../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 
 storiesOf("base/ProductHeroBanner", module).add("default", () => (
   <ProductHeroBanner
