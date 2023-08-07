@@ -20,7 +20,6 @@ export default createTheme({
     error: {
       main: red.A400,
     },
-    // @ts-ignore
     white: {
       main: WHITE_PRIMARY,
     },

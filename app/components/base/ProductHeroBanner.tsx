@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Button } from "@mui/material";
+import React from "react";
 import { POPPINS, ROBOTO } from "../typography";
 import { BALANCE_HERO_GRADIENT } from "../colors";
 import { breakDown } from "../breakpoints";
@@ -15,7 +16,6 @@ const StyledBanner = styled.div`
   position: relative;
   border-radius: 16px;
   background: ${BALANCE_HERO_GRADIENT};
-  );
 `;
 
 const BannerContentWrap = styled.div`
@@ -100,7 +100,6 @@ function ProductHeroBanner({ HeroGraphic, topic, description, links }: Props) {
                 key={link.text}
                 href={link.href}
                 variant="outlined"
-                //@ts-ignore
                 color="white"
               >
                 {link.text}
