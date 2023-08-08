@@ -186,7 +186,7 @@ type Props = {
   isFlex?: boolean;
   icon?: string;
   badge?: string;
-  product?: "BALANCE" | "CONNECT";
+  product?: keyof typeof productDisplayText;
   topic: string;
   description: string;
   languages?: Array<LanguageProp>;
