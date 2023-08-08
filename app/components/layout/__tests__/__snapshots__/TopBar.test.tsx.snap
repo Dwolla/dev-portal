@@ -123,7 +123,7 @@ exports[`TopBar 1`] = `
   </div>
   <div
     aria-labelledby="Close menu"
-    className="css-1lsryf8-StyledCloseIcon e1psldpd0"
+    className="css-1ut1z54-StyledCloseIcon e1psldpd0"
     onClick={[Function]}
     onKeyDown={[Function]}
     tabIndex={0}

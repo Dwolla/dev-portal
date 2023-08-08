@@ -277,6 +277,7 @@ function Card({
               <Button
                 key={link.text}
                 href={link.href}
+                target={link.external ? "_blank" : undefined}
                 variant="text"
                 color="secondary"
                 style={{ justifyContent: "flex-start" }}

@@ -1,5 +1,5 @@
-import type { NextRouter } from "next/router";
 import { extname } from "path";
+import type { NextRouter } from "next/router";
 import type { FrontMatter } from "../../layouts/types";
 
 export const BASE_URI =
