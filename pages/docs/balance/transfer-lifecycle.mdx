@@ -264,7 +264,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 ### Response JSON Links
 
-In addition to using a correlation ID, Dwolla automatically appends two resource \_links properties in all transfers: funding-transfer and funded-transfer, both of which can be used to traverse programmatically a single transfer chain.
+In addition to using a correlation ID, Dwolla automatically appends two resource `_links` properties in all transfers: funding-transfer and funded-transfer, both of which can be used to traverse programmatically a single transfer chain.
 
 - `funding-transfer`: A resource link that points to the previous transfer in the overall chain (if applicable). It identifies the previous transfer that, once processed, funded the current transfer.
 - `funded-transfer`: A resource link that points to the next transfer in the overall chain (if applicable). It identifies the next transfer that the current transfer will fund, once processed.
