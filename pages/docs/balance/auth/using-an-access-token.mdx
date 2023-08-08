@@ -1,0 +1,36 @@
+---
+layout: guides
+title: "Step 2: Using an access token"
+guide:
+  step: 2
+meta:
+  title: OAuth 2.0 - Using an access token | Dwolla API Documentation
+  description: Using an OAuth access token to create requests with the Dwolla API
+---
+
+# Step 2: Using an access token
+
+Once your application obtains an access token, it can be used to access protected resources in the Dwolla API. If using an account access token, access to protected resources is limited to the scopes contained on an access token, and whether or not the token is valid (expired or revoked token).
+
+Here is an example of an API request. Note that OAuth access tokens are passed via the Authorization HTTP header:
+`Authorization: Bearer {access_token_here}`
+
+```bash
+POST https://api.dwolla.com/webhook-subscriptions
+Content-Type: application/json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer myApplicationAccessToken
+
+{
+    "url": "https://myapplication.com/webhooks",
+    "secret": "sshhhhhh"
+}
+
+... or ...
+
+GET https://api.dwolla.com/accounts/a84222d5-31d2-4290-9a96-089813ef96b3/transfers
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer myApplicationAccesstoken
+```
+
+Assuming the access token is valid, the Dwolla API will return a success or error response. If the access token is expired or invalid, the API will return an HTTP 401 with either a `InvalidAccessToken` or `ExpiredAccessToken` error code. Learn more about making requests in our [API docs](https://developers.dwolla.com/api-reference#making-requests).

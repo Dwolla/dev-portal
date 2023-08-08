@@ -1,0 +1,321 @@
+---
+layout: concepts
+title: "Transfer Lifecycle"
+description: Learn about the complete lifecycle of a transfer in Dwolla and find out what webhooks you can expect to receive during each step.
+category: Build
+subCategory: Transfers
+weight: 2
+concept:
+  icon: "transfer-lifecycle.svg"
+meta:
+  title: Transfer Lifecycle | Dwolla API Documentation
+  description: When a transfer is created in Dwolla, it passes through multiple steps during its life cycle. Webhooks are triggered to notify about each step in the transfer's life cycle.
+---
+
+# Overview
+
+When you create a transfer using the Dwolla API, there are various steps involved in the life cycle of the transfer from the moment of its creation to when it finishes processing. When the funds move through each step in the cycle, various events are created in Dwolla that record the change, and help us identify which step a transfer is in. These events trigger webhooks which developers can subscribe to in order to be notified about any changes to a resource. There are specific webhooks you can expect to receive based on your funds flow and the Customer types involved in a transfer. Use this interactive tool to guide you through the various transfer scenarios in Dwolla, and their life cycles.
+
+<AlertBar variation="info">
+  This resource currently features ACH as the primary method for funds
+  transfers. We will be adding other methods such as real-time payment transfers
+  in the future, as well as including unhappy paths for all transfer types.
+</AlertBar>
+
+## Key Terminology:
+
+- **Dwolla Balance** - The [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source) is a funding-source type in the Dwolla Platform that can be utilized like a virtual “wallet” to hold funds in. The Dwolla Balance is automatically made available to [Verified Customer types](https://developers.dwolla.com/concepts/customer-types), as well as the Master Account.
+- **Funded-transfer** - `funded-transfer` is a link returned when [retreiving a transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) which points to the transfer that is further ahead in the overall transfer life cycle. `funded-transfer` is a unique transaction created to route funds to the destination user and/or payment account.
+- **Funding-transfer** - `funding-transfer` is a link returned when [retrieving a transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) which points to the transfer that is further behind in the overall transfer life cycle. `funding-transfer` is a unique transaction created to route funds from the source user and/or payment account to the destination user.
+
+## Use Correlation ID to query transactions
+
+The correlation ID is a string value that can be attached to a transfer resource which can be used for traceability between Dwolla and your application. An example of how to pass in a correlation id and how to search for a transaction using the correlationId query search parameter can be found in the code snippets below. When a correlation ID has been sent with a transfer, Dwolla will preserve it throughout the entire transfer life cycle.
+
+#### Create a transaction using a correlation ID
+
+##### Example request and response
+
+```bash
+POST https://api-sandbox.dwolla.com/transfers
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
+
+{
+  "_links": {
+      "source": {
+          "href": "https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c"
+      },
+      "destination": {
+          "href": "https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6"
+      }
+  },
+  "amount": {
+      "currency": "USD",
+      "value": "10.00"
+  },
+  "correlationId": "8a2cdc8d-629d-4a24-98ac-40b735229fe2"
+}
+
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/transfers/93f78ae0-1f47-ec11-8139-dab70b2f4ba0
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :source => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c"
+    },
+    :destination => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6"
+    }
+  },
+  :amount => {
+    :currency => "USD",
+    :value => "1.00"
+  },
+  :correlationId => "8a2cdc8d-629d-4a24-98ac-40b735229fe2"
+}
+
+transfer = app_token.post "transfers", request_body
+transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/93f78ae0-1f47-ec11-8139-dab70b2f4ba0"
+```
+
+```php
+<?php
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->create([
+  '_links' => [
+    'source' => [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c',
+    ],
+    'destination' => [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6'
+    ]
+  ],
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '1.00'
+  ],
+  'correlationId' => '8a2cdc8d-629d-4a24-98ac-40b735229fe2'
+]);
+$transfer; # => "https://api-sandbox.dwolla.com/transfers/93f78ae0-1f47-ec11-8139-dab70b2f4ba0"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'source': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c'
+    },
+    'destination': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6'
+    }
+  },
+  'amount': {
+    'currency': 'USD',
+    'value': '1.00'
+  },
+  'correlationId': '8a2cdc8d-629d-4a24-98ac-40b735229fe2'
+}
+
+transfer = app_token.post('transfers', request_body)
+transfer.headers['location'] # => 'https://api.dwolla.com/transfers/93f78ae0-1f47-ec11-8139-dab70b2f4ba0'
+```
+
+```javascript
+var requestBody = {
+  _links: {
+    source: {
+      href: "https://api-sandbox.dwolla.com/funding-sources/0004a5e9-d053-46e9-af1f-f4123439138c",
+    },
+    destination: {
+      href: "https://api-sandbox.dwolla.com/funding-sources/f14130f1-c613-406c-98c7-8402abdc3fa6",
+    },
+  },
+  amount: {
+    currency: "USD",
+    value: "1.00",
+  },
+  correlationId: "8a2cdc8d-629d-4a24-98ac-40b735229fe2",
+};
+
+dwolla
+  .post("transfers", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/transfers/93f78ae0-1f47-ec11-8139-dab70b2f4ba0'
+```
+
+#### Search for a Customer’s list of transactions using the correlation id
+
+##### Example request and response
+
+```bash
+GET https://api-sandbox.dwolla.com/customers/cfbcee76-01b0-454d-bf9c-66127d0a1793/transfers?correlationId=8a2cdc8d-629d-4a24-98ac-40b735229fe2
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+. . .
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/customers/c2bdcc87-91cd-41dd-9b06-5e31d4d3bbe4/transfers?correlationId=invoicenumber_27471",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "first": {
+            "href": "https://api-sandbox.dwolla.com/customers/c2bdcc87-91cd-41dd-9b06-5e31d4d3bbe4/transfers?correlationId=invoicenumber_27471&limit=25&offset=0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "last": {
+            "href": "https://api-sandbox.dwolla.com/customers/c2bdcc87-91cd-41dd-9b06-5e31d4d3bbe4/transfers?correlationId=invoicenumber_27471&limit=25&offset=0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+
+    },
+    "_embedded": {
+        "transfers": [
+
+                "_links": {
+                    "cancel": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/2dc087a9-4091-e911-811a-9de799d3b148",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/3152c22b-3d72-442d-a83b-e575df3a043e",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    },
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/2dc087a9-4091-e911-811a-9de799d3b148",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "funded-transfer": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/2ec087a9-4091-e911-811a-9de799d3b148",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "destination": {
+                        "href": "https://api-sandbox.dwolla.com/customers/c2bdcc87-91cd-41dd-9b06-5e31d4d3bbe4",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "customer"
+
+                },
+                "id": "2dc087a9-4091-e911-811a-9de799d3b148",
+                "status": "pending",
+                "amount": {
+                    "value": "2470.00",
+                    "currency": "USD"
+                },
+                "created": "2019-06-17T20:44:21.350Z",
+                "clearing": {
+                    "source": "next-day"
+                },
+                "correlationId": "8a2cdc8d-629d-4a24-98ac-40b735229fe2",
+                "individualAchId": "IDA7ZNXK"
+            },
+
+                "_links": {
+                    "cancel": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/2ec087a9-4091-e911-811a-9de799d3b148",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "source": {
+                        "href": "https://api-sandbox.dwolla.com/customers/c2bdcc87-91cd-41dd-9b06-5e31d4d3bbe4",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "customer"
+                    },
+                    "funding-transfer": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/2dc087a9-4091-e911-811a-9de799d3b148",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "destination-funding-source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/1b9c365c-940c-41b3-81d0-f8c3ec973df4",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    },
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/2ec087a9-4091-e911-811a-9de799d3b148",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "source-funding-source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/3152c22b-3d72-442d-a83b-e575df3a043e",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    },
+                    "destination": {
+                        "href": "https://api-sandbox.dwolla.com/accounts/30a6cb55-1754-4948-b431-ebe48288ef25",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "account"
+
+                },
+                "id": "2ec087a9-4091-e911-811a-9de799d3b148",
+                "status": "pending",
+                "amount": {
+                    "value": "2470.00",
+                    "currency": "USD"
+                },
+                "created": "2019-06-17T20:44:21.333Z",
+                "clearing": {
+                    "source": "next-day"
+                },
+                "correlationId": "8a2cdc8d-629d-4a24-98ac-40b735229fe2"
+    },
+    "total": 2
+}
+```
+
+```ruby
+# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'http://api-sandbox.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295'
+
+transfers = app_token.get '#{customer_url}/transfers', correlationId: '8a2cdc8d-629d-4a24-98ac-40b735229fe2'
+transfers._embedded['transfers']
+```
+
+```php
+<?php
+$customerUrl = 'http://api-sandbox.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295';
+
+$TransfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfers = $TransfersApi->getCustomerTransfers($customerUrl);
+$transfers->_embedded->{'transfers'}[0]->correlationId; # => "8a2cdc8d-629d-4a24-98ac-40b735229fe2"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'http://api-sandbox.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295'
+
+transfers = app_token.get('%s/transfers?correlationId=123' % customer_url)
+transfers.body['_embedded']['transfers']
+```
+
+```javascript
+var customerUrl =
+  "http://api-sandbox.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295";
+
+dwolla
+  .get(`${customerUrl}/transfers`, { correlationId: 123 })
+  .then((res) => res.body._embedded["transfers"]);
+```
+
+## Interactive Transfer Lifecycle
+
+<TransferWorkflow />

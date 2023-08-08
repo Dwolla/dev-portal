@@ -2,6 +2,7 @@ type PageGroup = {
   id: string;
   title: string;
   category?: string;
+  subCategory?: string;
   weight?: number;
 };
 

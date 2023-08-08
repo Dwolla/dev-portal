@@ -14,10 +14,13 @@ test("with Link", () => {
   const tree = renderer
     .create(
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
+        links={[
+          {
+            href: "https://www.dwolla.com",
+            text: "Learn More",
+            external: true,
+          },
+        ]}
         icon={icon}
         topic="topic"
         description="Description"
@@ -47,10 +50,13 @@ test("with Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
+        links={[
+          {
+            href: "https://www.dwolla.com",
+            text: "Learn More",
+            external: true,
+          },
+        ]}
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
@@ -65,7 +71,12 @@ test("with Link and Badge", () => {
 test("with Center Align", () => {
   const tree = renderer
     .create(
-      <Card centerAlign icon={icon} topic="topic" description="Description" />
+      <Card
+        horizontalCenterAlign
+        icon={icon}
+        topic="topic"
+        description="Description"
+      />
     )
     .toJSON();
 
@@ -76,11 +87,14 @@ test("with Center Align and Link", () => {
   const tree = renderer
     .create(
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
-        centerAlign
+        links={[
+          {
+            href: "https://www.dwolla.com",
+            text: "Learn More",
+            external: true,
+          },
+        ]}
+        horizontalCenterAlign
         icon={icon}
         topic="topic"
         description="Description"
@@ -95,7 +109,7 @@ test("with Center Align and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        centerAlign
+        horizontalCenterAlign
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
@@ -111,11 +125,14 @@ test("with Center Align, Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
-        centerAlign
+        links={[
+          {
+            href: "https://www.dwolla.com",
+            text: "Learn More",
+            external: true,
+          },
+        ]}
+        horizontalCenterAlign
         badge="BADGETEXT"
         icon={icon}
         topic="topic"
@@ -155,10 +172,13 @@ test("with Flex, Link and Badge", () => {
   const tree = renderer
     .create(
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
+        links={[
+          {
+            href: "https://www.dwolla.com",
+            text: "Learn More",
+            external: true,
+          },
+        ]}
         isFlex
         badge="BADGETEXT"
         icon={icon}
@@ -175,24 +195,27 @@ test("with Languages", () => {
   const tree = renderer
     .create(
       <Card
-        link={{
-          href: "https://www.dwolla.com",
-          external: true,
-        }}
+        links={[
+          {
+            href: "https://www.dwolla.com",
+            text: "Github Repository",
+            external: true,
+          },
+        ]}
         topic="topic"
         description="Description"
         languages={[
-          "css",
+          "CSS",
           "handlebars",
-          "html",
-          "java",
-          "javascript",
+          "HTML",
+          "Java",
+          "JavaScript",
           "kotlin",
           "php",
-          "python",
+          "Python",
           "ruby",
           "shell",
-          "typescript",
+          "TypeScript",
         ]}
       />
     )

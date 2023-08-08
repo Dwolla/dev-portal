@@ -1,0 +1,246 @@
+---
+title: "Dwolla Balance"
+description: "Learn how to integrate account-to-account payments in your application with Dwolla Balance."
+meta:
+  title: "Dwolla Balance | Dwolla Payments Platform"
+  description: "Learn how to integrate account-to-account payments in your application with Dwolla Balance."
+---
+
+import CardGrid from "../../../app/components/base/CardGrid";
+import Card from "../../../app/components/base/Card";
+import ProductHeroBanner from "../../../app/components/base/ProductHeroBanner";
+import FooterCTA from "../../../app/components/base/FooterCTA";
+import { ReactComponent as HeroGraphic } from "../../../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
+
+<ProductHeroBanner
+  HeroGraphic={HeroGraphic}
+  topic="Dwolla Balance"
+  description="Use Dwolla’s existing bank partnerships to connect your software to the banking infrastructure."
+  links={[
+    {
+      text: "API reference",
+      href: "/api-reference",
+    },
+    {
+      text: "Code Samples",
+      href: "/code-samples",
+    },
+    {
+      text: "Drop-Ins",
+      href: "/docs/drop-in-components",
+    },
+    {
+      text: "SDKs",
+      href: "/sdks-tools",
+    },
+  ]}
+/>
+
+# Overview
+
+Welcome to the documentation on Dwolla Balance! Our Get Started documentation will walk you through the steps of building an integration. Once you’re familiar with how to integrate, read through our developer guides that include detailed explanations for each step, example code, tips and best practices on development workflow and QA, and links to learn more.
+
+## Get Started
+
+Before you start exploring and building on an integration that utilizes Dwolla Balance, get familiar with what it is and how it works with the getting started resources.
+
+<CardGrid maxColumns="2">
+  <Card
+    topic="What is Dwolla Balance?"
+    description="Learn about Dwolla Balance's robust features and how it simplifies creating seamless and secure account-to-account payments for businesses and developers."
+    links={[
+      {
+        text: "Read Docs",
+        href: "/docs/balance/what-is-dwolla-balance",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Customer Types"
+    description="Understanding and selecting the appropriate Customer type is the first step to a successful payment integration."
+    links={[
+      {
+        text: "Read Docs",
+        href: "/docs/balance/customer-types",
+        external: false,
+      },
+    ]}
+  />
+</CardGrid>
+
+## Build
+
+Find all the essential resources and tools to kickstart your integration using Dwolla Balance. Explore comprehensive guides and developer documentation to seamlessly build and implement Dwolla Balance into your application.
+
+<CardGrid maxColumns="3">
+  <Card
+    topic="Quickstarts"
+    description="Jumpstart your integration with the Quickstarts, featuring guides on API authentication and diverse funds flow scenarios."
+    links={[
+      {
+        text: "Auth",
+        href: "/docs/balance/auth",
+        external: false,
+      },
+      {
+        text: "Receive",
+        href: "/docs/balance/receive-money",
+        external: false,
+      },
+      {
+        text: "Send",
+        href: "/docs/balance/send-money",
+        external: false,
+      },
+      {
+        text: "Facilitate",
+        href: "/docs/balance/transfer-money-between-users",
+        external: false,
+      },
+      {
+        text: "Me-to-Me",
+        href: "/docs/balance/transfer-money-me-to-me",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Customers"
+    description="Explore our comprehensive guides on onboarding Personal Verified Customers and Business Verified Customers with Dwolla."
+    links={[
+      {
+        text: "Business Verified Customer",
+        href: "/docs/balance/business-verified-customer",
+        external: false,
+      },
+      {
+        text: "Personal Verified Customer",
+        href: "/docs/balance/personal-verified-customer",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Funding Sources"
+    description="Explore the various funding source types and discover the options available for adding and verifying banks."
+    links={[
+      {
+        text: "Balance Funding Source",
+        href: "/docs/balance/balance-funding-source",
+        external: false,
+      },
+      {
+        text: "Bank Funding Source",
+        href: "/docs/balance/bank-funding-source",
+        external: false,
+      },
+      {
+        text: "Micro-deposit Verification",
+        href: "/docs/balance/micro-deposit-verification",
+        external: false,
+      },
+      {
+        text: "Dwolla + Plaid integration",
+        href: "/docs/balance/plaid",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Transfers"
+    description="Optimize your payment processes by understanding how transfers function in Dwolla."
+    links={[
+      {
+        text: "Facilitator Fee",
+        href: "docs/balance/facilitator-fee",
+        external: false,
+      },
+      {
+        text: "Transfer Processing Times",
+        href: "/docs/balance/transfer-processing-times",
+        external: false,
+      },
+      {
+        text: "Transfer Lifecycle",
+        href: "/docs/balance/transfer-lifecycle",
+        external: false,
+      },
+      {
+        text: "Transfer Failures",
+        href: "/docs/balance/transfer-failures",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Notifications"
+    description="Ensure accurate and timely notifications for your application and users, keeping them updated on actions that occur within your Dwolla account."
+    links={[
+      {
+        text: "Webhook Events",
+        href: "/docs/balance/webhook-events",
+        external: false,
+      },
+      {
+        text: "Operational Notifications",
+        href: "/docs/balance/operational-notifications",
+        external: false,
+      },
+      {
+        text: "Working with Webhooks",
+        href: "/docs/balance/webhooks",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Features"
+    description="Explore the array of capabilities that will take your payment solutions to new heights, streamlining transactions and enhancing user experiences."
+    links={[
+      {
+        text: "Virtual Account Number",
+        href: "/docs/balance/virtual-account-numbers",
+        external: false,
+      },
+      {
+        text: "Real-time Payments",
+        href: "/docs/balance/real-time-payments",
+        external: false,
+      },
+      {
+        text: "Same-Day ACH",
+        href: "/docs/balance/same-day-ach",
+        external: false,
+      },
+    ]}
+  />
+  <Card
+    topic="Integrations"
+    description="Discover how Dwolla integrates effortlessly with these partners to offer enhanced functionalities and expanded possibilities for your payment ecosystem."
+    links={[
+      {
+        text: "Secure Exchange",
+        href: "/docs/balance/secure-exchange",
+        external: false,
+      },
+      {
+        text: "Sift",
+        href: "/docs/balance/sift",
+        external: false,
+      },
+    ]}
+  />
+</CardGrid>
+
+<FooterCTA
+  topic="Start Testing in the Dwolla Sandbox"
+  description="Use sandbox environment to test API requests."
+  button={{
+    text: "Create a Sandbox Account",
+    link: {
+      href: "https://accounts-sandbox.dwolla.com/sign-up",
+      external: true,
+    },
+  }}
+/>

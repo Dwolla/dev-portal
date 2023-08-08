@@ -1,0 +1,82 @@
+---
+layout: guides
+title: "Customers"
+guide:
+  step: 1
+meta:
+  title: "Testing Different API Customer Types | Dwolla API Documentation"
+  description: Test and simulate adding Customers and handling verification statuses in the Sandbox before working with real end users.
+---
+
+import imageFail from "../../../../assets/images/content-images/test-document-upload-fail.png";
+import imageSuccess from "../../../../assets/images/content-images/test-document-upload-success.png";
+import conceptsIcon from "../../../../assets/images/content-images/content-icons/concepts-icon.svg";
+import guidesIcon from "../../../../assets/images/content-images/content-icons/guides-icon.svg";
+
+# Testing Customers
+
+### Manage Customers in the Dashboard
+
+The [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) allows you to manage Customers, as well as transfers associated with the Customers that belong to your Sandbox account. Once your application has [created its Customers](https://developers.dwolla.com/api-reference/customers/create), you can access the [Sandbox Dashboard](https://dashboard-sandbox.dwolla.com) to validate that the request was recorded properly in our test environment.
+
+<InlineCTA
+  icon={conceptsIcon}
+  text="There are multiple Customer types within the Dwolla API. Use our concept article for a more in-depth overview of each Customer type and its capabilities."
+  href="/concepts/customer-types"
+/>
+
+### Simulate identity verification statuses
+
+There are various reasons a [Verified Customer](/concepts/customer-types#verified-customer) may have a status other than `verified` after the initial Customer creation. You will want your app to be prepared to handle these alternative statuses.
+
+In production, Dwolla will place the Verified Customer in either the `retry`, `kba`, `document`, `verified`, or `suspended` state of verification after an initial identity verification check.
+
+**For personal Verified Customers**, reference the guide on [customer verification](/guides/personal-verified-customer/handle-verification-statuses) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-personal-customer---request-parameters) with that status.
+
+**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller, the business and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-business-customer-businesstypellc-corporation-or-partnership---request-parameters) with that status. To simulate different verification status for Beneficial Owners, submit either `incomplete` or `document` in the **beneficial owner firstName** parameter.
+
+With business Verified Customers, documents may be needed for the Controller, the business, or both the Controller and business. To simulate the `document` status for the controller, submit `document` in the **controller firstName** parameter.
+Similarly, to simulate the `document` status for the business, submit `document` in the **businessName** parameter. To simulate both the Controller and the business in `document`, submit `document` in both the **controller firstName** and the **businessName** parameters.
+
+### Simulate KBA verified and failed events
+
+If a Personal Verified Customer isn’t systematically identity-verified after their second attempt to retry their information, the Customer may be placed in a `kba` status and will be required to successfully answer at least three out of four knowledge based authentication (KBA) questions in order to pass verification.
+
+<InlineCTA
+  icon={guidesIcon}
+  text="More information on KBA status for Personal Verified Customers and the related endpoints."
+  href="/guides/personal-verified-customer/handle-verification-statuses#handling-status-kba"
+/>
+
+To simulate the `customer_kba_verification_passed` event as the result of KBA success in Sandbox, answer all four questions with either “None of the above” or “I have never been associated with this vehicle”. As a result, the Customer will be placed in a verified status and the `customer_verified` event is triggered.
+
+To simulate the `customer_kba_verification_failed` event as the result of KBA failure in Sandbox, answer the questions with any answer choices other than “None of the above” or “I have never been associated with this vehicle”. As a result, the Customer will be placed in a document status and the `customer_verification_document_needed` event is triggered.
+
+### Simulate document upload approved and failed events
+
+If a Verified Customer isn't systematically identity-verified, the Customer may be placed in a `document` status and will require an identifying document to be uploaded and reviewed. Reference either the [personal customer verification](/guides/personal-verified-customer/handle-verification-statuses#document-types) or [business customer verification](/guides/business-verified-customer/handle-verification-statuses#document-types) guide for acceptable forms of identifying documents for `Verified Customers`.
+
+Since the document review process requires interaction from Dwolla, sample test documents can be uploaded in the Sandbox environment to simulate the `customer_verification_document_approved` and `customer_verification_document_failed` events.
+
+<AlertBar variation="info">
+  When downloading a test image, make sure to keep the size, format, and name of
+  the image the same.
+</AlertBar>
+
+### **Sample document approved image**
+
+<ImageDownload
+  downloadFileName="test-document-upload-success"
+  tooltipText="Download"
+>
+  {imageSuccess}
+</ImageDownload>
+
+### **Sample document failed image**
+
+<ImageDownload
+  downloadFileName="test-document-upload-fail"
+  tooltipText="Download"
+>
+  {imageFail}
+</ImageDownload>

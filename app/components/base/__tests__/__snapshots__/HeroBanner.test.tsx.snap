@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default HeroBanner 1`] = `
+<div
+  className="css-s65f2z-StyledBanner e38sxrk3"
+  style={
+    {
+      "backgroundImage": "url(test-image-stub)",
+      "backgroundPosition": "center",
+      "backgroundRepeat": "no-repeat",
+      "backgroundSize": "cover",
+    }
+  }
+>
+  <div
+    className="css-l0a4nd-BannerContentWrap e38sxrk2"
+  >
+    <div
+      className="css-1ubtxoh-StyledTopic e38sxrk1"
+    >
+      Build with Dwolla
+    </div>
+    <div
+      className="css-1oef8wh-StyledDescription e38sxrk0"
+    >
+      Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform.
+    </div>
+  </div>
+</div>
+`;
+
+exports[`HeroBanner - with SearchBar 1`] = `
+<div
+  className="css-s65f2z-StyledBanner e38sxrk3"
+  style={
+    {
+      "backgroundImage": "url(test-image-stub)",
+      "backgroundPosition": "center",
+      "backgroundRepeat": "no-repeat",
+      "backgroundSize": "cover",
+    }
+  }
+>
+  <div
+    className="css-l0a4nd-BannerContentWrap e38sxrk2"
+  >
+    <div
+      className="css-1ubtxoh-StyledTopic e38sxrk1"
+    >
+      Build with Dwolla
+    </div>
+    <div
+      className="css-1oef8wh-StyledDescription e38sxrk0"
+    >
+      Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform.
+    </div>
+    <div
+      className="css-4467i6-SearchWrapper-root"
+    >
+      <div />
+    </div>
+  </div>
+</div>
+`;
