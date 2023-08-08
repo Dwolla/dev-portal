@@ -12,6 +12,10 @@ module.exports = (phase) =>
           providerImportSource: "@mdx-js/react",
         },
       })({
+        i18n: {
+          locales: ["en"],
+          defaultLocale: "en",
+        },
         env: {
           isDev: phase === PHASE_DEVELOPMENT_SERVER,
         },
