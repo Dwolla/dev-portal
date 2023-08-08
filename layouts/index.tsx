@@ -74,7 +74,7 @@ const MDX_COMPONENTS = {
 
 // List of page paths that should exclude the OnThisPage component
 const excludedPaths = [
-  "/docs/balance/index",
+  "/docs/balance",
   // Add more paths as needed
 ];
 
@@ -83,7 +83,7 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
   const openGraph = OpenGraph(frontMatter);
 
   // Check if the current path is in the excludedPaths list
-  const shouldExcludeOnThisPage = excludedPaths.includes(useRouter().pathname);
+  const shouldExcludeOnThisPage = excludedPaths.includes(router.pathname);
 
   return (
     <MDXContainer>
@@ -163,7 +163,7 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
         </ContentWrapper>
       </MDXProvider>
 
-      {shouldExcludeOnThisPage! && <OnThisPage />}
+      {!shouldExcludeOnThisPage && <OnThisPage />}
     </MDXContainer>
   );
 }

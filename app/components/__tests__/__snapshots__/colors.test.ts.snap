@@ -52,7 +52,6 @@ exports[`colors 1`] = `
   "PINK_SECONDARY_ACTIVE": "#be406c",
   "PINK_SECONDARY_BUTTON": "#C9457E",
   "PINK_SECONDARY_HOVER": "#e24d80",
-  "PRODUCT_ICON_GRADIENT": "linear-gradient(45deg, #f3904a 0%, #aa437f 100%)",
   "PURPLE_004": "rgba(31, 31, 50, 0.04)",
   "PURPLE_008": "rgba(31, 31, 50, 0.08)",
   "PURPLE_012": "rgba(31, 31, 50, 0.12)",
