@@ -12,7 +12,7 @@ meta:
   description: When a transfer is created in Dwolla, it passes through multiple steps during its life cycle. Webhooks are triggered to notify about each step in the transfer's life cycle.
 ---
 
-# Overview
+# Transfer Lifecycle
 
 To initiate a transfer, you can either make an API request or use the Dwolla Dashboard. You will need to specify the source and destination funding sources, which can be either a [bank account](/docs/balance/bank-funding-source) or a [Dwolla Wallet](/docs/balance/balance-funding-source).
 
@@ -47,7 +47,98 @@ Many Dwolla resources allow a correlation ID—[Customers](/api-reference/custom
 
 #### Create Transfer with Correlation ID
 
-```raw
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+const requestBody = {
+  _links: {
+    source: {
+      href: "https://api.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+    },
+    destination: {
+      href: "https://api.dwolla.com/funding-sources/ab443d36-3757-44c1-a1b4-29727fb3111c",
+    },
+  },
+  amount: {
+    currency: "USD",
+    value: "10.00",
+  },
+  correlationId: "8a2cdc8d-629d-4a24-98ac-40b735229fe2",
+};
+
+dwolla
+  .post("transfers", requestBody)
+  .then((res) => res.headers.get("Location")); // => 'https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->create([
+  '_links' => [
+    'source' => [
+      'href' => 'https://api.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4',
+    ],
+    'destination' => [
+      'href' => 'https://api.dwolla.com/funding-sources/ab443d36-3757-44c1-a1b4-29727fb3111c'
+    ]
+  ],
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '10.00'
+  ],
+  'correlationId' => '8a2cdc8d-629d-4a24-98ac-40b735229fe2'
+]);
+
+$transfer; # => "https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :source => {
+      :href => "https://api.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+    },
+    :destination => {
+      :href => "https://api.dwolla.com/funding-sources/ab443d36-3757-44c1-a1b4-29727fb3111c"
+    }
+  },
+  :amount => {
+    :currency => "USD",
+    :value => "10.00"
+  },
+  :correlationId => "8a2cdc8d-629d-4a24-98ac-40b735229fe2"
+}
+
+transfer = app_token.post "transfers", request_body
+transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'source': {
+      'href': 'https://api.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4'
+    },
+    'destination': {
+      'href': 'https://api.dwolla.com/funding-sources/ab443d36-3757-44c1-a1b4-29727fb3111c'
+    }
+  },
+  'amount': {
+    'currency': 'USD',
+    'value': '10.00'
+  },
+  'correlationId': '8a2cdc8d-629d-4a24-98ac-40b735229fe2'
+}
+
+transfer = app_token.post('transfers', request_body)
+transfer.headers['location'] # => 'https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
+```
+
+```bash
 POST https://api.dwolla.com/transfers
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
@@ -74,12 +165,50 @@ Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
 
 HTTP/1.1 201 Created
 Location: https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388
-
 ```
 
 #### List (Search) Customer Transfers via Correlation ID
 
-```raw
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+const customerUrl =
+  "https://api.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295";
+
+dwolla
+  .get(
+    `${customerUrl}/transfers?correlationId=8a2cdc8d-629d-4a24-98ac-40b735229fe2`
+  )
+  .then((res) => res.body._embedded["transfers"][0].status); // => "pending"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$customerUrl = 'https://api.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295';
+
+$TransfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfers = $TransfersApi->getCustomerTransfers($customerUrl);
+$transfers->_embedded->{'transfers'}[0]->status; # => "pending"
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295'
+
+transfers = app_token.get "#{customer_url}/transfers?correlationId=8a2cdc8d-629d-4a24-98ac-40b735229fe2"
+transfers._embedded['transfers'][0].status # => "pending"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295'
+
+transfers = app_token.get('%s/transfers?correlationId=%s' % customer_url % '8a2cdc8d-629d-4a24-98ac-40b735229fe2')
+transfers.body['_embedded']['transfers'][0]['status'] # => 'pending'
+```
+
+```bash
 GET https://api.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295/transfers?correlationId=8a2cdc8d-629d-4a24-98ac-40b735229fe2
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -103,19 +232,19 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
             {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+                        "href": "https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
                     },
                     "source": {
-                        "href": "https://api-sandbox.dwolla.com/customers/39e21228-5958-4c4f-96fe-48a4bf11332d"
+                        "href": "https://api.dwolla.com/customers/39e21228-5958-4c4f-96fe-48a4bf11332d"
                     },
                     "source-funding-source": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+                        "href": "https://api.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
                     },
                     "destination": {
-                        "href": "https://api-sandbox.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295"
+                        "href": "https://api.dwolla.com/customers/33e56307-6754-41cb-81e2-23a7f1072295"
                     },
                     "destination-funding-source": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/ab443d36-3757-44c1-a1b4-29727fb3111c"
+                        "href": "https://api.dwolla.com/funding-sources/ab443d36-3757-44c1-a1b4-29727fb3111c"
                     }
                 },
                 "id": "74c9129b-d14a-e511-80da-0aa34a9b2388",
@@ -131,7 +260,6 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
     },
     "total": 1
 }
-
 ```
 
 ### Response JSON Links
