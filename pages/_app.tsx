@@ -230,7 +230,7 @@ const TOP_BAR_PROPS: TopBarProps = {
     },
   ],
   algoliaSearch: {
-    branch: "main-algolia",
+    branch: "main",
     searchClient: algoliasearch(
       "L2PPGO4SBB",
       "6a6c05b578da5aa729df7f53776e9f76"
