@@ -3,12 +3,12 @@ import Link from "next/link";
 import map from "lodash.map";
 import {
   HEADLINE_TEXT,
-  PARAGRAPH_TEXT,
-  ORANGE_PRIMARY,
   LAYOUT_BORDER,
+  ORANGE_PRIMARY,
+  PARAGRAPH_TEXT,
 } from "../colors";
 import { POPPINS, ROBOTO } from "../typography";
-import { breakUp, breakDown } from "../breakpoints";
+import { breakDown, breakUp } from "../breakpoints";
 import logo from "../../../assets/images/dwolla-developers-logo.svg";
 
 const Container = styled.div`
@@ -163,7 +163,7 @@ export default function Footer(props: FooterProps) {
   return (
     <Container>
       <LogoContainer>
-        <Link href="/">
+        <Link href="/docs">
           <a>
             <Logo src={logo} alt="" />
           </a>

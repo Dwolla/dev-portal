@@ -1,6 +1,6 @@
 import renderer from "react-test-renderer";
 import ExternalCTA from "../ExternalCTA";
-import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community-icon.svg";
+import developerCommunityIcon from "../assets/images/content-images/content-icons/developer-community.svg";
 
 test("External CTA", () => {
   const tree = renderer

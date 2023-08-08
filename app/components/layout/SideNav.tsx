@@ -1,6 +1,6 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-// import { styled } from '@mui/material/styles';
 import { useRouter } from "next/router";
 import Link from "next/link";
 import classnames from "classnames";
@@ -9,27 +9,29 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import sortBy from "lodash.sortby";
 import uniqBy from "lodash.uniqby";
+import { TopBarProps as MobileItemProps } from "./TopBar";
 import {
-  TopBarProps as MobileItemProps, // eslint-disable-line no-unused-vars
-} from "./TopBar";
-// import Button from "../base/Button";
-import {
-  ORANGE_PRIMARY,
-  WHITE_PRIMARY,
+  GREY_054,
   GREY_2,
-  PURPLE_PRIMARY,
   LAYOUT_BORDER,
-  GREY_HOVER,
-  VERTICAL_GRADIENT,
+  PURPLE_004,
+  PURPLE_008,
+  PURPLE_012,
+  PURPLE_054,
+  PURPLE_075,
+  PURPLE_087,
+  PURPLE_100,
+  WHITE_PRIMARY,
 } from "../colors";
-import { POPPINS, ROBOTO } from "../typography";
-import { breakUp, breakDown } from "../breakpoints";
+import { ROBOTO } from "../typography";
+import { breakDown, breakUp } from "../breakpoints";
 import { slideInFromLeft, slideInFromRight } from "../keyframes";
 import { ReactComponent as BackIcon } from "../../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
-import caretUp from "../../../assets/images/component-icons/caret-up.svg";
-import caretDown from "../../../assets/images/component-icons/caret-down.svg";
+import { ReactComponent as CaretUpIcon } from "../../../assets/images/component-icons/caret-up.svg";
+import { ReactComponent as CaretDownIcon } from "../../../assets/images/component-icons/caret-down.svg";
+
 import Section from "../../modules/section";
 
 // proptypes
@@ -45,12 +47,14 @@ type ConditionalSideNavLinkProps =
   | {
       isExternal: false;
       IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
-      isSection: boolean;
+      isSection: boolean; // If true, then the link is a section link which slides out a subnav
+      isDocs?: boolean; // If true, then the StickyReferenceLinks will be shown in the subnav
     }
   | {
       isExternal: true;
       IconSvg?: never;
       isSection?: false;
+      isDocs?: false;
     };
 
 // Combined type of common and conditional props
@@ -61,6 +65,7 @@ interface SideNavProps {
   sectionLinks: SideNavLinkProps[];
   pages: Page[];
   mobileItems: MobileItemProps;
+  stickyReferenceLinks: SideNavLinkProps[];
 }
 
 // helpers
@@ -71,15 +76,22 @@ const getPagesInSection = (pages: Page[], section: SideNavLinkProps) =>
   pages.filter(bySection(section.href));
 
 const getCategory = (d) => (d.group ? d.group.category : d.category);
+const getSubCategory = (d) => (d.group ? d.group.subCategory : d.subCategory);
 
 const findSelectedSection = (
   sectionLinks: SideNavLinkProps[],
   pathname: string
-) =>
-  sectionLinks.find(
+) => {
+  // Sort sectionLinks in descending order of the href length. This way, the function will
+  // first check for the exact match and then check for subpath matches.
+  const sortedSectionLinks = [...sectionLinks].sort(
+    (a, b) => b.href.length - a.href.length
+  );
+  return sortedSectionLinks.find(
     (section) =>
       pathname === section.href || pathname.startsWith(`${section.href}/`)
   );
+};
 
 const keys = (o: Record<string, {}>): string[] => {
   const sorted = Object.keys(o).sort();
@@ -102,9 +114,29 @@ const byGuideStep = (a, b) =>
 
 const sortCategories = (sectionHref: string, categories: string[]) => {
   const categoryOrder = Section.categories(sectionHref);
-  return sortBy(categories, (c) => categoryOrder.indexOf(c));
+  return sortBy(categories, (category) => {
+    const categoryObject = categoryOrder.find((item) => item.name === category);
+    return categoryObject ? categoryObject.priority : Infinity;
+  });
 };
 
+const sortSubCategories = (
+  sectionHref: string,
+  category: string,
+  subCategories: string[]
+): string[] | undefined => {
+  const categoryOrder = Section.categories(sectionHref);
+  const categoryObject = categoryOrder.find((item) => item.name === category);
+
+  if (categoryObject && categoryObject.subCategories.length > 0) {
+    const sortedSubCategories = categoryObject.subCategories.filter(
+      (subCategory) => subCategories.includes(subCategory)
+    );
+    return sortedSubCategories.length > 0 ? sortedSubCategories : undefined;
+  }
+
+  return undefined;
+};
 const sortByWeight = (items) => sortBy(items, (i) => i?.weight);
 
 // components
@@ -123,6 +155,10 @@ const Slide = styled.div`
 `;
 
 const SlidePane = styled.div`
+  flex-grow: 1;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: column;
   align-self: stretch;
   flex: 1 1 auto;
   overflow-x: hidden;
@@ -158,15 +194,15 @@ const StickySectionWrap = styled.div`
 `;
 
 const SectionIconWrap = styled.div`
-  width: 17px;
+  width: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 20px;
+  margin-right: 34px;
 
   svg {
     * {
-      fill: ${PURPLE_PRIMARY};
+      fill: ${GREY_054};
     }
   }
 `;
@@ -176,6 +212,12 @@ const SectionCaretWrap = styled.div`
   justify-content: flex-end;
   flex-grow: 1;
 
+  svg {
+    * {
+      fill: ${PURPLE_054};
+    }
+  }
+
   @media (${breakDown("md")}) {
     display: none;
   }
@@ -184,52 +226,63 @@ const SectionCaretWrap = styled.div`
 type SectionLinkProps = {
   linkProps: SideNavLinkProps;
   isActive: boolean;
+  isStickyReference?: boolean; // If true, the link will be styled as a sticky reference link
+  // at the bottom of the sideNav (used for the 'docs' type sections)
+  newTab?: boolean; // If true, the link will open in a new tab
 };
 
-function SectionLink({ linkProps, isActive }: SectionLinkProps) {
+function SectionLink({
+  linkProps,
+  isActive,
+  isStickyReference,
+  newTab,
+}: SectionLinkProps) {
   const { href, IconSvg, isSection, text, isExternal } = linkProps;
 
   return (
     <Link href={href} passHref>
       <a
-        target={isExternal ? "_blank" : undefined}
-        className={classnames({ active: isActive })}
+        target={isExternal || newTab ? "_blank" : undefined}
+        className={classnames({
+          active: isActive,
+          stickyReference: isStickyReference,
+        })}
         css={css`
           display: flex;
-          height: 53px;
-          padding: 0 15px;
+          height: 48px;
+          padding: 8px 16px;
           margin-left: 3px;
           align-items: center;
           justify-content: flex-start;
           font-family: ${ROBOTO};
           font-weight: 400;
-          font-size: 14px;
-          line-height: 16px;
-          color: ${PURPLE_PRIMARY};
+          font-size: 16px;
+          letter-spacing: 0.15px;
+          line-height: 24px;
+          color: ${PURPLE_087};
           text-decoration: none;
 
           &:hover,
           &:focus {
-            margin-left: unset;
-            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
-                padding-box,
-              linear-gradient(${VERTICAL_GRADIENT}) border-box;
-            border-left: 3px solid transparent;
+            background: ${PURPLE_004};
             outline: none;
           }
 
           &.active {
             margin-left: unset;
-            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
-                padding-box,
-              linear-gradient(${VERTICAL_GRADIENT}) border-box;
-            border-left: 3px solid transparent;
+            background: ${PURPLE_008};
+            border-left: 3px solid ${PURPLE_100};
+          }
+
+          &.stickyReference {
+            border-top: 1px solid ${GREY_2};
+            background: ${WHITE_PRIMARY};
           }
         `}
       >
         <SectionIconWrap>
           {!isExternal ? (
-            <IconSvg className="section-icon" width={17} height={17} />
+            <IconSvg className="section-icon" width={22} height={22} />
           ) : (
             <NewTabIcon className="section-icon" width={15} height={15} />
           )}
@@ -239,7 +292,7 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
 
         {isSection && (
           <SectionCaretWrap>
-            <RightIcon width={5} height={10} />
+            <RightIcon width={18} height={18} />
           </SectionCaretWrap>
         )}
       </a>
@@ -248,9 +301,8 @@ function SectionLink({ linkProps, isActive }: SectionLinkProps) {
 }
 
 const CategoriesWrap = styled.ul`
-  margin: 10px 0 0 34px;
+  margin: 10px 24px 20px 16px;
   padding: 0;
-  border-left: 1px solid ${GREY_2};
 `;
 
 const Category = styled.li`
@@ -259,41 +311,80 @@ const Category = styled.li`
 
 const CategoryHeading = styled.div`
   text-transform: uppercase;
-  font-family: ${POPPINS};
-  font-weight: 600;
-  color: #354153;
-  font-size: 11px;
-  margin: 20px 10px 10px;
+  color: ${PURPLE_075};
+  margin: 10px 10px 10px 0;
+  font-family: ${ROBOTO};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 32px;
+  letter-spacing: 1px;
+  text-align: left;
+`;
+
+const CategoryContent = styled.div`
+  margin-left: 8px;
+`;
+
+const SubCategoryHeading = styled.div`
+  width: 288px;
+  margin: 10px 10px 10px -8px;
+  font-family: ${ROBOTO};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  letter-spacing: 0.17px;
+  color: ${PURPLE_075};
+`;
+
+const StickyReferencesWrap = styled.div`
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
 `;
 
 const groupToggleDocLinkStyles = css`
-  margin: 6px 0;
   font-size: 14px;
   line-height: 140%;
   font-family: ${ROBOTO};
-  color: ${PURPLE_PRIMARY};
-  padding: 4px 20px 4px 10px;
-  border-left: 1px solid transparent;
-  margin-left: -1px;
+  color: ${PURPLE_075};
+  padding: 10px 20px 10px 24px;
+  margin-left: -2px;
+  border-left: 1.5px solid ${PURPLE_012};
 
   &:hover,
   &:focus {
     outline: none;
-    margin-left: -1px;
-    background-color: ${GREY_HOVER};
+    margin-left: -2px;
+    background-color: ${PURPLE_004};
+  }
   }
 `;
 
 const GroupToggle = styled.div`
-  ${groupToggleDocLinkStyles}
+  ${groupToggleDocLinkStyles};
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+
+  &.expanded {
+    color: ${PURPLE_087};
+    font-weight: 500;
+  }
 `;
 
-const GroupCaret = styled.img`
-  max-width: 7px;
+const GroupCaretWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  margin-left: 20px;
+
+  svg {
+    * {
+      fill: ${PURPLE_054};
+    }
+  }
 `;
 
 interface DocLinkProps {
@@ -308,20 +399,19 @@ function DocLink(props: DocLinkProps) {
     <Link href={props.href} passHref>
       <a
         css={css`
-          ${groupToggleDocLinkStyles}
+          ${groupToggleDocLinkStyles};
           display: block;
           text-decoration: none;
+          padding: 10px 10px 10px 24px;
 
           &.active {
-            background: linear-gradient(${GREY_HOVER}, ${GREY_HOVER})
-                padding-box,
-              linear-gradient(${VERTICAL_GRADIENT}) border-box;
-            border-left: 1px solid transparent;
-            color: ${ORANGE_PRIMARY};
+            background: ${PURPLE_008};
+            border-left: 1.5px solid ${PURPLE_100};
+            color: ${PURPLE_087};
           }
 
           &.grouped {
-            padding-left: 30px;
+            margin-left: 24px;
           }
         `}
         className={classnames({ active: props.active, grouped: props.grouped })}
@@ -350,6 +440,7 @@ function DocGroup({ title, docs }: DocGroupProps) {
     <>
       <GroupToggle
         tabIndex={0}
+        className={classnames({ expanded: isExpanded })}
         onClick={() => setIsExpanded(!isExpanded)}
         onKeyPress={(e) =>
           e.key === "Enter" ? setIsExpanded(!isExpanded) : false
@@ -358,9 +449,13 @@ function DocGroup({ title, docs }: DocGroupProps) {
         {title}
 
         {isExpanded ? (
-          <GroupCaret src={caretUp} alt="" />
+          <GroupCaretWrap>
+            <CaretUpIcon width={20} height={20} />
+          </GroupCaretWrap>
         ) : (
-          <GroupCaret src={caretDown} alt="" />
+          <GroupCaretWrap>
+            <CaretDownIcon width={20} height={20} />
+          </GroupCaretWrap>
         )}
       </GroupToggle>
 
@@ -405,7 +500,12 @@ function MobileItems({ button }: MobileItemProps) {
   );
 }
 
-function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
+function SideNav({
+  sectionLinks,
+  pages,
+  mobileItems,
+  stickyReferenceLinks,
+}: SideNavProps) {
   const { pathname } = useRouter();
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
@@ -416,6 +516,10 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
 
   const categories = activeSection
     ? groupby(getPagesInSection(pages, activeSection), getCategory)
+    : {};
+
+  const subCategories = activeSection
+    ? groupby(getPagesInSection(pages, activeSection), getSubCategory)
     : {};
 
   return (
@@ -461,7 +565,7 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
               <StickySectionWrap>
                 <SectionLink
                   linkProps={{
-                    href: "/",
+                    href: "/docs",
                     IconSvg: BackIcon,
                     isSection: false,
                     text: "Back",
@@ -478,44 +582,127 @@ function SideNav({ sectionLinks, pages, mobileItems }: SideNavProps) {
 
               <CategoriesWrap>
                 {sortCategories(activeSection.href, keys(categories)).map(
-                  (c) => {
+                  (c, index) => {
                     const categoryDocs = categories[c];
                     const groups = groupsFrom(categoryDocs);
 
                     return (
-                      <Category key={c}>
+                      <Category key={index}>
                         {c !== "undefined" && (
-                          <CategoryHeading>{c}</CategoryHeading>
+                          <CategoryHeading key={c}>{c}</CategoryHeading>
                         )}
 
-                        {sortByWeight(groups).map((g?: PageGroup) => {
-                          const docs = categoryDocs.filter(byDocGroup(g?.id));
-                          const ungroupedGroup = typeof g === "undefined";
+                        <CategoryContent key={c + index}>
+                          {sortSubCategories(
+                            activeSection.href,
+                            c,
+                            keys(subCategories)
+                          ) === undefined
+                            ? sortByWeight(groups).map((g?: PageGroup) => {
+                                const docs = categoryDocs.filter(
+                                  byDocGroup(g?.id)
+                                );
+                                const ungroupedGroup = typeof g === "undefined";
 
-                          return (
-                            <div key={g?.id}>
-                              {ungroupedGroup ? (
-                                sortByWeight(docs).map((d: Page) => (
-                                  <DocLink
-                                    key={d.id}
-                                    grouped={false}
-                                    href={d.id}
-                                    active={d.id === pathname}
-                                  >
-                                    {d.title}
-                                  </DocLink>
-                                ))
-                              ) : (
-                                <DocGroup title={g?.title} docs={docs} />
-                              )}
-                            </div>
-                          );
-                        })}
+                                return (
+                                  <div key={g?.id}>
+                                    {ungroupedGroup ? (
+                                      sortByWeight(docs).map((d: Page) => (
+                                        <DocLink
+                                          key={d.id}
+                                          grouped={false}
+                                          href={d.id}
+                                          active={d.id === pathname}
+                                        >
+                                          {d.title}
+                                        </DocLink>
+                                      ))
+                                    ) : (
+                                      <DocGroup
+                                        key={g?.title}
+                                        title={g?.title}
+                                        docs={docs}
+                                      />
+                                    )}
+                                  </div>
+                                );
+                              })
+                            : sortSubCategories(
+                                activeSection.href,
+                                c,
+                                keys(subCategories)
+                              )?.map((sc, scIndex) => {
+                                const subCategoryDocs = subCategories[sc];
+                                const sGroups = groupsFrom(subCategoryDocs);
+
+                                return (
+                                  <React.Fragment key={scIndex}>
+                                    {sc !== "undefined" && (
+                                      <React.Fragment key={sc + scIndex}>
+                                        <SubCategoryHeading key={sc}>
+                                          {sc}
+                                        </SubCategoryHeading>
+                                        {sortByWeight(sGroups).map(
+                                          (g?: PageGroup) => {
+                                            const docs = subCategoryDocs.filter(
+                                              byDocGroup(g?.id)
+                                            );
+                                            const ungroupedGroup =
+                                              typeof g === "undefined";
+
+                                            return (
+                                              <div key={g?.id}>
+                                                {ungroupedGroup ? (
+                                                  sortByWeight(docs).map(
+                                                    (d: Page) => (
+                                                      <DocLink
+                                                        key={d.id}
+                                                        grouped={false}
+                                                        href={d.id}
+                                                        active={
+                                                          d.id === pathname
+                                                        }
+                                                      >
+                                                        {d.title}
+                                                      </DocLink>
+                                                    )
+                                                  )
+                                                ) : (
+                                                  <DocGroup
+                                                    title={g?.title}
+                                                    docs={docs}
+                                                  />
+                                                )}
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                      </React.Fragment>
+                                    )}
+                                  </React.Fragment>
+                                );
+                              })}
+                        </CategoryContent>
                       </Category>
                     );
                   }
                 )}
               </CategoriesWrap>
+
+              <StickyReferencesWrap>
+                {/* Only display links
+                when activeSection is a 'docs' type section */}
+                {activeSection.isDocs &&
+                  stickyReferenceLinks.map((l) => (
+                    <SectionLink
+                      key={l.href}
+                      isActive={l.href === pathname}
+                      linkProps={l}
+                      isStickyReference
+                      newTab
+                    />
+                  ))}
+              </StickyReferencesWrap>
             </>
           )}
 

@@ -95,4 +95,42 @@ storiesOf("layout/TopBar", module)
         },
       }}
     />
+  ))
+  .add("with help component", () => (
+    <TopBar
+      algoliaSearch={{
+        branch: "main-algolia",
+        searchClient: algoliasearch(
+          "L2PPGO4SBB",
+          "6a6c05b578da5aa729df7f53776e9f76"
+        ),
+        siteId: "e19df9e6-7024-443d-8ec0-26e8312ce0f9",
+        searchOptions: { hitsPerPage: 5 },
+      }}
+      button={{
+        text: "Get API Keys",
+        link: {
+          href: "https://accounts-sandbox.dwolla.com/sign-up",
+          external: true,
+        },
+      }}
+      helpLinks={[
+        {
+          href: "https://discuss.dwolla.com/",
+          text: "Developer Forum",
+        },
+        {
+          href: "https://support.dwolla.com/s/",
+          text: "Support Center",
+        },
+        {
+          href: "https://accounts.dwolla.com/login",
+          text: "Dashboard",
+        },
+        {
+          href: "https://discuss.dwolla.com/c/api-support/other/31",
+          text: "Submit Feedback",
+        },
+      ]}
+    />
   ));

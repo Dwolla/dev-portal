@@ -2,26 +2,34 @@
 
 exports[`FooterCTA 1`] = `
 <div
-  className="css-1a9nbxj-Container ef88zln1"
+  className="css-10ga4qc-Container ef88zln2"
 >
   <div
-    className="css-k2hv78-StyledContent ef88zln0"
+    className="css-zgjtpw-StyledTopic ef88zln1"
   >
-    <h2
-      className="dark css-gp3io9-global-global-h2-H2-H2"
-    >
-      Test in the Sandbox for free today.
-    </h2>
-    <p
-      className="dark css-1vuzgz2-StyledSubHeader-baseTextStyles-baseTextStyles epw4f0b0"
-    >
-      Use sandbox environment to test API requests.
-    </p>
+    Test in the Sandbox for free today.
+  </div>
+  <div
+    className="css-1ga6xlp-StyledDescription ef88zln0"
+  >
+    Use sandbox environment to test API requests.
   </div>
   <a
-    className="primary large  css-ux75yb-StyledLink-buttonStyles-buttonStyles ek3ainu0"
+    className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeLarge MuiButton-containedSizeLarge MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeLarge MuiButton-containedSizeLarge css-1xnmwiw-MuiButtonBase-root-MuiButton-root"
     href="https://accounts-sandbox.dwolla.com/sign-up"
-    target="_blank"
+    onBlur={[Function]}
+    onContextMenu={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
   >
     Get API Keys
   </a>

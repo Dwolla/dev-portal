@@ -2,35 +2,48 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-1q4no5g-Container e1psldpd5"
+  className="css-y5wall-Container e1psldpd6"
 >
   <a
-    href="/"
+    href="/docs"
     onClick={[Function]}
     onMouseEnter={[Function]}
     onTouchStart={[Function]}
+    style={
+      {
+        "textDecoration": "none",
+      }
+    }
   >
     <img
       alt=""
-      className="css-6cn7c0-StyledLogo e1psldpd4"
+      className="css-3jqt57-StyledLogo e1psldpd5"
       src="test-image-stub"
     />
+    <em
+      className="css-11c4vbk-StyledEm e1psldpd4"
+    >
+       Docs
+    </em>
   </a>
   <div
-    className="css-12cf5ow-LeftAlignWrapper e1psldpd2"
+    className="css-5vssss-LeftAlignWrapper e1psldpd2"
+  />
+  <div
+    className="css-j4xy9d-RightAlignWrapper e1psldpd3"
   >
     <div
       className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
     >
       <label
-        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1fwwx10-MuiFormLabel-root-MuiInputLabel-root"
+        className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1pysi21-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={false}
         id=":r0:"
       >
         Select Language
       </label>
       <div
-        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1cjzvsm-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+        className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         onClick={[Function]}
       >
         <div
@@ -87,10 +100,6 @@ exports[`TopBar 1`] = `
         </fieldset>
       </div>
     </div>
-  </div>
-  <div
-    className="css-1sjip4n-RightAlignWrapper e1psldpd3"
-  >
     <a
       className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
       href="https://accounts-sandbox.dwolla.com/login"

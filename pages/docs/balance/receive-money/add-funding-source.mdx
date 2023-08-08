@@ -1,0 +1,48 @@
+---
+layout: guides
+title: "Step 2: Add a funding source"
+guide:
+  step: 2
+meta:
+  title: Receive Money - Add a funding source | Dwolla API Documentation
+  description: Create a bank funding source for a created Customer to receive funds.
+---
+
+# Step 2: Adding a Funding Source
+
+Within Dwolla, the sending party must always have a verified funding source. Since your Customer is the one sending funds, they will need to both add and verify their bank funding source before being eligible to send funds.
+
+The destination party, or the party receiving funds, does not need to have a verified funding source to receive these funds.
+
+## Bank Addition and Verification Methods
+
+There are multiple ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
+
+| Bank Addition Method                                           | Will the bank be verified?    | Required Information            |
+| -------------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| API - Account & Routing Number                                 | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Dwolla.js](/guides/dwolla-js/add-a-bank-account)              | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Dwolla + Plaid integration](/guides/plaid)                    | Yes                           | Online banking Credentials      |
+| [Dwolla + Secure Exchange solution](/concepts/secure-exchange) | Yes                           | Online banking credentials      |
+| Other Approved Third-party Provider                            | Yes                           | Variable                        |
+
+<AlertBar variation="info">
+  For more information on securely submitting a user’s bank details directly to
+  Dwolla from the client-side of your application, reference our{" "}
+  <a href="/concepts/drop-in-components#create-a-funding-source">
+    Drop-in components
+  </a>
+  .
+</AlertBar>
+
+## Step 2A: Add a Bank to an Unverified Customer
+
+In this step, we will create and attach a verified funding source to your Customer, which will be done using Plaid Link, a third-party bank verification provider. This method will give your Customers the ability to add and verify their bank account in a matter of seconds by authenticating using their online banking credentials.
+
+Once your Customer reaches the page in your application to add a bank account, you will first use Plaid Link to authenticate the user's bank account, exchange the `public_token` for a `processor_token`, and then send the `processor_token` to Dwolla to create the funding source.
+
+To integrate Dwolla with Plaid, we recommend checking out our [Add a Bank via Dwolla + Plaid Integration](/guides/plaid) guide. Additionally, if you would like to see a working example that verifies a bank via Plaid Link (using Next.js/React) and attaches it as a verified funding source to a Dwolla Customer, please check out our [dwolla-plaid-funding-source](https://github.com/Dwolla/integration-examples/blob/main/dwolla-plaid-funding-source) integration example on our GitHub profile.
+
+## Step 2B: Handle Webhooks
+
+If you have an active webhook subscription, you should receive both the `customer_funding_source_added` and `customer_funding_source_verified` webhook immediately following the request to Dwolla to add a funding source using a Plaid `processorToken`.

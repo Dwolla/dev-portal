@@ -1,0 +1,38 @@
+---
+layout: guides
+title: "Overview"
+group:
+  category: Funding Sources
+  title: Add a Bank Using Dwolla.js
+  description: Utilize Dwolla.js to submit an end user’s U.S. bank account information to Dwolla. Dwolla.js is a JavaScript library used to securely submit tokenized information directly to Dwolla.
+guide:
+  step: 0
+  filter: get-building
+  icon: add-bank-dwolla-js.svg
+meta:
+  title: Dwolla.js - Securely Transmit Bank Data | Dwolla API Documentation
+  description: Dwolla.js is a client-side JavaScript library designed to quickly and securely submit bank account information to Dwolla to conduct account-to-account payments.
+---
+
+# Add a Bank Using Dwolla.js
+
+Using dwolla.js, securely transmit sensitive data (bank account and routing number) to Dwolla without the data passing through your server. This resource guide will walk you through the process of generating a funding sources token, collecting the user's bank account information, and calling a JavaScript function to send this data to Dwolla. When you collect and submit the user's bank account information, dwolla.js has built-in validation that will trigger an error if any of the required fields are invalid.
+
+<AlertBar variation="announcement">
+  Sunset notice: Dwolla will be retiring dwolla.js on August 31, 2023. This library should no longer be used, and we recommend migrating to the latest client-side JavaScript library that includes <a href="/concepts/drop-in-components">Drop-in Components</a>. The Drop-in Components library offers an enhanced developer experience and includes functionality that was previously only available in dwolla.js.
+
+For more information, please see the official <a href="https://discuss.dwolla.com/t/may-2023-updates-retiring-dwolla-s-client-side-javascript-library-dwolla-js/8969">announcement</a> and <a href="https://discuss.dwolla.com/t/migration-guide-dwolla-js-to-dwolla-web-js/8968">migration guide</a>.
+
+</AlertBar>
+
+### Getting Started: Initial configuration
+
+#### Include dwolla.js
+
+Begin the client-side implementation by including dwolla.js in the HEAD of your HTML page. You can include either the development version(`<script src="https://cdn.dwolla.com/1/dwolla.js"></script>`) or the minified version (`<script src="https://cdn.dwolla.com/1/dwolla.min.js"></script>`) of dwolla.js.
+
+```html
+<head>
+  <script src="https://cdn.dwolla.com/1/dwolla.js"></script>
+</head>
+```

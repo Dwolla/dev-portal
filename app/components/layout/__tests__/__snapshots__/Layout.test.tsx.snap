@@ -6,35 +6,48 @@ exports[`Layout 1`] = `
     className="css-1h0fusp-TopBarWrapper e1ijxxr31"
   >
     <div
-      className="css-1q4no5g-Container e1psldpd5"
+      className="css-y5wall-Container e1psldpd6"
     >
       <a
-        href="/"
+        href="/docs"
         onClick={[Function]}
         onMouseEnter={[Function]}
         onTouchStart={[Function]}
+        style={
+          {
+            "textDecoration": "none",
+          }
+        }
       >
         <img
           alt=""
-          className="css-6cn7c0-StyledLogo e1psldpd4"
+          className="css-3jqt57-StyledLogo e1psldpd5"
           src="test-image-stub"
         />
+        <em
+          className="css-11c4vbk-StyledEm e1psldpd4"
+        >
+           Docs
+        </em>
       </a>
       <div
-        className="css-12cf5ow-LeftAlignWrapper e1psldpd2"
+        className="css-5vssss-LeftAlignWrapper e1psldpd2"
+      />
+      <div
+        className="css-j4xy9d-RightAlignWrapper e1psldpd3"
       >
         <div
           className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
         >
           <label
-            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1fwwx10-MuiFormLabel-root-MuiInputLabel-root"
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1pysi21-MuiFormLabel-root-MuiInputLabel-root"
             data-shrink={false}
             id=":r0:"
           >
             Select Language
           </label>
           <div
-            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1cjzvsm-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
             onClick={[Function]}
           >
             <div
@@ -91,10 +104,6 @@ exports[`Layout 1`] = `
             </fieldset>
           </div>
         </div>
-      </div>
-      <div
-        className="css-1sjip4n-RightAlignWrapper e1psldpd3"
-      >
         <a
           className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
           href="https://accounts-sandbox.dwolla.com/login"
@@ -129,144 +138,110 @@ exports[`Layout 1`] = `
     className="css-1lvinfx-LayoutContainer e1ijxxr36"
   >
     <div
-      className="visuallyHidden css-1ckghpz-LeftSidebar e1ijxxr35"
+      className="visuallyHidden css-kjw9mq-LeftSidebar e1ijxxr35"
     >
       <div
         className="css-6qgefa-SideNavWrapper e1ijxxr34"
       >
         <div
-          className="css-yeohq5-Container e1qiqw1s14"
+          className="css-yeohq5-Container e1qiqw1s17"
         >
           <div
-            className="css-kibqvq-Slide e1qiqw1s13"
+            className="css-kibqvq-Slide e1qiqw1s16"
           >
             <div
-              className="left css-1jc4k7f-SlidePane e1qiqw1s12"
+              className="left css-soqej8-SlidePane e1qiqw1s15"
               id="body-scroll-lock-side-nav"
             >
               <div
-                className="css-kgvw59-SectionWrap e1qiqw1s11"
+                className="css-kgvw59-SectionWrap e1qiqw1s14"
               >
                 <a
-                  className="active css-1pzv1z2-SectionLink-SectionLink"
-                  href="/"
+                  className=" css-nr9jvx-SectionLink-SectionLink"
+                  href="/docs"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   Home
                 </a>
                 <a
-                  className=" css-1pzv1z2-SectionLink-SectionLink"
+                  className=" css-nr9jvx-SectionLink-SectionLink"
+                  href="/docs/balance"
+                  onClick={[Function]}
+                  onMouseEnter={[Function]}
+                  onTouchStart={[Function]}
+                >
+                  <div
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+                  >
+                    <svg
+                      className="section-icon"
+                      height={22}
+                      width={22}
+                    />
+                  </div>
+                  Balance
+                </a>
+                <a
+                  className=" css-nr9jvx-SectionLink-SectionLink"
                   href="/api-reference"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   API Reference
                   <div
-                    className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
+                    className="css-1qriqu9-SectionCaretWrap e1qiqw1s10"
                   >
                     <svg
-                      height={10}
-                      width={5}
+                      height={18}
+                      width={18}
                     />
                   </div>
                 </a>
                 <a
-                  className=" css-1pzv1z2-SectionLink-SectionLink"
-                  href="/guides"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onTouchStart={[Function]}
-                >
-                  <div
-                    className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
-                  >
-                    <svg
-                      className="section-icon"
-                      height={17}
-                      width={17}
-                    />
-                  </div>
-                  Guides
-                  <div
-                    className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
-                  >
-                    <svg
-                      height={10}
-                      width={5}
-                    />
-                  </div>
-                </a>
-                <a
-                  className=" css-1pzv1z2-SectionLink-SectionLink"
-                  href="/concepts"
-                  onClick={[Function]}
-                  onMouseEnter={[Function]}
-                  onTouchStart={[Function]}
-                >
-                  <div
-                    className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
-                  >
-                    <svg
-                      className="section-icon"
-                      height={17}
-                      width={17}
-                    />
-                  </div>
-                  Concepts
-                  <div
-                    className="css-y8ea5i-SectionCaretWrap e1qiqw1s7"
-                  >
-                    <svg
-                      height={10}
-                      width={5}
-                    />
-                  </div>
-                </a>
-                <a
-                  className=" css-1pzv1z2-SectionLink-SectionLink"
+                  className=" css-nr9jvx-SectionLink-SectionLink"
                   href="/sdks-tools"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
                   >
                     <svg
                       className="section-icon"
-                      height={17}
-                      width={17}
+                      height={22}
+                      width={22}
                     />
                   </div>
                   SDKs & Tools
                 </a>
               </div>
               <div
-                className="css-1o94x0z-ExternalSectionWrap e1qiqw1s10"
+                className="css-17mreui-ExternalSectionWrap e1qiqw1s13"
               >
                 <a
-                  className=" css-1pzv1z2-SectionLink-SectionLink"
+                  className=" css-nr9jvx-SectionLink-SectionLink"
                   href="https://discuss.dwolla.com/"
                   onClick={[Function]}
                   onMouseEnter={[Function]}
@@ -274,7 +249,7 @@ exports[`Layout 1`] = `
                   target="_blank"
                 >
                   <div
-                    className="css-1g7tfl0-SectionIconWrap e1qiqw1s8"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
                   >
                     <svg
                       className="section-icon"
@@ -286,7 +261,7 @@ exports[`Layout 1`] = `
                 </a>
               </div>
               <div
-                className="css-1kdywir-MobileWrap e1qiqw1s1"
+                className="css-19j3ofi-MobileWrap e1qiqw1s1"
               >
                 <div
                   className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
@@ -318,18 +293,18 @@ exports[`Layout 1`] = `
         </div>
       </div>
       <a
-        className="css-joki7c-ContainerLink eyy6ry91"
+        className="css-pnlj05-ContainerLink eyy6ry91"
         href="https://status.dwolla.com"
         target="_blank"
       >
         <span
-          className="indicator-none css-1tmj2bz-StatusIcon eyy6ry90"
+          className="indicator-none css-ulyjnq-StatusIcon eyy6ry90"
         />
         apiStatus description
       </a>
     </div>
     <div
-      className="css-1myakp4-MainArea e1ijxxr33"
+      className="css-1v2y2k5-MainArea e1ijxxr33"
     >
       <div
         className=" css-x5ql3q-ContentArea e1ijxxr32"
@@ -342,13 +317,13 @@ exports[`Layout 1`] = `
         className=" css-17pvfhk-FooterWrapper e1ijxxr30"
       >
         <div
-          className="css-1q6ftt6-Container eg0edpy12"
+          className="css-rntgrl-Container eg0edpy12"
         >
           <div
             className="css-549mvs-LogoContainer eg0edpy11"
           >
             <a
-              href="/"
+              href="/docs"
               onClick={[Function]}
               onMouseEnter={[Function]}
               onTouchStart={[Function]}

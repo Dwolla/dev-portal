@@ -19,6 +19,13 @@ module.exports = (phase) =>
           disableStaticImages: true,
         },
         pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
+        redirects: async () => [
+          {
+            source: "/",
+            destination: "/docs",
+            permanent: true,
+          },
+        ],
         webpack: (config) => {
           config.module.rules.unshift({
             test: /\.svg$/,

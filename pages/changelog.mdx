@@ -12,13 +12,27 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Upcoming
 
+### 2023-08-31
+
+**SUNSET**
+
+- Dwolla will be retiring the `dwolla.js` library, which supports adding an unverified bank funding source. Check out the official [announcement](https://discuss.dwolla.com/t/may-2023-updates-retiring-dwolla-s-client-side-javascript-library-dwolla-js/8969).
+- The legacy dwolla.js will be replaced with functionality that has been added to our [Drop-in Components library](/concepts/drop-in-components#latest-v220). This library will serve as our primary web UI components library and offer an enhanced developer experience. Please refer to our [migration guide](https://discuss.dwolla.com/t/migration-guide-dwolla-js-to-dwolla-web-js/8968) for more details, including alternative solutions.
+- The following API endpoints will be removed as part of the sunset: `/customers/{id}/iav-token` and `/customers/{id}/funding-sources-token`.
+
+## Completed
+
+### 2023-05-15
+
+**ADDED**
+
+- Added a new third-party data provider, Flinks, to Dwolla's [Secure Exchange solution](/concepts/secure-exchange).
+
 ### 2023-05-31
 
 **DEPRECATED**
 
 - Dwolla has discontinued support for the Push-to-Debit product feature, which was powered by dwolla-cards.js. Includes removal of card related webhooks as well as the funding source type for cards to support Push-to-Debit payments.
-
-## Completed
 
 ### 2022-12-31
 
