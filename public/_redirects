@@ -134,7 +134,7 @@
 /guides/dwolla-js/add-a-bank-account/create-token    /docs/dwolla-js/create-token
 /guides/dwolla-js/add-a-bank-account/handle-response    /docs/dwolla-js/handle-response
 /guides/dwolla-js/add-a-bank-account    /docs/dwolla-js
-/guides/sandbox/customers    /testing/customers
-/guides/sandbox/funding-sources    /testing/funding-sources
-/guides/sandbox    /testing
-/guides/sandbox/transfers    /testing/transfers
+/guides/sandbox/customers    /docs/balance/testing/customers
+/guides/sandbox/funding-sources    /docs/balance/testing/funding-sources
+/guides/sandbox    /docs/balance/testing
+/guides/sandbox/transfers    /docs/balance/testing/transfers

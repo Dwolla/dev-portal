@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react";
 import Card from "../../app/components/base/Card";
 import CardGrid from "../../app/components/base/CardGrid";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
-import productIcon from "../../assets/images/content-images/content-icons/dwolla-balance-product-icon.svg";
+import productIcon from "../../assets/images/product-icons-and-heroes/dwolla-balance-icon-white-48x48.svg";
 
 const Container = styled.div`
   padding: 30px;
@@ -22,7 +22,7 @@ storiesOf("base/CardGrid", module).add("default", () => (
           },
         ]}
         icon={productIcon}
-        productName="Dwolla Balance"
+        product="BALANCE"
         topic="Use our existing bank partnerships"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       />

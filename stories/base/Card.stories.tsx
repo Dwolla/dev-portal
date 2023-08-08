@@ -3,7 +3,8 @@ import { storiesOf } from "@storybook/react";
 import styled from "@emotion/styled";
 import Card from "../../app/components/base/Card";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
-import productIcon from "../../assets/images/content-images/content-icons/dwolla-balance-product-icon.svg";
+import balanceIcon from "../../assets/images/product-icons-and-heroes/dwolla-balance-icon-white-48x48.svg";
+import connectIcon from "../../assets/images/content-images/content-icons/dwolla-connect-product-icon.svg";
 
 const CardWrapper = styled.div`
   width: 400px;
@@ -74,8 +75,8 @@ storiesOf("base/Card", module)
           external: false,
         },
       ]}
-      icon={productIcon}
-      productName="Dwolla Balance"
+      icon={balanceIcon}
+      product="BALANCE"
       topic="Use our existing bank partnerships"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     />
@@ -90,8 +91,8 @@ storiesOf("base/Card", module)
             external: false,
           },
         ]}
-        icon={productIcon}
-        productName="Dwolla Balance"
+        icon={connectIcon}
+        product="CONNECT"
         topic="Use our existing bank partnerships"
         description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       />

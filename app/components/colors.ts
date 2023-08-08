@@ -69,9 +69,6 @@ export const LAYOUT_BORDER = "rgba(244, 247, 251, 1)";
 export const VERTICAL_GRADIENT =
   "180deg, #E98453 4.14%, #D46E62 55.07%, #BE5771 100%";
 
-export const PRODUCT_ICON_GRADIENT =
-  "linear-gradient(45deg, #f3904a 0%, #aa437f 100%)";
-
 // Purple colors 2023
 export const PURPLE_004 = "rgba(31, 31, 50, 0.04)";
 export const PURPLE_008 = "rgba(31, 31, 50, 0.08)";
@@ -86,3 +83,16 @@ export const PURPLE_100 = "rgba(31, 31, 50, 1)";
 
 // White RGBA shades
 export const WHITE_070 = "rgba(255, 255, 255, 0.7)";
+
+// Product colors
+
+export const BALANCE_PRIMARY = "#05A1AD";
+export const BALANCE_LIGHT = "#9CD3DC";
+export const BALANCE_DARK = "#00475E";
+export const CONNECT_PRIMARY = "#E23C7B";
+export const CONNECT_LIGHT = "#FFC3DE";
+export const CONNECT_DARK = "#631F3E";
+export const BALANCE_HERO_GRADIENT = `linear-gradient(333deg, ${BALANCE_PRIMARY} 0%,  ${BALANCE_DARK} 100%);`;
+export const CONNECT_HERO_GRADIENT = `linear-gradient(333deg, ${CONNECT_PRIMARY} 0%,  ${CONNECT_DARK} 100%);`;
+export const BALANCE_ICON_GRADIENT = `linear-gradient(45deg, ${BALANCE_PRIMARY} 0%,  ${BALANCE_DARK} 100%);`;
+export const CONNECT_ICON_GRADIENT = `linear-gradient(45deg, ${CONNECT_PRIMARY} 0%,  ${CONNECT_DARK} 100%);`;
