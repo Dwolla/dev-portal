@@ -162,7 +162,7 @@ exports[`IndexPageGrid 1`] = `
             Send ACH transfers. Choose custom (Access API) onboarding or Transfer (OAuth) account creation.
           </div>
           <div
-            className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+            className=" css-n0wfp0-LinkTextStyle ejy78ug0"
           >
             <a
               className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -179,6 +179,11 @@ exports[`IndexPageGrid 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              style={
+                {
+                  "justifyContent": "flex-start",
+                }
+              }
               tabIndex={0}
             >
               GitHub Repository
@@ -235,7 +240,7 @@ exports[`IndexPageGrid 1`] = `
             Accept ACH transfers. Covers both Access API and Transfer integrations.
           </div>
           <div
-            className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+            className=" css-n0wfp0-LinkTextStyle ejy78ug0"
           >
             <a
               className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -252,6 +257,11 @@ exports[`IndexPageGrid 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              style={
+                {
+                  "justifyContent": "flex-start",
+                }
+              }
               tabIndex={0}
             >
               GitHub Repository
@@ -308,7 +318,7 @@ exports[`IndexPageGrid 1`] = `
             Facilitate ACH transfers between two distinct parties, e.g. for marketplace applications that connect buyers with sellers for bank to bank payments. Features Access API integration.
           </div>
           <div
-            className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+            className=" css-n0wfp0-LinkTextStyle ejy78ug0"
           >
             <a
               className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -325,6 +335,11 @@ exports[`IndexPageGrid 1`] = `
               onTouchEnd={[Function]}
               onTouchMove={[Function]}
               onTouchStart={[Function]}
+              style={
+                {
+                  "justifyContent": "flex-start",
+                }
+              }
               tabIndex={0}
             >
               GitHub Repository

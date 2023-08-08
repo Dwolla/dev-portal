@@ -141,7 +141,7 @@ exports[`with Center Align and Link 1`] = `
     Description
   </div>
   <div
-    className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
     <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -158,6 +158,11 @@ exports[`with Center Align and Link 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
     >
       Learn More
@@ -213,7 +218,7 @@ exports[`with Center Align, Link and Badge 1`] = `
     Description
   </div>
   <div
-    className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
     <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -230,6 +235,11 @@ exports[`with Center Align, Link and Badge 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
     >
       Learn More
@@ -355,7 +365,7 @@ exports[`with Flex, Link and Badge 1`] = `
       Description
     </div>
     <div
-      className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+      className=" css-n0wfp0-LinkTextStyle ejy78ug0"
     >
       <a
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -372,6 +382,11 @@ exports[`with Flex, Link and Badge 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
+        style={
+          {
+            "justifyContent": "flex-start",
+          }
+        }
         tabIndex={0}
       >
         Learn More
@@ -470,7 +485,7 @@ exports[`with Languages 1`] = `
     Description
   </div>
   <div
-    className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
     <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -487,6 +502,11 @@ exports[`with Languages 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
     >
       Github Repository
@@ -536,7 +556,7 @@ exports[`with Link 1`] = `
     Description
   </div>
   <div
-    className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
     <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -553,6 +573,11 @@ exports[`with Link 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
     >
       Learn More
@@ -608,7 +633,7 @@ exports[`with Link and Badge 1`] = `
     Description
   </div>
   <div
-    className=" css-1kx7m14-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
     <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
@@ -625,6 +650,11 @@ exports[`with Link and Badge 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
     >
       Learn More

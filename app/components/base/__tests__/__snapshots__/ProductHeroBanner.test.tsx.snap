@@ -2,7 +2,7 @@
 
 exports[`FooterCTA 1`] = `
 <div
-  className="css-1y7cwux-StyledBanner esy61rv5"
+  className="css-88pzot-StyledBanner esy61rv5"
 >
   <div
     className="css-obbnl1-BannerContentWrap esy61rv4"
@@ -13,7 +13,7 @@ exports[`FooterCTA 1`] = `
       Dwolla Balance
     </div>
     <div
-      className="css-s0bnwe-StyledDescription esy61rv2"
+      className="css-1wh94x8-StyledDescription esy61rv2"
     >
       Use Dwolla’s existing bank partnerships to connect your software to the banking infrastructure.
     </div>

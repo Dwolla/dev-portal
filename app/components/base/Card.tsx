@@ -148,11 +148,10 @@ const LinkTextStyle = styled.div`
   &.column {
     display: flex;
     flex-flow: row wrap;
-
     justify-content: space-between;
   }
 
-  a {
+  > * {
     flex-basis: 50%;
   }
 `;
@@ -261,6 +260,7 @@ function Card({
                 href={link.href}
                 variant="text"
                 color="secondary"
+                style={{ justifyContent: "flex-start" }}
                 endIcon={
                   link.external ? <OpenInNewIcon /> : <ArrowForwardIcon />
                 }
