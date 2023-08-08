@@ -104,6 +104,10 @@
 /guides/send-money    /docs/balance/send-money
 /guides/send-money/retrieve-funding-sources    /docs/balance/send-money/retrieve-funding-sources
 /concepts/sift    /docs/balance/sift
+/guides/sandbox/customers    /testing/customers
+/guides/sandbox/funding-sources    /testing/funding-sources
+/guides/sandbox    /testing
+/guides/sandbox/transfers    /testing/transfers
 /concepts/transfer-failures    /docs/balance/transfer-failures
 /concepts/transfer-lifecycle    /docs/balance/transfer-lifecycle
 /guides/transfer-money-between-users/create-transfer    /docs/balance/transfer-money-between-users/create-transfer
@@ -134,7 +138,3 @@
 /guides/dwolla-js/add-a-bank-account/create-token    /docs/dwolla-js/create-token
 /guides/dwolla-js/add-a-bank-account/handle-response    /docs/dwolla-js/handle-response
 /guides/dwolla-js/add-a-bank-account    /docs/dwolla-js
-/guides/sandbox/customers    /testing/customers
-/guides/sandbox/funding-sources    /testing/funding-sources
-/guides/sandbox    /testing
-/guides/sandbox/transfers    /testing/transfers
