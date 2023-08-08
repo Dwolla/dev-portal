@@ -164,6 +164,7 @@ exports[`with Center Align and Link 1`] = `
         }
       }
       tabIndex={0}
+      target="_blank"
     >
       Learn More
       <span
@@ -241,6 +242,7 @@ exports[`with Center Align, Link and Badge 1`] = `
         }
       }
       tabIndex={0}
+      target="_blank"
     >
       Learn More
       <span
@@ -388,6 +390,7 @@ exports[`with Flex, Link and Badge 1`] = `
           }
         }
         tabIndex={0}
+        target="_blank"
       >
         Learn More
         <span
@@ -508,6 +511,7 @@ exports[`with Languages 1`] = `
         }
       }
       tabIndex={0}
+      target="_blank"
     >
       Github Repository
       <span
@@ -579,6 +583,7 @@ exports[`with Link 1`] = `
         }
       }
       tabIndex={0}
+      target="_blank"
     >
       Learn More
       <span
@@ -656,6 +661,7 @@ exports[`with Link and Badge 1`] = `
         }
       }
       tabIndex={0}
+      target="_blank"
     >
       Learn More
       <span

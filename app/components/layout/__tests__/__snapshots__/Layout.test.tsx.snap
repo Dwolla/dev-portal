@@ -127,7 +127,7 @@ exports[`Layout 1`] = `
       </div>
       <div
         aria-labelledby="Open menu"
-        className="css-mj3r16-Hamburger e1psldpd1"
+        className="css-i37cwj-Hamburger e1psldpd1"
         onClick={[Function]}
         onKeyDown={[Function]}
         tabIndex={0}

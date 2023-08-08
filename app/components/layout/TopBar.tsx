@@ -12,8 +12,9 @@ import { LanguageContext } from "../util/Contexts";
 import { ROBOTO } from "../typography";
 import { breakDown, breakUp } from "../breakpoints";
 import {
-  GREY_2,
   GREY_4,
+  GREY_5,
+  GREY_9,
   PURPLE_023,
   PURPLE_075,
   WHITE_PRIMARY,
@@ -122,16 +123,16 @@ const Hamburger = styled.div`
   cursor: pointer;
   background-image: linear-gradient(
     to bottom,
-    ${GREY_2},
-    ${GREY_2} 16.67%,
+    ${GREY_9},
+    ${GREY_9} 16.67%,
     transparent 16.67%,
     transparent 41.67%,
-    ${GREY_2} 41.67%,
-    ${GREY_2} 58.33%,
+    ${GREY_9} 41.67%,
+    ${GREY_9} 58.33%,
     transparent 58.33%,
     transparent 83.33%,
-    ${GREY_2} 83.33%,
-    ${GREY_2} 100%
+    ${GREY_9} 83.33%,
+    ${GREY_9} 100%
   );
 
   @media (${breakUp("lg")}) {
@@ -154,14 +155,14 @@ const StyledCloseIcon = styled.div`
   margin-left: auto;
   svg {
     * {
-      fill: ${GREY_2};
+      fill: ${GREY_9};
     }
   }
 
   :hover {
     svg {
       * {
-        fill: ${GREY_4};
+        fill: ${GREY_5};
       }
     }
   }
