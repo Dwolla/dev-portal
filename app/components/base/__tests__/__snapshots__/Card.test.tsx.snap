@@ -141,11 +141,11 @@ exports[`with Center Align and Link 1`] = `
     Description
   </div>
   <div
-    className="css-102hsch-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
-    <button
+    <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-      disabled={false}
+      href="https://www.dwolla.com"
       onBlur={[Function]}
       onContextMenu={[Function]}
       onDragLeave={[Function]}
@@ -158,8 +158,12 @@ exports[`with Center Align and Link 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
-      type="button"
     >
       Learn More
       <span
@@ -177,7 +181,7 @@ exports[`with Center Align and Link 1`] = `
           />
         </svg>
       </span>
-    </button>
+    </a>
   </div>
 </div>
 `;
@@ -214,11 +218,11 @@ exports[`with Center Align, Link and Badge 1`] = `
     Description
   </div>
   <div
-    className="css-102hsch-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
-    <button
+    <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-      disabled={false}
+      href="https://www.dwolla.com"
       onBlur={[Function]}
       onContextMenu={[Function]}
       onDragLeave={[Function]}
@@ -231,8 +235,12 @@ exports[`with Center Align, Link and Badge 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
-      type="button"
     >
       Learn More
       <span
@@ -250,7 +258,7 @@ exports[`with Center Align, Link and Badge 1`] = `
           />
         </svg>
       </span>
-    </button>
+    </a>
   </div>
 </div>
 `;
@@ -357,11 +365,11 @@ exports[`with Flex, Link and Badge 1`] = `
       Description
     </div>
     <div
-      className="css-102hsch-LinkTextStyle ejy78ug0"
+      className=" css-n0wfp0-LinkTextStyle ejy78ug0"
     >
-      <button
+      <a
         className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-        disabled={false}
+        href="https://www.dwolla.com"
         onBlur={[Function]}
         onContextMenu={[Function]}
         onDragLeave={[Function]}
@@ -374,8 +382,12 @@ exports[`with Flex, Link and Badge 1`] = `
         onTouchEnd={[Function]}
         onTouchMove={[Function]}
         onTouchStart={[Function]}
+        style={
+          {
+            "justifyContent": "flex-start",
+          }
+        }
         tabIndex={0}
-        type="button"
       >
         Learn More
         <span
@@ -393,7 +405,7 @@ exports[`with Flex, Link and Badge 1`] = `
             />
           </svg>
         </span>
-      </button>
+      </a>
     </div>
   </div>
 </div>
@@ -473,11 +485,11 @@ exports[`with Languages 1`] = `
     Description
   </div>
   <div
-    className="css-102hsch-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
-    <button
+    <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-      disabled={false}
+      href="https://www.dwolla.com"
       onBlur={[Function]}
       onContextMenu={[Function]}
       onDragLeave={[Function]}
@@ -490,8 +502,12 @@ exports[`with Languages 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
-      type="button"
     >
       Github Repository
       <span
@@ -512,7 +528,7 @@ exports[`with Languages 1`] = `
       <span
         className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
       />
-    </button>
+    </a>
   </div>
 </div>
 `;
@@ -540,11 +556,11 @@ exports[`with Link 1`] = `
     Description
   </div>
   <div
-    className="css-102hsch-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
-    <button
+    <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-      disabled={false}
+      href="https://www.dwolla.com"
       onBlur={[Function]}
       onContextMenu={[Function]}
       onDragLeave={[Function]}
@@ -557,8 +573,12 @@ exports[`with Link 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
-      type="button"
     >
       Learn More
       <span
@@ -576,7 +596,7 @@ exports[`with Link 1`] = `
           />
         </svg>
       </span>
-    </button>
+    </a>
   </div>
 </div>
 `;
@@ -613,11 +633,11 @@ exports[`with Link and Badge 1`] = `
     Description
   </div>
   <div
-    className="css-102hsch-LinkTextStyle ejy78ug0"
+    className=" css-n0wfp0-LinkTextStyle ejy78ug0"
   >
-    <button
+    <a
       className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textSecondary MuiButton-sizeMedium MuiButton-textSizeMedium css-1d3f8j8-MuiButtonBase-root-MuiButton-root"
-      disabled={false}
+      href="https://www.dwolla.com"
       onBlur={[Function]}
       onContextMenu={[Function]}
       onDragLeave={[Function]}
@@ -630,8 +650,12 @@ exports[`with Link and Badge 1`] = `
       onTouchEnd={[Function]}
       onTouchMove={[Function]}
       onTouchStart={[Function]}
+      style={
+        {
+          "justifyContent": "flex-start",
+        }
+      }
       tabIndex={0}
-      type="button"
     >
       Learn More
       <span
@@ -649,7 +673,7 @@ exports[`with Link and Badge 1`] = `
           />
         </svg>
       </span>
-    </button>
+    </a>
   </div>
 </div>
 `;
