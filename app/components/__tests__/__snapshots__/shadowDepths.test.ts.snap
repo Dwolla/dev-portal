@@ -2,6 +2,7 @@
 
 exports[`shadowDepths 1`] = `
 {
+  "BALANCE_ICON_SHADOW": "0px 0px 15px #00475E",
   "BOX_SHADOW_1": "0 1px 2px 0 rgba(31,54,78,0.12)",
   "BOX_SHADOW_2": "0 2px 4px 0 rgba(31,54,78,0.12)",
   "BOX_SHADOW_3": "0 4px 8px 0 rgba(31,54,78,0.12)",
@@ -10,5 +11,6 @@ exports[`shadowDepths 1`] = `
   "BOX_SHADOW_6": "0 3px 5px 0 rgba(53, 65, 83, 0.24)",
   "BOX_SHADOW_7": "0 15px 25px 0 rgba(218, 225, 232, 0.7)",
   "BOX_SHADOW_8": "0px 5px 5px -3px rgba(31, 31, 50, 0.2), 0px 8px 10px 1px rgba(31, 31, 50, 0.14), 0px 3px 14px 2px rgba(31, 31, 50, 0.12);",
+  "CONNECT_ICON_SHADOW": "0px 0px 15px #631F3E",
 }
 `;

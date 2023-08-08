@@ -69,6 +69,8 @@ Dwolla's UI components library contains a variety of supported components that r
 
 The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a Receive Only user with `type = "receive-only"`. Receive Only users are restriced to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
+Added version: `v2.0.0`
+
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
 ##### Example Configuration and Usage
@@ -139,6 +141,8 @@ dwolla-error-message
 ### Create an Unverified Customer
 
 The `dwolla-customer-create` component is used to display a form to collect the required information needed to create an Unverified Customer. An Unverified Customer is a customer type that requires a minimal amount of information in order to be created. This information includes: First Name, Last Name, Email, Optionally: Business Name for Businesses. To allow users to enter a Business Name, include the optional attribute `isBusiness` in the drop-in component. To find out more about the abilities and limitations of this customer type, [visit our docs](/concepts/customer-types#unverified-customer) on concepts.
+
+Added version: `v2.0.0`
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
@@ -239,6 +243,8 @@ dwolla-error-message
 
 The `dwolla-customer-update` component is used to upgrade an Unverified Customer into a Personal Verified Customer. Upgrading an Unverified Customer to a Verified Customer will give them the ability to increase their transaction limits. For more information on the difference between an Unverified and Verified Customer, [visit our docs](/concepts/customer-types) on concepts.
 
+Added version: `v2.0.0`
+
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.update`
 
 ##### Example Configuration and Usage
@@ -323,6 +329,8 @@ dwolla-error-message
 ### Create a Personal Verified Customer
 
 The `dwolla-personal-vcr` component is used to display a form to collect the required information needed to create an Personal Verified Customer. Personal Verified Customers can both send and receive funds, as well as hold a Dwolla balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+
+Added version: `v2.0.0`
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
@@ -428,6 +436,8 @@ dwolla-info-message
 ### Create a Business Verified Customer
 
 The `dwolla-business-vcr` component is used to display a form to collect the required information needed to create a Business Verified Customer. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+
+Added version: `v2.1.0`
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.create`
 
@@ -557,6 +567,8 @@ tooltip-shift,
 
 The `dwolla-beneficial-owners` component is used to display a form to collect the required information needed to [add Beneficial Owners](/guides/business-verified-customer/add-beneficial-owners#step-3-adding-beneficial-owners) after the creation of a Business Verified Customer. This component can be paired with the `dwolla-business-vcr` component or be used in isolation. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
+Added version: `v2.1.3`
+
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) possible actions: `beneficialowners.create`, `beneficialownership.read`, `customer.read`, `beneficialownership.certify`, `beneficialowners.update`, `beneficialowner.documents.create`, `beneficialowner.delete`
 
 ##### Example Configuration and Usage
@@ -645,9 +657,11 @@ dwolla-loading
   height="75%"
 />
 
-### Document upload
+### Document Upload
 
 The `dwolla-document-upload` component can be used if a Verified Customer or a Beneficial Owner has a `document` status and needs to upload an identifying document to complete verification of their account. A government-issued document might be required to verify an individual or business's identity.
+
+Added version: `v2.0.0`
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.documents.create` or `beneficialowner.documents.create`
 
@@ -718,6 +732,8 @@ The `dwolla-funding-source-create` component is used to display a form to collec
   feature, the interaction between the API and the customer must happen outside
   of the drop-ins component library at this time.
 </AlertBar>
+
+Added version: `v2.2.0`
 
 [Create client-token](/api-reference/drop-in-components/create-client-token) action(s): `customer.fundingsources.create` and, if `initiateMicroDeposits` is set to true, `customer.microdeposits.create`.
 
@@ -799,6 +815,8 @@ View all required vs. optional parameters in our [API Reference](/api-reference/
 
 The `dwolla-micro-deposits-verify` component can be used to display a form to collect the micro-deposit amounts needed to verify a Customer's [bank funding source](/api-reference/funding-sources). It requires the `customerId` and `fundingSourceId` to be passed in as attributes. We recommend presenting this component to the Customer once micro-deposits have successfully posted into their bank funding source. Check out our guide on [verifying a bank with micro-deposits](/guides/micro-deposit-verification) for more information.
 
+Added version: `v2.2.0`
+
 [Create client-token](/api-reference/drop-in-components/create-client-token) action(s): `customer.fundingsources.read` and `customer.microdeposits.verify`.
 
 #### Example Configuration and Usage
@@ -870,6 +888,8 @@ dwolla-info-message
 ### Display a Verified Customer's Balance
 
 The `dwolla-balance-display` component can be used for any customer who already has a Dwolla balance that needs to be displayed. This can be a Personal Verified Customer or a Business Verified Customer.
+
+Added version: `v2.0.0`
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.fundingsources.read`
 
@@ -943,6 +963,8 @@ In order to add a funding source and verify it, you can:
 
 - [Add a bank](https://developers.dwolla.com/guides/dwolla-js/add-a-bank-account#add-a-bank-using-dwollajs) with an account and routing number, and afterward verify it with [microdeposits](https://developers.dwolla.com/guides/micro-deposit-verification#verify-a-bank-account-with-micro-deposits)
 - Add and verify a bank with [Dwolla + Plaid integration](https://developers.dwolla.com/guides/plaid#plaid-integration)
+
+Added version: `v2.0.0`
 
 [Create client-token](https://developers.dwolla.com/api-reference/drop-in-components/create-client-token) action: `customer.transfers.send`
 

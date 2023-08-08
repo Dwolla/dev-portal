@@ -19,7 +19,6 @@ import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
-import { ReactComponent as TestingIcon } from "../assets/images/component-icons/side-nav/testing-sandbox.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
@@ -80,14 +79,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isDocs: false,
   },
   {
-    href: "/testing",
-    IconSvg: TestingIcon,
-    isSection: true,
-    text: "Testing",
-    isExternal: false,
-    isDocs: false,
-  },
-  {
     href: "/sdks-tools",
     IconSvg: SdksToolsIcon,
     isSection: true,
@@ -127,14 +118,6 @@ const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Code Samples",
     isExternal: false,
-  },
-  {
-    href: "/testing",
-    IconSvg: TestingIcon,
-    isSection: true,
-    text: "Testing",
-    isExternal: false,
-    isDocs: false,
   },
 ];
 
@@ -247,7 +230,7 @@ const TOP_BAR_PROPS: TopBarProps = {
     },
   ],
   algoliaSearch: {
-    branch: "main-algolia",
+    branch: "main",
     searchClient: algoliasearch(
       "L2PPGO4SBB",
       "6a6c05b578da5aa729df7f53776e9f76"

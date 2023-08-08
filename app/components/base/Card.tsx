@@ -7,7 +7,8 @@ import classnames from "../../modules/classnames";
 import ConditionalWrapper from "../util/ConditionalWrapper";
 import Badge from "./Badge";
 import {
-  PRODUCT_ICON_GRADIENT,
+  BALANCE_ICON_GRADIENT,
+  CONNECT_ICON_GRADIENT,
   PURPLE_023,
   PURPLE_075,
   PURPLE_087,
@@ -61,15 +62,22 @@ const StyledIcon = styled.div`
   &.productIcon {
     width: 40px;
     height: 40px;
-    background: ${PRODUCT_ICON_GRADIENT};
     border-radius: 50%;
     display: flex;
 
     img {
       margin: auto;
-      width: 25px;
-      height: 25px;
+      width: 35px;
+      height: 35px;
     }
+  }
+
+  &.balanceIconBackground {
+    background: ${BALANCE_ICON_GRADIENT};
+  }
+
+  &.connectIconBackground {
+    background: ${CONNECT_ICON_GRADIENT};
   }
 `;
 
@@ -144,6 +152,16 @@ const LinkTextStyle = styled.div`
   margin-top: 16px;
   display: inline-grid;
   justify-items: start;
+
+  &.column {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  > * {
+    flex-basis: 50%;
+  }
 `;
 
 export type LanguageProp =
@@ -168,10 +186,17 @@ type Props = {
   isFlex?: boolean;
   icon?: string;
   badge?: string;
-  productName?: string;
+  product?: keyof typeof productDisplayText;
   topic: string;
   description: string;
   languages?: Array<LanguageProp>;
+};
+
+// Map product selection values to their human-readable display names
+const productDisplayText = {
+  BALANCE: "Dwolla Balance",
+  CONNECT: "Dwolla Connect",
+  // Add more options here
 };
 
 function Card({
@@ -182,7 +207,7 @@ function Card({
   isFlex,
   icon,
   links,
-  productName,
+  product,
   topic,
   languages,
 }: Props) {
@@ -198,7 +223,9 @@ function Card({
         <StyledIcon
           className={classnames({
             center: horizontalCenterAlign,
-            productIcon: productName,
+            productIcon: product,
+            balanceIconBackground: product === "BALANCE",
+            connectIconBackground: product === "CONNECT",
           })}
         >
           <img src={icon} alt="" />
@@ -215,7 +242,9 @@ function Card({
         condition={isFlex}
         wrapper={(children) => <StyledFlexDiv>{children}</StyledFlexDiv>}
       >
-        {productName && <ProductNameStyle>{productName}</ProductNameStyle>}
+        {product && (
+          <ProductNameStyle>{productDisplayText[product]}</ProductNameStyle>
+        )}
 
         {languages && (
           <LanguageBadgeStyle>
@@ -229,8 +258,8 @@ function Card({
           className={classnames(
             { center: horizontalCenterAlign },
             { flex: isFlex },
-            { hasIcon: icon && !productName },
-            { hasProductName: productName }
+            { hasIcon: icon && !product },
+            { hasProductName: product }
           )}
         >
           {topic}
@@ -243,12 +272,15 @@ function Card({
         </DescriptionStyle>
 
         {links && (
-          <LinkTextStyle>
+          <LinkTextStyle className={classnames({ column: links.length > 4 })}>
             {links.map((link) => (
               <Button
                 key={link.text}
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
                 variant="text"
                 color="secondary"
+                style={{ justifyContent: "flex-start" }}
                 endIcon={
                   link.external ? <OpenInNewIcon /> : <ArrowForwardIcon />
                 }

@@ -79,7 +79,7 @@ storiesOf("layout/TopBar", module)
   .add("with global search form", () => (
     <TopBar
       algoliaSearch={{
-        branch: "main-algolia",
+        branch: "main",
         searchClient: algoliasearch(
           "L2PPGO4SBB",
           "6a6c05b578da5aa729df7f53776e9f76"
@@ -99,7 +99,7 @@ storiesOf("layout/TopBar", module)
   .add("with help component", () => (
     <TopBar
       algoliaSearch={{
-        branch: "main-algolia",
+        branch: "main",
         searchClient: algoliasearch(
           "L2PPGO4SBB",
           "6a6c05b578da5aa729df7f53776e9f76"

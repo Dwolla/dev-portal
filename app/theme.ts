@@ -5,6 +5,7 @@ import {
   PURPLE_075,
   PURPLE_087,
   PURPLE_PRIMARY,
+  WHITE_PRIMARY,
 } from "./components/colors";
 import { POPPINS, ROBOTO } from "./components/typography";
 
@@ -18,6 +19,9 @@ export default createTheme({
     },
     error: {
       main: red.A400,
+    },
+    white: {
+      main: WHITE_PRIMARY,
     },
   },
   typography: {
