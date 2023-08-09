@@ -166,33 +166,36 @@ dependencies \{
 
 <CardGrid variant="default" maxColumns={2}>
   <Card
-    icon={postmanIcon}
-    link={{
-      href: "https://app.getpostman.com/run-collection/e946a89ed19313cce582",
-      external: true,
-    }}
     topic="Postman Collection"
     description="All individual Dwolla requests grouped into a single Postman collection for testing."
+    icon={postmanIcon}
+    links={[
+      {
+        text: "View Collection",
+        href: "https://app.getpostman.com/run-collection/e946a89ed19313cce582",
+        external: true,
+      }
+    ]}
   />
   <Card
-    icon={openApiIcon}
-    link={{
-      href: "https://github.com/Dwolla/dwolla-openapi",
-      external: true,
-    }}
     topic="OpenAPI"
-    description={
-      <>
-        OpenAPI specification document for the Dwolla API. Reference the{" "}
-        <a
-          href={
-            "https://github.com/OAI/OpenAPI-Specification/blob/main/IMPLEMENTATIONS.md"
-          }
-        >
-          OpenAPI spec
-        </a>{" "}
-        for a catalog of tooling that implements the specification.
-      </>
-    }
-  />
+    description="
+        OpenAPI specification document for the Dwolla Balance and Dwolla Connect
+        APIs. Reference the OpenAPI specs for catalogs of tooling that
+        implements the specification."
+    icon={openApiIcon}
+    links={[
+      {
+        text: "Dwolla Balance Spec",
+        href: "https://github.com/Dwolla/dwolla-openapi",
+        external: true,
+      },
+      {
+        text: "Dwolla Connect Spec",
+        href: "https://github.com/Dwolla/openapi-connect",
+        external: true,
+      }
+    ]}
+/>
+
 </CardGrid>
