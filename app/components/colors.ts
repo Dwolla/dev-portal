@@ -61,6 +61,10 @@ export const ANNOUNCEMENT_BACKGROUND_BLUE = "#e5f6fd";
 export const ANNOUNCEMENT_ICON_BLUE = "#0288d1";
 export const ANNOUNCEMENT_TEXT_BLUE = "#115482";
 
+// Page Feedback Colors
+export const PAGE_FEEDBACK_BUTTON = "rgba(0, 0, 0, 0.50)";
+export const PAGE_FEEDBACK_INNER_TEXT = "rgba(106, 114, 130, 1)";
+
 // Layout border colors
 export const LAYOUT_BORDER = "rgba(244, 247, 251, 1)";
 

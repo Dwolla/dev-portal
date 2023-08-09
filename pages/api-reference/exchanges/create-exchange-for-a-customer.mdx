@@ -235,8 +235,8 @@ exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/a0b22a57-68d
 
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var authSecret = "111a1a1a-1111-1aa1-1111-11a111a1111a"
-var accessToken = "222b2b1b-2222-2bb2-2222-22b222b2222b"
+var authSecret = "111a1a1a-1111-1aa1-1111-11a111a1111a";
+var accessToken = "222b2b1b-2222-2bb2-2222-22b222b2222b";
 
 var requestBody = {
   _links: {
@@ -244,7 +244,9 @@ var requestBody = {
       href: "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89",
     },
   },
-  token: Buffer.from(authSecret + ":" + accessToken, "utf-8").toString("base64"),
+  token: Buffer.from(authSecret + ":" + accessToken, "utf-8").toString(
+    "base64"
+  ),
 };
 
 dwolla
