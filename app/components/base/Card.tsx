@@ -285,7 +285,7 @@ function Card({
                   link.external ? <OpenInNewIcon /> : <ArrowForwardIcon />
                 }
               >
-                {link.text}
+                {link.text ? link.text : "Learn more"}
               </Button>
             ))}
           </LinkTextStyle>
