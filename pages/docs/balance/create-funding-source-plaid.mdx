@@ -132,6 +132,7 @@ Continuing in your server environment, once you have an access token and an acco
 Similar to how you created a Link token, when creating a processor token, you must specify Dwolla ("dwolla") as the processor. If you are using Plaid's SDK, you can use an enumerative equivalent, such as `ProcessorTokenCreateRequestProcessorEnum.Dwolla`.
 
 ```typescript
+// 2. Exchange access token & accountID for a processor token
 import { ProcessorTokenCreateRequestProcessorEnum } from "plaid";
 
 export const exchangeForProcessorToken = async (
