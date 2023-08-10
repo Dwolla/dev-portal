@@ -172,6 +172,7 @@ To create a verified funding source for a customer, you will supply two required
 In the following function, once a response is received, it will extract the `Location` header value, which is the fully-qualified URL specifying the resource location of your funding source.
 
 ```typescript
+// 3. Create a funding source using the processor token
 interface CreateFundingSourceOptions {
   customerId: string;
   fundingSourceName: string;
