@@ -101,9 +101,12 @@ const handlePlaidLinkSuccess: PlaidLinkOnSuccess = async (
   publicToken,
   metadata
 ) => {
-  // TODO: Exchange public token for an access token
-  // TODO: Exchange access token & accountID for a processor token
-  // TODO: Create a funding source using the processor token
+  // When handling the Plaid Link token, you'll want to call the following functions
+  // in order to create a Dwolla funding source. Function implementations can be found below.
+  //
+  // [1] Exchange public token for an access token
+  // [2] Exchange access token & accountID for a processor token
+  // [3] Create a funding source using the processor token
 };
 
 const { open, ready } = usePlaidLink({
@@ -298,8 +301,9 @@ const createFundingSource = async (
   </p>
   <br />
   <p>
-    To resolve this issue, please advise the user to contact their bank or visit their
-    bank's website and enable TANs for future transfers. In some cases, it might
-    be necessary to re-add the Plaid verified bank using a new processor token.
+    To resolve this issue, please advise the user to contact their bank or visit
+    their bank's website and enable TANs for future transfers. In some cases, it
+    might be necessary to re-add the Plaid verified bank using a new processor
+    token.
   </p>
 </Collapsible>
