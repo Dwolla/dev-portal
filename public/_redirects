@@ -138,3 +138,9 @@
 /guides/dwolla-js/add-a-bank-account/create-token    /docs/dwolla-js/create-token
 /guides/dwolla-js/add-a-bank-account/handle-response    /docs/dwolla-js/handle-response
 /guides/dwolla-js/add-a-bank-account    /docs/dwolla-js
+
+/guides    /docs/balance
+/docs/balance/plaid    /docs/balance/create-funding-source-plaid
+/docs/balance/plaid/generate-processor-token    /docs/balance/create-funding-source-plaid
+/docs/balance/plaid/create-funding-source    /docs/balance/create-funding-source-plaid
+/docs/balance/plaid/frequently-asked-questions    /docs/balance/create-funding-source-plaid

@@ -1,0 +1,309 @@
+---
+layout: concepts
+title: "Add Bank via Dwolla + Plaid Integration"
+description: Securely add and verify an end user's bank account via online bank authentication through an integration with Dwolla + Plaid.
+category: Build
+subCategory: Funding Sources
+weight: 3
+concept:
+  icon: add-verify-bank-plaid.svg
+meta:
+  title: Dwolla and Plaid Integration | Dwolla API Documentation
+  description: Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users' bank accounts.
+---
+
+import AlertBar from "../../../app/components/base/AlertBar";
+import Collapsible from "../../../app/components/base/Collapsible";
+
+# Add a Bank Funding Source with Plaid
+
+Dwolla partners with Plaid to provide customers with bank account verification through a tokenized solution. Bank accounts are linked with purpose-built tokens between the Dwolla and Plaid platforms.
+
+While **bank account verification is required** before initiating an ACH transaction from a [funding source](/api-reference/funding-sources), Dwolla clients are able to choose between Dwolla's [micro-deposit solution](/api-reference/funding-sources/initiate-micro-deposits) or a third-party data aggregator, such as Mastercard, MX, or, as we will discuss in further detail in this guide, Plaid.
+
+For more information on Dwolla's tokenized solutions with other third-party data aggregators, check out our [Secure Exchange solution](/docs/balance/secure-exchange)!
+
+## Prerequisites
+
+Let's first go over a few items you need to check off before you begin your integration.
+
+- Set up a [Dwolla Production](https://accounts.dwolla.com) account, or a [Dwolla Sandbox](https://accounts-sandbox.dwolla.com) account if you're still developing or testing your application.
+- Set up a [Plaid Production](https://dashboard.plaid.com) account, or a Plaid Sandbox account if you're still developing or testing your application.
+- Enable Dwolla's Plaid integration in your Plaid [account settings](https://dashboard.plaid.com/team/integrations). If you need assistance with this step, reach out to your Account Manager with Plaid.
+- Customize Plaid Link's account selection to only be "[enabled for one account](https://dashboard.plaid.com/link/account-select)."
+
+<AlertBar variation="info">
+  Plaid Development <strong>is not</strong> compatible with Dwolla. Dwolla
+  Sandbox and Production must be paired with Plaid Sandbox and Production,
+  respectively.
+</AlertBar>
+
+Adding a bank is a one-time process that verifies the account ownership of the underlying bank account being added by an end user. At the end of this guide, you'll obtain a Funding Source URL, which is a unique identifier that represents a bank account being used for ACH debits and/or credits.
+
+## Integrate with Plaid
+
+Once you have your Dwolla and Plaid accounts set up, you can begin the integration process. For the following steps, we will make use of two Plaid libraries: Plaid Link (more specifically, [react-plaid-link](https://github.com/plaid/react-plaid-link)), Plaid Link's React bindings, and [plaid-node](https://github.com/plaid/plaid-node), Plaid's server-side Node SDK.
+
+<AlertBar variation="info">
+  In this guide we'll use Plaid Link's React bindings. However, <a
+  href="https://plaid.com/docs/link/">Plaid offers
+  additional libraries</a> if you are developing for another environment, such as Android or iOS.
+
+Additionally, since most of our interaction with Plaid's API will occur server-side, we'll make use of <a
+  href="https://github.com/plaid/plaid-node">Plaid's Node bindings</a>. Similar to Plaid Link's React bindings, <a
+  href="https://plaid.com/docs/quickstart/">Plaid offers additional libraries</a> for other server-side programming
+languages.
+
+</AlertBar>
+
+### Create a Link Token
+
+In order to instantiate a Plaid Link instance—in our case, by using `usePlaidLink`—you first need to have your server generate a Link token. To learn more about what properties are available, check out Plaid's [Create Link Token](https://plaid.com/docs/api/tokens/#linktokencreate) documentation.
+
+Though you are welcome to use additional Plaid products and customize the `LinkTokenCreateRequest` object to your liking, **a couple properties are required in order to be compatible with Dwolla**:
+
+- `country_codes` must include "US" (or an enumerative equivalent), as Dwolla is currently only able to transact with U.S.-based bank accounts.
+- `products` must include "auth" (or an enumerative equivalent), as Dwolla will fetch the associated account and routing number using Plaid Auth.
+
+```typescript
+import type { LinkTokenCreateRequest, LinkTokenCreateResponse } from "plaid";
+import { CountryCode, Products } from "plaid";
+import { v4 as uuidv4 } from "uuid";
+
+const createLinkToken = async (): Promise<LinkTokenCreateResponse> => {
+  const request: LinkTokenCreateRequest = {
+    client_name: "Dwolla-Plaid Integration Example",
+    country_codes: [CountryCode.Us],
+    language: "en",
+    products: [Products.Auth],
+    user: { client_user_id: uuidv4() },
+    redirect_uri: "http://localhost:3000",
+  };
+  return (await plaidClient.linkTokenCreate(request)).data;
+};
+```
+
+### Instantiate Plaid Link
+
+Once your client environment has made the necessary requests to your server to fetch the Link token, you can now give that token to `usePlaidLink` with an additional `onSuccess` handler.
+
+The `onSuccess` handler will be responsible for proxying client requests to your server to, at a minimum,
+
+1. Exchange the public token for an access token.
+2. Exchange the access token and account ID for a processor token.
+3. Create a funding source using the processor token.
+
+```typescript
+import type { PlaidLinkOnSuccess } from "react-plaid-link";
+import { usePlaidLink } from "react-plaid-link";
+
+const handlePlaidLinkSuccess: PlaidLinkOnSuccess = async (
+  publicToken,
+  metadata
+) => {
+  // When handling the Plaid Link token, you'll want to call the following functions
+  // in order to create a Dwolla funding source. Function implementations can be found below.
+  //
+  // [1] Exchange public token for an access token
+  // [2] Exchange access token & accountID for a processor token
+  // [3] Create a funding source using the processor token
+};
+
+const { open, ready } = usePlaidLink({
+  onSuccess: handlePlaidLinkSuccess,
+  token: linkToken, // linkToken is the Link token that your server sent
+});
+```
+
+### Exchange Public Token for Access Token
+
+Now that you have your public token, you will need to exchange it for an access token back in your server environment. An access token is an intermediate step between a public token and a processor token, and can be generated in a one-line JavaScript function using Plaid's Node SDK.
+
+```typescript
+// 1. Exchange public token for an access token
+export const exchangeForAccessToken = async (
+  publicToken: string
+): Promise<string> =>
+  (await plaidClient.itemPublicTokenExchange({ public_token: publicToken }))
+    .data.access_token;
+```
+
+### Exchange Access Token and Account ID for Processor Token
+
+Continuing in your server environment, once you have an access token and an account ID (account ID is returned by Plaid Link in your client environment), you can now create a processor token!
+
+Similar to how you created a Link token, when creating a processor token, you must specify Dwolla ("dwolla") as the processor. If you are using Plaid's SDK, you can use an enumerative equivalent, such as `ProcessorTokenCreateRequestProcessorEnum.Dwolla`.
+
+```typescript
+// 2. Exchange access token & accountID for a processor token
+import { ProcessorTokenCreateRequestProcessorEnum } from "plaid";
+
+export const exchangeForProcessorToken = async (
+  accessToken: string,
+  accountId: string
+): Promise<string> =>
+  (
+    await plaidClient.processorTokenCreate({
+      access_token: accessToken,
+      account_id: accountId,
+      processor: ProcessorTokenCreateRequestProcessorEnum.Dwolla,
+    })
+  ).data.processor_token;
+```
+
+Once your application has generated the processor token, you are now ready to integrate with Dwolla!
+
+## Integrate with Dwolla
+
+Before creating a funding source, your application will need to create a Customer. If you have not created a customer yet, check out our [Create a Customer](/api-reference/customers/create) API reference, or our [Create a Business Verified Customer](/docs/balance/business-verified-customer) or [Create a Personal Verified Customer](/docs/balance/personal-verified-customer) guides.
+
+Once you have a customer set up, we will use Dwolla's [server-side Node SDK](https://github.com/Dwolla/dwolla-v2-node) to create the funding source.
+
+<AlertBar variation="info">
+  While we are using Dwolla's Node SDK for the sake of demonstration in this
+  guide,{" "}
+  <a href="https://developers.dwolla.com/sdks-tools">
+    Dwolla also offers additional libraries
+  </a>{" "}
+  for other server-side programming languages.
+</AlertBar>
+
+### Create a Funding Source
+
+To create a verified funding source for a customer, you will supply two required properties: `name` and `plaidToken`. In the API request, `name` defines an arbitrary name that you or your user will assign to the funding source, and `plaidToken` defines the Plaid processor token that was generated in the previous step.
+
+In the following function, once a response is received, it will extract the `Location` header value, which is the fully-qualified URL specifying the resource location of your funding source.
+
+```typescript
+// 3. Create a funding source using the processor token
+interface CreateFundingSourceOptions {
+  customerId: string;
+  fundingSourceName: string;
+  plaidToken: string;
+}
+
+const createFundingSource = async (
+  options: CreateFundingSourceOptions
+): Promise<string> =>
+  (
+    await dwollaClient.post(`customers/${options.customerId}/funding-sources`, {
+      name: options.fundingSourceName,
+      plaidToken: options.plaidToken,
+    })
+  ).headers.get("Location");
+```
+
+## Frequently Asked Questions
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: How does Dwolla integrate with Plaid when a{" "}
+      <code>processor_token</code> is received?
+    </span>
+  }
+>
+  <p>
+    When creating a funding source,{" "}
+    <a href="#create-a-funding-source">
+      a Plaid <code>processor_token</code> value is passed in using the{" "}
+      <code>plaidToken</code> key.
+    </a>{" "}
+    With this information, Dwolla executes a call to Plaid's API to securely
+    retrieve the account and routing number and creates a funding source on your
+    behalf. Upon success, Dwolla returns a URL that represents the new funding
+    source via the <code>Location</code> response header.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Does Plaid work if the user has two-factor authentication (2FA) enabled
+      on their bank account?
+    </span>
+  }
+>
+  <p>
+    Yes, if the end user has 2FA enabled with their bank, Plaid will attempt to
+    mimic their bank's login flow, meaning that the user should receive a 2FA
+    code, and is subsequently prompted to enter it in on the next screen.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: If Plaid's <code>access_token</code> and <code>processor_token</code>{" "}
+      changes or expires, what happens to the Dwolla funding source?
+    </span>
+  }
+>
+  <p>
+    If the <code>processor_token</code> has already been used to create a
+    funding source, then the token changing or expiring will not affect it;
+    Dwolla only uses the <code>processor_token</code> to fetch the account and
+    routing number from Plaid and then immediately discards it.
+  </p>
+  <br />
+  <p>
+    However, if you have not yet used the <code>processor_token</code> to create
+    a funding source, then you will need to follow Plaid's process for creating
+    a new token before sending it over to Dwolla.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Can I use Plaid's micro-deposit solution instead of Dwolla's?
+    </span>
+  }
+>
+  <p>
+    Yes, it is possible to use Plaid Link to both automatically verify bank
+    accounts and manually verify via micro-deposits if the bank is not supported
+    or an error occurs during automatic verification.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Will Dwolla's funding source status change if Plaid's account status
+      changes (e.g., micro-deposit verification)?
+    </span>
+  }
+>
+  <p>
+    No. Since Dwolla only uses Plaid to securely retrieve the account and
+    routing number, any changes to the underlying Plaid account will not affect
+    the funding source(s) that have already been created in Dwolla.
+  </p>
+</Collapsible>
+
+<Collapsible
+  triggerText={
+    <span>
+      Q: Why did a transfer fail with an ACH return (e.g. R04 - Invalid Account
+      Number) if the associated bank was successfully added and verified through
+      Plaid?
+    </span>
+  }
+>
+  <p>
+    This issue can occur when the user's bank utilizes Tokenized Account Numbers
+    (TANs) for bank verification, and Plaid provides Dwolla with the TAN instead
+    of the actual Account Number. Dwolla processes the ACH payment using the
+    TAN. If the user has disabled TAN transactions on their bank's website, the
+    ACH payment made by Dwolla will fail with an ACH return (e.g., R04 - Invalid
+    Account Number).
+  </p>
+  <br />
+  <p>
+    To resolve this issue, please advise the user to contact their bank or visit
+    their bank's website and enable TANs for future transfers. In some cases, it
+    might be necessary to re-add the Plaid verified bank using a new processor
+    token.
+  </p>
+</Collapsible>
