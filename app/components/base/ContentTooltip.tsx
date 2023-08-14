@@ -18,7 +18,7 @@ const WrappedMuiTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }));
 
-const TooltipWrapper = styled("div", { name: "ContentTooltip" })({
+const TooltipWrapper = styled("div", { name: "TooltipWrapper" })({
   background: WHITE_PRIMARY,
   border: `1px solid ${PURPLE_PRIMARY}`,
   borderRadius: "0.25rem",
