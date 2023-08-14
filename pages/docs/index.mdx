@@ -1,10 +1,10 @@
 ---
-title: "Tools for Integrating a Payment API"
-description: "Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!"
+title: "Dwolla Documentation and Resources"
+description: "Learn how to integrate account-to-account payments in your application with Dwolla’s Payment Solutions."
 noDefaultLayout: true
 meta:
-  title: Tools for Integrating a Payment API | Account to Account Technology | Dwolla API
-  description: Guides, technical documentation and drop-in components to integrate the Dwolla API with best practices. Get started today!
+  title: Documentation and Tools for Dwolla’s Payment Solutions | Account to Account Payments | Dwolla API
+  description: Guides, technical documentation and tools for integrating with the Dwolla API. Get started today!
 ---
 
 import Link from "next/link";
@@ -150,7 +150,7 @@ export default function HomePage() {
             alt: "Dwolla Hero Image",
           }}
           topic="Build with Dwolla"
-          description="Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform."
+          description="Documentation, tools and resources for developers to integrate with Dwolla's account-to-account payment solutions."
           searchBar
         />
       </HeroBannerContainer>
@@ -158,14 +158,18 @@ export default function HomePage() {
         <Typography variant="h2">Browse by product</Typography>
         <ParagraphWrapper>
           <Typography variant="body1">
-            Learn how to use Dwolla. Check out the documentation, tools, and
-            resources for our products and choose the solution that best fits
-            your business’ needs.
+            Learn how to use Dwolla. Check out the documentation, tools and
+            resources for our solutions and choose the one that best fits your
+            business’s needs.
           </Typography>
         </ParagraphWrapper>
         <CardGridWrapper>
           <CardGrid maxColumns="2">
             <Card
+              product="BALANCE"
+              topic="Digital Wallet Solution"
+              description="Dwolla Balance is a digital wallet-based solution that lets you and your users hold funds and initiate payments. This wallet supports diverse funds flows: sending, receiving, and facilitating transfers between users and/or their payment accounts. It utilizes our established relationship with our financial institution partners to connect your business to the U.S. banking infrastructure."
+              icon={dwollaBalanceIcon}
               links={[
                 {
                   text: "Read Docs",
@@ -173,23 +177,24 @@ export default function HomePage() {
                   external: false,
                 },
               ]}
-              icon={dwollaBalanceIcon}
-              product="BALANCE"
-              topic="Use our existing bank relationship"
-              description="Utilize an established relationship with one of Dwolla’s financial institution partners to connect your business to the U.S. banking infrastructure via a digital wallet. This wallet supports diverse fund flow actions like sending, receiving, and transferring funds between users and their payment accounts."
             />
             <Card
+              product="CONNECT"
+              topic="Commercial Bank Account Solution"
+              description="Dwolla Connect leverages your existing banking relationships and corresponding commercial bank accounts to integrate modern payment processing capabilities into your operations. It’s currently available for businesses who want to send or receive account-to-account payments using their commercial bank accounts at J.P. Morgan or Wells Fargo. Documentation coming soon! Please contact us for more information. "
+              icon={dwollaConnectIcon}
               links={[
                 {
                   text: "Learn More",
                   href: "https://www.dwolla.com/dwolla-connect",
                   external: true,
                 },
+                {
+                  text: "Contact Us",
+                  href: "https://www.dwolla.com/contact/",
+                  external: true,
+                },
               ]}
-              icon={dwollaConnectIcon}
-              product="CONNECT"
-              topic="Bring your own bank"
-              description="Utilize your existing banking relationships and corresponding treasury bank account with JP Morgan or Wells Fargo to send or receive account-to-account payments. Documentation coming soon, please contact us for more information."
             />
           </CardGrid>
         </CardGridWrapper>
@@ -199,8 +204,8 @@ export default function HomePage() {
         <ParagraphWrapper>
           <Typography variant="body1">
             Don’t know where to get started? Having issues with your integration
-            and not finding what you need? The Dwolla Developer Forum and
-            Support Center are great places to find solutions to your
+            and struggling to find what you need? The Dwolla Developer Forum and
+            Dwolla Support Portal are great places to find solutions to your
             integration challenges. Access these helpful resources or share your
             feedback with us to help us improve your experience!
           </Typography>
@@ -208,28 +213,28 @@ export default function HomePage() {
         <CardGridWrapper>
           <CardGrid maxColumns="2">
             <Card
+              topic="Developer Forum"
+              description="Search for answers and post your technical questions in the Dwolla Developer Forum."
+              icon={developerCommunityIcon}
               links={[
                 {
-                  text: "Developer Community",
+                  text: "Developer Forum",
                   href: "https://discuss.dwolla.com/",
                   external: true,
                 },
               ]}
-              icon={developerCommunityIcon}
-              topic="Developer Community"
-              description="Search or post your technical questions in the Dwolla Developer Forum."
             />
             <Card
+              topic="Support Portal"
+              description="Search our support articles for frequently asked questions on the Dwolla Support Portal."
+              icon={supportIcon}
               links={[
                 {
-                  text: "Support Center",
+                  text: "Support Portal",
                   href: "https://support.dwolla.com/",
                   external: true,
                 },
               ]}
-              icon={supportIcon}
-              topic="Support Center"
-              description="Search for frequently asked questions on the Dwolla platform Knowledge Base."
             />
           </CardGrid>
         </CardGridWrapper>
