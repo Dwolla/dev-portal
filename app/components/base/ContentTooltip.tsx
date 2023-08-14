@@ -2,7 +2,7 @@ import React from "react";
 import {
   styled,
   SvgIcon,
-  SvgIconProps,
+  type SvgIconProps,
   Tooltip as MuiTooltip,
   tooltipClasses,
   type TooltipProps,
