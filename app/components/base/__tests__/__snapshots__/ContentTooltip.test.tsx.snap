@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentTooltip default 1`] = `
+<span
+  aria-label={null}
+  aria-labelledby={null}
+  className=""
+  data-mui-internal-clone-element={true}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
+  a digital wallet
+</span>
+`;
+
+exports[`ContentTooltip with \`dwolla-balance\` preset 1`] = `
+<span
+  aria-label={null}
+  aria-labelledby={null}
+  className=""
+  data-mui-internal-clone-element={true}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
+  Dwolla Balance
+</span>
+`;
+
+exports[`ContentTooltip with icon, with title 1`] = `
+<span
+  aria-label={null}
+  aria-labelledby={null}
+  className=""
+  data-mui-internal-clone-element={true}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
+  a digital wallet
+</span>
+`;
+
+exports[`ContentTooltip with icon, without title 1`] = `
+<span
+  aria-label={null}
+  aria-labelledby={null}
+  className=""
+  data-mui-internal-clone-element={true}
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onMouseLeave={[Function]}
+  onMouseOver={[Function]}
+  onTouchEnd={[Function]}
+  onTouchStart={[Function]}
+>
+  a digital wallet
+</span>
+`;
