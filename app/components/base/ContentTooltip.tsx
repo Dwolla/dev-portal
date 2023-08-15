@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type PropsWithChildren } from "react";
 import {
   styled,
   SvgIcon,
@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
+import tooltipPresets from "../tooltip-presets";
 
 const WrappedMuiTooltip = styled(({ className, ...props }: TooltipProps) => (
   <MuiTooltip {...props} classes={{ popper: className }} />
@@ -41,19 +42,37 @@ const TextWrapper = styled("div", { name: "TextWrapper" })({
   padding: "0.5rem",
 });
 
-interface Props {
-  displayText: string;
-  tooltip: {
-    content: string;
-    icon?: SvgIconProps["component"];
-    title?: string;
-  };
+export interface DefaultContentTooltipProps {
+  content: string;
+  icon?: SvgIconProps["component"];
+  title?: string;
 }
 
+export interface PresetContentTooltipProps {
+  preset: keyof (typeof tooltipPresets)["presets"];
+}
+
+export type ContentTooltipProps =
+  | DefaultContentTooltipProps
+  | PresetContentTooltipProps;
+
+const isPresetTooltip = (obj: any): obj is PresetContentTooltipProps =>
+  !!obj.preset;
+
+const getPropsFromPreset = (
+  obj: PresetContentTooltipProps
+): DefaultContentTooltipProps => ({
+  ...tooltipPresets.presets[obj.preset],
+});
+
 export default function ContentTooltip({
-  displayText,
-  tooltip: { content, icon, title },
-}: Props) {
+  children,
+  ...initialProps
+}: PropsWithChildren<ContentTooltipProps>) {
+  const { content, icon, title } = isPresetTooltip(initialProps)
+    ? getPropsFromPreset(initialProps)
+    : initialProps;
+
   return (
     <WrappedMuiTooltip
       placement="top"
@@ -61,7 +80,11 @@ export default function ContentTooltip({
         <TooltipWrapper>
           {icon && (
             <IconWrapper>
-              <SvgIcon component={icon} sx={{ color: WHITE_PRIMARY }} />
+              <SvgIcon
+                component={icon}
+                inheritViewBox
+                sx={{ color: WHITE_PRIMARY }}
+              />
             </IconWrapper>
           )}
 
@@ -79,7 +102,7 @@ export default function ContentTooltip({
         </TooltipWrapper>
       }
     >
-      <span>{displayText}</span>
+      <span>{children}</span>
     </WrappedMuiTooltip>
   );
 }
