@@ -52,9 +52,12 @@ export interface PresetContentTooltipProps {
   preset: keyof (typeof tooltipPresets)["presets"];
 }
 
-export type ContentTooltipProps =
+// testSuite should be set to true for tests. This will output the raw tooltip,
+// rather than wrapping it inside a MUI component.
+export type ContentTooltipProps = (
   | DefaultContentTooltipProps
-  | PresetContentTooltipProps;
+  | PresetContentTooltipProps
+) & { testSuite?: boolean };
 
 const isPresetTooltip = (obj: any): obj is PresetContentTooltipProps =>
   !!obj.preset;
@@ -67,41 +70,42 @@ const getPropsFromPreset = (
 
 export default function ContentTooltip({
   children,
+  testSuite,
   ...initialProps
 }: PropsWithChildren<ContentTooltipProps>) {
   const { content, icon, title } = isPresetTooltip(initialProps)
     ? getPropsFromPreset(initialProps)
     : initialProps;
 
+  const innerTooltip = (
+    <TooltipWrapper>
+      {icon && (
+        <IconWrapper>
+          <SvgIcon
+            component={icon}
+            inheritViewBox
+            sx={{ color: WHITE_PRIMARY }}
+          />
+        </IconWrapper>
+      )}
+
+      <TextWrapper>
+        {title && (
+          <Typography variant="subtitle2" sx={{ color: PURPLE_PRIMARY }}>
+            {title}
+          </Typography>
+        )}
+
+        <Typography variant="body2" sx={{ color: PURPLE_PRIMARY }}>
+          {content}
+        </Typography>
+      </TextWrapper>
+    </TooltipWrapper>
+  );
+
+  if (testSuite) return innerTooltip;
   return (
-    <WrappedMuiTooltip
-      placement="top"
-      title={
-        <TooltipWrapper>
-          {icon && (
-            <IconWrapper>
-              <SvgIcon
-                component={icon}
-                inheritViewBox
-                sx={{ color: WHITE_PRIMARY }}
-              />
-            </IconWrapper>
-          )}
-
-          <TextWrapper>
-            {title && (
-              <Typography variant="subtitle2" sx={{ color: PURPLE_PRIMARY }}>
-                {title}
-              </Typography>
-            )}
-
-            <Typography variant="body2" sx={{ color: PURPLE_PRIMARY }}>
-              {content}
-            </Typography>
-          </TextWrapper>
-        </TooltipWrapper>
-      }
-    >
+    <WrappedMuiTooltip placement="top" title={innerTooltip}>
       <span>{children}</span>
     </WrappedMuiTooltip>
   );
