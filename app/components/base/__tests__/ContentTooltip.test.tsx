@@ -6,7 +6,10 @@ describe("ContentTooltip", () => {
   test("default", () => {
     const tree = renderer
       .create(
-        <ContentTooltip content="The Dwolla balance is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds.">
+        <ContentTooltip
+          content="The Dwolla balance is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds."
+          testSuite
+        >
           a digital wallet
         </ContentTooltip>
       )
@@ -20,6 +23,7 @@ describe("ContentTooltip", () => {
         <ContentTooltip
           content="The Dwolla balance is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds."
           icon={AcUnit}
+          testSuite
         >
           a digital wallet
         </ContentTooltip>
@@ -34,6 +38,7 @@ describe("ContentTooltip", () => {
         <ContentTooltip
           content="The Dwolla balance is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds."
           icon={AcUnit}
+          testSuite
           title="The Dwolla Balance"
         >
           a digital wallet
@@ -46,7 +51,9 @@ describe("ContentTooltip", () => {
   test("with `dwolla-balance` preset", () => {
     const tree = renderer
       .create(
-        <ContentTooltip preset="dwolla-balance">Dwolla Balance</ContentTooltip>
+        <ContentTooltip preset="dwolla-balance" testSuite>
+          Dwolla Balance
+        </ContentTooltip>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
