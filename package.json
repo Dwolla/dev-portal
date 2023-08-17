@@ -33,7 +33,7 @@
     "@mdx-js/react": "^1.6.22",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.3",
-    "@next/env": "^12.3.4",
+    "@next/env": "^13.4.17",
     "@storybook/addon-backgrounds": "^7.0.10",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-viewport": "^7.0.10",
