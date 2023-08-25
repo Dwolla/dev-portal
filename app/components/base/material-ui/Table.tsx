@@ -1,6 +1,5 @@
-import React, { ReactElement, useState } from "react";
+import React, { Fragment, ReactElement, useState } from "react";
 import {
-  Box,
   IconButton,
   Paper,
   styled,
@@ -21,13 +20,13 @@ const ExpandableTableCell = styled(TableCell, { name: "ExpandableTableCell" })(
   })
 );
 
-const NestedTableContainer = styled(Box, {
+const NestedTableContainer = styled(MuiTableContainer, {
   name: "NestedTableContainer",
 })(() => ({
   padding: "1rem 2rem",
 }));
 
-const NestedTable = styled(Paper, { name: "NestedTable" })(() => ({
+const NestedTableWrapper = styled(Paper, { name: "NestedTable" })(() => ({
   background: "#F4F7FB",
   boxShadow: "0px 0px 0px 1px rgba(31, 31, 50, 0.12);",
   padding: "1rem",
@@ -78,7 +77,9 @@ export default function Table({ table }: TableProps): ReactElement {
   const TableContainer = isNestedTableContents(table)
     ? NestedTableContainer
     : MuiTableContainer;
-  const TableWrapper = isNestedTableContents(table) ? NestedTable : MuiTable;
+  const TableWrapper = isNestedTableContents(table)
+    ? NestedTableWrapper
+    : Fragment;
 
   const [expanded, setExpanded] = useState<string[]>([]);
   const addExpanded = (slug: string): string[] => [...expanded, slug];
@@ -92,7 +93,8 @@ export default function Table({ table }: TableProps): ReactElement {
 
   const getCellElements = (row: ContentRow): ReactElement[] => {
     const cells = isNestedTableRow(row) ? row[0] : row;
-    const borderBottom = isNestedTableRow(row) ? 0 : null;
+    const borderBottom =
+      isNestedTableRow(row) && expanded.includes(slugRowTitle(row)) ? 0 : null;
     const mappedCells = cells.map((cell) => (
       <TableCell sx={{ borderBottom }}>{cell}</TableCell>
     ));
@@ -104,11 +106,13 @@ export default function Table({ table }: TableProps): ReactElement {
 
       mappedCells.push(
         <TableCell sx={{ borderBottom }}>
-          <IconButton onClick={handleExpandClicked(row)}>
+          <IconButton onClick={handleExpandClicked(row)} size="small">
             <ExpandIcon />
           </IconButton>
         </TableCell>
       );
+    } else if (!isNestedTableContents(table)) {
+      mappedCells.push(<TableCell></TableCell>);
     }
     return mappedCells;
   };
@@ -120,34 +124,34 @@ export default function Table({ table }: TableProps): ReactElement {
           <TitleTypography>{table.title}</TitleTypography>
         )}
 
-        <TableHead>
-          <TableRow>
-            {table.headers.map((item) => (
-              <TableCell>{item}</TableCell>
+        <MuiTable>
+          <TableHead>
+            <TableRow>
+              {table.headers.map((item) => (
+                <TableCell>{item}</TableCell>
+              ))}
+
+              {isTableExpandable(table) && <ExpandableTableCell />}
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {table.rows.map((row) => (
+              <>
+                <TableRow>{getCellElements(row)}</TableRow>
+
+                {isNestedTableRow(row) &&
+                  expanded.includes(slugRowTitle(row)) && (
+                    <TableRow>
+                      <TableCell colSpan={99} sx={{ padding: 0 }}>
+                        <Table table={row[1]} />
+                      </TableCell>
+                    </TableRow>
+                  )}
+              </>
             ))}
-
-            {isTableExpandable(table) && <ExpandableTableCell />}
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          {table.rows.map((row) => (
-            <>
-              <TableRow sx={{ "&:last-child td": { border: 0 } }}>
-                {getCellElements(row)}
-              </TableRow>
-
-              {isNestedTableRow(row) &&
-                expanded.includes(slugRowTitle(row)) && (
-                  <TableRow sx={{ "&:last-child td": { border: 0 } }}>
-                    <TableCell colSpan={99} sx={{ padding: 0 }}>
-                      <Table table={row[1]} />
-                    </TableCell>
-                  </TableRow>
-                )}
-            </>
-          ))}
-        </TableBody>
+          </TableBody>
+        </MuiTable>
       </TableWrapper>
     </TableContainer>
   );
