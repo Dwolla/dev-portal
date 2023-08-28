@@ -12,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { ExpandLessOutlined, ExpandMoreOutlined } from "@mui/icons-material";
+import { v4 as uuidv4 } from "uuid";
 import { slugify } from "../../../modules/helpers";
 
 const ExpandableTableCell = styled(TableCell, { name: "ExpandableTableCell" })(
@@ -49,11 +50,23 @@ export interface TableContents {
 
 export interface NestedTableContents extends TableContents {
   title: string;
+
+  /**
+   * This property is optional since it's autopopulated when the component renders.
+   *
+   * A custom slugged title can be added here; however, it's best to let the component
+   * generate it since it must be unique across all nested tables within the current page.
+   */
+  sluggedTitle?: string;
 }
 
 type Content = ReactElement | string;
 type ContentRow = Content[] | NestedTableContentRow;
 type NestedTableContentRow = [Content[], NestedTableContents];
+type SluggedNestedTableContentRow = [
+  Content[],
+  NestedTableContents & Required<Pick<NestedTableContents, "sluggedTitle">>
+];
 
 const isElementOrString = (obj: any): obj is ReactElement | string =>
   React.isValidElement(obj) || typeof obj === "string";
@@ -67,17 +80,32 @@ const isNestedTableRow = (obj: any): obj is NestedTableContentRow =>
   obj[0].every(isElementOrString) &&
   typeof obj[1]?.title !== "undefined";
 
+const isSluggedNestedTableRow = (
+  obj: any
+): obj is SluggedNestedTableContentRow =>
+  isNestedTableRow(obj) && typeof obj[1]?.sluggedTitle !== "undefined";
+
 const isTableExpandable = (table: TableContents): boolean =>
   table.rows.some(isNestedTableRow);
 
-const slugRowTitle = (row: NestedTableContentRow): string =>
-  slugify(row[1].title);
+const addUniqueIdToNestedTabled = (table: TableContents): TableContents => ({
+  ...table,
+  rows: table.rows.map((item): ContentRow => {
+    if (isNestedTableRow(item) && typeof item[1].sluggedTitle === "undefined") {
+      // eslint-disable-next-line no-param-reassign
+      item[1].sluggedTitle = `${slugify(item[1].title)}-${uuidv4()}`;
+    }
+    return item;
+  }),
+});
 
 export default function Table({ table }: TableProps): ReactElement {
-  const TableContainer = isNestedTableContents(table)
+  const sluggedTable = addUniqueIdToNestedTabled(table);
+
+  const TableContainer = isNestedTableContents(sluggedTable)
     ? NestedTableContainer
     : MuiTableContainer;
-  const TableWrapper = isNestedTableContents(table)
+  const TableWrapper = isNestedTableContents(sluggedTable)
     ? NestedTableWrapper
     : Fragment;
 
@@ -86,21 +114,23 @@ export default function Table({ table }: TableProps): ReactElement {
   const removeExpanded = (slug: string): string[] =>
     expanded.filter((value) => value !== slug);
 
-  const handleExpandClicked = (row: NestedTableContentRow) => (): void =>
-    !expanded.includes(slugRowTitle(row))
-      ? setExpanded([...addExpanded(slugRowTitle(row))])
-      : setExpanded([...removeExpanded(slugRowTitle(row))]);
+  const handleExpandClicked = (row: SluggedNestedTableContentRow) => (): void =>
+    !expanded.includes(row[1].sluggedTitle)
+      ? setExpanded([...addExpanded(row[1].sluggedTitle)])
+      : setExpanded([...removeExpanded(row[1].sluggedTitle)]);
 
   const getCellElements = (row: ContentRow): ReactElement[] => {
     const cells = isNestedTableRow(row) ? row[0] : row;
     const borderBottom =
-      isNestedTableRow(row) && expanded.includes(slugRowTitle(row)) ? 0 : null;
+      isSluggedNestedTableRow(row) && expanded.includes(row[1].sluggedTitle)
+        ? 0
+        : null;
     const mappedCells = cells.map((cell) => (
       <TableCell sx={{ borderBottom }}>{cell}</TableCell>
     ));
 
-    if (isNestedTableRow(row)) {
-      const ExpandIcon = expanded.includes(slugRowTitle(row))
+    if (isSluggedNestedTableRow(row)) {
+      const ExpandIcon = expanded.includes(row[1].sluggedTitle)
         ? ExpandLessOutlined
         : ExpandMoreOutlined;
 
@@ -111,7 +141,7 @@ export default function Table({ table }: TableProps): ReactElement {
           </IconButton>
         </TableCell>
       );
-    } else if (!isNestedTableContents(table)) {
+    } else if (!isNestedTableContents(sluggedTable)) {
       mappedCells.push(<TableCell></TableCell>);
     }
     return mappedCells;
@@ -120,28 +150,28 @@ export default function Table({ table }: TableProps): ReactElement {
   return (
     <TableContainer>
       <TableWrapper>
-        {isNestedTableContents(table) && (
-          <TitleTypography>{table.title}</TitleTypography>
+        {isNestedTableContents(sluggedTable) && (
+          <TitleTypography>{sluggedTable.title}</TitleTypography>
         )}
 
         <MuiTable>
           <TableHead>
             <TableRow>
-              {table.headers.map((item) => (
+              {sluggedTable.headers.map((item) => (
                 <TableCell>{item}</TableCell>
               ))}
 
-              {isTableExpandable(table) && <ExpandableTableCell />}
+              {isTableExpandable(sluggedTable) && <ExpandableTableCell />}
             </TableRow>
           </TableHead>
 
           <TableBody>
-            {table.rows.map((row) => (
+            {sluggedTable.rows.map((row) => (
               <>
                 <TableRow>{getCellElements(row)}</TableRow>
 
-                {isNestedTableRow(row) &&
-                  expanded.includes(slugRowTitle(row)) && (
+                {isSluggedNestedTableRow(row) &&
+                  expanded.includes(row[1].sluggedTitle) && (
                     <TableRow>
                       <TableCell colSpan={99} sx={{ padding: 0 }}>
                         <Table table={row[1]} />
