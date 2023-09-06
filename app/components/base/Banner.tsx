@@ -8,12 +8,13 @@ import { breakDown } from "../breakpoints";
 // Styled Banner component
 const StyledBanner = styled.div`
   background-color: ${PURPLE_DARK};
-  padding: 40px;
+  padding: 3em;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   width: 100%;
+  border-radius: 16px;
 
   &.overlapped {
     padding-bottom: 75px;

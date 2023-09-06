@@ -136,10 +136,13 @@ export const CodeSamplesPageGrid = () => {
     },
   ];
   return (
-    <IndexPageGrid
-      unfilteredCards={codeSampleCards}
-      bannerProps={bannerProps}
-    />
+    <>
+      <BreadcrumbsMui />
+      <IndexPageGrid
+        unfilteredCards={codeSampleCards}
+        bannerProps={bannerProps}
+      />
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import { AnchorsSetter } from "../app/components/util/Anchors";
 import MDXStyleWrapper from "../app/components/partial/MDXStyleWrapper";
 import groupCodeExamples from "../app/components/util/groupCodeExamples";
 import AlertBar from "../app/components/base/AlertBar";
+import BreadcrumbsMui from "../app/components/base/BreadcrumbsMui";
 import Card from "../app/components/base/Card";
 import CardGrid from "../app/components/base/CardGrid";
 import CodeExamples, {
@@ -154,6 +155,7 @@ export function DefaultMDXWrapper({ children, frontMatter }: Props) {
         <ContentWrapper>
           <MDXStyleWrapper>
             <AnchorsSetter>
+              <BreadcrumbsMui frontMatter={frontMatter} />
               {groupCodeExamples({
                 children,
                 into: CodeExamples,
