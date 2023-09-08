@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import { Button, FormControl } from "@mui/material";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import classnames from "classnames";
@@ -10,6 +10,7 @@ import { css } from "@emotion/react";
 import sortBy from "lodash.sortby";
 import uniqBy from "lodash.uniqby";
 import { TopBarProps as MobileItemProps } from "./TopBar";
+import SelectMui, { SelectMuiOption } from "../base/SelectMui";
 import {
   GREY_054,
   GREY_2,
@@ -26,6 +27,7 @@ import {
 import { ROBOTO } from "../typography";
 import { breakDown, breakUp } from "../breakpoints";
 import { slideInFromLeft, slideInFromRight } from "../keyframes";
+import { Z_SIDENAV_STICKY_SECTION_WRAP } from "../zIndexes";
 import { ReactComponent as BackIcon } from "../../../assets/images/component-icons/side-nav/back-nav-icon.svg";
 import { ReactComponent as RightIcon } from "../../../assets/images/component-icons/side-nav/caret-right-nav-icon.svg";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
@@ -49,12 +51,15 @@ type ConditionalSideNavLinkProps =
       IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
       isSection: boolean; // If true, then the link is a section link which slides out a subnav
       isDocs?: boolean; // If true, then the StickyReferenceLinks will be shown in the subnav
+      productSelector?: boolean; // If true, then the ProductSelector dropdown will be shown
+      // in the subnav
     }
   | {
       isExternal: true;
       IconSvg?: never;
       isSection?: false;
       isDocs?: false;
+      productSelector?: false;
     };
 
 // Combined type of common and conditional props
@@ -66,6 +71,7 @@ interface SideNavProps {
   pages: Page[];
   mobileItems: MobileItemProps;
   stickyReferenceLinks: SideNavLinkProps[];
+  productSelectorOptions: Array<SelectMuiOption>;
 }
 
 // helpers
@@ -187,6 +193,9 @@ const StickySectionWrap = styled.div`
   position: sticky;
   top: 0;
   background-color: ${WHITE_PRIMARY};
+  z-index: ${Z_SIDENAV_STICKY_SECTION_WRAP}; // This ensures that this div is displayed above the
+  // ProductSelector drop-down which uses MUI's Select component which also uses a z-index. In other
+  // words, this prevents the Product Selector from overlapping with this div when scrolling.
 
   @media (${breakDown("md")}) {
     padding-top: 17px;
@@ -505,21 +514,32 @@ function SideNav({
   pages,
   mobileItems,
   stickyReferenceLinks,
+  productSelectorOptions,
 }: SideNavProps) {
   const { pathname } = useRouter();
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
   );
+  const [selectedProduct, setSelectedProduct] = useState(
+    productSelectorOptions[0]
+  ); // Initialize with the default product
+
+  // Filter pages based on the selected product if productSelector exists
+  const filteredPages =
+    activeSection && activeSection.productSelector
+      ? pages.filter((page) => page.product === selectedProduct.value)
+      : pages;
+
   useEffect(() => {
     setActiveSection(findSelectedSection(sectionLinks, pathname));
   }, [pathname]);
 
   const categories = activeSection
-    ? groupby(getPagesInSection(pages, activeSection), getCategory)
+    ? groupby(getPagesInSection(filteredPages, activeSection), getCategory)
     : {};
 
   const subCategories = activeSection
-    ? groupby(getPagesInSection(pages, activeSection), getSubCategory)
+    ? groupby(getPagesInSection(filteredPages, activeSection), getSubCategory)
     : {};
 
   return (
@@ -579,6 +599,18 @@ function SideNav({
                   isActive
                 />
               </StickySectionWrap>
+
+              {/*Display Product Selector drop-down if it is set to 'true' for the active section*/}
+              {activeSection.productSelector && (
+                <FormControl sx={{ m: 5, minWidth: 120 }}>
+                  <SelectMui
+                    label="Select Product"
+                    onChange={(value) => setSelectedProduct(value)}
+                    options={productSelectorOptions}
+                    value={selectedProduct}
+                  />
+                </FormControl>
+              )}
 
               <CategoriesWrap>
                 {sortCategories(activeSection.href, keys(categories)).map(

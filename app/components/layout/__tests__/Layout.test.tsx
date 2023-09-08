@@ -127,6 +127,11 @@ const TOP_BAR_PROPS = {
   },
 };
 
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect" }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance" },
+];
+
 test("Layout", () => {
   const tree = renderer
     .create(
@@ -136,6 +141,7 @@ test("Layout", () => {
         footerLinks={FOOTER_LINKS}
         footerLegal={FOOTER_LEGAL_COPY}
         topBarProps={TOP_BAR_PROPS}
+        productSelectorOptions={PRODUCT_OPTIONS}
         pages={Pages.all()}
         apiStatus={{ indicator: "none", description: "apiStatus description" }}
       >

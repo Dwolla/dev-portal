@@ -3,6 +3,7 @@
 exports[`zIndexes 1`] = `
 {
   "Z_HERO_CARD": 20,
+  "Z_SIDENAV_STICKY_SECTION_WRAP": 20,
   "Z_TOB_BAR": 30,
 }
 `;

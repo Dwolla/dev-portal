@@ -77,6 +77,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     text: "API Reference",
     isExternal: false,
     isDocs: false,
+    productSelector: true,
   },
   {
     href: "/sdks-tools",
@@ -270,6 +271,11 @@ const LANGUAGE_OPTIONS = [
   },
 ];
 
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect" }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance" },
+];
+
 const clientSideEmotionCache = createEmotionCache();
 
 interface Props extends AppProps {
@@ -300,6 +306,7 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
           stickyReferenceLinks={STICKY_REFERENCE_LINKS}
+          productSelectorOptions={PRODUCT_OPTIONS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
         >
