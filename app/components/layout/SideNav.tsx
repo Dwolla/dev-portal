@@ -602,7 +602,7 @@ function SideNav({
 
               {/*Display Product Selector drop-down if it is set to 'true' for the active section*/}
               {activeSection.productSelector && (
-                <FormControl sx={{ m: 5, minWidth: 120 }}>
+                <FormControl sx={{ m: 2, minWidth: 200 }} size="small">
                   <SelectMui
                     label="Select Product"
                     onChange={(value) => setSelectedProduct(value)}
