@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import Card from "../../app/components/base/Card";
 import guideIcon from "../../assets/images/content-images/content-icons/guides-icon.svg";
 import balanceIcon from "../../assets/images/product-icons-and-heroes/dwolla-balance-icon-white-48x48.svg";
-import connectIcon from "../../assets/images/content-images/content-icons/dwolla-connect-product-icon.svg";
+import connectIcon from "../../assets/images/product-icons-and-heroes/dwolla-connect-icon-white-48x48.svg";
 
 const CardWrapper = styled.div`
   width: 400px;

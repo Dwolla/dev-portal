@@ -2,6 +2,7 @@
 export const GREY_1 = "#f4f7fb";
 export const GREY_2 = "#eaedf3";
 export const GREY_3 = "#c9d3e0";
+export const GREY_3_44 = "rgba(201, 211, 224, 0.44)"; // GREY_3 with 44% opacity
 export const GREY_4 = "#aab7c8";
 export const GREY_5 = "#61798F";
 export const GREY_6 = "#52627b";
@@ -87,6 +88,9 @@ export const PURPLE_100 = "rgba(31, 31, 50, 1)";
 
 // White RGBA shades
 export const WHITE_070 = "rgba(255, 255, 255, 0.7)";
+
+// Grey RGBA shades
+export const GREY_044 = "rgba(201, 211, 224, 0.44)";
 
 // Product colors
 

@@ -1,5 +1,5 @@
 import renderer from "react-test-renderer";
-import SelectMui, { SelectMuiOption } from "../SelectMui";
+import SelectMui, { SelectMuiOption } from "../../SelectMui";
 
 const options: Array<SelectMuiOption> = [
   { value: "javascript", label: "JavaScript" },
