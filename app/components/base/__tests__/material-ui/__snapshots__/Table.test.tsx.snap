@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table 1`] = `
+<div
+  className="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
+>
+  <table
+    className="MuiTable-root css-rqglhn-MuiTable-root"
+    role={null}
+  >
+    <thead
+      className="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+      role={null}
+    >
+      <tr
+        className="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+        role={null}
+      >
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          Property
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          Required
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          Type
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+          scope="col"
+        >
+          Description
+        </th>
+        <th
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-ascgfw-MuiTableCell-root-ExpandableTableCell-root"
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody
+      className="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+      role={null}
+    >
+      <tr
+        className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        role={null}
+      >
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          <code>
+            _links
+          </code>
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          Yes
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          object
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          A JSON object describing the source and destination Funding Source for a Transfer
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          <button
+            className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root"
+            disabled={false}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onDragLeave={[Function]}
+            onFocus={[Function]}
+            onKeyDown={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseLeave={[Function]}
+            onMouseUp={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+            tabIndex={0}
+            type="button"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="ExpandMoreOutlinedIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
+              />
+            </svg>
+          </button>
+        </td>
+      </tr>
+      <tr
+        className="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+        role={null}
+      >
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          <code>
+            correlationId
+          </code>
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          No
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          string
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        >
+          A pseudo-random, unique identifier that can be used to correlate the Transfer resource
+        </td>
+        <td
+          aria-sort={null}
+          className="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        />
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

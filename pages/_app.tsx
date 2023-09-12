@@ -84,7 +84,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "SDKs & Tools",
     isExternal: false,
-    isDocs: true,
+    isDocs: false,
   },
   {
     href: "/code-samples",

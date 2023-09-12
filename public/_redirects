@@ -128,16 +128,27 @@
 /guides/webhooks/frequently-asked-questions    /docs/balance/webhooks/frequently-asked-questions
 /guides/webhooks    /docs/balance/webhooks
 /guides/webhooks/process-validate    /docs/balance/webhooks/process-validate
-/concepts/drop-in-components    /docs/drop-in-components
-/guides/drop-ins/generate-client-token    /docs/drop-ins/generate-client-token
-/guides/drop-ins    /docs/drop-ins
-/guides/drop-ins/setup-and-configuration    /docs/drop-ins/setup-and-configuration
-/guides/drop-ins/using-drop-in-components    /docs/drop-ins/using-drop-in-components
-/guides/dwolla-js/add-a-bank-account/configure-and-call-function    /docs/dwolla-js/configure-and-call-function
-/guides/dwolla-js/add-a-bank-account/create-form    /docs/dwolla-js/create-form
-/guides/dwolla-js/add-a-bank-account/create-token    /docs/dwolla-js/create-token
-/guides/dwolla-js/add-a-bank-account/handle-response    /docs/dwolla-js/handle-response
-/guides/dwolla-js/add-a-bank-account    /docs/dwolla-js
+/concepts/drop-in-components    /docs/balance/drop-in-components
+/guides/drop-ins/generate-client-token    /docs/balance/drop-ins/generate-client-token
+/guides/drop-ins    /docs/balance/drop-ins
+/guides/drop-ins/setup-and-configuration    /docs/balance/drop-ins/setup-and-configuration
+/guides/drop-ins/using-drop-in-components    /docs/balance/drop-ins/using-drop-in-components
+/guides/dwolla-js/add-a-bank-account/configure-and-call-function    /docs/balance/dwolla-js/configure-and-call-function
+/guides/dwolla-js/add-a-bank-account/create-form    /docs/balance/dwolla-js/create-form
+/guides/dwolla-js/add-a-bank-account/create-token    /docs/balance/dwolla-js/create-token
+/guides/dwolla-js/add-a-bank-account/handle-response    /docs/balance/dwolla-js/handle-response
+/guides/dwolla-js/add-a-bank-account    /docs/balance/dwolla-js
+
+/docs/drop-in-components /docs/balance/drop-in-components
+/docs/drop-ins/generate-client-token /docs/balance/drop-ins/generate-client-token
+/docs/drop-ins /docs/balance/drop-ins
+/docs/drop-ins/setup-and-configuration /docs/balance/drop-ins/setup-and-configuration
+/docs/drop-ins/using-drop-in-components /docs/balance/drop-ins/using-drop-in-components
+/docs/dwolla-js/configure-and-call-function /docs/balance/dwolla-js/configure-and-call-function
+/docs/dwolla-js/create-form /docs/balance/dwolla-js/create-form
+/docs/dwolla-js/create-token /docs/balance/dwolla-js/create-token
+/docs/dwolla-js/handle-response /docs/balance/dwolla-js/handle-response
+/docs/dwolla-js /docs/balance/dwolla-js
 
 /guides    /docs/balance
 /docs/balance/plaid    /docs/balance/create-funding-source-plaid

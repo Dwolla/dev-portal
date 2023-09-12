@@ -14,6 +14,7 @@ import {
 import { ExpandLessOutlined, ExpandMoreOutlined } from "@mui/icons-material";
 import { v4 as uuidv4 } from "uuid";
 import { slugify } from "../../../modules/helpers";
+import { GREY_1, GREY_3_44, PURPLE_012 } from "../../colors";
 
 const ExpandableTableCell = styled(TableCell, { name: "ExpandableTableCell" })(
   () => ({
@@ -28,13 +29,13 @@ const NestedTableContainer = styled(MuiTableContainer, {
 }));
 
 const NestedTableWrapper = styled(Paper, { name: "NestedTable" })(() => ({
-  background: "#F4F7FB",
-  boxShadow: "0px 0px 0px 1px rgba(31, 31, 50, 0.12);",
+  background: `${GREY_1}`,
+  boxShadow: `0px 0px 0px 1px ${PURPLE_012};`,
   padding: "1rem",
 }));
 
 const TitleTypography = styled(Typography, { name: "TitleTypography" })(() => ({
-  background: "rgba(201, 211, 224, 0.44);",
+  background: `${GREY_3_44}`,
   borderRadius: "0.25rem",
   padding: "0.5rem",
 }));
@@ -125,8 +126,10 @@ export default function Table({ table }: TableProps): ReactElement {
       isSluggedNestedTableRow(row) && expanded.includes(row[1].sluggedTitle)
         ? 0
         : null;
-    const mappedCells = cells.map((cell) => (
-      <TableCell sx={{ borderBottom }}>{cell}</TableCell>
+    const mappedCells = cells.map((cell, cellIndex) => (
+      <TableCell key={`cell-${cellIndex}`} sx={{ borderBottom }}>
+        {cell}
+      </TableCell>
     ));
 
     if (isSluggedNestedTableRow(row)) {
@@ -157,8 +160,8 @@ export default function Table({ table }: TableProps): ReactElement {
         <MuiTable>
           <TableHead>
             <TableRow>
-              {sluggedTable.headers.map((item) => (
-                <TableCell>{item}</TableCell>
+              {sluggedTable.headers.map((item, itemIndex) => (
+                <TableCell key={`item-${itemIndex}`}>{item}</TableCell>
               ))}
 
               {isTableExpandable(sluggedTable) && <ExpandableTableCell />}
@@ -166,8 +169,8 @@ export default function Table({ table }: TableProps): ReactElement {
           </TableHead>
 
           <TableBody>
-            {sluggedTable.rows.map((row) => (
-              <>
+            {sluggedTable.rows.map((row, rowIndex) => (
+              <React.Fragment key={`row-${rowIndex}`}>
                 <TableRow>{getCellElements(row)}</TableRow>
 
                 {isSluggedNestedTableRow(row) &&
@@ -178,7 +181,7 @@ export default function Table({ table }: TableProps): ReactElement {
                       </TableCell>
                     </TableRow>
                   )}
-              </>
+              </React.Fragment>
             ))}
           </TableBody>
         </MuiTable>

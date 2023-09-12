@@ -568,7 +568,7 @@ function SideNav({
                     href: "/docs",
                     IconSvg: BackIcon,
                     isSection: false,
-                    text: "Back",
+                    text: "All Docs",
                     isExternal: false,
                   }}
                   isActive={false}
