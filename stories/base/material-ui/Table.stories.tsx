@@ -3,7 +3,8 @@ import Table, {
   TableContents,
 } from "../../../app/components/base/material-ui/Table";
 
-const INITIATE_TRANSFER_TABLE: TableContents = {
+/* eslint-disable-next-line import/prefer-default-export */
+export const INITIATE_TRANSFER_TABLE: TableContents = {
   headers: ["Property", "Required", "Type", "Description"],
   rows: [
     [
