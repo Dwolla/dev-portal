@@ -3,118 +3,114 @@
 exports[`IndexPageGrid 1`] = `
 [
   <div
-    className="mdx-style-override css-h63dfz-BannerWrap er14vms1"
+    className="filters default css-5in85l-StyledBanner e1el1emo5"
   >
     <div
-      className="filters default css-qc8b1t-StyledBanner e1el1emo5"
+      className="css-1trg8gg-BannerContentWrap e1el1emo4"
     >
+      <img
+        alt=""
+        className="css-1fky7ck-StyledIcon e1el1emo3"
+        src="guides-icon.svg"
+      />
       <div
-        className="css-1trg8gg-BannerContentWrap e1el1emo4"
+        className="css-izwvz-StyledTopic e1el1emo2"
       >
-        <img
-          alt=""
-          className="css-1fky7ck-StyledIcon e1el1emo3"
-          src="guides-icon.svg"
-        />
-        <div
-          className="css-izwvz-StyledTopic e1el1emo2"
-        >
-          Guides
-        </div>
-        <div
-          className="css-wbadgb-StyledDescription e1el1emo1"
-        >
-          Step-by-step instructions to get you set up in the Dwolla API
-        </div>
+        Guides
       </div>
       <div
-        className="css-1r5qd2q-StyledFilter e1el1emo0"
+        className="css-wbadgb-StyledDescription e1el1emo1"
       >
-        <ul
-          className="css-ckmwo8-TabsContainerStyle ercic662"
+        Step-by-step instructions to get you set up in the Dwolla API
+      </div>
+    </div>
+    <div
+      className="css-1r5qd2q-StyledFilter e1el1emo0"
+    >
+      <ul
+        className="css-ckmwo8-TabsContainerStyle ercic662"
+      >
+        <li
+          className="is-active css-1vt6dm1-TabStyle ercic661"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
         >
-          <li
-            className="is-active css-1vt6dm1-TabStyle ercic661"
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            tabIndex={0}
-          >
-            All
-          </li>
-          <li
-            className=" css-1vt6dm1-TabStyle ercic661"
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            tabIndex={0}
-          >
-            Get Building
-          </li>
-        </ul>
+          All
+        </li>
+        <li
+          className=" css-1vt6dm1-TabStyle ercic661"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          tabIndex={0}
+        >
+          Get Building
+        </li>
+      </ul>
+      <div
+        className="css-18difvw-SelectWrapper ercic660"
+      >
         <div
-          className="css-18difvw-SelectWrapper ercic660"
+          className=" css-14mys1s-container"
+          onKeyDown={[Function]}
         >
+          <span
+            className="css-1f43avz-a11yText-A11yText"
+            id="react-select-2-live-region"
+          />
+          <span
+            aria-atomic="false"
+            aria-live="polite"
+            aria-relevant="additions text"
+            className="css-1f43avz-a11yText-A11yText"
+          />
           <div
-            className=" css-14mys1s-container"
-            onKeyDown={[Function]}
+            className=" css-13gegmk-control"
+            onMouseDown={[Function]}
+            onTouchEnd={[Function]}
           >
-            <span
-              className="css-1f43avz-a11yText-A11yText"
-              id="react-select-2-live-region"
-            />
-            <span
-              aria-atomic="false"
-              aria-live="polite"
-              aria-relevant="additions text"
-              className="css-1f43avz-a11yText-A11yText"
-            />
             <div
-              className=" css-13gegmk-control"
-              onMouseDown={[Function]}
-              onTouchEnd={[Function]}
+              className=" css-9elhwp-ValueContainer"
             >
               <div
-                className=" css-9elhwp-ValueContainer"
+                className=" css-1n4ahi-singleValue"
               >
-                <div
-                  className=" css-1n4ahi-singleValue"
-                >
-                  All
-                </div>
-                <input
-                  aria-autocomplete="list"
-                  aria-expanded={false}
-                  aria-haspopup={true}
-                  aria-readonly={true}
-                  className="css-mohuvp-dummyInput-DummyInput"
-                  disabled={false}
-                  id="react-select-2-input"
-                  inputMode="none"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  role="combobox"
-                  tabIndex={0}
-                  value=""
-                />
+                All
               </div>
+              <input
+                aria-autocomplete="list"
+                aria-expanded={false}
+                aria-haspopup={true}
+                aria-readonly={true}
+                className="css-mohuvp-dummyInput-DummyInput"
+                disabled={false}
+                id="react-select-2-input"
+                inputMode="none"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                role="combobox"
+                tabIndex={0}
+                value=""
+              />
+            </div>
+            <div
+              className=" css-1hb7zxy-IndicatorsContainer"
+            >
+              <span
+                className=" css-1uei4ir-indicatorSeparator"
+              />
               <div
-                className=" css-1hb7zxy-IndicatorsContainer"
+                aria-hidden="true"
+                className=" css-1ra8hvv-indicatorContainer"
+                onMouseDown={[Function]}
+                onTouchEnd={[Function]}
               >
-                <span
-                  className=" css-1uei4ir-indicatorSeparator"
+                <img
+                  alt=""
+                  className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
+                  src="test-image-stub"
                 />
-                <div
-                  aria-hidden="true"
-                  className=" css-1ra8hvv-indicatorContainer"
-                  onMouseDown={[Function]}
-                  onTouchEnd={[Function]}
-                >
-                  <img
-                    alt=""
-                    className=" css-vfym8x-StyledDefaultDropdownIcon evf7wlc2"
-                    src="test-image-stub"
-                  />
-                </div>
               </div>
             </div>
           </div>
