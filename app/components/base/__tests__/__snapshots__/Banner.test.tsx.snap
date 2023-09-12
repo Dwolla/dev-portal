@@ -2,7 +2,7 @@
 
 exports[`Banner - no icon 1`] = `
 <div
-  className="default css-qc8b1t-StyledBanner e1el1emo5"
+  className="default css-5in85l-StyledBanner e1el1emo5"
 >
   <div
     className="css-1trg8gg-BannerContentWrap e1el1emo4"
@@ -23,7 +23,7 @@ exports[`Banner - no icon 1`] = `
 
 exports[`Banner - with Button 1`] = `
 <div
-  className="default css-qc8b1t-StyledBanner e1el1emo5"
+  className="default css-5in85l-StyledBanner e1el1emo5"
 >
   <div
     className="css-1trg8gg-BannerContentWrap e1el1emo4"
@@ -51,7 +51,7 @@ exports[`Banner - with Button 1`] = `
 
 exports[`Banner - with Extra Padding for Overlapping Cards 1`] = `
 <div
-  className="overlapped css-qc8b1t-StyledBanner e1el1emo5"
+  className="overlapped css-5in85l-StyledBanner e1el1emo5"
 >
   <div
     className="css-1trg8gg-BannerContentWrap e1el1emo4"
@@ -79,7 +79,7 @@ exports[`Banner - with Extra Padding for Overlapping Cards 1`] = `
 
 exports[`Banner - with Filters 1`] = `
 <div
-  className="filters default css-qc8b1t-StyledBanner e1el1emo5"
+  className="filters default css-5in85l-StyledBanner e1el1emo5"
 >
   <div
     className="css-1trg8gg-BannerContentWrap e1el1emo4"
@@ -214,7 +214,7 @@ exports[`Banner - with Filters 1`] = `
 
 exports[`Default Banner 1`] = `
 <div
-  className="default css-qc8b1t-StyledBanner e1el1emo5"
+  className="default css-5in85l-StyledBanner e1el1emo5"
 >
   <div
     className="css-1trg8gg-BannerContentWrap e1el1emo4"

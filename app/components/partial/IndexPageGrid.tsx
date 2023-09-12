@@ -7,15 +7,6 @@ import CardGrid from "../base/CardGrid";
 import Card, { LanguageProp } from "../base/Card";
 import { slugify } from "../../modules/helpers";
 import { contentIcons } from "../../modules/images.import";
-import { breakDown } from "../breakpoints";
-
-const BannerWrap = styled.div`
-  margin: -20px -40px 40px -40px;
-
-  @media (${breakDown("sm")}) {
-    margin: -20px -20px 20px -20px;
-  }
-`;
 
 const CardGridWrap = styled.div`
   margin-bottom: 20px;
@@ -67,22 +58,20 @@ function IndexPageGrid({ unfilteredCards, bannerProps }: Props) {
 
   return (
     <>
-      <BannerWrap className="mdx-style-override">
-        <Banner
-          {...bannerProps}
-          filterTabs={
-            filters.length > 1 ? (
-              <FilterTabs
-                tabs={filters}
-                filter={
-                  router.query.filter ? router.query.filter.toString() : null
-                }
-                setFilter={setFilter}
-              />
-            ) : null
-          }
-        />
-      </BannerWrap>
+      <Banner
+        {...bannerProps}
+        filterTabs={
+          filters.length > 1 ? (
+            <FilterTabs
+              tabs={filters}
+              filter={
+                router.query.filter ? router.query.filter.toString() : null
+              }
+              setFilter={setFilter}
+            />
+          ) : null
+        }
+      />
 
       <CardGridWrap>
         <CardGrid>
