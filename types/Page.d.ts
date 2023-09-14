@@ -25,4 +25,5 @@ type Page = {
   guide?: Guide;
   meta: Meta;
   weight?: number;
+  product?: string;
 };

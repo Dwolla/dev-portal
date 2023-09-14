@@ -1,0 +1,31 @@
+---
+layout: guides
+product: connect
+title: "Overview"
+group:
+  title: Connect Drop-in Components
+  weight: 2
+guide:
+  step: 0
+meta:
+  title: "API Reference | Drop-in Components"
+  description: "Use low code components that help expedite the integration process with the Dwolla Platform."
+---
+
+import guideIcon from "../../../assets/images/content-images/content-icons/guides-icon.svg";
+
+# Drop-in Components
+
+Dwolla’s UI drop-in components library allows developers to leverage isolated functions or build connected flows in their web applications, which expedites the integration process with the Dwolla Platform. Each component within this library includes HTML, CSS and JavaScript that developers can drop-in and customize to fit the look and feel of their application.
+
+<InlineCTA
+  icon={guideIcon}
+  text="Check out the step-by-step guide on building with drop-in components."
+  href="/guides/drop-ins/"
+/>
+
+Dwolla's [UI components library](https://developers.dwolla.com/concepts/drop-in-components), dwolla-web.js, requires a unique client-side token that is generated using a server-side SDK. The client token contains granular permissions to perform a specific action on behalf of a [Customer](https://developers.dwolla.com/api-reference/customers).
+
+#### Client Token lifetime
+
+**Client-tokens** are single-use tokens that are valid for up to 1 hour after being generated. More than one client token can be generated and valid at one time.

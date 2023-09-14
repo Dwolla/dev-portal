@@ -19,6 +19,8 @@ import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
+import { ReactComponent as DwollaConnectColorIcon } from "../assets/images/product-icons-and-heroes/dwolla-connect-icon-48x48.svg";
+import { ReactComponent as DwollaBalanceColorIcon } from "../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
@@ -77,6 +79,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     text: "API Reference",
     isExternal: false,
     isDocs: false,
+    productSelector: true,
   },
   {
     href: "/sdks-tools",
@@ -270,6 +273,11 @@ const LANGUAGE_OPTIONS = [
   },
 ];
 
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
+];
+
 const clientSideEmotionCache = createEmotionCache();
 
 interface Props extends AppProps {
@@ -300,6 +308,7 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
           stickyReferenceLinks={STICKY_REFERENCE_LINKS}
+          productSelectorOptions={PRODUCT_OPTIONS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
         >
