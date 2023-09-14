@@ -80,6 +80,11 @@ const TOP_BAR_PROPS = {
   },
 };
 
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect" }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance" },
+];
+
 test("SideNav", () => {
   const tree = renderer
     .create(
@@ -87,6 +92,7 @@ test("SideNav", () => {
         pages={Pages.all()}
         sectionLinks={SIDE_NAV_LINKS}
         stickyReferenceLinks={STICKY_REFERENCE_LINKS}
+        productSelectorOptions={PRODUCT_OPTIONS}
         mobileItems={TOP_BAR_PROPS}
       />
     )

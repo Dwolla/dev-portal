@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithRef, useId } from "react";
 import { InputLabel, MenuItem, Select, SxProps } from "@mui/material";
 import { MUI_DROPDOWN_FOCUS, WHITE_PRIMARY } from "../colors";
+import ConditionalWrapper from "../util/ConditionalWrapper";
 
 /**
  * Defines a `<select>` option that was chosen, returning both its label and value.
@@ -8,6 +9,7 @@ import { MUI_DROPDOWN_FOCUS, WHITE_PRIMARY } from "../colors";
 export interface SelectMuiOption {
   label: string;
   value: SelectMuiValue;
+  icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 }
 
 /**
@@ -131,11 +133,33 @@ export default function SelectMui({
         value={isOption(value) ? value.value : value}
         variant="outlined"
       >
-        {options.map(({ label: itemLabel, value: itemValue }) => (
-          <MenuItem key={useId()} value={itemValue}>
-            {itemLabel}
-          </MenuItem>
-        ))}
+        {options.map(
+          ({ label: itemLabel, value: itemValue, icon: ItemIcon }) => (
+            <MenuItem key={useId()} value={itemValue}>
+              {/* ConditionalWrapper is used to display the ItemIcon alongside the itemLabel
+              if one exists */}
+              <ConditionalWrapper
+                condition={!!ItemIcon}
+                wrapper={(children) => (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyItems: "space-between",
+                    }}
+                  >
+                    <ItemIcon width={24} />
+                    <div style={{ marginLeft: "0.5em", padding: "0.3em 0" }}>
+                      {children}
+                    </div>
+                  </div>
+                )}
+              >
+                {itemLabel}
+              </ConditionalWrapper>
+            </MenuItem>
+          )
+        )}
       </Select>
     </>
   );

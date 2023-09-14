@@ -6,6 +6,8 @@ import SelectMui, {
   SelectMuiProps,
 } from "../../app/components/base/SelectMui";
 import { PURPLE_DARKER } from "../../app/components/colors";
+import { ReactComponent as DwollaConnectColorIcon } from "../../assets/images/product-icons-and-heroes/dwolla-connect-icon-48x48.svg";
+import { ReactComponent as DwollaBalanceColorIcon } from "../../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 
 const PurpleBackground = styled("div", { name: "PurpleBackground" })(() => ({
   alignItems: "center",
@@ -20,7 +22,7 @@ const PurpleBackground = styled("div", { name: "PurpleBackground" })(() => ({
 }));
 
 const SelectWrapContainer = styled("div", { name: "SelectWrapContainer" })(
-  () => ({ width: "150px" })
+  () => ({ width: "250px" })
 );
 
 function SelectWrap(wrapOptions?: Partial<SelectMuiProps>) {
@@ -30,6 +32,8 @@ function SelectWrap(wrapOptions?: Partial<SelectMuiProps>) {
     { value: "ruby", label: "Ruby" },
     { value: "python", label: "Python" },
     { value: "raw", label: "Raw" },
+    { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon },
+    { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
   ];
   const [selectedValue, setSelectedValue] = useState(options[0]);
 
