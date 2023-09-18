@@ -71,18 +71,6 @@ The Virtual Account Number, or `VAN`, is a funding source that upon creation con
 | iavAccountHolders | An optional object that includes optional `selected` and `other` parameters. `selected`, a string with the account holder name(s) on file with the financial institution for the IAV selected account. `other`, a list of strings with name(s) of other accounts on file. Only returned for a Customer that added a bank using Dwolla IAV, and if names are returned for the selected bank account. |
 | fingerprint       | Fingerprint is an optional unique identifying string value returned for funding sources of type `bank`. This attribute can be used to check across all Dwolla API Customers if two bank accounts share the same account number and routing number. Removing a funding source does not remove the `fingerprint`.                                                                                     |
 
-#### cardDetails example
-
-```bash
-"cardDetails": {
-  "brand": "VISA",
-  "lastFour": "1111",
-  "expirationMonth": 12,
-  "expirationYear": 2024,
-  "nameOnCard": "Jane Doe"
-}
-```
-
 #### Funding source resource example
 
 ```bash

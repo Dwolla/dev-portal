@@ -11,7 +11,7 @@ export default {
         "object",
         <span>
           <Link href="/api-reference#links" text="HAL-JSON" /> links that
-          represent resource relationships for the current Treasury Account
+          represent resource relationships for the current Treasury Account.
         </span>,
       ],
       {
@@ -19,7 +19,7 @@ export default {
         headers: ["Link", "Description"],
         rows: [
           [
-            ["self", "References the current Treasury Account resource"],
+            ["self", "References the current Treasury Account resource."],
             HalLink("treasury-account"),
           ],
           [
@@ -31,7 +31,7 @@ export default {
                   href="/api-reference/connect/treasury-partners"
                   text="Treasury Partner"
                 />{" "}
-                that this resource is connected to
+                that this resource is connected to.
               </span>,
             ],
             HalLink("treasury-partners"),
@@ -42,7 +42,7 @@ export default {
               <span>
                 References the{" "}
                 <Link href="/api-reference/connect/accounts" text="Account" />{" "}
-                that created this resource
+                that created this resource.
               </span>,
             ],
             HalLink("account"),
@@ -53,7 +53,7 @@ export default {
     [
       "id",
       "string <uuid>",
-      "Unique identifier of resource that is assigned by Dwolla",
+      "Unique identifier of resource that is assigned by Dwolla.",
     ],
     [
       "name",
@@ -64,18 +64,19 @@ export default {
           href="/api-reference/connect/treasury-accounts/create"
           text="resource is created"
         />
+        .
       </span>,
     ],
     [
       "created",
       "string <date-time>",
-      "ISO-8601 timestamp of when the resource was created",
+      "ISO-8601 timestamp of when the resource was created.",
     ],
     [
       [
         "treasuryPartnerContext",
         "object",
-        "Additional context used for making bank API calls",
+        "Additional context used for making bank API calls.",
       ],
       {
         title: "Treasury Partner Context Object",
@@ -85,14 +86,14 @@ export default {
             "achCoId",
             <span>
               <em>(Optional)</em> Present if Treasury Account was created with
-              J.P. Morgan connection
+              J.P. Morgan connection.
             </span>,
           ],
           [
             "gatewayCompanyId",
             <span>
               <em>(Optional)</em> Present if Treasury Account was created with
-              Wells Fargo connection
+              Wells Fargo connection.
             </span>,
           ],
         ],

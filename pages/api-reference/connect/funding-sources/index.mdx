@@ -1,0 +1,55 @@
+---
+layout: guides
+product: connect
+title: "Overview"
+group:
+  title: Funding Sources
+  weight: 3
+guide:
+  step: 0
+meta:
+  title: Funding Sources | Dwolla Connect | Dwolla API Reference
+  description: Create, remove or retrieve a funding source for an Account.
+---
+
+import AccountFundingSource from "../../../../assets/api-resource-tables/accounts/FundingSource";
+
+# Funding Sources
+
+The Funding Sources resource represents payment accounts that can be used to send and/or receive funds. Funding sources are relational to either the main [Dwolla Account](/api-reference/connect/funding-sources/create) or an [External Party](/api-reference/connect/external-parties/create-funding-source) and can be used to reference details on a payment account.
+
+### Bank Account Types
+
+Funding sources include an attribute, `bankAccountType`, which denotes the type of the bank account being attached. The bank account types currently supported by Dwolla include `checking` and `savings`.
+
+## Resource Overview
+
+<Table table={AccountFundingSource} />
+
+#### Funding source resource example
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "treasury-account": {
+            "href": "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "treasury-account"
+        },
+        "remove": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "9062c625-2094-47ed-9d1f-f40315e4bea7",
+    "bankAccountType": "checking",
+    "name": "Your Account #1 - CHECKING",
+    "created": "2023-09-15T18:50:34.866Z"
+}
+```
