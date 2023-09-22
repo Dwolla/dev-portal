@@ -9,9 +9,9 @@ meta:
   description: Endpoint for listing funding sources for external parties.
 ---
 
-# List funding-sources for an external-party
+# List funding-sources for an External Party
 
-Retrieve a list of funding sources that belong to a external-party. By default, all funding sources are returned unless the removed query string parameter is set to false in the request.
+Retrieve a list of funding sources that belong to a external party. By default, all funding sources are returned unless the removed query string parameter is set to false in the request.
 
 ## HTTP request
 
@@ -21,14 +21,14 @@ Retrieve a list of funding sources that belong to a external-party. By default, 
 
 | Parameter | Required | Type   | Description                                |
 | --------- | -------- | ------ | ------------------------------------------ |
-| id        | yes      | string | External-Party resource unique identifier. |
+| id        | yes      | string | External Party resource unique identifier. |
 
 ## HTTP status and error codes
 
 | HTTP Status | Code     | Message                               | Description                                                  |
 | ----------- | -------- | ------------------------------------- | ------------------------------------------------------------ |
 | 200         | Ok       | Success                               | The Dwolla API accepted the request and returned a response. |
-| 404         | NotFound | The requested resource was not found. | External-Party not found. Check external-party Id.           |
+| 404         | NotFound | The requested resource was not found. | External Party not found. Check external party Id.           |
 
 ### Request and response
 

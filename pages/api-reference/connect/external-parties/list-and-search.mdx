@@ -76,3 +76,28 @@ HTTP/1.1 200 Ok
     }
 }
 ```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_parties = app_token.get "external-parties"
+external_parties._embedded.['external-parties'][0].firstName # => "Jane"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_parties = app_token.get('external-parties')
+external-parties.body['_embedded']['external-parties'][0]['firstName'] # => 'Jane'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+dwolla
+  .get("external-parties")
+  .then((res) => res.body._embedded["external-parties"][0].firstName); // => 'Jane'
+```

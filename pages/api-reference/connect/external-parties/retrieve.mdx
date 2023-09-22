@@ -6,12 +6,12 @@ guide:
   step: 2
 meta:
   title: Retrieve External Party | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for retrieving an external-party.
+  description: Endpoint for retrieving an external party.
 ---
 
-# Retrieve an external-party
+# Retrieve an External Party
 
-This section shows you how to retrieve an external-party resource belonging to the authorized Dwolla Account.
+This section shows you how to retrieve an external party resource belonging to the authorized Dwolla Account.
 
 ## HTTP request
 
@@ -21,14 +21,14 @@ This section shows you how to retrieve an external-party resource belonging to t
 
 | Parameter | Required | Type   | Description                                |
 | --------- | -------- | ------ | ------------------------------------------ |
-| id        | yes      | string | External-Party resource unique identifier. |
+| id        | yes      | string | External Party resource unique identifier. |
 
 ## HTTP status and error codes
 
 | HTTP Status | Code     | Message                               | Description                                                  |
 | ----------- | -------- | ------------------------------------- | ------------------------------------------------------------ |
 | 200         | Ok       | Success                               | The Dwolla API accepted the request and returned a response. |
-| 404         | NotFound | The requested resource was not found. | External-Party not found. Check External-Party Id.           |
+| 404         | NotFound | The requested resource was not found. | External Party not found. Check External Party Id.           |
 
 ## Request and response
 
@@ -54,4 +54,34 @@ HTTP/1.1 200 Ok
 	"email": "firstName+lastName@dwolla.com",
 	"created": "2022-05-03T15:17:52.686Z"
 }
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733'
+
+customer = app_token.get external_party_url
+customer.firstName # => "Jane"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733'
+
+customer = app_token.get(external_party_url)
+customer.body['firstName']
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733";
+
+dwolla.get(externalPartyUrl).then((res) => res.body.firstName); // => 'Jane'
 ```

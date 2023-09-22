@@ -16,7 +16,7 @@ import Transfer from "../../../../assets/api-resource-tables/transfers/Transfer"
 
 # Transfers
 
-A transfer represents money being transferred from a `source` to a `destination`. Transfers can be created over the ACH network or over Wire. A Debit represents funds being debited from an external-party's funding source. A Credit represents funds being credited to an external-party's funding source.
+A transfer represents money being transferred from a `source` to a `destination`. Transfers can be created over the ACH network or over Wire. A Debit represents funds being debited from an external party's funding source. A Credit represents funds being credited to an external party's funding source.
 
 ## Resource Overview
 
@@ -30,10 +30,20 @@ A transfer represents money being transferred from a `source` to a `destination`
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "transfer"
         },
+        "source": {
+            "href": "https://api-sandbox.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb3",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "account"
+        },
         "source-funding-source": {
             "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
+        },
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "external-party"
         },
         "destination-funding-source": {
             "href": "https://api-sandbox.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
@@ -47,8 +57,12 @@ A transfer represents money being transferred from a `source` to a `destination`
         "value": "5.12",
         "currency": "USD"
     },
-    "transferType": "credit",
-    "transferStatus": "pending",
-    "processingChannel": "ach
+    "status": "returned",
+    "processingChannel": "ach",
+    "failureReason": {
+        "description": "Insufficient Funds",
+        "code": "R01",
+        "explanation": "Available balance is not sufficient to cover the dollar amount of the debit entry."
+    }
 }
 ```

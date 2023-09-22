@@ -24,6 +24,22 @@ export default {
           ],
           [
             [
+              "source",
+              <span>
+                GET this link to retrieve the{" "}
+                <Link text="Account" href="/api-reference/connect/accounts" />{" "}
+                or the{" "}
+                <Link
+                  text="External Party"
+                  href="/api-reference/connect/external-parties"
+                />{" "}
+                that was the <code>source</code> of the transfer.
+              </span>,
+            ],
+            HalLink('"account" or "external-party"'),
+          ],
+          [
+            [
               "source-funding-source",
               <span>
                 GET this link to{" "}
@@ -35,6 +51,22 @@ export default {
               </span>,
             ],
             HalLink("funding-source"),
+          ],
+          [
+            [
+              "destination",
+              <span>
+                GET this link to retrieve the{" "}
+                <Link text="Account" href="/api-reference/connect/accounts" />{" "}
+                or the{" "}
+                <Link
+                  text="External Party"
+                  href="/api-reference/connect/external-parties"
+                />{" "}
+                that was the <code>destination</code> of the transfer.
+              </span>,
+            ],
+            HalLink('"account" or "external-party"'),
           ],
           [
             [
@@ -83,14 +115,7 @@ export default {
       </span>,
     ],
     [
-      "transferType",
-      "string",
-      <span>
-        Possible values: <code>debit</code> or <code>credit</code>
-      </span>,
-    ],
-    [
-      "transferStatus",
+      "status",
       "string",
       <span>
         Possible values: <code>created</code>, <code>pending</code>,{" "}
@@ -103,6 +128,34 @@ export default {
       <span>
         Possible values: <code>ach</code>
       </span>,
+    ],
+    [
+      [
+        "failureReason",
+        "object",
+        <span>
+          Failure reason object. Only present when status is <code>failed</code>{" "}
+          or
+          <code>returned</code>.
+        </span>,
+      ],
+      {
+        title: "failureReason Object",
+        headers: ["Property", "Type", "Description"],
+        rows: [
+          ["description", "string", "Description of the failure reason."],
+          [
+            "code",
+            "string",
+            "ACH return code. Included if the transfer was returned due to an ACH failure.",
+          ],
+          [
+            "explanation",
+            "string",
+            "Further explanation of why the failure occurred.",
+          ],
+        ],
+      },
     ],
   ],
 } as TableContents;

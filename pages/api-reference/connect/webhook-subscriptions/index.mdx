@@ -9,16 +9,18 @@ guide:
   step: 0
 meta:
   title: Webhook Subscriptions | Dwolla Connect | Dwolla API Reference
-  description: TODO Endpoints for creating, retrieving and listing external parties, and creating and listing funding sources for external parties.
+  description: Endpoints for creating, retrieving, listing and deleting webhook-subscriptions.
 ---
+
+import WebhookSubscription from "../../../../assets/api-resource-tables/webhooks/WebhookSubscription";
 
 # Webhook subscriptions
 
-Create a webhook subscription to receive `POST` requests from Dwolla (called webhooks) when events associated with your application occur. [Webhooks](https://developers.dwolla.com/api-reference/webhooks) are sent to a URL which you provide when creating a webhook subscription. While we see most applications maintain one webhook subscription, you can have up to **ten** active webhook subscriptions in Sandbox, and up to **five** in Production at a time. Refer to the [events](https://developers.dwolla.com/api-reference/events) section for the complete list of events that trigger webhooks. To view example payloads for Customer related events, refer to the [Webhooks Events](https://developers.dwolla.com/concepts/webhook-events) resource within the Developer Docs.
+Create a webhook subscription to receive `POST` requests from Dwolla (called webhooks) when events associated with your application occur. [Webhooks](/api-reference/connect/webhooks) are sent to a URL which you provide when creating a webhook subscription. While we see most applications maintain one webhook subscription, you can have up to **ten** active webhook subscriptions in Sandbox, and up to **five** in Production at a time.
 
 ### **Automatic pause of a webhook subscription**
 
-Dwolla will automatically pause subscribed webhook endpoints that are no longer reachable. The webhook subscription will be paused after **400 consecutive failures** and **24 hours since the last success**. This will help us ensure that unavailable endpoints don’t cause delays or issues in delivery of notifications for other API customers. Webhook subscriptions can be unpaused by calling [this endpoint](https://developers.dwolla.com/api-reference/webhook-subscriptions/update).
+Dwolla will automatically pause subscribed webhook endpoints that are no longer reachable. The webhook subscription will be paused after **400 consecutive failures** and **24 hours since the last success**. This will help us ensure that unavailable endpoints don’t cause delays or issues in delivery of notifications for other API customers. The ability to unpause webhook subscriptions is coming soon.
 
 ### Acknowledgement and retries
 
@@ -41,11 +43,6 @@ Webhooks are delivered in near real-time as events tied to your application are 
 |      7       |               24 h                |                  48 h                   |
 |      8       |               24 h                |                  72 h                   |
 
-### Webhook subscription resource
+## Resource Overview
 
-| Parameter | Description                                                                                                                                                                                                                                                                                                                                    |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id        | Webhook subscription unique identifier.                                                                                                                                                                                                                                                                                                        |
-| url       | Subscribed url where Dwolla should deliver the webhook notification.                                                                                                                                                                                                                                                                           |
-| paused    | A boolean `true` or `false` value indicating if the webhook subscription is paused. A webhook subscription will be automatically paused after 400 consecutive failures. In addition, a subscription can be paused or unpaused by calling [this endpoint](https://developers.dwolla.com/api-reference/webhook-subscriptions/update) in the API. |
-| created   | ISO-8601 timestamp                                                                                                                                                                                                                                                                                                                             |
+<Table table={WebhookSubscription} />

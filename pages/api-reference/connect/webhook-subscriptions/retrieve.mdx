@@ -6,7 +6,7 @@ guide:
   step: 2
 meta:
   title: Retrieve a Webhook Subscription | Dwolla Connect | Dwolla API Reference
-  description: TODO Endpoints for creating, retrieving and listing external parties, and creating and listing funding sources for external parties.
+  description: Endpoint for retrieving a webhook subscription.
 ---
 
 # Retrieve a webhook subscription
@@ -34,7 +34,7 @@ This section details how to retrieve a webhook subscription by its id.
 ```bash
 GET https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216
 Accept: application/vnd.dwolla.v1.hal+json
-Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
 
 ...
 
@@ -49,7 +49,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
   },
   "id": "077dfffb-4852-412f-96b6-0fe668066589",
   "url": "http://myapplication.com/webhooks",
-  "created": "2015-10-28T16:20:47+00:00"
+  "created": "2023-10-28T16:20:47+00:00"
 }
 ```
 
@@ -58,7 +58,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 
 webhook_subscription = app_token.get webhook_subscription_url
-webhook_subscription.created # => 2015-10-28T16:20:47+00:00
+webhook_subscription.created # => 2023-10-28T16:20:47+00:00
 ```
 
 ```javascript
@@ -66,7 +66,7 @@ webhook_subscription.created # => 2015-10-28T16:20:47+00:00
 var webhookSubscriptionUrl =
   "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
 
-dwolla.get(webhookSubscriptionUrl).then((res) => res.body.created); // => '2016-04-20T15:49:50.340Z'
+dwolla.get(webhookSubscriptionUrl).then((res) => res.body.created); // => '2023-04-20T15:49:50.340Z'
 ```
 
 ```python
@@ -74,7 +74,7 @@ dwolla.get(webhookSubscriptionUrl).then((res) => res.body.created); // => '2016-
 webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 
 webhook_subscription = app_token.get(webhook_subscription_url)
-webhook_subscription.body['created'] # => '2015-10-28T16:20:47+00:00'
+webhook_subscription.body['created'] # => '2023-10-28T16:20:47+00:00'
 ```
 
 ```php
@@ -83,6 +83,6 @@ webhook_subscription.body['created'] # => '2015-10-28T16:20:47+00:00'
 $webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
 $retrieved = $webhookApi->id('https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216');
 
-$retrieved->created; # => 2015-10-28T16:20:47+00:00
+$retrieved->created; # => 2023-10-28T16:20:47+00:00
 ?>
 ```

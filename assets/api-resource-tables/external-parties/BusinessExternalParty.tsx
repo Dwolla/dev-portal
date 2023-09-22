@@ -25,9 +25,9 @@ export default {
         ],
       },
     ],
-    ["id", "string <uuid>", "Unique external-party identifier."],
-    ["businessName", "string", "Business name of external-party."],
-    ["email", "string <email>", "Email address of external-party."],
+    ["id", "string <uuid>", "Unique external party identifier."],
+    ["businessName", "string", "Business name of external party."],
+    ["email", "string <email>", "Email address of external party."],
     ["externalPartyType", "string", "business"],
     [
       "created",
