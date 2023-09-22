@@ -15,24 +15,24 @@ This section shows you how to retrieve basic account information belonging to th
 
 To retrieve your Account ID, you will need to call the [root](/connect/api-references/root) of the API.
 
-### HTTP request
+## HTTP request
 
 > `GET https://api.dwolla.com/accounts/{id}`
 
-### Request parameters
+## Request parameters
 
 | Parameter | Required | Type   | Description                |
 | --------- | -------- | ------ | -------------------------- |
 | id        | yes      | string | Account unique identifier. |
 
-### HTTP status and error codes
+## HTTP status and error codes
 
 | HTTP Status | Message                                      |
 | ----------- | -------------------------------------------- |
 | 403         | Not authorized to retrieve an Account by id. |
 | 404         | Account not found.                           |
 
-### Request and response
+## Request and response
 
 ```bash
 GET https://api-sandbox.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb4

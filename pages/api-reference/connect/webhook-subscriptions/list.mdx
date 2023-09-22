@@ -9,4 +9,96 @@ meta:
   description: TODO Endpoints for creating, retrieving and listing external parties, and creating and listing funding sources for external parties.
 ---
 
-# TODO
+# List webhook subscriptions
+
+This section covers how to retrieve a list of webhook subscriptions that belong to an application.
+
+### HTTP request
+
+> `GET https://api.dwolla.com/webhook-subscriptions`
+
+### Request and response
+
+```bash
+GET https://api-sandbox.dwolla.com/webhook-subscriptions
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/webhook-subscriptions"
+    }
+  },
+  "_embedded": {
+    "webhook-subscriptions": [
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/ed0db938-d7f0-4694-90ee-b12053182dc0",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "webhook-subscription"
+          },
+          "webhooks": {
+            "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/ed0db938-d7f0-4694-90ee-b12053182dc0/webhooks",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "webhook"
+          }
+        },
+        "id": "ed0db938-d7f0-4694-90ee-b12053182dc0",
+        "url": "http://myapplication.com/webhook",
+        "paused": false,
+        "created": "2022-06-08T18:52:16.726Z"
+      },
+      {
+        "_links": {
+          "self": {
+            "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/efc5eab9-4a53-45a0-9f9c-78254d7ec020",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "webhook-subscription"
+          },
+          "webhooks": {
+            "href": "https://api-sandbox.dwolla.com/webhook-subscriptions/efc5eab9-4a53-45a0-9f9c-78254d7ec020/webhooks",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "webhook"
+          }
+        },
+        "id": "efc5eab9-4a53-45a0-9f9c-78254d7ec020",
+        "url": "http://myapp.com/webhooks",
+        "paused": true,
+        "created": "2022-10-14T16:25:24.790Z"
+      }
+    ]
+  },
+  "total": 2
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+webhook_subscriptions = app_token.get "webhook-subscriptions"
+webhook_subscriptions.total # => 1
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+dwolla.get("webhook-subscriptions").then((res) => res.body.total); // => 1
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+webhook_subscriptions = app_token.get('webhook-subscriptions')
+webhook_subscriptions.body['total'] # => 1
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
+
+$retrieved = $webhookApi->_list();
+$retrieved->total; # => 1
+?>
+```

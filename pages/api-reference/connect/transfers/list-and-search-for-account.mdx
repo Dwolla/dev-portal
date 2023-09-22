@@ -1,0 +1,148 @@
+---
+layout: guides
+product: connect
+title: List and search transfers for an account
+guide:
+  step: 3
+meta:
+  title: List and Search Transfers for an Account | Dwolla Connect | Dwolla API Reference
+  description: Endpoint for retrieving a list of transfers belonging to the main Dwolla Connect Account.
+---
+
+# List and search transfers for an account
+
+This section covers how to retrieve an Account's list of transfers.
+
+## HTTP request
+
+> `GET https://api.dwolla.com/accounts/{id}/transfers`
+
+## Request parameters
+
+| Parameter | Required | Type   | Description                 |
+| --------- | -------- | ------ | --------------------------- |
+| id        | yes      | string | Account unique identifierß. |
+
+## HTTP status and error codes
+
+| HTTP Status | Message            |
+| ----------- | ------------------ |
+| 404         | Account not found. |
+
+## Request and response
+
+```bash
+GET https://api.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966/transfers
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1/transfers",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        }
+    },
+    "_embedded": {
+        "transfers": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/586e5620-0a77-40ea-8ba3-3addd5349dcd",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "source-funding-source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    },
+                    "destination-funding-source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    }
+                },
+                "id": "586e5620-0a77-40ea-8ba3-3addd5349dcd",
+                "created": "2023-09-20T14:44:54.947Z",
+                "amount": {
+                    "value": "12.00",
+                    "currency": "USD"
+                },
+                "transferType": "debit",
+                "transferStatus": "processed",
+                "processingChannel": "ach"
+            },
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/transfers/60075bd9-2492-4d88-b810-13b162cdec03",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "transfer"
+                    },
+                    "source-funding-source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    },
+                    "destination-funding-source": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    }
+                },
+                "id": "60075bd9-2492-4d88-b810-13b162cdec03",
+                "created": "2023-09-20T14:43:30.403Z",
+                "amount": {
+                    "value": "5.12",
+                    "currency": "USD"
+                },
+                "transferType": "created",
+                "transferStatus": "failed",
+                "processingChannel": "ach"
+            }
+        ]
+    }
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+account_url = 'https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966'
+
+transfers = app_token.get "#{account_url}/transfers"
+transfers._embedded['transfers'][0].status # => "processed"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$accountUrl = 'https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966';
+
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfers = $transfersApi->getAccountTransfers($accountUrl);
+$transfers->_embedded->{'transfers'}[0]->status; # => "processed"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+account_url = 'https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966'
+
+transfers = app_token.get('%s/transfers' % account_url)
+transfers.body['_embedded']['transfers'][0]['status'] # => "processed"
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var accountUrl =
+  "https://api-sandbox.dwolla.com/accounts/62e88a41-f5d0-4a79-90b3-188cf11a3966";
+
+dwolla
+  .get(`${accountUrl}/transfers`)
+  .then((res) => res.body._embedded["transfers"][0].status); // => 'processed'
+```

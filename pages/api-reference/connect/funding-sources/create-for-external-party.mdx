@@ -1,0 +1,103 @@
+---
+layout: guides
+product: connect
+title: Create a Funding Source for an External Party
+guide:
+  step: 2
+meta:
+  title: Create funding source for External Party | Dwolla Connect | Dwolla API Reference
+  description: Endpoint for creating funding sources for external parties.
+---
+
+# Create a funding-source for an external-party
+
+This section outlines how to create a funding source an External-Party via the API.
+
+## HTTP request
+
+`POST https://api.dwolla.com/external-parties/{id}/funding-sources`
+
+## Request parameters
+
+| Parameter       | Required | Type   | Description                                                                                                                                                                                                                                                                                            |
+| --------------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| routingNumber   | yes      | string | A bank routing number that identifies a bank or credit union in the U.S. Note: Validation of the routing number includes: a checksum, the first two digits of the routing number must fall within the range "01" through "12", or "21" through "32", and the string value must consist of nine digits. |
+| accountNumber   | yes      | string | The bank account number. Note: The account number is validated to check if it is a numeric string of 4-17 digits.                                                                                                                                                                                      |
+| bankAccountType | yes      | string | Type of bank account: `checking`, `savings`.                                                                                                                                                                                                                                                           |
+| name            | yes      | string | Arbitrary nickname for the funding source. Must be 50 characters or less.                                                                                                                                                                                                                              |
+
+## HTTP status and error codes
+
+| HTTP Status | Code       | Message                                                                 | Description                                                                                                                                                                                                                       |
+| ----------- | ---------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created    | Success                                                                 | Funding source created.                                                                                                                                                                                                           |
+| 400         | BadRequest | Validation error(s) present. See embedded errors list for more details. | An error exists with the request. Check the embedded list of errors for more detailed error messages. Also check [Validation Errors](https://developers.dwolla.com/api-reference#validation-errors) section in the API reference. |
+| 404         | NotFound   | The requested resource was not found.                                   | External-Party not found. Check External-Party Id.                                                                                                                                                                                |
+
+## Request and response
+
+```bash
+POST https://api-sandbox.dwolla.com/external-parties/{id}/funding-sources
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTQ4MDQ5NjAsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NDgwODU2MCwiaWF0IjoxNjk0ODA0OTYwLCJ2ZXJzaW9uIjoyLCJqdGkiOiIzOGU0MWYwMS04YjM1LTRmOTAtODcxYy0wMTU3YzkyNzdhMjAiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.tUcSnucNWvRK8g609EkO9OyD2VFqvYtJHNVz9-jeYfNf2uN_GFdogaf8HtDWXdX8QshDMZ46w3f4AQLuRdZ3a53b5JX3v9FKnDst-PtLZFV5tfIQlhY6gZyXJO_hLpgJJQ6a0m7ZBNJLS5toUp7qTdcgz_5wufB3pNz25jdV6667W1ZGVt5j6P_vMY1DYnTTZZ6KI3pAT9Mvbqp892pdcNbzZhfIvyl5gheiKnpxUdGK-mwBPpKolDWnFw4G7_gyJB4lVqPg9bXdDGwyFuvgZj2K1xQyEWHfXymveaQ6j1SPy7hLcpHwnyGzp5DXFtp7j8iOkFoqZVp9HzeDqGje2g
+
+{
+  "routingNumber": "222222226",
+  "accountNumber": "123456789",
+  "bankAccountType": "checking",
+  "name": "Jane Doe's Checking"
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/fc451a7a-ae30-4404-aB95-e3553fcd7
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  routingNumber: '222222226',
+  accountNumber: '123456789',
+  bankAccountType: 'checking',
+  name: 'Jane Doe’s Checking'
+}
+
+funding_source = app_token.post "#{external_party_url}/funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  'routingNumber': '222222226',
+  'accountNumber': '123456789',
+  'bankAccountType': 'checking',
+  'name': 'Jane Doe’s Checking'
+}
+
+fundingSource = app_token.post('%s/funding-sources' % external_party_url, request_body)
+fundingSource.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C";
+
+var requestBody = {
+  routingNumber: "222222226",
+  accountNumber: "123456789",
+  bankAccountType: "checking",
+  name: "Jane Doe’s Checking",
+};
+
+dwolla
+  .post(`${externalPartyUrl}/funding-sources`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```

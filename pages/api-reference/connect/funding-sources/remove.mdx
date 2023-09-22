@@ -3,7 +3,7 @@ layout: guides
 product: connect
 title: Remove funding source
 guide:
-  step: 3
+  step: 6
 meta:
   title: Remove Funding Source | Dwolla Connect | Dwolla API Reference
   description: Endpoint for removing a funding source attached to an Account.
@@ -17,24 +17,24 @@ This section outlines how to remove a funding source. A removed funding source i
 
 If a funding source has a pending transfer, removing it **will not** result in the cancellation of any pending transfer(s). In other words, even if a funding source is removed, all pending transfers will continue to process from/to their respective source/destination.
 
-### HTTP request
+## HTTP request
 
 > `POST https://api.dwolla.com/funding-sources/{id}`
 
-### Request parameters
+## Request parameters
 
 | Parameter | Required | Type   | Description                                                        |
 | --------- | -------- | ------ | ------------------------------------------------------------------ |
 | id        | yes      | string | id of funding source to delete.                                    |
 | removed   | yes      | string | Specify a value of `true` to remove the associated funding source. |
 
-### HTTP status and error codes
+## HTTP status and error codes
 
 | HTTP Status | Message                   |
 | ----------- | ------------------------- |
 | 404         | Funding source not found. |
 
-### Request and response
+## Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c

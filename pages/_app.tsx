@@ -252,8 +252,12 @@ const TOP_BAR_PROPS: TopBarProps = {
 
 const LANGUAGE_OPTIONS = [
   {
+    value: "bash",
+    label: "Raw",
+  },
+  {
     value: "javascript",
-    label: "JavaScript",
+    label: "Node.js",
   },
   {
     value: "php",
@@ -266,10 +270,6 @@ const LANGUAGE_OPTIONS = [
   {
     value: "python",
     label: "Python",
-  },
-  {
-    value: "bash",
-    label: "Raw",
   },
 ];
 

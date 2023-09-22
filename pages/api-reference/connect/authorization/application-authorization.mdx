@@ -14,7 +14,7 @@ The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) i
 
 `Authorization: Basic Base64(client_id:client_secret)`
 
-### HTTP request
+## HTTP request
 
 **Production:** `POST https://api.dwolla.com/token`
 
@@ -22,7 +22,7 @@ The [client credentials flow](https://tools.ietf.org/html/rfc6749#section-4.1) i
 
 Including the `Content-Type: application/x-www-form-urlencoded` header, the request is sent to the token endpoint with `grant_type=client_credentials` in the body of the request:
 
-### Request parameters
+## Request parameters
 
 | Parameter     | Required | Type   | Description                                                                                                                                                                                   |
 | ------------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -30,15 +30,15 @@ Including the `Content-Type: application/x-www-form-urlencoded` header, the requ
 | client_secret | yes      | string | Application secret. Navigate to `https://dashboard.dwolla.com/applications` (production) or `https://dashboard-sandbox.dwolla.com/applications-legacy` (Sandbox) for your application secret. |
 | grant_type    | yes      | string | This must be set to `client_credentials`.                                                                                                                                                     |
 
-#### Response parameters
+### Response parameters
 
 | Parameter    | Description                                                                                      |
 | ------------ | ------------------------------------------------------------------------------------------------ |
 | access_token | A new access token that is used to authenticate against resources that belong to the app itself. |
 | expires_in   | The lifetime of the access token, in seconds. Default is 3600.                                   |
-| token_type   | Always `bearer`.                                                                                 |
+| token_type   | Always `Bearer`.                                                                                 |
 
-#### Request
+## Request
 
 ```bash
 POST https://api-sandbox.dwolla.com/token
@@ -89,8 +89,8 @@ DwollaSwagger\Configuration::$access_token = $appToken->access_token;
 
 ```bash
 {
-  "access_token": "SF8Vxx6H644lekdVKAAHFnqRCFy8WGqltzitpii6w2MVaZp1Nw",
-  "token_type": "bearer",
-  "expires_in": 3600
+    "access_token": "connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUxNTkyOTgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTE2Mjg5OCwiaWF0IjoxNjk1MTU5Mjk4LCJ2ZXJzaW9uIjoyLCJqdGkiOiIwYzhiOGY4ZC03NzU4LTQzOGEtYmMxNS1jZmViOThjZjExZmUiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.snJEP1OnXypjXhI3bc5Rt1l7twJ7FWqKIpnauGVBqC_q4GXlpvazQfXWTadCRFmrrU82g6out_JTqju10ciUUW3qRbGECDf6fYchQbcGyyx30v2dse4PQt75s2yQ2IcGBeh-5_bvnHMrZcbk8o4kHtfvvK5SYDHdPQC9nsMhnavxJ-4lWMyEOVc-aT4ertnq_ShU4n5rfx6N9USg7hbhok0EkWScgbiYNKc8Jy_67tw_0304h9pQ-zZMhmmo4B9ooFyrTa1GEOMlhY5KD2knefh27C0_SMq1U_qdgtQ8ZuoZ084P-hcHALYwtK6cKprz16VY0T-5bLB9dEFO-K70Ww",
+    "token_type": "Bearer",
+    "expires_in": 3599
 }
 ```

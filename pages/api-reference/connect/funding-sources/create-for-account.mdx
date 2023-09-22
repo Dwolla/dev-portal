@@ -1,7 +1,7 @@
 ---
 layout: guides
 product: connect
-title: Create funding source for Account
+title: Create a Funding Source for an Account
 guide:
   step: 1
 meta:
@@ -21,18 +21,18 @@ To add a bank account as a Funding Source, you provide the account number and a 
 
 > `POST https://api.dwolla.com/funding-sources`
 
-### Request parameters - bank funding source
+## Request parameters
 
 <Table table={CreateFundingSource} />
 
-### HTTP status and error codes - bank funding source
+## HTTP status and error codes
 
 | HTTP Status | Code            | Message                                       |
 | ----------- | --------------- | --------------------------------------------- |
 | 400         | ValidationError | Duplicate funding source or validation error. |
 | 403         | Forbidden       | Not authorized to create funding source.      |
 
-### Request and response - bank funding source
+## Request and response
 
 ```bash
 POST https://api-sandbox.dwolla.com/funding-sources
@@ -55,4 +55,65 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 
 HTTP/1.1 201 Created
 Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  _links: {
+    "treasury-account" => {
+      href: "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
+    }
+  },
+  name: "My Checking Bank",
+  bankAccountType: "checking",
+  accountNumber: "123456789",
+  routingNumber: "222222226"
+}
+
+funding_source = app_token.post "funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'treasury-account': {
+      'href': 'https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98'
+    }
+  },
+  'name': 'My Checking Bank',
+  'bankAccountType': 'checking',
+  'accountNumber': '123456789',
+  'routingNumber': '222222226'
+}
+
+funding_source = app_token.post('funding-sources', request_body)
+funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  _links: {
+    "treasury-account": {
+      href: "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+    },
+  },
+  name: "My Savings Bank",
+  bankAccountType: "savings",
+  accountNumber: "123456789",
+  routingNumber: "222222226",
+};
+
+dwolla
+  .post("funding-sources", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```

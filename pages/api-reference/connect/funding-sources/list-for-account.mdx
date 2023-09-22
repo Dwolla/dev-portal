@@ -1,9 +1,9 @@
 ---
 layout: guides
 product: connect
-title: List funding sources for an account
+title: List Funding Sources for an Account
 guide:
-  step: 2
+  step: 4
 meta:
   title: List Funding Sources for an Account | Dwolla Connect | Dwolla API Reference
   description: Endpoint for retrieving a list of funding sources belonging to the main Dwolla Connect Account.
@@ -13,28 +13,27 @@ meta:
 
 Retrieve a list of funding sources that belong to an Account. By default, all funding sources are returned unless the `removed` querystring parameter is set to `false` in the request.
 
-### HTTP request
+## HTTP request
 
 > `GET https://api.dwolla.com/accounts/{id}/funding-sources`
 
-### Request parameters
+## Request parameters
 
-| Parameter | Required | Type    | Description                                                                                                                                                               |
-| --------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id        | yes      | string  | Account's unique identifier.                                                                                                                                              |
-| removed   | no       | boolean | Filter removed funding sources. Defaults to `true`. Set to `false` to filter out removed funding sources from list (i.e. - /accounts/{id}/funding-sources?removed=false). |
+| Parameter | Required | Type   | Description                  |
+| --------- | -------- | ------ | ---------------------------- |
+| id        | yes      | string | Account's unique identifier. |
 
-### HTTP status and error codes
+## HTTP status and error codes
 
 | HTTP Status | Message                                 |
 | ----------- | --------------------------------------- |
 | 403         | Not authorized to list funding sources. |
 | 404         | Account not found.                      |
 
-### Request and response
+## Request and response
 
 ```bash
-GET https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
+GET https://api-sandbox.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTQ4MDQ5NjAsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NDgwODU2MCwiaWF0IjoxNjk0ODA0OTYwLCJ2ZXJzaW9uIjoyLCJqdGkiOiIzOGU0MWYwMS04YjM1LTRmOTAtODcxYy0wMTU3YzkyNzdhMjAiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.tUcSnucNWvRK8g609EkO9OyD2VFqvYtJHNVz9-jeYfNf2uN_GFdogaf8HtDWXdX8QshDMZ46w3f4AQLuRdZ3a53b5JX3v9FKnDst-PtLZFV5tfIQlhY6gZyXJO_hLpgJJQ6a0m7ZBNJLS5toUp7qTdcgz_5wufB3pNz25jdV6667W1ZGVt5j6P_vMY1DYnTTZZ6KI3pAT9Mvbqp892pdcNbzZhfIvyl5gheiKnpxUdGK-mwBPpKolDWnFw4G7_gyJB4lVqPg9bXdDGwyFuvgZj2K1xQyEWHfXymveaQ6j1SPy7hLcpHwnyGzp5DXFtp7j8iOkFoqZVp9HzeDqGje2g
 

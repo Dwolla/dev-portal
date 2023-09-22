@@ -4,7 +4,7 @@ product: connect
 title: "Overview"
 group:
   title: External Parties
-  weight: 4
+  weight: 3
 guide:
   step: 0
 meta:
@@ -12,4 +12,56 @@ meta:
   description: Endpoints for creating, retrieving and listing external parties, and creating and listing funding sources for external parties.
 ---
 
-# TODO
+import BusinessExternalParty from "../../../../assets/api-resource-tables/external-parties/BusinessExternalParty";
+import PersonalExternalParty from "../../../../assets/api-resource-tables/external-parties/BusinessExternalParty";
+
+# External Party
+
+An `External Party` represents an individual or business that utilizes your application to send or receive transfers.
+
+## Resource Overview - Personal External Party
+
+<Table table={PersonalExternalParty} />
+
+#### Personal `external-party` resource example
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/external-parties/585176d7-97d8-49d0-b94d-3aa2719dde58",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "external-party"
+        }
+    },
+    "id": "585176d7-97d8-49d0-b94d-3aa2719dde58",
+    "created": "2023-09-19T16:22:42.910Z",
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "some-email@email.com",
+    "externalPartyType": "personal"
+}
+```
+
+## Resource Overview - Business External Party
+
+<Table table={BusinessExternalParty} />
+
+#### Business `external-party` resource example
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "external-party"
+        }
+    },
+    "id": "b8edab05-105c-4600-84b9-9c6f2965ce1b",
+    "created": "2023-09-19T16:14:31.986Z",
+    "email": "externalPartyTest@email.com",
+    "businessName": "Business name",
+    "externalPartyType": "business"
+}
+```
