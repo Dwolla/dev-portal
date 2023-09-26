@@ -8,7 +8,7 @@ export default {
     [
       [
         "_links",
-        "required",
+        "yes",
         "object",
         <span>
           <Link href="/api-reference#links" text="HAL-JSON" /> links that
@@ -40,25 +40,25 @@ export default {
     ],
     [
       "accountNumber",
-      "required",
+      "yes",
       "string",
       "The bank account number. The account number is validated to check if it is a numeric string of 4-17 digits.",
     ],
     [
       "routingNumber",
-      "required",
+      "yes",
       "string",
       'A bank routing number that identifies a bank in the U.S. Validation of the routing number includes: a checksum, the first two digits of the routing number must fall within the range "01" through "12", or "21" through "32", and the string value must consist of nine digits.',
     ],
     [
       "name",
-      "required",
+      "yes",
       "string",
       "Arbitrary nickname for the funding source. Must be 50 characters or less.",
     ],
     [
       "bankAccountType",
-      "required",
+      "yes",
       "string",
       "Type of bank account. Valid values are: checking or savings.",
     ],

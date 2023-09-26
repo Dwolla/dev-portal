@@ -7,7 +7,7 @@ export default {
     [
       [
         "_links",
-        "required",
+        "yes",
         "object",
         <span>
           <Link href="/api-reference#links" text="HAL-JSON" /> links that
