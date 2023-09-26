@@ -1,0 +1,48 @@
+---
+title: Planning Your Integration
+description: Streamline your Dwolla Connect integration journey with our comprehensive Integration Checklist and expert resources.
+layout: concepts
+category: Get Started
+weight: 1
+meta:
+  title: Planning Your Integration | Dwolla Documentation
+  description: Streamline your Dwolla Connect integration journey with our comprehensive Integration Checklist and expert resources.
+---
+
+# Overview
+
+After developing an understanding of [Dwolla Connect](/docs/connect/what-is-dwolla-connect) and the integration requirements, you can start designing and planning your API integration. Before you start on any code to integrate with Dwolla, it’s important to understand the journey to build and go-live with Dwolla Connect. Each journey will look different based on the needs of your business as well as the size of your engineering team. To aid in the integration process, we’ve created an integration checklist which outlines the high level requirements in order to go-live in production.
+
+We recommend reviewing the documentation and including a pre-development task that includes a discussion with the Dwolla team. In this discussion, we’ll learn more about your business, analyze your requirements and help you determine which aspects of Dwolla Connect best fit your use cases.
+
+## Integration Checklist
+
+This Integration Checklist includes a high level overview of the steps you need to take to ensure a smooth implementation. It covers everything from getting started and building your integration to going live in production.
+
+| Components                                                                                                            | Tasks                                                                                                                | Notes |
+| --------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----- |
+| Design                                                                                                                | Evaluate use cases and align on funds flows to determine if there will be debits (pay-ins) credits (payouts) or both |       |
+| Confirm banking partner and eligible account                                                                          |                                                                                                                      |
+| Bank Setup                                                                                                            | Have client reach out to their banking partner                                                                       |       |
+| Dwolla to send notice to banking relationship partner                                                                 |                                                                                                                      |
+| Review and agree to bank pricing                                                                                      |                                                                                                                      |
+| Share KYC / KYB documentation with bank                                                                               |                                                                                                                      |
+| Set up accounts with banking partner                                                                                  |                                                                                                                      |
+| Sign ACH agreement with banking partner                                                                               |                                                                                                                      |
+| Sign third party service agreement with banking partner allowing Dwolla to submit payment instructions on your behalf |                                                                                                                      |
+| Contract                                                                                                              | Review and sign Connect services agreement                                                                           |       |
+| Account Setup                                                                                                         | Sign-up for account and agree to developer terms of service                                                          |       |
+| Complete Information Security questionnaire                                                                           | Dwolla will provide a link                                                                                           |
+| Collect account setup information and treasury account information                                                    | Dwolla will provide a link                                                                                           |
+| Complete compliance and risk assessment of business                                                                   |                                                                                                                      |
+| Testing                                                                                                               | Client to test in Sandbox External Parties, Funding Sources, and Transfer creation                                   |       |
+| Production                                                                                                            | Activate production account upon completion of Sandbox Integration                                                   |       |
+
+## Next Steps
+
+Once you have reviewed the API documentation, you should have a basic understanding of how to use Dwolla Connect. You should be able to perform common tasks to build a proof of concept, such as creating an external party, attaching a funding source, creating a transfer and making basic requests to the API.
+
+- **Read the API Reference documentation.** The documentation provides more detailed information about Dwolla Connect’s functionality, including code samples demonstrating specific API calls using Dwolla supported SDKs.
+- **Get Started with Postman.** Import the [Dwolla Connect Postman Collection](https://www.postman.com/dwolladev/workspace/dwolla/collection/5009345-52001489-7e46-4576-b76c-f7e581cdac15) and start making requests to the Dwolla API.
+- **Review sample code.** Sample code can be a great way to learn how to use the API or SDKs.
+- **Join the developer community.** If you’re stuck or have a question that you can’t find an answer to, you can always reach out on the [developer forum](https://discuss.dwolla.com/) for help. You can ask questions and get answers from the Dwolla Developer Relations team as well as other developers who are using Connect.

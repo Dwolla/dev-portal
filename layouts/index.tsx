@@ -76,6 +76,7 @@ const MDX_COMPONENTS = {
 // List of page paths that should exclude the OnThisPage component
 const excludedPaths = [
   "/docs/balance",
+  "/docs/connect",
   // Add more paths as needed
 ];
 

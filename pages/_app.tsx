@@ -16,6 +16,7 @@ import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
+import { ReactComponent as DwollaConnectIcon } from "../assets/images/component-icons/side-nav/dwolla-connect-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
@@ -63,6 +64,14 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     text: "Home",
     isExternal: false,
     isDocs: false,
+  },
+  {
+    href: "/docs/connect",
+    IconSvg: DwollaConnectIcon,
+    isSection: true,
+    text: "Dwolla Connect",
+    isExternal: false,
+    isDocs: true,
   },
   {
     href: "/docs/balance",

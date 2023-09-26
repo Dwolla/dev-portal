@@ -2,12 +2,15 @@ import styled from "@emotion/styled";
 import { Button } from "@mui/material";
 import React from "react";
 import { POPPINS, ROBOTO } from "../typography";
-import { BALANCE_HERO_GRADIENT } from "../colors";
+import { BALANCE_HERO_GRADIENT, CONNECT_HERO_GRADIENT } from "../colors";
 import { breakDown } from "../breakpoints";
-import { BALANCE_ICON_SHADOW } from "../shadowDepths";
+import { BALANCE_ICON_SHADOW, CONNECT_ICON_SHADOW } from "../shadowDepths";
+
+// Define type for the Product variant options
+type ProductVariant = "Balance" | "Connect";
 
 // Styled Banner component
-const StyledBanner = styled.div`
+const StyledBanner = styled.div<{ variant: ProductVariant }>`
   width: 100%;
   padding: 3em;
   display: flex;
@@ -15,7 +18,14 @@ const StyledBanner = styled.div`
   align-items: center;
   position: relative;
   border-radius: 16px;
-  background: ${BALANCE_HERO_GRADIENT};
+  background: ${(props) => {
+    if (props.variant === "Balance") {
+      return BALANCE_HERO_GRADIENT;
+    } if (props.variant === "Connect") {
+      return CONNECT_HERO_GRADIENT;
+    }
+    return "transparent";
+  }}; // Set background based on variant
 `;
 
 const BannerContentWrap = styled.div`
@@ -72,24 +82,40 @@ const ButtonsWrap = styled.div`
   }
 `;
 
-const HeroGraphicStyle = styled.div`
+const HeroGraphicStyle = styled.div<{ variant: ProductVariant }>`
   svg {
-    filter: drop-shadow(${BALANCE_ICON_SHADOW});
+    filter: drop-shadow(
+      ${(props) => {
+        if (props.variant === "Balance") {
+          return BALANCE_ICON_SHADOW;
+        } if (props.variant === "Connect") {
+          return CONNECT_ICON_SHADOW;
+        }
+        return "none";
+      }}
+    ); // Set SVG filter based on variant
   }
 `;
 
 type LinkProp = { text: string; href: string };
 
 type Props = {
+  variant: ProductVariant;
   HeroGraphic?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   topic: string;
   description: string;
   links?: Array<LinkProp>;
 };
 
-function ProductHeroBanner({ HeroGraphic, topic, description, links }: Props) {
+function ProductHeroBanner({
+  variant,
+  HeroGraphic,
+  topic,
+  description,
+  links,
+}: Props) {
   return (
-    <StyledBanner>
+    <StyledBanner variant={variant}>
       <BannerContentWrap>
         <StyledTopic>{topic}</StyledTopic>
         <StyledDescription>{description}</StyledDescription>
@@ -108,7 +134,7 @@ function ProductHeroBanner({ HeroGraphic, topic, description, links }: Props) {
           </ButtonsWrap>
         )}
       </BannerContentWrap>
-      <HeroGraphicStyle>
+      <HeroGraphicStyle variant={variant}>
         <HeroGraphic height="10em" width="10em" />
       </HeroGraphicStyle>
     </StyledBanner>
