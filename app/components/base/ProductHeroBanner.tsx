@@ -21,7 +21,8 @@ const StyledBanner = styled.div<{ variant: ProductVariant }>`
   background: ${(props) => {
     if (props.variant === "Balance") {
       return BALANCE_HERO_GRADIENT;
-    } if (props.variant === "Connect") {
+    }
+    if (props.variant === "Connect") {
       return CONNECT_HERO_GRADIENT;
     }
     return "transparent";
@@ -88,7 +89,8 @@ const HeroGraphicStyle = styled.div<{ variant: ProductVariant }>`
       ${(props) => {
         if (props.variant === "Balance") {
           return BALANCE_ICON_SHADOW;
-        } if (props.variant === "Connect") {
+        }
+        if (props.variant === "Connect") {
           return CONNECT_ICON_SHADOW;
         }
         return "none";
