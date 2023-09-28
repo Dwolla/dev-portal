@@ -30,7 +30,7 @@ The transfer will simply remain in the pending state indefinitely. In the Sandbo
 
 | amount | Desired Transfer Status | Description                                                                                                                                 |
 | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.01   | created                 | Triggers `account.transfer:created` event and is placed in a `created` status.                                                              |
+| 1.01   | created                 | Triggers `account.transfer:created` event as the transfer is placed in a `created` status.                                                              |
 | 1.02   | pending                 | Triggers `account.transfer:created` and `account.transfer:pending` events as the transfer updates from a `created` to `pending` status.     |
 | 2.01   | processed               | Triggers `account.transfer:created` and `account.transfer:processed` events as the transfer updates from a `created` to `processed` status. |
 | 9.99   | failed                  | Triggers `account.transfer:created` and `account.transfer:failed` events as the transfer updates from a `created` to `failed` status.       |
