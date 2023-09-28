@@ -49,7 +49,7 @@ It is recommended to use the `_links` object in the response which includes the 
 ## Request and response
 
 ```bash
-GET https://api.dwolla.com/external-parties
+GET https://api.dwolla.com/external-parties?limit=2
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTQ4MDQ5NjAsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NDgwODU2MCwiaWF0IjoxNjk0ODA0OTYwLCJ2ZXJzaW9uIjoyLCJqdGkiOiIzOGU0MWYwMS04YjM1LTRmOTAtODcxYy0wMTU3YzkyNzdhMjAiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.tUcSnucNWvRK8g609EkO9OyD2VFqvYtJHNVz9-jeYfNf2uN_GFdogaf8HtDWXdX8QshDMZ46w3f4AQLuRdZ3a53b5JX3v9FKnDst-PtLZFV5tfIQlhY6gZyXJO_hLpgJJQ6a0m7ZBNJLS5toUp7qTdcgz_5wufB3pNz25jdV6667W1ZGVt5j6P_vMY1DYnTTZZ6KI3pAT9Mvbqp892pdcNbzZhfIvyl5gheiKnpxUdGK-mwBPpKolDWnFw4G7_gyJB4lVqPg9bXdDGwyFuvgZj2K1xQyEWHfXymveaQ6j1SPy7hLcpHwnyGzp5DXFtp7j8iOkFoqZVp9HzeDqGje2g
 
@@ -60,6 +60,11 @@ HTTP/1.1 200 Ok
     "_links": {
         "self": {
             "href": "https://api-sandbox.dwolla.com/external-parties",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "external-party"
+        },
+        "next": {
+            "href": "https://api-sandbox.dwolla.com/external-parties?cursor=pkRCuXGXtIXuX4lYR3rxzsOAUzB4xs-aJwCztcz2i2f5-C8M4NhitjEfPGdJsTSit6eKVvTtS5KQ32dl3Urq1ukwYrz0ebXtYaJGJQNlFJ0mUruIRmaMqbBj-5UKl3piqzoGwdIUjw3_umKrJUC8obrSOlAbSoNu5N7ANPc8tIKiKHfYJVLHcVeuV7EbCYDmBByXHFSP0TIEtRJwP_FV_o4V6gdcBSJpRq2EIYN7qPC9FJtTvYMcvPZH6KnEiziq_A04jhftCmU1pTabEnpNMLha2ZkXghZuk64Fpy49MugYH94itx5skcYr1ANatYycKKpUgKGhdfXMLyV1V3iDAG-y3NDd6cfvuC-2DonZ2xF5TklF8MzRkbTnOnstpF5t",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "external-party"
         }
@@ -102,7 +107,7 @@ HTTP/1.1 200 Ok
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-external_parties = app_token.get "external-parties"
+external_parties = app_token.get "external-parties", limit: 2
 external_parties._embedded.['external-parties'][0].firstName # => "Jane"
 ```
 
@@ -114,13 +119,13 @@ external_parties._embedded.['external-parties'][0].firstName # => "Jane"
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-external_parties = app_token.get('external-parties')
+external_parties = app_token.get('external-parties', limit = 2)
 external-parties.body['_embedded']['external-parties'][0]['firstName'] # => 'Jane'
 ```
 
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 dwolla
-  .get("external-parties")
+  .get("external-parties", { limit: 2 })
   .then((res) => res.body._embedded["external-parties"][0].firstName); // => 'Jane'
 ```
