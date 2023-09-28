@@ -2,7 +2,7 @@
 
 exports[`External CTA 1`] = `
 <a
-  className="css-1npw29w-StyledLink e8b2hpr5"
+  className="css-8odp3m-StyledLink e8b2hpr5"
   href="https://discuss.dwolla.com/"
   target="_blank"
 >
@@ -29,10 +29,10 @@ exports[`External CTA 1`] = `
     </div>
   </div>
   <div
-    className="css-howqhj-StyledNewTab e8b2hpr0"
+    className="css-i49xq5-StyledNewTab e8b2hpr0"
   >
     <svg
-      width={13}
+      width={16}
     />
   </div>
 </a>
@@ -40,7 +40,7 @@ exports[`External CTA 1`] = `
 
 exports[`No title 1`] = `
 <a
-  className="css-1npw29w-StyledLink e8b2hpr5"
+  className="css-8odp3m-StyledLink e8b2hpr5"
   href="https://discuss.dwolla.com/"
   target="_blank"
 >
@@ -62,10 +62,10 @@ exports[`No title 1`] = `
     </div>
   </div>
   <div
-    className="css-howqhj-StyledNewTab e8b2hpr0"
+    className="css-i49xq5-StyledNewTab e8b2hpr0"
   >
     <svg
-      width={13}
+      width={16}
     />
   </div>
 </a>
