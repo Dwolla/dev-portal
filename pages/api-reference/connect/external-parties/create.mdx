@@ -1,0 +1,161 @@
+---
+layout: guides
+product: connect
+title: Create an external party
+guide:
+  step: 1
+meta:
+  title: Create External Party | Dwolla Connect | Dwolla API Reference
+  description: Endpoint for creating an external party.
+---
+
+# Create an External Party
+
+External Parties are Dwolla resources that exist underneath a Connect account. To create an External Party, Dwolla will require a small subset of information to act as an identifier.
+
+## HTTP request
+
+> `POST https://api.dwolla.com/external-parties`
+
+## Request parameters - Personal External Party
+
+| Parameter | Required | Type   | Description                           |
+| --------- | -------- | ------ | ------------------------------------- |
+| firstName | Yes      | string | The first name of the external party. |
+| lastName  | Yes      | string | The last name of the external party.  |
+| email     | Yes      | string | The email of the external party.      |
+
+### Request and response - Personal External Party
+
+```bash
+POST https://api-sandbox.dwolla.com/external-parties
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
+{
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "email@email.com"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :firstName => 'Jane',
+  :lastName => 'Doe',
+  :email => 'jdoe@nomail.net'
+}
+
+external_party = app_token.post "external-parties", request_body
+external_party.response_headers[:location] # => "https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'firstName': 'Jane',
+  'lastName': 'Merchant',
+  'email': 'jdoe@nomail.net'
+}
+
+external_party = app_token.post('external-parties', request_body)
+external_party.headers['location'] # => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  firstName: "Jane",
+  lastName: "Doe",
+  email: "jdoe@nomail.net",
+};
+
+dwolla
+  .post("external-parties", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+## Request parameters - Business External Party
+
+| Parameter    | Required | Type   | Description                              |
+| ------------ | -------- | ------ | ---------------------------------------- |
+| businessName | Yes      | string | The business name of the external party. |
+| email        | Yes      | string | The email of the external party.         |
+
+### Request and response - Business External Party
+
+```bash
+POST https://api-sandbox.dwolla.com/external-parties
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
+{
+  "businessName": "Jane Merchant",
+  "email": "jmerchant@email.com"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :businessName => 'Jane Merchant',
+  :email => 'jmerchant@nomail.net'
+}
+
+external_party = app_token.post "external-parties", request_body
+external_party.response_headers[:location] # => "https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+```
+
+```php
+
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  'businessName': 'Jane Merchant',
+  'email': 'jmerchant@nomail.net'
+}
+
+external_party = app_token.post('external-parties', request_body)
+external_party.headers['location'] # => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  businessName: "Jane Merchant",
+  email: "jmerchant@nomail.net",
+};
+
+dwolla
+  .post("external-parties", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+```
+
+## HTTP status and error codes
+
+| HTTP Status | Code        | Message                                                                 | Description                                                                                                                                                                                         |
+| ----------- | ----------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created     | Success                                                                 | An external=party was created.                                                                                                                                                                      |
+| 400         | BadResquest | An external party with the specified email has already been registered. | There exists an external party with the specified email. Check email.                                                                                                                               |
+| 400         | BadRequest  | Validation error(s) present. See embedded errors list for more details. | An error exists with the request. Check the embedded list of errors for more detailed error messages. Also check [Validation Errors](api-reference#validation-errors) section in the API reference. |
+| 403         | Forbidden   | The supplied credentials are not authorized for this resource.          | The scopes for creating an external party are not enabled for this application. Reach out to Dwolla for more information.                                                                           |
+|             |
