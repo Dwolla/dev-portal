@@ -23,6 +23,18 @@ For example, if a request to initiate a transfer fails due to a network connecti
 
 Refer to our [idempotency key](https://developers.dwolla.com/api-reference#idempotency-key) section to learn more.
 
+### Simulate transfer statuses in Sandbox
+
+The Sandbox environment does not replicate any bank transfer processes, so a pending transfer will not clear or fail automatically after a few business days as it would in production.
+The transfer will simply remain in the pending state indefinitely. In the Sandbox environment, transfer statuses can be simulated by passing in a sentinel value in the `amount` field as referenced in the table below.
+
+| amount | Desired Transfer Status | Description                                                                                                                                 |
+| ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.01   | created                 | Triggers `account.transfer:created` event as the transfer is placed in a `created` status.                                                              |
+| 1.02   | pending                 | Triggers `account.transfer:created` and `account.transfer:pending` events as the transfer updates from a `created` to `pending` status.     |
+| 2.01   | processed               | Triggers `account.transfer:created` and `account.transfer:processed` events as the transfer updates from a `created` to `processed` status. |
+| 9.99   | failed                  | Triggers `account.transfer:created` and `account.transfer:failed` events as the transfer updates from a `created` to `failed` status.       |
+
 ## HTTP request
 
 > `POST https://api.dwolla.com/transfers`
