@@ -64,6 +64,7 @@ module.exports = {
     // typescript
     "react/jsx-no-constructed-context-values": "off",
     // typescript
+    "react/no-array-index-key": "off",
     "react/no-children-prop": "off",
     // typescript
     "react/no-unstable-nested-components": "off",

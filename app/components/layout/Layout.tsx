@@ -20,6 +20,7 @@ import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disabl
 import Footer, { FooterLink } from "./Footer"; // eslint-disable-line no-unused-vars
 import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
+import { SelectMuiOption } from "../base/SelectMui";
 
 const LEFT_SIDEBAR_WIDTH = "420";
 
@@ -115,7 +116,7 @@ export default function Layout({
   children,
   pages,
   sideNavLinks,
-  stickyReferenceLinks,
+  productSelectorOptions,
   footerLinks,
   footerLegal,
   topBarProps,
@@ -125,7 +126,7 @@ export default function Layout({
   children: JSX.Element;
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
-  stickyReferenceLinks: SideNavLinkProps[];
+  productSelectorOptions?: Array<SelectMuiOption>;
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
@@ -187,7 +188,7 @@ export default function Layout({
               sectionLinks={sideNavLinks}
               pages={pages}
               mobileItems={topBarProps}
-              stickyReferenceLinks={stickyReferenceLinks}
+              productSelectorOptions={productSelectorOptions}
             />
           </SideNavWrapper>
 

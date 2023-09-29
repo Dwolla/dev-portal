@@ -1,0 +1,59 @@
+---
+title: What is Dwolla Connect?
+description: Leverage your existing banking relationships and corresponding commercial bank accounts to integrate modern payment processing capabilities into your operations.
+layout: concepts
+category: Get Started
+weight: 0
+meta:
+  title: What is Dwolla Connect? | Dwolla Connect | Dwolla API Documentation
+  description: Leverage your existing banking relationships and corresponding commercial bank accounts to integrate modern payment processing capabilities into your operations.
+---
+
+import DwollaConnectSendFlowchart from "../../../assets/images/content-images/dwolla-connect/dwolla-connect_flowchart_send.webp";
+import DwollaConnectIcon from "../../../assets/images/product-icons-and-heroes/dwolla-connect-icon-48x48.svg";
+
+# Overview
+
+Dwolla Connect is an API-based solution that allows you to integrate Dwolla's payment technology into your own application. Connect has a bank-agnostic approach where you can utilize your existing commercial bank account at top U.S. banks, including J.P. Morgan and Wells Fargo (additional bank support coming soon). This makes it easy to build a seamless, modern payment experience for your customers through the use of a single API for embedded account-to-account payments. Dwolla Connect includes support for standard ACH, Same Day ACH and wires, with real-time payments coming soon.
+
+## Audience and Technical Level
+
+Dwolla Connect is intended for mid- to enterprise-sized businesses. The technical level required to integrate can vary depending on the specific needs of your business and which aspects of the product you’ll be utilizing. In general, you will need to have a basic understanding of HTTP requests and responses, JSON data format and security best practices. Dwolla Connect requires skills in both front-end and back-end web and/or mobile development. Since Dwolla offers a REST API, you can integrate the API into your own platform using standard programming languages such as Node.js, Python, PHP, C-Sharp, Java/Kotlin and Ruby.
+
+## Benefits
+
+The benefits of using Dwolla Connect include:
+
+- **Modern API for fast and efficient integration**: Dwolla’s developer-friendly API enables you to move more quickly through your digital transformation process.
+- **Maintain existing banking relationships for ease of implementation**: Eliminates the need for you to create a relationship with a new financial institution to enable seamless A2A transfers.
+- **Flexible and scalable solution**: Easily add or switch between banks and effortlessly add new payment methods as your business evolves.
+- **Simplify integration development and maintenance**: A Single API experience across bank partners and A2A payment methods, starting with standard ACH, Same Day ACH and wires, and adding faster payment options in the future.
+
+## Limitations
+
+Some of the limitations of Dwolla include:
+
+- Not available in all countries: Dwolla is currently only available for businesses registered to operate within the United States.
+- Integration complexity: Can be challenging to set up for businesses that are not familiar with APIs.
+- Financial Institution relationships: Must have an eligible account at a participating financial institution (FI).
+
+## How it works
+
+Dwolla integrates directly with financial institutions (currently, J.P. Morgan and Wells Fargo) to facilitate the payment initiation process on behalf of your business.
+
+<Image
+  src={DwollaConnectSendFlowchart}
+  alt="Dwolla Connect Send Flowchart"
+  expand
+/>
+
+1. Using Dwolla’s API, you initiate a transfer request to push/pull funds between your commercial bank account and an external party’s bank account.
+2. Dwolla receives the transfer request and passes the payment instructions on to the financial institution that holds your commercial account. The financial institution receives the payment instructions and kicks off the process to push (shown above) or pull funds between your commercial bank account and an external party’s bank account.
+3. According to its process, the financial institution debits (shown above) or credits your commercial account for the amount of the transaction and notifies Dwolla.
+4. Dwolla passes automated webhook notifications back to you so you stay updated on the payment’s status.
+
+<ExternalCTA
+  icon={DwollaConnectIcon}
+  description="Ready to experience the scalability, reliability and flexibility of account-to-account payments? Contact our payment experts to get started!"
+  href="https://www.dwolla.com/contact/?__hstc=181257784.b48cf518bc8e83e788689a7f98ed58b6.1691609883227.1695928251153.1695935813812.78&__hssc=181257784.1.1695935813812&__hsfp=2096224371"
+/>

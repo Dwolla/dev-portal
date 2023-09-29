@@ -28,7 +28,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Home",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/docs/balance",
@@ -36,7 +35,15 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Balance",
     isExternal: false,
-    isDocs: true,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+    ],
   },
   {
     href: "/api-reference",
@@ -44,7 +51,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "API Reference",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/sdks-tools",
@@ -60,16 +66,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   },
 ];
 
-const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
-  {
-    href: "/api-reference",
-    IconSvg: ApiReferenceIcon,
-    isSection: false,
-    text: "API Reference",
-    isExternal: false,
-  },
-];
-
 const TOP_BAR_PROPS = {
   button: {
     text: "Get API Keys",
@@ -80,13 +76,18 @@ const TOP_BAR_PROPS = {
   },
 };
 
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect" }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance" },
+];
+
 test("SideNav", () => {
   const tree = renderer
     .create(
       <SideNav
         pages={Pages.all()}
         sectionLinks={SIDE_NAV_LINKS}
-        stickyReferenceLinks={STICKY_REFERENCE_LINKS}
+        productSelectorOptions={PRODUCT_OPTIONS}
         mobileItems={TOP_BAR_PROPS}
       />
     )

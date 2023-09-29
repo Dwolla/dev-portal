@@ -16,9 +16,12 @@ import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
+import { ReactComponent as DwollaConnectIcon } from "../assets/images/component-icons/side-nav/dwolla-connect-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
+import { ReactComponent as DwollaConnectColorIcon } from "../assets/images/product-icons-and-heroes/dwolla-connect-icon-48x48.svg";
+import { ReactComponent as DwollaBalanceColorIcon } from "../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 import "react-tippy/dist/tippy.css";
 import "react-tabs/style/react-tabs.css";
 import useTrackPageViews from "../app/hooks/useTrackPageViews";
@@ -60,7 +63,22 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Home",
     isExternal: false,
-    isDocs: false,
+  },
+  {
+    href: "/docs/connect",
+    IconSvg: DwollaConnectIcon,
+    isSection: true,
+    text: "Dwolla Connect",
+    isExternal: false,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+    ],
   },
   {
     href: "/docs/balance",
@@ -68,7 +86,22 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "Dwolla Balance",
     isExternal: false,
-    isDocs: true,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+      {
+        href: "/code-samples",
+        IconSvg: CodeSamplesIcon,
+        isSection: false,
+        text: "Code Samples",
+        isExternal: false,
+      },
+    ],
   },
   {
     href: "/api-reference",
@@ -76,7 +109,7 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "API Reference",
     isExternal: false,
-    isDocs: false,
+    productSelector: true,
   },
   {
     href: "/sdks-tools",
@@ -84,7 +117,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "SDKs & Tools",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/code-samples",
@@ -92,31 +124,12 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Code Samples",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/changelog",
     IconSvg: ChangelogIcon,
     isSection: false,
     text: "Changelog",
-    isExternal: false,
-    isDocs: false,
-  },
-];
-
-const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
-  {
-    href: "/api-reference",
-    IconSvg: ApiReferenceIcon,
-    isSection: false,
-    text: "API Reference",
-    isExternal: false,
-  },
-  {
-    href: "/code-samples",
-    IconSvg: CodeSamplesIcon,
-    isSection: false,
-    text: "Code Samples",
     isExternal: false,
   },
 ];
@@ -249,8 +262,12 @@ const TOP_BAR_PROPS: TopBarProps = {
 
 const LANGUAGE_OPTIONS = [
   {
+    value: "bash",
+    label: "Raw",
+  },
+  {
     value: "javascript",
-    label: "JavaScript",
+    label: "Node.js",
   },
   {
     value: "php",
@@ -264,10 +281,11 @@ const LANGUAGE_OPTIONS = [
     value: "python",
     label: "Python",
   },
-  {
-    value: "bash",
-    label: "Raw",
-  },
+];
+
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
 ];
 
 const clientSideEmotionCache = createEmotionCache();
@@ -299,7 +317,7 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           footerLegal={FOOTER_LEGAL_COPY}
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
-          stickyReferenceLinks={STICKY_REFERENCE_LINKS}
+          productSelectorOptions={PRODUCT_OPTIONS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}
         >

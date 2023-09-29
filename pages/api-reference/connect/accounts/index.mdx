@@ -1,0 +1,40 @@
+---
+layout: guides
+product: connect
+title: Overview
+group:
+  title: Accounts
+  weight: 2
+guide:
+  step: 0
+meta:
+  title: Accounts | Dwolla Connect | Dwolla API Reference
+  description: Endpoints for the main Dwolla account that include listing funding sources and transfers, and retrieving account details.
+---
+
+import Account from "../../../../assets/api-resource-tables/accounts/Account";
+
+# Accounts
+
+An `Account` represents your main Dwolla Connect Account that was established on dwolla.com.
+
+## Resource Overview
+
+<Table table={Account} />
+
+#### Account resource example
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb4",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "account"
+        }
+    },
+    "id": "3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
+    "name": "Jane Doe",
+    "created": "2023-08-10T22:08:46.323Z"
+}
+```

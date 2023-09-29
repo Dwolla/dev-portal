@@ -3,10 +3,10 @@ import styled from "@emotion/styled";
 import { ReactComponent as NewTabIcon } from "../../../assets/images/component-icons/open-in-new-tab-icon.svg";
 import {
   GREY_2,
-  GREY_4,
   WHITE_PRIMARY,
   HEADLINE_TEXT,
   PARAGRAPH_TEXT,
+  ORANGE_PRIMARY,
 } from "../colors";
 import { BOX_SHADOW_7 } from "../shadowDepths";
 import { ROBOTO, POPPINS } from "../typography";
@@ -15,7 +15,7 @@ const StyledLink = styled.a`
   text-decoration: none;
   position: relative;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding: 30px;
@@ -60,13 +60,13 @@ const StyledNewTab = styled.div`
   right: 8px;
   svg {
     g {
-      fill: ${GREY_4};
+      fill: ${ORANGE_PRIMARY};
     }
   }
 `;
 
 type Props = {
-  icon: string;
+  icon?: string;
   title?: string;
   description?: string;
   href: string;
@@ -75,15 +75,17 @@ type Props = {
 function ExternalCTA({ icon, title, description, href }: Props) {
   return (
     <StyledLink href={href} target="_blank">
-      <IconWrapper>
-        <img src={icon} alt="" />
-      </IconWrapper>
+      {icon && (
+        <IconWrapper>
+          <img src={icon} alt="" />
+        </IconWrapper>
+      )}
       <TextContainer>
         {title && <StyledTitle>{title}</StyledTitle>}
         {description && <StyledDescription>{description}</StyledDescription>}
       </TextContainer>
       <StyledNewTab>
-        <NewTabIcon width={13} />
+        <NewTabIcon width={16} />
       </StyledNewTab>
     </StyledLink>
   );

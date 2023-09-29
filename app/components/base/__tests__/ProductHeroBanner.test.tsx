@@ -9,6 +9,7 @@ test("FooterCTA", () => {
     .create(
       <ThemeProvider theme={theme}>
         <ProductHeroBanner
+          variant="Balance"
           HeroGraphic={HeroGraphic}
           topic="Dwolla Balance"
           description="Use Dwolla’s existing bank partnerships to connect your software to the banking infrastructure."

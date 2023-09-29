@@ -72,7 +72,8 @@
     "react-tippy": "^1.4.0",
     "scroll-to-element": "^2.0.3",
     "storybook": "^7.0.10",
-    "swr": "^2.1.5"
+    "swr": "^2.1.5",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@algolia/autocomplete-js": "^1.9.2",
@@ -89,6 +90,7 @@
     "@types/react-scroll": "^1.8.7",
     "@types/react-test-renderer": "^18.0.0",
     "@types/scroll-to-element": "^2.0.2",
+    "@types/uuid": "^9.0.2",
     "@types/webpack-env": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.59.5",
     "@typescript-eslint/parser": "^5.59.5",

@@ -24,7 +24,8 @@ import { InlineCode } from "../app/components/base/Typography";
 import InlineCTA from "../app/components/base/InlineCTA";
 import OnThisPage from "../app/components/layout/OnThisPage";
 import TabBarPanel from "../app/components/base/TabBarPanel";
-import Table from "../app/components/base/Table";
+import BasicTable from "../app/components/base/Table";
+import Table from "../app/components/base/material-ui/Table";
 import TransferWorkflow from "../app/components/base/TransferWorkflow";
 import {
   AnchoredH1,
@@ -63,7 +64,8 @@ const MDX_COMPONENTS = {
   InlineCode,
   InlineCTA,
   TabBarPanel,
-  table: Table,
+  table: BasicTable,
+  Table,
   TransferWorkflow,
   h1: AnchoredH1,
   h2: AnchoredH2,
@@ -76,6 +78,7 @@ const MDX_COMPONENTS = {
 // List of page paths that should exclude the OnThisPage component
 const excludedPaths = [
   "/docs/balance",
+  "/docs/connect",
   // Add more paths as needed
 ];
 

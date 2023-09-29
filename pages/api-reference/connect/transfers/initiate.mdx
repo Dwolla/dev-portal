@@ -1,0 +1,173 @@
+---
+layout: guides
+product: connect
+title: Initiate a transfer
+guide:
+  step: 1
+meta:
+  title: Initiate a Transfer | Dwolla Connect | Dwolla API Reference
+  description: Endpoint for initiating a transfer.
+---
+
+import InitiateTransfer from "../../../../assets/api-resource-tables/transfers/InitiateTransfer";
+
+# Initiate a transfer
+
+This section details how to initiate a transfer between your main Dwolla Account and external-parties.
+
+### Prevent duplicate transfers with idempotency key
+
+To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key won't result in multiple resources being created.
+
+For example, if a request to initiate a transfer fails due to a network connection issue, you can reattempt the request with the same idempotency key to ensure that only a single transfer is created.
+
+Refer to our [idempotency key](https://developers.dwolla.com/api-reference#idempotency-key) section to learn more.
+
+### Simulate transfer statuses in Sandbox
+
+The Sandbox environment does not replicate any bank transfer processes, so a pending transfer will not clear or fail automatically after a few business days as it would in production.
+The transfer will simply remain in the pending state indefinitely. In the Sandbox environment, transfer statuses can be simulated by passing in a sentinel value in the `amount` field as referenced in the table below.
+
+| amount | Desired Transfer Status | Description                                                                                                                                 |
+| ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.01   | created                 | Triggers `account.transfer:created` event as the transfer is placed in a `created` status.                                                              |
+| 1.02   | pending                 | Triggers `account.transfer:created` and `account.transfer:pending` events as the transfer updates from a `created` to `pending` status.     |
+| 2.01   | processed               | Triggers `account.transfer:created` and `account.transfer:processed` events as the transfer updates from a `created` to `processed` status. |
+| 9.99   | failed                  | Triggers `account.transfer:created` and `account.transfer:failed` events as the transfer updates from a `created` to `failed` status.       |
+
+## HTTP request
+
+> `POST https://api.dwolla.com/transfers`
+
+## Request parameters
+
+<Table table={InitiateTransfer} />
+
+## HTTP status and error codes
+
+| HTTP Status | Error Message             | Description                                                                                    |
+| ----------- | ------------------------- | ---------------------------------------------------------------------------------------------- |
+| 201         | Created.                  | A transfer was created.                                                                        |
+| 400         | Funding source not found. | Double check the funding source Id, and make sure you are using the correct funding source Id. |
+| 400         | Invalid amount            | The supplied amount must be a positive number.                                                 |
+| 401         | Invalid access token      | Access token not valid. Generate a new one and try again.                                      |
+| 403         | Forbidden                 | Not authorized to create a transfer.                                                           |
+
+## Request and response
+
+The reference example below shows what a request looks like when initiating a transfer over the ACH network.
+
+```bash
+POST https://api-sandbox.dwolla.com/transfers
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
+Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
+
+{
+    "_links": {
+        "source": {
+            "href": "https://api.dwolla.com/funding-sources/e03b3de8-56d1-41e5-b8bc-c219c8b3fc36"
+        },
+        "destination": {
+            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7"
+        }
+    },
+    "amount": {
+        "value": "4.28",
+        "currency": "USD"
+    }
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :source => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+    },
+    :destination => {
+      :href => "https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C"
+    }
+  },
+  :amount => {
+    :currency => "USD",
+    :value => "1.00"
+  }
+}
+
+transfer = app_token.post "transfers", request_body
+transfer.response_headers[:location] # => "https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+
+$transfer = $transfersApi->create([
+  '_links' => [
+    'source' => [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4',
+    ],
+    'destination' => [
+      'href' => 'https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C'
+    ]
+  ],
+  'amount' => [
+    'currency' => 'USD',
+    'value' => '1.00'
+  ]
+]);
+$transfer; # => "https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'source': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4'
+    },
+    'destination': {
+      'href': 'https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C'
+    }
+  },
+  'amount': {
+    'currency': 'USD',
+    'value': '1.00'
+  }
+}
+
+transfer = app_token.post('transfers', request_body)
+transfer.headers['location'] # => 'https://api.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  _links: {
+    source: {
+      href: "https://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4",
+    },
+    destination: {
+      href: "https://api-sandbox.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C",
+    },
+  },
+  amount: {
+    currency: "USD",
+    value: "1.00",
+  },
+};
+
+dwolla
+  .post("transfers", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
+```
