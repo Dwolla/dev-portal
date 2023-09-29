@@ -50,7 +50,6 @@ type ConditionalSideNavLinkProps =
       isExternal: false;
       IconSvg: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
       isSection: boolean; // If true, then the link is a section link which slides out a subnav
-      isDocs?: boolean; // If true, then the StickyReferenceLinks will be shown in the subnav
       productSelector?: boolean; // If true, then the ProductSelector dropdown will be shown
       // in the subnav
     }
@@ -58,19 +57,21 @@ type ConditionalSideNavLinkProps =
       isExternal: true;
       IconSvg?: never;
       isSection?: false;
-      isDocs?: false;
       productSelector?: false;
     };
 
 // Combined type of common and conditional props
+// export type SideNavLinkProps = CommonSideNavLinkProps &
+//   ConditionalSideNavLinkProps;
 export type SideNavLinkProps = CommonSideNavLinkProps &
-  ConditionalSideNavLinkProps;
+  ConditionalSideNavLinkProps & {
+    stickyReferenceLinks?: SideNavLinkProps[];
+  };
 
 interface SideNavProps {
   sectionLinks: SideNavLinkProps[];
   pages: Page[];
   mobileItems: MobileItemProps;
-  stickyReferenceLinks: SideNavLinkProps[];
   productSelectorOptions: Array<SelectMuiOption>;
 }
 
@@ -513,7 +514,6 @@ function SideNav({
   sectionLinks,
   pages,
   mobileItems,
-  stickyReferenceLinks,
   productSelectorOptions,
 }: SideNavProps) {
   const { pathname } = useRouter();
@@ -723,9 +723,9 @@ function SideNav({
 
               <StickyReferencesWrap>
                 {/* Only display links
-                when activeSection is a 'docs' type section */}
-                {activeSection.isDocs &&
-                  stickyReferenceLinks.map((l) => (
+                when activeSection has a stickyReferenceLinks object */}
+                {activeSection.stickyReferenceLinks &&
+                  activeSection.stickyReferenceLinks.map((l) => (
                     <SectionLink
                       key={l.href}
                       isActive={l.href === pathname}

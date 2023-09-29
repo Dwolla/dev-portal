@@ -14,12 +14,13 @@ meta:
 
 # Webhook Events
 
-When an action occurs within the Dwolla system on a resource (Customers, Transfers, etc.), an Event object is created to record a change to the state of the resource. All created Webhook Events follow the same format and include high level details such as: an event topic, a resource URL that identifies the specific resource that changed states, and a timestamp. If your application has an active [webhook subscription](/guides/webhooks/create-subscription/), all Events relevant to your integration will trigger a webhook notification each time they occur. The following resource article will provide guidance on the structure of webhook events, which will assist with handling incoming webhooks.
+When an action occurs within the Dwolla system on a resource (Customers, Transfers, etc.), an Event object is created to record a change to the state of the resource. All created Webhook Events follow the same format and include high level details such as: an event topic, a resource URL that identifies the specific resource that changed states, and a timestamp. If your application has an active [webhook subscription](/docs/balance/webhooks), all Events relevant to your integration will trigger a webhook notification each time they occur. The following resource article will provide guidance on the structure of webhook events, which will assist with handling incoming webhooks.
 
 <AlertBar variation="info">
-  Dwolla requires all applications to have a created webhook subscription in
-  production. The webhook subscription is used to notify your application to
-  trigger an email notification to your end users.
+  Dwolla strongly encourages all applications to establish a webhook
+  subscription in production. It's a vital tool for receiving timely
+  notifications about crucial actions within your Dwolla account, ensuring
+  seamless updates and notifications for your end users.
 </AlertBar>
 
 ## Webhook request details
@@ -28,7 +29,7 @@ When your webhook subscription is configured, events will be created and sent as
 
 ## Webhook headers
 
-There are a few HTTP headers that are useful for your application when consuming the webhook request. `X-Dwolla-Topic` lets your app know, at a high level, the type of event being sent in the payload. `X-Request-Signature-SHA-256` contains a HMAC SHA256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [processed and validated](/guides/webhooks/process-validate) prior to parsing the webhook payload.
+There are a few HTTP headers that are useful for your application when consuming the webhook request. `X-Dwolla-Topic` lets your app know, at a high level, the type of event being sent in the payload. `X-Request-Signature-SHA-256` contains an HMAC SHA-256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [processed and validated](/docs/balance/webhooks/process-validate) prior to parsing the webhook payload.
 
 - `X-Dwolla-Topic` - customer_created
 - `X-Request-Signature-SHA-256` - ed551cfb4acb48d31e14886bffa33aa417dfa4a3d3778f6141a7f7f92ee64861

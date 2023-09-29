@@ -16,6 +16,7 @@ import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
+import { ReactComponent as DwollaConnectIcon } from "../assets/images/component-icons/side-nav/dwolla-connect-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
@@ -62,7 +63,22 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Home",
     isExternal: false,
-    isDocs: false,
+  },
+  {
+    href: "/docs/connect",
+    IconSvg: DwollaConnectIcon,
+    isSection: true,
+    text: "Dwolla Connect",
+    isExternal: false,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+    ],
   },
   {
     href: "/docs/balance",
@@ -70,7 +86,22 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "Dwolla Balance",
     isExternal: false,
-    isDocs: true,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+      {
+        href: "/code-samples",
+        IconSvg: CodeSamplesIcon,
+        isSection: false,
+        text: "Code Samples",
+        isExternal: false,
+      },
+    ],
   },
   {
     href: "/api-reference",
@@ -78,7 +109,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "API Reference",
     isExternal: false,
-    isDocs: false,
     productSelector: true,
   },
   {
@@ -87,7 +117,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "SDKs & Tools",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/code-samples",
@@ -95,31 +124,12 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Code Samples",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/changelog",
     IconSvg: ChangelogIcon,
     isSection: false,
     text: "Changelog",
-    isExternal: false,
-    isDocs: false,
-  },
-];
-
-const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
-  {
-    href: "/api-reference",
-    IconSvg: ApiReferenceIcon,
-    isSection: false,
-    text: "API Reference",
-    isExternal: false,
-  },
-  {
-    href: "/code-samples",
-    IconSvg: CodeSamplesIcon,
-    isSection: false,
-    text: "Code Samples",
     isExternal: false,
   },
 ];
@@ -307,7 +317,6 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           footerLegal={FOOTER_LEGAL_COPY}
           pages={Pages.all()}
           sideNavLinks={SIDE_NAV_LINKS}
-          stickyReferenceLinks={STICKY_REFERENCE_LINKS}
           productSelectorOptions={PRODUCT_OPTIONS}
           topBarProps={TOP_BAR_PROPS}
           apiStatus={apiStatus}

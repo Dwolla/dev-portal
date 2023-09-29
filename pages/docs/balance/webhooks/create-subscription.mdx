@@ -13,7 +13,7 @@ meta:
 First, you will need to have a URL that is publicly accessible where Dwolla can send webhooks in the form of HTTP requests. This also means that anyone on the Internet can hit your endpoint. As such, here are some security concerns:
 
 - Your webhook endpoint should only be accessible over [TLS (HTTPS)](https://www.dwolla.com/updates/improving-transport-layer-security/) and your server should have a valid SSL certificate.
-- Your subscription should include a random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity of the webhook request](/guides/webhooks/process-validate#authentication) from Dwolla.
+- Your subscription should include a random, secret key, only known by your application. This secret key should be securely stored and used later when [validating the authenticity of the webhook request](/docs/balance/webhooks/process-validate#authentication) from Dwolla.
 
 ### Request Parameters
 

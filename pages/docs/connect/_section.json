@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "name": "Get Started",
+      "subCategories": [],
+      "priority": 0
+    },
+    {
+      "name": "Build",
+      "subCategories": ["Notifications"],
+      "priority": 1
+    },
+    {
+      "name": "Go Live",
+      "subCategories": [],
+      "priority": 2
+    },
+    {
+      "name": "Extra",
+      "subCategories": [],
+      "priority": 3
+    }
+  ]
+}

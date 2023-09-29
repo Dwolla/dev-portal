@@ -28,7 +28,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Home",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/docs/balance",
@@ -36,7 +35,15 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: false,
     text: "Balance",
     isExternal: false,
-    isDocs: true,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+    ],
   },
   {
     href: "/api-reference",
@@ -44,7 +51,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "API Reference",
     isExternal: false,
-    isDocs: false,
   },
   {
     href: "/sdks-tools",
@@ -57,16 +63,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     href: "https://discuss.dwolla.com/",
     text: "Community",
     isExternal: true,
-  },
-];
-
-const STICKY_REFERENCE_LINKS: SideNavLinkProps[] = [
-  {
-    href: "/api-reference",
-    IconSvg: ApiReferenceIcon,
-    isSection: false,
-    text: "API Reference",
-    isExternal: false,
   },
 ];
 
@@ -91,7 +87,6 @@ test("SideNav", () => {
       <SideNav
         pages={Pages.all()}
         sectionLinks={SIDE_NAV_LINKS}
-        stickyReferenceLinks={STICKY_REFERENCE_LINKS}
         productSelectorOptions={PRODUCT_OPTIONS}
         mobileItems={TOP_BAR_PROPS}
       />

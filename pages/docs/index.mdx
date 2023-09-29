@@ -166,6 +166,24 @@ export default function HomePage() {
         <CardGridWrapper>
           <CardGrid maxColumns="2">
             <Card
+              product="CONNECT"
+              topic="Commercial Bank Account Solution"
+              description="Dwolla Connect leverages your existing banking relationships and corresponding commercial bank accounts to integrate modern payment processing capabilities into your operations. It’s currently available for businesses who want to send or receive account-to-account payments using their commercial bank accounts at J.P. Morgan or Wells Fargo."
+              icon={dwollaConnectIcon}
+              links={[
+                {
+                  text: "Read Docs",
+                  href: "/docs/connect",
+                  external: false,
+                },
+                {
+                  text: "Contact Us",
+                  href: "https://www.dwolla.com/contact/",
+                  external: true,
+                },
+              ]}
+            />
+            <Card
               product="BALANCE"
               topic="Digital Wallet Solution"
               description="Dwolla Balance is a digital wallet-based solution that lets you and your users hold funds and initiate payments. This wallet supports diverse funds flows: sending, receiving, and facilitating transfers between users and/or their payment accounts. It utilizes our established relationship with our financial institution partners to connect your business to the U.S. banking infrastructure."
@@ -175,24 +193,6 @@ export default function HomePage() {
                   text: "Read Docs",
                   href: "/docs/balance",
                   external: false,
-                },
-              ]}
-            />
-            <Card
-              product="CONNECT"
-              topic="Commercial Bank Account Solution"
-              description="Dwolla Connect leverages your existing banking relationships and corresponding commercial bank accounts to integrate modern payment processing capabilities into your operations. It’s currently available for businesses who want to send or receive account-to-account payments using their commercial bank accounts at J.P. Morgan or Wells Fargo. Documentation coming soon! Please contact us for more information. "
-              icon={dwollaConnectIcon}
-              links={[
-                {
-                  text: "Learn More",
-                  href: "https://www.dwolla.com/dwolla-connect",
-                  external: true,
-                },
-                {
-                  text: "Contact Us",
-                  href: "https://www.dwolla.com/contact/",
-                  external: true,
                 },
               ]}
             />

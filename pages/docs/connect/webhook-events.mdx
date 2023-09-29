@@ -1,0 +1,66 @@
+---
+layout: concepts
+title: Webhook Events
+category: Build
+subCategory: Notifications
+weight: 3
+meta:
+  title: Dwolla Connect Webhook Events | Dwolla Connect | Dwolla API Documentation
+  description: Reference this material for a breakdown of what webhook events look like in Dwolla Connect.
+---
+
+# Webhook Events
+
+When an action occurs within the Dwolla system on a resource (External Parties, Transfers, etc.), an Event object is created to record a change to the state of the resource. All created Webhook Events follow the same format and include high level details such as: an event topic, a resource URL that identifies the specific resource that changed states, and a timestamp. If your application has an active [webhook subscription](/docs/connect/webhooks), all Events relevant to your integration will trigger a webhook notification each time they occur. The following resource article will provide guidance on the structure of webhook events, which will assist with handling incoming webhooks.
+
+<AlertBar variation="info">
+  Dwolla strongly encourages all applications to establish a webhook
+  subscription in production. It's a vital tool for receiving timely
+  notifications about crucial actions within your Dwolla account, ensuring
+  seamless updates and notifications for your end users.
+</AlertBar>
+
+## Webhook request details
+
+When your webhook subscription is configured, events will be created and sent asynchronously via webhooks as they occur. The webhook notification from Dwolla is a POST request that contains a JSON-encoded payload as well as HTTP headers, which are both used when consuming the webhook. Webhook payloads are designed to be lightweight with only minimum details regarding the triggered event. Dwolla returns links within the Event object pointing to relevant resources in the API which are used to lookup more detailed information on the resource that changed states.
+
+## Webhook headers
+
+There are a few HTTP headers that are useful for your application when consuming the webhook request. `X-Dwolla-Topic` lets your app know, at a high level, the type of event being sent in the payload. `X-Request-Signature-SHA-256` contains an HMAC SHA-256 hash based on the webhook payload and a key which is your webhook secret. The webhook signature should be [processed and validated](/docs/balance/connect/process-validate) prior to parsing the webhook payload.
+
+- `X-Dwolla-Topic` - account.transfer:created
+- `X-Request-Signature-SHA-256` - ed551cfb4acb48d31e14886bffa33aa417dfa4a3d3778f6141a7f7f92ee64861
+
+## Webhook payload
+
+All webhook payloads will include an Event object. An Event contains `_links` to: the relevant resource that caused the Event to be triggered, the Account or External Party that the Event belongs to, and a `self` link to identify the unique Event. In addition to relevant `_links`, the payload will include attributes such as a `created` timestamp, event `topic`, and `resourceId` (see table below for more information).
+
+| Attribute  | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| \_links    | An object that contains relevant links to resources in the Dwolla API. Possible links can include: `self`, `account`, `resource`, and `external-party`. <br /> `self` - a link to the unique event <br /> `account` - a link to the Dwolla account that the application belongs to <br /> `resource` - a link to the resource that changed states. Used to lookup additional details returned on the resource itself <br /> `external-party` - a link to the external-party the Event belongs to |
+| id         | Unique Event ID. An Event ID is used along with the created timestamp for idempotent event processing.                                                                                                                                                                                                                                                                                                                                                                                           |
+| created    | ISO-8601 timestamp of when the event was created.                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| topic      | Type of action that occurred within Dwolla. <br/> **Format:** `<resource>.<related_resource>:<type/action>` or `<resource>:<type/action>`. <br/> For example, the event topic for when a transfer is created is `account.transfer:created`. <br/> Other examples include: `account.funding_source:removed`, `external_party:created`.     
+| resourceId | Unique ID of the resource that triggered the Event.                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+
+### Example webhook payload
+
+```json
+{
+  "_links": {
+    "account": {
+      "href": "https://api-sandbox.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb1"
+    },
+    "resource": {
+      "href": "https://api-sandbox.dwolla.com/transfers/d75a1882-a051-4c92-9631-bfe0b252a24e"
+    },
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/events/021e2d1b-a71e-496e-8e5f-0c7bceac21c5"
+    }
+  },
+  "created": "2023-09-27T15:44:30.152Z",
+  "id": "021e2d1b-a71e-496e-8e5f-0c7bceac21c5",
+  "resourceId": "d75a1882-a051-4c92-9631-bfe0b252a24e",
+  "topic": "account.transfer:created"
+}
+```
