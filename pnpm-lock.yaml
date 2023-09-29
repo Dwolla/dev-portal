@@ -64,7 +64,7 @@ dependencies:
     version: 7.0.10(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)
   algolia-search-components:
     specifier: github:Dwolla/algolia-search-components#203de1c
-    version: github.com/Dwolla/algolia-search-components/203de1c(algoliasearch@4.17.0)(react-dom@18.2.0)(react@18.2.0)
+    version: git@github.com+Dwolla/algolia-search-components/203de1c(algoliasearch@4.17.0)(react-dom@18.2.0)(react@18.2.0)
   algoliasearch:
     specifier: ^4.17.0
     version: 4.17.0
@@ -88,7 +88,7 @@ dependencies:
     version: 2.3.2
   dwolla-mdx-remark:
     specifier: github:Dwolla/dwolla-mdx-remark#1.1.0
-    version: github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4)
+    version: git@github.com+Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4)
   github-slugger:
     specifier: ^2.0.0
     version: 2.0.0
@@ -9302,7 +9302,7 @@ packages:
       levn: 0.3.0
       prelude-ls: 1.1.2
       type-check: 0.3.2
-      word-wrap: 1.2.3
+      word-wrap: 1.2.5
 
   /optionator@0.9.1:
     resolution: {integrity: sha512-74RlY5FCnhq4jRxVUPKDaRwrVNXMqsGsiW6AJw4XK8hmtm10wC0ypZBLw5IIp85NZMr91+qd1RvvENwg7jjRFw==}
@@ -9313,7 +9313,7 @@ packages:
       levn: 0.4.1
       prelude-ls: 1.2.1
       type-check: 0.4.0
-      word-wrap: 1.2.3
+      word-wrap: 1.2.5
     dev: true
 
   /ordinal@1.0.3:
@@ -11778,8 +11778,8 @@ packages:
       string-width: 4.2.3
     dev: false
 
-  /word-wrap@1.2.3:
-    resolution: {integrity: sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==}
+  /word-wrap@1.2.5:
+    resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
     engines: {node: '>=0.10.0'}
 
   /wordwrap@1.0.0:
@@ -11939,9 +11939,9 @@ packages:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: false
 
-  github.com/Dwolla/algolia-search-components/203de1c(algoliasearch@4.17.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {tarball: https://codeload.github.com/Dwolla/algolia-search-components/tar.gz/203de1c}
-    id: github.com/Dwolla/algolia-search-components/203de1c
+  git@github.com+Dwolla/algolia-search-components/203de1c(algoliasearch@4.17.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {commit: 203de1c, repo: git@github.com:Dwolla/algolia-search-components.git, type: git}
+    id: git@github.com+Dwolla/algolia-search-components/203de1c
     name: dwolla-algolia-search
     version: 1.0.0
     peerDependencies:
@@ -11954,9 +11954,9 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4):
-    resolution: {tarball: https://codeload.github.com/Dwolla/dwolla-mdx-remark/tar.gz/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec}
-    id: github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec
+  git@github.com+Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4):
+    resolution: {commit: 1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec, repo: git@github.com:Dwolla/dwolla-mdx-remark.git, type: git}
+    id: git@github.com+Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec
     name: dwolla-mdx-remark
     version: 1.1.0
     peerDependencies:
