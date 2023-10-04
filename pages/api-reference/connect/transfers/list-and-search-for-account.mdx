@@ -13,6 +13,22 @@ meta:
 
 This section covers how to retrieve an Account's list of transfers.
 
+### Pagination
+
+All listing endpoints support cursor-based pagination to traverse through an existing data set. With cursor-based pagination you must always start at the beginning of a list and query your way forward in the data set. Cursor-based endpoints accept the `limit` and `cursor` query string parameters.
+
+A `limit` is set to control the number of objects that are returned in the response. By default, a `limit` is set to 25 objects that are returned and sorted by `created` timestamp. Limit can have a max value of 200 external party objects. The `cursor` is a pointer indicating the next item in the data set. The cursor to use for the next page of results is returned in the `_links` object where a URL is generated and returned for the `next` data set (referenced below). If you omit the `cursor` from your request, you will receive the first page of results.
+
+It is recommended to use the `_links` object in the response which includes the following relational links for paging.
+
+- `self` link indicates the URL of the resource itself.
+- `next` includes the URL to list the next set of objects as defined by `limit` that is set. The absence of a `next` URL indicates that you have reached the end of the data set.
+- `prev` includes the URL to list the previous set of objects as defined by `limit`. the absence of a `prev` URL indicates that you are at the beginning of the data set.
+
+##### Example HTTP Request
+
+> `GET https://api.dwolla.com/accounts/{id}/transfers?limit=10&cursor={encoded-cursor}`
+
 ## HTTP request
 
 > `GET https://api.dwolla.com/accounts/{id}/transfers`
