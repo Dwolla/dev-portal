@@ -532,6 +532,28 @@ function SideNav({
 
   useEffect(() => {
     setActiveSection(findSelectedSection(sectionLinks, pathname));
+
+    // Find the active page based on the pathname
+    const activePage = pages.find((page) => page.id === pathname);
+
+    if (activePage && activePage.product) {
+      // Check if the active page's frontmatter contains a 'product' attribute.
+
+      // Find the matching product option from the available productSelectorOptions.
+      const matchingProductOption = productSelectorOptions.find(
+        (option) => option.value === activePage.product
+      );
+
+      // If a matching product option is found, update the selectedProduct state.
+      if (matchingProductOption) {
+        setSelectedProduct(matchingProductOption);
+
+        // The 'selectedProduct' state is being set based on the 'product' value
+        // extracted from the active page's frontmatter. This ensures that the
+        // side nav reflects the selected product and its contents when navigating to a page
+        // from a URL.
+      }
+    }
   }, [pathname]);
 
   const categories = activeSection
