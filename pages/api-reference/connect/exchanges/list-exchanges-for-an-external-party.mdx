@@ -1,0 +1,111 @@
+---
+layout: guides
+product: connect
+title: "List exchanges for an external party"
+guide:
+  step: 6
+meta:
+  title: "List exchanges for an external party | Dwolla API Documentation"
+  description: Retrieve a list of exchanges that belong to an external party.
+---
+
+# List exchanges for an external party
+
+This section contains information on how to retrieve the list of exchanges associated with an External Party resource.
+
+### HTTP request
+
+> `GET https://api.dwolla.com/external-parties/{id}/exchanges`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                |
+| --------- | -------- | ------ | ------------------------------------------ |
+| id        | yes      | string | External Party resource unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code     | Description                                                  |
+| ----------- | -------- | ------------------------------------------------------------ |
+| 200         | Ok       | The Dwolla API accepted the request and returned a response. |
+| 404         | NotFound | External Party ID not found. Check External Party ID.        |
+
+### Request and response
+
+```bash
+GET https://api.dwolla.com/external-parties/9fc74373-a5c7-40e4-aa59-d5f4c86a24ea/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/exchanges",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange"
+        }
+    },
+    "_embedded": {
+        "exchanges": [
+            {
+                "_links": {
+                    "self": {
+                        "href": "https://api-sandbox.dwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange"
+                    },
+                    "exchange-partner": {
+                        "href": "https://api-sandbox.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "exchange-partner"
+                    },
+                    "funding-sources": {
+                        "href": "https://api-sandbox.dwolla.com/funding-sources",
+                        "type": "application/vnd.dwolla.v1.hal+json",
+                        "resource-type": "funding-source"
+                    }
+                },
+                "id": "92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                "status": "active",
+                "created": "2022-10-19T17:44:44.864Z"
+            }
+        ]
+    },
+    "total": 1
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api-sandbox.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+
+exchanges = app_token.get "#{external_party_url}/exchanges"
+exchanges._embedded['exchanges'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api-sandbox.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+
+exchanges = app_token.get('%s/exchanges' % external_party_url)
+exchanges.body['_embedded']['exchanges'][0]['id'] # => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api-sandbox.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2";
+
+token
+  .get(`${externalPartyUrl}/exchanges`)
+  .then((res) => res.body._embedded["exchanges"][0].id); // => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
+```
