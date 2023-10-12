@@ -101,3 +101,83 @@ dwolla
   .post(`${externalPartyUrl}/funding-sources`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
+
+### Request and response - using an exchange resource
+
+```bash
+POST https://api-sandbox.dwolla.com/external-parties/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+{
+  "_links": {
+    "exchange": {
+      "href": "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+    }
+  },
+  "bankAccountType": "checking",
+  "name": "Jane Doe - Checking"
+}
+
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_parties_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  _links: {
+    'exchange': {
+      href: "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+    }
+  },
+  bankAccountType: 'checking',
+  name: 'Jane Doe’s Checking'
+}
+
+funding_source = app_token.post "#{external_parties_url}/funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+request_body = {
+  '_links': {
+    'exchange': {
+      'href': 'https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65'
+    }
+  },
+  'bankAccountType': 'checking',
+  'name': 'Jane Doe’s Checking'
+}
+
+funding_source = app_token.post('%s/funding-sources' % external_party_url, request_body)
+funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var exernalPartyUrl =
+  "https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C";
+var requestBody = {
+  _links: {
+    exchange: {
+      href: "https://api-sandbox.dwolla.com/exchanges/30e7c028-0bdf-e511-80de-0aa34a9b2388",
+    },
+  },
+  bankAccountType: "checking",
+  name: "Jane Doe’s Checking",
+};
+
+dwolla
+  .post(`${externalPartyUrl}/funding-sources`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+```
