@@ -1,0 +1,419 @@
+---
+layout: guides
+product: connect
+title: "Create an exchange for an account"
+guide:
+  step: 3
+meta:
+  title: "Create an exchange for an account | Dwolla API Documentation"
+  description: Create an exchange for a reseller partner or client account.
+---
+
+# Create an exchange for an account
+
+This section contains information on how to create an exchange for a reseller partner or client account. The creation of an exchange serves as the “hand-shake” between Dwolla and a trusted ecosystem partner. The creation of an exchange requires a `_link` to the exchange partner and tokenized data which encapsulates limited permissioned access between an ecosystem partner and Dwolla.
+
+### HTTP request
+
+> `POST https://api.dwolla.com/exchanges`
+
+### Request parameters
+
+| Parameter | Required    | Type   | Description                                                                                                                                                                                                   |
+| --------- | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                        |
+| token     | conditional | string | A third party provider processor token. **Required** for MX and Flinks integrations.                                                                                                                          |
+| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Finicity integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects). |
+
+#### Finicity JSON Object
+
+| Parameter      | Type    | Description                                                                                                                                                             |
+| -------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| profile        | integer | Int value obtained by the party integrating with Finicity.                                                                                                              |
+| version        | string  | String value obtained by the party integrating with Finicity.                                                                                                           |
+| receiptId      | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
+| receiptVersion | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
+| customerId     | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
+| partnerId      | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                         |
+| products       | object  | Array of Finicity Product objects obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response. |
+
+##### Finicity product JSON Object
+
+| Parameter    | Type   | Description                                                                                                                                                         |
+| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| product      | string | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response                   |
+| accountId    | string | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response                   |
+| accessPeriod | object | Finicity Access Period objects obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response |
+
+##### Finicity accessPeriod JSON object
+
+| Parameter | Type    | Description                                                                                                                                       |
+| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type      | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response |
+| startTime | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response    |
+| endTime   | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response    |
+
+### HTTP status and error codes
+
+| HTTP Status | Code                 | Description                                                                                                                                                                   |
+| ----------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created              | The Dwolla API accepted the request and created an exchange resource. You can reference the Location header to retrieve a link that represents the created exchange resource. |
+| 400         | InvalidExchangeToken | The exchange token is not valid to perform this operation. Either the token is expired or invalid, or the products permissions to the token are invalid or expired.           |
+| 400         | InactiveExchange     | Exchange was removed or disabled.                                                                                                                                             |
+| 401         | InvalidScope         | The scopes for creating an exchange resource for an account is not enabled for this application. Reach out to Dwolla for more information.                                    |
+
+### Request and Response (MX)
+
+```bash
+POST https://api.dwolla.com/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+    },
+    "token": "someMXProcessorToken"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  },
+  token: 'someMXProcessorToken'
+}
+
+exchange = app_token.post "exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4'
+    }
+  },
+  'token': 'someMXProcessorToken'
+}
+
+exchange = app_token.post('exchange', request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+    },
+  },
+  token: "someMXProcessorToken",
+};
+
+dwolla
+  .post("exchanges", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Flinks)
+
+```bash
+POST https://api.dwolla.com/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89"
+        }
+    },
+    "token": "MTExYTFhMWEtMTExMS0xYWExLTExMTEtMTFhMTExYTExMTFhOjIyMmIyYjFiLTIyMjItMmJiMi0yMjIyLTIyYjIyMmIyMjIyYg=="
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$exchangesApi = new ExchangesApi($apiClient);
+
+$authSecret = "111a1a1a-1111-1aa1-1111-11a111a1111a";
+$accessToken = "222b2b1b-2222-2bb2-2222-22b222b2222b";
+
+$exchange = $exchangesApi->createAccountExchange(new CreateExchangeRequest([
+    "_links" => [
+        "exchange-partner" => [
+            "href" => "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89"
+        ]
+    ],
+    "token" => base64_encode($authSecret . ":" . $accessToken)
+]));
+
+$exchange; # => https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+?>
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+require "base64"
+
+auth_secret = '111a1a1a-1111-1aa1-1111-11a111a1111a'
+access_token = '222b2b1b-2222-2bb2-2222-22b222b2222b'
+
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89"
+    }
+  },
+  token: Base64.encode64(auth_secret + ':' + access_token)
+}
+
+exchange = app_token.post "exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+import base64
+
+auth_secret = b'111a1a1a-1111-1aa1-1111-11a111a1111a'
+access_token = b'222b2b1b-2222-2bb2-2222-22b222b2222b'
+
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89'
+    }
+  },
+  'token': base64.b64encode(auth_secret + ':' + access_token)
+}
+
+exchange = app_token.post('exchange', request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/a0b22a57-68df-4450-b507-47c937e64e89'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var authSecret = "111a1a1a-1111-1aa1-1111-11a111a1111a";
+var accessToken = "222b2b1b-2222-2bb2-2222-22b222b2222b";
+
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89",
+    },
+  },
+  token: Buffer.from(authSecret + ":" + accessToken, "utf-8").toString(
+    "base64"
+  ),
+};
+
+dwolla
+  .post("exchanges", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Finicity)
+
+```bash
+POST https://api.dwolla.com/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+    },
+    "finicity": {
+        "profile": 3,
+        "version": "1",
+        "receiptId": "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+        "receiptVersion": "1",
+        "customerId": "5454874858510164117",
+        "partnerId": 2445583946651,
+        "products": [
+            {
+                "product": "moneyTransferDetails",
+                "accountId": "1015199035827334916",
+                "accessPeriod": {
+                    "type": "timeframe",
+                    "startTime": "2022-07-06",
+                    "endTime": "2022-08-16T06:06:20Z"
+                }
+            }
+        ],
+        "timestamp": "2022-07-11T06:06:23Z"
+    }
+}
+
+ HTTP/1.1 201 Created
+ Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$exchangesApi = new ExchangesApi($apiClient);
+
+$exchange = $exchangesApi->createAccountExchange(new CreateExchangeRequest([
+    "_links" => [
+        "exchange-partner" => [
+            "href" => "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        ]
+    ],
+    "finicity" => [
+        "profile" => 3,
+        "version" => "1",
+        "receiptId" => "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+        "receiptVersion" => "1",
+        "customerId" => "5454874858510164117",
+        "partnerId" => 2445583946651,
+        "products" => [
+            [
+                "product" => "moneyTransferDetails",
+                "accountId" => "1015199035827334916",
+                "accessPeriod" => [
+                    "type" => "timeframe",
+                    "startTime" => "2022-07-06",
+                    "endTime" => "2022-08-16T06:06:20Z"
+                ]
+            ]
+        ],
+        "timestamp" => "2022-07-11T06:06:23Z"
+    ]
+]));
+
+$exchange; # => https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+?>
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  :_links => {
+    :exchange-partner => {
+      :href => "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  },
+  :finicity => {
+    :profile => 3,
+    :version => "1",
+    :receiptId => "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    :receiptVersion => "1",
+    :customerId => "5454874858510164117",
+    :partnerId => 2445583946651,
+    :products => [
+      {
+        :product => "moneyTransferDetails",
+        :accountId => "1015199035827334916",
+        :accessPeriod => {
+          :type => "timeframe",
+          :startTime => "2022-07-06",
+          :endTime => "2022-08-16T06:06:20Z"
+        }
+      }
+    ],
+    :timestamp => "2022-07-11T06:06:23Z"
+  }
+}
+
+exchange = app_token.post "exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  },
+  'finicity': {
+    'profile': 3,
+    'version': "1",
+    'receiptId': "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    'receiptVersion': "1",
+    'customerId': "5454874858510164117",
+    'partnerId': 2445583946651,
+    'products': [
+      {
+        'product': "moneyTransferDetails",
+        'accountId': "1015199035827334916",
+        'accessPeriod': {
+          'type': "timeframe",
+          'startTime': "2022-07-06",
+          'endTime': "2022-08-16T06:06:20Z"
+        }
+      }
+    ],
+    'timestamp': "2022-07-11T06:06:23Z"
+  }
+}
+
+exchange = app_token.post('exchange', request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+    },
+  },
+  finicity: {
+    profile: 3,
+    version: "1",
+    receiptId: "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    receiptVersion: "1",
+    customerId: "5454874858510164117",
+    partnerId: 2445583946651,
+    products: [
+      {
+        product: "moneyTransferDetails",
+        accountId: "1015199035827334916",
+        accessPeriod: {
+          type: "timeframe",
+          startTime: "2022-07-06",
+          endTime: "2022-08-16T06:06:20Z",
+        },
+      },
+    ],
+    timestamp: "2022-07-11T06:06:23Z",
+  },
+};
+
+dwolla
+  .post("exchanges", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```

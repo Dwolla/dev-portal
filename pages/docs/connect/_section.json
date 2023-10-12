@@ -7,7 +7,7 @@
     },
     {
       "name": "Build",
-      "subCategories": ["Notifications"],
+      "subCategories": ["Notifications", "Integrations"],
       "priority": 1
     },
     {
