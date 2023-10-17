@@ -8,8 +8,10 @@ import {
   type TooltipProps,
   Typography,
 } from "@mui/material";
-import { PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { ORANGE_PRIMARY, PURPLE_PRIMARY, WHITE_PRIMARY } from "../colors";
 import tooltipPresets from "../tooltip-presets";
+import { ROBOTO } from "../typography";
 
 const WrappedMuiTooltip = styled(({ className, ...props }: TooltipProps) => (
   <MuiTooltip {...props} classes={{ popper: className }} />
@@ -18,6 +20,11 @@ const WrappedMuiTooltip = styled(({ className, ...props }: TooltipProps) => (
     backgroundColor: "transparent",
   },
 }));
+
+const WrappedSpan = styled("span", { name: "WrappedSpan" })({
+  fontFamily: ROBOTO,
+  color: ORANGE_PRIMARY,
+});
 
 const TooltipWrapper = styled("div", { name: "TooltipWrapper" })({
   background: WHITE_PRIMARY,
@@ -46,6 +53,7 @@ export interface DefaultContentTooltipProps {
   content: string;
   icon?: SvgIconProps["component"];
   title?: string;
+  href?: string;
 }
 
 export interface PresetContentTooltipProps {
@@ -57,7 +65,7 @@ export interface PresetContentTooltipProps {
 export type ContentTooltipProps = (
   | DefaultContentTooltipProps
   | PresetContentTooltipProps
-) & { testSuite?: boolean };
+) & { testSuite?: boolean; href?: string };
 
 const isPresetTooltip = (obj: any): obj is PresetContentTooltipProps =>
   !!obj.preset;
@@ -71,18 +79,22 @@ const getPropsFromPreset = (
 export default function ContentTooltip({
   children,
   testSuite,
+  href,
   ...initialProps
 }: PropsWithChildren<ContentTooltipProps>) {
   const { content, icon, title } = isPresetTooltip(initialProps)
     ? getPropsFromPreset(initialProps)
     : initialProps;
 
+  // Use the "OpenInNew" icon when an href prop is provided, but a custom icon isn't provided
+  const iconComponent = href && !icon ? OpenInNewIcon : icon;
+
   const innerTooltip = (
     <TooltipWrapper>
-      {icon && (
+      {iconComponent && (
         <IconWrapper>
           <SvgIcon
-            component={icon}
+            component={iconComponent}
             inheritViewBox
             sx={{ color: WHITE_PRIMARY }}
           />
@@ -95,7 +107,6 @@ export default function ContentTooltip({
             {title}
           </Typography>
         )}
-
         <Typography variant="body2" sx={{ color: PURPLE_PRIMARY }}>
           {content}
         </Typography>
@@ -103,10 +114,25 @@ export default function ContentTooltip({
     </TooltipWrapper>
   );
 
+  // Wrap the children in an <a> tag if href is provided
+  if (href) {
+    return (
+      <a href={href}>
+        {testSuite ? (
+          innerTooltip
+        ) : (
+          <WrappedMuiTooltip placement="top" title={innerTooltip}>
+            <WrappedSpan>{children}</WrappedSpan>
+          </WrappedMuiTooltip>
+        )}
+      </a>
+    );
+  }
+
   if (testSuite) return innerTooltip;
   return (
     <WrappedMuiTooltip placement="top" title={innerTooltip}>
-      <span>{children}</span>
+      <WrappedSpan>{children}</WrappedSpan>
     </WrappedMuiTooltip>
   );
 }

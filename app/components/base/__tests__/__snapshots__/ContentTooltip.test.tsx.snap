@@ -46,6 +46,27 @@ exports[`ContentTooltip with \`dwolla-balance\` preset 1`] = `
 </div>
 `;
 
+exports[`ContentTooltip with href, no icon 1`] = `
+<a
+  href="https://developers.dwolla.com/docs"
+>
+  <span
+    aria-label={null}
+    aria-labelledby={null}
+    className=" css-1mz5jyq-WrappedSpan-root"
+    data-mui-internal-clone-element={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+  >
+    a digital wallet
+  </span>
+</a>
+`;
+
 exports[`ContentTooltip with icon, with title 1`] = `
 <div
   className="css-14hvf8r-TooltipWrapper-root"
@@ -80,6 +101,27 @@ exports[`ContentTooltip with icon, with title 1`] = `
     </p>
   </div>
 </div>
+`;
+
+exports[`ContentTooltip with icon, with title, with href 1`] = `
+<a
+  href="https://developers.dwolla.com/docs"
+>
+  <span
+    aria-label={null}
+    aria-labelledby={null}
+    className=" css-1mz5jyq-WrappedSpan-root"
+    data-mui-internal-clone-element={true}
+    onBlur={[Function]}
+    onFocus={[Function]}
+    onMouseLeave={[Function]}
+    onMouseOver={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+  >
+    a digital wallet
+  </span>
+</a>
 `;
 
 exports[`ContentTooltip with icon, without title 1`] = `
