@@ -26,6 +26,24 @@ storiesOf("base/ContentTooltip", module)
       a digital wallet
     </ContentTooltip>
   ))
+  .add("with icon, with title, with href", () => (
+    <ContentTooltip
+      content="The Dwolla balance is a Funding Source that can be utilized like a “wallet” for holding a stored value of USD funds."
+      icon={AcUnit}
+      title="The Dwolla Balance"
+      href="https://developers.dwolla.com/docs"
+    >
+      a digital wallet
+    </ContentTooltip>
+  ))
+  .add("with href, no icon", () => (
+    <ContentTooltip
+      content="When a custom icon isn't provided, the tooltip will use a default icon"
+      href="https://developers.dwolla.com/docs"
+    >
+      a digital wallet
+    </ContentTooltip>
+  ))
   .add("with `dwolla-balance` preset", () => (
     <ContentTooltip preset="dwolla-balance">Dwolla Balance</ContentTooltip>
   ));
