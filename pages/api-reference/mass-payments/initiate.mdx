@@ -14,7 +14,7 @@ This section covers how to initiate a mass payment from your Dwolla Master [Acco
 
 ### Prevent duplicate mass payment with idempotency key
 
-To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key won't result in multiple resources being created.
+To prevent an operation from being performed more than once, Dwolla supports passing in an <span><ContentTooltip preset="idempotency-key">Idempotency Key</ContentTooltip></span> header with a unique key as the value. Multiple `POSTs` with the same idempotency key won't result in multiple resources being created.
 
 For example, if a request to initiate a mass payment fails due to a network connection issue, you can reattempt the request with the same idempotency key to ensure that only a single mass payment is created.
 

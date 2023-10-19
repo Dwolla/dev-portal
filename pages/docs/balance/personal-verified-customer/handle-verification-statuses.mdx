@@ -28,7 +28,7 @@ It is recommended to have an active [webhook subscription](https://developers.dw
 
 ### Testing verification statuses in Sandbox
 
-Dwolla’s Sandbox environment allows you to submit `verified`, `retry`, `kba`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://developers.dwolla.com/api-reference/customers/update) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](/guides/sandbox/customers#simulate-document-upload-approved-and-failed-events) resource article.
+Dwolla’s <span><ContentTooltip preset="sandbox">Sandbox</ContentTooltip></span> environment allows you to submit `verified`, `retry`, `kba`, `document`, or `suspended` as the value of the firstName parameter to create a new verified Customer with their respective status. To simulate transitioning a verified Customer with a `retry` status to `verified`, you’ll need to call the [Update a Customer](https://developers.dwolla.com/api-reference/customers/update) endpoint and submit full identifying information with an updated firstName value and full SSN. To simulate transitioning a verified Customer with a `document` status to `verified` in the Sandbox, you’ll need to upload a test document as outlined in the [Testing in the Sandbox](/guides/sandbox/customers#simulate-document-upload-approved-and-failed-events) resource article.
 
 ## Handling status: `retry`
 

@@ -71,7 +71,7 @@ Example webhook payload:
 
 ## What to Know About Dwolla Webhooks
 
-- Each application can have multiple webhook subscriptions associated with it. While one subscription is sufficient, you can create up to **five** in Production and **ten** in Sandbox for redundancy.
+- Each application can have multiple webhook subscriptions associated with it. While one subscription is sufficient, you can create up to **five** in Production and **ten** in <span><ContentTooltip preset="sandbox">Sandbox</ContentTooltip></span> for redundancy.
 - Webhooks are sent asynchronously and are not guaranteed to be delivered in order. We recommend that applications protect against duplicated events by [making event processing idempotent](/docs/balance/webhooks/process-validate#check-for-duplicate-events).
 - Your application will need to respond to Dwolla webhook requests with a 200-level HTTP status code within 10 seconds of receipt. Otherwise, the attempt will be counted as a failure and Dwolla will retry sending the webhook according to the [back-off schedule](/api-reference/webhook-subscriptions#delivery-rate).
 - If there are 400 consecutive failures, and it has been 24 hours since your last success, your webhook subscription will be automatically paused and an email will be sent to the Admin of the Dwolla account. After fixing the issue that is causing the failures, you can unpause the webhook subscription either via your Dashboard or [Dwolla's API](/api-reference/webhook-subscriptions/update) in order to continue receiving new webhooks and to [retry failed webhooks](/api-reference/webhooks/retry).

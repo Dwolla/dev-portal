@@ -40,6 +40,11 @@ const IconWrapper = styled("div", { name: "IconWrapper" })({
   background: PURPLE_PRIMARY,
   display: "flex",
   padding: "0.0625rem 0.5rem",
+  "& svg": {
+    "& path": {
+      fill: `${WHITE_PRIMARY} !important`,
+    },
+  },
 });
 
 const TextWrapper = styled("div", { name: "TextWrapper" })({

@@ -17,7 +17,7 @@ This section details how to initiate a transfer between your main Dwolla Account
 
 ### Prevent duplicate transfers with idempotency key
 
-To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POSTs` with the same idempotency key won't result in multiple resources being created.
+To prevent an operation from being performed more than once, Dwolla supports passing in an <span><ContentTooltip preset="idempotency-key">Idempotency Key</ContentTooltip></span> header with a unique key as the value. Multiple `POSTs` with the same idempotency key won't result in multiple resources being created.
 
 For example, if a request to initiate a transfer fails due to a network connection issue, you can reattempt the request with the same idempotency key to ensure that only a single transfer is created.
 
@@ -25,12 +25,12 @@ Refer to our [idempotency key](https://developers.dwolla.com/api-reference#idemp
 
 ### Simulate transfer statuses in Sandbox
 
-The Sandbox environment does not replicate any bank transfer processes, so a pending transfer will not clear or fail automatically after a few business days as it would in production.
+The <span><ContentTooltip preset="sandbox">Sandbox</ContentTooltip></span> environment does not replicate any bank transfer processes, so a pending transfer will not clear or fail automatically after a few business days as it would in production.
 The transfer will simply remain in the pending state indefinitely. In the Sandbox environment, transfer statuses can be simulated by passing in a sentinel value in the `amount` field as referenced in the table below.
 
 | amount | Desired Transfer Status | Description                                                                                                                                 |
 | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.01   | created                 | Triggers `account.transfer:created` event as the transfer is placed in a `created` status.                                                              |
+| 1.01   | created                 | Triggers `account.transfer:created` event as the transfer is placed in a `created` status.                                                  |
 | 1.02   | pending                 | Triggers `account.transfer:created` and `account.transfer:pending` events as the transfer updates from a `created` to `pending` status.     |
 | 2.01   | processed               | Triggers `account.transfer:created` and `account.transfer:processed` events as the transfer updates from a `created` to `processed` status. |
 | 9.99   | failed                  | Triggers `account.transfer:created` and `account.transfer:failed` events as the transfer updates from a `created` to `failed` status.       |
