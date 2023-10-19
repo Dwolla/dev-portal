@@ -109,7 +109,7 @@ print($customer); # => "https://api-sandbox.dwolla.com/customers/c7f300c0-f1ef-4
 ?>
 ```
 
-When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating webhooks that are triggered for the user in the Dwolla system.
+When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating <span><ContentTooltip preset="webhook">webhooks</ContentTooltip></span> that are triggered for the user in the Dwolla system.
 
 ## Step 1B. Handle Webhooks
 

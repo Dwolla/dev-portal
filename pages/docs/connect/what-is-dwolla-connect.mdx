@@ -50,7 +50,7 @@ Dwolla integrates directly with financial institutions (currently, J.P. Morgan a
 1. Using Dwolla’s API, you initiate a transfer request to push/pull funds between your commercial bank account and an external party’s bank account.
 2. Dwolla receives the transfer request and passes the payment instructions on to the financial institution that holds your commercial account. The financial institution receives the payment instructions and kicks off the process to push (shown above) or pull funds between your commercial bank account and an external party’s bank account.
 3. According to its process, the financial institution debits (shown above) or credits your commercial account for the amount of the transaction and notifies Dwolla.
-4. Dwolla passes automated webhook notifications back to you so you stay updated on the payment’s status.
+4. Dwolla passes automated <span><ContentTooltip preset="webhook">webhook</ContentTooltip></span> notifications back to you so you stay updated on the payment’s status.
 
 <ExternalCTA
   icon={DwollaConnectIcon}

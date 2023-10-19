@@ -176,7 +176,7 @@ Withdrawals from the Dwolla Balance will be represented by a new transfer where 
 }
 ```
 
-Each new transfer will trigger a `bank_transfer_created` or `customer_bank_transfer_created` webhook. The creation webhooks will be triggered approximately 30 minutes prior to any completed webhook event of `bank_transfer_completed` or `customer_bank_transfer_completed`.
+Each new transfer will trigger a `bank_transfer_created` or `customer_bank_transfer_created` <span><ContentTooltip preset="webhook" >webhook</ContentTooltip></span>. The creation webhooks will be triggered approximately 30 minutes prior to any completed webhook event of `bank_transfer_completed` or `customer_bank_transfer_completed`.
 
 Transfers will be created in a `pending` or `failed` status depending on whether the customer record or VAN has been deactivated, suspended, or removed. Pending transfers will be processed automatically during the following times (subject to change).
 

@@ -49,8 +49,13 @@ export default {
     },
     "treasury-account": {
       content:
-        " An identifiable “connection” between Dwolla and a supported Treasury Partner, identified by your ACH Company ID or Gateway Company ID, depending on the banking institution.",
+        "An identifiable “connection” between Dwolla and a supported Treasury Partner, identified by your ACH Company ID or Gateway Company ID, depending on the banking institution.",
       title: "Treasury Account",
+    },
+    webhook: {
+      content:
+        "An HTTP request sent to a specified URL for real-time updates and notifications when specific events or data changes occur in your platform.",
+      title: "Webhook",
     },
   },
 } as const;

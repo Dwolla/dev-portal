@@ -163,7 +163,7 @@ dwolla.post("transfers", transferRequest).then(function (res) {
 });
 ```
 
-When the transfer is created, you will receive a `201` HTTP response with an empty response body. You can refer to the Location header to retrieve a link to the created Transfer resource. All bank transactions that are sourced from a bank or that are going to a bank will have an initial status of `pending`. We recommend storing the full Transfer URL for future use, as it will be needed for correlating transfer update webhooks that are triggered for the user in the Dwolla system.
+When the transfer is created, you will receive a `201` HTTP response with an empty response body. You can refer to the Location header to retrieve a link to the created Transfer resource. All bank transactions that are sourced from a bank or that are going to a bank will have an initial status of `pending`. We recommend storing the full Transfer URL for future use, as it will be needed for correlating transfer update <span><ContentTooltip preset="webhook">webhooks</ContentTooltip></span> that are triggered for the user in the Dwolla system.
 
 ## Step 4B: Handle Webhooks
 
