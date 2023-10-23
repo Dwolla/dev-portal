@@ -18,12 +18,12 @@ export default {
     },
     "external-party": {
       content:
-        "A type of Dwolla account, either business or personal, that identifies your end-users. An External Party is required in order to initiate a transfer to a customer’s bank account.",
+        "A type of end-user, either business or personal, that identifies the owner of the underlying bank account used in an account-to-account payment. An External Party is required in order to initiate a transfer to or from a user's bank account.",
       title: "External Party",
     },
     "funding-source": {
       content:
-        "A linked bank account that can be used to route funds to a Dwolla Account or External Party, denoted by the use of an account and routing number, most often connected to a checking or savings account.",
+        "A linked bank account that allows you to send and receive account-to-account payments with another party. It is identified by a unique account and routing number, and is typically associated with a checking or savings account.",
       title: "Funding Source",
     },
     "idempotency-key": {
@@ -38,13 +38,13 @@ export default {
     },
     sandbox: {
       content:
-        "A simulation of Dwolla's production environment, complete with all API endpoints, but without real banking or user data.",
+        "A simulated environment where you can imitate production/“live” use cases, safely test your API requests and responses in a controlled setting, and mock out low-volume and high volume data.",
       icon: SandboxIcon,
       title: "Sandbox",
     },
     "secure-exchange": {
       content:
-        "A secure data-sharing channel between your Dwolla account and Dwolla's ecosystem partners, enabling controlled access, such as connecting a verified bank account, without sensitive data storage.",
+        "A secure data exchange that connects Dwolla to trusted Open Finance ecosystem partners, enabling tokenized access to services such as bank account ownership verification.",
       title: "Secure Exchange",
     },
     "treasury-account": {
@@ -54,7 +54,7 @@ export default {
     },
     webhook: {
       content:
-        "An HTTP request sent to a specified URL for real-time updates and notifications when specific events or data changes occur in your platform.",
+        "An HTTP request sent to a specified URL for near real-time updates and notifications when specific events or data changes occur in the Dwolla platform.",
       title: "Webhook",
     },
   },
