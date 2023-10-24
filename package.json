@@ -30,7 +30,7 @@
     "@emotion/server": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@mdx-js/loader": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
+    "@mdx-js/react": "^3.0.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.3",
     "@next/env": "^12.3.4",
