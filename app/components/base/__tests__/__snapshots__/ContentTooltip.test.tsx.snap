@@ -21,7 +21,7 @@ exports[`ContentTooltip with \`dwolla-balance\` preset 1`] = `
   className="css-14hvf8r-TooltipWrapper-root"
 >
   <div
-    className="css-1isforb-IconWrapper-root"
+    className="css-1cmw82f-IconWrapper-root"
   >
     <svg
       aria-hidden={true}
@@ -72,7 +72,7 @@ exports[`ContentTooltip with icon, with title 1`] = `
   className="css-14hvf8r-TooltipWrapper-root"
 >
   <div
-    className="css-1isforb-IconWrapper-root"
+    className="css-1cmw82f-IconWrapper-root"
   >
     <svg
       aria-hidden={true}
@@ -129,7 +129,7 @@ exports[`ContentTooltip with icon, without title 1`] = `
   className="css-14hvf8r-TooltipWrapper-root"
 >
   <div
-    className="css-1isforb-IconWrapper-root"
+    className="css-1cmw82f-IconWrapper-root"
   >
     <svg
       aria-hidden={true}

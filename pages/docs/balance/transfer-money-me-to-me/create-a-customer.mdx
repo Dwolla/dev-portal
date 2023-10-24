@@ -173,7 +173,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F'
 ```
 
-When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating webhooks that are triggered for the user in the Dwolla system.
+When the Customer is successfully created on your application, you will receive a `201` HTTP response with an empty response body. You can reference the Location header to retrieve a link that represents the created Customer resource. We recommend storing the full URL for future use, as it will be needed for actions such as attaching a bank or correlating <span><ContentTooltip preset="webhook">webhooks</ContentTooltip></span> that are triggered for the user in the Dwolla system.
 
 <AlertBar variation="info">
   Providing the IP address of the end user accessing your application as the

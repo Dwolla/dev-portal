@@ -18,7 +18,7 @@ Dwolla requires a valid U.S. routing number and a random account number between 
 
 ### Test micro-deposit verification
 
-If your application leverages the micro-deposit method of bank verification, Dwolla will transfer two deposits of less than `$0.10` to your customer's linked bank or credit union account after calling the API to initiate micro-deposits. Since the Sandbox environment doesn't replicate any bank transfer processes, any two amounts **below** `$0.10` will allow you to verify the funding source immediately. In Production, when the micro-deposits have finished processing, you will receive a `customer_microdeposits_completed` event. To trigger this event in Sandbox, you need to simulate bank transfer processing. Check out the [testing transfers](#testing-transfers) section for more information on how to simulate bank transfer processing in Sandbox.
+If your application leverages the micro-deposit method of bank verification, Dwolla will transfer two deposits of less than `$0.10` to your customer's linked bank or credit union account after calling the API to initiate micro-deposits. Since the <span><ContentTooltip preset="sandbox">Sandbox</ContentTooltip></span> environment doesn't replicate any bank transfer processes, any two amounts **below** `$0.10` will allow you to verify the funding source immediately. In Production, when the micro-deposits have finished processing, you will receive a `customer_microdeposits_completed` event. To trigger this event in Sandbox, you need to simulate bank transfer processing. Check out the [testing transfers](#testing-transfers) section for more information on how to simulate bank transfer processing in Sandbox.
 
 <InlineCTA
   icon={guideIcon}

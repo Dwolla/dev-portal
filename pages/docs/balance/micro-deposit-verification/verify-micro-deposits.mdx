@@ -13,8 +13,12 @@ meta:
 In the Dwolla production environment, you must wait until the micro-deposits actually post to the customer’s bank account before the account can be verified, which can take 1-2 business days. A `microdeposits_completed` event will be triggered once micro-deposits have successfully posted to the bank. Once micro-deposits have completed, a `verify-micro-deposits` link relation will return on the funding source letting your application know the funding source can be verified. When the amounts are entered for verification, the order in which they are entered doesn't matter.
 
 <AlertBar variation="info">
-  In the Sandbox environment, any amount below $0.10 will allow you to verify
-  the account immediately.
+  In the{" "}
+  <span>
+    <ContentTooltip preset="sandbox">Sandbox</ContentTooltip>
+  </span>{" "}
+  environment, any amount below $0.10 will allow you to verify the account
+  immediately.
 </AlertBar>
 
 ```bash
