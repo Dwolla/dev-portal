@@ -5,9 +5,11 @@ title: "Create an exchange for an account"
 guide:
   step: 3
 meta:
-  title: "Create an exchange for an account | Dwolla API Documentation"
-  description: Create an exchange for a reseller partner or client account.
+  title: "Dwolla API Reference | Exchanges: Create Account Exchange"
+  description: "Learn how to create an exchange for a Dwolla reseller partner or client account and streamline your payment processing."
 ---
+
+import CreateExchange from "../../../../assets/api-resource-tables/exchanges/CreateExchange";
 
 # Create an exchange for an account
 
@@ -19,39 +21,7 @@ This section contains information on how to create an exchange for a reseller pa
 
 ### Request parameters
 
-| Parameter | Required    | Type   | Description                                                                                                                                                                                                   |
-| --------- | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                        |
-| token     | conditional | string | A third party provider processor token. **Required** for MX and Flinks integrations.                                                                                                                          |
-| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Finicity integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects). |
-
-#### Finicity JSON Object
-
-| Parameter      | Type    | Description                                                                                                                                                             |
-| -------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| profile        | integer | Int value obtained by the party integrating with Finicity.                                                                                                              |
-| version        | string  | String value obtained by the party integrating with Finicity.                                                                                                           |
-| receiptId      | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
-| receiptVersion | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
-| customerId     | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                      |
-| partnerId      | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response.                         |
-| products       | object  | Array of Finicity Product objects obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response. |
-
-##### Finicity product JSON Object
-
-| Parameter    | Type   | Description                                                                                                                                                         |
-| ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| product      | string | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response                   |
-| accountId    | string | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response                   |
-| accessPeriod | object | Finicity Access Period objects obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response |
-
-##### Finicity accessPeriod JSON object
-
-| Parameter | Type    | Description                                                                                                                                       |
-| --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type      | string  | String value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response |
-| startTime | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response    |
-| endTime   | integer | Int value obtained by the party integrating with Finicity. From Finicity `https://api.finicity.com/aggregation/v1/partners/accessKey` response    |
+<Table table={CreateExchange} />
 
 ### HTTP status and error codes
 

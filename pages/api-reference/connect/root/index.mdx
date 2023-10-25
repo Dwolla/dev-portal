@@ -8,13 +8,13 @@ group:
 guide:
   step: 0
 meta:
-  title: API Reference | Root
-  description: "Provide your application with the ability to fetch and discover resources available based on the OAuth `access_token` provided in the request"
+  title: "Dwolla API Reference | Root: Overview"
+  description: "Provide your application with the ability to fetch and discover resources available based on the OAuth `access_token` provided in the request."
 ---
 
 # Root
 
-The "root" serves as an entry point to the API, providing your application with the ability to fetch and discover resources available based on the OAuth `access_token` provided in the request. If an application access token is provided in the request, the API will return links to resources that belong to the Dwolla application.
+The "root" serves as an entry point to the API, providing your application with the ability to fetch and discover resources available based on the OAuth `access_token` provided in the request.
 
 ### HTTP request
 
@@ -23,7 +23,7 @@ The "root" serves as an entry point to the API, providing your application with 
 ### Request and response
 
 ```bash
-GET https://api-sandbox.dwolla.com/
+GET https://api.dwolla.com/
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -32,7 +32,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
     "_links": {
         "account": {
-            "href": "https://api-sandbox.dwolla.com/accounts/d4a0876f-642e-478b-b684-bfb8632c5937",
+            "href": "https://api.dwolla.com/accounts/d4a0876f-642e-478b-b684-bfb8632c5937",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "account"
         }
@@ -43,7 +43,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
 root = app_token.get "/"
-root._links.account.href # => "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254"
+root._links.account.href # => "https://api.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254"
 ```
 
 ```php
@@ -52,17 +52,17 @@ root._links.account.href # => "https://api-sandbox.dwolla.com/accounts/ad5f2162-
 $rootApi = new DwollaSwagger\RootApi($apiClient);
 
 $root = $rootApi->root();
-$accountUrl = $root->_links["account"]->href; # => "https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254"
+$accountUrl = $root->_links["account"]->href; # => "https://api.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254"
 ?>
 ```
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
 root = app_token.get('/')
-root.body['_links']['account']['href'] # => 'https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254'
+root.body['_links']['account']['href'] # => 'https://api.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254'
 ```
 
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-dwolla.get("/").then((res) => res.body._links.account.href); // => 'https://api-sandbox.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254'
+dwolla.get("/").then((res) => res.body._links.account.href); // => 'https://api.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254'
 ```

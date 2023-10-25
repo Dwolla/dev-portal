@@ -5,17 +5,19 @@ title: Create a funding source for an account
 guide:
   step: 1
 meta:
-  title: Create Funding Source for Account | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for creating a funding source for an Account.
+  title: "Dwolla API Reference | External Parties: Create Funding Source for Account"
+  description: "Endpoint for creating a funding source for an Account."
 ---
 
 import CreateFundingSource from "../../../../assets/api-resource-tables/accounts/CreateFundingSource";
 
 # Create a funding source for an account
 
-This section details how to add a bank account to the main Dwolla Account.
+This section details how to add a bank account to your main Dwolla Account. To add a bank account as a Funding Source, you provide the account number and a routing number along with the Treasury Account in relation to which you want to attach the bank account. Funding Sources are relational to a main Dwolla Account and have the ability to send and receive funds.
 
-To add a bank account as a Funding Source, you provide the account number and a routing number along with the Treasury Account in relation to which you want to attach the bank. Typically, a bank account that you add to the main Dwolla Account will have a status of “unverified”. In order to transfer money from your bank, you will need to [verify ownership of the account](/docs/balance/micro-deposit-verification).
+### Treasury Accounts
+
+A treasury account is a prerequisite to sending and receiving ACH transfers. It also identifies your business so Dwolla can connect with your banking partner. To learn how to create a treasury acccount, [contact us](https://www.dwolla.com/dwolla-connect/#cta-form-1).
 
 ## HTTP request
 
@@ -35,14 +37,14 @@ To add a bank account as a Funding Source, you provide the account number and a 
 ## Request and response
 
 ```bash
-POST https://api-sandbox.dwolla.com/funding-sources
+POST https://api.dwolla.com/funding-sources
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
 {
   "_links": {
     "treasury-account": {
-      "href": "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
+      "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
     }
   },
   "name": "My Savings Bank",
@@ -54,7 +56,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 ...
 
 HTTP/1.1 201 Created
-Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3
+Location: https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3
 ```
 
 ```php
@@ -68,7 +70,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167
 request_body = {
   _links: {
     "treasury-account" => {
-      href: "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
+      href: "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
     }
   },
   name: "My Checking Bank",
@@ -78,7 +80,7 @@ request_body = {
 }
 
 funding_source = app_token.post "funding-sources", request_body
-funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+funding_source.response_headers[:location] # => "https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
 ```
 
 ```python
@@ -86,7 +88,7 @@ funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/
 request_body = {
   '_links': {
     'treasury-account': {
-      'href': 'https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98'
+      'href': 'https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98'
     }
   },
   'name': 'My Checking Bank',
@@ -96,7 +98,7 @@ request_body = {
 }
 
 funding_source = app_token.post('funding-sources', request_body)
-funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+funding_source.headers['location'] # => 'https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```
 
 ```javascript
@@ -104,7 +106,7 @@ funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-
 var requestBody = {
   _links: {
     "treasury-account": {
-      href: "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+      href: "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
     },
   },
   name: "My Savings Bank",
@@ -115,5 +117,5 @@ var requestBody = {
 
 dwolla
   .post("funding-sources", requestBody)
-  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
 ```

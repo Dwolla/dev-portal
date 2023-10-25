@@ -22,33 +22,20 @@ export default {
         rows: [
           [
             [
-              "treasury-account",
+              "exchange",
               <span>
-                References the Treasury Account resource in relation to which
-                the funding source is created.
+                References the Exchange resource in relation to which the
+                funding source is created. Learn
                 <Link
-                  href="https://www.dwolla.com/dwolla-connect/#cta-form-1"
-                  text=" Contact us "
+                  href="/api-reference/connect/exchanges"
+                  text=" how to create an exchange. "
                 />
-                to learn how to create a Treasury Account.
               </span>,
             ],
-            HalLink("treasury-account"),
+            HalLink("exchange"),
           ],
         ],
       },
-    ],
-    [
-      "accountNumber",
-      "yes",
-      "string",
-      "The bank account number. The account number is validated to check if it is a numeric string of 4-17 digits.",
-    ],
-    [
-      "routingNumber",
-      "yes",
-      "string",
-      'A bank routing number that identifies a bank in the U.S. Validation of the routing number includes: a checksum, the first two digits of the routing number must fall within the range "01" through "12", or "21" through "32", and the string value must consist of nine digits.',
     ],
     [
       "name",

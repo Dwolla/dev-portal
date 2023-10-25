@@ -5,8 +5,8 @@ title: Retrieve a transfer
 guide:
   step: 2
 meta:
-  title: Retrieve a Transfer | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for retrieving a transfer.
+  title: "Dwolla API Reference | Transfers: Retrieve a Transfer"
+  description: "Endpoint for retrieving a transfer."
 ---
 
 # Retrieve a transfer
@@ -32,7 +32,7 @@ This section covers how to retrieve a transfer by id.
 ## Request and response
 
 ```bash
-GET https://api-sandbox.dwolla.com/transfers/49dbaa24-1580-4b1c-8b58-24e26656fa31
+GET https://api.dwolla.com/transfers/49dbaa24-1580-4b1c-8b58-24e26656fa31
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
 
@@ -41,17 +41,17 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/transfers/e33e8078-94cf-4bcc-b648-b6f416bbcee5",
+            "href": "https://api.dwolla.com/transfers/e33e8078-94cf-4bcc-b648-b6f416bbcee5",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "transfer"
         },
         "source-funding-source": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         },
         "destination-funding-source": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
+            "href": "https://api.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         }
@@ -79,7 +79,7 @@ transfer.status # => "pending"
 ```php
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
-$transferUrl = 'https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8';
+$transferUrl = 'https://api.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8';
 
 $transfersApi = new DwollaSwagger\TransfersApi($apiClient);
 
@@ -90,7 +90,7 @@ $transfer->status; # => "pending"
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-transfer_url = 'https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8'
+transfer_url = 'https://api.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8'
 
 transfer = account_token.get(transfer_url)
 transfer.body['status'] # => 'pending'
@@ -99,7 +99,7 @@ transfer.body['status'] # => 'pending'
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var transferUrl =
-  "https://api-sandbox.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8";
+  "https://api.dwolla.com/transfers/15c6bcce-46f7-e811-8112-e8dd3bececa8";
 
 dwolla.get(transferUrl).then((res) => res.body.status); // => 'pending'
 ```

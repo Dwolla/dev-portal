@@ -5,8 +5,8 @@ title: Create an external party
 guide:
   step: 1
 meta:
-  title: Create External Party | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for creating an external party.
+  title: "Dwolla API Reference | External Parties: Create External Party"
+  description: "Endpoint for creating an external party."
 ---
 
 # Create an External Party
@@ -28,7 +28,7 @@ External Parties are Dwolla resources that exist underneath a Connect account. T
 ### Request and response - Personal External Party
 
 ```bash
-POST https://api-sandbox.dwolla.com/external-parties
+POST https://api.dwolla.com/external-parties
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
@@ -41,7 +41,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 ...
 
 HTTP/1.1 201 Created
-Location: https://api-sandbox.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b
+Location: https://api.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b
 ```
 
 ```ruby
@@ -53,7 +53,7 @@ request_body = {
 }
 
 external_party = app_token.post "external-parties", request_body
-external_party.response_headers[:location] # => "https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+external_party.response_headers[:location] # => "https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f"
 ```
 
 ```php
@@ -71,7 +71,7 @@ request_body = {
 }
 
 external_party = app_token.post('external-parties', request_body)
-external_party.headers['location'] # => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+external_party.headers['location'] # => 'https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
 ```javascript
@@ -84,7 +84,7 @@ var requestBody = {
 
 dwolla
   .post("external-parties", requestBody)
-  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
 ## Request parameters - Business External Party
@@ -97,7 +97,7 @@ dwolla
 ### Request and response - Business External Party
 
 ```bash
-POST https://api-sandbox.dwolla.com/external-parties
+POST https://api.dwolla.com/external-parties
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
@@ -109,7 +109,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 ...
 
 HTTP/1.1 201 Created
-Location: https://api-sandbox.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b
+Location: https://api.dwolla.com/external-parties/b8edab05-105c-4600-84b9-9c6f2965ce1b
 ```
 
 ```ruby
@@ -120,7 +120,7 @@ request_body = {
 }
 
 external_party = app_token.post "external-parties", request_body
-external_party.response_headers[:location] # => "https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f"
+external_party.response_headers[:location] # => "https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f"
 ```
 
 ```php
@@ -135,7 +135,7 @@ request_body = {
 }
 
 external_party = app_token.post('external-parties', request_body)
-external_party.headers['location'] # => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+external_party.headers['location'] # => 'https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
 ```javascript
@@ -147,7 +147,7 @@ var requestBody = {
 
 dwolla
   .post("external-parties", requestBody)
-  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/external-parties/fc451a7a-ae30-4404-aB95-e3553fcd733f'
 ```
 
 ## HTTP status and error codes
