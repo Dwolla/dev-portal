@@ -1,6 +1,7 @@
 import { type TableContents } from "../../../app/components/base/material-ui/Table";
 import HalLink from "../HalLink";
 import { Link } from "../../../app/components/base/Typography";
+import ContentTooltip from "../../../app/components/base/ContentTooltip";
 
 export default {
   headers: ["Property", "Required", "Type", "Description"],
@@ -22,7 +23,11 @@ export default {
         rows: [
           [
             [
-              "treasury-account",
+              <span>
+                <ContentTooltip preset="treasury-account">
+                  treasury-account
+                </ContentTooltip>
+              </span>,
               <span>
                 References the Treasury Account resource in relation to which
                 the funding source is created.

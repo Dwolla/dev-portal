@@ -163,7 +163,7 @@ dwolla.post("transfers", transferRequest).then(function (res) {
 });
 ```
 
-When the transfer is created, you will receive a `201` HTTP response with an empty response body. You can refer to the Location header to retrieve a link to the created Transfer resource. All bank transactions that are sourced from a bank or that are going to a bank will have an initial status of `pending`. We recommend storing the full Transfer URL for future use, as it will be needed for correlating transfer update webhooks that are triggered for the user in the Dwolla system.
+When the transfer is created, you will receive a `201` HTTP response with an empty response body. You can refer to the Location header to retrieve a link to the created Transfer resource. All bank transactions that are sourced from a bank or that are going to a bank will have an initial status of `pending`. We recommend storing the full Transfer URL for future use, as it will be needed for correlating transfer update <span><ContentTooltip preset="webhook">webhooks</ContentTooltip></span> that are triggered for the user in the Dwolla system.
 
 ## Step 4B: Handle Webhooks
 
@@ -172,7 +172,7 @@ For more information on which webhooks will be fired for a given section of a tr
 
 ## Step 4C: Simulate Payment Processing
 
-To simulate paymentACH processing in the Dwolla Sandbox environment, navigate to the Sandbox Dashboard. From here, you will want to click the “Process Bank Transfers” button on the top of the screen. Your Sandbox transfer will be moved out of a `pending` status and moved to a `processed` status.
+To simulate payment ACH processing in the Dwolla <span><ContentTooltip preset="sandbox">Sandbox</ContentTooltip></span> environment, navigate to the Sandbox Dashboard. From here, you will want to click the “Process Bank Transfers” button on the top of the screen. Your Sandbox transfer will be moved out of a `pending` status and moved to a `processed` status.
 
 <Image src={processBankTransfers} alt="process bank transfers" />
 

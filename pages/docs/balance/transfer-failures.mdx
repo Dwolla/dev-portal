@@ -36,7 +36,7 @@ You can check the status of a transfer at any time by [retrieving the transfer v
 
 ### Retrieving the reason for a failed bank transfer
 
-If your application is subscribed to webhooks, you’ll receive either the `transfer_failed` event if the transfer belongs to a Dwolla account or the `customer_transfer_failed`/`customer_bank_transfer_failed`(_Verified Customer only_) event if the transfer belongs to an API Customer. The event contains a links to the associated account as well as the transfer resource. When retrieving the failed bank transfer reason, the response will contain information on the ACH return code and description, as well as `_links` to the Funding Source and Customer that triggered the bank transfer failure.
+If your application is subscribed to <span><ContentTooltip preset="webhook" >webhooks</ContentTooltip></span>, you’ll receive either the `transfer_failed` event if the transfer belongs to a Dwolla account or the `customer_transfer_failed`/`customer_bank_transfer_failed`(_Verified Customer only_) event if the transfer belongs to an API Customer. The event contains a links to the associated account as well as the transfer resource. When retrieving the failed bank transfer reason, the response will contain information on the ACH return code and description, as well as `_links` to the Funding Source and Customer that triggered the bank transfer failure.
 
 ##### Request and response (view schema in 'raw')
 

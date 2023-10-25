@@ -15,6 +15,7 @@ import CodeExamples, {
   CodeExample,
 } from "../app/components/partial/code/CodeExamples";
 import Collapsible from "../app/components/base/Collapsible";
+import ContentTooltip from "../app/components/base/ContentTooltip";
 import ExternalCTA from "../app/components/base/ExternalCTA";
 import FooterCTA from "../app/components/base/FooterCTA";
 import Image from "../app/components/base/Image";
@@ -56,6 +57,7 @@ const MDX_COMPONENTS = {
   CodeExample,
   CodeExamples,
   Collapsible,
+  ContentTooltip,
   ExternalCTA,
   FooterCTA,
   Image,
