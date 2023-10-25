@@ -5,13 +5,20 @@ title: Create a funding source for an external party
 guide:
   step: 2
 meta:
-  title: Create funding source for External Party | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for creating funding sources for external parties.
+  title: "Dwolla API Reference | External Parties: Create funding source for External Party"
+  description: "Endpoint for creating funding sources for external parties."
 ---
+
+import CreateExchangeFundingSource from "../../../../assets/api-resource-tables/funding-sources/CreateExchangeFundingSource";
 
 # Create a Funding Source for an External Party
 
-This section outlines how to create a funding source an <span><ContentTooltip preset="external-party">External Party</ContentTooltip></span> via the API.
+This section details how to add a bank account to external parties. To add a bank account to an external party, you can use one of two methods:
+
+- Option 1: Provide the account number, routing number, type, and a nickname.
+- Option 2: Create an exchange for the external party, which will create a secure connection between Dwolla and a third-party provider for account creation and verification.
+
+Funding Sources are relational to an External Party and have the ability to send and receive funds.
 
 ## HTTP request
 
@@ -26,6 +33,10 @@ This section outlines how to create a funding source an <span><ContentTooltip pr
 | bankAccountType | yes      | string | Type of bank account: `checking`, `savings`.                                                                                                                                                                                                                                                           |
 | name            | yes      | string | Arbitrary nickname for the funding source. Must be 50 characters or less.                                                                                                                                                                                                                              |
 
+## Request parameters - using an exchange
+
+<Table table={CreateExchangeFundingSource} />
+
 ## HTTP status and error codes
 
 | HTTP Status | Code       | Message                                                                 | Description                                                                                                                                                                                                                       |
@@ -37,7 +48,7 @@ This section outlines how to create a funding source an <span><ContentTooltip pr
 ## Request and response
 
 ```bash
-POST https://api-sandbox.dwolla.com/external-parties/{id}/funding-sources
+POST https://api.dwolla.com/external-parties/{id}/funding-sources
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTQ4MDQ5NjAsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NDgwODU2MCwiaWF0IjoxNjk0ODA0OTYwLCJ2ZXJzaW9uIjoyLCJqdGkiOiIzOGU0MWYwMS04YjM1LTRmOTAtODcxYy0wMTU3YzkyNzdhMjAiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.tUcSnucNWvRK8g609EkO9OyD2VFqvYtJHNVz9-jeYfNf2uN_GFdogaf8HtDWXdX8QshDMZ46w3f4AQLuRdZ3a53b5JX3v9FKnDst-PtLZFV5tfIQlhY6gZyXJO_hLpgJJQ6a0m7ZBNJLS5toUp7qTdcgz_5wufB3pNz25jdV6667W1ZGVt5j6P_vMY1DYnTTZZ6KI3pAT9Mvbqp892pdcNbzZhfIvyl5gheiKnpxUdGK-mwBPpKolDWnFw4G7_gyJB4lVqPg9bXdDGwyFuvgZj2K1xQyEWHfXymveaQ6j1SPy7hLcpHwnyGzp5DXFtp7j8iOkFoqZVp9HzeDqGje2g
 
 {
@@ -48,7 +59,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 }
 
 HTTP/1.1 201 Created
-Location: https://api-sandbox.dwolla.com/funding-sources/fc451a7a-ae30-4404-aB95-e3553fcd7
+Location: https://api.dwolla.com/funding-sources/fc451a7a-ae30-4404-aB95-e3553fcd7
 ```
 
 ```php
@@ -59,7 +70,7 @@ Location: https://api-sandbox.dwolla.com/funding-sources/fc451a7a-ae30-4404-aB95
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-external_party_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+external_party_url = 'https://api.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   routingNumber: '222222226',
   accountNumber: '123456789',
@@ -68,12 +79,12 @@ request_body = {
 }
 
 funding_source = app_token.post "#{external_party_url}/funding-sources", request_body
-funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+funding_source.response_headers[:location] # => "https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
 ```
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-external_party_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+external_party_url = 'https://api.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   'routingNumber': '222222226',
   'accountNumber': '123456789',
@@ -82,13 +93,13 @@ request_body = {
 }
 
 fundingSource = app_token.post('%s/funding-sources' % external_party_url, request_body)
-fundingSource.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+fundingSource.headers['location'] # => 'https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
 
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var externalPartyUrl =
-  "https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C";
+  "https://api.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C";
 
 var requestBody = {
   routingNumber: "222222226",
@@ -99,20 +110,20 @@ var requestBody = {
 
 dwolla
   .post(`${externalPartyUrl}/funding-sources`, requestBody)
-  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
 
 ### Request and response - using an exchange resource
 
 ```bash
-POST https://api-sandbox.dwolla.com/external-parties/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
+POST https://api.dwolla.com/external-parties/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
   "_links": {
     "exchange": {
-      "href": "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+      "href": "https://api.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
     }
   },
   "bankAccountType": "checking",
@@ -120,7 +131,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 }
 
 HTTP/1.1 201 Created
-Location: https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
+Location: https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31
 ```
 
 ```php
@@ -131,11 +142,11 @@ Location: https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-external_parties_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+external_parties_url = 'https://api.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   _links: {
     'exchange': {
-      href: "https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+      href: "https://api.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
     }
   },
   bankAccountType: 'checking',
@@ -143,16 +154,16 @@ request_body = {
 }
 
 funding_source = app_token.post "#{external_parties_url}/funding-sources", request_body
-funding_source.response_headers[:location] # => "https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
+funding_source.response_headers[:location] # => "https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31"
 ```
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-external_party_url = 'https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
+external_party_url = 'https://api.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C'
 request_body = {
   '_links': {
     'exchange': {
-      'href': 'https://api-sandbox.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65'
+      'href': 'https://api.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65'
     }
   },
   'bankAccountType': 'checking',
@@ -160,17 +171,17 @@ request_body = {
 }
 
 funding_source = app_token.post('%s/funding-sources' % external_party_url, request_body)
-funding_source.headers['location'] # => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+funding_source.headers['location'] # => 'https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```
 
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var exernalPartyUrl =
-  "https://api-sandbox.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C";
+  "https://api.dwolla.com/external-parties/AB443D36-3757-44C1-A1B4-29727FB3111C";
 var requestBody = {
   _links: {
     exchange: {
-      href: "https://api-sandbox.dwolla.com/exchanges/30e7c028-0bdf-e511-80de-0aa34a9b2388",
+      href: "https://api.dwolla.com/exchanges/30e7c028-0bdf-e511-80de-0aa34a9b2388",
     },
   },
   bankAccountType: "checking",
@@ -179,5 +190,5 @@ var requestBody = {
 
 dwolla
   .post(`${externalPartyUrl}/funding-sources`, requestBody)
-  .then((res) => res.headers.get("location")); // => 'https://api-sandbox.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/funding-sources/375c6781-2a17-476c-84f7-db7d2f6ffb31'
 ```

@@ -8,8 +8,8 @@ group:
 guide:
   step: 0
 meta:
-  title: Funding Sources | Dwolla Connect | Dwolla API Reference
-  description: Create, remove or retrieve a funding source for an Account.
+  title: "Dwolla API Reference | Funding Sources: Overview"
+  description: "Create, remove or retrieve a funding source for an Account."
 ---
 
 import AccountFundingSource from "../../../../assets/api-resource-tables/accounts/FundingSource";
@@ -32,17 +32,17 @@ Funding sources include an attribute, `bankAccountType`, which denotes the type 
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         },
         "treasury-account": {
-            "href": "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+            "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "treasury-account"
         },
         "remove": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         }
@@ -50,6 +50,7 @@ Funding sources include an attribute, `bankAccountType`, which denotes the type 
     "id": "9062c625-2094-47ed-9d1f-f40315e4bea7",
     "bankAccountType": "checking",
     "name": "Your Account #1 - CHECKING",
-    "created": "2023-09-15T18:50:34.866Z"
+    "created": "2023-09-15T18:50:34.866Z",
+    "removed": false
 }
 ```

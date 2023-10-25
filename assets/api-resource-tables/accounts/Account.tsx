@@ -22,6 +22,20 @@ export default {
             ["self", "References the current Account resource."],
             HalLink("account"),
           ],
+          [
+            [
+              "transfers",
+              "The URL that can be used to retrieve the Dwolla account's list of transfers.",
+            ],
+            HalLink("transfers"),
+          ],
+          [
+            [
+              "funding-sources",
+              "The URL that can be used to retrieve the Dwolla account's list of funding sources.",
+            ],
+            HalLink("funding-sources"),
+          ],
         ],
       },
     ],

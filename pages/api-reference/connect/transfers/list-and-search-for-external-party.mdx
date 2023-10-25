@@ -5,8 +5,8 @@ title: List and search transfers for an external party
 guide:
   step: 4
 meta:
-  title: List and Search Transfers for an External Party | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for retrieving the list of transfers for an external party.
+  title: "Dwolla API Reference | Transfers: List and Search Transfers for an External Party"
+  description: "Endpoint for retrieving the list of transfers for an external party."
 ---
 
 # List and search transfers for an external party
@@ -57,7 +57,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc/transfers",
+            "href": "https://api.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc/transfers",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "transfer"
         }
@@ -67,17 +67,17 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
             {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/transfers/5602f014-a23e-4215-89fc-41151ce5bfcb",
+                        "href": "https://api.dwolla.com/transfers/5602f014-a23e-4215-89fc-41151ce5bfcb",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "transfer"
                     },
                     "source-funding-source": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                        "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
                     "destination-funding-source": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
+                        "href": "https://api.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     }
@@ -88,24 +88,23 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
                     "value": "13.00",
                     "currency": "USD"
                 },
-                "transferType": "credit",
-                "transferStatus": "created",
+                "status": "processed",
                 "processingChannel": "ach"
             },
 {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/transfers/5602f014-a23e-4215-89fc-41151ce5bfcb",
+                        "href": "https://api.dwolla.com/transfers/5602f014-a23e-4215-89fc-41151ce5bfcb",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "transfer"
                     },
                     "source-funding-source": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
+                        "href": "https://api.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
                     "destination-funding-source": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+                        "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     }
@@ -116,8 +115,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
                     "value": "33.00",
                     "currency": "USD"
                 },
-                "transferType": "debit",
-                "transferStatus": "processed",
+                "status": "processed",
                 "processingChannel": "ach"
             }
         ]
@@ -127,7 +125,7 @@ Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVj
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-external_party_url = 'https://api-sandbox.dwolla.com/external-parties/62e88a41-f5d0-4a79-90b3-188cf11a3966'
+external_party_url = 'https://api.dwolla.com/external-parties/62e88a41-f5d0-4a79-90b3-188cf11a3966'
 
 transfers = app_token.get "#{external_party_url}/transfers"
 transfers._embedded['transfers'][0].status # => "processed"
@@ -141,7 +139,7 @@ transfers._embedded['transfers'][0].status # => "processed"
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-account_url = 'https://api-sandbox.dwolla.com/external-parties/62e88a41-f5d0-4a79-90b3-188cf11a3966'
+account_url = 'https://api.dwolla.com/external-parties/62e88a41-f5d0-4a79-90b3-188cf11a3966'
 
 transfers = app_token.get('%s/transfers' % account_url)
 transfers.body['_embedded']['transfers'][0]['status'] # => "processed"
@@ -150,7 +148,7 @@ transfers.body['_embedded']['transfers'][0]['status'] # => "processed"
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var accountUrl =
-  "https://api-sandbox.dwolla.com/external-parties/62e88a41-f5d0-4a79-90b3-188cf11a3966";
+  "https://api.dwolla.com/external-parties/62e88a41-f5d0-4a79-90b3-188cf11a3966";
 
 dwolla
   .get(`${accountUrl}/transfers`)

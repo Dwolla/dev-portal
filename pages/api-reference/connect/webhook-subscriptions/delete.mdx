@@ -5,8 +5,8 @@ title: Delete a webhook subscription
 guide:
   step: 4
 meta:
-  title: Delete a Webhook Subscription | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for deleting a webhook subscription.
+  title: "Dwolla API Reference | Webhook Subscriptions: Delete a Webhook Subscription"
+  description: "Endpoint for deleting a webhook subscription."
 ---
 
 # Delete a webhook subscription
@@ -40,14 +40,14 @@ Delete a Webhook Subscription to stop receiving Webhooks at the URL specified. I
 ### Request and response
 
 ```bash
-DELETE https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216
+DELETE https://api.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 ```
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+webhook_subscription_url = 'https://api.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 
 app_token.delete webhook_subscription_url
 ```
@@ -55,14 +55,14 @@ app_token.delete webhook_subscription_url
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var webhookSubscriptionUrl =
-  "https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
+  "https://api.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216";
 
 dwolla.delete(webhookSubscriptionUrl);
 ```
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-webhook_subscription_url = 'https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
+webhook_subscription_url = 'https://api.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216'
 
 app_token.delete(webhook_subscription_url)
 ```
@@ -71,6 +71,6 @@ app_token.delete(webhook_subscription_url)
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
 $webhookApi = new DwollaSwagger\WebhooksubscriptionsApi($apiClient);
-$webhookApi->deleteById('https://api-sandbox.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216');
+$webhookApi->deleteById('https://api.dwolla.com/webhook-subscriptions/5af4c10a-f6de-4ac8-840d-42cb65454216');
 ?>
 ```

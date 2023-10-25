@@ -5,8 +5,8 @@ title: Remove funding source
 guide:
   step: 6
 meta:
-  title: Remove Funding Source | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for removing a funding source attached to an Account.
+  title: "Dwolla API Reference | Funding Sources: Remove Funding Source"
+  description: "Endpoint for removing a funding source attached to an Account."
 ---
 
 # Remove a funding source
@@ -37,10 +37,11 @@ If a funding source has a pending transfer, removing it **will not** result in t
 ## Request and response
 
 ```bash
-POST https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c
+POST https://api.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c
 Content-Type: application/vnd.dwolla.v1.hal+json
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
+
 {
     "removed": true
 }
@@ -51,12 +52,12 @@ HTTP 200 OK
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/funding-sources/92499c53-62b2-4f8b-886a-f7090d10a833",
+            "href": "https://api.dwolla.com/funding-sources/92499c53-62b2-4f8b-886a-f7090d10a833",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         },
         "treasury-account": {
-            "href": "https://api-sandbox.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+            "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "treasury-account"
         }
@@ -71,7 +72,7 @@ HTTP 200 OK
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+funding_source_url = 'https://api.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c'
 
 request_body = {
   :removed => true
@@ -83,7 +84,7 @@ app_token.post "#{funding_source_url}", request_body
 ```php
 <?php
 // Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
-$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c';
+$fundingSourceUrl = 'https://api.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c';
 
 $fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
 
@@ -93,7 +94,7 @@ $fsApi->softDelete(['removed' => true ], $fundingSourceUrl);
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c'
+funding_source_url = 'https://api.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c'
 request_body = {
   'removed': True
 }
@@ -104,7 +105,7 @@ funding_source = app_token.post(funding_source_url, request_body)
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var fundingSourceUrl =
-  "https://api-sandbox.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c";
+  "https://api.dwolla.com/funding-sources/692486f8-29f6-4516-a6a5-c69fd2ce854c";
 var requestBody = {
   removed: true,
 };

@@ -5,8 +5,8 @@ title: "List exchanges for an external party"
 guide:
   step: 6
 meta:
-  title: "List exchanges for an external party | Dwolla API Documentation"
-  description: Retrieve a list of exchanges that belong to an external party.
+  title: "Dwolla API Reference | Exchanges: List exchanges for an external party"
+  description: "Retrieve a list of exchanges that belong to an external party."
 ---
 
 # List exchanges for an external party
@@ -42,7 +42,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/exchanges",
+            "href": "https://api.dwolla.com/exchanges",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "exchange"
         }
@@ -52,17 +52,17 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
             {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
+                        "href": "https://api.dwolla.com/exchanges/92822961-3a7f-42c0-b0cc-7ffef05717fa",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "exchange"
                     },
                     "exchange-partner": {
-                        "href": "https://api-sandbox.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+                        "href": "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "exchange-partner"
                     },
                     "funding-sources": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources",
+                        "href": "https://api.dwolla.com/funding-sources",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     }
@@ -79,7 +79,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-external_party_url = 'https://api-sandbox.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+external_party_url = 'https://api.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2'
 
 exchanges = app_token.get "#{external_party_url}/exchanges"
 exchanges._embedded['exchanges'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc"
@@ -93,7 +93,7 @@ exchanges._embedded['exchanges'][0].id # => "56502f7a-fa59-4a2f-8579-0f8bc9d7b9c
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-external_party_url = 'https://api-sandbox.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2'
+external_party_url = 'https://api.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2'
 
 exchanges = app_token.get('%s/exchanges' % external_party_url)
 exchanges.body['_embedded']['exchanges'][0]['id'] # => '56502f7a-fa59-4a2f-8579-0f8bc9d7b9cc'
@@ -103,7 +103,7 @@ exchanges.body['_embedded']['exchanges'][0]['id'] # => '56502f7a-fa59-4a2f-8579-
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var externalPartyUrl =
-  "https://api-sandbox.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2";
+  "https://api.dwolla.com/external-parties/176878b8-ecdb-469b-a82b-43ba5e8704b2";
 
 token
   .get(`${externalPartyUrl}/exchanges`)

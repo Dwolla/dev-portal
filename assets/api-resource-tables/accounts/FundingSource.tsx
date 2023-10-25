@@ -64,12 +64,12 @@ export default {
     ],
     [
       "removed",
-      "string <date-time>",
+      "boolean",
       <span>
-        ISO-8601 timestamp of when the resource was{" "}
+        Determines if the funding source has been{" "}
         <Link
           href="/api-reference/connect/funding-sources/remove"
-          text="removed"
+          text="removed."
         />
       </span>,
     ],

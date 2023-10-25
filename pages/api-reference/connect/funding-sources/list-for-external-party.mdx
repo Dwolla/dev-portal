@@ -5,13 +5,13 @@ title: List funding sources for an external party
 guide:
   step: 5
 meta:
-  title: List funding sources for an External Party | Dwolla Connect | Dwolla API Reference
-  description: Endpoint for listing funding sources for external parties.
+  title: "Dwolla API Reference | Funding Sources: List funding sources for an External Party"
+  description: "Endpoint for listing funding sources for external parties."
 ---
 
 # List funding-sources for an External Party
 
-Retrieve a list of funding sources that belong to a <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>. By default, all funding sources are returned unless the removed query string parameter is set to false in the request.
+Retrieve a list of funding sources that belong to an External Party. By default, all funding sources are returned in the list and can be identified as active or removed via the `removed` attribute.
 
 ### Pagination
 
@@ -58,7 +58,7 @@ HTTP/1.1 200 Ok
 {
     "_links": {
         "self": {
-            "href": "https://api-sandbox.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc/funding-sources",
+            "href": "https://api.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc/funding-sources",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "funding-source"
         }
@@ -68,12 +68,12 @@ HTTP/1.1 200 Ok
             {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/447640c8-c554-49d8-be6f-ced7b0c50f95",
+                        "href": "https://api.dwolla.com/funding-sources/447640c8-c554-49d8-be6f-ced7b0c50f95",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
                     "external-party": {
-                        "href": "https://api-sandbox.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
+                        "href": "https://api.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "external-party"
                     }
@@ -87,17 +87,17 @@ HTTP/1.1 200 Ok
             {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/db69159c-7c51-49d2-9476-1fa471ea92d7",
+                        "href": "https://api.dwolla.com/funding-sources/db69159c-7c51-49d2-9476-1fa471ea92d7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
                     "external-party": {
-                        "href": "https://api-sandbox.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
+                        "href": "https://api.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "external-party"
                     },
                     "remove": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/db69159c-7c51-49d2-9476-1fa471ea92d7",
+                        "href": "https://api.dwolla.com/funding-sources/db69159c-7c51-49d2-9476-1fa471ea92d7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     }
@@ -111,17 +111,17 @@ HTTP/1.1 200 Ok
             {
                 "_links": {
                     "self": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
+                        "href": "https://api.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     },
                     "external-party": {
-                        "href": "https://api-sandbox.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
+                        "href": "https://api.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "external-party"
                     },
                     "remove": {
-                        "href": "https://api-sandbox.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
+                        "href": "https://api.dwolla.com/funding-sources/2ca64cb8-9835-482c-b29b-15626654b7e7",
                         "type": "application/vnd.dwolla.v1.hal+json",
                         "resource-type": "funding-source"
                     }
@@ -162,7 +162,7 @@ funding_sources.body['_embedded']['funding-sources'][0]['name'] # => 'Jane Doeâ€
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
 var externalPartyUrl =
-  "https://api-sandbox.dwolla.com/external-parties/ca32853c-48fa-40be-ae75-77b37504581b";
+  "https://api.dwolla.com/external-parties/ca32853c-48fa-40be-ae75-77b37504581b";
 
 dwolla
   .get(`${externalPartyUrl}/funding-sources`)

@@ -8,15 +8,15 @@ group:
 guide:
   step: 0
 meta:
-  title: API Reference | Dwolla Authorization Overview
-  description: "Obtain an OAuth access token to access data in the Dwolla API on behalf of an account or application. Grant permission with the client credentials flow."
+  title: "Dwolla API Reference | Auth: Overview"
+  description: "The API authorization overview will teach you how to obtain an access token, which you need to access protected API resources. Learn about the Dwolla Connect API auth scheme and token lifetime."
 ---
 
 import guideIcon from "../../../../assets/images/content-images/content-icons/guides-icon.svg";
 
 # Authorization
 
-Dwolla utilizes the [OAuth 2 protocol](https://oauth.net/2/) to facilitate authorization. OAuth is an authorization framework that enables a third-party application to obtain access to protected resources (Transfers, Funding Sources, External Parties etc.) in the Dwolla API. Access to the Dwolla API can be granted to an application either on behalf of a user or on behalf of the application itself. This section covers application auth which is meant for server-to-server applications using the Dwolla API.
+Dwolla utilizes the [OAuth 2 protocol](https://oauth.net/2/) to facilitate authorization. OAuth is an authorization framework that enables a third-party application to obtain access to protected resources (Transfers, Funding Sources, External Parties etc.) in the Dwolla API. This section covers application authorization via server-to-server API calls which is a process by which two servers communicate with each other to authorize access to protected resources.
 
 #### Token lifetime
 

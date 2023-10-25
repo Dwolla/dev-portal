@@ -14,7 +14,7 @@ export default {
         <span>
           <Link href="/api-reference#links" text="HAL-JSON" /> links that
           represent resource relationships required for creating a funding
-          source for an Account.
+          source.
         </span>,
       ],
       {
