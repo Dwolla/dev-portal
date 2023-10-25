@@ -25,10 +25,10 @@ export default {
               "exchange",
               <span>
                 References the Exchange resource in relation to which the
-                funding source is created. Learn
+                funding source is created. Learn{" "}
                 <Link
                   href="/api-reference/connect/exchanges"
-                  text=" how to create an exchange. "
+                  text="how to create an exchange."
                 />
               </span>,
             ],

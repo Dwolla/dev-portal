@@ -36,14 +36,23 @@ export default {
       "token",
       "conditional",
       "string",
-      "A third party provider processor token. Required for MX and Flinks integrations.",
+      <span>
+        A third party provider processor token. <strong>Required</strong> for MX
+        and Flinks integrations.
+      </span>,
     ],
     [
       [
         "finicity",
         "conditional",
         "object",
-        "Finicity resource object containing access key receipt information. Required for Finicity integration. See finicity JSON object below (including nested product and accessPeriod JSON objects).",
+        <span>
+          Finicity resource object containing access key{" "}
+          <strong>receipt</strong> information. Required for Finicity
+          integration. See <code>finicity</code> JSON object below (including
+          nested <code>product</code>
+          and <code>accessPeriod</code> JSON objects).
+        </span>,
       ],
       {
         title: "Finicity Object",
@@ -62,22 +71,54 @@ export default {
           [
             "receiptId",
             "string",
-            "String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response.",
+            <span>
+              String value obtained by the party integrating with Finicity. From
+              Finicity
+              <code>
+                https://api.finicity.com/aggregation/v1/partners/accessKey
+                response
+              </code>
+              .
+            </span>,
           ],
           [
             "receiptVersion",
             "string",
-            "String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response.",
+            <span>
+              String value obtained by the party integrating with Finicity. From
+              Finicity
+              <code>
+                https://api.finicity.com/aggregation/v1/partners/accessKey
+                response
+              </code>
+              .
+            </span>,
           ],
           [
             "customerId",
             "string",
-            "String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response.",
+            <span>
+              String value obtained by the party integrating with Finicity. From
+              Finicity
+              <code>
+                https://api.finicity.com/aggregation/v1/partners/accessKey
+                response
+              </code>
+              .
+            </span>,
           ],
           [
             "partnerId",
             "integer",
-            "Int value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response.",
+            <span>
+              Int value obtained by the party integrating with Finicity. From
+              Finicity
+              <code>
+                https://api.finicity.com/aggregation/v1/partners/accessKey
+                response
+              </code>
+              .
+            </span>,
           ],
           [
             [
@@ -97,7 +138,14 @@ export default {
                 [
                   "accountId",
                   "string",
-                  "String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response",
+                  <span>
+                    String value obtained by the party integrating with
+                    Finicity. From Finicity
+                    <code>
+                      https://api.finicity.com/aggregation/v1/partners/accessKey
+                      response
+                    </code>
+                  </span>,
                 ],
                 [
                   [
@@ -117,12 +165,27 @@ export default {
                       [
                         "startTime",
                         "integer",
-                        "String value obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response",
+                        <span>
+                          String value obtained by the party integrating with
+                          Finicity. From{" "}
+                          <code>
+                            Finicity
+                            https://api.finicity.com/aggregation/v1/partners/accessKey
+                          </code>{" "}
+                          response
+                        </span>,
                       ],
                       [
                         "endTime",
                         "integer",
-                        "Finicity Access Period objects obtained by the party integrating with Finicity. From Finicity https://api.finicity.com/aggregation/v1/partners/accessKey response",
+                        <span>
+                          Finicity Access Period objects obtained by the party
+                          integrating with Finicity. From Finicity{" "}
+                          <code>
+                            https://api.finicity.com/aggregation/v1/partners/accessKey
+                          </code>{" "}
+                          response
+                        </span>,
                       ],
                     ],
                   },
