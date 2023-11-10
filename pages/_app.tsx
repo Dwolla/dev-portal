@@ -10,8 +10,13 @@ import algoliasearch from "algoliasearch/lite";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
-import { LanguageContext } from "../app/components/util/Contexts";
+import {
+  LanguageContext,
+  ProductContext,
+} from "../app/components/util/Contexts";
 import { SideNavLinkProps } from "../app/components/layout/SideNav";
+import { NavItemProps } from "../app/components/layout/SecondaryNavBar";
+import { TopBarProps } from "../app/components/layout/TopBar";
 import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
@@ -28,7 +33,6 @@ import useTrackPageViews from "../app/hooks/useTrackPageViews";
 import createEmotionCache from "../app/modules/emotion-cache";
 import theme from "../app/theme";
 import { FooterLink } from "../app/components/layout/Footer";
-import { TopBarProps } from "../app/components/layout/TopBar";
 
 function GoogleTagManager() {
   useEffect(() => {
@@ -52,87 +56,6 @@ function GoogleTagManager() {
     </noscript>
   );
 }
-
-const STATUS_PAGE_SUMMARY_URL =
-  "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
-
-const SIDE_NAV_LINKS: SideNavLinkProps[] = [
-  {
-    href: "/docs",
-    IconSvg: HomeIcon,
-    isSection: false,
-    text: "Home",
-    isExternal: false,
-  },
-  {
-    href: "/docs/connect",
-    IconSvg: DwollaConnectIcon,
-    isSection: true,
-    text: "Dwolla Connect",
-    isExternal: false,
-    stickyReferenceLinks: [
-      {
-        href: "/api-reference",
-        IconSvg: ApiReferenceIcon,
-        isSection: false,
-        text: "API Reference",
-        isExternal: false,
-      },
-    ],
-  },
-  {
-    href: "/docs/balance",
-    IconSvg: DwollaBalanceIcon,
-    isSection: true,
-    text: "Dwolla Balance",
-    isExternal: false,
-    stickyReferenceLinks: [
-      {
-        href: "/api-reference",
-        IconSvg: ApiReferenceIcon,
-        isSection: false,
-        text: "API Reference",
-        isExternal: false,
-      },
-      {
-        href: "/code-samples",
-        IconSvg: CodeSamplesIcon,
-        isSection: false,
-        text: "Code Samples",
-        isExternal: false,
-      },
-    ],
-  },
-  {
-    href: "/api-reference",
-    IconSvg: ApiReferenceIcon,
-    isSection: true,
-    text: "API Reference",
-    isExternal: false,
-    productSelector: true,
-  },
-  {
-    href: "/sdks-tools",
-    IconSvg: SdksToolsIcon,
-    isSection: true,
-    text: "SDKs & Tools",
-    isExternal: false,
-  },
-  {
-    href: "/code-samples",
-    IconSvg: CodeSamplesIcon,
-    isSection: false,
-    text: "Code Samples",
-    isExternal: false,
-  },
-  {
-    href: "/changelog",
-    IconSvg: ChangelogIcon,
-    isSection: false,
-    text: "Changelog",
-    isExternal: false,
-  },
-];
 
 const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Dwolla: [
@@ -223,6 +146,148 @@ const FOOTER_LEGAL_COPY = {
   ),
 };
 
+const LANGUAGE_OPTIONS = [
+  {
+    value: "bash",
+    label: "Raw",
+  },
+  {
+    value: "javascript",
+    label: "Node.js",
+  },
+  {
+    value: "php",
+    label: "PHP",
+  },
+  {
+    value: "ruby",
+    label: "Ruby",
+  },
+  {
+    value: "python",
+    label: "Python",
+  },
+];
+
+const NAV_ITEMS: NavItemProps[] = [
+  {
+    value: "platformOverview",
+    label: "Platform Overview",
+    href: "https://developers.dwolla.com/docs/balance",
+  },
+  {
+    value: "apiReference",
+    label: "API Reference",
+    href: "https://developers.dwolla.com/api-reference",
+  },
+  {
+    value: "codeSamples",
+    label: "Code Samples",
+    href: "https://developers.dwolla.com/code-samples",
+  },
+  {
+    value: "dropIns",
+    label: "Drop Ins",
+    href: "https://developers.dwolla.com/docs/balance/drop-in-components",
+  },
+  {
+    value: "sdks",
+    label: "SDKs",
+    href: "https://developers.dwolla.com/sdks-tools",
+  },
+  {
+    value: "changelog",
+    label: "Changelog",
+    href: "https://developers.dwolla.com/changelog",
+  },
+];
+
+const PRODUCT_OPTIONS = [
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon }, // Array[0] is selected by default
+  { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
+];
+
+const STATUS_PAGE_SUMMARY_URL =
+  "https://tnynfs0nwlgr.statuspage.io/api/v2/summary.json";
+
+const SIDE_NAV_LINKS: SideNavLinkProps[] = [
+  {
+    href: "/docs",
+    IconSvg: HomeIcon,
+    isSection: false,
+    text: "Home",
+    isExternal: false,
+  },
+  {
+    href: "/docs/connect",
+    IconSvg: DwollaConnectIcon,
+    isSection: true,
+    text: "Dwolla Connect",
+    isExternal: false,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+    ],
+  },
+  {
+    href: "/docs/balance",
+    IconSvg: DwollaBalanceIcon,
+    isSection: true,
+    text: "Dwolla Balance",
+    isExternal: false,
+    stickyReferenceLinks: [
+      {
+        href: "/api-reference",
+        IconSvg: ApiReferenceIcon,
+        isSection: false,
+        text: "API Reference",
+        isExternal: false,
+      },
+      {
+        href: "/code-samples",
+        IconSvg: CodeSamplesIcon,
+        isSection: false,
+        text: "Code Samples",
+        isExternal: false,
+      },
+    ],
+  },
+  {
+    href: "/api-reference",
+    IconSvg: ApiReferenceIcon,
+    isSection: true,
+    text: "API Reference",
+    isExternal: false,
+    productSelector: true,
+  },
+  {
+    href: "/sdks-tools",
+    IconSvg: SdksToolsIcon,
+    isSection: true,
+    text: "SDKs & Tools",
+    isExternal: false,
+  },
+  {
+    href: "/code-samples",
+    IconSvg: CodeSamplesIcon,
+    isSection: false,
+    text: "Code Samples",
+    isExternal: false,
+  },
+  {
+    href: "/changelog",
+    IconSvg: ChangelogIcon,
+    isSection: false,
+    text: "Changelog",
+    isExternal: false,
+  },
+];
+
 const TOP_BAR_PROPS: TopBarProps = {
   helpLinks: [
     {
@@ -260,34 +325,6 @@ const TOP_BAR_PROPS: TopBarProps = {
   },
 };
 
-const LANGUAGE_OPTIONS = [
-  {
-    value: "bash",
-    label: "Raw",
-  },
-  {
-    value: "javascript",
-    label: "Node.js",
-  },
-  {
-    value: "php",
-    label: "PHP",
-  },
-  {
-    value: "ruby",
-    label: "Ruby",
-  },
-  {
-    value: "python",
-    label: "Python",
-  },
-];
-
-const PRODUCT_OPTIONS = [
-  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon }, // Array[0] is selected by default
-  { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
-];
-
 const clientSideEmotionCache = createEmotionCache();
 
 interface Props extends AppProps {
@@ -296,6 +333,7 @@ interface Props extends AppProps {
 
 function AppWithHooks({ router, Component, pageProps }: Props) {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
+  const [selectedProduct, setSelectedProduct] = useState(PRODUCT_OPTIONS[0]);
 
   const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
     refreshInterval: 60000,
@@ -312,17 +350,26 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           languageOptions: LANGUAGE_OPTIONS,
         }}
       >
-        <Layout
-          footerLinks={FOOTER_LINKS}
-          footerLegal={FOOTER_LEGAL_COPY}
-          pages={Pages.all()}
-          sideNavLinks={SIDE_NAV_LINKS}
-          productSelectorOptions={PRODUCT_OPTIONS}
-          topBarProps={TOP_BAR_PROPS}
-          apiStatus={apiStatus}
+        <ProductContext.Provider
+          value={{
+            selectedProduct,
+            setSelectedProduct,
+            productOptions: PRODUCT_OPTIONS,
+          }}
         >
-          <Component {...pageProps} url={router.pathname} />
-        </Layout>
+          <Layout
+            apiStatus={apiStatus}
+            footerLinks={FOOTER_LINKS}
+            footerLegal={FOOTER_LEGAL_COPY}
+            navItems={NAV_ITEMS}
+            pages={Pages.all()}
+            productSelectorOptions={PRODUCT_OPTIONS}
+            topBarProps={TOP_BAR_PROPS}
+            sideNavLinks={SIDE_NAV_LINKS}
+          >
+            <Component {...pageProps} url={router.pathname} />
+          </Layout>
+        </ProductContext.Provider>
       </LanguageContext.Provider>
     </AnchorsProvider>
   );

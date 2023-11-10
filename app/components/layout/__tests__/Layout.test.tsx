@@ -8,6 +8,7 @@ import { ReactComponent as DwollaBalanceIcon } from "../../../../assets/images/c
 import { ReactComponent as SdksToolsIcon } from "../../../../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../../../../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { SideNavLinkProps } from "../SideNav";
+import { NavItemProps } from "../SecondaryNavBar";
 
 const mockPath = "/";
 jest.mock("next/router", () => ({
@@ -128,6 +129,39 @@ const PRODUCT_OPTIONS = [
   { value: "balance", label: "Dwolla Balance" },
 ];
 
+const NAV_ITEMS: NavItemProps[] = [
+  {
+    value: "platformOverview",
+    label: "Platform Overview",
+    href: "https://developers.dwolla.com/docs/balance",
+  },
+  {
+    value: "apiReference",
+    label: "API Reference",
+    href: "https://developers.dwolla.com/api-reference",
+  },
+  {
+    value: "codeSamples",
+    label: "Code Samples",
+    href: "https://developers.dwolla.com/code-samples",
+  },
+  {
+    value: "dropIns",
+    label: "Drop Ins",
+    href: "https://developers.dwolla.com/docs/balance/drop-in-components",
+  },
+  {
+    value: "sdks",
+    label: "SDKs",
+    href: "https://developers.dwolla.com/sdks-tools",
+  },
+  {
+    value: "changelog",
+    label: "Changelog",
+    href: "https://developers.dwolla.com/changelog",
+  },
+];
+
 test("Layout", () => {
   const tree = renderer
     .create(
@@ -137,6 +171,7 @@ test("Layout", () => {
         footerLegal={FOOTER_LEGAL_COPY}
         topBarProps={TOP_BAR_PROPS}
         productSelectorOptions={PRODUCT_OPTIONS}
+        navItems={NAV_ITEMS}
         pages={Pages.all()}
         apiStatus={{ indicator: "none", description: "apiStatus description" }}
       >

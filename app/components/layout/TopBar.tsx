@@ -11,14 +11,7 @@ import Help from "../base/Help";
 import { LanguageContext } from "../util/Contexts";
 import { ROBOTO } from "../typography";
 import { breakDown, breakUp } from "../breakpoints";
-import {
-  GREY_4,
-  GREY_5,
-  GREY_9,
-  PURPLE_023,
-  PURPLE_075,
-  WHITE_PRIMARY,
-} from "../colors";
+import { GREY_4, GREY_5, GREY_9, PURPLE_075, WHITE_PRIMARY } from "../colors";
 import dwollaLogo from "../../../assets/images/dwolla-logo-full-color.png";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
@@ -32,8 +25,6 @@ const Container = styled.div`
   height: ${TOP_BAR_HEIGHT}px;
   background-color: ${WHITE_PRIMARY};
   padding: 0 20px;
-
-  border-bottom: 1px solid ${PURPLE_023};
 
   @media (${breakDown("md")}) {
     padding: 12px 20px;
