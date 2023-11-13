@@ -13,7 +13,8 @@ import {
 } from "body-scroll-lock";
 import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { GREY_2, LAYOUT_BORDER, WHITE_PRIMARY } from "../colors";
+import SecondaryNavBar, { NavItemProps } from "./SecondaryNavBar";
+import { GREY_2, PURPLE_023, WHITE_PRIMARY } from "../colors";
 import { breakDown, breakUp } from "../breakpoints";
 import { Z_TOB_BAR } from "../zIndexes";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
@@ -22,7 +23,7 @@ import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
 import { SelectMuiOption } from "../base/SelectMui";
 
-const LEFT_SIDEBAR_WIDTH = "420";
+export const LEFT_SIDEBAR_WIDTH = "420";
 
 const LayoutContainer = styled.div`
   @media (${breakUp("lg")}) {
@@ -33,12 +34,12 @@ const LayoutContainer = styled.div`
 
 const LeftSidebar = styled.div`
   position: sticky;
-  top: ${TOP_BAR_HEIGHT}px;
+  top: ${TOP_BAR_HEIGHT + 69}px;
   right: 0;
   bottom: 0;
   left: 0;
   overflow-y: auto;
-  height: calc(100vh - ${TOP_BAR_HEIGHT}px);
+  height: calc(100vh - ${TOP_BAR_HEIGHT + 69}px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -77,7 +78,7 @@ const SideNavWrapper = styled.div`
 const MainArea = styled.div`
   @media (${breakUp("lg")}) {
     width: calc(100vw - ${LEFT_SIDEBAR_WIDTH}px);
-    border-left: 1px solid ${LAYOUT_BORDER};
+    border-left: 1px solid ${PURPLE_023};
   }
 `;
 
@@ -117,6 +118,7 @@ export default function Layout({
   pages,
   sideNavLinks,
   productSelectorOptions,
+  navItems,
   footerLinks,
   footerLegal,
   topBarProps,
@@ -127,6 +129,7 @@ export default function Layout({
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   productSelectorOptions?: Array<SelectMuiOption>;
+  navItems: NavItemProps[];
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
@@ -153,6 +156,9 @@ export default function Layout({
 
   const router = useRouter();
 
+  // Check if the current route is exactly "/docs" (aka Homepage)
+  const isExactlyDocs = router.pathname === "/docs";
+
   return (
     <>
       <Global
@@ -177,6 +183,8 @@ export default function Layout({
           sidebarToggled={sidebarToggled}
           setSidebarToggled={setSidebarToggled}
         />
+        {/* Render SecondaryNavBar only if the current page is not "/docs" (aka Homepage)*/}
+        {!isExactlyDocs && <SecondaryNavBar navItems={navItems} />}
       </TopBarWrapper>
 
       <LayoutContainer>
