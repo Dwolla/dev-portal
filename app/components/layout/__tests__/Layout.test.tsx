@@ -133,32 +133,32 @@ const NAV_ITEMS: NavItemProps[] = [
   {
     value: "platformOverview",
     label: "Platform Overview",
-    href: "https://developers.dwolla.com/docs/balance",
+    href: (selectedProduct) => `/docs/${selectedProduct}`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "apiReference",
     label: "API Reference",
-    href: "https://developers.dwolla.com/api-reference",
+    href: (selectedProduct) => `/docs/${selectedProduct}/api-reference`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "codeSamples",
     label: "Code Samples",
-    href: "https://developers.dwolla.com/code-samples",
+    href: () => "/code-samples", // Static href, unchanged
   },
   {
     value: "dropIns",
     label: "Drop Ins",
-    href: "https://developers.dwolla.com/docs/balance/drop-in-components",
+    href: () => "/docs/drop-in-components", // Static href, unchanged
   },
   {
     value: "sdks",
     label: "SDKs",
-    href: "https://developers.dwolla.com/sdks-tools",
+    href: () => "/sdks-tools", // Static href, unchanged
   },
   {
     value: "changelog",
     label: "Changelog",
-    href: "https://developers.dwolla.com/changelog",
+    href: () => "/changelog", // Static href, unchanged
   },
 ];
 

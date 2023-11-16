@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import NextLink from "next/link";
 import { FormControl } from "@mui/material";
@@ -12,6 +12,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import { useRouter } from "next/router";
 import SelectMui from "../base/SelectMui";
 import { PURPLE_023, PURPLE_075, PURPLE_100, WHITE_PRIMARY } from "../colors";
 import { ROBOTO } from "../typography";
@@ -38,10 +39,17 @@ const NavBarWrapper = styled.div`
   padding-right: 2em;
 `;
 
+const productRouteMap = {
+  connect: "/docs/connect",
+  balance: "/docs/balance",
+};
+
 export type NavItemProps = {
   value: string;
   label: string;
-  href: string;
+  // eslint-disable-next-line no-unused-vars
+  href: (selectedProduct: string) => string; // Function to dynamically generate href based on the
+  // selectedProduct context
 };
 
 export type SecondaryNavBarProps = {
@@ -51,10 +59,14 @@ export type SecondaryNavBarProps = {
 export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
   const { selectedProduct, setSelectedProduct, productOptions } =
     useContext(ProductContext);
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    // Update the route and page based on the selectedProduct
+    router.push(productRouteMap[selectedProduct.value]);
+  }, [selectedProduct]);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -117,6 +129,7 @@ export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
                 <FormControl sx={{ m: 2, minWidth: 300 }} size="small">
                   <SelectMui
                     label="Select Product"
+                    // onChange={(value) => setSelectedProduct(value)}
                     onChange={(value) => setSelectedProduct(value)}
                     options={productOptions}
                     value={selectedProduct.value}
@@ -124,9 +137,14 @@ export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
                 </FormControl>
               </MenuItem>
               {navItems.map((item) => (
-                <MenuItem key={item.value} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{item.label}</Typography>
-                </MenuItem>
+                <NextLink
+                  key={item.value}
+                  href={item.href(selectedProduct.value)} // Generate href based on selectedProduct
+                >
+                  <MenuItem key={item.value} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{item.label}</Typography>
+                  </MenuItem>
+                </NextLink>
               ))}
             </Menu>
           </Box>
@@ -151,19 +169,32 @@ export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
 
             <NavBarWrapper>
               {navItems.map((item) => (
-                <NextLink href={item.href}>
+                <NextLink
+                  key={item.value}
+                  href={item.href(selectedProduct.value)} // Generate href based on selectedProduct
+                >
                   <Button
                     key={item.value}
                     onClick={handleCloseNavMenu}
                     sx={{
-                      color: PURPLE_075,
                       font: ROBOTO,
                       display: "block",
                       width: "10rem",
                       marginBottom: "unset",
                       borderRadius: "0px",
-                      borderBottom: "2px solid transparent",
+                      color:
+                        router.asPath === item.href(selectedProduct.value)
+                          ? PURPLE_100
+                          : PURPLE_075,
+                      borderBottom:
+                        router.asPath === item.href(selectedProduct.value)
+                          ? `2px solid ${PURPLE_100}`
+                          : `2px solid transparent`,
                       "&:hover": {
+                        color: PURPLE_100,
+                        borderBottom: `2px solid ${PURPLE_100}`,
+                      },
+                      "&:focus": {
                         color: PURPLE_100,
                         borderBottom: `2px solid ${PURPLE_100}`,
                       },

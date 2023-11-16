@@ -577,7 +577,7 @@ function SideNav({
             <>
               <SectionWrap>
                 {/* Filter sectionLinks based on the 'isExternal' prop so that only internal links
-              are passed to the SectionLink component*/}
+               are passed to the SectionLink component*/}
                 {sectionLinks
                   .filter((l) => !l.isExternal)
                   .map((l) => (
@@ -590,7 +590,7 @@ function SideNav({
               </SectionWrap>
               <ExternalSectionWrap>
                 {/* Filter sectionLinks based on the 'isExternal' prop so that only external links
-             are passed to the SectionLink component */}
+              are passed to the SectionLink component */}
                 {sectionLinks
                   .filter((el) => el.isExternal)
                   .map((el) => (
@@ -610,7 +610,7 @@ function SideNav({
                     href: "/docs",
                     IconSvg: BackIcon,
                     isSection: false,
-                    text: "All Docs",
+                    text: "Home",
                     isExternal: false,
                   }}
                   isActive={false}

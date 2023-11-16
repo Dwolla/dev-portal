@@ -22,6 +22,7 @@ import { ReactComponent as HomeIcon } from "../assets/images/component-icons/sid
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
 import { ReactComponent as DwollaConnectIcon } from "../assets/images/component-icons/side-nav/dwolla-connect-nav-icon.svg";
+import { ReactComponent as DropInComponentIcon } from "../assets/images/component-icons/side-nav/drop-in-components-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
@@ -173,32 +174,32 @@ const NAV_ITEMS: NavItemProps[] = [
   {
     value: "platformOverview",
     label: "Platform Overview",
-    href: "https://developers.dwolla.com/docs/balance",
+    href: (selectedProduct) => `/docs/${selectedProduct}`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "apiReference",
     label: "API Reference",
-    href: "https://developers.dwolla.com/api-reference",
+    href: (selectedProduct) => `/docs/${selectedProduct}/api-reference`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "codeSamples",
     label: "Code Samples",
-    href: "https://developers.dwolla.com/code-samples",
+    href: () => "/code-samples", // Static href, unchanged
   },
   {
     value: "dropIns",
     label: "Drop Ins",
-    href: "https://developers.dwolla.com/docs/balance/drop-in-components",
+    href: () => "/docs/drop-in-components", // Static href, unchanged
   },
   {
     value: "sdks",
     label: "SDKs",
-    href: "https://developers.dwolla.com/sdks-tools",
+    href: () => "/sdks-tools", // Static href, unchanged
   },
   {
     value: "changelog",
     label: "Changelog",
-    href: "https://developers.dwolla.com/changelog",
+    href: () => "/changelog", // Static href, unchanged
   },
 ];
 
@@ -258,12 +259,26 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     ],
   },
   {
-    href: "/api-reference",
+    href: "/docs/connect/api-reference",
     IconSvg: ApiReferenceIcon,
     isSection: true,
     text: "API Reference",
     isExternal: false,
-    productSelector: true,
+  },
+  {
+    href: "/docs/balance/api-reference",
+    IconSvg: ApiReferenceIcon,
+    isSection: true,
+    text: "API Reference",
+    isExternal: false,
+  },
+  {
+    href: "/docs/drop-in-components",
+    IconSvg: DropInComponentIcon,
+    isSection: true,
+    text: "Drop In Components",
+    isExternal: false,
+    productSelector: false,
   },
   {
     href: "/sdks-tools",
@@ -275,14 +290,14 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
     href: "/code-samples",
     IconSvg: CodeSamplesIcon,
-    isSection: false,
+    isSection: true,
     text: "Code Samples",
     isExternal: false,
   },
   {
     href: "/changelog",
     IconSvg: ChangelogIcon,
-    isSection: false,
+    isSection: true,
     text: "Changelog",
     isExternal: false,
   },

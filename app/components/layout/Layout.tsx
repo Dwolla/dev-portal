@@ -79,7 +79,14 @@ const MainArea = styled.div`
   @media (${breakUp("lg")}) {
     width: calc(100vw - ${LEFT_SIDEBAR_WIDTH}px);
     border-left: 1px solid ${PURPLE_023};
+
+    &.fullWidth {
+      width: 100vw;
+      padding: 32px 64px;
+    }
   }
+
+  border-top: 1px solid ${PURPLE_023};
 `;
 
 const ContentArea = styled.div`
@@ -188,22 +195,27 @@ export default function Layout({
       </TopBarWrapper>
 
       <LayoutContainer>
-        <LeftSidebar
-          className={classnames(sidebarToggled ? "toggled" : "visuallyHidden")}
-        >
-          <SideNavWrapper>
-            <SideNav
-              sectionLinks={sideNavLinks}
-              pages={pages}
-              mobileItems={topBarProps}
-              productSelectorOptions={productSelectorOptions}
-            />
-          </SideNavWrapper>
+        {/* Render SideNav only if the current page is not "/docs" (aka Homepage)*/}
+        {!isExactlyDocs && (
+          <LeftSidebar
+            className={classnames(
+              sidebarToggled ? "toggled" : "visuallyHidden"
+            )}
+          >
+            <SideNavWrapper>
+              <SideNav
+                sectionLinks={sideNavLinks}
+                pages={pages}
+                mobileItems={topBarProps}
+                productSelectorOptions={productSelectorOptions}
+              />
+            </SideNavWrapper>
 
-          <APIStatusBar apiStatus={apiStatus} />
-        </LeftSidebar>
+            <APIStatusBar apiStatus={apiStatus} />
+          </LeftSidebar>
+        )}
 
-        <MainArea>
+        <MainArea className={classnames({ fullWidth: isExactlyDocs })}>
           {announcement && (
             <AlertBar variation="announcement" isClosable>
               {announcement}
