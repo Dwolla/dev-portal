@@ -18,10 +18,10 @@ Retrieve a list of funding sources that belong to a Customer. By default, all fu
 
 ### Request parameters
 
-| Parameter | Required | Type   | Description                                                                                                                                                                                                |
-| --------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id        | yes      | string | Customer's unique identifier.                                                                                                                                                                              |
-| removed   | no       | string | Filter removed funding sources. Set to `false` to filter out removed funding sources from list (i.e. - `/customers/{id}/funding-sources?removed=false`) or `true` to include only removed funding sources. |
+| Parameter | Required | Type    | Description                                                                                                                                                                                                |
+| --------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string  | Customer's unique identifier.                                                                                                                                                                              |
+| removed   | no       | boolean | Filter removed funding sources. Set to `false` to filter out removed funding sources from list (i.e. - `/customers/{id}/funding-sources?removed=false`) or `true` to include only removed funding sources. |
 
 ### HTTP status and error codes
 
