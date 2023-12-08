@@ -30,6 +30,11 @@ export default {
     ["email", "string <email>", "Email address of external party."],
     ["externalPartyType", "string", "business"],
     [
+      "correlationId",
+      "string",
+      "A unique string value attached to an external party which can be used for traceability between Dwolla and your application.",
+    ],
+    [
       "created",
       "string <date-time>",
       "ISO-8601 timestamp of when the resource was created.",
