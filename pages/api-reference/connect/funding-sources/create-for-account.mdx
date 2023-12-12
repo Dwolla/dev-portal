@@ -5,7 +5,7 @@ title: Create a funding source for an account
 guide:
   step: 1
 meta:
-  title: "Dwolla API Reference | External Parties: Create Funding Source for Account"
+  title: "Dwolla API Reference | Funding Sources: Create Funding Source for Account"
   description: "Endpoint for creating a funding source for an Account."
 ---
 
@@ -18,6 +18,19 @@ This section details how to add a bank account to your main Dwolla Account. To a
 ### Treasury Accounts
 
 A treasury account is a prerequisite to sending and receiving ACH transfers. It also identifies your business so Dwolla can connect with your banking partner. To learn how to create a treasury acccount, [contact us](https://www.dwolla.com/dwolla-connect/#cta-form-1).
+
+<AlertBar variation="info">
+  In Dwolla's Sandbox environment, your test account will be pre-configured with
+  a fake Treasury Account and Funding Source (Bank Account) associated with that
+  Treasury Account. Using the pre-configured Funding Source for sending and/or
+  receiving ACH transfers is intended to reduce the time and effort required to
+  get started integrating with the Dwolla Connect API. You can retrieve the
+  Funding Source ID associated with the fake bank account by{" "}
+  <a href="/api-reference/connect/funding-sources/list-for-account">
+    listing your account's funding sources
+  </a>
+  .
+</AlertBar>
 
 ## HTTP request
 
