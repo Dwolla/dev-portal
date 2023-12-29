@@ -10,12 +10,8 @@ import algoliasearch from "algoliasearch/lite";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
-import {
-  LanguageContext,
-  ProductContext,
-} from "../app/components/util/Contexts";
+import { LanguageContext } from "../app/components/util/Contexts";
 import { SideNavLinkProps } from "../app/components/layout/SideNav";
-import { NavItemProps } from "../app/components/layout/SecondaryNavBar";
 import { TopBarProps } from "../app/components/layout/TopBar";
 import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
@@ -34,6 +30,7 @@ import useTrackPageViews from "../app/hooks/useTrackPageViews";
 import createEmotionCache from "../app/modules/emotion-cache";
 import theme from "../app/theme";
 import { FooterLink } from "../app/components/layout/Footer";
+import { SelectMuiOption } from "../app/components/base/SelectMui";
 
 function GoogleTagManager() {
   useEffect(() => {
@@ -170,7 +167,7 @@ const LANGUAGE_OPTIONS = [
   },
 ];
 
-const NAV_ITEMS: NavItemProps[] = [
+const NAV_ITEMS: SelectMuiOption[] = [
   {
     value: "platformOverview",
     label: "Platform Overview",
@@ -203,8 +200,8 @@ const NAV_ITEMS: NavItemProps[] = [
   },
 ];
 
-const PRODUCT_OPTIONS = [
-  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon }, // Array[0] is selected by default
+const PRODUCT_OPTIONS: SelectMuiOption[] = [
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon },
   { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
 ];
 
@@ -225,15 +222,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "Dwolla Connect",
     isExternal: false,
-    stickyReferenceLinks: [
-      {
-        href: "/api-reference",
-        IconSvg: ApiReferenceIcon,
-        isSection: false,
-        text: "API Reference",
-        isExternal: false,
-      },
-    ],
   },
   {
     href: "/docs/balance",
@@ -241,22 +229,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "Dwolla Balance",
     isExternal: false,
-    stickyReferenceLinks: [
-      {
-        href: "/api-reference",
-        IconSvg: ApiReferenceIcon,
-        isSection: false,
-        text: "API Reference",
-        isExternal: false,
-      },
-      {
-        href: "/code-samples",
-        IconSvg: CodeSamplesIcon,
-        isSection: false,
-        text: "Code Samples",
-        isExternal: false,
-      },
-    ],
   },
   {
     href: "/docs/connect/api-reference",
@@ -348,13 +320,35 @@ interface Props extends AppProps {
 
 function AppWithHooks({ router, Component, pageProps }: Props) {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCT_OPTIONS[0]);
+  const [selectedProduct, setSelectedProduct] = useState<
+    SelectMuiOption | undefined
+  >(undefined);
 
   const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
     refreshInterval: 60000,
   }).data?.status;
 
   useTrackPageViews(router.pathname);
+
+  useEffect(() => {
+    // Access the pathname from the router object
+    const currentPath = router.pathname;
+    console.log("currentPath:", currentPath);
+
+    // Use productOptions to determine the initial state based on the path
+    const initialState = PRODUCT_OPTIONS.find((option) =>
+      currentPath.startsWith(`/docs/${option.value}`)
+    );
+
+    console.log("initialState:", initialState);
+
+    // Set the initial state
+    setSelectedProduct(
+      initialState !== undefined ? initialState : PRODUCT_OPTIONS[0]
+    );
+
+    console.log("selectedProduct:", selectedProduct);
+  }, []); // useEffect will run whenever the path changes
 
   return (
     <AnchorsProvider>
@@ -365,26 +359,20 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           languageOptions: LANGUAGE_OPTIONS,
         }}
       >
-        <ProductContext.Provider
-          value={{
-            selectedProduct,
-            setSelectedProduct,
-            productOptions: PRODUCT_OPTIONS,
-          }}
+        <Layout
+          apiStatus={apiStatus}
+          footerLinks={FOOTER_LINKS}
+          footerLegal={FOOTER_LEGAL_COPY}
+          navItems={NAV_ITEMS}
+          pages={Pages.all()}
+          productSelectorOptions={PRODUCT_OPTIONS}
+          selectedProduct={selectedProduct}
+          setSelectedProduct={setSelectedProduct}
+          topBarProps={TOP_BAR_PROPS}
+          sideNavLinks={SIDE_NAV_LINKS}
         >
-          <Layout
-            apiStatus={apiStatus}
-            footerLinks={FOOTER_LINKS}
-            footerLegal={FOOTER_LEGAL_COPY}
-            navItems={NAV_ITEMS}
-            pages={Pages.all()}
-            productSelectorOptions={PRODUCT_OPTIONS}
-            topBarProps={TOP_BAR_PROPS}
-            sideNavLinks={SIDE_NAV_LINKS}
-          >
-            <Component {...pageProps} url={router.pathname} />
-          </Layout>
-        </ProductContext.Provider>
+          <Component {...pageProps} url={router.pathname} />
+        </Layout>
       </LanguageContext.Provider>
     </AnchorsProvider>
   );

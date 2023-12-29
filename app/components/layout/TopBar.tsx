@@ -7,6 +7,7 @@ import {
   AlgoliaAutocomplete,
   AlgoliaAutocompleteProps,
 } from "algolia-search-components";
+import { useRouter } from "next/router";
 import Help from "../base/Help";
 import { LanguageContext } from "../util/Contexts";
 import { ROBOTO } from "../typography";
@@ -179,8 +180,12 @@ export default function TopBar({
   sidebarToggled,
   setSidebarToggled,
 }: TopBarProps) {
+  const router = useRouter();
   const { selectedLanguage, setSelectedLanguage, languageOptions } =
     useContext(LanguageContext);
+
+  // Check if the current route is exactly "/docs" (aka Homepage)
+  const isExactlyDocs = router.pathname === "/docs";
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
@@ -236,27 +241,24 @@ export default function TopBar({
         </Button>
       </RightAlignWrapper>
 
-      {sidebarToggled === false ? (
-        <Hamburger
-          tabIndex={0}
-          aria-labelledby="Open menu"
-          onClick={showSidebar}
-          onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
-          // onFocus={() => setIsFocused(true)}
-          // onBlur={() => setIsFocused(false)}
-        />
-      ) : (
-        <StyledCloseIcon
-          tabIndex={0}
-          aria-labelledby="Close menu"
-          onClick={hideSidebar}
-          onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
-          // onFocus={() => setIsFocused(true)}
-          // onBlur={() => setIsFocused(false)}
-        >
-          <CloseIcon width={14} />
-        </StyledCloseIcon>
-      )}
+      {!isExactlyDocs &&
+        (sidebarToggled === false ? (
+          <Hamburger
+            tabIndex={0}
+            aria-labelledby="Open menu"
+            onClick={showSidebar}
+            onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
+          />
+        ) : (
+          <StyledCloseIcon
+            tabIndex={0}
+            aria-labelledby="Close menu"
+            onClick={hideSidebar}
+            onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
+          >
+            <CloseIcon width={14} />
+          </StyledCloseIcon>
+        ))}
     </Container>
   );
 }

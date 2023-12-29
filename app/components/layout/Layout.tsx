@@ -13,7 +13,7 @@ import {
 } from "body-scroll-lock";
 import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import SecondaryNavBar, { NavItemProps } from "./SecondaryNavBar";
+import SecondaryNavBar from "./SecondaryNavBar";
 import { GREY_2, PURPLE_023, WHITE_PRIMARY } from "../colors";
 import { breakDown, breakUp } from "../breakpoints";
 import { Z_TOB_BAR } from "../zIndexes";
@@ -52,6 +52,11 @@ const LeftSidebar = styled.div`
     right: 75%;
     opacity: 1;
     pointer-events: auto;
+  }
+
+  @media (${breakDown("lg")}) {
+    top: 0;
+    height: calc(100vh - ${TOP_BAR_HEIGHT}px);
   }
 
   &.toggled {
@@ -125,6 +130,8 @@ export default function Layout({
   pages,
   sideNavLinks,
   productSelectorOptions,
+  selectedProduct,
+  setSelectedProduct,
   navItems,
   footerLinks,
   footerLegal,
@@ -136,7 +143,9 @@ export default function Layout({
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   productSelectorOptions?: Array<SelectMuiOption>;
-  navItems: NavItemProps[];
+  selectedProduct: SelectMuiOption;
+  setSelectedProduct: Function;
+  navItems: SelectMuiOption[];
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
@@ -147,6 +156,9 @@ export default function Layout({
   announcement?: JSX.Element;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
+  const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState(
+    navItems[0]
+  );
 
   useEffect(() => {
     if (document) {
@@ -191,7 +203,16 @@ export default function Layout({
           setSidebarToggled={setSidebarToggled}
         />
         {/* Render SecondaryNavBar only if the current page is not "/docs" (aka Homepage)*/}
-        {!isExactlyDocs && <SecondaryNavBar navItems={navItems} />}
+        {!isExactlyDocs && (
+          <SecondaryNavBar
+            navItems={navItems}
+            selectedSecondaryNavItem={selectedSecondaryNavItem}
+            setSelectedSecondaryNavItem={setSelectedSecondaryNavItem}
+            productOptions={productSelectorOptions}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+          />
+        )}
       </TopBarWrapper>
 
       <LayoutContainer>
@@ -207,7 +228,12 @@ export default function Layout({
                 sectionLinks={sideNavLinks}
                 pages={pages}
                 mobileItems={topBarProps}
-                productSelectorOptions={productSelectorOptions}
+                secondaryNavItemOptions={navItems}
+                selectedSecondaryNavItem={selectedSecondaryNavItem}
+                setSelectedSecondaryNavItem={setSelectedSecondaryNavItem}
+                productOptions={productSelectorOptions}
+                selectedProduct={selectedProduct}
+                setSelectedProduct={setSelectedProduct}
               />
             </SideNavWrapper>
 
