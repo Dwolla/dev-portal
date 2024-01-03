@@ -35,10 +35,11 @@ It is recommended to use the `_links` object in the response which includes the 
 
 ### Request parameters
 
-| Parameter | Required | Type   | Description                                                                              |
-| --------- | -------- | ------ | ---------------------------------------------------------------------------------------- |
-| limit     | no       | string | A limit on the number of results to return. A minimum of 1 and a maximum of 200 objects. |
-| cursor    | no       | string | A pointer indicating the next item in the data set for pagination.                       |
+| Parameter     | Required | Type   | Description                                                                              |
+| ------------- | -------- | ------ | ---------------------------------------------------------------------------------------- |
+| correlationId | no       | string | A string value to filter on if a `correlationId` was specified on an external party.     |
+| limit         | no       | string | A limit on the number of results to return. A minimum of 1 and a maximum of 200 objects. |
+| cursor        | no       | string | A pointer indicating the next item in the data set for pagination.                       |
 
 ## HTTP status and error codes
 

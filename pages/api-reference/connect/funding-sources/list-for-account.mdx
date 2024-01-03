@@ -35,9 +35,11 @@ It is recommended to use the `_links` object in the response which includes the 
 
 ## Request parameters
 
-| Parameter | Required | Type   | Description                  |
-| --------- | -------- | ------ | ---------------------------- |
-| id        | yes      | string | Account's unique identifier. |
+| Parameter | Required | Type    | Description                                                                                                                                                                                               |
+| --------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string  | Account's unique identifier.                                                                                                                                                                              |
+| removed   | no       | boolean | Filter removed funding sources. Set to `false` to filter out removed funding sources from list (i.e. - `/accounts/{id}/funding-sources?removed=false`) or `true` to include only removed funding sources. |
+| correlationId | no       | string | A string value to filter on if a `correlationId` was specified on a funding source. |
 
 ## HTTP status and error codes
 

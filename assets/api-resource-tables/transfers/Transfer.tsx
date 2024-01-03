@@ -96,6 +96,11 @@ export default {
       "ISO-8601 timestamp of when the resource was created.",
     ],
     [
+      "correlationId",
+      "string",
+      "A unique string value attached to a transfer which can be used for traceability between Dwolla and your application.",
+    ],
+    [
       ["amount", "object", "An amount JSON object."],
       {
         title: "Amount Object",

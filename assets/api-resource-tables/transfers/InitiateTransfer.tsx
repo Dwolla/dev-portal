@@ -54,5 +54,22 @@ export default {
         ],
       },
     ],
+    [
+      "correlationId",
+      "no",
+      "string",
+      <span>
+        A unique string value attached to a transfer which can be used for
+        traceability between Dwolla and your application. <b>Note:</b> A
+        correlationId is not a replacement for an{" "}
+        <Link href="/api-reference#idempotency-key" text="idempotency-key" />.{" "}
+        <br /> Must be less than or equal to 255 characters and contain no
+        spaces. <br /> Acceptable characters are:{" "}
+        <code>a-Z, 0-9, -, . and _</code>. <br /> <b>Note:</b> Sensitive
+        Personal Identifying Information (PII) should not be used in this field
+        and it is recommended to use a random value for correlationId, like a
+        UUID.
+      </span>,
+    ],
   ],
 } as TableContents;
