@@ -8,11 +8,3 @@ export const LanguageContext = React.createContext({
   },
   languageOptions: [],
 });
-
-export const ProductContext = React.createContext({
-  selectedProduct: { value: "connect", label: "Connect" },
-  setSelectedProduct: (product) => {
-    return product;
-  },
-  productOptions: [],
-});

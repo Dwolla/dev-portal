@@ -50,6 +50,7 @@ const ContentWrapper = styled.div`
 
 const MDX_COMPONENTS = {
   AlertBar,
+  BreadcrumbsMui,
   Button,
   Card,
   CardGrid,

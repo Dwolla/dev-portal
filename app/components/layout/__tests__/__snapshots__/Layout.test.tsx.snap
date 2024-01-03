@@ -6,7 +6,7 @@ exports[`Layout 1`] = `
     className="css-1h0fusp-TopBarWrapper e1ijxxr31"
   >
     <div
-      className="css-y5wall-Container e1psldpd6"
+      className="css-25nmj1-Container e1psldpd6"
     >
       <a
         href="/docs"
@@ -123,6 +123,9 @@ exports[`Layout 1`] = `
           target="_blank"
         >
           Get API Keys
+          <span
+            className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
         </a>
       </div>
       <div
@@ -133,28 +136,442 @@ exports[`Layout 1`] = `
         tabIndex={0}
       />
     </div>
+    <header
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-pjew9n-MuiPaper-root-MuiAppBar-root"
+    >
+      <div
+        className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+      >
+        <div
+          className="MuiToolbar-root MuiToolbar-regular css-1mojz2a-MuiToolbar-root"
+        >
+          <div
+            className="MuiBox-root css-xh3wsv"
+          >
+            <div
+              className="css-l92tbk-ProductSelectorWrapper emsji1v1"
+            >
+              <div
+                className="MuiFormControl-root css-78me8v-MuiFormControl-root"
+              >
+                <label
+                  className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+                  data-shrink={true}
+                  id=":r1:"
+                >
+                  Select Product
+                </label>
+                <div
+                  className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+                  onClick={[Function]}
+                >
+                  <div
+                    aria-expanded="false"
+                    aria-haspopup="listbox"
+                    aria-labelledby=":r1:"
+                    className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                    onBlur={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onMouseDown={[Function]}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <div
+                      style={
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "justifyItems": "space-between",
+                        }
+                      }
+                    >
+                      <svg
+                        width={24}
+                      />
+                      <div
+                        style={
+                          {
+                            "marginLeft": "0.5em",
+                            "padding": "0.3em 0",
+                          }
+                        }
+                      >
+                        Dwolla Connect
+                      </div>
+                    </div>
+                  </div>
+                  <input
+                    aria-hidden={true}
+                    aria-invalid={false}
+                    className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                    disabled={false}
+                    onAnimationStart={[Function]}
+                    onChange={[Function]}
+                    required={false}
+                    tabIndex={-1}
+                    value="connect"
+                  />
+                  <svg
+                    aria-hidden={true}
+                    className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                    data-testid="ArrowDropDownIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M7 10l5 5 5-5z"
+                    />
+                  </svg>
+                  <fieldset
+                    aria-hidden={true}
+                    className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                  >
+                    <legend
+                      className="css-14lo706"
+                    >
+                      <span>
+                        Select Product
+                      </span>
+                    </legend>
+                  </fieldset>
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-et77cy-NavBarWrapper emsji1v0"
+            >
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                Platform Overview
+                <span
+                  className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                API Reference
+                <span
+                  className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                Code Samples
+                <span
+                  className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                Drop Ins
+                <span
+                  className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                SDKs
+                <span
+                  className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+              <button
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                disabled={false}
+                onBlur={[Function]}
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onDragLeave={[Function]}
+                onFocus={[Function]}
+                onKeyDown={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseEnter={[Function]}
+                onMouseLeave={[Function]}
+                onMouseUp={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
+                tabIndex={0}
+                type="button"
+              >
+                Changelog
+                <span
+                  className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
   </div>,
   <div
     className="css-1lvinfx-LayoutContainer e1ijxxr36"
   >
     <div
-      className="visuallyHidden css-kjw9mq-LeftSidebar e1ijxxr35"
+      className="visuallyHidden css-10cg2ib-LeftSidebar e1ijxxr35"
     >
       <div
         className="css-6qgefa-SideNavWrapper e1ijxxr34"
       >
         <div
-          className="css-yeohq5-Container e1qiqw1s17"
+          className="css-yeohq5-Container e1qiqw1s18"
         >
           <div
-            className="css-kibqvq-Slide e1qiqw1s16"
+            className="css-kibqvq-Slide e1qiqw1s17"
           >
             <div
-              className="left css-soqej8-SlidePane e1qiqw1s15"
+              className="left css-soqej8-SlidePane e1qiqw1s16"
               id="body-scroll-lock-side-nav"
             >
               <div
-                className="css-kgvw59-SectionWrap e1qiqw1s14"
+                className="css-i677yt-SecondaryNavWrap e1qiqw1s1"
+              >
+                <div
+                  className="MuiFormControl-root css-1ew3zq8-MuiFormControl-root"
+                >
+                  <label
+                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+                    data-shrink={true}
+                    id=":r4:"
+                  >
+                    Select Product
+                  </label>
+                  <div
+                    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+                    onClick={[Function]}
+                  >
+                    <div
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-labelledby=":r4:"
+                      className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onMouseDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <div
+                        style={
+                          {
+                            "alignItems": "center",
+                            "display": "flex",
+                            "justifyItems": "space-between",
+                          }
+                        }
+                      >
+                        <svg
+                          width={24}
+                        />
+                        <div
+                          style={
+                            {
+                              "marginLeft": "0.5em",
+                              "padding": "0.3em 0",
+                            }
+                          }
+                        >
+                          Dwolla Connect
+                        </div>
+                      </div>
+                    </div>
+                    <input
+                      aria-hidden={true}
+                      aria-invalid={false}
+                      className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                      disabled={false}
+                      onAnimationStart={[Function]}
+                      onChange={[Function]}
+                      required={false}
+                      tabIndex={-1}
+                      value="connect"
+                    />
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                      data-testid="ArrowDropDownIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                    <fieldset
+                      aria-hidden={true}
+                      className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        className="css-14lo706"
+                      >
+                        <span>
+                          Select Product
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                </div>
+                <div
+                  className="MuiFormControl-root css-skjjoq-MuiFormControl-root"
+                >
+                  <label
+                    className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+                    data-shrink={true}
+                    id=":r7:"
+                  >
+                    Select Category
+                  </label>
+                  <div
+                    className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+                    onClick={[Function]}
+                  >
+                    <div
+                      aria-expanded="false"
+                      aria-haspopup="listbox"
+                      aria-labelledby=":r7:"
+                      className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+                      onBlur={[Function]}
+                      onFocus={[Function]}
+                      onKeyDown={[Function]}
+                      onMouseDown={[Function]}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      Platform Overview
+                    </div>
+                    <input
+                      aria-hidden={true}
+                      aria-invalid={false}
+                      className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+                      disabled={false}
+                      onAnimationStart={[Function]}
+                      onChange={[Function]}
+                      required={false}
+                      tabIndex={-1}
+                      value="platformOverview"
+                    />
+                    <svg
+                      aria-hidden={true}
+                      className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+                      data-testid="ArrowDropDownIcon"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M7 10l5 5 5-5z"
+                      />
+                    </svg>
+                    <fieldset
+                      aria-hidden={true}
+                      className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+                    >
+                      <legend
+                        className="css-14lo706"
+                      >
+                        <span>
+                          Select Category
+                        </span>
+                      </legend>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="css-kgvw59-SectionWrap e1qiqw1s15"
               >
                 <a
                   className=" css-nr9jvx-SectionLink-SectionLink"
@@ -164,7 +581,7 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s12"
                   >
                     <svg
                       className="section-icon"
@@ -182,7 +599,7 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s12"
                   >
                     <svg
                       className="section-icon"
@@ -200,7 +617,7 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s12"
                   >
                     <svg
                       className="section-icon"
@@ -210,7 +627,7 @@ exports[`Layout 1`] = `
                   </div>
                   API Reference
                   <div
-                    className="css-1qriqu9-SectionCaretWrap e1qiqw1s10"
+                    className="css-1qriqu9-SectionCaretWrap e1qiqw1s11"
                   >
                     <svg
                       height={18}
@@ -226,7 +643,7 @@ exports[`Layout 1`] = `
                   onTouchStart={[Function]}
                 >
                   <div
-                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s12"
                   >
                     <svg
                       className="section-icon"
@@ -238,7 +655,7 @@ exports[`Layout 1`] = `
                 </a>
               </div>
               <div
-                className="css-17mreui-ExternalSectionWrap e1qiqw1s13"
+                className="css-17mreui-ExternalSectionWrap e1qiqw1s14"
               >
                 <a
                   className=" css-nr9jvx-SectionLink-SectionLink"
@@ -249,7 +666,7 @@ exports[`Layout 1`] = `
                   target="_blank"
                 >
                   <div
-                    className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+                    className="css-30rc4k-SectionIconWrap e1qiqw1s12"
                   >
                     <svg
                       className="section-icon"
@@ -261,7 +678,7 @@ exports[`Layout 1`] = `
                 </a>
               </div>
               <div
-                className="css-19j3ofi-MobileWrap e1qiqw1s1"
+                className="css-19j3ofi-MobileWrap e1qiqw1s2"
               >
                 <div
                   className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
@@ -285,6 +702,9 @@ exports[`Layout 1`] = `
                     target="_blank"
                   >
                     Get API Keys
+                    <span
+                      className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                    />
                   </a>
                 </div>
               </div>
@@ -304,7 +724,7 @@ exports[`Layout 1`] = `
       </a>
     </div>
     <div
-      className="css-1v2y2k5-MainArea e1ijxxr33"
+      className=" css-jtpf8a-MainArea e1ijxxr33"
     >
       <div
         className=" css-x5ql3q-ContentArea e1ijxxr32"
@@ -337,7 +757,7 @@ exports[`Layout 1`] = `
             <div
               className="css-1neb9ej-Copyright eg0edpy9"
             >
-              2023
+              2024
                All Rights Reserved
             </div>
           </div>

@@ -1,21 +1,16 @@
-import React, { useContext } from "react";
+import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import NextLink from "next/link";
 import { FormControl } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import SelectMui from "../base/SelectMui";
+import SelectMui, { SelectMuiOption } from "../base/SelectMui";
 import { PURPLE_023, PURPLE_075, PURPLE_100, WHITE_PRIMARY } from "../colors";
 import { ROBOTO } from "../typography";
-import { ProductContext } from "../util/Contexts";
 import { breakDown } from "../breakpoints";
 
 export const NAV_BAR_HEIGHT = 70;
@@ -38,31 +33,31 @@ const NavBarWrapper = styled.div`
   padding-right: 2em;
 `;
 
-export type NavItemProps = {
-  value: string;
-  label: string;
-  href: string;
-};
-
 export type SecondaryNavBarProps = {
-  navItems: NavItemProps[];
+  navItems: SelectMuiOption[];
+  selectedSecondaryNavItem: SelectMuiOption;
+  setSelectedSecondaryNavItem: Function;
+  productOptions: SelectMuiOption[];
+  selectedProduct: SelectMuiOption;
+  setSelectedProduct: Function;
 };
 
-export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
-  const { selectedProduct, setSelectedProduct, productOptions } =
-    useContext(ProductContext);
+export default function SecondaryNavBar({
+  navItems,
+  selectedSecondaryNavItem,
+  setSelectedSecondaryNavItem,
+  productOptions,
+  selectedProduct,
+  setSelectedProduct,
+}: SecondaryNavBarProps) {
+  const router = useRouter();
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  useEffect(() => {
+    // Update the route and page based on the selectedSecondaryNavItem
+    if (selectedSecondaryNavItem && selectedProduct) {
+      router.push(selectedSecondaryNavItem.href(selectedProduct?.value));
+    }
+  }, [selectedSecondaryNavItem, selectedProduct]);
 
   return (
     <AppBar
@@ -72,64 +67,11 @@ export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
         boxShadow: "none",
         borderBottom: `1px solid ${PURPLE_023}`,
         height: NAV_BAR_HEIGHT,
+        display: { xs: "none", sm: "none", md: "none", lg: "flex" },
       }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: "space-around" }}>
-          <Box
-            sx={{
-              width: "300",
-              flexGrow: 1,
-              display: { xs: "flex", md: "none" },
-            }}
-          >
-            <IconButton
-              size="large"
-              aria-label="hamburger menu for nav items"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              sx={{
-                color: "black",
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <MenuItem key="productSelector" onClick={handleCloseNavMenu}>
-                <FormControl sx={{ m: 2, minWidth: 300 }} size="small">
-                  <SelectMui
-                    label="Select Product"
-                    onChange={(value) => setSelectedProduct(value)}
-                    options={productOptions}
-                    value={selectedProduct.value}
-                  />
-                </FormControl>
-              </MenuItem>
-              {navItems.map((item) => (
-                <MenuItem key={item.value} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{item.label}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
           <Box
             sx={{
               flexGrow: 1,
@@ -144,26 +86,44 @@ export default function SecondaryNavBar({ navItems }: SecondaryNavBarProps) {
                   label="Select Product"
                   onChange={(value) => setSelectedProduct(value)}
                   options={productOptions}
-                  value={selectedProduct.value}
+                  value={selectedProduct || ""}
                 />
               </FormControl>
             </ProductSelectorWrapper>
 
             <NavBarWrapper>
               {navItems.map((item) => (
-                <NextLink href={item.href}>
+                <NextLink
+                  key={item.label}
+                  href={item.href(String(selectedProduct?.value))} // Generate href based on
+                  // selectedProduct
+                >
                   <Button
-                    key={item.value}
-                    onClick={handleCloseNavMenu}
+                    key={item.label}
+                    onClick={() => {
+                      setSelectedSecondaryNavItem(item);
+                    }}
                     sx={{
-                      color: PURPLE_075,
                       font: ROBOTO,
                       display: "block",
                       width: "10rem",
                       marginBottom: "unset",
                       borderRadius: "0px",
-                      borderBottom: "2px solid transparent",
+                      color:
+                        router.asPath ===
+                        item.href(String(selectedProduct?.value))
+                          ? PURPLE_100
+                          : PURPLE_075,
+                      borderBottom:
+                        router.asPath ===
+                        item.href(String(selectedProduct?.value))
+                          ? `2px solid ${PURPLE_100}`
+                          : `2px solid transparent`,
                       "&:hover": {
+                        color: PURPLE_100,
+                        borderBottom: `2px solid ${PURPLE_100}`,
+                      },
+                      "&:focus": {
                         color: PURPLE_100,
                         borderBottom: `2px solid ${PURPLE_100}`,
                       },

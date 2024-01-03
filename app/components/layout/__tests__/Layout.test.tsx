@@ -7,19 +7,19 @@ import { ReactComponent as HomeIcon } from "../../../../assets/images/component-
 import { ReactComponent as DwollaBalanceIcon } from "../../../../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../../../../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../../../../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
+import { ReactComponent as DwollaConnectColorIcon } from "../../../../assets/images/product-icons-and-heroes/dwolla-connect-icon-48x48.svg";
+import { ReactComponent as DwollaBalanceColorIcon } from "../../../../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 import { SideNavLinkProps } from "../SideNav";
-import { NavItemProps } from "../SecondaryNavBar";
+import { SelectMuiOption } from "../../base/SelectMui";
 
-const mockPath = "/";
 jest.mock("next/router", () => ({
-  useRouter() {
-    return {
-      route: mockPath,
-      pathname: mockPath,
-      query: "",
-      asPath: mockPath,
-    };
-  },
+  useRouter: jest.fn(() => ({
+    route: "/",
+    pathname: "/",
+    query: "",
+    asPath: "/",
+    push: jest.fn(),
+  })),
 }));
 jest.mock("../../../modules/images.import");
 jest.mock("../../../modules/pages.import");
@@ -124,43 +124,46 @@ const TOP_BAR_PROPS = {
   },
 };
 
-const PRODUCT_OPTIONS = [
-  { value: "connect", label: "Dwolla Connect" }, // Array[0] is selected by default
-  { value: "balance", label: "Dwolla Balance" },
+const PRODUCT_OPTIONS: SelectMuiOption[] = [
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon },
+  { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
 ];
 
-const NAV_ITEMS: NavItemProps[] = [
+const NAV_ITEMS: SelectMuiOption[] = [
   {
     value: "platformOverview",
     label: "Platform Overview",
-    href: "https://developers.dwolla.com/docs/balance",
+    href: (selectedProduct) => `/docs/${selectedProduct}`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "apiReference",
     label: "API Reference",
-    href: "https://developers.dwolla.com/api-reference",
+    href: (selectedProduct) => `/docs/${selectedProduct}/api-reference`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "codeSamples",
     label: "Code Samples",
-    href: "https://developers.dwolla.com/code-samples",
+    href: () => "/code-samples", // Static href, unchanged
   },
   {
     value: "dropIns",
     label: "Drop Ins",
-    href: "https://developers.dwolla.com/docs/balance/drop-in-components",
+    href: () => "/docs/drop-in-components", // Static href, unchanged
   },
   {
     value: "sdks",
     label: "SDKs",
-    href: "https://developers.dwolla.com/sdks-tools",
+    href: () => "/sdks-tools", // Static href, unchanged
   },
   {
     value: "changelog",
     label: "Changelog",
-    href: "https://developers.dwolla.com/changelog",
+    href: () => "/changelog", // Static href, unchanged
   },
 ];
+
+const mockSelectedProduct = PRODUCT_OPTIONS[0];
+const mockSetSelectedProduct = jest.fn();
 
 test("Layout", () => {
   const tree = renderer
@@ -171,6 +174,8 @@ test("Layout", () => {
         footerLegal={FOOTER_LEGAL_COPY}
         topBarProps={TOP_BAR_PROPS}
         productSelectorOptions={PRODUCT_OPTIONS}
+        selectedProduct={mockSelectedProduct}
+        setSelectedProduct={mockSetSelectedProduct}
         navItems={NAV_ITEMS}
         pages={Pages.all()}
         apiStatus={{ indicator: "none", description: "apiStatus description" }}

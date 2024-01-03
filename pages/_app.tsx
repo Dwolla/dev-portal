@@ -10,18 +10,15 @@ import algoliasearch from "algoliasearch/lite";
 import Layout from "../app/components/layout/Layout";
 import Pages from "../app/modules/pages";
 import { AnchorsProvider } from "../app/components/util/Anchors";
-import {
-  LanguageContext,
-  ProductContext,
-} from "../app/components/util/Contexts";
+import { LanguageContext } from "../app/components/util/Contexts";
 import { SideNavLinkProps } from "../app/components/layout/SideNav";
-import { NavItemProps } from "../app/components/layout/SecondaryNavBar";
 import { TopBarProps } from "../app/components/layout/TopBar";
 import fetcher from "../app/modules/fetcher";
 import { ReactComponent as HomeIcon } from "../assets/images/component-icons/side-nav/home-nav-icon.svg";
 import { ReactComponent as ApiReferenceIcon } from "../assets/images/component-icons/side-nav/api-reference-nav-icon.svg";
 import { ReactComponent as DwollaBalanceIcon } from "../assets/images/component-icons/side-nav/dwolla-balance-nav-icon.svg";
 import { ReactComponent as DwollaConnectIcon } from "../assets/images/component-icons/side-nav/dwolla-connect-nav-icon.svg";
+import { ReactComponent as DropInComponentIcon } from "../assets/images/component-icons/side-nav/drop-in-components-nav-icon.svg";
 import { ReactComponent as SdksToolsIcon } from "../assets/images/component-icons/side-nav/sdks-tools-nav-icon.svg";
 import { ReactComponent as CodeSamplesIcon } from "../assets/images/component-icons/side-nav/code-samples-nav-icon.svg";
 import { ReactComponent as ChangelogIcon } from "../assets/images/component-icons/side-nav/changelog-nav-icon.svg";
@@ -33,6 +30,7 @@ import useTrackPageViews from "../app/hooks/useTrackPageViews";
 import createEmotionCache from "../app/modules/emotion-cache";
 import theme from "../app/theme";
 import { FooterLink } from "../app/components/layout/Footer";
+import { SelectMuiOption } from "../app/components/base/SelectMui";
 
 function GoogleTagManager() {
   useEffect(() => {
@@ -169,41 +167,41 @@ const LANGUAGE_OPTIONS = [
   },
 ];
 
-const NAV_ITEMS: NavItemProps[] = [
+const NAV_ITEMS: SelectMuiOption[] = [
   {
     value: "platformOverview",
     label: "Platform Overview",
-    href: "https://developers.dwolla.com/docs/balance",
+    href: (selectedProduct) => `/docs/${selectedProduct}`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "apiReference",
     label: "API Reference",
-    href: "https://developers.dwolla.com/api-reference",
+    href: (selectedProduct) => `/docs/${selectedProduct}/api-reference`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "codeSamples",
     label: "Code Samples",
-    href: "https://developers.dwolla.com/code-samples",
+    href: () => "/code-samples", // Static href, unchanged
   },
   {
     value: "dropIns",
     label: "Drop Ins",
-    href: "https://developers.dwolla.com/docs/balance/drop-in-components",
+    href: () => "/docs/drop-in-components", // Static href, unchanged
   },
   {
     value: "sdks",
     label: "SDKs",
-    href: "https://developers.dwolla.com/sdks-tools",
+    href: () => "/sdks-tools", // Static href, unchanged
   },
   {
     value: "changelog",
     label: "Changelog",
-    href: "https://developers.dwolla.com/changelog",
+    href: () => "/changelog", // Static href, unchanged
   },
 ];
 
-const PRODUCT_OPTIONS = [
-  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon }, // Array[0] is selected by default
+const PRODUCT_OPTIONS: SelectMuiOption[] = [
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon },
   { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
 ];
 
@@ -224,15 +222,6 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "Dwolla Connect",
     isExternal: false,
-    stickyReferenceLinks: [
-      {
-        href: "/api-reference",
-        IconSvg: ApiReferenceIcon,
-        isSection: false,
-        text: "API Reference",
-        isExternal: false,
-      },
-    ],
   },
   {
     href: "/docs/balance",
@@ -240,30 +229,28 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
     isSection: true,
     text: "Dwolla Balance",
     isExternal: false,
-    stickyReferenceLinks: [
-      {
-        href: "/api-reference",
-        IconSvg: ApiReferenceIcon,
-        isSection: false,
-        text: "API Reference",
-        isExternal: false,
-      },
-      {
-        href: "/code-samples",
-        IconSvg: CodeSamplesIcon,
-        isSection: false,
-        text: "Code Samples",
-        isExternal: false,
-      },
-    ],
   },
   {
-    href: "/api-reference",
+    href: "/docs/connect/api-reference",
     IconSvg: ApiReferenceIcon,
     isSection: true,
     text: "API Reference",
     isExternal: false,
-    productSelector: true,
+  },
+  {
+    href: "/docs/balance/api-reference",
+    IconSvg: ApiReferenceIcon,
+    isSection: true,
+    text: "API Reference",
+    isExternal: false,
+  },
+  {
+    href: "/docs/drop-in-components",
+    IconSvg: DropInComponentIcon,
+    isSection: true,
+    text: "Drop In Components",
+    isExternal: false,
+    productSelector: false,
   },
   {
     href: "/sdks-tools",
@@ -275,14 +262,14 @@ const SIDE_NAV_LINKS: SideNavLinkProps[] = [
   {
     href: "/code-samples",
     IconSvg: CodeSamplesIcon,
-    isSection: false,
+    isSection: true,
     text: "Code Samples",
     isExternal: false,
   },
   {
     href: "/changelog",
     IconSvg: ChangelogIcon,
-    isSection: false,
+    isSection: true,
     text: "Changelog",
     isExternal: false,
   },
@@ -333,13 +320,30 @@ interface Props extends AppProps {
 
 function AppWithHooks({ router, Component, pageProps }: Props) {
   const [selectedLanguage, setSelectedLanguage] = useState(LANGUAGE_OPTIONS[0]);
-  const [selectedProduct, setSelectedProduct] = useState(PRODUCT_OPTIONS[0]);
+  const [selectedProduct, setSelectedProduct] = useState<
+    SelectMuiOption | undefined
+  >(undefined);
 
   const apiStatus = useSWR(STATUS_PAGE_SUMMARY_URL, fetcher, {
     refreshInterval: 60000,
   }).data?.status;
 
   useTrackPageViews(router.pathname);
+
+  useEffect(() => {
+    // Access the pathname from the router object
+    const currentPath = router.pathname;
+
+    // Use productOptions to determine the initial state based on the path
+    const initialState = PRODUCT_OPTIONS.find((option) =>
+      currentPath.startsWith(`/docs/${option.value}`)
+    );
+
+    // Set the initial state for selectedProduct state
+    setSelectedProduct(
+      initialState !== undefined ? initialState : PRODUCT_OPTIONS[0]
+    );
+  }, []);
 
   return (
     <AnchorsProvider>
@@ -350,26 +354,20 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
           languageOptions: LANGUAGE_OPTIONS,
         }}
       >
-        <ProductContext.Provider
-          value={{
-            selectedProduct,
-            setSelectedProduct,
-            productOptions: PRODUCT_OPTIONS,
-          }}
+        <Layout
+          apiStatus={apiStatus}
+          footerLinks={FOOTER_LINKS}
+          footerLegal={FOOTER_LEGAL_COPY}
+          navItems={NAV_ITEMS}
+          pages={Pages.all()}
+          productSelectorOptions={PRODUCT_OPTIONS}
+          selectedProduct={selectedProduct}
+          setSelectedProduct={setSelectedProduct}
+          topBarProps={TOP_BAR_PROPS}
+          sideNavLinks={SIDE_NAV_LINKS}
         >
-          <Layout
-            apiStatus={apiStatus}
-            footerLinks={FOOTER_LINKS}
-            footerLegal={FOOTER_LEGAL_COPY}
-            navItems={NAV_ITEMS}
-            pages={Pages.all()}
-            productSelectorOptions={PRODUCT_OPTIONS}
-            topBarProps={TOP_BAR_PROPS}
-            sideNavLinks={SIDE_NAV_LINKS}
-          >
-            <Component {...pageProps} url={router.pathname} />
-          </Layout>
-        </ProductContext.Provider>
+          <Component {...pageProps} url={router.pathname} />
+        </Layout>
       </LanguageContext.Provider>
     </AnchorsProvider>
   );
