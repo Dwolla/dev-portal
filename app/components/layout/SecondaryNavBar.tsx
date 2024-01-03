@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useRouter } from "next/router";
 import styled from "@emotion/styled";
 import NextLink from "next/link";
 import { FormControl } from "@mui/material";
@@ -7,7 +8,6 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { useRouter } from "next/router";
 import SelectMui, { SelectMuiOption } from "../base/SelectMui";
 import { PURPLE_023, PURPLE_075, PURPLE_100, WHITE_PRIMARY } from "../colors";
 import { ROBOTO } from "../typography";
@@ -33,12 +33,6 @@ const NavBarWrapper = styled.div`
   padding-right: 2em;
 `;
 
-// TODO: uncomment unused variable
-// const productRouteMap: Record<string, string> = {
-//   connect: "/docs/connect",
-//   balance: "/docs/balance",
-// };
-
 export type SecondaryNavBarProps = {
   navItems: SelectMuiOption[];
   selectedSecondaryNavItem: SelectMuiOption;
@@ -58,22 +52,13 @@ export default function SecondaryNavBar({
 }: SecondaryNavBarProps) {
   const router = useRouter();
 
-  // useEffect(() => {
-  //   // Update the route and page based on the selectedProduct
-  //   if (selectedProduct) {
-  //     // @ts-ignore
-  //     router.push(productRouteMap[selectedProduct?.value]);
-  //   }
-  // }, [selectedProduct]);
-
   useEffect(() => {
     // Update the route and page based on the selectedSecondaryNavItem
-    if (selectedSecondaryNavItem) {
-      router.push(
-        selectedSecondaryNavItem.href(String(selectedProduct?.value))
-      );
+    if (selectedSecondaryNavItem && selectedProduct) {
+      router.push(selectedSecondaryNavItem.href(selectedProduct?.value));
     }
   }, [selectedSecondaryNavItem, selectedProduct]);
+
   return (
     <AppBar
       position="sticky"
@@ -116,7 +101,6 @@ export default function SecondaryNavBar({
                   <Button
                     key={item.label}
                     onClick={() => {
-                      console.log(item);
                       setSelectedSecondaryNavItem(item);
                     }}
                     sx={{

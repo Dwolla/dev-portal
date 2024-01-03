@@ -333,22 +333,17 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
   useEffect(() => {
     // Access the pathname from the router object
     const currentPath = router.pathname;
-    console.log("currentPath:", currentPath);
 
     // Use productOptions to determine the initial state based on the path
     const initialState = PRODUCT_OPTIONS.find((option) =>
       currentPath.startsWith(`/docs/${option.value}`)
     );
 
-    console.log("initialState:", initialState);
-
-    // Set the initial state
+    // Set the initial state for selectedProduct state
     setSelectedProduct(
       initialState !== undefined ? initialState : PRODUCT_OPTIONS[0]
     );
-
-    console.log("selectedProduct:", selectedProduct);
-  }, []); // useEffect will run whenever the path changes
+  }, []);
 
   return (
     <AnchorsProvider>

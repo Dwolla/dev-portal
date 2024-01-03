@@ -2,17 +2,171 @@
 
 exports[`SideNav 1`] = `
 <div
-  className="css-yeohq5-Container e1qiqw1s17"
+  className="css-yeohq5-Container e1qiqw1s18"
 >
   <div
-    className="css-kibqvq-Slide e1qiqw1s16"
+    className="css-kibqvq-Slide e1qiqw1s17"
   >
     <div
-      className="left css-soqej8-SlidePane e1qiqw1s15"
+      className="left css-soqej8-SlidePane e1qiqw1s16"
       id="body-scroll-lock-side-nav"
     >
       <div
-        className="css-kgvw59-SectionWrap e1qiqw1s14"
+        className="css-i677yt-SecondaryNavWrap e1qiqw1s1"
+      >
+        <div
+          className="MuiFormControl-root css-1ew3zq8-MuiFormControl-root"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={true}
+            id=":r0:"
+          >
+            Select Product
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+            onClick={[Function]}
+          >
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby=":r0:"
+              className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              <div
+                style={
+                  {
+                    "alignItems": "center",
+                    "display": "flex",
+                    "justifyItems": "space-between",
+                  }
+                }
+              >
+                <svg
+                  width={24}
+                />
+                <div
+                  style={
+                    {
+                      "marginLeft": "0.5em",
+                      "padding": "0.3em 0",
+                    }
+                  }
+                >
+                  Dwolla Connect
+                </div>
+              </div>
+            </div>
+            <input
+              aria-hidden={true}
+              aria-invalid={false}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value="connect"
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-14lo706"
+              >
+                <span>
+                  Select Product
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+        <div
+          className="MuiFormControl-root css-skjjoq-MuiFormControl-root"
+        >
+          <label
+            className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiFormLabel-filled MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1jy569b-MuiFormLabel-root-MuiInputLabel-root"
+            data-shrink={true}
+            id=":r3:"
+          >
+            Select Category
+          </label>
+          <div
+            className="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl MuiInputBase-sizeSmall  css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+            onClick={[Function]}
+          >
+            <div
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-labelledby=":r3:"
+              className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              role="button"
+              tabIndex={0}
+            >
+              Platform Overview
+            </div>
+            <input
+              aria-hidden={true}
+              aria-invalid={false}
+              className="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
+              disabled={false}
+              onAnimationStart={[Function]}
+              onChange={[Function]}
+              required={false}
+              tabIndex={-1}
+              value="platformOverview"
+            />
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-hfutr2-MuiSvgIcon-root-MuiSelect-icon"
+              data-testid="ArrowDropDownIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+            <fieldset
+              aria-hidden={true}
+              className="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                className="css-14lo706"
+              >
+                <span>
+                  Select Category
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-kgvw59-SectionWrap e1qiqw1s15"
       >
         <a
           className=" css-nr9jvx-SectionLink-SectionLink"
@@ -22,7 +176,7 @@ exports[`SideNav 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+            className="css-30rc4k-SectionIconWrap e1qiqw1s12"
           >
             <svg
               className="section-icon"
@@ -40,7 +194,7 @@ exports[`SideNav 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+            className="css-30rc4k-SectionIconWrap e1qiqw1s12"
           >
             <svg
               className="section-icon"
@@ -58,7 +212,7 @@ exports[`SideNav 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+            className="css-30rc4k-SectionIconWrap e1qiqw1s12"
           >
             <svg
               className="section-icon"
@@ -68,7 +222,7 @@ exports[`SideNav 1`] = `
           </div>
           API Reference
           <div
-            className="css-1qriqu9-SectionCaretWrap e1qiqw1s10"
+            className="css-1qriqu9-SectionCaretWrap e1qiqw1s11"
           >
             <svg
               height={18}
@@ -84,7 +238,7 @@ exports[`SideNav 1`] = `
           onTouchStart={[Function]}
         >
           <div
-            className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+            className="css-30rc4k-SectionIconWrap e1qiqw1s12"
           >
             <svg
               className="section-icon"
@@ -96,7 +250,7 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-17mreui-ExternalSectionWrap e1qiqw1s13"
+        className="css-17mreui-ExternalSectionWrap e1qiqw1s14"
       >
         <a
           className=" css-nr9jvx-SectionLink-SectionLink"
@@ -107,7 +261,7 @@ exports[`SideNav 1`] = `
           target="_blank"
         >
           <div
-            className="css-30rc4k-SectionIconWrap e1qiqw1s11"
+            className="css-30rc4k-SectionIconWrap e1qiqw1s12"
           >
             <svg
               className="section-icon"
@@ -119,7 +273,7 @@ exports[`SideNav 1`] = `
         </a>
       </div>
       <div
-        className="css-19j3ofi-MobileWrap e1qiqw1s1"
+        className="css-19j3ofi-MobileWrap e1qiqw1s2"
       >
         <div
           className="css-1rc904k-MobileButtonWrap e1qiqw1s0"
@@ -143,6 +297,9 @@ exports[`SideNav 1`] = `
             target="_blank"
           >
             Get API Keys
+            <span
+              className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
           </a>
         </div>
       </div>
