@@ -1,0 +1,80 @@
+---
+layout: guides
+product: connect
+title: "Overview"
+group:
+  title: Transfers
+  weight: 6
+guide:
+  step: 0
+meta:
+  title: "Dwolla API Reference | Transfers: Overview"
+  description: "Endpoints for creating, retrieving and listing transfers."
+---
+
+import Transfer from "../../../../../assets/api-resource-tables/transfers/Transfer";
+
+# Transfers
+
+A transfer represents money being transferred from a `source` to a `destination`. Transfers can be created over the ACH network or over Wire. A Debit represents funds being debited from an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>'s funding source. A Credit represents funds being credited to an external party's funding source.
+
+### Transfer Statuses
+
+Once a transfer is successfully created, it can go through various status changes as it moves from Dwolla to your bank for processing. Reference the list below that includes every possible status and a brief description:
+
+| Status    | Description                                                                                                                        |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| created   | The initial status of a transfer.                                                                                                  |
+| pending   | A transfer will move from created to pending as it processes in Dwolla system and continues processing on submission to your bank. |
+| processed | A transfer was submitted by your bank through the payment network for processing and successfully completed.                       |
+| failed    | A transfer failed to be submitted to your bank for processing.                                                                     |
+| returned  | A transfer was submitted to your bank for processing and later updated to returned upon receiving an ACH return code.              |
+
+## Resource Overview
+
+<Table table={Transfer} />
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/transfers/60075bd9-2492-4d88-b810-13b162cdec03",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "transfer"
+        },
+        "source": {
+            "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb3",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "account"
+        },
+        "source-funding-source": {
+            "href": "https://api.dwolla.com/funding-sources/9062c625-2094-47ed-9d1f-f40315e4bea7",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        },
+        "destination": {
+            "href": "https://api.dwolla.com/external-parties/ef156b8c-159b-45dc-9e1a-9a92fa355cdc",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "external-party"
+        },
+        "destination-funding-source": {
+            "href": "https://api.dwolla.com/funding-sources/737d3c04-02c3-416f-b327-cd5419999b3f",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "id": "60075bd9-2492-4d88-b810-13b162cdec03",
+    "created": "2023-09-20T14:43:30.403Z",
+    "amount": {
+        "value": "5.12",
+        "currency": "USD"
+    },
+    "status": "returned",
+    "processingChannel": "ach",
+    "failureReason": {
+        "description": "Insufficient Funds",
+        "code": "R01",
+        "explanation": "Available balance is not sufficient to cover the dollar amount of the debit entry."
+    }
+}
+```

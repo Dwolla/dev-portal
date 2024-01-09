@@ -541,12 +541,6 @@ function SideNav({
     findSelectedSection(sectionLinks, pathname)
   );
 
-  // Filter pages based on the selected product if productSelector exists
-  const filteredPages =
-    activeSection && activeSection.productSelector
-      ? pages.filter((page) => page.product === selectedProduct.value)
-      : pages;
-
   useEffect(() => {
     setActiveSection(findSelectedSection(sectionLinks, pathname));
   }, [pathname]);
@@ -556,11 +550,11 @@ function SideNav({
   }, [selectedSecondaryNavItem]);
 
   const categories = activeSection
-    ? groupby(getPagesInSection(filteredPages, activeSection), getCategory)
+    ? groupby(getPagesInSection(pages, activeSection), getCategory)
     : {};
 
   const subCategories = activeSection
-    ? groupby(getPagesInSection(filteredPages, activeSection), getSubCategory)
+    ? groupby(getPagesInSection(pages, activeSection), getSubCategory)
     : {};
 
   return (
