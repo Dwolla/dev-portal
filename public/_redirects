@@ -155,3 +155,5 @@
 /docs/balance/plaid/generate-processor-token    /docs/balance/create-funding-source-plaid
 /docs/balance/plaid/create-funding-source    /docs/balance/create-funding-source-plaid
 /docs/balance/plaid/frequently-asked-questions    /docs/balance/create-funding-source-plaid
+
+/api-reference/connect    /api-reference
