@@ -551,10 +551,6 @@ function SideNav({
     setActiveSection(findSelectedSection(sectionLinks, pathname));
   }, [pathname]);
 
-  useEffect(() => {
-    setSelectedSecondaryNavItem(selectedSecondaryNavItem);
-  }, [selectedSecondaryNavItem]);
-
   const categories = activeSection
     ? groupby(getPagesInSection(filteredPages, activeSection), getCategory)
     : {};

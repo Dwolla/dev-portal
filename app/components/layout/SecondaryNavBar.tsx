@@ -44,7 +44,7 @@ export type SecondaryNavBarProps = {
 
 export default function SecondaryNavBar({
   navItems,
-  selectedSecondaryNavItem,
+  // selectedSecondaryNavItem, TODO: Update or remove this prop
   setSelectedSecondaryNavItem,
   productOptions,
   selectedProduct,
@@ -52,12 +52,23 @@ export default function SecondaryNavBar({
 }: SecondaryNavBarProps) {
   const router = useRouter();
 
+  // TODO: Update or remove this useEffect block
+  // useEffect(() => {
+  //   // Update the route and page based on the selectedSecondaryNavItem
+  //   if (selectedSecondaryNavItem && selectedProduct) {
+  //     router.push(selectedSecondaryNavItem.href(selectedProduct?.value));
+  //   }
+  // }, [selectedSecondaryNavItem, selectedProduct]);
+
   useEffect(() => {
-    // Update the route and page based on the selectedSecondaryNavItem
-    if (selectedSecondaryNavItem && selectedProduct) {
-      router.push(selectedSecondaryNavItem.href(selectedProduct?.value));
-    }
-  }, [selectedSecondaryNavItem, selectedProduct]);
+    // Find the corresponding nav item based on the current path
+    const currentNavItem = navItems.find((item) =>
+      router.asPath.startsWith(item.href(String(selectedProduct?.value)))
+    );
+
+    // Update selectedSecondaryNavItem based on the current path
+    setSelectedSecondaryNavItem(currentNavItem || navItems[0]);
+  }, [router.asPath, selectedProduct]);
 
   return (
     <AppBar
@@ -114,11 +125,17 @@ export default function SecondaryNavBar({
                         item.href(String(selectedProduct?.value))
                           ? PURPLE_100
                           : PURPLE_075,
+                      /* eslint-disable no-nested-ternary */
                       borderBottom:
                         router.asPath ===
                         item.href(String(selectedProduct?.value))
                           ? `2px solid ${PURPLE_100}`
+                          : router.asPath.startsWith(
+                              `${item.href(String(selectedProduct?.value))}/`
+                            )
+                          ? `2px solid transparent`
                           : `2px solid transparent`,
+                      /* eslint-enable no-nested-ternary */
                       "&:hover": {
                         color: PURPLE_100,
                         borderBottom: `2px solid ${PURPLE_100}`,

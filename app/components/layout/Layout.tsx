@@ -156,9 +156,7 @@ export default function Layout({
   announcement?: JSX.Element;
 }) {
   const [sidebarToggled, setSidebarToggled] = useState(false);
-  const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState(
-    navItems[0]
-  );
+  const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState();
 
   useEffect(() => {
     if (document) {
