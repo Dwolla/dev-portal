@@ -44,7 +44,7 @@ export type SecondaryNavBarProps = {
 
 export default function SecondaryNavBar({
   navItems,
-  // selectedSecondaryNavItem, TODO: Update or remove this prop
+  selectedSecondaryNavItem,
   setSelectedSecondaryNavItem,
   productOptions,
   selectedProduct,
@@ -52,18 +52,12 @@ export default function SecondaryNavBar({
 }: SecondaryNavBarProps) {
   const router = useRouter();
 
-  // TODO: Update or remove this useEffect block
-  // useEffect(() => {
-  //   // Update the route and page based on the selectedSecondaryNavItem
-  //   if (selectedSecondaryNavItem && selectedProduct) {
-  //     router.push(selectedSecondaryNavItem.href(selectedProduct?.value));
-  //   }
-  // }, [selectedSecondaryNavItem, selectedProduct]);
-
   useEffect(() => {
     // Find the corresponding nav item based on the current path
-    const currentNavItem = navItems.find((item) =>
-      router.asPath.startsWith(item.href(String(selectedProduct?.value)))
+    const currentNavItem = navItems.find((item, index) =>
+      index === 0
+        ? undefined
+        : router.asPath.startsWith(item.href(String(selectedProduct?.value)))
     );
 
     // Update selectedSecondaryNavItem based on the current path
@@ -95,7 +89,12 @@ export default function SecondaryNavBar({
               <FormControl sx={{ m: 1, width: "100%" }} size="small">
                 <SelectMui
                   label="Select Product"
-                  onChange={(value) => setSelectedProduct(value)}
+                  onChange={(newProduct) => {
+                    setSelectedProduct(newProduct);
+                    router.push(
+                      selectedSecondaryNavItem.href(newProduct.value)
+                    );
+                  }}
                   options={productOptions}
                   value={selectedProduct || ""}
                 />
@@ -121,21 +120,13 @@ export default function SecondaryNavBar({
                       marginBottom: "unset",
                       borderRadius: "0px",
                       color:
-                        router.asPath ===
-                        item.href(String(selectedProduct?.value))
+                        item?.value === selectedSecondaryNavItem?.value
                           ? PURPLE_100
                           : PURPLE_075,
-                      /* eslint-disable no-nested-ternary */
                       borderBottom:
-                        router.asPath ===
-                        item.href(String(selectedProduct?.value))
+                        item?.value === selectedSecondaryNavItem?.value
                           ? `2px solid ${PURPLE_100}`
-                          : router.asPath.startsWith(
-                              `${item.href(String(selectedProduct?.value))}/`
-                            )
-                          ? `2px solid transparent`
                           : `2px solid transparent`,
-                      /* eslint-enable no-nested-ternary */
                       "&:hover": {
                         color: PURPLE_100,
                         borderBottom: `2px solid ${PURPLE_100}`,

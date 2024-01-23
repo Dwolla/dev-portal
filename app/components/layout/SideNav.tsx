@@ -531,12 +531,12 @@ function SideNav({
   mobileItems,
   secondaryNavItemOptions,
   selectedSecondaryNavItem,
-  setSelectedSecondaryNavItem,
   productOptions,
   selectedProduct,
   setSelectedProduct,
 }: SideNavProps) {
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
   );
@@ -572,7 +572,10 @@ function SideNav({
             <FormControl sx={{ m: 2, minWidth: 300 }} size="small">
               <SelectMui
                 label="Select Product"
-                onChange={(value) => setSelectedProduct(value)}
+                onChange={(newProduct) => {
+                  setSelectedProduct(newProduct);
+                  router.push(selectedSecondaryNavItem.href(newProduct.value));
+                }}
                 options={productOptions}
                 value={selectedProduct || ""}
               />
@@ -581,7 +584,7 @@ function SideNav({
               <SelectMui
                 label="Select Category"
                 onChange={(value) => {
-                  setSelectedSecondaryNavItem(value);
+                  router.push(value.href(selectedProduct.value));
                 }}
                 options={secondaryNavItemOptions}
                 value={selectedSecondaryNavItem || ""}
