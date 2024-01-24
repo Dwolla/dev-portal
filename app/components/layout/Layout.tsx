@@ -155,28 +155,28 @@ export default function Layout({
   apiStatus: APIStatus;
   announcement?: JSX.Element;
 }) {
+  const router = useRouter();
+
   const [sidebarToggled, setSidebarToggled] = useState(false);
-  const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState(
-    navItems[0]
-  );
+  const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState();
+
+  // Check if the current route is exactly "/docs" (aka Homepage)
+  const isHomepage = router.pathname === "/docs";
 
   useEffect(() => {
     if (document) {
       document.documentElement.lang = "en-us";
       enableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
-      if (sidebarToggled) {
+
+      if (sidebarToggled && !isHomepage) {
         disableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
       }
     }
+
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, [sidebarToggled]);
-
-  const router = useRouter();
-
-  // Check if the current route is exactly "/docs" (aka Homepage)
-  const isExactlyDocs = router.pathname === "/docs";
+  }, [sidebarToggled, isHomepage]);
 
   return (
     <>
@@ -203,7 +203,7 @@ export default function Layout({
           setSidebarToggled={setSidebarToggled}
         />
         {/* Render SecondaryNavBar only if the current page is not "/docs" (aka Homepage)*/}
-        {!isExactlyDocs && (
+        {!isHomepage && (
           <SecondaryNavBar
             navItems={navItems}
             selectedSecondaryNavItem={selectedSecondaryNavItem}
@@ -217,7 +217,7 @@ export default function Layout({
 
       <LayoutContainer>
         {/* Render SideNav only if the current page is not "/docs" (aka Homepage)*/}
-        {!isExactlyDocs && (
+        {!isHomepage && (
           <LeftSidebar
             className={classnames(
               sidebarToggled ? "toggled" : "visuallyHidden"
@@ -241,7 +241,7 @@ export default function Layout({
           </LeftSidebar>
         )}
 
-        <MainArea className={classnames({ fullWidth: isExactlyDocs })}>
+        <MainArea className={classnames({ fullWidth: isHomepage })}>
           {announcement && (
             <AlertBar variation="announcement" isClosable>
               {announcement}
@@ -249,7 +249,9 @@ export default function Layout({
           )}
 
           <ContentArea
-            className={classnames({ visuallyhidden: sidebarToggled })}
+            className={classnames({
+              visuallyhidden: sidebarToggled && !isHomepage,
+            })}
           >
             {children}
           </ContentArea>

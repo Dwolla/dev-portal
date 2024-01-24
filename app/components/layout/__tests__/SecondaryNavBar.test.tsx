@@ -5,22 +5,13 @@ import { SelectMuiOption } from "../../base/SelectMui";
 import { ReactComponent as DwollaConnectColorIcon } from "../../../../assets/images/product-icons-and-heroes/dwolla-connect-icon-48x48.svg";
 import { ReactComponent as DwollaBalanceColorIcon } from "../../../../assets/images/product-icons-and-heroes/dwolla-balance-icon-48x48.svg";
 
-// const mockPath = "/";
-// jest.mock("next/router", () => ({
-//   useRouter() {
-//     return {
-//       route: mockPath,
-//       pathname: mockPath,
-//       query: "",
-//       asPath: mockPath,
-//     };
-//   },
-// }));
-
-const useRouter = jest.spyOn(require("next/router"), "useRouter");
-
-useRouter.mockImplementation(() => ({
-  push: jest.fn(),
+// Mock the useRouter hook
+jest.mock("next/router", () => ({
+  ...jest.requireActual("next/router"),
+  useRouter: () => ({
+    asPath: "/mocked-path", // Provide a mocked asPath value for testing
+    push: jest.fn(),
+  }),
 }));
 
 const PRODUCT_OPTIONS: SelectMuiOption[] = [

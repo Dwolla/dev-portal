@@ -185,7 +185,7 @@ export default function TopBar({
     useContext(LanguageContext);
 
   // Check if the current route is exactly "/docs" (aka Homepage)
-  const isExactlyDocs = router.pathname === "/docs";
+  const isHomepage = router.pathname === "/docs";
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
@@ -241,7 +241,7 @@ export default function TopBar({
         </Button>
       </RightAlignWrapper>
 
-      {!isExactlyDocs &&
+      {!isHomepage &&
         (sidebarToggled === false ? (
           <Hamburger
             tabIndex={0}

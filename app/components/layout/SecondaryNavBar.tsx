@@ -53,11 +53,16 @@ export default function SecondaryNavBar({
   const router = useRouter();
 
   useEffect(() => {
-    // Update the route and page based on the selectedSecondaryNavItem
-    if (selectedSecondaryNavItem && selectedProduct) {
-      router.push(selectedSecondaryNavItem.href(selectedProduct?.value));
-    }
-  }, [selectedSecondaryNavItem, selectedProduct]);
+    // Find the corresponding nav item based on the current path
+    const currentNavItem = navItems.find((item, index) =>
+      index === 0
+        ? undefined
+        : router.asPath.startsWith(item.href(String(selectedProduct?.value)))
+    );
+
+    // Update selectedSecondaryNavItem based on the current path
+    setSelectedSecondaryNavItem(currentNavItem || navItems[0]);
+  }, [router.asPath, selectedProduct]);
 
   return (
     <AppBar
@@ -84,7 +89,12 @@ export default function SecondaryNavBar({
               <FormControl sx={{ m: 1, width: "100%" }} size="small">
                 <SelectMui
                   label="Select Product"
-                  onChange={(value) => setSelectedProduct(value)}
+                  onChange={(newProduct) => {
+                    setSelectedProduct(newProduct);
+                    router.push(
+                      selectedSecondaryNavItem.href(newProduct.value)
+                    );
+                  }}
                   options={productOptions}
                   value={selectedProduct || ""}
                 />
@@ -110,13 +120,11 @@ export default function SecondaryNavBar({
                       marginBottom: "unset",
                       borderRadius: "0px",
                       color:
-                        router.asPath ===
-                        item.href(String(selectedProduct?.value))
+                        item?.value === selectedSecondaryNavItem?.value
                           ? PURPLE_100
                           : PURPLE_075,
                       borderBottom:
-                        router.asPath ===
-                        item.href(String(selectedProduct?.value))
+                        item?.value === selectedSecondaryNavItem?.value
                           ? `2px solid ${PURPLE_100}`
                           : `2px solid transparent`,
                       "&:hover": {
