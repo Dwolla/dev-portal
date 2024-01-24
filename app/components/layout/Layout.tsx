@@ -13,7 +13,8 @@ import {
 } from "body-scroll-lock";
 import { useRouter } from "next/router";
 import SideNav, { SideNavLinkProps } from "./SideNav"; // eslint-disable-line no-unused-vars
-import { GREY_2, LAYOUT_BORDER, WHITE_PRIMARY } from "../colors";
+import SecondaryNavBar from "./SecondaryNavBar";
+import { GREY_2, PURPLE_023, WHITE_PRIMARY } from "../colors";
 import { breakDown, breakUp } from "../breakpoints";
 import { Z_TOB_BAR } from "../zIndexes";
 import TopBar, { TOP_BAR_HEIGHT, TopBarProps } from "./TopBar"; // eslint-disable-line no-unused-vars
@@ -22,7 +23,7 @@ import APIStatusBar from "./APIStatusBar";
 import AlertBar from "../base/AlertBar";
 import { SelectMuiOption } from "../base/SelectMui";
 
-const LEFT_SIDEBAR_WIDTH = "420";
+export const LEFT_SIDEBAR_WIDTH = "420";
 
 const LayoutContainer = styled.div`
   @media (${breakUp("lg")}) {
@@ -33,12 +34,12 @@ const LayoutContainer = styled.div`
 
 const LeftSidebar = styled.div`
   position: sticky;
-  top: ${TOP_BAR_HEIGHT}px;
+  top: ${TOP_BAR_HEIGHT + 69}px;
   right: 0;
   bottom: 0;
   left: 0;
   overflow-y: auto;
-  height: calc(100vh - ${TOP_BAR_HEIGHT}px);
+  height: calc(100vh - ${TOP_BAR_HEIGHT + 69}px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -51,6 +52,11 @@ const LeftSidebar = styled.div`
     right: 75%;
     opacity: 1;
     pointer-events: auto;
+  }
+
+  @media (${breakDown("lg")}) {
+    top: 0;
+    height: calc(100vh - ${TOP_BAR_HEIGHT}px);
   }
 
   &.toggled {
@@ -77,8 +83,15 @@ const SideNavWrapper = styled.div`
 const MainArea = styled.div`
   @media (${breakUp("lg")}) {
     width: calc(100vw - ${LEFT_SIDEBAR_WIDTH}px);
-    border-left: 1px solid ${LAYOUT_BORDER};
+    border-left: 1px solid ${PURPLE_023};
+
+    &.fullWidth {
+      width: 100vw;
+      padding: 32px 64px;
+    }
   }
+
+  border-top: 1px solid ${PURPLE_023};
 `;
 
 const ContentArea = styled.div`
@@ -117,6 +130,9 @@ export default function Layout({
   pages,
   sideNavLinks,
   productSelectorOptions,
+  selectedProduct,
+  setSelectedProduct,
+  navItems,
   footerLinks,
   footerLegal,
   topBarProps,
@@ -127,6 +143,9 @@ export default function Layout({
   pages: Page[];
   sideNavLinks: SideNavLinkProps[];
   productSelectorOptions?: Array<SelectMuiOption>;
+  selectedProduct: SelectMuiOption;
+  setSelectedProduct: Function;
+  navItems: SelectMuiOption[];
   footerLinks: Record<string, FooterLink[]>;
   footerLegal: {
     title: string;
@@ -136,22 +155,28 @@ export default function Layout({
   apiStatus: APIStatus;
   announcement?: JSX.Element;
 }) {
+  const router = useRouter();
+
   const [sidebarToggled, setSidebarToggled] = useState(false);
+  const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState();
+
+  // Check if the current route is exactly "/docs" (aka Homepage)
+  const isHomepage = router.pathname === "/docs";
 
   useEffect(() => {
     if (document) {
       document.documentElement.lang = "en-us";
       enableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
-      if (sidebarToggled) {
+
+      if (sidebarToggled && !isHomepage) {
         disableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
       }
     }
+
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, [sidebarToggled]);
-
-  const router = useRouter();
+  }, [sidebarToggled, isHomepage]);
 
   return (
     <>
@@ -177,25 +202,46 @@ export default function Layout({
           sidebarToggled={sidebarToggled}
           setSidebarToggled={setSidebarToggled}
         />
+        {/* Render SecondaryNavBar only if the current page is not "/docs" (aka Homepage)*/}
+        {!isHomepage && (
+          <SecondaryNavBar
+            navItems={navItems}
+            selectedSecondaryNavItem={selectedSecondaryNavItem}
+            setSelectedSecondaryNavItem={setSelectedSecondaryNavItem}
+            productOptions={productSelectorOptions}
+            selectedProduct={selectedProduct}
+            setSelectedProduct={setSelectedProduct}
+          />
+        )}
       </TopBarWrapper>
 
       <LayoutContainer>
-        <LeftSidebar
-          className={classnames(sidebarToggled ? "toggled" : "visuallyHidden")}
-        >
-          <SideNavWrapper>
-            <SideNav
-              sectionLinks={sideNavLinks}
-              pages={pages}
-              mobileItems={topBarProps}
-              productSelectorOptions={productSelectorOptions}
-            />
-          </SideNavWrapper>
+        {/* Render SideNav only if the current page is not "/docs" (aka Homepage)*/}
+        {!isHomepage && (
+          <LeftSidebar
+            className={classnames(
+              sidebarToggled ? "toggled" : "visuallyHidden"
+            )}
+          >
+            <SideNavWrapper>
+              <SideNav
+                sectionLinks={sideNavLinks}
+                pages={pages}
+                mobileItems={topBarProps}
+                secondaryNavItemOptions={navItems}
+                selectedSecondaryNavItem={selectedSecondaryNavItem}
+                setSelectedSecondaryNavItem={setSelectedSecondaryNavItem}
+                productOptions={productSelectorOptions}
+                selectedProduct={selectedProduct}
+                setSelectedProduct={setSelectedProduct}
+              />
+            </SideNavWrapper>
 
-          <APIStatusBar apiStatus={apiStatus} />
-        </LeftSidebar>
+            <APIStatusBar apiStatus={apiStatus} />
+          </LeftSidebar>
+        )}
 
-        <MainArea>
+        <MainArea className={classnames({ fullWidth: isHomepage })}>
           {announcement && (
             <AlertBar variation="announcement" isClosable>
               {announcement}
@@ -203,7 +249,9 @@ export default function Layout({
           )}
 
           <ContentArea
-            className={classnames({ visuallyhidden: sidebarToggled })}
+            className={classnames({
+              visuallyhidden: sidebarToggled && !isHomepage,
+            })}
           >
             {children}
           </ContentArea>

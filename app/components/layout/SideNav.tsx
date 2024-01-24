@@ -72,7 +72,12 @@ interface SideNavProps {
   sectionLinks: SideNavLinkProps[];
   pages: Page[];
   mobileItems: MobileItemProps;
-  productSelectorOptions: Array<SelectMuiOption>;
+  secondaryNavItemOptions: SelectMuiOption[];
+  selectedSecondaryNavItem: SelectMuiOption;
+  setSelectedSecondaryNavItem: Function;
+  productOptions: SelectMuiOption[];
+  selectedProduct: SelectMuiOption;
+  setSelectedProduct: Function;
 }
 
 // helpers
@@ -489,6 +494,16 @@ const MobileWrap = styled.div`
   }
 `;
 
+const SecondaryNavWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  @media (${breakUp("lg")}) {
+    display: none;
+  }
+`;
+
 const MobileButtonWrap = styled.div`
   padding: 17px 20px;
 `;
@@ -514,15 +529,17 @@ function SideNav({
   sectionLinks,
   pages,
   mobileItems,
-  productSelectorOptions,
+  secondaryNavItemOptions,
+  selectedSecondaryNavItem,
+  productOptions,
+  selectedProduct,
+  setSelectedProduct,
 }: SideNavProps) {
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const { pathname } = router;
   const [activeSection, setActiveSection] = useState(
     findSelectedSection(sectionLinks, pathname)
   );
-  const [selectedProduct, setSelectedProduct] = useState(
-    productSelectorOptions[0]
-  ); // Initialize with the default product
 
   // Filter pages based on the selected product if productSelector exists
   const filteredPages =
@@ -532,28 +549,6 @@ function SideNav({
 
   useEffect(() => {
     setActiveSection(findSelectedSection(sectionLinks, pathname));
-
-    // Find the active page based on the pathname
-    const activePage = pages.find((page) => page.id === pathname);
-
-    if (activePage && activePage.product) {
-      // Check if the active page's frontmatter contains a 'product' attribute.
-
-      // Find the matching product option from the available productSelectorOptions.
-      const matchingProductOption = productSelectorOptions.find(
-        (option) => option.value === activePage.product
-      );
-
-      // If a matching product option is found, update the selectedProduct state.
-      if (matchingProductOption) {
-        setSelectedProduct(matchingProductOption);
-
-        // The 'selectedProduct' state is being set based on the 'product' value
-        // extracted from the active page's frontmatter. This ensures that the
-        // side nav reflects the selected product and its contents when navigating to a page
-        // from a URL.
-      }
-    }
   }, [pathname]);
 
   const categories = activeSection
@@ -573,11 +568,34 @@ function SideNav({
             !(activeSection && activeSection.isSection) ? "left" : "right"
           }
         >
+          <SecondaryNavWrap>
+            <FormControl sx={{ m: 2, minWidth: 300 }} size="small">
+              <SelectMui
+                label="Select Product"
+                onChange={(newProduct) => {
+                  setSelectedProduct(newProduct);
+                  router.push(selectedSecondaryNavItem.href(newProduct.value));
+                }}
+                options={productOptions}
+                value={selectedProduct || ""}
+              />
+            </FormControl>
+            <FormControl sx={{ m: 2, minWidth: 200 }} size="small">
+              <SelectMui
+                label="Select Category"
+                onChange={(value) => {
+                  router.push(value.href(selectedProduct.value));
+                }}
+                options={secondaryNavItemOptions}
+                value={selectedSecondaryNavItem || ""}
+              />
+            </FormControl>
+          </SecondaryNavWrap>
           {!(activeSection && activeSection.isSection) ? (
             <>
               <SectionWrap>
                 {/* Filter sectionLinks based on the 'isExternal' prop so that only internal links
-              are passed to the SectionLink component*/}
+               are passed to the SectionLink component*/}
                 {sectionLinks
                   .filter((l) => !l.isExternal)
                   .map((l) => (
@@ -590,7 +608,7 @@ function SideNav({
               </SectionWrap>
               <ExternalSectionWrap>
                 {/* Filter sectionLinks based on the 'isExternal' prop so that only external links
-             are passed to the SectionLink component */}
+              are passed to the SectionLink component */}
                 {sectionLinks
                   .filter((el) => el.isExternal)
                   .map((el) => (
@@ -610,7 +628,7 @@ function SideNav({
                     href: "/docs",
                     IconSvg: BackIcon,
                     isSection: false,
-                    text: "All Docs",
+                    text: "Home",
                     isExternal: false,
                   }}
                   isActive={false}
@@ -628,7 +646,7 @@ function SideNav({
                   <SelectMui
                     label="Select Product"
                     onChange={(value) => setSelectedProduct(value)}
-                    options={productSelectorOptions}
+                    options={productOptions}
                     value={selectedProduct}
                   />
                 </FormControl>

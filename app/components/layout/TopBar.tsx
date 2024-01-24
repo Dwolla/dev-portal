@@ -7,18 +7,12 @@ import {
   AlgoliaAutocomplete,
   AlgoliaAutocompleteProps,
 } from "algolia-search-components";
+import { useRouter } from "next/router";
 import Help from "../base/Help";
 import { LanguageContext } from "../util/Contexts";
 import { ROBOTO } from "../typography";
 import { breakDown, breakUp } from "../breakpoints";
-import {
-  GREY_4,
-  GREY_5,
-  GREY_9,
-  PURPLE_023,
-  PURPLE_075,
-  WHITE_PRIMARY,
-} from "../colors";
+import { GREY_4, GREY_5, GREY_9, PURPLE_075, WHITE_PRIMARY } from "../colors";
 import dwollaLogo from "../../../assets/images/dwolla-logo-full-color.png";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
@@ -32,8 +26,6 @@ const Container = styled.div`
   height: ${TOP_BAR_HEIGHT}px;
   background-color: ${WHITE_PRIMARY};
   padding: 0 20px;
-
-  border-bottom: 1px solid ${PURPLE_023};
 
   @media (${breakDown("md")}) {
     padding: 12px 20px;
@@ -188,8 +180,12 @@ export default function TopBar({
   sidebarToggled,
   setSidebarToggled,
 }: TopBarProps) {
+  const router = useRouter();
   const { selectedLanguage, setSelectedLanguage, languageOptions } =
     useContext(LanguageContext);
+
+  // Check if the current route is exactly "/docs" (aka Homepage)
+  const isHomepage = router.pathname === "/docs";
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
@@ -245,27 +241,24 @@ export default function TopBar({
         </Button>
       </RightAlignWrapper>
 
-      {sidebarToggled === false ? (
-        <Hamburger
-          tabIndex={0}
-          aria-labelledby="Open menu"
-          onClick={showSidebar}
-          onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
-          // onFocus={() => setIsFocused(true)}
-          // onBlur={() => setIsFocused(false)}
-        />
-      ) : (
-        <StyledCloseIcon
-          tabIndex={0}
-          aria-labelledby="Close menu"
-          onClick={hideSidebar}
-          onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
-          // onFocus={() => setIsFocused(true)}
-          // onBlur={() => setIsFocused(false)}
-        >
-          <CloseIcon width={14} />
-        </StyledCloseIcon>
-      )}
+      {!isHomepage &&
+        (sidebarToggled === false ? (
+          <Hamburger
+            tabIndex={0}
+            aria-labelledby="Open menu"
+            onClick={showSidebar}
+            onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
+          />
+        ) : (
+          <StyledCloseIcon
+            tabIndex={0}
+            aria-labelledby="Close menu"
+            onClick={hideSidebar}
+            onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
+          >
+            <CloseIcon width={14} />
+          </StyledCloseIcon>
+        ))}
     </Container>
   );
 }

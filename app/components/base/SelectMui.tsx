@@ -10,6 +10,8 @@ export interface SelectMuiOption {
   label: string;
   value: SelectMuiValue;
   icon?: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  // eslint-disable-next-line no-unused-vars
+  href?: (selectedProduct?: SelectMuiValue) => string;
 }
 
 /**
