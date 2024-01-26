@@ -126,7 +126,7 @@ exports[`SideNav 1`] = `
               role="button"
               tabIndex={0}
             >
-              Platform Overview
+              Product Overview
             </div>
             <input
               aria-hidden={true}
@@ -137,7 +137,7 @@ exports[`SideNav 1`] = `
               onChange={[Function]}
               required={false}
               tabIndex={-1}
-              value="platformOverview"
+              value="productOverview"
             />
             <svg
               aria-hidden={true}

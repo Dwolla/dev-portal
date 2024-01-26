@@ -36,6 +36,10 @@ import { ReactComponent as CaretDownIcon } from "../../../assets/images/componen
 
 import Section from "../../modules/section";
 
+// Path(s) to exclude SideNav sections under Product Overview
+// Exclude 'api-reference' is excluded since it appears as a standalone SecondaryNavBar item
+const EXCLUDED_PATHS = ["api-reference"];
+
 // proptypes
 interface CommonSideNavLinkProps {
   href: string;
@@ -84,8 +88,31 @@ interface SideNavProps {
 const bySection = (section: string) => (d) =>
   section && d.id.indexOf(`${section}/`) === 0;
 
-const getPagesInSection = (pages: Page[], section: SideNavLinkProps) =>
-  pages.filter(bySection(section.href));
+const getPagesInSection = (pages: Page[], section: SideNavLinkProps) => {
+  const sectionPath = section.href;
+
+  const customFilter = (page: Page) => {
+    const pagePath = page.id;
+
+    // Exclude exact paths listed in EXCLUDED_PATHS
+    if (EXCLUDED_PATHS.includes(pagePath.replace(`${sectionPath}/`, ""))) {
+      return false;
+    }
+
+    // Exclude paths starting with any path in EXCLUDED_PATHS
+    if (
+      EXCLUDED_PATHS.some((excludedPath) =>
+        pagePath.startsWith(`${sectionPath}/${excludedPath}/`)
+      )
+    ) {
+      return false;
+    }
+
+    return bySection(sectionPath)(page); // Include other pages based on the section path
+  };
+
+  return pages.filter(customFilter);
+};
 
 const getCategory = (d) => (d.group ? d.group.category : d.category);
 const getSubCategory = (d) => (d.group ? d.group.subCategory : d.subCategory);
@@ -541,22 +568,16 @@ function SideNav({
     findSelectedSection(sectionLinks, pathname)
   );
 
-  // Filter pages based on the selected product if productSelector exists
-  const filteredPages =
-    activeSection && activeSection.productSelector
-      ? pages.filter((page) => page.product === selectedProduct.value)
-      : pages;
-
   useEffect(() => {
     setActiveSection(findSelectedSection(sectionLinks, pathname));
   }, [pathname]);
 
   const categories = activeSection
-    ? groupby(getPagesInSection(filteredPages, activeSection), getCategory)
+    ? groupby(getPagesInSection(pages, activeSection), getCategory)
     : {};
 
   const subCategories = activeSection
-    ? groupby(getPagesInSection(filteredPages, activeSection), getSubCategory)
+    ? groupby(getPagesInSection(pages, activeSection), getSubCategory)
     : {};
 
   return (

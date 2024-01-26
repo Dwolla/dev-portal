@@ -1,0 +1,136 @@
+---
+layout: guides
+product: balance
+title: "Overview"
+group:
+  title: Customers
+  weight: 6
+guide:
+  step: 0
+meta:
+  title: API Reference | Customer Overview
+  description: "Create, search and update Customers, and search for business-classification."
+---
+
+import conceptsIcon from "../../../../../assets/images/content-images/content-icons/concepts.svg";
+
+# Customers
+
+A Customer represents an individual or business with whom you intend to transact with and is programmatically created and managed by a Dwolla [Master account](https://developers.dwolla.com/api-reference/accounts) via the API. In order for a Dwolla `Account` to create and manage Customers, an application must obtain permission from Dwolla before being enabled in production. **Note:** Customers can only be US persons. Business Verified Customers may have non-US [Controllers](https://developers.dwolla.com/api-reference/customers/create#controller-json-object) or [Beneficial Owners](https://developers.dwolla.com/api-reference/beneficial-owners).
+
+### Customer types
+
+With a transfer of money, _at least one party must complete the identity verification process_, either the sender or the receiver. This can be either the Dwolla Master Account itself or a `verified` Customer type. Based on your business model and funds flow, it’s your decision about which party completes this process-- you may even want to have both parties complete the identity verification process. A brief description of each Customer type is below, but for a more in-depth overview of each Customer type and what their capabilities are, check out our [developer resource article](https://developers.dwolla.com/concepts/customer-types).
+
+<InlineCTA
+  icon={conceptsIcon}
+  text="A brief description of each Customer type is below, but for a more in-depth overview of each Customer type and what their capabilities are, reference our concept article."
+  href="/concepts/customer-types"
+/>
+
+##### Receive-only Users
+
+Receive-only users are restricted to a "payouts only" funds flow. A receive-only user maintains limited functionality in the API and is only eligible to receive transfers to an attached bank account. This Customer type can only interact with verified Customers and a Dwolla Master Account.
+
+##### Unverified Customers
+
+Unverified Customers have a default sending transaction limit of \$5,000 per week. A week is defined as Monday to Sunday UTC time. As this Customer is not identity verified, they will only be able to transact with verified Customers or your Dwolla Master Account.
+
+##### Verified Customers
+
+Verified Customers are defined by their ability to both send and receive money, thus, being able to fit all funds flows. They can also interact with any Customer type and hold a `balance` funding source within the Dwolla network. Think of the Dwolla `balance` as a "wallet" which a Customer can send, receive, or hold funds to within the Dwolla network. With no weekly transfer limits, this Customer type is flexible for high transaction volumes.
+
+A verified Customer can be created as a type of either `Personal` or `Business`.
+
+### Customer links
+
+| Link                                         | Description                                                                                                                                                                                                                                                                                                                                                        |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| self                                         | URL of the Customer resource                                                                                                                                                                                                                                                                                                                                       |
+| receive                                      | Follow the link to create a transfer to this Customer.                                                                                                                                                                                                                                                                                                             |
+| funding-sources                              | GET this link to list the Customer's funding sources.                                                                                                                                                                                                                                                                                                              |
+| transfers                                    | GET this link to list the Customer's transfers                                                                                                                                                                                                                                                                                                                     |
+| send                                         | (optional) If this link exists, this Customer can send funds. POST to this URL to create a transfer.                                                                                                                                                                                                                                                               |
+| retry-verification                           | If the Customer has a `status` of `retry`, POST to this link to attempt to correct their identity verification information.                                                                                                                                                                                                                                        |
+| verify-with-document                         | If the Verified Customer of type `personal` or `business` has a `status` of `document`, POST to this link to upload a new color photo document to verify the Customer's identity. If type `business`, the controller of the business. Read about [Documents](https://developers.dwolla.com/api-reference/documents).                                               |
+| verify-business-with-document                | If the Verified Customer of type `business` has a `status` of `document`, POST to this link to upload a new color photo document to verify the identity of the business itself. Read about [Documents](https://developers.dwolla.com/api-reference/documents).                                                                                                     |
+| verify-controller-and-business-with-document | If the Verified Customer of type `business` has a `status` of `document`, POST to this link to upload new color photo documents to verify the identity of the controller of the business as well as the business itself. Read about [Documents](https://developers.dwolla.com/api-reference/documents).                                                            |
+| upload-dba-document                          | If the Verified Customer of type `business` with a `doingBusinessAs` name has a `status` of `document`, POST to this link to upload a new color photo document containing the DBA name along with the state registered business name to verify the identity of the business itself. Read about [Documents](https://developers.dwolla.com/api-reference/documents). |
+
+### Customer resource
+
+| Parameter | Description                                                                                                                                                                                                                                                                                                                                 |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | Customer’s unique identifier.                                                                                                                                                                                                                                                                                                               |
+| firstName | Customer's first name.                                                                                                                                                                                                                                                                                                                      |
+| lastName  | Customer's last name.                                                                                                                                                                                                                                                                                                                       |
+| email     | Customer's email address.                                                                                                                                                                                                                                                                                                                   |
+| type      | Either `unverified`, `personal`, `business`, or `receive-only`.                                                                                                                                                                                                                                                                             |
+| status    | If type is **unverified** or **receive-only**: status can be `unverified`, `deactivated`, or `suspended`. <br /> If type is **personal**: status can be `retry`, `kba`, `document`, `verified`, `deactivated`, or `suspended`. <br /> If type is **business**: status can be `retry`, `document`, `verified`,`deactivated`, or `suspended`. |
+| created   | ISO-8601 timestamp.                                                                                                                                                                                                                                                                                                                         |
+
+### Customer statuses
+
+| Status      | Description                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| unverified  | Customers of type `unverified` or `receive-only` always have this status.                                                                                                                                                                                                                                                                                                                                           |
+| retry       | Verified Customers of type `personal` or `business` can have this status. The initial verification attempt failed because the information provided did not satisfy our verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with a POST request. If the additional attempt fails, the resulting status will be either `document` or `suspended`. |
+| document    | Verified Customers of type `personal` or `business` can have this status. Dwolla requires additional documentation to identify the Customer in the `document` status. Read about [Documents](https://developers.dwolla.com/api-reference/documents).                                                                                                                                                                |
+| verified    | Verified Customers of type `personal` or `business` can have this status. The Customer is currently verified.                                                                                                                                                                                                                                                                                                       |
+| suspended   | All Customer types can have a status of `suspended`. The Customer is suspended and may neither send nor receive funds. Contact Dwolla support for more information.                                                                                                                                                                                                                                                 |
+| deactivated | All Customer types can have a status of `deactivated`. A deactivated Customer may neither send nor receive funds. A deactivated Customer can be [reactivated](https://developers.dwolla.com/api-reference/customers/update#reactivate-a-customer) which moves the Customer to the status they were in prior to being deactivated.                                                                                   |
+
+```bash
+{
+  "_links": {
+    "self": {
+      "href": "https://api-sandbox.dwolla.com/customers/9da3aa7c-2524-430b-a751-6dc722735fce",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "receive": {
+      "href": "https://api-sandbox.dwolla.com/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "edit-form": {
+      "href": "https://api-sandbox.dwolla.com/customers/9da3aa7c-2524-430b-a751-6dc722735fce",
+      "type": "application/vnd.dwolla.v1.hal+json; profile=\"https://github.com/dwolla/hal-forms\"",
+      "resource-type": "customer"
+    },
+    "edit": {
+      "href": "https://api-sandbox.dwolla.com/customers/9da3aa7c-2524-430b-a751-6dc722735fce",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "customer"
+    },
+    "funding-sources": {
+      "href": "https://api-sandbox.dwolla.com/customers/9da3aa7c-2524-430b-a751-6dc722735fce/funding-sources",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "funding-source"
+    },
+    "transfers": {
+      "href": "https://api-sandbox.dwolla.com/customers/9da3aa7c-2524-430b-a751-6dc722735fce/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    },
+    "send": {
+      "href": "https://api-sandbox.dwolla.com/transfers",
+      "type": "application/vnd.dwolla.v1.hal+json",
+      "resource-type": "transfer"
+    }
+  },
+  "id": "9da3aa7c-2524-430b-a751-6dc722735fce",
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "email": "janedoe@email.com",
+  "type": "personal",
+  "status": "verified",
+  "created": "2016-08-17T18:58:47.630Z",
+  "address1": "99-99 33rd St",
+  "address2": "Apt 8",
+  "city": "Some City",
+  "state": "NY",
+  "postalCode": "11101",
+  "phone": "5554321234"
+}
+```

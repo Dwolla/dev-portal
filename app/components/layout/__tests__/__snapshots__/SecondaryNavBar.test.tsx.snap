@@ -126,7 +126,7 @@ exports[`SecondaryNavBar snapshot 1`] = `
             tabIndex={0}
             type="button"
           >
-            Platform Overview
+            Product Overview
             <span
               className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
             />

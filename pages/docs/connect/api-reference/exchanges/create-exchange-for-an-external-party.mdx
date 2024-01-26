@@ -1,0 +1,366 @@
+---
+layout: guides
+product: connect
+title: "Create an exchange for an external party"
+guide:
+  step: 4
+meta:
+  title: "Dwolla API Reference | Exchanges: Create External Party Exchange"
+  description: "Create an exchange for an external party."
+---
+
+import CreateExchange from "../../../../../assets/api-resource-tables/exchanges/CreateExchange";
+
+# Create an exchange for an external party
+
+This section contains information on how to create an exchange for an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>. The creation of an exchange serves as the “hand-shake” between Dwolla and a trusted ecosystem partner. The creation of an exchange requires a `_link` to the exchange partner and tokenized data which encapsulates limited permissioned access between an ecosystem partner and Dwolla.
+
+### HTTP request
+
+> `POST https://api.dwolla.com/external-parties/{id}/exchanges`
+
+### Request parameters
+
+<Table table={CreateExchange} />
+
+### HTTP status and error codes
+
+| HTTP Status | Code            | Description                                                                                                                                                                   |
+| ----------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created         | The Dwolla API accepted the request and created an exchange resource. You can reference the Location header to retrieve a link that represents the created exchange resource. |
+| 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                       |
+| 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                             |
+| 404         | NotFound        | The requested resource was not found.                                                                                                                                         |
+
+### Request and Response (MX)
+
+```bash
+POST https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+    },
+    "token": "someMXProcessorToken"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  },
+  token: 'someMXProcessorToken'
+}
+
+exchange = app_token.post "#{external_party_url}/exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4'
+    }
+  },
+  'token': 'someMXProcessorToken'
+}
+
+exchange = app_token.post('%s/exchanges' % external_party_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+    },
+  },
+  token: "someMXProcessorToken",
+};
+
+dwolla
+  .post(`${externalPartyUrl}/exchanges`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Flinks)
+
+```bash
+POST https://api.dwolla.com/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89"
+        }
+    },
+    "token": "MTExYTFhMWEtMTExMS0xYWExLTExMTEtMTFhMTExYTExMTFhOjIyMmIyYjFiLTIyMjItMmJiMi0yMjIyLTIyYjIyMmIyMjIyYg=="
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$exchangesApi = new ExchangesApi($apiClient);
+
+$authSecret = "111a1a1a-1111-1aa1-1111-11a111a1111a";
+$accessToken = "222b2b1b-2222-2bb2-2222-22b222b2222b";
+
+$exchange = $exchangesApi->createAccountExchange(new CreateExchangeRequest([
+    "_links" => [
+        "exchange-partner" => [
+            "href" => "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89"
+        ]
+    ],
+    "token" => base64_encode($authSecret . ":" . $accessToken)
+]));
+
+$exchange; # => https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+?>
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+require "base64"
+
+auth_secret = '111a1a1a-1111-1aa1-1111-11a111a1111a'
+access_token = '222b2b1b-2222-2bb2-2222-22b222b2222b'
+
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89"
+    }
+  },
+  token: Base64.encode64(auth_secret + ':' + access_token)
+}
+
+exchange = app_token.post "exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+import base64
+
+auth_secret = b'111a1a1a-1111-1aa1-1111-11a111a1111a'
+access_token = b'222b2b1b-2222-2bb2-2222-22b222b2222b'
+
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89'
+    }
+  },
+  'token': base64.b64encode(auth_secret + ':' + access_token)
+}
+
+exchange = app_token.post('exchange', request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/a0b22a57-68df-4450-b507-47c937e64e89'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var authSecret = "111a1a1a-1111-1aa1-1111-11a111a1111a";
+var accessToken = "222b2b1b-2222-2bb2-2222-22b222b2222b";
+
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/a0b22a57-68df-4450-b507-47c937e64e89",
+    },
+  },
+  token: Buffer.from(authSecret + ":" + accessToken, "utf-8").toString(
+    "base64"
+  ),
+};
+
+dwolla
+  .post("exchanges", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Finicity)
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+    },
+    "finicity": {
+        "profile": 3,
+        "version": "1",
+        "receiptId": "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+        "receiptVersion": "1",
+        "customerId": "5454874858510164117",
+        "partnerId": 2445583946651,
+        "products": [
+            {
+                "product": "moneyTransferDetails",
+                "accountId": "1015199035827334916",
+                "accessPeriod": {
+                    "type": "timeframe",
+                    "startTime": "2022-07-06",
+                    "endTime": "2022-08-16T06:06:20Z"
+                }
+            }
+        ],
+        "timestamp": "2022-07-11T06:06:23Z"
+    }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  :_links => {
+    :exchange-partner => {
+      :href => "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  },
+  :finicity => {
+    :profile => 3,
+    :version => "1",
+    :receiptId => "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    :receiptVersion => "1",
+    :customerId => "5454874858510164117",
+    :partnerId => 2445583946651,
+    :products => [
+      {
+        :product => "moneyTransferDetails",
+        :accountId => "1015199035827334916",
+        :accessPeriod => {
+          :type => "timeframe",
+          :startTime => "2022-07-06",
+          :endTime => "2022-08-16T06:06:20Z"
+        }
+      }
+    ],
+    :timestamp => "2022-07-11T06:06:23Z"
+  }
+}
+
+exchange = app_token.post "#{external_party_url}/exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  },
+  'finicity': {
+    'profile': 3,
+    'version': "1",
+    'receiptId': "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    'receiptVersion': "1",
+    'customerId': "5454874858510164117",
+    'partnerId': 2445583946651,
+    'products': [
+      {
+        'product': "moneyTransferDetails",
+        'accountId': "1015199035827334916",
+        'accessPeriod': {
+          'type': "timeframe",
+          'startTime': "2022-07-06",
+          'endTime': "2022-08-16T06:06:20Z"
+        }
+      }
+    ],
+    'timestamp': "2022-07-11T06:06:23Z"
+  }
+}
+
+exchange = app_token.post('%s/exchanges' % external_party_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+    },
+  },
+  finicity: {
+    profile: 3,
+    version: "1",
+    receiptId: "cr_4N47ou7SlppuIxq0ZUtACh10vYcloY",
+    receiptVersion: "1",
+    customerId: "5454874858510164117",
+    partnerId: 2445583946651,
+    products: [
+      {
+        product: "moneyTransferDetails",
+        accountId: "1015199035827334916",
+        accessPeriod: {
+          type: "timeframe",
+          startTime: "2022-07-06",
+          endTime: "2022-08-16T06:06:20Z",
+        },
+      },
+    ],
+    timestamp: "2022-07-11T06:06:23Z",
+  },
+};
+
+dwolla
+  .post(`${externalPartyUrl}/exchanges`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
