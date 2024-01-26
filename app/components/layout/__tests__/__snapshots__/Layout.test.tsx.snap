@@ -261,7 +261,7 @@ exports[`Layout 1`] = `
                 tabIndex={0}
                 type="button"
               >
-                Platform Overview
+                Product Overview
                 <span
                   className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
@@ -531,7 +531,7 @@ exports[`Layout 1`] = `
                       role="button"
                       tabIndex={0}
                     >
-                      Platform Overview
+                      Product Overview
                     </div>
                     <input
                       aria-hidden={true}
@@ -542,7 +542,7 @@ exports[`Layout 1`] = `
                       onChange={[Function]}
                       required={false}
                       tabIndex={-1}
-                      value="platformOverview"
+                      value="productOverview"
                     />
                     <svg
                       aria-hidden={true}

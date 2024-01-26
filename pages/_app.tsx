@@ -169,8 +169,8 @@ const LANGUAGE_OPTIONS = [
 
 const NAV_ITEMS: SelectMuiOption[] = [
   {
-    value: "platformOverview",
-    label: "Platform Overview",
+    value: "productOverview",
+    label: "Product Overview",
     href: (selectedProduct) => `/docs/${selectedProduct}`, // Dynamic href, changes based on selectedProduct Context
   },
   {
