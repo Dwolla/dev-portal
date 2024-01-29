@@ -1,0 +1,40 @@
+---
+layout: guides
+product: connect
+title: Overview
+group:
+  title: Accounts
+  weight: 2
+guide:
+  step: 0
+meta:
+  title: "Dwolla API Reference | Accounts: Overview"
+  description: "Endpoints for your main Dwolla account that include listing funding sources and transfers, and retrieving account details."
+---
+
+import Account from "../../../../../assets/api-resource-tables/accounts/Account";
+
+# Accounts
+
+An `Account` represents your main Dwolla Connect user account that was established by signing up on dwolla.com. To create External Parties (end-users), attach bank accounts, and send or receive account-to-account payments, you must have a Dwolla account and obtain API credentials.
+
+## Resource Overview
+
+<Table table={Account} />
+
+#### Account resource example
+
+```bash
+{
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/accounts/3b0f270c-9cfd-4724-bae8-aa4b1659cbb4",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "account"
+        }
+    },
+    "id": "3b0f270c-9cfd-4724-bae8-aa4b1659cbb1",
+    "name": "Jane Doe",
+    "created": "2023-08-10T22:08:46.323Z"
+}
+```

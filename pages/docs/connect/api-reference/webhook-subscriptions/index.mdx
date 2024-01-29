@@ -1,0 +1,77 @@
+---
+layout: guides
+product: connect
+title: "Overview"
+group:
+  title: Webhook Subscriptions
+  weight: 7
+guide:
+  step: 0
+meta:
+  title: "Dwolla API Reference | Webhook Subscriptions: Overview"
+  description: "Endpoints for creating, retrieving, listing and deleting webhook-subscriptions."
+---
+
+import WebhookSubscription from "../../../../../assets/api-resource-tables/webhooks/WebhookSubscription";
+
+# Webhook subscriptions
+
+Create a webhook subscription to receive `POST` requests from Dwolla (called webhooks) when events associated with your application occur. [Webhooks](/api-reference/connect/webhooks) are sent to a URL which you provide when creating a webhook subscription. While we see most applications maintain one webhook subscription, you can have up to **ten** active webhook subscriptions in Sandbox, and up to **five** in Production at a time.
+
+### **Automatic pause of a webhook subscription**
+
+Dwolla will automatically pause subscribed webhook endpoints that are no longer reachable. The webhook subscription will be paused after **400 consecutive failures** and **24 hours since the last success**. This will help us ensure that unavailable endpoints don’t cause delays or issues in delivery of notifications for other API customers. The ability to unpause webhook subscriptions is coming soon.
+
+### Acknowledgement and retries
+
+When your application receives a [webhook](https://developers.dwolla.com/api-reference/webhooks), it should respond with a HTTP 2xx status code to indicate successful receipt. If Dwolla receives a status code greater than or equal to 3xx, or your application fails to respond within 10 seconds of the attempt, another attempt will be made. Dwolla will not follow redirects and will treat them as a failure.
+
+Dwolla will re-attempt delivery 8 times over the course of 72 hours according to the backoff schedule below. If a webhook was successfully received but you would like the information again, you can call [retrieve a webhook by its Id](https://developers.dwolla.com/api-reference/webhooks/retrieve).
+
+### Delivery rate
+
+Webhooks are delivered in near real-time as events tied to your application are created. If there is a large number of events created for your application within a short timeframe, Dwolla may deliver bursts of 10 concurrent webhook requests to your subscribed URL. We encourage applications to make their webhook handler do as little as possible and only perform a high level validation of the request. Once initial validation is performed, immediately acknowledge the webhook request and process it in the background later. If your subscribed webhook URL is unable to handle the volume of concurrent requests, please contact Dwolla developer support and the delivery rate can be adjusted.
+
+| Retry number | Interval (relative to last retry) | Interval (relative to original attempt) |
+| :----------: | :-------------------------------: | :-------------------------------------: |
+|      1       |              15 min               |                 15 min                  |
+|      2       |              45 min               |                   1 h                   |
+|      3       |                2 h                |                   3 h                   |
+|      4       |                3 h                |                   6 h                   |
+|      5       |                6 h                |                  12 h                   |
+|      6       |               12 h                |                  24 h                   |
+|      7       |               24 h                |                  48 h                   |
+|      8       |               24 h                |                  72 h                   |
+
+### List of Webhook Events
+
+The following list contains all supported events that can trigger a webhook notification to be sent using Dwolla Connect. New events may be added in the future, so be sure to check back on our [changelog](/changelog) often. We also recommend subscribing to developer/product related updates to stay informed about the latest changes.
+
+#### Funding Sources
+
+| Event Topic Name                      | Description                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| funding_source:created                | **Description:** A funding source was added to a main Dwolla Account.<br /> **Timing:** Occurs upon a POST request to the [Create a funding source for an account](/api-reference/connect/funding-sources/create-for-account) endpoint, or when a funding source is added via a third party bank verification method.           |
+| funding_source:removed                | **Description:** A funding source was removed from a main Dwolla Account.<br /> **Timing:** Occurs upon a POST request to the [Remove a funding source](/api-reference/connect/funding-sources/remove) endpoint.                                                                                                                |
+| external_party.funding_source:created | **Description:** A funding source was added to an External Party.<br /> **Timing:** Occurs upon a POST request to the [Create a funding source for an external party](/api-reference/connect/funding-sources/create-for-external-party) endpoint, or when a funding source is added via a third party bank verification method. |
+| external_party.funding_source:removed | **Description:** A funding source was removed from an External Party.<br /> **Timing:** Occurs upon a POST request to the [Remove a funding source](/api-reference/connect/funding-sources/remove) endpoint.                                                                                                                    |
+
+#### External Parties
+
+| Event Topic Name       | Description                                                                                                                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| external_party:created | **Description:** An external party was created. <br /> **Timing:** Occurs upon a POST request to the [Create an external party](/api-reference/connect/external-parties/create) endpoint. |
+
+#### Transfers
+
+| Event Topic Name   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| transfer:created   | **Description:** An account-to-account transfer was created between a main Dwolla Account and an External Party. <br /> **Timing:** Occurs upon a POST request to the [Initiate a transfer](/api-reference/connect/transfers/initiate) endpoint when sending funds between a main Dwolla Account and an External Party.                                                                                                                                                                   |
+| transfer:pending   | **Description:** An account-to-account transfer was updated from created to pending. A pending status represents submission to a Financial Institution for processing. <br /> **Timing:** Occurs immediately following the transfer:created event when a transaction is submitted for processing.                                                                                                                                                                                         |
+| transfer:processed | **Description:** An account-to-account transfer was updated from pending to processed. A processed status represents completed processing with the Financial Institution. <br /> **Timing:** Occurs when the transfer is expected to be successful based on the designated processing time.                                                                                                                                                                                               |
+| transfer:failed    | **Description:** An account-to-account transfer was updated from pending to failed. <br /> **Timing:** Occurs after a transfer:pending event when a transaction fails processing after being submitted to the Financial Institution. Additional details are available in an embedded `failureReason` object when retrieving a transfer.                                                                                                                                                   |
+| transfer:returned  | **Description:** An account-to-account transfer was updated to returned. A returned status represents an ACH debit/credit transfer that has been returned by the RDFI. <br /> **Timing:** Occurs after a transfer has been submitted for processing by a Financial Institution following a transfer:pending or transfer:processed event when an ACH return has been issued by an RDFI. Additional details are available in an embedded `failureReason` object when retrieving a transfer. |
+
+## Resource Overview
+
+<Table table={WebhookSubscription} />

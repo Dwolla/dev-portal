@@ -14,6 +14,7 @@ import {
 import { ROBOTO, POPPINS } from "../typography";
 import { useAnchors, scrollTo } from "../util/Anchors";
 import { TOP_BAR_HEIGHT } from "./TopBar";
+import { NAV_BAR_HEIGHT } from "./SecondaryNavBar";
 import { breakDown } from "../breakpoints";
 
 const Container = styled.div`
@@ -114,7 +115,7 @@ const PageTop = styled.div`
 `;
 
 function OnThisPage({
-  topOfPageOffset = TOP_BAR_HEIGHT,
+  topOfPageOffset = TOP_BAR_HEIGHT + NAV_BAR_HEIGHT,
 }: {
   topOfPageOffset?: number;
 }) {

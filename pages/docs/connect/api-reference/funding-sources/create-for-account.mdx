@@ -1,0 +1,134 @@
+---
+layout: guides
+product: connect
+title: Create a funding source for an account
+guide:
+  step: 1
+meta:
+  title: "Dwolla API Reference | Funding Sources: Create Funding Source for Account"
+  description: "Endpoint for creating a funding source for an Account."
+---
+
+import CreateFundingSource from "../../../../../assets/api-resource-tables/accounts/CreateFundingSource";
+
+# Create a funding source for an account
+
+This section details how to add a bank account to your main Dwolla Account. To add a bank account as a Funding Source, you provide the account number and a routing number along with the Treasury Account in relation to which you want to attach the bank account. Funding Sources are relational to a main Dwolla Account and have the ability to send and receive funds.
+
+### Treasury Accounts
+
+A treasury account is a prerequisite to sending and receiving ACH transfers. It also identifies your business so Dwolla can connect with your banking partner. To learn how to create a treasury acccount, [contact us](https://www.dwolla.com/dwolla-connect/#cta-form-1).
+
+<AlertBar variation="info">
+  In Dwolla's Sandbox environment, your test account will be pre-configured with
+  a fake Treasury Account and Funding Source (Bank Account) associated with that
+  Treasury Account. Using the pre-configured Funding Source for sending and/or
+  receiving ACH transfers is intended to reduce the time and effort required to
+  get started integrating with the Dwolla Connect API. You can retrieve the
+  Funding Source ID associated with the fake bank account by{" "}
+  <a href="/api-reference/connect/funding-sources/list-for-account">
+    listing your account's funding sources
+  </a>
+  .
+</AlertBar>
+
+## HTTP request
+
+> `POST https://api.dwolla.com/funding-sources`
+
+## Request parameters
+
+<Table table={CreateFundingSource} />
+
+## HTTP status and error codes
+
+| HTTP Status | Code            | Message                                       |
+| ----------- | --------------- | --------------------------------------------- |
+| 400         | ValidationError | Duplicate funding source or validation error. |
+| 403         | Forbidden       | Not authorized to create funding source.      |
+
+## Request and response
+
+```bash
+POST https://api.dwolla.com/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer connect.eyJraWQiOiJPNVVOUVR0VHdDSXBcL0lsYnNlWldtdUFVZHJaVjFuU3lIYlVubkpwYW54WT0iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSIsInRva2VuX3VzZSI6ImFjY2VzcyIsInNjb3BlIjoiYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpleGNoYW5nZXMuY3JlYXRlIGJ5Yi1hcGlcL2FjY291bnRzLnJlYWQgYnliLWFwaVwvZXhjaGFuZ2VzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzLmNyZWF0ZSBieWItYXBpXC90cmFuc2ZlcnMuY3JlYXRlIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXM6ZXhjaGFuZ2VzLnJlYWQgYnliLWFwaVwvdHJlYXN1cnktYWNjb3VudHMucmVhZCBieWItYXBpXC90cmFuc2ZlcnMucmVhZCBieWItYXBpXC9leGNoYW5nZXMucmVhZCBieWItYXBpXC93ZWJob29rLXN1YnNjcmlwdGlvbnMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LWFjY291bnRzLmNyZWF0ZSBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOmZ1bmRpbmctc291cmNlcy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5jcmVhdGUgYnliLWFwaVwvd2ViaG9va3MucmVhZCBieWItYXBpXC9leHRlcm5hbC1wYXJ0aWVzOnRyYW5zZmVycy5yZWFkIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5yZWFkIGJ5Yi1hcGlcL2V4dGVybmFsLXBhcnRpZXMucmVhZCBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuZGVsZXRlIGJ5Yi1hcGlcL3RyZWFzdXJ5LXBhcnRuZXJzLnJlYWQgYnliLWFwaVwvZnVuZGluZy1zb3VyY2VzLnJlYWQgYnliLWFwaVwvYXBwbGljYXRpb25zLnJlYWQgYnliLWFwaVwvZXh0ZXJuYWwtcGFydGllczpmdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2stc3Vic2NyaXB0aW9ucy5wYXVzZSBieWItYXBpXC9mdW5kaW5nLXNvdXJjZXMuY3JlYXRlIGJ5Yi1hcGlcL3dlYmhvb2tzLnJldHJpZXMiLCJhdXRoX3RpbWUiOjE2OTUwNjg2MjgsImlzcyI6Imh0dHBzOlwvXC9jb2duaXRvLWlkcC51cy13ZXN0LTIuYW1hem9uYXdzLmNvbVwvdXMtd2VzdC0yX2xvT0NCOEZ2eCIsImV4cCI6MTY5NTA3MjIyOCwiaWF0IjoxNjk1MDY4NjI4LCJ2ZXJzaW9uIjoyLCJqdGkiOiJmNmQ5MjQ4Ni03MjU5LTRjNTQtOWJmMS1jZWY1MDk1NTQzODkiLCJjbGllbnRfaWQiOiIzZ2I3dTQyMjFkb2RwYWYwdGNyM3VrZm04MSJ9.GxCWTNTih35m-ZZX6rjCVr3CAg_Y3u5n_xz4K3yZRPAmemvSniy5k0moBK-Dq534TyjGOIbi0iQyKKPoEip3YRpQLVrk7Bq5HwYZTgjwdxDbhIUe9LkgWXaVKDOVG-ufrMo7vwsDsfNYhLj70OpBZ2fS3Wnuog3875SeVPN2qlLGa6_vU_WsRCcRJw8Y8eWEttZeLZWm7j30s41ssJL8-Epwq7-__bDM3sFLcfQIADAxSHNPYqq9pACA3qrpCOlo17F8EVqSIT2MJrIrhsi8sT8Y9i1cScaoRZf7MWLJzbtnzOP2M7YDfoXxH9MqsABvcoRJaQoSMjDCgheu1h0clQ
+{
+  "_links": {
+    "treasury-account": {
+      "href": "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
+    }
+  },
+  "name": "My Savings Bank",
+  "bankAccountType": "savings",
+  "accountNumber": "123456789",
+  "routingNumber": "222222226"
+}
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+request_body = {
+  _links: {
+    "treasury-account" => {
+      href: "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98"
+    }
+  },
+  name: "My Checking Bank",
+  bankAccountType: "checking",
+  accountNumber: "123456789",
+  routingNumber: "222222226"
+}
+
+funding_source = app_token.post "funding-sources", request_body
+funding_source.response_headers[:location] # => "https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+request_body = {
+  '_links': {
+    'treasury-account': {
+      'href': 'https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98'
+    }
+  },
+  'name': 'My Checking Bank',
+  'bankAccountType': 'checking',
+  'accountNumber': '123456789',
+  'routingNumber': '222222226'
+}
+
+funding_source = app_token.post('funding-sources', request_body)
+funding_source.headers['location'] # => 'https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var requestBody = {
+  _links: {
+    "treasury-account": {
+      href: "https://api.dwolla.com/treasury-accounts/ea5f9468-4374-410f-b52e-5461d8cbca98",
+    },
+  },
+  name: "My Savings Bank",
+  bankAccountType: "savings",
+  accountNumber: "123456789",
+  routingNumber: "222222226",
+};
+
+dwolla
+  .post("funding-sources", requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+```

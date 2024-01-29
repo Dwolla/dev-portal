@@ -1,0 +1,23 @@
+---
+layout: guides
+product: connect
+title: "Overview"
+group:
+  title: Webhooks
+  weight: 8
+guide:
+  step: 0
+meta:
+  title: "Dwolla API Reference | Webhooks: Overview"
+  description: "Endpoints for retrieving, retrying, and listing retries for webhooks."
+---
+
+import Webhook from "../../../../../assets/api-resource-tables/webhooks/Webhook";
+
+# Webhooks
+
+We recommend that applications protect against duplicated events by [making event processing idempotent](/guides/webhooks/process-validate#check-for-duplicate-events).
+
+## Resource Overview
+
+<Table table={Webhook} />
