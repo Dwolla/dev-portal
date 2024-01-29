@@ -211,7 +211,7 @@
 /api-reference/funding-sources/retrieve    /docs/balance/api-reference/funding-sources/retrieve
 /api-reference/funding-sources/update    /docs/balance/api-reference/funding-sources/update
 /api-reference/funding-sources/verify-micro-deposits    /docs/balance/api-reference/funding-sources/verify-micro-deposits
-/api-reference    /docs/connect/api-reference
+/api-reference    /docs/balance/api-reference
 /api-reference/connect    /docs/connect/api-reference
 /api-reference/kba    /docs/balance/api-reference/kba
 /api-reference/kba/initiate-kba-session    /docs/balance/api-reference/kba/initiate-kba-session
