@@ -1,0 +1,22 @@
+---
+title: "Debugging with X-Request-ID"
+guide:
+  step: 7
+meta:
+  title: "Debugging with X-Request-ID | Dwolla API Documentation"
+  description: "Learn how to set up IP allowlisting to control access to the Dwolla API and prevent unauthorized actions on behalf of your application. Find out how to specify IP addresses and handle Forbidden HTTP error codes."
+---
+
+# Debugging
+
+As you embark on your journey with Dwolla's API, effective debugging is vital in ensuring smooth integration and troubleshooting potential issues. Prioritizing clear and concise debugging practices helps support teams quickly identify and address any concerns, leading to more robust and successful software applications.
+
+## X-Request-Id
+
+To facilitate this debugging, Dwolla includes an `X-Request-ID header` in all API responses, providing a unique identifier for each API request. This ID allows you to track your API requests within your logs, enabling easier investigation of potential issues.
+
+Additionally, the `X-Request-ID` header assists Dwolla in tracking API requests initiated by your application. When you reach out to Dwolla's support team for debugging assistance, sharing the `X-Request-ID` value allows Dwolla to precisely locate the exact request in question within our logs. By leveraging this tool, developers enhance collaboration with Dwolla's support team, leading to more efficient issue resolution and a smoother development experience.
+
+### Example X-Request-Id Header Value
+
+`X-Request-Id: 53cc2d47-09f7-42f2-ac9e-994fdc90ad14`

@@ -1,0 +1,19 @@
+---
+title: "Rate Limits"
+guide:
+  step: 2
+meta:
+  title: "Rate Limits | Dwolla API Documentation"
+  description: "Learn about the rate limits in the Dwolla API, including concurrency-based and volume-based limits, and discover how to handle HTTP 429 Too Many Requests status codes effectively."
+---
+
+# Rate Limits
+
+Dwolla imposes a rate limit for any applications that make requests to our API. Currently, we have the following rate limit defined:
+
+- Concurrency-based: Quick successive transfers sourced from the same [Dwolla Balance](https://developers.dwolla.com/docs/balance/balance-funding-source) associated with a Dwolla [Account](https://developers.dwolla.com/docs/balance/api-reference/accounts) or [Customer](https://developers.dwolla.com/docs/balance/api-reference/customers) may receive an HTTP 429 Too Many Requests status code.
+- Volume-based: If the rate limit is reached for an endpoint, subsequent requests will result in an HTTP 429 Too Many Requests status code, which will persist for 5 minutes. At this time, these thresholds are defined as outside the range of what we consider normal API usage.
+
+Dwolla recommends building a mechanism into your application to handle 429 Too Many Requests responses, which would retry the request following an exponential backoff schedule to reduce request volume, and utilizes [idempotency keys](https://developers.dwolla.com/docs/balance/api-reference/api-fundamentals/idempotency-key), where applicable. This ensures actions only perform once and prevents creation of duplicate records.
+
+If you believe that your application will require a high rate of API calls, please contact support@dwolla.com for further assistance.

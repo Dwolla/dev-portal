@@ -1,0 +1,89 @@
+---
+title: "Handling Errors"
+guide:
+  step: 6
+meta:
+  title: "Handling Errors | Dwolla API Documentation"
+  description: "Learn how to handle error responses in the Dwolla API, including standard HTTP status codes, top-level error codes, and embedded errors. Explore common error codes and their descriptions for seamless integration and effective troubleshooting."
+---
+
+# Errors
+
+When interacting with the Dwolla API, it's essential to understand how error responses are handled. These error responses are communicated through standard HTTP status codes, which provide clear indications of the type of error encountered during an API request. In addition to the status code, the JSON response body will include a top-level error code, offering further insight into the nature of the error. To ensure consistency and easy integration, errors will have their own media type, closely aligned with the [vnd.error](https://github.com/blongden/vnd.error) spec.
+
+### Example HTTP 401 error
+
+```bash
+{
+  "code": "InvalidAccessToken",
+  "message": "Invalid access token."
+}
+```
+
+## Embedded errors
+
+In cases where your API request encounters specific issues that can be corrected, the Dwolla API returns responses with a top-level error code of `ValidationError`. These responses serve as valuable feedback, indicating that there are validation errors present in your request.
+
+The response will include a message: "Validation error(s) present. See embedded errors list for more details." The embedded errors list may contain one or more detailed error objects, providing specific information about the issues found during the request.
+
+Each `_embedded` error object includes the following parameters:
+
+- `code`: A detailed error code indicating the nature of the problem.
+- `message`: A human-readable description of the error.
+- `path`: A JSON pointer to the specific field in the request that caused the issue.
+
+### Possible Error codes
+
+| Code                  | Description                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------ |
+| Required              | {field name} is required. For example, null or empty string in required field.             |
+| Invalid               | {field name} invalid.                                                                      |
+| InvalidFormat         | {field name} is not in a valid format. For example, characters in the amount field.        |
+| Duplicate             | Duplicate resource error. For example, A customer with the specified email already exists. |
+| ReadOnly              | this field is not allowed to be modified                                                   |
+| NotAllowed            | value, while valid/exists, is not allowed to be used                                       |
+| Restricted            | account or customer restricted from this activity                                          |
+| InsufficientFunds     | used on source or destination fields of transfer endpoint                                  |
+| RequiresFundingSource | used on destination field of transfer endpoint to indicate customer needs a bank           |
+| FileTooLarge          | used on document upload                                                                    |
+
+### Example HTTP 400 validation error
+
+```bash
+{
+	"code": "ValidationError",
+	"message": "Validation error(s) present. See embedded errors list for more details.",
+	"_embedded": {
+		"errors": [
+			{
+				"code": "Required",
+				"message": "FirstName required.",
+				"path": "/firstName",
+				"_links": {}
+			}
+		]
+	}
+}
+```
+
+## Common errors
+
+The table below outlines common errors across all API endpoints in Dwolla.
+
+| HTTP Status | Error Code               | Description                                                                                                                                                                                               |
+| ----------- | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 400         | BadRequest               | The request body contains bad syntax or is incomplete.                                                                                                                                                    |
+| 400         | ValidationError          | Validation error(s) present. See embedded errors list for more details. ([See above](https://developers.dwolla.com/docs/balance/api-reference/api-fundamentals/errors#example-http-400-validation-error)) |
+| 401         | InvalidCredentials       | Missing or invalid Authorization header.                                                                                                                                                                  |
+| 401         | InvalidAccessToken       | Invalid access token.                                                                                                                                                                                     |
+| 401         | ExpiredAccessToken       | Generate a new access token using your client credentials.                                                                                                                                                |
+| 401         | InvalidAccountStatus     | Invalid access token account status.                                                                                                                                                                      |
+| 401         | InvalidApplicationStatus | Invalid application status.                                                                                                                                                                               |
+| 401         | InvalidScopes            | Missing or invalid scopes for requested endpoint.                                                                                                                                                         |
+| 403         | Forbidden                | The supplied credentials are not authorized for this resource.                                                                                                                                            |
+| 403         | InvalidResourceState     | Resource cannot be modified.                                                                                                                                                                              |
+| 404         | NotFound                 | The requested resource was not found.                                                                                                                                                                     |
+| 405         | MethodNotAllowed         | (varies)                                                                                                                                                                                                  |
+| 406         | InvalidVersion           | Missing or invalid API version.                                                                                                                                                                           |
+| 500         | ServerError              | A server error occurred. Error ID: {ID}                                                                                                                                                                   |
+| 500         | RequestTimeout           | The request timed out.                                                                                                                                                                                    |

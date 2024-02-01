@@ -1,0 +1,28 @@
+---
+title: "JSON-HAL and Dwolla HAL-Forms"
+guide:
+  step: 5
+meta:
+  title: "JSON-HAL - hypermedia | Dwolla API Documentation"
+  description: "Learn about JSON-HAL, a hypermedia format for APIs, and how Dwolla HAL-Forms extend the HAL spec to represent and dynamically generate forms within the API. Discover how to use Dwolla HAL-Forms to seamlessly transition between resource states and gain valuable insights for API implementation."
+---
+
+# JSON-HAL - hypermedia
+
+JSON-HAL is a popular format for creating hypermedia APIs. Hypermedia APIs provide links along with the data to guide consumers on how to interact with the API dynamically. In JSON-HAL, resources are represented in JSON format, and hypermedia controls are embedded within the response. These controls contain links that allow clients to discover related resources and available actions they can perform based on the current context using their permissioned [access token](https://developers.dwolla.com/docs/connect/api-reference/authorization).
+
+## Dwolla HAL-Forms
+
+[Dwolla HAL-Forms](https://github.com/Dwolla/hal-forms) is an extension of the [HAL spec](http://stateless.co/hal_specification.html) and designed to describe how Dwolla represents forms within the API. The extension starts with the media type. The media type should be used as a profile link as part of the `Accept` header of the request in conjunction with the Dwolla HAL style media type. By including these two media-type identifiers in the Accept header, the API knows that you’re looking for a form for the given resource.
+
+##### Example `Accept` Header Value for Dwolla HAL-forms
+
+`Accept: application/vnd.dwolla.v1.hal+json; profile="https://github.com/dwolla/hal-forms"`
+
+### Dynamic UI Generation
+
+One of the primary benefits of Dwolla HAL-Forms is the ability to dynamically generate your UI based on the state of a particular resource. This enables your application to seamlessly transition between states without intricate knowledge of Dwolla's business rules or the specific information required for the transition. When a resource returns an `"edit-form"` link relation, your application can follow this link by making a GET request, including the Dwolla HAL-Forms `Accept` header. The response will provide a simple JSON body containing essential information such as the HTTP method, message content-type, and request parameters for communication with the Dwolla API.
+
+Note: At present, Dwolla HAL-Forms are available for creating and editing customers. However, we are looking forward to expanding the availability to other endpoints in the future, unlocking even more possibilities for developers.
+
+Reference [the spec](https://github.com/Dwolla/hal-forms) to gain a more comprehensive understanding of the properties that can be returned in the Dwolla HAL-Forms response.

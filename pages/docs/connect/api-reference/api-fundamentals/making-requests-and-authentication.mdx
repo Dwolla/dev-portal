@@ -1,0 +1,49 @@
+---
+title: "Making Requests and Authentication"
+guide:
+  step: 1
+meta:
+  title: "Making Requests and Authentication | Dwolla API Documentation"
+  description: "Learn how to interact with the Dwolla API, including making requests, setting headers, and handling authentication for secure transactions."
+---
+
+# Making Requests
+
+To interact with the Dwolla API, all requests must include the `Accept` header:
+
+- `Accept: application/vnd.dwolla.v1.hal+json`
+
+For POST requests, specify either of the following `Content-Type`:
+
+- `Content-Type: application/vnd.dwolla.v1.hal+json`
+- `Content-Type: application/json`
+
+All request and response bodies are JSON encoded.
+
+Requests must be made over HTTPS. Any non-secure requests will be redirected (HTTP 302) to the HTTPS equivalent URI.
+
+```bash
+POST https://api.dwolla.com/customers
+Content-Type: application/json
+
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer myOAuthAccessToken123
+{
+"foo": "bar"
+}
+
+... or ...
+
+GET https://api.dwolla.com/accounts/a84222d5-31d2-4290-9a96-089813ef96b3/transfers
+```
+
+## Authentication
+
+All requests require either an OAuth access token or a `client_id` and `client_secret` in order to authenticate with the API. OAuth access tokens are passed via the Authorization HTTP header:
+
+`Authorization: Bearer {access_token_here}`
+
+## API Host
+
+`Production: https://api.dwolla.com`
+`Sandbox: https://api-sandbox.dwolla.com`

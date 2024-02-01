@@ -108,7 +108,7 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Developers: [
     {
       text: "API Reference",
-      href: "https://developers.dwolla.com/api-reference/",
+      href: "https://developers.dwolla.com/balance/api-reference/",
     },
     {
       text: "Support Forum",
@@ -176,7 +176,8 @@ const NAV_ITEMS: SelectMuiOption[] = [
   {
     value: "apiReference",
     label: "API Reference",
-    href: (selectedProduct) => `/docs/${selectedProduct}/api-reference`, // Dynamic href, changes based on selectedProduct Context
+    href: (selectedProduct) =>
+      `/docs/${selectedProduct}/api-reference/api-fundamentals`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "codeSamples",

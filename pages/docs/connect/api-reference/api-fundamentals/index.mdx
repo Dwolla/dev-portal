@@ -1,0 +1,103 @@
+---
+title: "Overview"
+description: "Programmatically send bank transfers with our developer API."
+group:
+  title: API Fundamentals
+  weight: 0
+guide:
+  step: 0
+meta:
+  title: "API Reference | Dwolla Connect API Documentation"
+  description: "Complete reference documentation for the Dwolla API. Includes resource descriptions, endpoints and methods, parameters, and request and response examples."
+---
+
+import Card from "../../../../../app/components/base/Card";
+import CardGrid from "../../../../../app/components/base/CardGrid";
+
+# Introduction
+
+Welcome to the Dwolla API documentation, your gateway to seamlessly integrating your software with robust banking infrastructure. Our API empowers developers with the essential tools to facilitate account-to-account payments, digital wallet functionality, customer identity verification, and bank account verification in a secure and efficient manner.
+
+## API Fundamentals
+
+Explore our detailed reference documentation, starting with the API Fundamentals. Here, you will find comprehensive information on how to interact with the API, as well as develop a better understanding of fundamental concepts that make up the design of the API.
+
+<CardGrid maxColumns="3">
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/making-requests-and-authentication",
+        external: false,
+      },
+    ]}
+    topic="Making Requests and Authentication"
+    description="Learn how to interact with the Dwolla API, including making requests, setting headers, and handling authentication."
+  />
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/rate-limits",
+        external: false,
+      },
+    ]}
+    topic="Rate Limits"
+    description="Understand the rate limits in the Dwolla API, including concurrency-based and volume-based limits, and learn how to handle HTTP 429 Too Many Requests status codes."
+  />
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/api-allowlist",
+        external: false,
+      },
+    ]}
+    topic="IP Allowlist"
+    description="Learn how to set up IP allowlisting to control access to the Dwolla API and prevent unauthorized actions on behalf of your application."
+  />
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/idempotency-key",
+        external: false,
+      },
+    ]}
+    topic="Idempotency Key"
+    description="Learn how to use the Idempotency-Key header to prevent duplicate operations and manage resource creation in the Dwolla API."
+  />
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/json-hal-hypermedia",
+        external: false,
+      },
+    ]}
+    topic="JSON-HAL and Dwolla HAL-Forms"
+    description="Learn about JSON-HAL, a hypermedia format for APIs, and how Dwolla HAL-Forms extend the HAL spec to represent and dynamically generate forms within the API."
+  />
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/errors",
+        external: false,
+      },
+    ]}
+    topic="Handling Errors"
+    description="Learn how to handle error responses in the Dwolla API, including standard HTTP status codes, top-level error codes, and embedded errors. "
+  />
+  <Card
+    links={[
+      {
+        text: "Learn more",
+        href: "https://developers.dwolla.com/docs/connect/api-reference/api-fundamentals/debugging",
+        external: false,
+      },
+    ]}
+    topic="Effective Debugging with X-Request-ID"
+    description="Prioritize clear and concise debugging practices in the Dwolla API to ensure smooth integration and efficient troubleshooting."
+  />
+</CardGrid>

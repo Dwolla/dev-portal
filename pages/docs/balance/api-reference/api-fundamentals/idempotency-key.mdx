@@ -1,0 +1,51 @@
+---
+title: "Idempotency Key"
+guide:
+  step: 4
+meta:
+  title: "Idempotency Key | Dwolla API Documentation"
+  description: "Learn how to use the Idempotency-Key header to prevent duplicate operations and manage resource creation in the Dwolla API. Find out how to ensure idempotency with unique keys and handle response codes effectively."
+---
+
+# Idempotency Key
+
+To prevent an operation from being performed more than once, Dwolla supports passing in an `Idempotency-Key` header with a unique key as the value. Multiple `POST`s with the same idempotency key and request body won't result in multiple resources being created. It is recommended to use a random value for the idempotency key, like a UUID (i.e. - `Idempotency-Key: d2adcbab-4e4e-430b-9181-ac9346be723a`).
+
+For example, if a request to [initiate a transfer](/docs/balance/api-reference/transfers/initiate) fails due to a network connection issue, you can reattempt the request with the same idempotency key to guarantee that only a single transfer is created.
+
+If you reattempt a `POST` request with the same value for the `Idempotency-Key`, rather than creating new or potentially duplicate resources, you will receive a `201 Created`, with the original response of the created resource. If the Dwolla server is still processing the original `POST` request, you will receive a `409 Conflict` error response on the subsequent request. Multiple `POST`s with the same idempotency key including an **exact match** request body won’t result in multiple resources being created. Idempotency keys are intended to prevent conflicts over a short period of time, therefore keys which are paired with a request body expire after 24 hours.
+
+Info CTA: To prevent resources from being created more than once, we highly recommend making all requests idempotent.
+
+<AlertBar variation="info">
+  To prevent resources from being created more than once, we highly recommend
+  making all requests idempotent.
+</AlertBar>
+
+### Example transfer using an Idempotency Key
+
+```bash
+POST https://api-sandbox.dwolla.com/transfers
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
+{
+    "_links": {
+        "destination": {
+            "href": "https://api-sandbox.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+        },
+        "source": {
+            "href": "http://api-sandbox.dwolla.com/funding-sources/707177c3-bf15-4e7e-b37c-55c3898d9bf4"
+        }
+    },
+    "amount": {
+        "currency": "USD",
+        "value": "1337.00"
+    }
+}
+...
+HTTP/1.1 201 Created
+Location: https://api-sandbox.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388
+
+```

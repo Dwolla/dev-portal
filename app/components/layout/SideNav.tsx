@@ -65,8 +65,6 @@ type ConditionalSideNavLinkProps =
     };
 
 // Combined type of common and conditional props
-// export type SideNavLinkProps = CommonSideNavLinkProps &
-//   ConditionalSideNavLinkProps;
 export type SideNavLinkProps = CommonSideNavLinkProps &
   ConditionalSideNavLinkProps & {
     stickyReferenceLinks?: SideNavLinkProps[];
