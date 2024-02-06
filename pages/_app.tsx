@@ -108,7 +108,7 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Developers: [
     {
       text: "API Reference",
-      href: "https://developers.dwolla.com/balance/api-reference/",
+      href: "https://developers.dwolla.com/docs/balance/api-reference/",
     },
     {
       text: "Support Forum",
