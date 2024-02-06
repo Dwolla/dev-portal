@@ -1,0 +1,31 @@
+---
+title: "IP Allowlist"
+guide:
+  step: 3
+meta:
+  title: "IP Allowlist | Dwolla API Documentation"
+  description: "Learn how to set up IP allowlisting to control access to the Dwolla API and prevent unauthorized actions on behalf of your application. Find out how to specify IP addresses and handle Forbidden HTTP error codes."
+---
+
+# IP Allowlist
+
+IP allowlisting enables you to define IP addresses from which you want to allow access to the Dwolla API. This helps to prevent unauthorized networks from performing actions on behalf of your application.
+
+**Things to remember:**
+
+- The IP Allowlist option is made available once an application has completed the application approval process.
+- If you are logged in as a sub-user, you will need Edit permissions for Applications to be able to edit the IP allowlist.
+
+To set up IP allowlisting navigate to the Applications tab in the Dashboard. Locate your application for which you want to specify a list of IP addresses, then click on Allow List. You can then specify an IP address (e.g., `192.0.2.1`) or a CIDR IP range (e.g., `192.0.2.1/24`) and add a description for that entry.
+
+**Production** - https://dashboard.dwolla.com/applications <br />
+**Sandbox** - https://dashboard-sandbox.dwolla.com/applications
+
+Immediately after adding your first IP address, any attempt to make a call to the API from an IP address not in the list will result in a `403 Forbidden` HTTP error code with the following response body:
+
+```bash
+{
+  "code": "InvalidIpAddress",
+  "message": "Access to this resource is forbidden from this network location."
+}
+```
