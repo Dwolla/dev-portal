@@ -10,7 +10,13 @@ meta:
 
 # List webhooks for a webhook subscription
 
-This section covers how to view all fired [webhooks](/api-reference/webhooks) for a webhook subscription. Webhook search is supported by passing in optional querystring parameters such as: `search` which represents a term to search on, `startDate` and `endDate`. **Note:** Dwolla will only guarantee access to webhook data through the API over a rolling 30-day period.
+This section covers how to view all fired [webhooks](/docs/balance/api-reference/webhooks) for a webhook subscription. This endpoint contains optional query string parameters allowing you to filter by `resourceId`, `limit`, `offset`, `startDate` and `endDate`. **Note:** Dwolla will only guarantee access to webhook data through the API over a rolling 30-day period.
+
+The `resourceId` query string parameter is a filter that returns an embedded webhooks array based on an exact match of the filter value. For example, if you would like to search for all webhooks associated with a resource having the ID `ae7fb2e3-75a1-4f8c-bf59-9c43b14c6a87`, you can append the additional parameter `resourceId` to the request URL as shown in the example HTTP request below.
+
+##### Example Request URL using `resourceId` filter
+
+> `GET https://api.dwolla.com/webhook-subscriptions/{id}/webhooks?resourceId=ae7fb2e3-75a1-4f8c-bf59-9c43b14c6a87`
 
 ### HTTP request
 
@@ -18,13 +24,14 @@ This section covers how to view all fired [webhooks](/api-reference/webhooks) fo
 
 ### Request parameters
 
-| Parameter | Required | Type    | Description                                                                                                                              |
-| --------- | -------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| id        | yes      | string  | Webhook subscription unique identifier.                                                                                                  |
-| limit     | no       | integer | How many results to return. Defaults to 25.                                                                                              |
-| offset    | no       | integer | How many results to skip.                                                                                                                |
-| startDate | no       | string  | Only include webhooks sent after this date. ISO-8601 format: YYYY-MM-DD. Can optionally be used with endDate to specify a date range.    |
-| endDate   | no       | string  | Only include webhooks sent before this date. ISO-8601 format: YYYY-MM-DD. Can optionally be used with startDate to specify a date range. |
+| Parameter  | Required | Type    | Description                                                                                                                                  |
+| ---------- | -------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| id         | yes      | string  | Webhook subscription unique identifier.                                                                                                      |
+| limit      | no       | integer | How many results to return. Defaults to 25.                                                                                                  |
+| offset     | no       | integer | How many results to skip.                                                                                                                    |
+| startDate  | no       | string  | Only include webhooks sent after this date. ISO-8601 format: `YYYY-MM-DD`. Can optionally be used with `endDate` to specify a date range.    |
+| endDate    | no       | string  | Only include webhooks sent before this date. ISO-8601 format: `YYYY-MM-DD`. Can optionally be used with `startDate` to specify a date range. |
+| resourceId | no       | string  | Only include webhooks sent for a particular resource. Format: `UUID`.                                                                        |
 
 ### Request and response
 
