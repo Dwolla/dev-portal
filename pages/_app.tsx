@@ -176,8 +176,7 @@ const NAV_ITEMS: SelectMuiOption[] = [
   {
     value: "apiReference",
     label: "API Reference",
-    href: (selectedProduct) =>
-      `/docs/${selectedProduct}/api-reference/api-fundamentals`, // Dynamic href, changes based on selectedProduct Context
+    href: (selectedProduct) => `/docs/${selectedProduct}/api-reference`, // Dynamic href, changes based on selectedProduct Context
   },
   {
     value: "codeSamples",
