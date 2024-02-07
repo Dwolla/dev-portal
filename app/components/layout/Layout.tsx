@@ -178,8 +178,9 @@ export default function Layout({
     };
   }, [sidebarToggled, isHomepage]);
 
-  //If selectedProduct is "connect", remove "dropIns" from navItems
-  let updatedNavItems;
+  let updatedNavItems = [...navItems]; // Create a copy of NAV_ITEMS array
+
+  // If selectedProduct is "connect", remove "dropIns" from updatedNavItems
   if (selectedProduct?.value === "connect") {
     updatedNavItems = navItems.filter((item) => item.value !== "dropIns");
   }
