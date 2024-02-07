@@ -335,15 +335,23 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
     // Access the pathname from the router object
     const currentPath = router.pathname;
 
-    // Use productOptions to determine the initial state based on the path
-    const initialState = PRODUCT_OPTIONS.find((option) =>
-      currentPath.startsWith(`/docs/${option.value}`)
-    );
+    // Set the default selected product based on the current path
+    if (currentPath === "/docs/drop-in-components") {
+      // Set "balance" as the selectedProduct if user navigates to the drop-in components page
+      setSelectedProduct(
+        PRODUCT_OPTIONS.find((option) => option.value === "balance")
+      );
+    } else {
+      // Use productOptions to determine the initial state based on the path
+      const initialState = PRODUCT_OPTIONS.find((option) =>
+        currentPath.startsWith(`/docs/${option.value}`)
+      );
 
-    // Set the initial state for selectedProduct state
-    setSelectedProduct(
-      initialState !== undefined ? initialState : PRODUCT_OPTIONS[0]
-    );
+      // Set the initial state for selectedProduct state
+      setSelectedProduct(
+        initialState !== undefined ? initialState : PRODUCT_OPTIONS[0]
+      );
+    }
   }, []);
 
   return (

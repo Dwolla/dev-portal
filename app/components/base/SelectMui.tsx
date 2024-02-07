@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithRef, useId } from "react";
+import React, { ComponentPropsWithRef, useRef } from "react";
 import { InputLabel, MenuItem, Select, SxProps } from "@mui/material";
 import { MUI_DROPDOWN_FOCUS, WHITE_PRIMARY } from "../colors";
 import ConditionalWrapper from "../util/ConditionalWrapper";
@@ -109,6 +109,8 @@ function isOption(
   return typeof obj === "object" && "label" in obj && "value" in obj;
 }
 
+let counter = 0; // Counter for generating unique ids for items
+
 export default function SelectMui({
   color,
   label,
@@ -116,7 +118,9 @@ export default function SelectMui({
   options,
   value,
 }: SelectMuiProps): JSX.Element {
-  const id = useId();
+  // eslint-disable-next-line no-plusplus
+  const idRef = useRef<number>(counter++); // Ref to keep track of unique id
+  const id = `select-mui-${idRef.current}`; // Generate unique id
 
   return (
     <>
@@ -137,7 +141,7 @@ export default function SelectMui({
       >
         {options.map(
           ({ label: itemLabel, value: itemValue, icon: ItemIcon }) => (
-            <MenuItem key={useId()} value={itemValue}>
+            <MenuItem key={`${id}-${itemValue}`} value={itemValue}>
               {/* ConditionalWrapper is used to display the ItemIcon alongside the itemLabel
               if one exists */}
               <ConditionalWrapper
