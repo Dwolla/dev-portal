@@ -178,13 +178,6 @@ export default function Layout({
     };
   }, [sidebarToggled, isHomepage]);
 
-  let updatedNavItems = [...navItems]; // Create a copy of NAV_ITEMS array
-
-  // If selectedProduct is "connect", remove "dropIns" from updatedNavItems
-  if (selectedProduct?.value === "connect") {
-    updatedNavItems = navItems.filter((item) => item.value !== "dropIns");
-  }
-
   return (
     <>
       <Global
@@ -212,7 +205,7 @@ export default function Layout({
         {/* Render SecondaryNavBar only if the current page is not "/docs" (aka Homepage)*/}
         {!isHomepage && (
           <SecondaryNavBar
-            navItems={updatedNavItems}
+            navItems={navItems}
             selectedSecondaryNavItem={selectedSecondaryNavItem}
             setSelectedSecondaryNavItem={setSelectedSecondaryNavItem}
             productOptions={productSelectorOptions}

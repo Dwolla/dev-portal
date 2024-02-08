@@ -38,7 +38,7 @@ exports[`TopBar 1`] = `
       <label
         className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-sizeSmall MuiInputLabel-outlined css-1pysi21-MuiFormLabel-root-MuiInputLabel-root"
         data-shrink={false}
-        id="select-mui-0"
+        id=":r0:"
       >
         Select Language
       </label>
@@ -49,7 +49,7 @@ exports[`TopBar 1`] = `
         <div
           aria-expanded="false"
           aria-haspopup="listbox"
-          aria-labelledby="select-mui-0"
+          aria-labelledby=":r0:"
           className="MuiSelect-select MuiSelect-outlined MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall css-jedpe8-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input"
           onBlur={[Function]}
           onFocus={[Function]}
