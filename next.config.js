@@ -25,16 +25,6 @@ module.exports = (phase) =>
             destination: "/docs",
             permanent: true,
           },
-          {
-            source: "/docs/connect/api-reference",
-            destination: "/docs/connect/api-reference/api-fundamentals",
-            permanent: true,
-          },
-          {
-            source: "/docs/balance/api-reference",
-            destination: "/docs/balance/api-reference/api-fundamentals",
-            permanent: true,
-          },
         ],
         webpack: (config) => {
           config.module.rules.unshift({

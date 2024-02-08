@@ -306,3 +306,6 @@
 /docs/balance/drop-ins/generate-client-token    /docs/drop-in-components/drop-ins/generate-client-token
 /docs/balance/drop-ins/setup-and-configuration    /docs/drop-in-components/drop-ins/setup-and-configuration
 /docs/balance/drop-ins    /docs/drop-in-components
+/docs/balance/api-reference    /docs/balance/api-reference/api-fundamentals
+/docs/connect/api-reference    /docs/connect/api-reference/api-fundamentals
+
