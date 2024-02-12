@@ -39,8 +39,8 @@ dependencies:
     specifier: ^1.6.22
     version: 1.6.22(react@18.2.0)
   '@mdx-js/react':
-    specifier: ^1.6.22
-    version: 1.6.22(react@18.2.0)
+    specifier: ^3.0.1
+    version: 3.0.1(@types/react@18.2.6)(react@18.2.0)
   '@mui/icons-material':
     specifier: ^5.14.3
     version: 5.14.3(@mui/material@5.14.3)(@types/react@18.2.6)(react@18.2.0)
@@ -88,7 +88,7 @@ dependencies:
     version: 2.3.2
   dwolla-mdx-remark:
     specifier: github:Dwolla/dwolla-mdx-remark#1.1.0
-    version: github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4)
+    version: github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@3.0.1)(next@12.3.4)
   github-slugger:
     specifier: ^2.0.0
     version: 2.0.0
@@ -2514,6 +2514,17 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@mdx-js/react@3.0.1(@types/react@18.2.6)(react@18.2.0):
+    resolution: {integrity: sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==}
+    peerDependencies:
+      '@types/react': '>=16'
+      react: '>=16'
+    dependencies:
+      '@types/mdx': 2.0.11
+      '@types/react': 18.2.6
+      react: 18.2.0
+    dev: false
+
   /@mdx-js/util@1.6.22:
     resolution: {integrity: sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==}
     dev: false
@@ -4075,6 +4086,10 @@ packages:
     resolution: {integrity: sha512-Y/uImid8aAwrEA24/1tcRZwpxX3pIFTSilcNDKSPn+Y2iDywSEachzRuvgAYYLR3wpGXAsMbv5lvKLDZLeYPAw==}
     dependencies:
       '@types/unist': 2.0.6
+    dev: false
+
+  /@types/mdx@2.0.11:
+    resolution: {integrity: sha512-HM5bwOaIQJIQbAYfax35HCKxx7a3KrK3nBtIqJgSOitivTD1y3oW9P3rxY9RkXYPUk7y/AjAohfHKmFpGE79zw==}
     dev: false
 
   /@types/mime-types@2.1.1:
@@ -11954,7 +11969,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@1.6.22)(next@12.3.4):
+  github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec(@mdx-js/loader@1.6.22)(@mdx-js/react@3.0.1)(next@12.3.4):
     resolution: {tarball: https://codeload.github.com/Dwolla/dwolla-mdx-remark/tar.gz/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec}
     id: github.com/Dwolla/dwolla-mdx-remark/1c14e0c1ab9a12b2dc40606c556f18240fa6d2ec
     name: dwolla-mdx-remark
@@ -11965,7 +11980,7 @@ packages:
       next: ^11.0.0 || ^12.0.0
     dependencies:
       '@mdx-js/loader': 1.6.22(react@18.2.0)
-      '@mdx-js/react': 1.6.22(react@18.2.0)
+      '@mdx-js/react': 3.0.1(@types/react@18.2.6)(react@18.2.0)
       debug: 4.3.4
       glob: 8.1.0
       gray-matter: 4.0.3
