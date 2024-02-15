@@ -18,18 +18,18 @@ The destination party, or the party receiving funds, does not need to have a ver
 
 There are multiple ways of adding a bank to a Customer with the Dwolla API. A simplified table below outlines the similarities and differences of each method.
 
-| Bank Addition Method                                           | Will the bank be verified?    | Required Information            |
-| -------------------------------------------------------------- | ----------------------------- | ------------------------------- |
-| API - Account & Routing Number                                 | Optional - With Microdeposits | Bank Account and Routing Number |
-| [Dwolla.js](/guides/dwolla-js/add-a-bank-account)              | Optional - With Microdeposits | Bank Account and Routing Number |
-| [Dwolla + Plaid integration](/guides/plaid)                    | Yes                           | Online banking Credentials      |
-| [Dwolla + Secure Exchange solution](/concepts/secure-exchange) | Yes                           | Online banking credentials      |
-| Other Approved Third-party Provider                            | Yes                           | Variable                        |
+| Bank Addition Method                                                        | Will the bank be verified?    | Required Information            |
+| --------------------------------------------------------------------------- | ----------------------------- | ------------------------------- |
+| API - Account & Routing Number                                              | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Drop-in components](https://developers.dwolla.com/docs/drop-in-components) | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Dwolla + Plaid integration](/guides/plaid)                                 | Yes                           | Online banking Credentials      |
+| [Dwolla + Secure Exchange solution](/concepts/secure-exchange)              | Yes                           | Online banking credentials      |
+| Other Approved Third-party Provider                                         | Yes                           | Variable                        |
 
 <AlertBar variation="info">
   For more information on securely submitting a user’s bank details directly to
   Dwolla from the client-side of your application, reference our{" "}
-  <a href="/concepts/drop-in-components#create-a-funding-source">
+  <a href="https://developers.dwolla.com/docs/drop-in-components#create-a-funding-source">
     Drop-in components
   </a>
   .
