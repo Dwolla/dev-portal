@@ -31,12 +31,32 @@ There are various reasons a [Verified Customer](/concepts/customer-types#verifie
 
 In production, Dwolla will place the Verified Customer in either the `retry`, `kba`, `document`, `verified`, or `suspended` state of verification after an initial identity verification check.
 
-**For personal Verified Customers**, reference the guide on [customer verification](/guides/personal-verified-customer/handle-verification-statuses) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-personal-customer---request-parameters) with that status.
+**For personal Verified Customers**: Reference the guide on [customer verification](https://developers.dwolla.com/docs/balance/personal-verified-customer) for more information on handling identity verification for Verified Customers. To simulate the various statuses in the Sandbox, supply either `verified`, `retry`, `kba`, `document`, or `suspended` in the **firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/docs/balance/api-reference/customers/create#verified-personal-customer---request-parameters) with that status.
 
-**For business Verified Customers**, reference the guide on [customer verification](/guides/business-verified-customer/create-a-customer) that goes over information on properly verifying a business's Controller, the business and associated Beneficial Owners. To simulate the various statuses in the Sandbox, submit either `verified`, `retry`, or `suspended` in the **controller firstName** parameter in order to [create a new Verified Customer](https://developers.dwolla.com/api-reference/customers/create#verified-business-customer-businesstypellc-corporation-or-partnership---request-parameters) with that status. To simulate different verification status for Beneficial Owners, submit either `incomplete` or `document` in the **beneficial owner firstName** parameter.
+**For business Verified Customers**: Reference the guide on [customer verification](https://developers.dwolla.com/docs/balance/business-verified-customer) that goes over information on properly verifying a business's Controller, the business, and associated Beneficial Owners.
 
-With business Verified Customers, documents may be needed for the Controller, the business, or both the Controller and business. To simulate the `document` status for the controller, submit `document` in the **controller firstName** parameter.
-Similarly, to simulate the `document` status for the business, submit `document` in the **businessName** parameter. To simulate both the Controller and the business in `document`, submit `document` in both the **controller firstName** and the **businessName** parameters.
+Here's how to simulate the different statuses and verification links for business Verified Customers in Sandbox:
+
+`retry` status:
+
+- For the business - Supply `retry` in the **businessName** parameter. This action will return a `retry-verification` link in the Customer resource.
+
+- For both the Controller and business - Supply `retry` in the **controller firstName** parameter. This action will return both a `retry-verification` link and a `retry-with-full-ssn` link in the Customer resource.
+
+`document` status:
+
+- For the controller - Supply `document` in the **controller firstName** parameter. This action will return a `verify-with-document` linkin the Customer resource.
+
+- For the business - Supply `document` in the **businessName** parameter. This action will return a `verify-business-with-document` link in the Customer resource.
+
+- For both the Controller and the business - Submit `document` in both the **controller firstName** and the **businessName** parameters. This action will return a `verify-controller-and-business-with-document` link in the Customer resource.
+
+`suspended`:
+
+- Supply `suspended` in the **controller firstName** parameter to create a new Verified Customer with that status.
+
+**For beneficial owners**:
+To simulate different verification statuses for Beneficial Owners, submit either `incomplete` or `document` in the **beneficial owner firstName** parameter.
 
 ### Simulate KBA verified and failed events
 

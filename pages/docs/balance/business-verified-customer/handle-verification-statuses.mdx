@@ -36,18 +36,25 @@ As a developer, you will want to handle the various Customer statuses that can b
 
 ## Handling `retry` status
 
-A `retry` status occurs when a Customer’s identity scores are too low during the initial verification attempt. The Customer will have one more opportunity to correct any mistakes.
+A `retry` status occurs when a Customer’s identity scores are too low during a verification attempt. Typically, a `retry` status occurs after the initial creation of a business-verified customer, however, a customer can also be placed into a retry status via the Dwolla Dashboard if the customer is in a `document` status. When the customer is in the `retry` status, your application needs to re-initiate the verification process by prompting the user via a form to resubmit their identifying information.
 
 <AlertBar variation="warning">
   You need to gather new information if the Customer is placed into the{" "}
-  <code>retry</code>
-  status; simply passing the same information will result in the same insufficient
-  scores.
+  <code>retry</code> status; simply passing the same information will result in
+  the same insufficient scores.
 </AlertBar>
 
-### Determining retry verification needed
+### Determining information needed to retry verification
 
-When a business verified Customer is placed in the `retry` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/docs/balance/api-reference/customers/retrieve), which will be used by an application to determine if retry is needed. For business verified Customers with Controllers, different links can be returned depending on whether retry is needed for just the business, or both the Controller and business. If the Controller information needs to be retried, all fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with the full 9-digit SSN of the Controller in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account ([see example request below](#business-with-controller-retry-with-full-ssn---request-and-response)). Additionally, `_embedded` errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their descriptions.
+When a business verified Customer is placed in the `retry` verification status, Dwolla will return a link in the API response after [retrieving a Customer](https://developers.dwolla.com/docs/balance/api-reference/customers/retrieve). The retry link contained within the `_links` object of the response helps your application determine if a retry is needed and what type of retry is required. What data you need to request from the customer depends on the retry scenario:
+
+- **Business-only retry**: A `retry-verification` link is returned. Include all fields required during initial customer but **omit** Controller information. For business verified Customers with Controllers, different links can be returned depending on whether retry is needed for just the business, or both the Controller and business.
+
+- **Controller and business retry**: A `retry-with-full-ssn` link is returned. If the Controller information needs to be retried, all fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with **the full 9-digit SSN** of the Controller in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account ([see example request below](#business-with-controller-retry-with-full-ssn---request-and-response)).
+
+#### Understanding \_embedded errors
+
+Additionally, `_embedded` errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their descriptions.
 
 | Link name           | Description                                                                     |
 | ------------------- | ------------------------------------------------------------------------------- |
