@@ -21,20 +21,21 @@ There are three ways of adding a bank to a Customer with the Dwolla API. A simpl
 | Bank Addition Method                                                                                                  | Will the bank be `verified`?  | Required Information            |
 | --------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------- |
 | API - Account & Routing Number                                                                                        | Optional - With Microdeposits | Bank Account and Routing Number |
+| [Drop-in components](https://developers.dwolla.com/docs/drop-in-components)                                           | Optional - With Microdeposits | Bank Account and Routing Number |
 | Third Party - Plaid ([Example](https://github.com/Dwolla/integration-examples/tree/main/dwolla-plaid-funding-source)) | Yes                           | Online Bank Credentials         |
-
-## Step 2A: Adding a Bank to the Receive-only User
-
-In this step, we will be adding a bank account to our receive-only user by collecting their bank details within a form on our application. After initial validation of the form fields, the user’s bank details will be submitted to our back-end server where the API request is made to Dwolla to add a bank account.
 
 <AlertBar variation="info">
   For more information on securely submitting a user’s bank details directly to
   Dwolla from the client-side of your application, reference our{" "}
-  <a href="/concepts/drop-in-components#create-a-funding-source">
+  <a href="https://developers.dwolla.com/docs/drop-in-components#create-a-funding-source">
     Drop-in components
   </a>
   .
 </AlertBar>
+
+## Step 2A: Adding a Bank to the Receive-only User
+
+In this step, we will be adding a bank account to our receive-only user by collecting their bank details within a form on our application. After initial validation of the form fields, the user’s bank details will be submitted to our back-end server where the API request is made to Dwolla to add a bank account.
 
 #### Request Parameters - Create a Funding Source
 
