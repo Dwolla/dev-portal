@@ -14,6 +14,13 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Completed
 
+### 2024-02-20
+
+**ADDED**
+
+- Added a new `retry-with-full-ssn` link to the Customer resource. This link appears whenever retry information is required for the Controller in order to verify the business verified Customer.
+- Check out our [Developer documentation](https://developers.dwolla.com/docs/balance/business-verified-customer/handle-verification-statuses#handling-retry-status) for more information.
+
 ### 2024-01-11
 
 **SUNSET**
@@ -265,9 +272,9 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 - New version of C# SDK.
 - Breaking changes:
-  - DwollaClient no longer throws on API errors, they should be properly deserialized into RestResponse.Error instead.
-  - DwollaException, RestException, and RestResponse.Exception are removed.
-  - Use `EmptyResponse` instead of `object` in DwollaClient interface.
+- DwollaClient no longer throws on API errors, they should be properly deserialized into RestResponse.Error instead.
+- DwollaException, RestException, and RestResponse.Exception are removed.
+- Use `EmptyResponse` instead of `object` in DwollaClient interface.
 - Check it out on our [Github](https://github.com/Dwolla/dwolla-v2-csharp)
 
 ### 2018-05-11
