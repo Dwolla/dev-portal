@@ -1,21 +1,21 @@
 ---
 layout: guides
-product: connect
-title: "Create an exchange session for an external party"
+product: balance
+title: "Create an exchange session for a customer"
 guide:
   step: 1
 meta:
-  title: "Dwolla API Reference | Open Banking: Create External Party Exchange Session"
-  description: "Create an exchange session for an external party."
+  title: "Dwolla API Reference | Open Banking: Create Customer Exchange Session"
+  description: "Create an exchange session for a customer."
 ---
 
-# Create an exchange for an external party
+# Create an exchange for a customer
 
-This section contains information on how to create an exchange session for an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>. The creation of an exchange session initiates the Instant Account Verification process with a trusted open banking partner. The creation of an exchange session requires a `_link` that identifies the open banking ecosystem partner, which can be found by calling the [list exchange partners](/docs/connect/api-reference/exchanges/list-exchange-partners) endpoint.
+This section contains information on how to create an exchange session for a Customer. The creation of an exchange session initiates the Instant Account Verification process with a trusted open banking partner. The creation of an exchange session requires a `_link` that identifies the open banking ecosystem partner, which can be found by calling the [list exchange partners](/docs/balance/api-reference/exchanges/list-exchange-partners) endpoint.
 
 ### HTTP request
 
-> `POST https://api.dwolla.com/external-parties/{id}/exchange-sessions`
+> `POST https://api.dwolla.com/customers/{id}/exchange-sessions`
 
 ### Request parameters
 
@@ -35,7 +35,7 @@ This section contains information on how to create an exchange session for an <s
 ### Request and Response
 
 ```bash
-POST https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
 Accept: application/vnd.dwolla.v1.hal+json
 Content-Type: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
@@ -60,7 +60,7 @@ Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49
 
 ```ruby
 # Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
-external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
 request_body = {
   _links: {
     'exchange-partner': {
@@ -69,13 +69,13 @@ request_body = {
   }
 }
 
-exchange = app_token.post "#{external_party_url}/exchange-sessions", request_body
+exchange = app_token.post "#{customer_url}/exchange-sessions", request_body
 exchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
 ```
 
 ```python
 # Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
-external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+customer_url = 'https://api.dwolla.com/customer/74a207b2-b7b7-4efa-8bf8-582148e7b980'
 request_body = {
   '_links': {
     'exchange-partner': {
@@ -84,14 +84,14 @@ request_body = {
   }
 }
 
-exchange = app_token.post('%s/exchange-sessions' % external_party_url, request_body)
+exchange = app_token.post('%s/exchange-sessions' % customer_url, request_body)
 exchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
 ```
 
 ```javascript
 // Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
-var externalPartyUrl =
-  "https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var customerUrl =
+  "https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
 var requestBody = {
   _links: {
     "exchange-partner": {
@@ -101,6 +101,6 @@ var requestBody = {
 };
 
 dwolla
-  .post(`${externalPartyUrl}/exchange-sessions`, requestBody)
+  .post(`${customerUrl}/exchange-sessions`, requestBody)
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
 ```
