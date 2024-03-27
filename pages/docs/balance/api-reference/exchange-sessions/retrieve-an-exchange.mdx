@@ -1,0 +1,95 @@
+---
+layout: guides
+product: balance
+title: "Retrieve an exchange"
+guide:
+  step: 5
+meta:
+  title: "Retrieve an exchange | Dwolla API Documentation"
+  description: Retrieve an exchange by ID.
+---
+
+# Retrieve an Exchange Resource
+
+This section shows you how to retrieve an exchange resource.
+
+### HTTP request
+
+> `GET https://api.dwolla.com/exchanges/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                          |
+| --------- | -------- | ------ | ------------------------------------ |
+| id        | yes      | string | Exchange resource unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code         | Description                                                                                                                   |
+| ----------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| 200         | Ok           | The Dwolla API accepted the request and returned a response.                                                                  |
+| 401         | InvalidScope | The scopes for retrieving an exchange resource is not enabled for this application. Reach out to Dwolla for more information. |
+| 404         | NotFound     | The requested resource was not found. Check Exchange ID.                                                                      |
+
+### Request and response
+
+```bash
+GET https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange"
+        },
+        "exchange-partner": {
+            "href": "https://api-sandbox.dwolla.com/exchange-partners/9b55a4b3-34ae-4607-b2d1-622f1eed77f9",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-partner"
+        }
+    },
+    "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
+    "status": "active",
+    "created": "2022-10-21T21:41:03.283Z"
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+exchange_url = 'https://api-sandbox.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a'
+
+exchange = app_token.get exchange_url
+exchange.id # => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$exchangesApi = new ExchangesApi($apiClient);
+$exchangeUrl = "https://api-sandbox.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a";
+
+$exchange = $exchangesApi->id($exchangeUrl);
+$exchange->id; # => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+exchangeurl = 'https://api-sandbox.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a'
+
+exchange = app_token.get(exchange_url)
+exchange.body['id'] # => 'e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var exchangeUrl =
+  "https://api-sandbox.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a";
+
+dwolla.get(exchangeUrl).then((res) => res.body.id); // => "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a"
+```

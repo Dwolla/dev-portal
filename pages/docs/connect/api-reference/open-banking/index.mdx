@@ -1,0 +1,72 @@
+---
+layout: guides
+product: connect
+title: "Overview"
+group:
+  title: Open Banking
+  weight: 6
+guide:
+  step: 0
+meta:
+  title: "Dwolla API Reference | Open Banking: Overview"
+  description: "Dwolla Exchange Sessions API connects your app, open banking providers and user banks. Streamline onboarding with instant account verification and leverage Dwolla's pre-integrated solutions."
+---
+
+# Open Banking
+
+This section dives into the process of leveraging Dwolla's Exchange Sessions API for Instant Account Verification (IAV) within your application. Dwolla's Exchange Sessions API enables you to leverage open banking providers to perform bank account verification in real-time, streamlining your onboarding process and improving user experience. An Exchange Session represents a generated IAV session that is established between Dwolla and integrated open banking service providers for the purposes of user bank account verification.
+
+### Instant Account Verification Flow
+
+Here's a breakdown of the steps:
+
+1. Initiate Exchange Session
+
+- Use the [create an exchange session](/api-reference/open-banking/create-exchange-session-for-an-external-party) endpoint of the Dwolla API to initiate an Exchange Session for an External Party.
+- Specify the desired open banking provider (e.g., MX) within the request body.
+
+2. Retrieve Exchange Session and Complete IAV Flow
+
+- Make an API call to [retrieve an exchange session](/api-reference/open-banking/retrieve-an-exchange-session). Upon success, Dwolla will return a `external-provider-session` URL where your application will redirect the user to a secure login.
+- The user logs in to their bank account and grants your application permission to access specific financial data for account verification.
+- Implement proper error handling mechanisms to address potential issues during the verification process.
+
+3. Data Retrieval and Exchange Creation
+
+- Upon successful authorization, you'll obtain specific user and selected account details from the open banking provider which will be used to [create an exchange](/api-reference/exchanges/create-exchange-for-an-external-party).
+- Dwolla retrieves relevant account data from the user's bank through the secure open banking provider API connection established during the Exchange Session.
+
+4. Funding Source Creation and Account Verification
+
+- Using the [create a funding source endpoint](/api-reference/funding-sources/create-for-external-party), you'll create a funding source by passing in the exchange resource from the previous step.
+- Dwolla returns a 201 response and triggers a `external_party.funding_source:created` webhook indicating the funding source and account verification is complete.
+
+### Exchange Sessions resource
+
+| Parameter | Description                                                                                       |
+| --------- | ------------------------------------------------------------------------------------------------- |
+| \_links   | A unique string value which can be used to identify a third-party “partner” via the Exchange API. |
+| created   | ISO 8601 timestamp of when the exchange-partner resource was created.                             |
+
+```bash
+{
+    "created": "2024-03-25T17:13:38.430Z",
+    "_links": {
+        "self": {
+            "href": "https://api-sandbox.dwolla.com/exchange-sessions/9b7fb629-0fad-44f4-8c5e-44c25a0bfa8e",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-sessions"
+        },
+        "exchange-partner": {
+            "href": "https://api-sandbox.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-partner"
+        },
+        "external-provider-session": {
+            "href": "https://int-widgets.moneydesktop.com/md/connect/lAfkc7m897s3t1ks9mmwyj4ry7Zq0xql4grzAg1kz77x7c9jrwls1t22w6xt8d2lsxx9zpqv30js3wswfdwcrpAsqgbAfkqwpksp7c2chsx167xy90Asfc67dkj9y48y8p142xw3yp4x5l9t9gkk6m3yk5vwsvyq2qq7w9trszxwdl14lmkg7l6949bn5n41chdkbnxycy40n9b6fkbdwl6qt5wl107k1x8srvlkpz325p412x9tkyA5clf39109lsfrgz2lkgsvntqf7l0zzwb5hl658gdjbxwhb52krwybnbdAqfq69cdy54l05jkvfwyf01q89x48jtgtx290lzjdfcty1lwb8d648wns/eyJ1aV9tZXNzYWdlX3ZlcnNpb24iOjQsInVpX21lc3NhZ2Vfd2Vidmlld191cmxfc2NoZW1lIjoibXgiLCJtb2RlIjoidmVyaWZpY2F0aW9uIn0%3D",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "text/html"
+        }
+    }
+}
+```
