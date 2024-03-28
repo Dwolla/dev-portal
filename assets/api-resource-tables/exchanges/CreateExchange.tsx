@@ -51,7 +51,7 @@ export default {
           selected bank account via the Instant Account Verification (IAV) flow.{" "}
           <strong>Note:</strong> Only used with{" "}
           <Link
-            href="/api-reference/open-banking/create-exchange-session-for-an-external-party"
+            href="/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party"
             text="Exchange Sessions API"
           />{" "}
           and pre-integrated open banking providers.

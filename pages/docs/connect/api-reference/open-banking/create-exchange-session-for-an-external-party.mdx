@@ -9,7 +9,7 @@ meta:
   description: "Create an exchange session for an external party."
 ---
 
-# Create an exchange for an external party
+# Create an exchange session for an external party
 
 This section contains information on how to create an exchange session for an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>. The creation of an exchange session initiates the Instant Account Verification process with a trusted open banking partner. The creation of an exchange session requires a `_link` that identifies the open banking ecosystem partner, which can be found by calling the [list exchange partners](/docs/connect/api-reference/exchanges/list-exchange-partners) endpoint.
 
@@ -27,7 +27,7 @@ This section contains information on how to create an exchange session for an <s
 
 | HTTP Status | Code            | Description                                                                                                                                                                           |
 | ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 201         | Created         | The Dwolla API accepted the request and created an exchange resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
+| 201         | Created         | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
 | 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                               |
 | 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                                     |
 | 404         | NotFound        | The requested resource was not found.                                                                                                                                                 |
