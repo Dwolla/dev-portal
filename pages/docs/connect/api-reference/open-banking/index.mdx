@@ -45,7 +45,7 @@ Here's a breakdown of the steps:
 
 | Parameter | Description                                                                                       |
 | --------- | ------------------------------------------------------------------------------------------------- |
-| \_links   | A unique string value which can be used to identify a third-party “partner” via the Exchange API. |
+| \_links   | A _links JSON object containing a collection of links to related resources including: exchange session, exchange-partner, and external-provider-session.  The unique URL called "external-provider-session" is specifically designed to be embedded within your application, facilitating the Instant Account Verification flow. |
 | created   | ISO 8601 timestamp of when the exchange-partner resource was created.                             |
 
 ```bash
