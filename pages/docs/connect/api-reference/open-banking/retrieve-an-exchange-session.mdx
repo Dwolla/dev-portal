@@ -1,0 +1,94 @@
+---
+layout: guides
+product: connect
+title: "Retrieve an exchange session"
+guide:
+  step: 2
+meta:
+  title: "Dwolla API Reference | Open Banking: Retrieve an exchange session"
+  description: "Retrieve an exchange session by ID."
+---
+
+# Retrieve an Exchange Session
+
+This section shows you how to retrieve an exchange session resource.
+
+### HTTP request
+
+> `GET https://api.dwolla.com/exchange-sessions/{id}`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                  |
+| --------- | -------- | ------ | -------------------------------------------- |
+| id        | yes      | string | Exchange Session resource unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code     | Description                                                      |
+| ----------- | -------- | ---------------------------------------------------------------- |
+| 200         | Ok       | The Dwolla API accepted the request and returned a response.     |
+| 404         | NotFound | The requested resource was not found. Check Exchange Session ID. |
+
+### Request and response
+
+```bash
+GET https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "created": "2024-03-25T17:13:38.430Z",
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/exchange-sessions/9b7fb629-0fad-44f4-8c5e-44c25a0bfa8e",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-sessions"
+        },
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-partner"
+        },
+        "external-provider-session": {
+            "href": "https://int-widgets.moneydesktop.com/md/connect/lAfkc7m897s3t1ks9mmwyj4ry7Zq0xql4grzAg1kz77x7c9jrwls1t22w6xt8d2lsxx9zpqv30js3wswfdwcrpAsqgbAfkqwpksp7c2chsx167xy90Asfc67dkj9y48y8p142xw3yp4x5l9t9gkk6m3yk5vwsvyq2qq7w9trszxwdl14lmkg7l6949bn5n41chdkbnxycy40n9b6fkbdwl6qt5wl107k1x8srvlkpz325p412x9tkyA5clf39109lsfrgz2lkgsvntqf7l0zzwb5hl658gdjbxwhb52krwybnbdAqfq69cdy54l05jkvfwyf01q89x48jtgtx290lzjdfcty1lwb8d648wns/eyJ1aV9tZXNzYWdlX3ZlcnNpb24iOjQsInVpX21lc3NhZ2Vfd2Vidmlld191cmxfc2NoZW1lIjoibXgiLCJtb2RlIjoidmVyaWZpY2F0aW9uIn0%3D",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "text/html"
+        }
+    }
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+exchange_session_url = 'https://api.dwolla.com/exchange-sessions/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a'
+
+exchange_session = app_token.get exchange_session_url
+exchange_session['_links']['external-provider-session']['href'] # => "https://int-widgets.moneydesktop.com/md/connect/lAfkc7m897s3t1ks9mmwyj4ry7Zq0xql4grzAg1kz77x7c9jrwls1t22w6xt8d2lsxx9zpqv30js3wswfdwcrpAsqgbAfkqwpksp7c2chsx167xy90Asfc67dkj9y48y8p142xw3yp4x5l9t9gkk6m3yk5vwsvyq2qq7w9trszxwdl14lmkg7l6949bn5n41chdkbnxycy40n9b6fkbdwl6qt5wl107k1x8srvlkpz325p412x9tkyA5clf39109lsfrgz2lkgsvntqf7l0zzwb5hl658gdjbxwhb52krwybnbdAqfq69cdy54l05jkvfwyf01q89x48jtgtx290lzjdfcty1lwb8d648wns/eyJ1aV9tZXNzYWdlX3ZlcnNpb24iOjQsInVpX21lc3NhZ2Vfd2Vidmlld191cmxfc2NoZW1lIjoibXgiLCJtb2RlIjoidmVyaWZpY2F0aW9uIn0%3D"
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+exchange_session_url = 'https://api.dwolla.com/exchange-sessions/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a'
+
+exchange_session = app_token.get(exchange_session_url)
+exchange_session.body['_links']['external-provider-session']['href'] # => 'https://int-widgets.moneydesktop.com/md/connect/lAfkc7m897s3t1ks9mmwyj4ry7Zq0xql4grzAg1kz77x7c9jrwls1t22w6xt8d2lsxx9zpqv30js3wswfdwcrpAsqgbAfkqwpksp7c2chsx167xy90Asfc67dkj9y48y8p142xw3yp4x5l9t9gkk6m3yk5vwsvyq2qq7w9trszxwdl14lmkg7l6949bn5n41chdkbnxycy40n9b6fkbdwl6qt5wl107k1x8srvlkpz325p412x9tkyA5clf39109lsfrgz2lkgsvntqf7l0zzwb5hl658gdjbxwhb52krwybnbdAqfq69cdy54l05jkvfwyf01q89x48jtgtx290lzjdfcty1lwb8d648wns/eyJ1aV9tZXNzYWdlX3ZlcnNpb24iOjQsInVpX21lc3NhZ2Vfd2Vidmlld191cmxfc2NoZW1lIjoibXgiLCJtb2RlIjoidmVyaWZpY2F0aW9uIn0%3D'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var exchangeSessionUrl =
+  "https://api.dwolla.com/exchange-sessions/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a";
+
+dwolla
+  .get(exchangeSessionUrl)
+  .then((res) => res.body._links["external-provider-session"].href); // => "https://int-widgets.moneydesktop.com/md/connect/lAfkc7m897s3t1ks9mmwyj4ry7Zq0xql4grzAg1kz77x7c9jrwls1t22w6xt8d2lsxx9zpqv30js3wswfdwcrpAsqgbAfkqwpksp7c2chsx167xy90Asfc67dkj9y48y8p142xw3yp4x5l9t9gkk6m3yk5vwsvyq2qq7w9trszxwdl14lmkg7l6949bn5n41chdkbnxycy40n9b6fkbdwl6qt5wl107k1x8srvlkpz325p412x9tkyA5clf39109lsfrgz2lkgsvntqf7l0zzwb5hl658gdjbxwhb52krwybnbdAqfq69cdy54l05jkvfwyf01q89x48jtgtx290lzjdfcty1lwb8d648wns/eyJ1aV9tZXNzYWdlX3ZlcnNpb24iOjQsInVpX21lc3NhZ2Vfd2Vidmlld191cmxfc2NoZW1lIjoibXgiLCJtb2RlIjoidmVyaWZpY2F0aW9uIn0%3D"
+```

@@ -109,6 +109,95 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
 ```
 
+### Request and Response (MX - Exchange Sessions API)
+
+```bash
+POST https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22"
+        }
+    },
+    "mx": {
+      "memberId": "MBR-7e01bbe1-59cb-4256-a04b-71d4f6b6047d",
+      "accountId": "ACT-6bade551-7fbb-4ce1-a74d-f9b6425570ae"
+    }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22"
+    }
+  },
+  mx: {
+    memberId: "MBR-7e01bbe1-59cb-4256-a04b-71d4f6b6047d",
+    accountId: "ACT-6bade551-7fbb-4ce1-a74d-f9b6425570ae"
+  }
+}
+
+exchange = app_token.post "#{external_party_url}/exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22'
+    }
+  },
+  'mx': {
+    'memberId': "MBR-7e01bbe1-59cb-4256-a04b-71d4f6b6047d",
+    'accountId': "ACT-6bade551-7fbb-4ce1-a74d-f9b6425570ae"
+  }
+}
+
+exchange = app_token.post('%s/exchanges' % external_party_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
+    },
+  },
+  mx: {
+    memberId: "MBR-7e01bbe1-59cb-4256-a04b-71d4f6b6047d",
+    accountId: "ACT-6bade551-7fbb-4ce1-a74d-f9b6425570ae",
+  },
+};
+
+dwolla
+  .post(`${externalPartyUrl}/exchanges`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
 ### Request and Response (Flinks)
 
 ```bash

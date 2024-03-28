@@ -1,0 +1,106 @@
+---
+layout: guides
+product: connect
+title: "Create an exchange session for an external party"
+guide:
+  step: 1
+meta:
+  title: "Dwolla API Reference | Open Banking: Create External Party Exchange Session"
+  description: "Create an exchange session for an external party."
+---
+
+# Create an exchange session for an external party
+
+This section contains information on how to create an exchange session for an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>. The creation of an exchange session initiates the Instant Account Verification process with a trusted open banking partner. The creation of an exchange session requires a `_link` that identifies the open banking ecosystem partner, which can be found by calling the [list exchange partners](/docs/connect/api-reference/exchanges/list-exchange-partners) endpoint.
+
+### HTTP request
+
+> `POST https://api.dwolla.com/external-parties/{id}/exchange-sessions`
+
+### Request parameters
+
+| Property | Required | Type   | Description                                                                                                                          |
+| -------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| \_links  | yes      | object | HAL-JSON link that represents the Exchange Partner resource that identifies the open banking provider used for creating an exchange. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code            | Description                                                                                                                                                                           |
+| ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | Created         | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
+| 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                               |
+| 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                                     |
+| 404         | NotFound        | The requested resource was not found.                                                                                                                                                 |
+
+### Request and Response
+
+```bash
+POST https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        }
+    }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    }
+  }
+}
+
+exchange = app_token.post "#{external_party_url}/exchange-sessions", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+external_party_url = 'https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4'
+    }
+  }
+}
+
+exchange = app_token.post('%s/exchange-sessions' % external_party_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var externalPartyUrl =
+  "https://api.dwolla.com/external-parties/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+    },
+  },
+};
+
+dwolla
+  .post(`${externalPartyUrl}/exchange-sessions`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
