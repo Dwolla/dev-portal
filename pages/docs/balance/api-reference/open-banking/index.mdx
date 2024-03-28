@@ -22,7 +22,7 @@ Here's a breakdown of the steps:
 
 **Step 1: Initiate Exchange Session**
 
-- Use the [create an exchange session](/docs/balance/api-reference/exchanges/create-exchange-for-a-customer) endpoint of the Dwolla API to initiate an Exchange Session for a Customer.
+- Use the [create an exchange session](/docs/balance/api-reference/exchanges/create-exchange-session-for-a-customer) endpoint of the Dwolla API to initiate an Exchange Session for a Customer.
 - Specify the desired open banking provider (e.g., MX) within the request body.
 
 **Step 2: Retrieve Exchange Session and Complete IAV Flow**
@@ -43,10 +43,10 @@ Here's a breakdown of the steps:
 
 ### Exchange Sessions resource
 
-| Parameter | Description                                                                                       |
-| --------- | ------------------------------------------------------------------------------------------------- |
-| \_links   | A _links JSON object containing a collection of links to related resources including: exchange session, exchange-partner, and external-provider-session.  The unique URL called "external-provider-session" is specifically designed to be embedded within your application, facilitating the Instant Account Verification flow.  |
-| created   | ISO 8601 timestamp of when the exchange-partner resource was created.                             |
+| Parameter | Description                                                                                                                                                                                                                                                                                                                      |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links   | A \_links JSON object containing a collection of links to related resources including: exchange session, exchange-partner, and external-provider-session. The unique URL called "external-provider-session" is specifically designed to be embedded within your application, facilitating the Instant Account Verification flow. |
+| created   | ISO 8601 timestamp of when the exchange-partner resource was created.                                                                                                                                                                                                                                                            |
 
 ```bash
 {
