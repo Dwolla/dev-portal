@@ -140,7 +140,7 @@ exports[`Layout 1`] = `
       className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-pjew9n-MuiPaper-root-MuiAppBar-root"
     >
       <div
-        className="MuiContainer-root MuiContainer-maxWidthXl css-19r6kue-MuiContainer-root"
+        className="MuiContainer-root css-ur2jdm-MuiContainer-root"
       >
         <div
           className="MuiToolbar-root MuiToolbar-regular css-1mojz2a-MuiToolbar-root"
@@ -149,7 +149,7 @@ exports[`Layout 1`] = `
             className="MuiBox-root css-xh3wsv"
           >
             <div
-              className="css-l92tbk-ProductSelectorWrapper emsji1v1"
+              className="css-7ui14r-ProductSelectorWrapper emsji1v1"
             >
               <div
                 className="MuiFormControl-root css-78me8v-MuiFormControl-root"
