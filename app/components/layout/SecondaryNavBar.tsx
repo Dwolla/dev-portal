@@ -16,9 +16,9 @@ import { breakDown } from "../breakpoints";
 export const NAV_BAR_HEIGHT = 70;
 
 const ProductSelectorWrapper = styled.div`
-  margin: 0 20px;
-  padding: 0 20px;
-  width: 400px; // Same value as LEFT_SIDEBAR_WIDTH from ../../../app/components/layout/Layout.tsx
+  margin: 0 10px 0 0;
+  padding: 0 20px 0 0;
+  width: 400px; // Value of LEFT_SIDEBAR_WIDTH - 20px from ../../../app/components/layout/Layout.tsx
 
   @media (${breakDown("md")}) {
     width: 300px;
@@ -75,7 +75,7 @@ export default function SecondaryNavBar({
         display: { xs: "none", sm: "none", md: "none", lg: "flex" },
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth={false}>
         <Toolbar disableGutters sx={{ justifyContent: "space-around" }}>
           <Box
             sx={{
