@@ -432,7 +432,7 @@ Check the beneficial owner's status again. The beneficial owner will either be i
 
 ### Handling `document` status
 
-If a beneficial owner is not verified after being placed in `incomplete` status and submitting a second verification attempt, the only other state the beneficial owner can be in is `document`. If the beneficial owner has a status of `document`, they will need to upload additional pieces of information in order to verify their identity. Use the [create a document](/api-reference/documents/create-document-for-beneficial-owner) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take anywhere from a few seconds up to 1-2 business days if manual verification is required to approve or reject.
+If a beneficial owner is not verified after being placed in `incomplete` status and submitting a second verification attempt, the only other state the beneficial owner can be in is `document`. If the beneficial owner has a status of `document`, they will need to upload additional pieces of information in order to verify their identity. Use the [create a document](/api-reference/documents/create-document-for-beneficial-owner) endpoint when uploading a colored camera captured image of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take anywhere from a few seconds up to 1-2 business days if manual verification is required to approve or reject.
 
 You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
 
@@ -450,7 +450,7 @@ You can provide the following best practices to the Customer in order to reduce 
 
 #### US persons
 
-A color scanned photo of the Beneficial Owner’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card). Examples include:
+A colored camera captured image of the Beneficial Owner’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card). Examples include:
 
 - Non-expired State Issued Driver’s License/Identification Card
 - Non-expired US Passport
@@ -459,7 +459,7 @@ A color scanned photo of the Beneficial Owner’s identifying document can be sp
 
 #### Non-US persons
 
-A color scanned photo of the Beneficial Owner’s identifying document can be specified as documentType: `passport`. Examples include:
+A colored camera captured image of the Beneficial Owner’s identifying document can be specified as documentType: `passport`. Examples include:
 
 - Non-expired Foreign Passport _**Note:** Foreign Passports are only accepted when the individual does not have an ITIN or SSN and the user must alternatively enter the Passport number_.
 

@@ -568,7 +568,7 @@ dwolla.post(customerUrl, requestBody).then(function (res) {
 
 ## Handling `document` status
 
-If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](/api-reference/documents/create-document-for-customer) endpoint when uploading a colored scan of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
+If the Customer has a status of `document`, the Customer will need to upload additional pieces of information in order to verify the account. Use the [create a document](/api-reference/documents/create-document-for-customer) endpoint when uploading a colored camera captured image of the identifying document. The document(s) will then be reviewed by Dwolla; this review may take up to 1-2 business days to approve or reject.
 
 You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
 
@@ -661,7 +661,7 @@ When a business verified Customer is placed in the `document` verification statu
 
 ##### Controllers
 
-**US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card).
+**US persons:** A colored camera captured image of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card).
 
 Supported Document Examples:
 
@@ -675,7 +675,7 @@ Unsupported Document Examples:
 - Military IDs
 - Expired government-issued IDs
 
-**Non-US persons:** A color scanned photo of the Controller’s identifying document can be specified as documentType: `passport`. Examples include:
+**Non-US persons:** A colored camera captured image of the Controller’s identifying document can be specified as documentType: `passport`. Examples include:
 
 - Non-expired Foreign Passport _**Note:** Foreign Passports are only accepted when the individual does not have an ITIN or SSN and the user must alternatively enter the Passport number_.
 

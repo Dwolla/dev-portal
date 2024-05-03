@@ -6,19 +6,25 @@ guide:
   step: 1
 meta:
   title: "Create Document | Dwolla API Documentation"
-  description: Create a document for a Customer pending verification by uploading a color scan or photo of government issued identification.
+  description: Create a document for a Customer pending verification by uploading a color  or photo of government issued identification.
 ---
 
 # Create a document for a customer
 
-Create a document for a Customer pending verification by uploading a color scan or photo of government issued identification (see below for acceptable document types). This requires a multipart form-data POST request. The uploaded file must be a color image, in a `.jpg`, `.jpeg`, or `.png` format, and less than 10MB in size. Additionally, Business Documents can also be uploaded in a `.pdf` format.
+To verify an individual or business identity, please upload a clear, colored image captured with a camera of a government-issued identification document. Reference the table below for the list of acceptable documents.
+
+Here's what you need to know about uploading a document:
+
+- Multipart Form-Data POST Request: You'll need to use a multipart form-data POST request to upload your document. This is a specific type of HTTP request used for file uploads.
+- Supported File Formats: The uploaded file must be a color image in one of these formats: JPG, JPEG, or PNG. Business Documents in PDF format are accepted for verification purposes.
+- File Size Limit: The file size cannot exceed 10MB.
 
 ### Acceptable documents
 
-| Customer type              | Acceptable documents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Personal Verified Customer | `passport`, `license`, or `idCard`. Must be a color scan of U.S. government-issued identification. Foreign passports will be rejected with [ForeignPassportNotAllowed](/guides/personal-verified-customer/handle-verification-statuses#document-failure) if uploaded for this customer type.                                                                                                                                                                                                                                                                       |
-| Business Verified Customer | Controller documents - `passport`, `license`, or `idCard`. <br /> <ul><li>If `license` or `idCard`, must be a color scan of U.S. government-issued identification.</li><li>If `passport`, U.S. as well as foreign passports are accepted for business Controllers and Beneficial Owners.</li></ul> Business documents - `other`. Refer to our guide on [Handling Document status for Business Verified Customers](https://developers.dwolla.com/guides/business-verified-customer/handle-verification-statuses#handling-document-status) for acceptable documents. |
+| Customer type              | Acceptable documents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Personal Verified Customer | `passport`, `license`, or `idCard`. Must be a colored camera captured image of a U.S. government-issued identification. Foreign passports will be rejected with [ForeignPassportNotAllowed](/guides/personal-verified-customer/handle-verification-statuses#document-failure) if uploaded for this customer type.                                                                                                                                                                                                                                                                       |
+| Business Verified Customer | Controller documents - `passport`, `license`, or `idCard`. <br /> <ul><li>If `license` or `idCard`, must be a colored camera captured image of a U.S. government-issued identification.</li><li>If `passport`, U.S. as well as foreign passports are accepted for business Controllers and Beneficial Owners.</li></ul> Business documents - `other`. Refer to our guide on [Handling Document status for Business Verified Customers](https://developers.dwolla.com/guides/business-verified-customer/handle-verification-statuses#handling-document-status) for acceptable documents. |
 
 ### HTTP request
 
