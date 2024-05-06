@@ -19,11 +19,11 @@ This section contains information on how to create an exchange for an end-user/C
 
 ### Request parameters
 
-| Parameter | Required    | Type   | Description                                                                                                                                                                                                   |
-| --------- | ----------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                        |
-| token     | conditional | string | A third party provider processor token. **Required** for MX and Flinks integrations.                                                                                                                          |
-| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Finicity integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects). |
+| Parameter | Required    | Type   | Description                                                                                                                                                                                                     |
+| --------- | ----------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                          |
+| token     | conditional | string | A third party provider processor token. **Required** for MX, Flinks and Plaid integrations.                                                                                                                     |
+| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Mastercard integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects). |
 
 ### Finicity JSON Object
 
@@ -344,7 +344,7 @@ dwolla
   .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
 ```
 
-### Request and Response (Finicity)
+### Request and Response (Mastercard)
 
 ```bash
 POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
@@ -522,6 +522,96 @@ var requestBody = {
     ],
     timestamp: "2022-07-11T06:06:23Z",
   },
+};
+
+dwolla
+  .post(`${customerUrl}/exchanges`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Plaid)
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/3aef60d1-878f-4692-8c06-c6b478efb60d"
+        }
+    },
+    "token": "somePlaidProcessorToken"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$exchangesApi = new ExchangesApi($apiClient);
+$customerUrl = "https://api-sandbox.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+
+$exchange = $exchangesApi->createCustomerExchange(new CreateExchangeRequest([
+    "_links" => [
+        "exchange-partner" => [
+            "href" => "https://api.dwolla.com/exchange-partners/3aef60d1-878f-4692-8c06-c6b478efb60d"
+        ]
+    ],
+    "token" => "somePlaidProcessorToken"
+]), $customerUrl);
+
+$exchange; # => https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+?>
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/3aef60d1-878f-4692-8c06-c6b478efb60d"
+    }
+  },
+  token: 'somePlaidProcessorToken'
+}
+
+exchange = app_token.post "#{customer_url}/exchanges", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/3aef60d1-878f-4692-8c06-c6b478efb60d'
+    }
+  },
+  'token': 'somePlaidProcessorToken'
+}
+
+exchange = app_token.post('%s/exchanges' % customer_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/3aef60d1-878f-4692-8c06-c6b478efb60d",
+    },
+  },
+  token: "somePlaidProcessorToken",
 };
 
 dwolla
