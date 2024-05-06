@@ -17,30 +17,29 @@ export const CodeSamplesPageGrid = () => {
   };
   const codeSampleCards = [
     {
-      topic: "Dwolla + Plaid Integration Example",
+      topic: "Dwolla + Plaid Token Exchange",
       description: (
-        <>
-          Example app built using Next.js to demonstrate how to add a verified
-          bank funding source using the{" "}
-          <a href={"./guides/plaid"}>tokenized integration</a> between Dwolla
-          and Plaid.
-        </>
+        <p>
+          A Next.js application connecting Dwolla and Plaid via Dwolla's Token
+          Exchange, which allows Dwolla to securely retrieve sensitive
+          information (e.g., account and routing numbers) directly from Plaid.
+        </p>
       ),
-      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/plaid-funding-source",
+      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/secure-token-exchange/plaid",
       external: true,
       languages: ["JavaScript", "TypeScript"],
     },
     {
-      topic: "Dwolla + Finicity Token Exchange",
+      topic: "Dwolla + Mastercard Token Exchange",
       description: (
         <p>
-          A Next.js application connecting Dwolla and Finicity via Dwolla's
+          A Next.js application connecting Dwolla and Mastercard via Dwolla's
           Token Exchange, which allows Dwolla to securely retrieve sensitive
           information (e.g., account and routing numbers) directly from
-          Finicity.
+          Mastercard.
         </p>
       ),
-      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/finicity-token-exchange",
+      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/secure-token-exchange/mastercard",
       external: true,
       languages: ["JavaScript", "TypeScript"],
     },
@@ -53,7 +52,7 @@ export const CodeSamplesPageGrid = () => {
           information (e.g., account and routing numbers) directly from MX.
         </p>
       ),
-      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/mx-token-exchange",
+      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/secure-token-exchange/mx",
       external: true,
       languages: ["JavaScript", "TypeScript"],
     },
@@ -66,7 +65,7 @@ export const CodeSamplesPageGrid = () => {
           information (e.g., account and routing numbers) directly from Flinks.
         </p>
       ),
-      href: "https://github.com/Dwolla/integration-examples/tree/main/packages/flinks-token-exchange",
+      href: "https://github.com/Dwolla/integration-examples/blob/main/packages/secure-token-exchange/flinks",
       external: true,
       languages: ["JavaScript", "TypeScript"],
     },

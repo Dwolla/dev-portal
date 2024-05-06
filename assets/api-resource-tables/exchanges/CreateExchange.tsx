@@ -37,8 +37,8 @@ export default {
       "conditional",
       "string",
       <span>
-        A third party provider processor token. <strong>Required</strong> for MX
-        and Flinks integrations.
+        A third party provider processor token. <strong>Required</strong> for
+        MX, Flinks, and Plaid integrations.
       </span>,
     ],
     [
