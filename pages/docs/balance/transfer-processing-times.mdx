@@ -83,7 +83,7 @@ _\*Dwolla cannot guarantee an exact deadline for transmission of ACH files. Plea
 
 ## Next Day ACH Transfers
 
-Dwolla offers expedited clearing into the Dwolla Network from a bank account in the form of Next Day ACH. Funds are made available in the Dwolla Network 1-2 business days after a Next Day ACH debit transfer is created. The Next Day ACH transfer account setting can be enabled on an account-level basis for you and users that send funds on your application.
+Dwolla offers expedited clearing into the Dwolla Network from a bank account in the form of Next Day ACH. Funds are made available in the Dwolla Network 1-2 business days after a Next Day ACH debit transfer is created. Next Day ACH transfers can be enabled on an account-level basis for you and users that send funds on your application.
 
 Once obtaining approval from us, you will gain capability for Next Day ACH transfers into the Dwolla Network. Once activated, Next Day ACH is the default processing speed for all ACH debits unless you specify otherwise using the clearing object. Refer to the example clearing object below to slow down the processing time from Next Day to Standard.
 
@@ -131,19 +131,24 @@ Transfer processing is expedited with Same Day ACH, but checks for common return
   href="/docs/balance/same-day-ach"
 />
 
-Key Points to Note for Same Day ACH Transfers:
+##### What You Need to Know
 
-- Available for both debit and credit transfers.
-- **Export deadline** (multiple throughout the day):
+** Availability:**
+
+- **Transfer Types:** Both debit (sending money out) and credit (receiving money) transfers are eligible for Same Day ACH.
+- **Financial Institutions:** While Dwolla supports Same Day ACH, the actual deadline for submission might vary depending on the bank or credit union.
+
+**Timeframes:**
+
+- **Export deadlines for Veridian Credit Union**:
   - 9 a.m. CT
   - 1 p.m. CT
   - 3 p.m. CT
-    > \*Note: These may vary depending on the financial institution.
-- Transfer processing time:
-  - Debit: 0-1 business day
-  - Credit: 0-1 business day
-- Processed on business days (processing unavailable on weekends and banking holidays)
-- [Transaction limit: $1 million](https://www.dwolla.com/updates/access-faster-payments-with-dwolla-same-day-ach/) (enforced by Nacha)
+- **Export deadline for Evolve Bank & Trust**:
+  - 1 p.m. CT
+- **Processing Time:** Once a Same Day ACH transfer is submitted before the deadline, it typically takes 0-1 business day to settle, regardless of whether it's a debit or credit.
+
+**Important Note:** The [$1 million transaction limit](https://www.dwolla.com/updates/access-faster-payments-with-dwolla-same-day-ach/) is enforced by Nacha, the governing body for ACH transfers.
 
 ### Same Day ACH Debit (Payment In)
 
@@ -242,6 +247,6 @@ This table outlines the expected processing times for different transfer scenari
 
 **Canceling a transfer:** Transfers can be canceled up until they are exported out of the Dwolla Network. To help you determine if a transfer is eligible for cancellation, Dwolla will return a cancel link on the transfer resource.
 
-**Export cut-off:** Please note that while there’s a cut-off time for transfer processing, it’s not a strict deadline. In some cases, the export out of the Dwolla Network may experience delays, causing transfers created slightly after the cut-off time to be included in the same batch. As a best practice, we recommend using the cancel link returned on the transfer resource to determine if a transfer is cancellable instead of relying solely on the export timing.
+**Export cut-off:** Please note that while there’s a cut-off time for transfer processing, it’s not a strict deadline. In some cases, the export out of the Dwolla Network may experience delays, causing transfers created slightly after the cut-off time to be included in the same batch. As a best practice, we recommend using the [cancel link](https://developers.dwolla.com/docs/balance/api-reference/transfers#transfer-links) returned on the transfer resource to determine if a transfer is cancellable instead of relying solely on the export timing.
 
 **ACH return:** Next Day ACH and Same Day ACH expedites the transfer processing time; however, checks for common return codes might experience delays which may increase the risk of losses incurred from return codes.
