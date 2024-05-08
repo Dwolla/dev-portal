@@ -48,6 +48,36 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
 
+          <script
+            async
+            src="https://widget.kapa.ai/kapa-widget.bundle.js"
+            data-website-id="2e65478c-ab3c-4bf2-b997-db8a398de4a5"
+            data-project-name="Dwolla"
+            data-project-color="#2d2d48"
+            data-button-border-radius="10px"
+            data-button-image-width="34"
+            data-button-image-height="39"
+            data-button-text-font-family="Poppins, sans-serif"
+            data-button-text-font-weight="400"
+            data-modal-image-width="34"
+            data-modal-image-height="39"
+            data-modal-title-font-family="Poppins, sans-serif"
+            data-modal-title-font-weight="500"
+            data--font-family="Roboto, sans-serif"
+            data-project-logo="/assets/images/dwolla-logo-color.png"
+            data-modal-disclaimer="Meet Dwolla Koala, Dwolla's friendly AI assistant! While Koala
+            studies hard to answer your questions based on the latest information, remember, machines
+            are still learning, and Dwolla does not guarantee the responses Koala provides are
+             accurate, up-to-date or complete. It's always a good idea to double-check answers
+             with our docs for ultimate accuracy. To help Koala grow smarter, conversations may
+             be logged for training purposes. Keep things professional – don’t share sensitive
+             information or PII with Koala please! If this disclaimer doesn't sit right, we
+             recommend you don’t use Koala.  All conversations with Koala are subject to
+             [Dwolla's Privacy Policy](https://www.dwolla.com/legal/privacy)."
+            data-modal-example-questions="What is the difference between Dwolla Balance and
+            Dwolla Connect?,How do I ensure real-time updates on payment status with webhooks?"
+          ></script>
+
           <meta name="emotion-insertion-point" content="" />
           <meta name="theme-color" content={theme.palette.primary.main} />
           {(this.props as any).emotionStyleTags}
