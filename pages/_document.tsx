@@ -74,8 +74,6 @@ export default class MyDocument extends Document {
              information or PII with Koala please! If this disclaimer doesn't sit right, we
              recommend you don’t use Koala.  All conversations with Koala are subject to
              [Dwolla's Privacy Policy](https://www.dwolla.com/legal/privacy)."
-            data-modal-example-questions="What is the difference between Dwolla Balance and
-            Dwolla Connect?,How do I ensure real-time updates on payment status with webhooks?"
           ></script>
 
           <meta name="emotion-insertion-point" content="" />
