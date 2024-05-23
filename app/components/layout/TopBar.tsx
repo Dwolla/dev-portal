@@ -2,11 +2,7 @@ import React, { useContext } from "react";
 import Button from "@mui/material/Button";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { FormControl, styled as muiStyled } from "@mui/material";
-import {
-  AlgoliaAutocomplete,
-  AlgoliaAutocompleteProps,
-} from "algolia-search-components";
+import { FormControl } from "@mui/material";
 import { useRouter } from "next/router";
 import Help from "../base/Help";
 import { LanguageContext } from "../util/Contexts";
@@ -56,12 +52,6 @@ const StyledEm = styled.em`
   letter-spacing: 0.15px;
 `;
 
-const AlgoliaSearchWrapper = muiStyled("div", { name: "SearchWrapper" })({
-  display: "inline-block",
-  paddingRight: "16px",
-  verticalAlign: "middle",
-});
-
 const RightAlignWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -74,15 +64,6 @@ const RightAlignWrapper = styled.div`
   }
 
   @media (${breakDown("md")}) {
-    display: none;
-  }
-`;
-
-const LeftAlignWrapper = styled.div`
-  padding-left: 30px;
-  margin-right: 20px;
-
-  @media (${breakDown("xs")}) {
     display: none;
   }
 `;
@@ -102,7 +83,6 @@ export type TopBarButtonProps = {
 
 export type TopBarProps = {
   helpLinks?: HelpLinkProps[];
-  algoliaSearch?: AlgoliaAutocompleteProps;
   button: TopBarButtonProps;
   sidebarToggled?: boolean;
   setSidebarToggled?: Function;
@@ -175,7 +155,6 @@ const StyledCloseIcon = styled.div`
 
 export default function TopBar({
   helpLinks,
-  algoliaSearch,
   button,
   sidebarToggled,
   setSidebarToggled,
@@ -206,14 +185,6 @@ export default function TopBar({
           <StyledEm> Docs</StyledEm>
         </a>
       </Link>
-
-      <LeftAlignWrapper>
-        {algoliaSearch && (
-          <AlgoliaSearchWrapper>
-            <AlgoliaAutocomplete {...algoliaSearch} />
-          </AlgoliaSearchWrapper>
-        )}
-      </LeftAlignWrapper>
 
       <RightAlignWrapper>
         {helpLinks && <Help links={helpLinks} />}
