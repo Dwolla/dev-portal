@@ -65,6 +65,7 @@ export default class MyDocument extends Document {
             data-modal-title-font-weight="500"
             data--font-family="Roboto, sans-serif"
             data-project-logo="/assets/images/dwolla-logo-color.png"
+            data-user-analytics-fingerprint-enabled="true"
             data-modal-disclaimer="Meet Dwolla Koala, Dwolla's friendly AI assistant! While Koala
             studies hard to answer your questions based on the latest information, remember, machines
             are still learning, and Dwolla does not guarantee the responses Koala provides are
