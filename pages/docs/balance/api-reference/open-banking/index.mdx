@@ -12,34 +12,17 @@ meta:
   description: "Dwolla Exchange Sessions API connects your app, open banking providers and user banks. Streamline onboarding with instant account verification and leverage Dwolla's pre-integrated solutions."
 ---
 
+import conceptsIcon from "../../../../../assets/images/content-images/content-icons/concepts.svg";
+
 # Open Banking
 
 This section dives into the process of leveraging Dwolla's Exchange Sessions API for Instant Account Verification (IAV) within your application. Dwolla's Exchange Sessions API enables you to leverage open banking providers to perform bank account verification in real-time, streamlining your onboarding process and improving user experience. An Exchange Session represents a generated IAV session that is established between Dwolla and integrated open banking service providers for the purposes of user bank account verification.
 
-### Instant Account Verification Flow
-
-Here's a breakdown of the steps:
-
-**Step 1: Initiate Exchange Session**
-
-- Use the [create an exchange session](/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) endpoint of the Dwolla API to initiate an Exchange Session for a Customer.
-- Specify the desired open banking provider (e.g., MX) within the request body.
-
-**Step 2: Retrieve Exchange Session and Complete IAV Flow**
-
-- Make an API call to [retrieve an exchange session](/docs/balance/api-reference/open-banking/retrieve-an-exchange-session). Upon success, Dwolla will return an `external-provider-session` URL where your application will redirect the user to a secure login.
-- The user logs in to their bank account and grants your application permission to access specific financial data for account verification.
-- Implement proper error handling mechanisms to address potential issues during the verification process.
-
-**Step 3: Data Retrieval and Exchange Creation**
-
-- Upon successful authorization, you'll obtain specific user and selected account details from the open banking provider which will be used to [create an exchange](/docs/balance/api-reference/exchanges/create-exchange-for-a-customer).
-- Dwolla retrieves relevant account data from the user's bank through the secure open banking provider API connection established during the Exchange Session.
-
-**Step 4: Funding Source Creation and Account Verification**
-
-- Using the [create a funding source endpoint](/docs/balance/api-reference/funding-sources/create-funding-source-for-customer), you'll create a funding source by passing in the exchange resource from the previous step.
-- Dwolla returns a 201 response and triggers `customer_funding_source_added` and `customer_funding_source_verified` webhooks indicating the funding source creation and verification is complete.
+<InlineCTA
+  icon={conceptsIcon}
+  text="New to Open Banking? Get a head start with our comprehensive overview article before diving into the API details."
+  href="/docs/balance/open-banking"
+/>
 
 ### Exchange Sessions resource
 

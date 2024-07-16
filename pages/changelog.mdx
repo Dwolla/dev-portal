@@ -14,6 +14,19 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Completed
 
+### 2024-06-10
+
+**ADDED**
+
+- Dwolla Balance and Connect now supports Open Banking, a secure and standardized approach for accessing financial data from various financial institutions. This empowers your application to connect directly with a user's bank through trusted partners like Visa and MX, enabling a seamless Instant Account Verification experience.
+
+##### New API Endpoints:
+
+To facilitate Open Banking integration, we've introduced two new API endpoints:
+
+- **/customers/id/exchange-sessions (POST) & /external-parties/id/exchange-sessions (POST)**: These API endpoints allow you to initiate an exchange session for a specific customer or external party. The exchange session establishes a connection with a chosen Open Banking partner (e.g., Visa or MX) to initiate the Instant Account Verification process.
+- /exchange-sessions/id (GET): Use this endpoint to retrieve the URL associated with an initiated exchange session which is used to handle the IAV process.
+
 ### 2024-02-20
 
 **ADDED**

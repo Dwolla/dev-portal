@@ -1,0 +1,285 @@
+---
+layout: guides
+title: "Visa"
+guide:
+  step: 1
+meta:
+  title: "Dwolla Balance: Integrate Open Banking with Visa | Dwolla API Documentation"
+  description: "Unify Pay by Bank with Dwolla & Visa's Open Banking Solution. Instant Account Verification, Streamlined Payments & Enhanced Security for enterprise-level A2A payments."
+---
+
+# Overview
+
+This guide dives into leveraging Dwolla's [Open Banking Services](https://developers.dwolla.com/docs/balance/api-reference/open-banking) in collaboration with Visa, a world leader in digital payments, to streamline bank account verification within your Dwolla-powered application. Open banking empowers your users to more securely share their financial data with Dwolla and your application, eliminating the need for manual entry and improving the overall user experience.
+
+We'll walk you through the steps to set up and integrate Visa Instant Account Verification (Visa IAV) using Dwolla's [Exchange Sessions API](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer). Dwolla's powerful Exchange Sessions API acts as the bridge between your application and Visa Open Banking Solutions. This established connection facilitates real-time verification of your user's bank account details. To gain hands-on experience, we recommend following along with the provided [integration-examples](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/visa) sample app, which provides a practical understanding of the integration process for your own application.
+
+Instant Account Verification (IAV) is a one-time process that verifies the account being added by an end user is open and active. At the end of this guide, you'll obtain a Funding Source URL, which is a unique identifier that represents a bank account being used for account-to-account payments.
+
+## Prerequisites
+
+Before starting the integration, make sure you have taken the following steps:
+
+- Set up a [Dwolla Production](https://accounts.dwolla.com/) account, or a [Dwolla Sandbox](https://accounts-sandbox.dwolla.com/) account if you're still developing or testing your application.
+- Before creating a funding source, your application will need to create a Customer. If you have not created a Customer yet, check out our [Create a Customer](https://developers.dwolla.com/docs/balance/api-reference/customers/create) API documentation.
+- Ensure you have a redirect URL registered with Dwolla. This is where the user lands after completing the IAV flow.
+
+<AlertBar variation="info">
+  <a href="https://www.dwolla.com/contact">Contact Sales</a> to set up a
+  redirect URL for the Visa IAV flow. Verify your API keys have the required
+  permissions.
+</AlertBar>
+
+## Sandbox Testing
+
+Testing within the sandbox environment is an essential step before deploying the Visa IAV solution to a production environment. The sandbox acts as a safe, isolated testing ground that mirrors real-world scenarios with test data. This allows you to validate the functionality of your integration without using actual user accounts or financial information. By thoroughly testing in the sandbox, you can identify and correct any potential issues before they impact your live users.
+
+#### Demo Bank Test Credentials
+
+When an end-user opens the Exchange Session URL, they are prompted to authenticate with their bank and choose a bank account to link. When testing Visa IAV in the sandbox environment, you can use the following test credentials for the Demo Bank to simulate different scenarios.
+
+| User   | Username  | Password | Description                                                                   | Result                  |
+| ------ | --------- | -------- | ----------------------------------------------------------------------------- | ----------------------- |
+| User 1 | u51613239 | cty440   | User has successfully authenticated but no account information could be found | ✅ Successful           |
+| User 2 | u30915384 | bsw325   | Report with full information                                                  | ✅ Successful           |
+| User 3 | u92721594 | nbs589   | User failed to authenticate themselves at the financial institution           | ❌ Authentication error |
+| User 4 | u91902655 | jtx720   | Temporary error with a Visa service                                           | ❌ Temporary error      |
+
+#### Visa SDKs for Account Authentication
+
+Tink Link (a Visa solution) is the front-end SDK for Visa IAV. It is designed to be embedded into your application using one of [Visa’s SDKs](https://docs.us.tink.com/resources/sdk). This guide will focus on using the Web Integration which redirects users to a generated Visa URL to perform the account verification process. If you are building a web application, either for desktop or mobile, use the Web SDK (Exchange Session URL) through:
+
+- [Tink/Visa Link URL](https://docs.us.tink.com/resources/sdk/link-url) (most performant integration option, navigates the entire page from your domain to the Visa domain)
+- [iFrame](https://docs.us.tink.com/resources/sdk/sdk-iframe) (embedded in your domain, Visa domain is not visible)
+
+Note: When referencing the documentation, replace the Tink/Visa Link URL with the external-provider-session URL that you retrieve from the Dwolla API.
+
+#### Dwolla Node SDK for API Interactions
+
+Throughout this guide, we'll assume you're using the [Dwolla Node SDK](https://developers.dwolla.com/sdks-tools/node) to interact with Dwolla's API endpoints. This SDK simplifies making requests and handling responses for various Dwolla functionalities.
+
+<AlertBar variation="info">
+  While we are using Dwolla's Node SDK for the sake of demonstration in this
+  guide,{" "}
+  <a href="https://developers.dwolla.com/sdks-tools">
+    Dwolla also offers additional libraries
+  </a>{" "}
+  for other server-side programming languages.
+</AlertBar>
+
+## Steps to Integrate
+
+### Step 1: Initiate Exchange Session
+
+Use Dwolla's API endpoint to [create an exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) to initiate an Exchange Session for a Customer. Specify Visa as the desired open banking provider within the request body. The Exchange Partner ID for Visa can be found by calling the [List Exchange Partners](https://developers.dwolla.com/docs/balance/api-reference/exchanges/list-exchange-partners) API endpoint.
+
+#### Example using Dwolla Node SDK
+
+```typescript
+import { Client } from "dwolla-v2";
+const dwolla = new Client({
+  key: "YOUR_KEY",
+  secret: "YOUR_SECRET",
+  environment: "sandbox", // or 'production'
+});
+
+/**
+ * Gets Visa's exchange partner href (link) within Dwolla's systems.
+ */
+
+export async function getExchangePartnerHref() {
+  try {
+    const response = await dwolla.get("/exchange-partners");
+    const partnersList = response.body._embedded["exchange-partners"];
+    const visaPartner = partnersList.filter(
+      (obj: { name: string }) => obj.name.toLowerCase() === "visa"
+    )[0];
+    return visaPartner._links.self.href;
+  } catch (error) {
+    // Return an error message or handle the error appropriately
+  }
+}
+
+/**
+ * Creates an exchange session for a customer
+ * @param customerId - The ID of the customer to create the exchange session for.
+ */
+
+export async function createExchangeSession(customerId: string) {
+  const exchangePartnerHref = await getExchangePartnerHref();
+  const requestBody = {
+    _links: {
+      "exchange-partner": {
+        href: exchangePartnerHref,
+      },
+    },
+  };
+  try {
+    const response = await dwolla.post(
+      `customers/${customerId}/exchange-sessions`,
+      requestBody
+    );
+    const location = response.headers.get("location");
+    return location;
+  } catch (error) {
+    // Return an error message or handle the error appropriately
+  }
+}
+
+// Example usage:
+
+const exchangeSessionUrl = createExchangeSession(customerId); // => https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+### Step 2: Retrieve Exchange Session and Complete Tink/Visa Link Flow
+
+In this step, you’ll [retrieve the exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-an-exchange-session) details, including the Exchange Session URL. This URL is used to initiate the Visa Link flow within your application. Use the exchange session ID obtained in Step 1 to call Dwolla’s Retrieve an Exchange Session endpoint. During this flow, the user interacts with Visa’s interface to authorize their bank account information to be shared.
+
+#### Example using Dwolla Node SDK
+
+```typescript
+/**
+ * Retrieves an exchange session URL by ID
+ * @param exchangeSessionId - The ID of the exchange session to retrieve.
+ */
+
+export async function getExchangeSession(exchangeSessionId: string) {
+  try {
+    const response = await dwolla.get(
+      `/exchange-sessions/${exchangeSessionId}`
+    );
+    const externalProviderSessionUrl =
+      response.body._links["external-provider-session"].href;
+    return externalProviderSessionUrl;
+  } catch (error) {
+    // Return an error message or handle the error appropriately
+  }
+}
+
+// Example usage:
+const visaExchangeSessionUrl = getExchangeSession(exchangeSessionId); // => "https://link.visa.com/1.0/account-check/connect?client_id=f16f7c7407f4434dbcaf269b230c12ed&redirect_uri=https://api-uat.dwolla.com/redirect/tink&authorization_code=47e23deab3924351a0c6193d90e5add5&market=US&locale=en_US&state=a2V5Ojk6dWRiRkRYWGlIVGdZZUNycUdCa0s3Zz09OmI1ZVE0YWRUYkFrSWNiKzFxTXdmQlVkcVNWWW5nMjtQNjBaWERxUDh5aTBpWEQzTHROdUZRd2xLMTUzYnZ4RU8=&session_id=628d927030ee43a38054da5166dcbee14e06dc02c00e45f2b4a5d986bab5d08f"
+```
+
+#### Redirect User - Next.js Example
+
+```typescript
+import { useRouter } from "next/navigation";
+const router = useRouter();
+
+/**
+ * Redirects the user to the Visa exchange session URL.
+ */
+
+router.push(visaExchangeSessionUrl);
+```
+
+### Step 3: Handle User Redirect
+
+After completing the Visa IAV flow, Visa redirects the user back to your registered URL. This redirect URL will include a query string parameter of “exchange” or an “error” depending on the outcome of the Visa IAV flow. You’ll need to implement logic to route the user based on if the flow completed successfully or if there was an error.
+
+##### Parse the Redirect URL:
+
+Upon receiving the user redirect, you need to capture the complete URL and extract relevant query parameters, such as the "exchange" parameter, which will contain information about the outcome of the IAV flow.
+
+#### Handle Successful Verification Example - Using Next.js
+
+```typescript
+import { useSearchParams } from "next/navigation";
+
+function HandleUserRedirect() {
+  /**
+   * Get the exchangeId from the URL query parameters.
+   */
+
+  const searchParams = useSearchParams();
+  const exchangeId = searchParams.get("exchange");
+}
+```
+
+#### Handle Error - Example Using Next.js
+
+```typescript
+import { useSearchParams } from "next/navigation";
+function HandleUserRedirect() {
+  /**
+   * Get the error from the URL query parameters.
+   */
+
+  const searchParams = useSearchParams();
+  const error = searchParams.get("error");
+}
+```
+
+### Errors
+
+The Visa Link flow may lead to a recoverable error or a non-recoverable error which can’t be resolved by the user. In such cases, it's important to provide clear and actionable messages to the user, and/or return the user to the pre-verification step based on the error. The decision to present an error screen or return the user to the pre-verification step depends on the specific error and your application's design. Here's a general guideline:
+
+**Recoverable Errors:** These are issues that can potentially be resolved by the user. In such cases, it's important to provide clear and actionable messages to the user. An error screen is often suitable for recoverable errors. This allows the user to review the specific message, make corrections and retry the IAV process.
+
+- **Examples:**
+  - **Invalid Credentials:** The user might have entered incorrect bank login credentials. The error message should prompt the user to double-check their information and try again.
+  - **Temporary Network Issues:** A temporary network glitch might interrupt the communication. The message could suggest the user retry after a short while.
+  - **User Cancelled:** The user decided to abandon the Visa IAV process. Your application should acknowledge this and allow them to resume if needed.
+
+**Non-Recoverable Errors:** These are more severe issues that cannot be resolved by the user and require intervention from your business or their bank. In these cases, the user should be informed of the issue and provided with instructions for contacting the right party for support. If a user reaches out to you about a system error, please contact Dwolla Support for assistance.
+
+- **Examples:**
+  - **System Errors:** Internal system errors within Dwolla or Visa's infrastructure may prevent successful verification. The message should apologize for the inconvenience and direct the user to contact your support team.
+  - **Account Lockout:** The user's bank account might be locked due to security reasons. The message should explain this possibility and advise the user to contact their bank directly.
+
+##### List of possible redirect errors
+
+| Parameter | Error Code           | Description                                                         |
+| --------- | -------------------- | ------------------------------------------------------------------- |
+| error     | AUTHENTICATION_ERROR | The error occurred during the authentication process with the bank. |
+
+### Step 4: Funding Source Creation
+
+After successfully creating the exchange, the next step is to create a funding source for the customer. This involves calling Dwolla's [Create a Funding Source](https://developers.dwolla.com/docs/connect/api-reference/funding-sources/create-for-external-party) endpoint, where you'll provide the exchange resource obtained from the previous step.
+
+In the following function, once a response is received, it will extract the Location header value, which is the fully-qualified URL specifying the resource location of your funding source.
+
+```typescript
+/**
+ * Creates a funding source for a customer.
+ * @param options - The options including customerId, exchangeId, name, and type.
+ */
+
+export async function createFundingSource(options: CreateFundingSourceOptions) {
+  const { customerId, exchangeId, name, type } = options;
+  const exchangeUrl = "https://api.dwolla.com/exchanges/${exchangeId}";
+  const requestBody = {
+    _links: {
+      exchange: {
+        href: exchangeUrl,
+      },
+    },
+    bankAccountType: type,
+    name: name,
+  };
+  try {
+    const response = await dwolla.post(
+      `customers/${customerId}/funding-sources`,
+      requestBody
+    );
+    const location = response.headers.get("location");
+    return location;
+  } catch (error) {
+    // Return an error message or handle the error appropriately
+  }
+}
+
+// Example usage:
+const fundingSource = createFundingSource({
+  customerId: "yourCustomerId",
+  exchangeId: "exchangeId",
+  name: "Your Funding Source Name",
+  type: "checking", // or 'savings'
+}); // https://api.dwolla.com/funding-sources/63508b1b-36be-4d68-b497-42eb7884b82d
+```
+
+### Resources
+
+- [Open Banking API Reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking)
+- [Visa SDK Documentation](https://docs.us.tink.com/resources/sdk)
+- [Integration Example App](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/visa)
