@@ -1,0 +1,85 @@
+---
+layout: guides
+title: "Overview"
+group:
+  subCategory: Integrations
+  category: Build
+  title: Open Banking
+  description: "Simplify Open Banking Integration with Dwolla's API. Leverage a single API to connect to various Open Banking providers and streamline account linking, verification, and data retrieval for your application."
+weight: 0
+guide:
+  step: 0
+meta:
+  title: "Dwolla Balance: Streamline Account Verification & Data Access | Dwolla API Documentation"
+  description: "Simplify Open Banking Integration with Dwolla's API. Leverage a single API to connect to various Open Banking providers and streamline account linking, verification, and data retrieval for your application."
+---
+
+## Overview
+
+Open Banking is a technology that allows secure data sharing between financial institutions and third-party providers (e.g. Visa, MX) with user consent. It’s transforming financial services by granting users greater control over their financial data. This data, accessible through secure APIs, opens doors for innovative financial applications.
+
+Dwolla's API integrates Open Banking seamlessly, making it easier than ever to leverage Account-to-Account (A2A) payments, also known as pay by bank, within your application. Dwolla has partnered with leading Open Banking providers, like [Visa](https://docs.us.tink.com/) and [MX](https://docs.mx.com/), to offer pre-built connections. This documentation explores the technical aspects of Open Banking and its implementation within the Dwolla API.
+
+#### Benefits of Using Dwolla for Open Banking
+
+Dwolla acts as a bridge between your application and participating Open Banking service providers. We offer a single API that simplifies the integration process and ongoing maintenance for A2A payment solutions.
+
+- **Faster Verification:** Open Banking allows for real-time data access, enabling faster and more efficient account verification compared to traditional methods like micro-deposit verification. This creates an improved user experience and leads to higher user conversion rates.
+- **Enhanced Security:** Leverage secure APIs and reduce the risks associated with manual data entry, such as data entry errors and ACH returns.
+- **Reduced Costs:** Open Banking features and functionality can lead to cost savings in the long run through reduced return risk, decreased risk of fraud and lower customer service costs.
+- **Streamlined Development:** Dwolla's pre-built connections with Open Banking providers like Visa and MX save you valuable development time. They tailor Open Banking features and functionality to payments use cases and eliminate the complexities of managing multiple API integrations.
+
+## Instant Account Verification Flow
+
+Dwolla’s Exchange Sessions streamlines the Instant Account Verification (IAV) process for your application. When initiating an Exchange Session, Dwolla securely establishes a connection with your chosen Open Banking Provider (OBP). The user is then redirected and presented with a screen to select their financial institution and authenticate using their online banking credentials. The specific authentication flow may vary slightly depending on the chosen OBP, but Exchange Sessions handles the communication and data exchange throughout the process, ensuring a smooth and secure user experience.
+
+We explore the specific flows for each provider below.
+
+### Visa
+
+#### 1. Initiate Exchange Session:
+
+- **Register a Redirect URL:** Before starting, ensure you have a redirect URL registered with Dwolla. This is where the user lands after completing the verification flow.
+- **Create an Exchange Session:** Use the Dwolla API's [create an exchange session](/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) endpoint to initiate an Exchange Session for the customer. Specify Visa as the desired Open Banking provider in the request body.
+
+#### 2. Retrieve Exchange Session and Complete IAV Flow:
+
+- **Retrieve Exchange Session:** Make an API call to [retrieve an exchange session](/docs/balance/api-reference/open-banking/retrieve-an-exchange-session). Upon success, Dwolla returns an `external-provider-session` URL. Redirect your user to this secure login page.
+- **User Grants Permissions:** The user logs in to their bank and grants your application permission to access specific financial data for verification.
+
+#### 3. Handle User Redirect:
+
+- **Success or Error:** The user is redirected back to your registered URL after completing the IAV flow (successful or with errors).
+- **Successful Verification:** If successful, Dwolla retrieves user and account details and creates an exchange. An "exchange" query string parameter containing the exchange ID is included in the redirect URL. Extract this value for server-side use in creating a funding source.
+- **Error Handling:** If a critical error occurs, Dwolla redirects the user with an error code in the query string. Present an error screen or return the user to the pre-verification step based on the error.
+
+#### 4. Funding Source Creation and Account Verification:
+
+- **Create Funding Source:** Use the [create a funding source endpoint](/docs/balance/api-reference/funding-sources/create-funding-source-for-customer) and provide the exchange resource obtained in the previous step.
+- **Verification Complete:** Dwolla responds with a 201 code and triggers the `customer_funding_source_added` and `customer_funding_source_verified` webhooks indicating successful funding source creation and verification.
+
+### MX
+
+#### 1. Initiate Exchange Session:
+
+- **Create an Exchange Session:** Use the [create an exchange session endpoint](/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) to initiate an Exchange Session, specifying MX as the Open Banking provider.
+
+#### 2. Retrieve Exchange Session and Complete IAV Flow:
+
+- **Retrieve Exchange Session:** Make an API call to [retrieve an exchange session](/docs/balance/api-reference/open-banking/retrieve-an-exchange-session) to get the `external-provider-session` URL. Redirect your user to this secure login page for verification.
+- **User Grants Permissions:** The user logs in to their bank account and grants your application permission to access specific financial data.
+- **Error Handling:** Implement proper mechanisms to handle potential errors during the verification process.
+
+#### 3. Data Retrieval and Exchange Creation:
+
+- **Successful Authorization:** Upon successful user authorization, you'll receive user and account details from the Open Banking provider. Use this information to create an exchange with Dwolla's "create an exchange" endpoint.
+- **Dwolla Retrieves Account Data:** Dwolla securely retrieves relevant account data from the user's bank through the established Open Banking provider connection.
+
+#### 4. Funding Source Creation and Account Verification:
+
+- **Create Funding Source:** Use the [create a funding source endpoint](/docs/balance/api-reference/funding-sources/create-funding-source-for-customer) with the exchange resource from the previous step.
+- **Verification Complete:** Dwolla responds with a 201 code and triggers the `customer_funding_source_added` and `customer_funding_source_verified` webhooks indicating successful funding source creation and verification.
+
+## Getting Started with Open Banking
+
+Sign up for a free Sandbox account and read our Open Banking documentation, as well as explore our account verification guides for step-by-step instructions and code examples that cover initiating an exchange session, completing the instant account verification flow and creating a funding source. The following guides utilize an [integration-examples](https://github.com/Dwolla/integration-examples) sample app which provides a hands-on experience for integrating Open Banking into your application. By working through a real-world example, you can understand how to structure your own application, interact with the Dwolla API and implement key functionalities like account verification.

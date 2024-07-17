@@ -11,7 +11,9 @@ meta:
 
 # Create an exchange session for an external party
 
-This section contains information on how to create an exchange session for an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span>. The creation of an exchange session initiates the Instant Account Verification process with a trusted open banking partner. The creation of an exchange session requires a `_link` that identifies the open banking ecosystem partner, which can be found by calling the [list exchange partners](/docs/connect/api-reference/exchanges/list-exchange-partners) endpoint.
+This section details how to initiate Instant Account Verification for an <span><ContentTooltip preset="external-party">external party</ContentTooltip></span> using Dwolla's trusted open banking partners. You can trigger this process by creating an exchange session. There are two supported partners currently available: Visa and MX.
+
+To create an exchange session, you'll need to provide a `_link` that identifies the specific open banking ecosystem partner you want to connect with. You can retrieve a list of available partners and their corresponding `_link` values by calling the [list exchange partners](/docs/connect/api-reference/exchanges/list-exchange-partners) endpoint. This endpoint will return a JSON response containing details about each partner, including their name and the unique `_link` identifier you'll need for this API call.
 
 ### HTTP request
 
@@ -25,12 +27,12 @@ This section contains information on how to create an exchange session for an <s
 
 ### HTTP status and error codes
 
-| HTTP Status | Code            | Description                                                                                                                                                                           |
-| ----------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HTTP Status | Code            | Description                                                                                                                                                                                   |
+| ----------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201         | Created         | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
-| 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                               |
-| 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                                     |
-| 404         | NotFound        | The requested resource was not found.                                                                                                                                                 |
+| 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                                       |
+| 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                                             |
+| 404         | NotFound        | The requested resource was not found.                                                                                                                                                         |
 
 ### Request and Response
 
