@@ -1,0 +1,61 @@
+---
+title: "Handling Responses"
+guide:
+  step: 2
+meta:
+  title: "Understanding Dwolla API Responses: Status Codes, Headers, and More | Dwolla API Documentation"
+  description: "Dwolla Balance: Learn how to interpret Dwolla API responses including response types, status codes, headers, and body conventions."
+---
+
+# Handling Responses
+
+When you make a request to the Dwolla API, your request is processed and a response is returned. This response, in JSON format, contains information about the success or failure of your request, along with any relevant data.
+
+This section will guide you through the structure and components of Dwolla API responses, helping you interpret the information they provide.
+
+By understanding how to read and interpret API responses, you can effectively troubleshoot issues, extract valuable data, and build robust integrations with the Dwolla platform.
+
+### Status Codes
+
+Status codes are numerical codes that indicate the outcome of an API request. They provide essential information about the success or failure of the request.
+
+##### Common Status Codes:
+
+- **200 OK:** The request was successful.
+- **201 Created:** The request was successful, and a new resource was created.
+- **400 Bad Request:** The request was malformed or cannot be understood.
+- **401 Unauthorized:** The request requires authentication.
+- **403 Forbidden:** The authenticated user/application is not authorized to perform the request.
+- **404 Not Found:** The requested resource could not be found.
+- **500 Internal Server Error:** An unexpected error occurred on the server.
+  Example:
+
+```json
+{
+  "code": "BadRequest",
+  "message": "The request body contains bad syntax or is incomplete."
+}
+```
+
+This response indicates a top-level error code of BadRequest with a descriptive error message explaining the issue.
+
+### Response Headers
+
+Response headers provide supplementary details about the response. They can contain information about the content type, date, and other relevant data.
+
+**HTTP headers are case-insensitive by definition**. This means that the Dwolla API, like most HTTP servers, might return headers in various capitalization formats. For instance, you could receive a Location header as `location` or `Location`. While HTTP/2 mandates lowercase header names, older HTTP/1.1 connections might still use mixed casing.
+
+To ensure consistent handling, it's recommended to normalize header names to lowercase within your application. This involves converting all header names to lowercase before accessing their values. This approach provides a reliable way to reference headers without worrying about inconsistent capitalization.
+
+For example, if you're expecting a `Location` header, you should check for `location` as well to ensure you capture all possible variations.
+
+##### Common Headers
+
+Here are some common headers you might encounter in Dwolla API responses:
+
+- **Date:** The date and time at which the message was generated.
+- **Content-Type:** Specifies the format of the response body (e.g., application/json).
+- **Content-Length:** : Indicates the size of the response body in bytes.
+- **Location:** : Indicates the URL of the newly created resource (used in 201 Created responses).
+
+**Custom Headers:** The `X-Request-ID` and `CF-RAY` headers provide additional information that can be used for debugging purposes.
