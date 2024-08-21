@@ -8,10 +8,20 @@ meta:
   description: Create a verified bank funding source for a created Customer to receive funds.
 ---
 
+import guideIcon from "../../../../assets/images/content-images/content-icons/guides-icon.svg";
+
 # Step 4: Attach a verified funding source
 
-Next, you will create and attach a verified funding source to Joe Buyer, which will be done using Plaid, a third-party bank verification provider. This method will give Joe Buyer the ability to add and verify his bank account in a matter of seconds by authenticating with his online banking credentials. Once Joe Buyer reaches the page in your application to add a bank account, you will first use Plaid Link to authenticate the user's bank account, exchange the `public_token` for a `processor_token`, and then send the `processor_token` to Dwolla to create a funding source.
+Next, you will create and attach a verified funding source to Joe Buyer, which will be done using Dwolla's Open Banking solution with Visa, a leading Open Banking service provider that Dwolla partners with. This method will give Joe Buyer the ability to add and verify their bank account in a matter of seconds by authenticating using their online banking credentials.
 
-To integrate Dwolla with Plaid, we recommend checking out our [Add a Bank via Dwolla + Plaid Integration](/guides/plaid) guide. Additionally, if you would like to see a working example that verifies a bank via Plaid Link (using Next.js/React) and attaches it as a verified funding source to a Dwolla Customer, please check out our [dwolla-plaid-funding-source](https://github.com/Dwolla/integration-examples/blob/main/dwolla-plaid-funding-source) integration example on our GitHub profile.
+Once Joe Buyer reaches the page in your application to add a bank account, you will use Open Banking with Visa to authenticate their bank account. This involves initiating an <span><ContentTooltip preset="exchange-session">Exchange Session</ContentTooltip></span> with Dwolla, guiding the user through the verification process with their bank, and then using the <span><ContentTooltip preset="exchange">Exchange</ContentTooltip></span> details to create a funding source in Dwolla.
 
-Finally, once an instantly-verified funding source has been created via Plaid, Joe Buyer is now set up and ready to send money!
+To integrate Open Banking with Visa, we recommend checking out our [integration guide](https://developers.dwolla.com/docs/balance/open-banking/visa). Additionally, if you would like to see a working example that verifies a bank using Open Banking with Visa and attaches it as a verified funding source to a Dwolla Customer, please check out our [open-banking/visa](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/visa) integration example on our GitHub profile.
+
+<InlineCTA
+  icon={guideIcon}
+  text="Step-by-step guide on implementing Open Banking with Visa."
+  href="https://developers.dwolla.com/docs/balance/open-banking/visa"
+/>
+
+Finally, once an instantly-verified funding source has been created via Open Banking with Visa, Joe Buyer is now set up and ready to send money!
