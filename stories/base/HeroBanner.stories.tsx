@@ -22,7 +22,6 @@ storiesOf("base/HeroBanner", module).add("default", () => (
       }}
       topic="Build with Dwolla"
       description="Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform."
-      searchBar
     />
   </DivStyle>
 ));
