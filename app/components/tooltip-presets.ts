@@ -16,6 +16,16 @@ export default {
       icon: DwollaConnectIcon,
       title: "Dwolla Connect",
     },
+    exchange: {
+      content:
+        "A secure connection between Dwolla and a trusted ecosystem partner, facilitating the transfer of tokenized financial data needed to verify and create a bank funding source.",
+      title: "Exchange",
+    },
+    "exchange-session": {
+      content:
+        "A secure session initiated between Dwolla and an Open Banking provider to facilitate the Instant Account Verification (IAV) process, allowing users to authenticate and verify their bank accounts.",
+      title: "Exchange Session",
+    },
     "external-party": {
       content:
         "A type of end-user, either business or personal, that identifies the owner of the underlying bank account used in an account-to-account payment. An External Party is required in order to initiate a transfer to or from a user's bank account.",

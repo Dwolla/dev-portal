@@ -25,7 +25,7 @@ Adding a bank account to a Customer account. If a business wants to allow for ad
 
 #### Bank Verification
 
-Verifying a bank account. This step is required before a Customer can send funds using their Customer account. This can be accomplished either (1) at the time the bank account is added by using a Third-party Provider, or (2) after attaching a bank by verifying it with microdeposits.
+Verifying a bank account. This step is required before a Customer can send funds using their Customer account. This can be accomplished either (1) at the time the bank account is added via [Open Banking](https://developers.dwolla.com/docs/balance/open-banking#overview), [Secure Exchange](https://developers.dwolla.com/docs/balance/secure-exchange) or a Third-party Provider, or (2) after attaching a bank by verifying it with microdeposits.
 
 ## Bank Account Types
 
@@ -36,6 +36,7 @@ The table below details a high level overview of the different methods supported
 | Bank Addition Method                                                                                         | Automatic Verified Status (i.e. Eligible to Send Funds) | Information Required                       | U.S Bank Coverage | Supported Bank Account Types                                 | Other features                                                                                                                                             |
 | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------ | ----------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Dwolla API](https://developers.dwolla.com/api-reference/funding-sources/create-funding-source-for-customer) | No                                                      | Bank Account Number, <br /> Routing number | 100%              | Checking, <br /> Savings, <br /> Loan, <br /> General Ledger | Optional bank verification with [Microdeposits](https://developers.dwolla.com/guides/micro-deposit-verification#verify-a-bank-account-with-micro-deposits) |
+| [Dwolla + Open Banking](https://developers.dwolla.com/docs/balance/open-banking#overview)                    | Yes                                                     | Online banking credentials                 | ~85%              | Checking, Savings                                            | Secure, streamlined user experience. <br /> Real-time account verification                                                                                 |
 | [Drop-in components](https://developers.dwolla.com/docs/drop-in-components#create-a-funding-source)          | No                                                      | Bank Account Number, <br /> Routing number | 100%              | Checking, <br /> Savings                                     | Tokenized data, <br /> Optional bank verification with [Microdeposits](https://developers.dwolla.com/docs/drop-in-components#verify-micro-deposits)        |
 | [Dwolla + Plaid integration](https://developers.dwolla.com/guides/plaid#plaid-integration)                   | Yes                                                     | Online banking credentials                 | ~85%              | Checking, <br /> Savings                                     | [Tokenized integration](https://www.dwolla.com/integrations/plaid/)                                                                                        |
 | [Dwolla + Secure Exchange solution](https://developers.dwolla.com/api-reference/exchanges)                   | Yes                                                     | Online banking credentials                 | ~85%              | Checking, <br /> Savings                                     | [Tokenized integration](https://developers.dwolla.com/concepts/secure-exchange)                                                                            |
@@ -44,6 +45,23 @@ The table below details a high level overview of the different methods supported
 As you decide on the various methods for adding a funding-source, a good thing to keep in mind is that a transfer between two parties requires the sending party to have a verified bank account. Bank account verification prior to sending funds is required by the ACH network.
 
 ## Bank Addition + Verification methods
+
+### Dwolla + Open Banking
+
+**The use case:**
+I want my users to add a bank account using Open Banking, leveraging real-time, secure access to their financial data directly from their bank. I want to access the capabilities of leading providers like Visa and MX, for their seamless integration and UI experience, without having to manage multiple API integrations. I need instant account verification without the need for microdeposits or manual entry of account details.
+
+**Tell me more**
+Dwolla’s pre-built connections streamline development by tailoring Open Banking features and functionality specifically for payments use cases, saving valuable development time and reducing complexity. This method supports real-time account verification, meaning that the bank account is automatically verified and ready to send and receive funds immediately after being added.
+
+**Ready to build?**
+If you're looking to integrate Open Banking into your application, start by exploring our Open Banking API documentation. You’ll find everything you need to get set up.
+
+<InlineCTA
+  icon={guideIcon}
+  text="Check our step-by-step guide on using Open Banking with Dwolla."
+  href="https://developers.dwolla.com/docs/balance/open-banking"
+/>
 
 ### Add a Bank via the API and verify using Microdeposits
 
