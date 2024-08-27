@@ -41,7 +41,7 @@ When an end-user opens the Exchange Session URL, they are prompted to authentica
 | User   | Username  | Password | Description                                                                   | Result                  |
 | ------ | --------- | -------- | ----------------------------------------------------------------------------- | ----------------------- |
 | User 1 | u51613239 | cty440   | User has successfully authenticated but no account information could be found | ✅ Successful           |
-| User 2 | u30915384 | bsw325   | Report with full information                                                  | ✅ Successful           |
+| User 2 | u35490150 | ckr403   | Report with full information                                                  | ✅ Successful           |
 | User 3 | u92721594 | nbs589   | User failed to authenticate themselves at the financial institution           | ❌ Authentication error |
 | User 4 | u91902655 | jtx720   | Temporary error with a Visa service                                           | ❌ Temporary error      |
 
@@ -72,6 +72,11 @@ Throughout this guide, we'll assume you're using the [Dwolla Node SDK](https://d
 ### Step 1: Initiate Exchange Session
 
 Use Dwolla's API endpoint to [create an exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) to initiate an Exchange Session for a Customer. Specify Visa as the desired open banking provider within the request body. The Exchange Partner ID for Visa can be found by calling the [List Exchange Partners](https://developers.dwolla.com/docs/balance/api-reference/exchanges/list-exchange-partners) API endpoint.
+
+<AlertBar variation="info">
+  Exchange Sessions are single-use. Once a user starts the IAV flow initiated by
+  creation of a session, it becomes invalid and cannot be reused.
+</AlertBar>
 
 #### Example using Dwolla Node SDK
 
@@ -177,6 +182,14 @@ router.push(visaExchangeSessionUrl);
 
 After completing the Visa IAV flow, Visa redirects the user back to your registered URL. This redirect URL will include a query string parameter of “exchange” or an “error” depending on the outcome of the Visa IAV flow. You’ll need to implement logic to route the user based on if the flow completed successfully or if there was an error.
 
+##### Example Success and Error redirect URL
+
+```
+https://www.myapp.com/iav-redirect?exchange=10cde28b-6a39-4ed1-bce9-aa611a360720
+
+https://www.myapp.com/iav-redirect?error=USER_CANCELLED
+```
+
 ##### Parse the Redirect URL:
 
 Upon receiving the user redirect, you need to capture the complete URL and extract relevant query parameters, such as the "exchange" parameter, which will contain information about the outcome of the IAV flow.
@@ -229,9 +242,11 @@ The Visa Link flow may lead to a recoverable error or a non-recoverable error wh
 
 ##### List of possible redirect errors
 
-| Parameter | Error Code           | Description                                                         |
-| --------- | -------------------- | ------------------------------------------------------------------- |
-| error     | AUTHENTICATION_ERROR | The error occurred during the authentication process with the bank. |
+| Error Code           | Description                                                                                               |
+| -------------------- | --------------------------------------------------------------------------------------------------------- |
+| AUTHENTICATION_ERROR | The error occurred during the authentication process with the bank.                                       |
+| USER_CANCELLED       | The end user canceled the journey, either by going back or selecting the close button.                    |
+| TEMPORARY_ERROR      | A temporary error in Visa's platform or a network issue. To resolve any of these errors, try again later. |
 
 ### Step 4: Funding Source Creation
 
