@@ -1,27 +1,21 @@
 ---
-layout: concepts
-title: "Add Bank via Dwolla + Plaid Integration"
-description: Securely add and verify an end user's bank account via online bank authentication through an integration with Dwolla + Plaid.
-category: Build
-subCategory: Funding Sources
-weight: 3
-concept:
-  icon: add-verify-bank-plaid.svg
+layout: guides
+title: "Plaid"
+guide:
+  step: 1
 meta:
-  title: Dwolla and Plaid Integration | Dwolla API Documentation
+  title: "Dwolla Balance: Integrate Secure Exchange with Plaid | Dwolla API Documentation"
   description: Integrate Plaid's bank verification with Dwolla's payments API to Instantly verify your users' bank accounts.
 ---
 
-import AlertBar from "../../../app/components/base/AlertBar";
-import Collapsible from "../../../app/components/base/Collapsible";
+import AlertBar from "../../../../app/components/base/AlertBar";
+import Collapsible from "../../../../app/components/base/Collapsible";
 
 # Add a Bank Funding Source with Plaid
 
-Dwolla partners with Plaid to provide customers with bank account verification through a tokenized solution. Bank accounts are linked with purpose-built tokens between the Dwolla and Plaid platforms.
+Dwolla partners with Plaid to provide customers with bank account verification through Secure Exchange solution. Bank accounts are verified and linked with purpose-built exchanges between the Dwolla and Plaid platforms.
 
-While **bank account verification is required** before initiating an ACH transaction from a [funding source](/api-reference/funding-sources), Dwolla clients are able to choose between Dwolla's [micro-deposit solution](/api-reference/funding-sources/initiate-micro-deposits) or a third-party data aggregator, such as Mastercard, MX, or, as we will discuss in further detail in this guide, Plaid.
-
-For more information on Dwolla's tokenized solutions with other third-party data aggregators, check out our [Secure Exchange solution](/docs/balance/secure-exchange)!
+While **bank account verification is required** before initiating an ACH transaction from a [funding source](/api-reference/funding-sources), Dwolla clients are able to choose between Dwolla's [micro-deposit solution](/api-reference/funding-sources/initiate-micro-deposits), [Open Banking solution](https://developers.dwolla.com/docs/balance/open-banking), other third-party data aggregators via Secure Exchange, such as Mastercard, MX, or, as we will discuss in further detail in this guide, Plaid.
 
 ## Prerequisites
 
@@ -31,12 +25,6 @@ Let's first go over a few items you need to check off before you begin your inte
 - Set up a [Plaid Production](https://dashboard.plaid.com) account, or a Plaid Sandbox account if you're still developing or testing your application.
 - Enable Dwolla's Plaid integration in your Plaid [account settings](https://dashboard.plaid.com/team/integrations). If you need assistance with this step, reach out to your Account Manager with Plaid.
 - Customize Plaid Link's account selection to only be "[enabled for one account](https://dashboard.plaid.com/link/account-select)."
-
-<AlertBar variation="info">
-  Plaid Development <strong>is not</strong> compatible with Dwolla. Dwolla
-  Sandbox and Production must be paired with Plaid Sandbox and Production,
-  respectively.
-</AlertBar>
 
 Adding a bank is a one-time process that verifies the account ownership of the underlying bank account being added by an end user. At the end of this guide, you'll obtain a Funding Source URL, which is a unique identifier that represents a bank account being used for ACH debits and/or credits.
 
@@ -58,7 +46,7 @@ languages.
 
 ### Create a Link Token
 
-In order to instantiate a Plaid Link instance—in our case, by using `usePlaidLink`—you first need to have your server generate a Link token. To learn more about what properties are available, check out Plaid's [Create Link Token](https://plaid.com/docs/api/tokens/#linktokencreate) documentation.
+In order to instantiate a Plaid Link instance — in our case, by using `usePlaidLink` — you first need to have your server generate a Link token. To learn more about what properties are available, check out Plaid's [Create Link Token](https://plaid.com/docs/api/link/#linktokencreate) documentation.
 
 Though you are welcome to use additional Plaid products and customize the `LinkTokenCreateRequest` object to your liking, **a couple properties are required in order to be compatible with Dwolla**:
 
@@ -106,7 +94,8 @@ const handlePlaidLinkSuccess: PlaidLinkOnSuccess = async (
   //
   // [1] Exchange public token for an access token
   // [2] Exchange access token & accountID for a processor token
-  // [3] Create a funding source using the processor token
+  // [3] Create a Dwolla exchange resource using the processor token
+  // [3] Create a funding source using the exchange
 };
 
 const { open, ready } = usePlaidLink({
@@ -157,7 +146,7 @@ Once your application has generated the processor token, you are now ready to in
 
 Before creating a funding source, your application will need to create a Customer. If you have not created a customer yet, check out our [Create a Customer](/api-reference/customers/create) API reference, or our [Create a Business Verified Customer](/docs/balance/business-verified-customer) or [Create a Personal Verified Customer](/docs/balance/personal-verified-customer) guides.
 
-Once you have a customer set up, we will use Dwolla's [server-side Node SDK](https://github.com/Dwolla/dwolla-v2-node) to create the funding source.
+Once you have a customer set up, we will use Dwolla's [server-side Node SDK](https://github.com/Dwolla/dwolla-v2-node) to create the exchange.
 
 <AlertBar variation="info">
   While we are using Dwolla's Node SDK for the sake of demonstration in this
@@ -168,18 +157,62 @@ Once you have a customer set up, we will use Dwolla's [server-side Node SDK](htt
   for other server-side programming languages.
 </AlertBar>
 
-### Create a Funding Source
+### Create an Exchange
 
-To create a verified funding source for a customer, you will supply two required properties: `name` and `plaidToken`. In the API request, `name` defines an arbitrary name that you or your user will assign to the funding source, and `plaidToken` defines the Plaid processor token that was generated in the previous step.
+The creation of an [exchange](https://developers.dwolla.com/docs/balance/api-reference/exchanges) serves as a “hand-shake” between Dwolla and Plaid. To create the exchange for a customer, you will supply two required properties: `_link` and `token`. In the API request, `_link` defines a JSON object containing an [exchange partner](https://developers.dwolla.com/docs/balance/api-reference/exchanges/list-exchange-partners) link relation, and `token` defines the Plaid processor token that was generated in the previous step.
 
-In the following function, once a response is received, it will extract the `Location` header value, which is the fully-qualified URL specifying the resource location of your funding source.
+In the following function, once a response is received, it will extract the `location` header value, which is the fully-qualified URL specifying the resource location of your exchange resource.
 
 ```typescript
-// 3. Create a funding source using the processor token
+// 3. Create an exchange
+
+// 3a. Retrieve the exchange partner link for Plaid
+async function getExchangeHref(): Promise<string> {
+  const response = await dwollaClient.get("exchange-partners");
+  const partnersList = response.body._embedded["exchange-partners"];
+  const plaidPartner = partnersList.filter(
+    (obj: { name: string }) => "Plaid"
+  )[0];
+  return plaidPartner._links.self.href;
+}
+
+const exchangePartnerHref = getExchangeHref();
+
+// 3b. Create an exchange using the exchange partner link and the processor token
+interface CreateExchangeOptions {
+  customerId: string;
+  exchangePartnerHref: string;
+  token: string;
+}
+
+const createExchange = async (
+  options: CreateExchangeOptions
+): Promise<string> =>
+  (
+    await dwollaClient.post(`customers/${options.customerId}/exchanges`, {
+      _links: {
+        "exchange-partner": {
+          href: options.exchangePartnerHref,
+        },
+      },
+      token: options.token,
+    })
+  ).headers.get("location");
+```
+
+### Create a Funding Source
+
+To create a verified funding source for a customer, you will supply three required properties: `_link`, `bankAccountType`, and `name`. In the API request, `_link` defines a JSON object containing an exchange link relation, `bankAccountType` defines the type of the bank account: checking or savings, and `name` defines an arbitrary name that you or your user will assign to the funding source.
+
+In the following function, once a response is received, it will extract the `location` header value, which is the fully-qualified URL specifying the resource location of your funding source.
+
+```typescript
+// 4. Create a funding source using the exchange
 interface CreateFundingSourceOptions {
   customerId: string;
+  exchangeUrl: string;
   fundingSourceName: string;
-  plaidToken: string;
+  type: "checking" | "savings";
 }
 
 const createFundingSource = async (
@@ -187,10 +220,15 @@ const createFundingSource = async (
 ): Promise<string> =>
   (
     await dwollaClient.post(`customers/${options.customerId}/funding-sources`, {
+      _links: {
+        exchange: {
+          href: options.exchangeUrl,
+        },
+      },
+      bankAccountType: options.type,
       name: options.fundingSourceName,
-      plaidToken: options.plaidToken,
     })
-  ).headers.get("Location");
+  ).headers.get("location");
 ```
 
 ## Frequently Asked Questions
@@ -206,13 +244,13 @@ const createFundingSource = async (
   <p>
     When creating a funding source,{" "}
     <a href="#create-a-funding-source">
-      a Plaid <code>processor_token</code> value is passed in using the{" "}
-      <code>plaidToken</code> key.
+      a Plaid <code>processor_token</code> value is passed in via an exchange
+      resource.
     </a>{" "}
     With this information, Dwolla executes a call to Plaid's API to securely
     retrieve the account and routing number and creates a funding source on your
     behalf. Upon success, Dwolla returns a URL that represents the new funding
-    source via the <code>Location</code> response header.
+    source via the <code>location</code> response header.
   </p>
 </Collapsible>
 

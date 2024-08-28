@@ -44,7 +44,7 @@
 /resources/funding-source-verification/instant-account-verification.html    /concepts/bank-funding-source#bank-account-types
 /resources/dwolla-js/instant-account-verification.html    /concepts/bank-funding-source#bank-account-types
 /resources/dwolla-js/on-demand-bank-transfers.html    /concepts/bank-funding-source#bank-account-types
-/resources/dwolla-plaid-integration.html    /guides/plaid
+/resources/dwolla-plaid-integration.html    /docs/balance/secure-exchange/plaid
 /resources/testing.html    /guides/sandbox
 /resources/    /concepts
 /resources/account-types.html    /concepts/customer-types
@@ -86,10 +86,10 @@
 /guides/personal-verified-customer/frequently-asked-questions    /docs/balance/personal-verified-customer/frequently-asked-questions
 /guides/personal-verified-customer/handle-verification-statuses    /docs/balance/personal-verified-customer/handle-verification-statuses
 /guides/personal-verified-customer    /docs/balance/personal-verified-customer
-/guides/plaid/create-funding-source    /docs/balance/plaid/create-funding-source
-/guides/plaid/frequently-asked-questions    /docs/balance/plaid/frequently-asked-questions
-/guides/plaid/generate-processor-token    /docs/balance/plaid/generate-processor-token
-/guides/plaid    /docs/balance/plaid
+/guides/plaid/create-funding-source    /docs/balance/secure-exchange/plaid
+/guides/plaid/frequently-asked-questions    /docs/balance/secure-exchange/plaid
+/guides/plaid/generate-processor-token    /docs/balance/secure-exchange/plaid
+/guides/plaid    /docs/balance/secure-exchange/plaid
 /concepts/real-time-payments    /docs/balance/real-time-payments
 /guides/receive-money/add-funding-source    /docs/balance/receive-money/add-funding-source
 /guides/receive-money/create-a-customer    /docs/balance/receive-money/create-a-customer
@@ -151,10 +151,10 @@
 /docs/dwolla-js /docs/balance/dwolla-js
 
 /guides    /docs/balance
-/docs/balance/plaid    /docs/balance/create-funding-source-plaid
-/docs/balance/plaid/generate-processor-token    /docs/balance/create-funding-source-plaid
-/docs/balance/plaid/create-funding-source    /docs/balance/create-funding-source-plaid
-/docs/balance/plaid/frequently-asked-questions    /docs/balance/create-funding-source-plaid
+/docs/balance/plaid    /docs/balance/secure-exchange/plaid
+/docs/balance/plaid/generate-processor-token    /docs/balance/secure-exchange/plaid
+/docs/balance/plaid/create-funding-source    /docs/balance/secure-exchange/plaid
+/docs/balance/plaid/frequently-asked-questions    /docs/balance/secure-exchange/plaid
 
 # Developer Portal Update (2024)
 /api-reference/accounts/create-a-funding-source    /docs/balance/api-reference/accounts/create-a-funding-source
@@ -308,6 +308,8 @@
 /docs/balance/drop-ins    /docs/drop-in-components
 /docs/balance/api-reference    /docs/balance/api-reference/api-fundamentals
 /docs/connect/api-reference    /docs/connect/api-reference/api-fundamentals
+
+/docs/balance/create-funding-source-plaid    /docs/balance/secure-exchange/plaid
 
 # Archived files
 /docs/balance/virtual-account-numbers    /archive/virtual-account-numbers
