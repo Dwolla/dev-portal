@@ -572,7 +572,8 @@ If the Customer has a status of `document`, the Customer will need to upload add
 
 You can provide the following best practices to the Customer in order to reduce the chances of a document being rejected:
 
-- All 4 Edges of the document should be visible
+- Only images of the front of an ID
+- All 4 edges of the document should be visible
 - A dark/high contrast background should be used
 - At least 90% of the image should be the document
 - Should be at least 300dpi
@@ -692,7 +693,7 @@ Documents that are used to help identify a business are specified as documentTyp
     - Certificate of Assumed Name; Business License,
     - Sales/Use Tax License,
     - Registration of Trade Name,
-    - EIN documentation (IRS-issued SS4 confirmation letter),
+    - EIN documentation (IRS-issued SS4 confirmation letter)
   - Personal documents (documentType `license`, `passport` or `idCard`):
     - Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
 
@@ -704,6 +705,15 @@ Other business documents may be acceptable on a case by case basis with Dwolla a
 - Sales/Use Tax License
 - Business License
 - Certificate of Good Standing
+
+##### Proof of address
+
+If Dwolla's Compliance team is unable to find an external connection to confirm the user does in fact conduct business at their provided business address, a "proof of address" will be required. Proof of address are any of the following, current documents that show the address in question:
+
+- Utility Bill
+- Financial Statement
+- Tax Statement
+- Fully Executed Lease Agreement - must be valid for a minimum of the next 30 days.
 
 ### Uploading a document
 
@@ -780,21 +790,21 @@ If the document was found to be fraudulent or doesn’t match the identity of th
 
 ### Document failure
 
-A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned :
+A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned:
 
-| Failure reason            | Description                                                            |
-| ------------------------- | ---------------------------------------------------------------------- |
-| `BusinessDocNotSupported` | Business document not supported                                        |
-| `BusinessNameMismatch`    | Business name on account does not match document                       |
-| `BusinessTypeMismatch`    | Business type chosen does not match document                           |
-| `ScanDobMismatch`         | Scan DOB does not match DOB on account                                 |
-| `ScanFailedOther`         | ID may be fraudulent or a generic example ID image                     |
-| `ScanIdExpired`           | ID is expired or missing expiration date                               |
-| `ScanIdTypeNotSupported`  | ID may be a military ID, firearm license, or other unsupported ID type |
-| `ScanIdUnrecognized`      | ID is not recognized                                                   |
-| `ScanNameMismatch`        | Scan name does not match name on account                               |
-| `ScanNotReadable`         | Image blurry, too dark, or obscured by glare                           |
-| `ScanNotUploaded`         | Scan not uploaded                                                      |
+| Failure reason            | Description                                                            | Detailed description                                                                                                                                                                                                                                                                                                 |
+| ------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BusinessDocNotSupported` | Business document not supported                                        | The business document provided is not supported for verification. Please request approved [business documentation](#document-types) from the end user for verification.                                                                                                                                              |
+| `BusinessNameMismatch`    | Business name on account does not match document                       | The legal business name listed in the documentation uploaded does not match the Registered Business Name on the account. The account has been moved to [retry](#handling-status-retry) so that the business name listed at the account level can be adjusted to match the business documentation which was uploaded. |
+| `BusinessTypeMismatch`    | Business type chosen does not match document                           | Based on the documentation provided, the entity type for this business should be created as a/an (LLC, Corporation, Sole Prop). The account has been moved to [retry](#handling-status-retry) so that the correct business type (LLC, Corporation, Sole Prop etc.) can be submitted.                                 |
+| `ScanDobMismatch`         | Scan DOB does not match DOB on account                                 | The DOB listed on the ID uploaded does not match the DOB on the user's account. The account has been placed in [retry](#handling-status-retry) so that the user can adjust the DOB listed on the account to match the ID which was provided.                                                                         |
+| `ScanFailedOther`         | ID may be fraudulent or a generic example ID image                     | The ID uploaded may be fraudulent or a generic example of an ID. The user needs to upload an valid ID to proceed with account verification.                                                                                                                                                                          |
+| `ScanIdExpired`           | ID is expired or missing expiration date                               | The ID uploaded by the user is expired. The user will need to upload a non-expired ID.                                                                                                                                                                                                                               |
+| `ScanIdTypeNotSupported`  | ID may be a military ID, firearm license, or other unsupported ID type | The uploaded ID is not an acceptable form of ID. [Here](#acceptable-documents) is a list of ID types that Dwolla accepts for account verification.                                                                                                                                                                   |
+| `ScanIdUnrecognized`      | ID is not recognized                                                   | The ID which has been uploaded is unreadable. The user will need to upload a new image of their ID to proceed with verification.                                                                                                                                                                                     |
+| `ScanNameMismatch`        | Scan name does not match name on account                               | The name listed on the ID which has been uploaded by the user does not match the name which is listed at the account level. The account has been placed in [retry](#handling-status-retry) so that the user can adjust the name on the account to match the ID which was provided.                                   |
+| `ScanNotReadable`         | Image blurry, too dark, or obscured by glare                           | The uploaded ID is blurry, cutoff, or unreadable. The user will need to upload a clear, color, camera-captured image of their ID to proceed with verification. Here are some [best practices](#handling-status-document) related to document uploads.                                                                |
+| `ScanNotUploaded`         | Scan not uploaded                                                      | The uploaded image is not an ID. The user will need to upload an image of a valid ID to proceed. [Here](#acceptable-documents) is a list of valid ID's that Dwolla accepts for account verification.                                                                                                                 |
 
 #### Request and response
 
