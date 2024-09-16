@@ -1,5 +1,10 @@
-[[plugins]]
-package = "@algolia/netlify-plugin-crawler"
-  [plugins.inputs]
-  branches = ["main"]
-  customDomain = "developers.dwolla.com"
+[build]
+command = "pnpm install && pnpm build"
+publish = "out"
+
+[context.production.environment]
+NODE_VERSION = "18.20.3"
+YARN_IGNORE_PATH = "1"
+
+[context.production.preBuild]
+command = "npm install -g pnpm@latest"
