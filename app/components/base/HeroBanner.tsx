@@ -1,11 +1,5 @@
 import styled from "@emotion/styled";
-import {
-  AlgoliaAutocomplete,
-  AlgoliaAutocompleteProps,
-} from "algolia-search-components";
-import algoliasearch from "algoliasearch/lite";
 import React from "react";
-import { styled as muiStyled } from "@mui/material/styles";
 import { POPPINS, ROBOTO } from "../typography";
 import { WHITE_070, WHITE_PRIMARY } from "../colors";
 import { breakDown } from "../breakpoints";
@@ -74,19 +68,6 @@ const StyledDescription = styled.div`
   }
 `;
 
-const AlgoliaSearchWrapper = muiStyled("div", { name: "SearchWrapper" })({
-  display: "inline-block",
-  verticalAlign: "middle",
-  width: "100%",
-});
-
-const algoliaSearch: AlgoliaAutocompleteProps = {
-  branch: "main",
-  searchClient: algoliasearch("L2PPGO4SBB", "6a6c05b578da5aa729df7f53776e9f76"),
-  siteId: "e19df9e6-7024-443d-8ec0-26e8312ce0f9",
-  searchOptions: { hitsPerPage: 5 },
-};
-
 type ImageProps = {
   src: string;
   alt: string;
@@ -96,10 +77,9 @@ type Props = {
   heroImage: ImageProps;
   topic: string;
   description: string;
-  searchBar?: boolean;
 };
 
-function HeroBanner({ heroImage, topic, description, searchBar }: Props) {
+function HeroBanner({ heroImage, topic, description }: Props) {
   return (
     <StyledBanner
       style={{
@@ -112,11 +92,6 @@ function HeroBanner({ heroImage, topic, description, searchBar }: Props) {
       <BannerContentWrap>
         <StyledTopic>{topic}</StyledTopic>
         <StyledDescription>{description}</StyledDescription>
-        {searchBar && (
-          <AlgoliaSearchWrapper>
-            <AlgoliaAutocomplete {...algoliaSearch} />
-          </AlgoliaSearchWrapper>
-        )}
       </BannerContentWrap>
     </StyledBanner>
   );

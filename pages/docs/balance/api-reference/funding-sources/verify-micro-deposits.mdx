@@ -26,15 +26,16 @@ This section covers how to verify micro-deposits for bank verification. Referenc
 
 ### HTTP status and error codes
 
-| HTTP Status | Code                 | Description                                                                                                                                          |
-| ----------- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 200         | OK                   | Micro-deposits successfully verified.                                                                                                                |
-| 202         | TryAgainLater        | Micro-deposits have not have not settled to destination bank. A Customer can verify these amounts after micro-deposits have processed to their bank. |
-| 400         | ValidationError      | InvalidAmount, "Wrong amount(s)."                                                                                                                    |
-| 400         | MaxNumberOfResources | Micro-deposits already initiated for this funding source.                                                                                            |
-| 403         | InvalidResourceState | "Too many attempts.", "Bank already verified."                                                                                                       |
-| 404         | NotFound             | Micro-deposits not initiated,Funding source not found                                                                                                |
-| 500         | Unknown              | "Verify micro-deposits returned an unknown error."                                                                                                   |
+| HTTP Status | Code                 | Message                                                   | Description                                                                                                                                                 |
+| ----------- | -------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 200         | OK                   |                                                           | Micro-deposits successfully verified.                                                                                                                       |
+| 202         | TryAgainLater        |                                                           | Micro-deposits have not have not processed to destination bank. A Customer can verify these amounts after micro-deposits have processed to their bank.      |
+| 400         | Invalid              | Invalid amount.                                           | ValidationError. The submitted amount value was > 0.15 and does not match the amount sent for the initiated micro-deposit.                                  |
+| 400         | Invalid              | Wrong amount(s).                                          | ValidationError. The submitted amount value was >= $0.01 and <= $.09, but does not match the amount sent for the initiated micro-deposit.                   |
+| 400         | MaxNumberOfResources | Micro-deposits already initiated for this funding source. | Micro-deposits already initiated for this funding source.                                                                                                   |
+| 403         | InvalidResourceState | Too many attempts.                                        | The maximum number of verification attempts has been reached. A customer is allowed three attempts to correctly input the two posted micro-deposit amounts. |
+| 403         | InvalidResourceState | Bank already verified.                                    | The bank account you're trying to verify has already been verified.                                                                                         |
+| 404         | NotFound             | The requested resource was not found.                     | Either micro-deposits have not been initiated for the specified funding source, or the funding source itself was not found.                                 |
 
 ### Request and response
 
