@@ -38,8 +38,6 @@
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-viewport": "^7.0.10",
     "@storybook/react": "^7.0.10",
-    "algolia-search-components": "github:Dwolla/algolia-search-components#203de1c",
-    "algoliasearch": "^4.17.0",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
     "babel-plugin-import-glob-array": "^0.2.0",
@@ -76,7 +74,6 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@algolia/autocomplete-js": "^1.9.2",
     "@storybook/nextjs": "^7.0.10",
     "@svgr/webpack": "^7.0.0",
     "@testing-library/jest-dom": "^5.16.5",

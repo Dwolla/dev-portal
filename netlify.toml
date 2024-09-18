@@ -1,5 +1,0 @@
-[[plugins]]
-package = "@algolia/netlify-plugin-crawler"
-  [plugins.inputs]
-  branches = ["main"]
-  customDomain = "developers.dwolla.com"

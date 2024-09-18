@@ -6,7 +6,7 @@ exports[`Layout 1`] = `
     className="css-1h0fusp-TopBarWrapper e1ijxxr31"
   >
     <div
-      className="css-25nmj1-Container e1psldpd6"
+      className="css-25nmj1-Container e1psldpd5"
     >
       <a
         href="/docs"
@@ -21,20 +21,17 @@ exports[`Layout 1`] = `
       >
         <img
           alt=""
-          className="css-3jqt57-StyledLogo e1psldpd5"
+          className="css-3jqt57-StyledLogo e1psldpd4"
           src="test-image-stub"
         />
         <em
-          className="css-11c4vbk-StyledEm e1psldpd4"
+          className="css-11c4vbk-StyledEm e1psldpd3"
         >
            Docs
         </em>
       </a>
       <div
-        className="css-5vssss-LeftAlignWrapper e1psldpd2"
-      />
-      <div
-        className="css-j4xy9d-RightAlignWrapper e1psldpd3"
+        className="css-j4xy9d-RightAlignWrapper e1psldpd2"
       >
         <div
           className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
