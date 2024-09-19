@@ -134,7 +134,7 @@ exports[`Layout 1`] = `
       />
     </div>
     <header
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-pjew9n-MuiPaper-root-MuiAppBar-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-x5finb-MuiPaper-root-MuiAppBar-root"
     >
       <div
         className="MuiContainer-root css-ur2jdm-MuiContainer-root"
@@ -143,10 +143,10 @@ exports[`Layout 1`] = `
           className="MuiToolbar-root MuiToolbar-regular css-1mojz2a-MuiToolbar-root"
         >
           <div
-            className="MuiBox-root css-xh3wsv"
+            className="MuiBox-root css-1bcbyfj"
           >
             <div
-              className="css-7ui14r-ProductSelectorWrapper emsji1v1"
+              className="css-1qaviri-ProductSelectorWrapper emsji1v1"
             >
               <div
                 className="MuiFormControl-root css-78me8v-MuiFormControl-root"
@@ -239,7 +239,7 @@ exports[`Layout 1`] = `
               className="css-et77cy-NavBarWrapper emsji1v0"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1elaevu-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-kyigmi-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -258,13 +258,13 @@ exports[`Layout 1`] = `
                 tabIndex={0}
                 type="button"
               >
-                Product Overview
+                Guides And Concepts
                 <span
                   className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -289,7 +289,7 @@ exports[`Layout 1`] = `
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -314,7 +314,7 @@ exports[`Layout 1`] = `
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -339,7 +339,7 @@ exports[`Layout 1`] = `
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -503,7 +503,7 @@ exports[`Layout 1`] = `
                       role="button"
                       tabIndex={0}
                     >
-                      Product Overview
+                      Guides And Concepts
                     </div>
                     <input
                       aria-hidden={true}
@@ -514,7 +514,7 @@ exports[`Layout 1`] = `
                       onChange={[Function]}
                       required={false}
                       tabIndex={-1}
-                      value="productOverview"
+                      value="guidesAndConcepts"
                     />
                     <svg
                       aria-hidden={true}

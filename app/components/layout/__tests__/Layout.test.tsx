@@ -131,8 +131,8 @@ const PRODUCT_OPTIONS: SelectMuiOption[] = [
 
 const NAV_ITEMS: SelectMuiOption[] = [
   {
-    value: "productOverview",
-    label: "Product Overview",
+    value: "guidesAndConcepts",
+    label: "Guides And Concepts",
     href: (selectedProduct) => `/docs/${selectedProduct}`, // Dynamic href, changes based on selectedProduct Context
   },
   {
