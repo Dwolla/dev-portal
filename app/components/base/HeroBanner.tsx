@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+import Search from "../base/Search";
 import { POPPINS, ROBOTO } from "../typography";
 import { WHITE_070, WHITE_PRIMARY } from "../colors";
 import { breakDown } from "../breakpoints";
@@ -68,6 +69,12 @@ const StyledDescription = styled.div`
   }
 `;
 
+const SearchWrapper = styled.div`
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+`;
+
 type ImageProps = {
   src: string;
   alt: string;
@@ -77,9 +84,10 @@ type Props = {
   heroImage: ImageProps;
   topic: string;
   description: string;
+  searchBar?: boolean;
 };
 
-function HeroBanner({ heroImage, topic, description }: Props) {
+function HeroBanner({ heroImage, topic, description, searchBar }: Props) {
   return (
     <StyledBanner
       style={{
@@ -92,6 +100,14 @@ function HeroBanner({ heroImage, topic, description }: Props) {
       <BannerContentWrap>
         <StyledTopic>{topic}</StyledTopic>
         <StyledDescription>{description}</StyledDescription>
+        {searchBar && (
+          <SearchWrapper
+            // Kapa.ai uses class "search-ai-button" to bind the widget to the corresponding element
+            className="search-ai-button"
+          >
+            <Search />
+          </SearchWrapper>
+        )}
       </BannerContentWrap>
     </StyledBanner>
   );

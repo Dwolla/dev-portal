@@ -4,7 +4,9 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 import { FormControl } from "@mui/material";
 import { useRouter } from "next/router";
+import SelectMui from "../base/SelectMui";
 import Help from "../base/Help";
+import Search from "../base/Search";
 import { LanguageContext } from "../util/Contexts";
 import { ROBOTO } from "../typography";
 import { breakDown, breakUp } from "../breakpoints";
@@ -12,7 +14,6 @@ import { GREY_4, GREY_5, GREY_9, PURPLE_075, WHITE_PRIMARY } from "../colors";
 import dwollaLogo from "../../../assets/images/dwolla-logo-full-color.png";
 import { ReactComponent as CloseIcon } from "../../../assets/images/component-icons/close.svg";
 import ga from "../../modules/ga";
-import SelectMui from "../base/SelectMui";
 
 export const TOP_BAR_HEIGHT = 66;
 
@@ -64,6 +65,14 @@ const RightAlignWrapper = styled.div`
   }
 
   @media (${breakDown("md")}) {
+    display: none;
+  }
+`;
+
+const LeftAlignWrapper = styled.div`
+  padding-left: 30px;
+  margin-right: 20px;
+  @media (${breakDown("xs")}) {
     display: none;
   }
 `;
@@ -185,6 +194,10 @@ export default function TopBar({
           <StyledEm> Docs</StyledEm>
         </a>
       </Link>
+
+      <LeftAlignWrapper>
+        <Search />
+      </LeftAlignWrapper>
 
       <RightAlignWrapper>
         {helpLinks && <Help links={helpLinks} />}

@@ -53,7 +53,10 @@ export default class MyDocument extends Document {
             src="https://widget.kapa.ai/kapa-widget.bundle.js"
             data-website-id="2e65478c-ab3c-4bf2-b997-db8a398de4a5"
             data-project-name="Dwolla"
-            data-search-mode-enabled
+            data-search-mode-enabled="true"
+            data-modal-override-open-id-search="search-ai-button"
+            data-modal-override-open-class-search="search-ai-button"
+            data-modal-open-on-command-k="true"
             data-project-color="#2d2d48"
             data-button-border-radius="10px"
             data-button-image-width="34"

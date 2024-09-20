@@ -2,7 +2,7 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-25nmj1-Container e1psldpd5"
+  className="css-25nmj1-Container e1psldpd6"
 >
   <a
     href="/docs"
@@ -17,17 +17,65 @@ exports[`TopBar 1`] = `
   >
     <img
       alt=""
-      className="css-3jqt57-StyledLogo e1psldpd4"
+      className="css-3jqt57-StyledLogo e1psldpd5"
       src="test-image-stub"
     />
     <em
-      className="css-11c4vbk-StyledEm e1psldpd3"
+      className="css-11c4vbk-StyledEm e1psldpd4"
     >
        Docs
     </em>
   </a>
   <div
-    className="css-j4xy9d-RightAlignWrapper e1psldpd2"
+    className="css-5vssss-LeftAlignWrapper e1psldpd2"
+  >
+    <div
+      aria-label="search or ask ai with cmd + k"
+      className="css-1j6700x-SearchWrapper e1stdte24"
+      id="search-ai-button"
+      role="button"
+      tabIndex={0}
+    >
+      <div
+        className="css-fwa6yu-SearchIconWrapper e1stdte23"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-d09jsa-MuiSvgIcon-root"
+          data-testid="SearchIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+          />
+        </svg>
+      </div>
+      <div
+        className="css-1vkr7di-StyledSearchText e1stdte21"
+      >
+        Search or ask AI...
+      </div>
+      <div
+        aria-label="Ask AI"
+        aria-labelledby={null}
+        className=" css-1mvdm01-AskAiIconWrapper e1stdte22"
+        data-mui-internal-clone-element={true}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <svg
+          width={33}
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="css-j4xy9d-RightAlignWrapper e1psldpd3"
   >
     <div
       className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
@@ -116,6 +164,9 @@ exports[`TopBar 1`] = `
       target="_blank"
     >
       Get API Keys
+      <span
+        className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
     </a>
   </div>
   <div
