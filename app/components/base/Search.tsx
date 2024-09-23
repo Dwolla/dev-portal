@@ -79,12 +79,12 @@ function Search() {
       id="search-ai-button"
       tabIndex={0}
       role="button"
-      aria-label="search or ask ai with cmd + k"
+      aria-label="ask ai or search with cmd + k"
     >
       <SearchIconWrapper>
         <SearchIcon sx={{ color: PURPLE_054 }} />
       </SearchIconWrapper>
-      <StyledSearchText>Search or ask AI...</StyledSearchText>
+      <StyledSearchText>Ask AI or search...</StyledSearchText>
       <BootstrapTooltip title="Ask AI">
         <AskAiIconWrapper>
           <AskAiIcon width={33} />

@@ -34,7 +34,7 @@ exports[`Layout 1`] = `
         className="css-5vssss-LeftAlignWrapper e1psldpd2"
       >
         <div
-          aria-label="search or ask ai with cmd + k"
+          aria-label="ask ai or search with cmd + k"
           className="css-1j6700x-SearchWrapper e1stdte24"
           id="search-ai-button"
           role="button"
@@ -58,7 +58,7 @@ exports[`Layout 1`] = `
           <div
             className="css-1vkr7di-StyledSearchText e1stdte21"
           >
-            Search or ask AI...
+            Ask AI or search...
           </div>
           <div
             aria-label="Ask AI"
