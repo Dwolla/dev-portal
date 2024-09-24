@@ -84,6 +84,8 @@ export const PURPLE_023 = "rgba(31, 31, 50, 0.23)";
 export const PURPLE_054 = "rgba(31, 31, 50, 0.54)";
 export const PURPLE_075 = "rgba(31, 31, 50, 0.75)";
 export const PURPLE_087 = "rgba(31, 31, 50, 0.87)";
+export const PURPLE_090 = "rgba(31, 31, 50, 0.90)";
+
 export const PURPLE_100 = "rgba(31, 31, 50, 1)";
 
 // White RGBA shades

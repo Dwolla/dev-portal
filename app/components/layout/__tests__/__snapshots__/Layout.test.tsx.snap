@@ -6,7 +6,7 @@ exports[`Layout 1`] = `
     className="css-1h0fusp-TopBarWrapper e1ijxxr31"
   >
     <div
-      className="css-25nmj1-Container e1psldpd5"
+      className="css-25nmj1-Container e1psldpd6"
     >
       <a
         href="/docs"
@@ -21,17 +21,65 @@ exports[`Layout 1`] = `
       >
         <img
           alt=""
-          className="css-3jqt57-StyledLogo e1psldpd4"
+          className="css-3jqt57-StyledLogo e1psldpd5"
           src="test-image-stub"
         />
         <em
-          className="css-11c4vbk-StyledEm e1psldpd3"
+          className="css-11c4vbk-StyledEm e1psldpd4"
         >
            Docs
         </em>
       </a>
       <div
-        className="css-j4xy9d-RightAlignWrapper e1psldpd2"
+        className="css-5vssss-LeftAlignWrapper e1psldpd2"
+      >
+        <div
+          aria-label="ask ai or search with cmd + k"
+          className="css-1j6700x-SearchWrapper e1stdte24"
+          id="search-ai-button"
+          role="button"
+          tabIndex={0}
+        >
+          <div
+            className="css-fwa6yu-SearchIconWrapper e1stdte23"
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-d09jsa-MuiSvgIcon-root"
+              data-testid="SearchIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+              />
+            </svg>
+          </div>
+          <div
+            className="css-1vkr7di-StyledSearchText e1stdte21"
+          >
+            Ask AI or search...
+          </div>
+          <div
+            aria-label="Ask AI"
+            aria-labelledby={null}
+            className=" css-1mvdm01-AskAiIconWrapper e1stdte22"
+            data-mui-internal-clone-element={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            onTouchEnd={[Function]}
+            onTouchStart={[Function]}
+          >
+            <svg
+              width={33}
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="css-j4xy9d-RightAlignWrapper e1psldpd3"
       >
         <div
           className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
@@ -134,7 +182,7 @@ exports[`Layout 1`] = `
       />
     </div>
     <header
-      className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-pjew9n-MuiPaper-root-MuiAppBar-root"
+      className="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionSticky css-x5finb-MuiPaper-root-MuiAppBar-root"
     >
       <div
         className="MuiContainer-root css-ur2jdm-MuiContainer-root"
@@ -143,10 +191,10 @@ exports[`Layout 1`] = `
           className="MuiToolbar-root MuiToolbar-regular css-1mojz2a-MuiToolbar-root"
         >
           <div
-            className="MuiBox-root css-xh3wsv"
+            className="MuiBox-root css-1bcbyfj"
           >
             <div
-              className="css-7ui14r-ProductSelectorWrapper emsji1v1"
+              className="css-1qaviri-ProductSelectorWrapper emsji1v1"
             >
               <div
                 className="MuiFormControl-root css-78me8v-MuiFormControl-root"
@@ -239,7 +287,7 @@ exports[`Layout 1`] = `
               className="css-et77cy-NavBarWrapper emsji1v0"
             >
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1elaevu-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-kyigmi-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -258,13 +306,13 @@ exports[`Layout 1`] = `
                 tabIndex={0}
                 type="button"
               >
-                Product Overview
+                Guides And Concepts
                 <span
                   className="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -289,7 +337,7 @@ exports[`Layout 1`] = `
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -314,7 +362,7 @@ exports[`Layout 1`] = `
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -339,7 +387,7 @@ exports[`Layout 1`] = `
                 />
               </button>
               <button
-                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-1v1wdku-MuiButtonBase-root-MuiButton-root"
+                className="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium css-17a6927-MuiButtonBase-root-MuiButton-root"
                 disabled={false}
                 onBlur={[Function]}
                 onClick={[Function]}
@@ -503,7 +551,7 @@ exports[`Layout 1`] = `
                       role="button"
                       tabIndex={0}
                     >
-                      Product Overview
+                      Guides And Concepts
                     </div>
                     <input
                       aria-hidden={true}
@@ -514,7 +562,7 @@ exports[`Layout 1`] = `
                       onChange={[Function]}
                       required={false}
                       tabIndex={-1}
-                      value="productOverview"
+                      value="guidesAndConcepts"
                     />
                     <svg
                       aria-hidden={true}

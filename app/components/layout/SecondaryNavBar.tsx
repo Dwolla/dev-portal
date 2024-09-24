@@ -16,6 +16,7 @@ import { breakDown } from "../breakpoints";
 export const NAV_BAR_HEIGHT = 70;
 
 const ProductSelectorWrapper = styled.div`
+  align-self: center;
   margin: 0 10px 0 0;
   padding: 0 20px 0 0;
   width: 400px; // Value of LEFT_SIDEBAR_WIDTH - 20px from ../../../app/components/layout/Layout.tsx
@@ -71,7 +72,7 @@ export default function SecondaryNavBar({
         bgcolor: WHITE_PRIMARY,
         boxShadow: "none",
         borderBottom: `1px solid ${PURPLE_023}`,
-        height: NAV_BAR_HEIGHT,
+        minHeight: NAV_BAR_HEIGHT,
         display: { xs: "none", sm: "none", md: "none", lg: "flex" },
       }}
     >
@@ -82,7 +83,7 @@ export default function SecondaryNavBar({
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
               justifyContent: "space-between",
-              height: NAV_BAR_HEIGHT,
+              minHeight: NAV_BAR_HEIGHT,
             }}
           >
             <ProductSelectorWrapper>
@@ -116,7 +117,7 @@ export default function SecondaryNavBar({
                     sx={{
                       font: ROBOTO,
                       display: "block",
-                      width: "10rem",
+                      width: "11rem",
                       marginBottom: "unset",
                       borderRadius: "0px",
                       color:
