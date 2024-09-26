@@ -55,7 +55,7 @@ exports[`HeroBanner - with SearchBar 1`] = `
       Documentation, tools and resources for developers to integrate Dwolla's account-to-account payments Platform.
     </div>
     <div
-      className="search-ai-button css-1piufyn-SearchWrapper e38sxrk0"
+      className="css-1piufyn-SearchWrapper e38sxrk0"
     >
       <div
         aria-label="ask ai or search with cmd + k"

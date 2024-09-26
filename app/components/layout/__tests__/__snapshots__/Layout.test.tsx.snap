@@ -9,7 +9,7 @@ exports[`Layout 1`] = `
       className="css-w75zwu-Container e1psldpd8"
     >
       <div
-        className="css-lg22sz-LogoWrapper e1psldpd7"
+        className="css-1uajtfj-LogoWrapper e1psldpd7"
       >
         <a
           href="/docs"
@@ -154,7 +154,7 @@ exports[`Layout 1`] = `
           </div>
         </div>
         <a
-          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
+          className="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeSmall MuiButton-containedSizeSmall MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeSmall MuiButton-containedSizeSmall css-9aa3p4-MuiButtonBase-root-MuiButton-root"
           href="https://accounts-sandbox.dwolla.com/login"
           onBlur={[Function]}
           onContextMenu={[Function]}
