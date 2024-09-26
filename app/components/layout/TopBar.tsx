@@ -31,7 +31,10 @@ const Container = styled.div`
 `;
 
 const LogoWrapper = styled.div`
-  width: 30%;
+  width: 23%;
+  @media (${breakDown("md")}) {
+    width: 30%;
+  }
   @media (${breakDown("sm")}) {
     width: unset;
   }
@@ -236,7 +239,7 @@ export default function TopBar({
           href={button.link.href}
           target={button.link.external ? "_blank" : undefined}
           color="secondary"
-          size="medium"
+          size="small"
         >
           {button.text}
         </Button>
