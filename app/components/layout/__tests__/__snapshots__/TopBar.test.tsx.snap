@@ -2,32 +2,36 @@
 
 exports[`TopBar 1`] = `
 <div
-  className="css-25nmj1-Container e1psldpd6"
+  className="css-w75zwu-Container e1psldpd8"
 >
-  <a
-    href="/docs"
-    onClick={[Function]}
-    onMouseEnter={[Function]}
-    onTouchStart={[Function]}
-    style={
-      {
-        "textDecoration": "none",
-      }
-    }
-  >
-    <img
-      alt=""
-      className="css-3jqt57-StyledLogo e1psldpd5"
-      src="test-image-stub"
-    />
-    <em
-      className="css-11c4vbk-StyledEm e1psldpd4"
-    >
-       Docs
-    </em>
-  </a>
   <div
-    className="css-5vssss-LeftAlignWrapper e1psldpd2"
+    className="css-lg22sz-LogoWrapper e1psldpd7"
+  >
+    <a
+      href="/docs"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onTouchStart={[Function]}
+      style={
+        {
+          "textDecoration": "none",
+        }
+      }
+    >
+      <img
+        alt=""
+        className="css-3jqt57-StyledLogo e1psldpd6"
+        src="test-image-stub"
+      />
+      <em
+        className="css-11c4vbk-StyledEm e1psldpd5"
+      >
+         Docs
+      </em>
+    </a>
+  </div>
+  <div
+    className="css-1e6cy8h-SearchBoxWrapper e1psldpd3"
   >
     <div
       aria-label="ask ai or search with cmd + k"
@@ -75,7 +79,7 @@ exports[`TopBar 1`] = `
     </div>
   </div>
   <div
-    className="css-j4xy9d-RightAlignWrapper e1psldpd3"
+    className="css-1yxmvl4-RightAlignWrapper e1psldpd4"
   >
     <div
       className="MuiFormControl-root css-dru9rs-MuiFormControl-root"
@@ -170,15 +174,19 @@ exports[`TopBar 1`] = `
     </a>
   </div>
   <div
-    aria-labelledby="Close menu"
-    className="css-1ut1z54-StyledCloseIcon e1psldpd0"
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    tabIndex={0}
+    className="css-18bs7kq-HamburgerWrapper e1psldpd2"
   >
-    <svg
-      width={14}
-    />
+    <div
+      aria-labelledby="Close menu"
+      className="css-1ut1z54-StyledCloseIcon e1psldpd0"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      tabIndex={0}
+    >
+      <svg
+        width={14}
+      />
+    </div>
   </div>
 </div>
 `;
