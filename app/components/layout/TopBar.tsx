@@ -20,12 +20,23 @@ export const TOP_BAR_HEIGHT = 66;
 const Container = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: ${TOP_BAR_HEIGHT}px;
   background-color: ${WHITE_PRIMARY};
   padding: 0 20px;
 
   @media (${breakDown("md")}) {
     padding: 12px 20px;
+  }
+`;
+
+const LogoWrapper = styled.div`
+  width: 23%;
+  @media (${breakDown("md")}) {
+    width: 30%;
+  }
+  @media (${breakDown("sm")}) {
+    width: unset;
   }
 `;
 
@@ -56,51 +67,36 @@ const StyledEm = styled.em`
 const RightAlignWrapper = styled.div`
   display: flex;
   align-items: center;
-
-  margin-left: auto;
-  padding-right: 20px;
-
-  div {
-    margin-right: 10px;
-  }
+  justify-content: flex-end;
+  gap: 20px;
 
   @media (${breakDown("md")}) {
     display: none;
   }
 `;
 
-const LeftAlignWrapper = styled.div`
-  padding-left: 30px;
-  margin-right: 20px;
-  @media (${breakDown("xs")}) {
+const SearchBoxWrapper = styled.div`
+  width: 30%;
+  @media (${breakDown("sm")}) {
     display: none;
   }
 `;
 
-export type HelpLinkProps = {
-  text: string;
-  href: string;
-};
-
-export type TopBarButtonProps = {
-  text: string;
-  link: {
-    href: string;
-    external: boolean;
-  };
-};
-
-export type TopBarProps = {
-  helpLinks?: HelpLinkProps[];
-  button: TopBarButtonProps;
-  sidebarToggled?: boolean;
-  setSidebarToggled?: Function;
-};
+const HamburgerWrapper = styled.div`
+  width: 25%;
+  display: flex;
+  justify-content: flex-end;
+  @media (${breakUp("lg")}) {
+    display: none;
+  }
+  @media (${breakDown("xs")}) {
+    width: unset;
+  }
+`;
 
 const Hamburger = styled.div`
   width: 15px;
   height: 12px;
-  margin-left: auto;
   cursor: pointer;
   background-image: linear-gradient(
     to bottom,
@@ -162,6 +158,26 @@ const StyledCloseIcon = styled.div`
   }
 `;
 
+export type HelpLinkProps = {
+  text: string;
+  href: string;
+};
+
+export type TopBarButtonProps = {
+  text: string;
+  link: {
+    href: string;
+    external: boolean;
+  };
+};
+
+export type TopBarProps = {
+  helpLinks?: HelpLinkProps[];
+  button: TopBarButtonProps;
+  sidebarToggled?: boolean;
+  setSidebarToggled?: Function;
+};
+
 export default function TopBar({
   helpLinks,
   button,
@@ -188,16 +204,20 @@ export default function TopBar({
 
   return (
     <Container>
-      <Link href="/docs">
-        <a style={{ textDecoration: "none" }}>
-          <StyledLogo src={dwollaLogo} alt="" />
-          <StyledEm> Docs</StyledEm>
-        </a>
-      </Link>
+      <LogoWrapper>
+        <Link href="/docs">
+          <a style={{ textDecoration: "none" }}>
+            <StyledLogo src={dwollaLogo} alt="" />
+            <StyledEm> Docs</StyledEm>
+          </a>
+        </Link>
+      </LogoWrapper>
 
-      <LeftAlignWrapper>
-        <Search />
-      </LeftAlignWrapper>
+      {!isHomepage && (
+        <SearchBoxWrapper>
+          <Search />
+        </SearchBoxWrapper>
+      )}
 
       <RightAlignWrapper>
         {helpLinks && <Help links={helpLinks} />}
@@ -219,30 +239,32 @@ export default function TopBar({
           href={button.link.href}
           target={button.link.external ? "_blank" : undefined}
           color="secondary"
-          size="medium"
+          size="small"
         >
           {button.text}
         </Button>
       </RightAlignWrapper>
 
-      {!isHomepage &&
-        (sidebarToggled === false ? (
-          <Hamburger
-            tabIndex={0}
-            aria-labelledby="Open menu"
-            onClick={showSidebar}
-            onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
-          />
-        ) : (
-          <StyledCloseIcon
-            tabIndex={0}
-            aria-labelledby="Close menu"
-            onClick={hideSidebar}
-            onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
-          >
-            <CloseIcon width={14} />
-          </StyledCloseIcon>
-        ))}
+      <HamburgerWrapper>
+        {!isHomepage &&
+          (sidebarToggled === false ? (
+            <Hamburger
+              tabIndex={0}
+              aria-labelledby="Open menu"
+              onClick={showSidebar}
+              onKeyDown={(keyPress) => onHamburgerKeydown(keyPress)}
+            />
+          ) : (
+            <StyledCloseIcon
+              tabIndex={0}
+              aria-labelledby="Close menu"
+              onClick={hideSidebar}
+              onKeyDown={(keyPress) => onCloseIconKeydown(keyPress)}
+            >
+              <CloseIcon width={14} />
+            </StyledCloseIcon>
+          ))}
+      </HamburgerWrapper>
     </Container>
   );
 }

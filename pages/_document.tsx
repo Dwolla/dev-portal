@@ -56,7 +56,6 @@ export default class MyDocument extends Document {
             data-search-mode-enabled="true"
             data-button-hide="true"
             data-modal-override-open-id="search-ai-button"
-            data-modal-override-open-class="search-ai-button"
             data-modal-open-on-command-k="true"
             data-project-color="#2d2d48"
             data-button-border-radius="10px"

@@ -101,10 +101,7 @@ function HeroBanner({ heroImage, topic, description, searchBar }: Props) {
         <StyledTopic>{topic}</StyledTopic>
         <StyledDescription>{description}</StyledDescription>
         {searchBar && (
-          <SearchWrapper
-            // Kapa.ai uses class "search-ai-button" to bind the widget to the corresponding element
-            className="search-ai-button"
-          >
+          <SearchWrapper>
             <Search />
           </SearchWrapper>
         )}
