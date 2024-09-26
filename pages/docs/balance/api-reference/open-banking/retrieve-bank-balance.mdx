@@ -15,11 +15,11 @@ This section covers how to retrieve the current and available amount for a bank 
 
 #### Available and Closing Balance
 
-There are two different amounts returned in the API response when retrieving a balance which correspond to a `available` and `closing` balance. Both balances provide important insights for businesses, with the `available` balance being the most relevant for determining whether there are sufficient funds to initiate an ACH transaction.
+There are two different amounts returned in the API response when retrieving a balance which correspond to an `available` and `closing` balance. Both balances provide important insights for businesses, with the `available` balance being the most relevant for determining whether there are sufficient funds to initiate an ACH transaction.
 
 ##### Available balance
 
-Available balance is the amount of funds the customer is able to withdraw from the account, not including any credit facility that may be available. The balance includes pending inflows or outflows on the account and is the closest to real-time balance. The account's available balance is immediately updated all day long to reflect all the charges/transactions/deposits as they happen. **Note:** The available balance won't always be returned.
+Available balance is the amount of funds the customer is able to withdraw from the account, not including any credit facility that may be available. This balance includes pending inflows or outflows on the account and is the closest to a real-time balance. It is continuously updated to reflect all the charges/transactions/deposits as they occur. **Note:** The available balance won't always be returned.
 
 ##### Closing balance
 
@@ -110,5 +110,5 @@ funding_source = app_token.get('%s/balance' % funding_source_url)
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418";
 
-dwolla.get(`${fundingSourceUrl}/balance`).then((res) => res.body.balance.value);
+dwolla.get(`${fundingSourceUrl}/balance`).then((res) => res.body.available.value);
 ```
