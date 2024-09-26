@@ -14,6 +14,18 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Completed
 
+### 2024-09-16
+
+**ADDED**
+
+- Added support for retrieving real-time bank balance information using Dwolla's Open Banking solution. Businesses can now verify the current balance of a user's bank account before initiating ACH payments. This feature helps mitigate the risk of insufficient funds and improves payment processing efficiency.
+
+##### Updated API Endpoint:
+
+To facilitate retrieving the bank balance, we've updated an API endpoint to support a new schema for bank balances:
+
+- **/funding-sources/id/balance (GET):** This API endpoint will return a JSON response containing the balance amount, currency, available balance, closing balance, and last updated timestamp. Refer to the developer documentation for detailed usage instructions and [API reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-bank-balance).
+
 ### 2024-06-10
 
 **ADDED**

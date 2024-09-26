@@ -1,0 +1,114 @@
+---
+layout: guides
+product: balance
+title: "Retrieve bank balance"
+guide:
+  step: 3
+meta:
+  title: "Dwolla API Reference | Open Banking: Retrieve bank balance"
+  description: "Retrieve bank balances with Dwolla's Open Banking solution"
+---
+
+# Retrieve bank balance
+
+This section covers how to retrieve the current and available amount for a bank account added using Dwolla's [Open Banking solution](https://developers.dwolla.com/docs/balance/open-banking). This feature is designed to help businesses make more informed decisions before initiating ACH transactions, reducing the risk of failed payments due to insufficient funds.
+
+#### Available and Closing Balance
+
+There are two different amounts returned in the API response when retrieving a balance which correspond to an `available` and `closing` balance. Both balances provide important insights for businesses, with the `available` balance being the most relevant for determining whether there are sufficient funds to initiate an ACH transaction.
+
+##### Available balance
+
+Available balance is the amount of funds the customer is able to withdraw from the account, not including any credit facility that may be available. This balance includes pending inflows or outflows on the account and is the closest to a real-time balance. It is continuously updated to reflect all the charges/transactions/deposits as they occur. **Note:** The available balance won't always be returned.
+
+##### Closing balance
+
+The closing (or booked) balance represents the current balance of the account without factoring in any pending debits or credits. It reflects the settled balance as of the end of the previous business day, providing a snapshot of the funds that have been fully processed.
+
+#### Last Updated
+
+When calling the balance endpoint on a funding source, either initially or during a refresh, the response will include a `lastUpdated` parameter with a UTC timestamp. This timestamp indicates the most recent time Dwolla retrieved the balance from the open banking provider. The balance is cached by default and automatically refreshed in the background when the balance status changes, ensuring up-to-date information is available without requiring frequent manual checks.
+
+### HTTP request
+
+> `GET https://api.dwolla.com/funding-sources/{id}/balance`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                                                                                                                                                                                                                                                 |
+| --------- | -------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id        | yes      | string | A unique identifier representing the funding source for which the balance is being retrieved. This funding source must correspond to an existing and valid funding source that is linked using Dwolla's Open Banking Instant Account Verification solution. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code                 | Message                                                                  | Description                                                                                                                                                                                                            |
+| ----------- | -------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 404         | NotFound             | The requested resource was not found.                                    | The requested bank account could not be found. This may occur if the funding source ID is invalid or if it does not exist in our system. Please verify that the correct funding source ID is being used and try again. |
+| 400         | UnsupportedOperation | Retrieving the balance is not supported for this type of funding source. | This funding source may not allow balance checks, or it may not be eligible for this operation.                                                                                                                        |
+| 400         | UnsupportedOperation | Balance Check is not supported by your exchange partner.                 | This may occur if your financial institution or Open Banking service provider does not offer balance verification.                                                                                                     |
+| 403         | Forbidden            | Balance Check not enabled for this account.                              | Your account does not have the necessary permissions or features activated to perform balance checks.                                                                                                                  |
+
+### Request and response
+
+```bash
+GET https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418/balance
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/funding-sources/42f48a64-2a9b-40df-9777-603ed2fe2764/balance",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "balance"
+        },
+        "funding-source": {
+            "href": "https://api.dwolla.com/funding-sources/42f48a64-2a9b-40df-9777-603ed2fe2764",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "available": {
+        "value": "542.00",
+        "currency": "USD"
+    },
+    "closing": {
+        "value": "542.00",
+        "currency": "USD"
+    },
+    "lastUpdated": "2024-09-09T16:39:14.219Z"
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418'
+
+funding_source = app_token.get "#{funding_source_url}/balance"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418';
+
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fsApi->getBalance($fundingSourceUrl);
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418'
+
+funding_source = app_token.get('%s/balance' % funding_source_url)
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var fundingSourceUrl =
+  "https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418";
+
+dwolla.get(`${fundingSourceUrl}/balance`).then((res) => res.body.available.value);
+```
