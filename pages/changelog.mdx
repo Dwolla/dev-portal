@@ -12,6 +12,21 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Upcoming
 
+### 2024-10-30
+
+**CHANGED**
+
+##### Description:
+
+- **Multiple Redirect URLs:** You can now configure multiple redirect URLs for your exchange sessions, providing more flexibility in your integration.
+- **Required Redirect URL:** A redirect URL is now required when [creating an exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) to ensure proper validation and security.
+
+##### Changes:
+
+- The [create an exchange session API endpoint](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) now requires a redirect url parameter, which is a single URL that is already configured with Dwolla.
+- The validation process for redirect URLs has been enhanced to ensure they meet security standards and are accessible. The exchange sessions API endpoint will return an HTTP 400 `ValidationError` with an `Invalid` code and message of `The provided redirect URL must exactly match one of the configured URLs for the account`.
+- Refer to the [developer documentation](https://developers.dwolla.com/docs/balance/open-banking/visa) for detailed usage instructions and [API reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer).
+
 ## Completed
 
 ### 2024-09-16
