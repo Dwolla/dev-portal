@@ -73,6 +73,16 @@ Throughout this guide, we'll assume you're using the [Dwolla Node SDK](https://d
 
 Use Dwolla's API endpoint to [create an exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) to initiate an Exchange Session for a Customer. Specify Visa as the desired open banking provider within the request body. The Exchange Partner ID for Visa can be found by calling the [List Exchange Partners](https://developers.dwolla.com/docs/balance/api-reference/exchanges/list-exchange-partners) API endpoint.
 
+### Redirect URL Validation
+
+When using Visa as the exchange partner for an exchange session, a redirect URL is required. This URL specifies where the user will be redirected after completing the authorization process with Visa. Dwolla will validate the provided redirect URL against the one previously configured for your application.
+
+##### Guidelines:
+
+- Ensure your configured redirect URL with Dwolla exactly matches the one you include in the request body (including protocol, domain, port, and path).
+- Use HTTPS for your redirect URL to enhance security.
+- Consider whitelisting your redirect URL to restrict redirects to specific domains.
+
 <AlertBar variation="info">
   Exchange Sessions are single-use. Once a user starts the IAV flow initiated by
   creation of a session, it becomes invalid and cannot be reused.
@@ -116,6 +126,9 @@ export async function createExchangeSession(customerId: string) {
     _links: {
       "exchange-partner": {
         href: exchangePartnerHref,
+      },
+      "redirect-url": {
+        href: "https://www.yourdomain.com/iav-callback",
       },
     },
   };

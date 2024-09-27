@@ -11,9 +11,12 @@ meta:
 
 # Create an exchange session for a customer
 
-This section details how to initiate Instant Account Verification for a customer using Dwolla's trusted open banking partners. You can trigger this process by creating an exchange session. There are two supported partners currently available: Visa and MX.
+To initiate Instant Account Verification for a customer using Dwolla's trusted open banking partners, you'll need to create an exchange session. Currently, Visa and MX are the supported partners.
 
-To create an exchange session, you'll need to provide a \_link that identifies the specific open banking ecosystem partner you want to connect with. You can retrieve a list of available partners and their corresponding \_link values by calling the [list exchange partners](/docs/balance/api-reference/exchanges/list-exchange-partners) endpoint. This endpoint will return a JSON response containing details about each partner, including their name and the unique \_link identifier you'll need for this API call.
+When creating an exchange session, provide the following information:
+
+- `_links.exchange-partner`: The unique identifier for the desired open banking partner. Use the [list exchange partners](/docs/balance/api-reference/exchanges/list-exchange-partners) endpoint to retrieve available partners and their corresponding identifiers.
+- `_links.redirect-url` (conditional): A **required** redirect URL for Visa exchange sessions. This URL will be used to redirect the user back to your application after completing the authorization process. For MX exchange sessions, this parameter is **not required**.
 
 ### HTTP request
 
@@ -21,20 +24,23 @@ To create an exchange session, you'll need to provide a \_link that identifies t
 
 ### Request parameters
 
-| Property | Required | Type   | Description                                                                                                                          |
-| -------- | -------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| \_links  | yes      | object | HAL-JSON link that represents the Exchange Partner resource that identifies the open banking provider used for creating an exchange. |
+| Property | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| -------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links  | yes      | object | A HAL-JSON link that represents the Exchange Partner resource. This identifies the open banking provider used for creating the exchange session. **Note:** When using Visa as the exchange partner, a redirect url must also be provided within the \_links object. This redirect URL will be validated against a previously configured redirect URL stored in Dwolla. The validated redirect URL will be used to redirect the user back to your application after they complete the authorization process with Visa. |
 
 ### HTTP status and error codes
 
-| HTTP Status | Code            | Description                                                                                                                                                                                   |
-| ----------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 201         | Created         | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
-| 400         | ValidationError | Validation error(s) present. See embedded errors list for more details.                                                                                                                       |
-| 401         | InvalidScope    | Missing or invalid scopes for requested endpoint.                                                                                                                                             |
-| 404         | NotFound        | The requested resource was not found.                                                                                                                                                         |
+| HTTP Status | Code         | Message                                                                                  | Description                                                                                                                                                                                   |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | -            | -                                                                                        | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
+| 400         | Invalid      | /\_links/exchange-partner/href is invalid.                                               | ValidationError. Returned if the exchange partner URL is invalid.                                                                                                                             |
+| 400         | Invalid      | /\_links/redirect-url/href  is invalid.                                                             | ValidationError. Returned if the redirect URL is invalid.                                                                                                                                     |
+| 400         | Invalid      | The provided redirect URL must exactly match one of the configured URLs for the account. | ValidationError. The redirect url does not match what is configured for the Dwolla account.                                                                                                   |
+| 401         | InvalidScope | Missing or invalid scopes for requested endpoint.                                        |
+| 403         | Forbidden    | The exchange partner specified does not support this product.                            | Returned if the exchange partner specified does not support the creation of exchange sessions.                                                                                                |
+| 404         | NotFound     | The requested resource was not found.                                                    |
 
-### Request and Response
+### Request and Response (Visa)
 
 ```bash
 POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
@@ -46,6 +52,9 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
     "_links": {
         "exchange-partner": {
             "href": "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+        },
+        "redirect-url": {
+            "href": "https://www.yourdomain.com/iav-callback"
         }
     }
 }
@@ -67,6 +76,9 @@ request_body = {
   _links: {
     'exchange-partner': {
       href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4"
+    },
+    'redirect-url': {
+      href: "https://www.yourdomain.com/iav-callback"
     }
   }
 }
@@ -82,6 +94,9 @@ request_body = {
   '_links': {
     'exchange-partner': {
       'href': 'https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4'
+    },
+    'redirect-url': {
+      'href': 'https://www.yourdomain.com/iav-callback'
     }
   }
 }
@@ -98,6 +113,9 @@ var requestBody = {
   _links: {
     "exchange-partner": {
       href: "https://api.dwolla.com/exchange-partners/292317ec-e252-47d8-93c3-2d128e037aa4",
+    },
+    "redirect-url": {
+      href: "https://www.yourdomain.com/iav-callback",
     },
   },
 };
