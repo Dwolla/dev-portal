@@ -23,9 +23,9 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ##### Changes:
 
-- The [create an exchange session API endpoint](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) now requires a redirect url parameter, which is a single URL that is already configured with Dwolla.
+- The endpoint for creating an exchange session now requires a redirect url parameter, which is a single URL that is already configured with Dwolla ([Balance docs](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer), [Connect docs](https://developers.dwolla.com/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party)).
 - The validation process for redirect URLs has been enhanced to ensure they meet security standards and are accessible. The exchange sessions API endpoint will return an HTTP 400 `ValidationError` with an `Invalid` code and message of `The provided redirect URL must exactly match one of the configured URLs for the account`.
-- Refer to the [developer documentation](https://developers.dwolla.com/docs/balance/open-banking/visa) for detailed usage instructions and [API reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer).
+- Refer to the [developer documentation](https://developers.dwolla.com/docs/balance/open-banking/visa) for detailed usage instructions and API reference ([Balance](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer), [Connect](https://developers.dwolla.com/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party)).
 
 ## Completed
 
