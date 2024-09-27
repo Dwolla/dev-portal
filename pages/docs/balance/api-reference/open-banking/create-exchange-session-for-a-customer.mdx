@@ -11,7 +11,7 @@ meta:
 
 # Create an exchange session for a customer
 
-To initiate Instant Account Verification for a customer using Dwolla's trusted open banking partners, you'll need to create an exchange session. Currently, Visa and MX are supported partner.
+To initiate Instant Account Verification for a customer using Dwolla's trusted open banking partners, you'll need to create an exchange session. Currently, Visa and MX are the supported partners.
 
 When creating an exchange session, provide the following information:
 
@@ -26,7 +26,7 @@ When creating an exchange session, provide the following information:
 
 | Property | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | -------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links  | yes      | object | A HAL-JSON link that represents the Exchange Partner resource. This identifies the open banking provider used for creating the exchange session. **Note:** When using Visa as the exchange partner, a redirect url must be provided within the \_links object. This redirect URL will be validated against a previously configured redirect URL stored in Dwolla. The validated redirect URL will be used to redirect the user back to your application after they complete the authorization process with Visa. |
+| \_links  | yes      | object | A HAL-JSON link that represents the Exchange Partner resource. This identifies the open banking provider used for creating the exchange session. **Note:** When using Visa as the exchange partner, a redirect url must also be provided within the \_links object. This redirect URL will be validated against a previously configured redirect URL stored in Dwolla. The validated redirect URL will be used to redirect the user back to your application after they complete the authorization process with Visa. |
 
 ### HTTP status and error codes
 
@@ -34,7 +34,7 @@ When creating an exchange session, provide the following information:
 | ----------- | ------------ | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 201         | -            | -                                                                                        | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
 | 400         | Invalid      | /\_links/exchange-partner/href is invalid.                                               | ValidationError. Returned if the exchange partner URL is invalid.                                                                                                                             |
-| 400         | Invalid      | /\_links/redirect-url/href                                                               | ValidationError. Returned if the redirect URL is invalid.                                                                                                                                     |
+| 400         | Invalid      | /\_links/redirect-url/href  is invalid.                                                             | ValidationError. Returned if the redirect URL is invalid.                                                                                                                                     |
 | 400         | Invalid      | The provided redirect URL must exactly match one of the configured URLs for the account. | ValidationError. The redirect url does not match what is configured for the Dwolla account.                                                                                                   |
 | 401         | InvalidScope | Missing or invalid scopes for requested endpoint.                                        |
 | 403         | Forbidden    | The exchange partner specified does not support this product.                            | Returned if the exchange partner specified does not support the creation of exchange sessions.                                                                                                |
