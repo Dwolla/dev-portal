@@ -45,15 +45,6 @@ When an end-user opens the Exchange Session URL, they are prompted to authentica
 | User 3 | u92721594 | nbs589   | User failed to authenticate themselves at the financial institution           | ❌ Authentication error |
 | User 4 | u91902655 | jtx720   | Temporary error with a Visa service                                           | ❌ Temporary error      |
 
-#### Visa SDKs for Account Authentication
-
-Tink Link (a Visa solution) is the front-end SDK for Visa IAV. It is designed to be embedded into your application using one of [Visa’s SDKs](https://docs.us.tink.com/resources/sdk). This guide will focus on using the Web Integration which redirects users to a generated Visa URL to perform the account verification process. If you are building a web application, either for desktop or mobile, use the Web SDK (Exchange Session URL) through:
-
-- [Tink/Visa Link URL](https://docs.us.tink.com/resources/sdk/link-url) (most performant integration option, navigates the entire page from your domain to the Visa domain)
-- [iFrame](https://docs.us.tink.com/resources/sdk/sdk-iframe) (embedded in your domain, Visa domain is not visible)
-
-Note: When referencing the documentation, replace the Tink/Visa Link URL with the external-provider-session URL that you retrieve from the Dwolla API.
-
 #### Dwolla Node SDK for API Interactions
 
 Throughout this guide, we'll assume you're using the [Dwolla Node SDK](https://developers.dwolla.com/sdks-tools/node) to interact with Dwolla's API endpoints. This SDK simplifies making requests and handling responses for various Dwolla functionalities.
@@ -309,5 +300,4 @@ const fundingSource = createFundingSource({
 ### Resources
 
 - [Open Banking API Reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking)
-- [Visa SDK Documentation](https://docs.us.tink.com/resources/sdk)
 - [Integration Example App](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/visa)
