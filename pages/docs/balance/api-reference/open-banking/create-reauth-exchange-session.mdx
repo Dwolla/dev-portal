@@ -1,0 +1,107 @@
+---
+layout: guides
+product: balance
+title: "Create a re-auth exchange session"
+guide:
+  step: 2
+meta:
+  title: "Dwolla API Reference | Open Banking: Create Re-auth Exchange Session"
+  description: "Create a re-auth exchange session."
+---
+
+# Create a re-auth exchange session
+
+This endpoint allows you to initiate a new exchange session to refresh a user's bank account connection when their existing authorization is no longer valid. This is typically required when Dwolla's API returns an `UpdateCredentials` error on a [bank balance check](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-bank-balance), indicating that the user needs to re-authenticate with their bank.
+
+### HTTP request
+
+> `POST https://api.dwolla.com/exchanges/{id}/exchange-sessions`
+
+### Request parameters
+
+| Property | Required | Type   | Description                                                                                                                                                                                                                                                                                                                        |
+| -------- | -------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links  | yes      | object | A HAL-JSON link that represents the redirect URL for a Visa exchange session. This redirect URL will be validated against a previously configured redirect URL stored in Dwolla. The validated redirect URL will be used to redirect the user back to your application after they complete the re-authorization process with Visa. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code         | Message                                                                                  | Description                                                                                                                                                                                   |
+| ----------- | ------------ | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201         | -            | -                                                                                        | The Dwolla API accepted the request and created an exchange session resource. You can reference the Location header to retrieve a link that represents the created exchange session resource. |
+| 400         | Invalid      | /\_links/redirect-url/href is invalid.                                                   | ValidationError. Returned if the redirect URL is invalid.                                                                                                                                     |
+| 400         | Invalid      | The provided redirect URL must exactly match one of the configured URLs for the account. | ValidationError. The redirect url does not match what is configured for the Dwolla account.                                                                                                   |
+| 401         | InvalidScope | Missing or invalid scopes for requested endpoint.                                        |
+| 404         | NotFound     | The requested resource was not found.                                                    |
+
+### Request and Response (Visa)
+
+```bash
+POST https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "redirect-url": {
+            "href": "https://www.yourdomain.com/iav-callback"
+        }
+    }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+exchange_url = 'https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'redirect-url': {
+      href: "https://www.yourdomain.com/iav-callback"
+    }
+  }
+}
+
+reauthExchange = app_token.post "#{exchange_url}/exchange-sessions", request_body
+reauthExchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+exchange_url = 'https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'redirect-url': {
+      'href': 'https://www.yourdomain.com/iav-callback'
+    }
+  }
+}
+
+reauthExchange = app_token.post('%s/exchange-sessions' % exchange_url, request_body)
+reauthExchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var exchangeUrl =
+  "https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "redirect-url": {
+      href: "https://www.yourdomain.com/iav-callback",
+    },
+  },
+};
+
+dwolla
+  .post(`${exchangeUrl}/exchange-sessions`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```

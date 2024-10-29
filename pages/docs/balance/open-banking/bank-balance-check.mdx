@@ -1,0 +1,110 @@
+---
+layout: guides
+title: "Bank Balance Check"
+guide:
+  step: 2
+meta:
+  title: "Dwolla Balance: Open Banking - Bank Balance Check | Dwolla API Documentation"
+  description: "Explore Dwolla's Open Banking solution and the benefits of using Bank Balance Check for your ACH payments."
+---
+
+# Bank Balance Check
+
+Account-to-account (A2A) payments offer businesses an efficient and cost-effective means for handling account-to-account transfers. However, they are not without risks, the most notable being ACH returns due to insufficient funds. Such returns can cause significant delays, frustrations and even fees for both businesses and customers.
+
+As part of Dwolla’s [Open Banking Services](https://developers.dwolla.com/docs/balance/open-banking), the real-time balance check add-on to our Instant Account Verification (IAV) feature (“Bank Balance Check”) enables businesses to see the current and available balance of a sender’s bank account before processing a transaction. By giving insights into bank account balances, real-time Bank Balance Checks help reduce the likelihood of ACH returns, helping businesses maintain smoother and more reliable payment flows.
+
+### **Overview of Benefits**
+
+- **Reduced Risk of Insufficient Funds Returns:** Receiving information about the available and current balance in a bank account prior to initiating a transaction helps businesses avoid initiating payments that are likely to fail.
+- **Improved Payment Success Rate:** With fewer returned transactions, businesses experience smoother operations and faster transaction processing times.
+- **Enhanced User Experience:** Notifying users of insufficient funds before initiating the transaction gives them the opportunity to take corrective action (e.g., cancel or modify the payment, move money between accounts to cover the transaction, etc.).
+- **Cost Savings:** Minimizing ACH returns reduces potential fees associated with failed transactions, saving businesses both time and money.
+
+### **How It Works**
+
+1. **Initiating a Bank Balance Check:**
+   - Before calling the API to create a transfer, you can initiate a Bank Balance Check to retrieve the sender’s current and available account balance in real time.
+2. **Evaluating the Response:**
+   - Even if the Bank Balance Check shows there are sufficient funds in a sender’s account, you should still use your own discretion when deciding whether to initiate a transaction. You may have your own criteria, such as requiring a buffer beyond the transaction amount. As an example as to why, the sender could make a withdrawal from his/her account from an ATM right after the Bank Balance Check shows sufficient funds in the sender’s account. While the Bank Balance Check offers valuable insight, it's important to consider your specific risk policies and other factors before proceeding with an ACH debit.
+3. **ACH Window Processing:**
+   - If the payment is queued, the Bank Balance Check can be triggered just before the ACH processing window closes so you receive the most up-to-date balance information available.
+
+### **Retrieving current and available balance**
+
+Bank Balance Checks are most effective when performed as close as possible to the close of an ACH processing window, as this is the final moment to show the available and current balance in a user’s bank account before funds are debited or credited . By checking the balance at this time, businesses can provide users with actionable insights, such as the need to top up their account or adjust the transaction, avoiding potential delays or returns.
+
+When checking a user's bank account balance, it's important to differentiate between the **closing** balance and the **available** balance.
+
+`available` \- The amount of funds the customer is able to withdraw from the account, not including any credit facility that may be available. The balance includes pending inflows or outflows on the account.
+
+`closing` \- This represents the current balance of the account, not accounting for pending debits and credits.
+
+`lastUpdated` \- When calling the balance endpoint on a Customer’s funding source initially or on a refresh request, the response will include a lastUpdated parameter with a UTC timestamp value. This timestamp value refers to the last time the Customer’s bank account balance was retrieved from the open banking provider.
+
+**Request and response**
+
+```bash
+GET https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418/balance
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/funding-sources/42f48a64-2a9b-40df-9777-603ed2fe2764/balance",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "balance"
+        },
+        "funding-source": {
+            "href": "https://api.dwolla.com/funding-sources/42f48a64-2a9b-40df-9777-603ed2fe2764",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "funding-source"
+        }
+    },
+    "available": {
+        "value": "542.00",
+        "currency": "USD"
+    },
+    "closing": {
+        "value": "542.00",
+        "currency": "USD"
+    },
+    "lastUpdated": "2024-09-09T16:39:14.219Z"
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418'
+
+funding_source = app_token.get "#{funding_source_url}/balance"
+```
+
+```php
+<?php
+// Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-php
+$fundingSourceUrl = 'https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418';
+
+$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+
+$fundingSource = $fsApi->getBalance($fundingSourceUrl);
+?>
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+funding_source_url = 'https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418'
+
+funding_source = app_token.get('%s/balance' % funding_source_url)
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var fundingSourceUrl =
+  "https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418";
+
+dwolla
+  .get(`${fundingSourceUrl}/balance`)
+  .then((res) => res.body.available.value);
+```

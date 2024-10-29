@@ -3,7 +3,7 @@ layout: guides
 product: balance
 title: "Retrieve bank balance"
 guide:
-  step: 3
+  step: 4
 meta:
   title: "Dwolla API Reference | Open Banking: Retrieve bank balance"
   description: "Retrieve bank balances with Dwolla's Open Banking solution"
@@ -41,12 +41,13 @@ When calling the balance endpoint on a funding source, either initially or durin
 
 ### HTTP status and error codes
 
-| HTTP Status | Code                 | Message                                                                  | Description                                                                                                                                                                                                            |
-| ----------- | -------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 404         | NotFound             | The requested resource was not found.                                    | The requested bank account could not be found. This may occur if the funding source ID is invalid or if it does not exist in our system. Please verify that the correct funding source ID is being used and try again. |
-| 400         | UnsupportedOperation | Retrieving the balance is not supported for this type of funding source. | This funding source may not allow balance checks, or it may not be eligible for this operation.                                                                                                                        |
-| 400         | UnsupportedOperation | Balance Check is not supported by your exchange partner.                 | This may occur if your financial institution or Open Banking service provider does not offer balance verification.                                                                                                     |
-| 403         | Forbidden            | Balance Check not enabled for this account.                              | Your account does not have the necessary permissions or features activated to perform balance checks.                                                                                                                  |
+| HTTP Status | Code                 | Message                                                                                                                    | Description                                                                                                                                                                                                                                                                                                    |
+| ----------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 404         | NotFound             | The requested resource was not found.                                                                                      | The requested bank account could not be found. This may occur if the funding source ID is invalid or if it does not exist in our system. Please verify that the correct funding source ID is being used and try again.                                                                                         |
+| 400         | UnsupportedOperation | Retrieving the balance is not supported for this type of funding source.                                                   | This funding source may not allow balance checks, or it may not be eligible for this operation.                                                                                                                                                                                                                |
+| 400         | UnsupportedOperation | Balance Check is not supported by your exchange partner.                                                                   | This may occur if your financial institution or Open Banking service provider does not offer balance verification.                                                                                                                                                                                             |
+| 400         | UpdateCredentials    | Re-authentication is required in order to access account data. Please initiate the exchange session flow to regain access. | Access to bank balance data is interrupted by changes on the bank's end, such as a password update, multi-factor authentication reset, or revoked consent. Initiate the [re-auth flow](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-reauth-exchange-session) to regain access. |
+| 403         | Forbidden            | Balance Check not enabled for this account.                                                                                | Your account does not have the necessary permissions or features activated to perform balance checks.                                                                                                                                                                                                          |
 
 ### Request and response
 
@@ -110,5 +111,7 @@ funding_source = app_token.get('%s/balance' % funding_source_url)
 var fundingSourceUrl =
   "https://api-sandbox.dwolla.com/funding-sources/c2eb3f03-1b0e-4d18-a4a2-e552cc111418";
 
-dwolla.get(`${fundingSourceUrl}/balance`).then((res) => res.body.available.value);
+dwolla
+  .get(`${fundingSourceUrl}/balance`)
+  .then((res) => res.body.available.value);
 ```
