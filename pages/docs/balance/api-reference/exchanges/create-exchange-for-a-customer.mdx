@@ -19,11 +19,12 @@ This section contains information on how to create an exchange for an end-user/C
 
 ### Request parameters
 
-| Parameter | Required    | Type   | Description                                                                                                                                                                                                     |
-| --------- | ----------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                          |
-| token     | conditional | string | A third party provider processor token. **Required** for MX, Flinks and Plaid integrations.                                                                                                                     |
-| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Mastercard integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects). |
+| Parameter | Required    | Type   | Description                                                                                                                                                                                                                                                                                        |
+| --------- | ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| \_links   | yes         | object | A \_links JSON object containing an exchange partner link. See example raw request and response below.                                                                                                                                                                                             |
+| token     | conditional | string | A third party provider processor token. **Required** for MX, Flinks and Plaid integrations.                                                                                                                                                                                                        |
+| mx        | conditional | object | Contains an `availableConnectionToken`. The availableConnectionToken is a unique identifier associated with each available exchange connection retrieved through the [list available exchange connections endpoint](/docs/balance/api-reference/open-banking/list-available-exchange-connections). |
+| finicity  | conditional | object | Finicity resource object containing access key **receipt** information. **Required** for Mastercard integration. See `finicity` JSON object below (including nested `product` and `accessPeriod` JSON objects).                                                                                    |
 
 ### Finicity JSON Object
 
@@ -167,8 +168,7 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
         }
     },
     "mx": {
-      "memberId": "MBR-7e01bbe1-59cb-4256-a04b-71d4f6b6047d",
-      "accountId": "ACT-6bade551-7fbb-4ce1-a74d-f9b6425570ae"
+        "availableConnectionToken": "eyJhY2NvdW50SWQiOiJBQ1QtMjAxY2FkM2MtYzc2Yi00N2M1LWI3Y2QtMTkxY2FhNzdlZWM5IiwibWVtYmVySWQiOiJNQlItZGNjZWY0ZWMtOGM4MC00NTlmLTlhMGItMTc1ZTA0OTJmZWIzIn0="
     }
 }
 

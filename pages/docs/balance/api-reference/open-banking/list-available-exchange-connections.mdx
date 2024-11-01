@@ -1,0 +1,106 @@
+---
+layout: guides
+product: balance
+title: "List available exchange connections for a customer"
+guide:
+  step: 3
+meta:
+  title: "Dwolla API Reference | Open Banking: List available exchange connections"
+  description: "Retrieve a list of available exchange connections for a customer after they have completed the MX Connect widget flow. These connections represent external bank accounts that can be used to create funding sources for transfers."
+---
+
+# List available exchange connections for a customer
+
+This endpoint retrieves a list of a customer's external bank accounts that have been authorized through MX Connect. Each account is represented as an "available exchange connection" with details like the account name and associated `availableConnectionToken`. This information is essential for creating an exchange and corresponding funding source within Dwolla.
+
+<InlineCTA
+  icon={conceptsIcon}
+  text="Understand the MX integration flow. Read the Open Banking concept article which outlines the seqence of steps."
+  href="/docs/balance/open-banking"
+/>
+
+### HTTP request
+
+> `GET https://api.dwolla.com/customers/{id}/available-exchange-connections`
+
+### Request parameters
+
+| Parameter | Required | Type   | Description                          |
+| --------- | -------- | ------ | ------------------------------------ |
+| id        | yes      | string | Customer resource unique identifier. |
+
+### HTTP status and error codes
+
+| HTTP Status | Code     | Description                                                  |
+| ----------- | -------- | ------------------------------------------------------------ |
+| 200         | Ok       | The Dwolla API accepted the request and returned a response. |
+| 404         | NotFound | The requested resource was not found. Check Customer ID.     |
+
+### Request and response
+
+```bash
+GET https://api.dwolla.com/customers/1b54c81a-261f-4779-bb57-9405e6e00694/available-exchange-connections
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+{
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/customers/1b54c81a-261f-4779-bb57-9405e6e00694/available-exchange-connections",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        },
+        "customers": {
+            "href": "https://api.dwolla.com/customers/1b54c81a-261f-4779-bb57-9405e6e00694",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+        }
+    },
+    "_embedded": {
+        "available-exchange-connections": [
+            {
+                "availableConnectionToken": "eyJhY2NvdW50SWQiOiJBQ1QtMjAxY2FkM2MtYzc2Yi00N2M1LWI3Y2QtMTkxY2FhNzdlZWM5IiwibWVtYmVySWQiOiJNQlItZGNjZWY0ZWMtOGM4MC00NTlmLTlhMGItMTc1ZTA0OTJmZWIzIn0=",
+                "name": "Checking"
+            }
+        ]
+    }
+}
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/1b54c81a-261f-4779-bb57-9405e6e00694'
+
+available_exchange_connections = app_token.get "#{customer_url}/available-exchange-connections"
+available_exchange_connections._embedded['available-exchange-connections'][0].availableConnectionToken # => "eyJhY2NvdW50SWQiOiJBQ1QtMjAxY2FkM2MtYzc2Yi00N2M1LWI3Y2QtMTkxY2FhNzdlZWM5IiwibWVtYmVySWQiOiJNQlItZGNjZWY0ZWMtOGM4MC00NTlmLTlhMGItMTc1ZTA0OTJmZWIzIn0="
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customers/1b54c81a-261f-4779-bb57-9405e6e00694'
+
+available_exchange_connection = app_token.get('%s/available-exchange-connections' % customer_url)
+available_exchange_connection.body['_embedded']['available-exchange-connections'][0]['availableConnectionToken'] # => 'eyJhY2NvdW50SWQiOiJBQ1QtMjAxY2FkM2MtYzc2Yi00N2M1LWI3Y2QtMTkxY2FhNzdlZWM5IiwibWVtYmVySWQiOiJNQlItZGNjZWY0ZWMtOGM4MC00NTlmLTlhMGItMTc1ZTA0OTJmZWIzIn0='
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/1b54c81a-261f-4779-bb57-9405e6e00694";
+
+dwolla
+  .get(`${customerUrl}/available-exchange-connections`)
+  .then(
+    (res) =>
+      res.body._embedded["available-exchange-connections"][0]
+        .availableConnectionToken
+  ); // => 'eyJhY2NvdW50SWQiOiJBQ1QtMjAxY2FkM2MtYzc2Yi00N2M1LWI3Y2QtMTkxY2FhNzdlZWM5IiwibWVtYmVySWQiOiJNQlItZGNjZWY0ZWMtOGM4MC00NTlmLTlhMGItMTc1ZTA0OTJmZWIzIn0='
+```
