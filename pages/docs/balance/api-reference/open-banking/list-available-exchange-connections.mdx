@@ -3,11 +3,13 @@ layout: guides
 product: balance
 title: "List available exchange connections for a customer"
 guide:
-  step: 3
+  step: 4
 meta:
   title: "Dwolla API Reference | Open Banking: List available exchange connections"
   description: "Retrieve a list of available exchange connections for a customer after they have completed the MX Connect widget flow. These connections represent external bank accounts that can be used to create funding sources for transfers."
 ---
+
+import conceptsIcon from "../../../../../assets/images/content-images/content-icons/concepts.svg";
 
 # List available exchange connections for a customer
 
@@ -62,7 +64,11 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
         "available-exchange-connections": [
             {
                 "availableConnectionToken": "eyJhY2NvdW50SWQiOiJBQ1QtMjAxY2FkM2MtYzc2Yi00N2M1LWI3Y2QtMTkxY2FhNzdlZWM5IiwibWVtYmVySWQiOiJNQlItZGNjZWY0ZWMtOGM4MC00NTlmLTlhMGItMTc1ZTA0OTJmZWIzIn0=",
-                "name": "Checking"
+                "name": "XYZ Checking"
+            },
+            {
+                "availableConnectionToken": "eyJhY2NvdW50SWQiOiJBQ1QtNWY1ZWIwYTgtYTJiNC00NGQxLTk3ODYtMWVmOTM5NzZkYTU4IiwibWVtYmVySWQiOiJNQlItNTcxN2E5MDQtNDA0NC00YjQyLWIxMDctZDQyOWE0YjIzOGY5In0=",
+                "name": "ABC Savings"
             }
         ]
     }
