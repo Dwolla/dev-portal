@@ -75,7 +75,7 @@ We explore the specific flows for each provider below.
 - **MX Callback:** You'll [receive an event](https://docs.mx.com/connect/guides/handling-events/) from the MX Connect Widget indicating the completion of the IAV flow and providing details about the authorized account(s).
 - **List Available Connections:** Use the [list available exchange connections endpoint](/docs/balance/api-reference/open-banking/list-available-exchange-connections) to retrieve a list of available exchange connections associated with the customer. These connections represent the external bank accounts that the user has authorized through MX Connect that can be used to create funding sources.
 
-#### 5. Exchange and Funding Source Creation:
+#### 4. Exchange and Funding Source Creation:
 
 - **Create Exchange:** Once the user selects an account, you will make a request to the [create an exchange](/docs/balance/api-reference/exchanges/create-exchange-for-a-customer) endpoint, providing the `availableConnectionToken` of the chosen available exchange connection. This creates an "exchange" representing the link between the Dwolla customer and their external bank account.
 - **Create Funding Source:** Use the [create a funding source endpoint](/docs/balance/api-reference/funding-sources/create-funding-source-for-customer) with the exchange resource from the previous step.
