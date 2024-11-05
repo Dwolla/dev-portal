@@ -47,9 +47,9 @@ export default {
         "conditional",
         "object",
         <span>
-          A MX object containing memberId and accountId information for the
-          selected bank account via the Instant Account Verification (IAV) flow.{" "}
-          <strong>Note:</strong> Only used with{" "}
+          An MX object containing <code>availableConnectionToken</code>{" "}
+          information for the selected bank account via the Instant Account
+          Verification (IAV) flow. <strong>Note:</strong> Only used with{" "}
           <Link
             href="/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party"
             text="Exchange Sessions API"
@@ -62,14 +62,16 @@ export default {
         headers: ["Parameter", "Type", "Description"],
         rows: [
           [
-            "memberId",
+            "availableConnectionToken",
             "string",
-            "Represents a unique identifier assigned by MX to a specific user. It acts as an internal reference for MX to track and manage all the aggregated account information associated with that particular user.",
-          ],
-          [
-            "accountId",
-            "string",
-            "Represents a unique identifier assigned by MX to a specific user's bank account within their system.  It acts as an internal reference for MX to track and manage that particular account information.",
+            <span>
+              The <code>availableConnectionToken</code> is tied to the{" "}
+              <Link
+                href="/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party"
+                text="Exchange Sessions API"
+              />{" "}
+              within Dwolla&apos;s Open Banking product.
+            </span>,
           ],
         ],
       },
