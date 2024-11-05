@@ -34,7 +34,7 @@ This section shows you how to retrieve an exchange resource.
 ### Request and response
 
 ```bash
-GET https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+GET https://api.dwolla.com/exchanges/e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a
 Accept: application/vnd.dwolla.v1.hal+json
 Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
 
@@ -48,14 +48,19 @@ Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
             "resource-type": "exchange"
         },
         "exchange-partner": {
-            "href": "https://api-sandbox.dwolla.com/exchange-partners/9b55a4b3-34ae-4607-b2d1-622f1eed77f9",
+            "href": "https://api-sandbox.dwolla.com/exchange-partners/bca8d065-49a5-475b-a6b4-509bc8504d22",
             "type": "application/vnd.dwolla.v1.hal+json",
             "resource-type": "exchange-partner"
+        },
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/9fc74373-a5c7-40e4-aa59-d5f4c86a24ea",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
         }
     },
     "id": "e5e9f2d3-a96c-4abd-a097-8ec7ae28aa8a",
     "status": "active",
-    "created": "2022-10-21T21:41:03.283Z"
+    "created": "2022-10-19T17:44:44.864Z"
 }
 ```
 
