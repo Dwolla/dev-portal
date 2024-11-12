@@ -94,5 +94,3 @@ var transferUrl =
 
 dwolla.get(`${transferUrl}/failure`).then((res) => res.body.code); // => 'R01'
 ```
-
-Note that for `VANs`, additional details about the external transaction will be available in an achDetails JSON object in the transfer `GET` response. Either the source or the destination will be present in the object depending on the direction of money movement.
