@@ -16,9 +16,9 @@ meta:
 
 ## Overview
 
-Open Banking is a technology that allows secure data sharing between financial institutions and third-party providers (e.g. Visa, MX) with user consent. It’s transforming financial services by granting users greater control over their financial data. This data, accessible through secure APIs, opens doors for innovative financial applications.
+Open Banking is a technology that allows secure data sharing between financial institutions and third-party providers (e.g. Visa, Plaid, MX) with user consent. It’s transforming financial services by granting users greater control over their financial data. This data, accessible through secure APIs, opens doors for innovative financial applications.
 
-Dwolla's API integrates Open Banking seamlessly, making it easier than ever to leverage Account-to-Account (A2A) payments, also known as pay by bank, within your application. Dwolla has partnered with leading Open Banking providers, like [Visa](https://docs.us.tink.com/) and [MX](https://docs.mx.com/), to offer pre-built connections. This documentation explores the technical aspects of Open Banking and its implementation within the Dwolla API.
+Dwolla's API integrates Open Banking seamlessly, making it easier than ever to leverage Account-to-Account (A2A) payments, also known as pay by bank, within your application. Dwolla has partnered with leading Open Banking providers, like [Visa](https://docs.us.tink.com/), [Plaid](https://plaid.com/docs/auth/partnerships/dwolla/) and [MX](https://docs.mx.com/), to offer pre-built connections. This documentation explores the technical aspects of Open Banking and its implementation within the Dwolla API.
 
 #### Benefits of Using Dwolla for Open Banking
 
@@ -27,7 +27,7 @@ Dwolla acts as a bridge between your application and participating Open Banking 
 - **Faster Verification:** Open Banking allows for real-time data access, enabling faster and more efficient account verification compared to traditional methods like micro-deposit verification. This creates an improved user experience and leads to higher user conversion rates.
 - **Enhanced Security:** Leverage secure APIs and reduce the risks associated with manual data entry, such as data entry errors and ACH returns.
 - **Reduced Costs:** Open Banking features and functionality can lead to cost savings in the long run through reduced return risk, decreased risk of fraud and lower customer service costs.
-- **Streamlined Development:** Dwolla's pre-built connections with Open Banking providers like Visa and MX save you valuable development time. They tailor Open Banking features and functionality to payments use cases and eliminate the complexities of managing multiple API integrations.
+- **Streamlined Development:** Dwolla's pre-built connections with Open Banking providers like Visa, Plaid and MX save you valuable development time. They tailor Open Banking features and functionality to payments use cases and eliminate the complexities of managing multiple API integrations.
 
 ## Instant Account Verification Flow
 
@@ -57,6 +57,26 @@ We explore the specific flows for each provider below.
 
 - **Create Funding Source:** Use the [create a funding source endpoint](/docs/balance/api-reference/funding-sources/create-funding-source-for-customer) and provide the exchange resource obtained in the previous step.
 - **Verification Complete:** Dwolla responds with a 201 code and triggers the `customer_funding_source_added` and `customer_funding_source_verified` webhooks indicating successful funding source creation and verification.
+
+### Plaid
+
+#### 1. Initiate Exchange Session:
+
+- **Create an Exchange Session**: Use the `create an exchange session` endpoint to initiate an Exchange Session for your customer. Specify Plaid as the Open Banking provider in the request body.
+
+#### 2. Retrieve Exchange Session and Complete IAV Flow:
+
+- **Retrieve Exchange Session**: Make an API call to retrieve the exchange session. Upon success, Dwolla returns an `externalProviderSessionToken`.
+- **Complete Plaid Link Flow**: Use the `externalProviderSessionToken` on the frontend to initialize Plaid’s Link flow. The user authenticates their bank and grants permission for verification.
+
+#### 3. Create Exchange with Plaid Public Token
+
+- **Create Exchange**: Once the user completes the Plaid Link flow, retrieve the `publicToken` returned by Plaid. Use this token to [create an exchange](/docs/balance/api-reference/exchanges/create-exchange-for-a-customer) resource in Dwolla. This creates an "exchange" representing the link between the Dwolla customer and their external bank account.
+
+#### 3. Create Funding Source
+
+- **Create Funding Source:** Use the [create a funding source endpoint](/docs/balance/api-reference/funding-sources/create-funding-source-for-customer) with the exchange resource from the previous step.
+- **Verification Complete**: Dwolla responds with a 201 status, triggering the `customer_funding_source_added` and `customer_funding_source_verified` webhooks to indicate successful verification.
 
 ### MX
 
