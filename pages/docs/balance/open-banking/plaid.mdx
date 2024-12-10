@@ -254,6 +254,76 @@ const fundingSourceUrl = await createFundingSource(
 console.log("Funding Source URL:", fundingSourceUrl); // => Funding Source URL: https://api.dwolla.com/funding-sources/f41ab99c-7748-4f84-a3ed-3f669c002f4f
 ```
 
+## Handling Re-authentication
+
+When users initially connect their bank account via Instant Account Verification, they authenticate with their bank and grant permission to access their account information. This allows Dwolla to perform actions like [checking bank balances](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-bank-balance). However, this access can be interrupted by changes on the bank's end, such as a password update, multi-factor authentication reset, or revoked consent.
+
+To maintain a smooth user experience, your application needs to handle these scenarios gracefully. Dwolla's API provides an `UpdateCredentials` error response to signal when a user's bank connection needs to be refreshed.
+
+##### `UpdateCredentials` error response
+
+```
+{
+    "code": "UpdateCredentials",
+    "message": "Re-authentication is required in order to access account data. Please initiate the exchange session flow to regain access.",
+    "_links": {
+        "about": {
+            "href": "https://api.dwolla.com/exchanges/036c8a60-fa45-45d4-8f5d-181d348c6ec8/exchange-sessions",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-session"
+        }
+    }
+}
+```
+
+#### Steps to manage re-authentication
+
+1. **Detect the `UpdateCredentials` error:** When making calls to Dwolla's API (e.g., checking a bank balance), implement error handling to catch the UpdateCredentials response, which is an HTTP 400 error.
+
+2. **Communicate with your user:** It's crucial to inform the user why they need to re-authenticate and how to do so. Use clear and concise language in in-app messages, emails, or text messages to guide them back to your application to complete the process.
+
+3. **Initiate the re-authentication flow:** Upon receiving this error, redirect the user to re-authenticate their bank account. This is done by creating a new [re-authentication exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-reauth-exchange-session). This will guide the user through the necessary steps to re-establish their bank connection.
+
+By following these steps, you can ensure that your application can handle interruptions to bank connections effectively, providing a smooth and user-friendly experience.
+
+### Initiate re-authentication exchange-session
+
+Use Dwolla's API endpoint to [create a re-authentication exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-reauth-exchange-session) to initiate an Exchange Session for a Customer. While an optional redirect URL can be specified in the request body, it's not required.
+
+#### Example using Dwolla Node SDK
+
+```typescript
+import { Client } from "dwolla-v2";
+const dwolla = new Client({
+  key: "YOUR_KEY",
+  secret: "YOUR_SECRET",
+  environment: "sandbox", // or 'production'
+});
+
+/**
+ * Creates a re-auth exchange session for a customer
+ * @param exchangeId - The ID of the deactivated exchange to complete the re-authentication process.
+ */
+
+export async function initiateReauthentication(exchangeId: string) {
+  const requestBody = {};
+  try {
+    const response = await dwolla.post(
+      `exchanges/${exchangeId}/exchange-sessions`,
+      requestBody
+    );
+    const location = response.headers.get("location");
+    return location;
+  } catch (error) {
+    // Return an error message or handle the error appropriately
+  }
+}
+
+// Example usage:
+
+const reauthExchangeSessionUrl = initiateReauthentication(exchangeId); // => https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
 ## Resources
 
 - [Open Banking API Reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking)
