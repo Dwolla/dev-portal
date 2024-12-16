@@ -258,7 +258,7 @@ console.log("Funding Source URL:", fundingSourceUrl); // => Funding Source URL: 
 
 When users initially connect their bank account via Instant Account Verification, they authenticate with their bank and grant permission to access their account information. This allows Dwolla to perform actions like [checking bank balances](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-bank-balance). However, this access can be interrupted by changes on the bank's end, such as a password update, multi-factor authentication reset, or revoked consent.
 
-To maintain a smooth user experience, your application needs to handle these scenarios gracefully. Dwolla's API provides an `UpdateCredentials` error response to signal when a user's bank connection needs to be refreshed.
+To maintain a smooth user experience, your application needs to handle these scenarios gracefully. Dwolla's API provides an `UpdateCredentials` error response to signal when a user's bank connection needs to be refreshed. Additionally, Dwolla will also send a `customer_exchange_reauth_required` webhook denoting whether an exchange is pending deactivation, or a `customer_exchange_deactivated` webhook denoting that an exchange has been deactivated and requires re-authentication.
 
 ##### `UpdateCredentials` error response
 
