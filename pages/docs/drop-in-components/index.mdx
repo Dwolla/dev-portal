@@ -48,7 +48,7 @@ A quick overview of the steps involved:
 
 ## Drop-in Component Example
 
-Dwolla’s drop-in components are customizable to match the look and feel of your application down to the individual HTML element by applying styles via custom CSS classes. Preview the create an Unverified Customer component below, or refer to the [drop-ins examples repo](https://github.com/Dwolla/drop-ins-examples) to view a list of all drop-in component examples.
+Dwolla’s drop-in components are customizable to match the look and feel of your application down to the individual HTML element by applying styles via custom CSS classes. Preview the Unverified Customer component below, or refer to the [drop-ins examples repo](https://github.com/Dwolla/drop-ins-examples) to view a list of all drop-in component examples.
 
 <Image
   src={customerUpgradeDropIn}
@@ -69,7 +69,7 @@ Dwolla's UI components library contains a variety of supported components that r
 
 ### Create a Receive Only User
 
-The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a Receive Only user with `type = "receive-only"`. Receive Only users are restriced to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-customer-create` component is used to display a form to collect the required information needed to create a Receive Only user with `type = "receive-only"`. Receive Only users are restricted to a payouts only funds flow. To learn more about this customer type, [visit our docs](/concepts/customer-types) on concepts.
 
 Added version: `v2.0.0`
 
@@ -79,7 +79,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -108,7 +108,7 @@ Added version: `v2.0.0`
 - `ipAddress`
 - `correlationId`
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#receive-only-user---request-parameters).
+View all required vs. optional parameters in our [API Reference](/api-reference/customers/create#receive-only-user---request-parameters).
 
 ##### CSS Classes for Create a Receive Only User
 
@@ -152,7 +152,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -200,7 +200,7 @@ Added version: `v2.0.0`
 - `terms`
 - `privacy`
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#unverified-customer---request-parameters).
+View all required vs. optional parameters in our [API Reference](/api-reference/customers/create#unverified-customer---request-parameters).
 
 ##### CSS Classes for Create an Unverified Customer
 
@@ -253,7 +253,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/upgrade-custom.css" />
   <script>
     dwolla.configure({
@@ -289,7 +289,7 @@ Added version: `v2.0.0`
 - `terms`
 - `privacy`
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/customers/update#upgrade-an-unverified-customer-to-verified-customer).
+View all required vs. optional parameters in our [API Reference](/api-reference/customers/update#upgrade-an-unverified-customer-to-verified-customer).
 
 ##### CSS Classes for Upgrade an Unverified Customer
 
@@ -330,7 +330,7 @@ dwolla-error-message
 
 ### Create a Personal Verified Customer
 
-The `dwolla-personal-vcr` component is used to display a form to collect the required information needed to create an Personal Verified Customer. Personal Verified Customers can both send and receive funds, as well as hold a Dwolla balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-personal-vcr` component is used to display a form to collect the required information needed to create a Personal Verified Customer. Personal Verified Customers can both send and receive funds, as well as hold a Dwolla balance. A customer can be onboarded with these capabilities as a Personal Verified Customer without needing to start out as an Unverified Customer who can then upgrade. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 Added version: `v2.0.0`
 
@@ -340,7 +340,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -374,7 +374,7 @@ Added version: `v2.0.0`
 - `terms`
 - `privacy`
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#verified-personal-customer---request-parameters).
+View all required vs. optional parameters in our [API Reference](/api-reference/customers/create#verified-personal-customer---request-parameters).
 
 ##### CSS Classes for Create a Personal Verified Customer
 
@@ -416,7 +416,7 @@ dwolla-info-message
 
 ### Create a Business Verified Customer
 
-The `dwolla-business-vcr` component is used to display a form to collect the required information needed to create a Business Verified Customer. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-business-vcr` component is used to display a form to collect the required information needed to create a Business Verified Customer. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a transfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 Added version: `v2.1.0`
 
@@ -426,7 +426,7 @@ Added version: `v2.1.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -461,7 +461,7 @@ Added version: `v2.1.0`
 - `privacy`
 - `hideDBAField` (use this to hide 'Doing Business As' field from the form)
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/customers/create#verified-business-customer-sole-proprietorship-only---request-parameters).
+View all required vs. optional parameters in our [API Reference](/api-reference/customers/create#verified-business-customer-sole-proprietorship-only---request-parameters).
 
 ##### CSS Classes for Create a Business Verified Customer
 
@@ -525,7 +525,7 @@ tooltip-shift,
 
 ### Create Beneficial Owners
 
-The `dwolla-beneficial-owners` component is used to display a form to collect the required information needed to [add Beneficial Owners](/guides/business-verified-customer/add-beneficial-owners#step-3-adding-beneficial-owners) after the creation of a Business Verified Customer. This component can be paired with the `dwolla-business-vcr` component or be used in isolation. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a tranfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
+The `dwolla-beneficial-owners` component is used to display a form to collect the required information needed to [add Beneficial Owners](/guides/business-verified-customer/add-beneficial-owners#step-3-adding-beneficial-owners) after the creation of a Business Verified Customer. This component can be paired with the `dwolla-business-vcr` component or be used in isolation. Business Verified Customers can both send and receive funds, hold a Dwolla Balance, and have a transfer limit of `$10,000` per transfer. To learn more about the different customer types, [visit our docs](/concepts/customer-types) on concepts.
 
 Added version: `v2.1.3`
 
@@ -535,7 +535,7 @@ Added version: `v2.1.3`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-custom.css" />
   <script>
     dwolla.configure({
@@ -560,7 +560,7 @@ Added version: `v2.1.3`
 
 - `customerId`
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/beneficial-owners/create#request-parameters).
+View all required vs. optional parameters in our [API Reference](/api-reference/beneficial-owners/create#request-parameters).
 
 ##### CSS Classes for Beneficial Owners
 
@@ -629,7 +629,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -654,7 +654,7 @@ Added version: `v2.0.0`
 
 - `customerId`
 
-View all required vs. optional paramaters in our [API Reference](/api-reference/documents/create-document-for-customer#request-parameters).
+View all required vs. optional parameters in our [API Reference](/api-reference/documents/create-document-for-customer#request-parameters).
 
 ##### CSS Classes for Document Upload
 
@@ -701,7 +701,7 @@ Added version: `v2.2.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/create-funding-sources-custom.css" />
   <script>
     dwolla.configure({
@@ -783,7 +783,7 @@ Added version: `v2.2.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/verify-micro-deposits.css" />
   <script>
     dwolla.configure({
@@ -857,7 +857,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -932,7 +932,7 @@ Added version: `v2.0.0`
 
 ```html
 <head>
-  <script src="//cdn.dwolla.com/v2.2.1/dwolla-web.js"></script>
+  <script src="//cdn.dwolla.com/v2.2.2/dwolla-web.js"></script>
   <link rel="stylesheet" href="/styles/document-custom.css" />
   <script>
     dwolla.configure({
@@ -994,9 +994,17 @@ Get started building with drop-in components by checking out the [getting starte
 
 ## Changelog
 
-### Latest `v2.2.1`
+### `v2.2.2` (Latest)
 
-The latest version of **dwolla-web.js** is `2.2.1`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/docs/drop-in-components/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.2.1`.
+The latest version of **dwolla-web.js** is `2.2.2`. If you are currently using `v2`, we recommend [upgrading](https://developers.dwolla.com/docs/drop-in-components/drop-ins/setup-and-configuration#include-dwolla-webjs) to `2.2.2`.
+
+- Updated user hints and prompts for documentation upload screens to be correct and consistent throughout the following drop-in components:
+  - `<dwolla-beneficial-owners>`
+  - `<dwolla-business-vcr>`
+  - `<dwolla-document-upload>`
+  - `<dwolla-personal-vcr>`
+
+### `v2.2.1`
 
 - Renamed `Name` field to `Account Nickname` in `<dwolla-funding-source-create>` drop-in for clarity.
 
