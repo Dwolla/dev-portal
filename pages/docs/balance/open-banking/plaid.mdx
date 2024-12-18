@@ -1,0 +1,330 @@
+---
+layout: guides
+title: "Plaid: Instant Account Verification"
+guide:
+  step: 2
+meta:
+  title: "Dwolla Balance: Integrate Open Banking with Plaid | Dwolla API Documentation"
+  description: "Unify Pay by Bank with Dwolla & Plaid's Open Banking Solution. Instant Account Verification, Streamlined Payments & Enhanced Security for enterprise-level A2A payments."
+---
+
+## Overview
+
+This guide dives into leveraging Dwolla's [Open Banking Services](https://developers.dwolla.com/docs/balance/api-reference/open-banking) in collaboration with **Plaid** to streamline bank account verification within your Dwolla-powered application. Open banking empowers your users to more securely share their financial data with Dwolla and your application, eliminating the need for manual entry and improving the overall user experience.
+
+We'll walk you through the steps to set up and integrate **Plaid Instant Account Verification** (Plaid IAV) using \*\*Dwolla's Exchange Sessions API\*\* Dwolla's powerful Exchange Sessions API acts as the bridge between your application and Plaid’s Open Banking API. This established connection facilitates real-time verification of your user's bank account details. To gain hands-on experience, we recommend following along with the provided [integration-examples](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/plaid) sample app, which provides a practical understanding of the integration process for your own application.
+
+Instant Account Verification (IAV) is a one-time process that verifies the account being added by an end user is open and active. At the end of this guide, you'll obtain a **Funding Source URL**, which is a unique identifier that represents a bank account being used for account-to-account payments.
+
+## Prerequisites
+
+Before starting the integration, make sure you have completed the following prerequisites:
+
+1. **Dwolla Account**: Set up a Dwolla **production** or **sandbox** account.
+2. **Create a Customer**: Create a customer in your Dwolla account if you haven't already done so. Check out the Dwolla [Create a Customer](https://developers.dwolla.com/docs/balance/api-reference/customers/create) API documentation for guidance.
+
+Note: You do not need a Plaid account or contract to leverage Plaid Open Banking via Dwolla. Dwolla handles the integration with Plaid for you, simplifying the process.
+
+## Sandbox Testing
+
+Testing in the **sandbox environment** is essential before deploying Plaid Open Banking in production. The sandbox allows you to validate functionality with test data, ensuring a smooth experience for live users.
+
+### Test Credentials for Plaid Link Flow
+
+Use the following credentials to simulate successful authentication with test banks:
+
+- **Username**: `user_good`
+- **Password**: `pass_good`
+
+### Key Notes About Plaid Test Banks
+
+Plaid offers two test banks: one for **checking** accounts and one for **savings** accounts. Both have predefined account and routing numbers. This means:
+
+- You can add up to two banks per customer (one checking, one savings).
+- To test additional banks, remove an existing funding source and repeat the Plaid Link flow.
+
+## Integration Steps
+
+### Step 1: Initiate Exchange Session with Plaid
+
+To begin, you will [create an exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) for your Customer in Dwolla using the **Exchange Sessions API**. This session will specify Plaid as the **exchange partner**. The Exchange Partner ID for Plaid can be found by calling the [List Exchange Partners](https://developers.dwolla.com/docs/balance/api-reference/exchanges/list-exchange-partners) API endpoint.
+
+<AlertBar variation="info">
+  Exchange Sessions are single-use. Once a user starts the IAV flow initiated by
+  creation of a session, it becomes invalid and cannot be reused.
+</AlertBar>
+
+##### Example: Initiating an Exchange Session via Dwolla API using Dwolla Node SDK
+
+```javascript
+import { Client } from "dwolla-v2";
+
+const dwolla = new Client({
+
+key: "YOUR_KEY",
+
+secret: "YOUR_SECRET",
+
+environment: "sandbox", // or 'production'
+
+});
+
+// Retrieve Plaid's exchange partner href
+
+export async function getExchangePartnerHref(): Promise<string> {
+
+const response = await dwolla.get("/exchange-partners");
+
+const partnersList = response.body.\_embedded["exchange-partners"];
+
+return partnersList.find((partner: { name: string }) => partner.name.toLowerCase() === "plaid").\_links.self.href;
+
+}
+
+// Create an exchange session for a Customer
+
+export async function createExchangeSession(customerId: string): Promise<string> {
+
+const exchangePartnerHref = await getExchangePartnerHref();
+
+const requestBody = {
+
+    _links: {
+
+      "exchange-partner": { href: exchangePartnerHref }
+
+    },
+
+};
+
+const response = await dwolla.post(`customers/${customerId}/exchange-sessions`, requestBody);
+
+return response.headers.get("location"); // URL of the exchange session
+
+}
+
+// Example usage
+
+const exchangeSessionUrl = await createExchangeSession("your-customer-id");
+
+console.log("Exchange session URL:", exchangeSessionUrl); // => Exchange session URL: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+### Step 2: Retrieve Exchange Session and Complete Plaid Link Flow
+
+After creating the exchange session, retrieve the session details from Dwolla to obtain the `externalProviderSessionToken`. This token initializes the Plaid Link flow on the front end, where the user authenticates their bank account through Plaid’s secure interface. Once the flow is successfully completed, the `onSuccess` handler captures the `publicToken` returned by Plaid, which can be used for subsequent operations like creating an exchange.
+
+#### Code Example
+
+##### Backend - Backend: Retrieve Plaid Link Token (using Dwolla Node SDK)
+
+```javascript
+// Retrieve exchange session by ID
+
+export async function getPlaidExchangeSession(
+  exchangeSessionId: string
+): Promise<string> {
+  const response = await dwolla.get(`/exchange-sessions/${exchangeSessionId}`);
+
+  return response.body.externalProviderSessionToken; // Plaid Link Token
+}
+
+// Example usage:
+
+const plaidLinkToken = await getPlaidExchangeSession(
+  "your-exchange-session-id"
+);
+
+console.log("Plaid Link Token:", plaidLinkToken); // => Plaid Link Token: link-sandbox-b41e8ed3-0874-4c64-b07d-a77088979d5f
+```
+
+##### Frontend - Initialize and Handle Plaid Link Flow (using React)
+
+```javascript
+import { usePlaidLink } from "react-plaid-link";
+
+const plaidLinkToken = "your-session-link-token"; // Replace with the actual link token from the exchange session
+
+const { open, ready } = usePlaidLink({
+  token: plaidLinkToken,
+
+  onSuccess: (publicToken) => {
+    // Public token is retrieved here. This will be used when creating an exchange
+
+    console.log("Plaid Public Token:", publicToken);
+  },
+
+  onExit: () => {
+    console.log("User exited the Plaid Link flow.");
+  },
+});
+```
+
+### Step 3: Create Exchange with Plaid Public Token
+
+After successfully completing the Plaid Link flow and retrieving the `publicToken`, the next step is to create an **exchange** resource in Dwolla by passing the `publicToken` returned by Plaid. This creates an "exchange" representing the link between the Dwolla customer and their external bank account.
+
+##### Example: Create Exchange Resource in Dwolla
+
+```javascript
+// Create an exchange for a Dwolla customer using Plaid's public token
+
+export async function createExchange(
+  customerId: string,
+  plaidPublicToken: string
+): Promise<string> {
+  const exchangePartnerHref = await getExchangePartnerHref(); // Retrieve Plaid's exchange partner href
+
+  const requestBody = {
+    _links: {
+      "exchange-partner": { href: exchangePartnerHref },
+    },
+
+    plaid: {
+      publicToken: plaidPublicToken,
+    },
+  };
+
+  const response = await dwolla.post(
+    `customers/${customerId}/exchanges`,
+    requestBody
+  );
+
+  return response.headers.get("location"); // URL of the created exchange
+}
+
+// Example usage
+
+const exchangeUrl = await createExchange(
+  "your-customer-id",
+  "your-plaid-public-token"
+);
+
+console.log("Exchange URL:", exchangeUrl); // => Exchange URL: https://api.dwolla.com/exchanges/73463f82-3f9f-499f-a0ae-630c0808e09f
+```
+
+### Step 4: Create Funding Source
+
+After successfully creating the exchange, the next step is to create a **funding source** for the customer. This involves calling Dwolla's [Create a Funding Source](https://developers.dwolla.com/docs/connect/api-reference/funding-sources/create-for-external-party) endpoint, where you'll provide the **exchange** resource obtained from the previous step.
+
+In the following function, once a response is received, it will extract the `Location` header value, which is the fully-qualified URL specifying the resource location of your funding source.
+
+```javascript
+// Creates a funding source for a customer.
+
+export async function createFundingSource(
+  customerId: string,
+  exchangeId: string,
+  name: string,
+  type: string
+): Promise<string> {
+  const exchangeUrl = `https://api.dwolla.com/exchanges/${exchangeId}`;
+
+  const requestBody = {
+    _links: {
+      exchange: {
+        href: exchangeUrl,
+      },
+    },
+
+    bankAccountType: type,
+
+    name: name,
+  };
+
+  const response = await dwolla.post(
+    `customers/${customerId}/funding-sources`,
+    requestBody
+  );
+
+  const location = response.headers.get("location");
+
+  return location; // URL of the created funding source
+}
+
+// Example usage:
+
+const fundingSourceUrl = await createFundingSource(
+  "your-customer-id",
+  "your-exchange-id",
+  "Your Funding Source Name",
+  "checking"
+);
+
+console.log("Funding Source URL:", fundingSourceUrl); // => Funding Source URL: https://api.dwolla.com/funding-sources/f41ab99c-7748-4f84-a3ed-3f669c002f4f
+```
+
+## Handling Re-authentication
+
+When users initially connect their bank account via Instant Account Verification, they authenticate with their bank and grant permission to access their account information. This allows Dwolla to perform actions like [checking bank balances](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-bank-balance). However, this access can be interrupted by changes on the bank's end, such as a password update, multi-factor authentication reset, or revoked consent.
+
+To maintain a smooth user experience, your application needs to handle these scenarios gracefully. Dwolla's API provides an `UpdateCredentials` error response to signal when a user's bank connection needs to be refreshed. Additionally, Dwolla will also send a `customer_exchange_reauth_required` webhook denoting whether an exchange is pending deactivation, or a `customer_exchange_deactivated` webhook denoting that an exchange has been deactivated and requires re-authentication.
+
+##### `UpdateCredentials` error response
+
+```
+{
+    "code": "UpdateCredentials",
+    "message": "Re-authentication is required in order to access account data. Please initiate the exchange session flow to regain access.",
+    "_links": {
+        "about": {
+            "href": "https://api.dwolla.com/exchanges/036c8a60-fa45-45d4-8f5d-181d348c6ec8/exchange-sessions",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-session"
+        }
+    }
+}
+```
+
+#### Steps to manage re-authentication
+
+1. **Detect the `UpdateCredentials` error:** When making calls to Dwolla's API (e.g., checking a bank balance), implement error handling to catch the UpdateCredentials response, which is an HTTP 400 error.
+
+2. **Communicate with your user:** It's crucial to inform the user why they need to re-authenticate and how to do so. Use clear and concise language in in-app messages, emails, or text messages to guide them back to your application to complete the process.
+
+3. **Initiate the re-authentication flow:** Upon receiving this error, redirect the user to re-authenticate their bank account. This is done by creating a new [re-authentication exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-reauth-exchange-session). This will guide the user through the necessary steps to re-establish their bank connection.
+
+By following these steps, you can ensure that your application can handle interruptions to bank connections effectively, providing a smooth and user-friendly experience.
+
+### Initiate re-authentication exchange-session
+
+Use Dwolla's API endpoint to [create a re-authentication exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-reauth-exchange-session) to initiate an Exchange Session for a Customer. While an optional redirect URL can be specified in the request body, it's not required.
+
+#### Example using Dwolla Node SDK
+
+```typescript
+import { Client } from "dwolla-v2";
+const dwolla = new Client({
+  key: "YOUR_KEY",
+  secret: "YOUR_SECRET",
+  environment: "sandbox", // or 'production'
+});
+
+/**
+ * Creates a re-auth exchange session for a customer
+ * @param exchangeId - The ID of the deactivated exchange to complete the re-authentication process.
+ */
+
+export async function initiateReauthentication(exchangeId: string) {
+  const requestBody = {};
+  try {
+    const response = await dwolla.post(
+      `exchanges/${exchangeId}/exchange-sessions`,
+      requestBody
+    );
+    const location = response.headers.get("location");
+    return location;
+  } catch (error) {
+    // Return an error message or handle the error appropriately
+  }
+}
+
+// Example usage:
+
+const reauthExchangeSessionUrl = initiateReauthentication(exchangeId); // => https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+## Resources
+
+- [Open Banking API Reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking)
+- [Integration Example App](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/plaid)
