@@ -12,6 +12,23 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Upcoming
 
+## Completed
+
+### 2024-12-16
+
+**ADDED**
+
+- New Open Banking Provider: Dwolla Balance now supports Plaid as an Open Banking provider for bank account verification and balance checks.
+
+##### Updated API Endpoints and new webhooks:
+
+To facilitate Open Banking integration with Plaid, we've updated three API endpoints and added new webhook events:
+
+- **/customers/{id}/exchange-sessions (POST)**: Updated API endpoint to support Plaid as a provider.
+- **/exchange-sessions/{id} (GET)**: Added new atrribute `externalProviderSessionToken` to the response to accommodate Plaid-specific information, such as Plaid link token.
+- **/customers/{id}/exchanges**: Modified to include a `plaid` JSON object containing a Plaid `publicToken`.
+- Introduced new webhooks `customer_exchange_deactivated` and `customer_exchange_reauth_required` for exchange related events specific to Plaid. These webhooks will be triggered when a user's bank connection has been interrupted or is requiring reauthentication in order to ensure continued access to the user's financial data.
+
 ### 2024-10-30
 
 **CHANGED**
@@ -26,8 +43,6 @@ Keep up to date on new product features and enhancements, API docs, tools change
 - The endpoint for creating an exchange session now requires a redirect url parameter, which is a single URL that is already configured with Dwolla ([Balance docs](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer), [Connect docs](https://developers.dwolla.com/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party)).
 - The validation process for redirect URLs has been enhanced to ensure they meet security standards and are accessible. The exchange sessions API endpoint will return an HTTP 400 `ValidationError` with an `Invalid` code and message of `The provided redirect URL must exactly match one of the configured URLs for the account`.
 - Refer to the [developer documentation](https://developers.dwolla.com/docs/balance/open-banking/visa) for detailed usage instructions and API reference ([Balance](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer), [Connect](https://developers.dwolla.com/docs/connect/api-reference/open-banking/create-exchange-session-for-an-external-party)).
-
-## Completed
 
 ### 2024-09-16
 
