@@ -120,14 +120,18 @@ export default function Table({ table }: TableProps): ReactElement {
       ? setExpanded([...addExpanded(row[1].sluggedTitle)])
       : setExpanded([...removeExpanded(row[1].sluggedTitle)]);
 
-  const getCellElements = (row: ContentRow): ReactElement[] => {
+  const getCellElements = (
+    row: ContentRow,
+    rowIndex: number
+  ): ReactElement[] => {
     const cells = isNestedTableRow(row) ? row[0] : row;
     const borderBottom =
       isSluggedNestedTableRow(row) && expanded.includes(row[1].sluggedTitle)
         ? 0
         : null;
+
     const mappedCells = cells.map((cell, cellIndex) => (
-      <TableCell key={`cell-${cellIndex}`} sx={{ borderBottom }}>
+      <TableCell key={`cell-${rowIndex}-${cellIndex}`} sx={{ borderBottom }}>
         {cell}
       </TableCell>
     ));
@@ -138,14 +142,14 @@ export default function Table({ table }: TableProps): ReactElement {
         : ExpandMoreOutlined;
 
       mappedCells.push(
-        <TableCell sx={{ borderBottom }}>
+        <TableCell key={`expand-icon-${rowIndex}`} sx={{ borderBottom }}>
           <IconButton onClick={handleExpandClicked(row)} size="small">
             <ExpandIcon />
           </IconButton>
         </TableCell>
       );
     } else if (!isNestedTableContents(sluggedTable)) {
-      mappedCells.push(<TableCell></TableCell>);
+      mappedCells.push(<TableCell key={`empty-cell-${rowIndex}`}></TableCell>);
     }
     return mappedCells;
   };
@@ -170,12 +174,14 @@ export default function Table({ table }: TableProps): ReactElement {
 
           <TableBody>
             {sluggedTable.rows.map((row, rowIndex) => (
-              <React.Fragment key={`row-${rowIndex}`}>
-                <TableRow>{getCellElements(row)}</TableRow>
+              <React.Fragment key={`fragment-${rowIndex}`}>
+                <TableRow key={`row-${rowIndex}`}>
+                  {getCellElements(row, rowIndex)}
+                </TableRow>
 
                 {isSluggedNestedTableRow(row) &&
                   expanded.includes(row[1].sluggedTitle) && (
-                    <TableRow>
+                    <TableRow key={`nested-row-${rowIndex}`}>
                       <TableCell colSpan={99} sx={{ padding: 0 }}>
                         <Table table={row[1]} />
                       </TableCell>

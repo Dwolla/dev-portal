@@ -9,6 +9,8 @@ meta:
   description: "Create an exchange session for a customer."
 ---
 
+import CreateExchangeSession from "../../../../../assets/api-resource-tables/open-banking/CreateExchangeSession";
+
 # Create an exchange session for a customer
 
 To initiate Instant Account Verification for a customer using Dwolla's trusted open banking partners, you'll need to create an exchange session. Currently, Plaid, Visa and MX are the supported partners.
@@ -16,7 +18,7 @@ To initiate Instant Account Verification for a customer using Dwolla's trusted o
 When creating an exchange session, provide the following information:
 
 - `_links.exchange-partner`: The unique identifier for the desired open banking partner. Use the [list exchange partners](/docs/balance/api-reference/exchanges/list-exchange-partners) endpoint to retrieve available partners and their corresponding identifiers.
-- `_links.redirect-url` (conditional): A **required** redirect URL for Visa exchange sessions. This URL will be used to redirect the user back to your application after completing the authorization process. For Plaid and MX exchange sessions, this parameter is **not required**.
+- `_links.redirect-url` (conditional): A **required** redirect URL for certain exchange sessions. This URL will be used to redirect the user back to your application after completing the authorization process. For Visa exchange sessions, a redirect URL is mandatory. For Plaid, this parameter is required only for mobile applications and varies by platform: Android requires a package name (e.g., com.example.package), while iOS requires a valid HTTPS or HTTP URL. For MX exchange sessions, this parameter is **not required**.
 
 ### HTTP request
 
@@ -24,9 +26,7 @@ When creating an exchange session, provide the following information:
 
 ### Request parameters
 
-| Property | Required | Type   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| -------- | -------- | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \_links  | yes      | object | A HAL-JSON link that represents the Exchange Partner resource. This identifies the open banking provider used for creating the exchange session. **Note:** When using Visa as the exchange partner, a redirect url must also be provided within the \_links object. This redirect URL will be validated against a previously configured redirect URL stored in Dwolla. The validated redirect URL will be used to redirect the user back to your application after they complete the authorization process with Visa. |
+<Table table={CreateExchangeSession} />
 
 ### HTTP status and error codes
 
@@ -116,6 +116,322 @@ var requestBody = {
     },
     "redirect-url": {
       href: "https://www.yourdomain.com/iav-callback",
+    },
+  },
+};
+
+dwolla
+  .post(`${customerUrl}/exchange-sessions`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Plaid - Web)
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    }
+  }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    }
+  }
+}
+
+exchange = app_token.post "#{customer_url}/exchange-sessions", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customer/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef'
+    }
+  }
+}
+
+exchange = app_token.post('%s/exchange-sessions' % customer_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef",
+    },
+  },
+};
+
+dwolla
+  .post(`${customerUrl}/exchange-sessions`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Plaid - Android)
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    },
+    "redirect-url": {
+      "href": "com.example.app123"
+    }
+  }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    },
+    'redirect-url': {
+      href: "com.example.app123"
+    }
+  }
+}
+
+exchange = app_token.post "#{customer_url}/exchange-sessions", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customer/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef'
+    },
+    'redirect-url': {
+      'href': 'com.example.app123'
+    }
+  }
+}
+
+exchange = app_token.post('%s/exchange-sessions' % customer_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef",
+    },
+    "redirect-url": {
+      href: "com.example.app123",
+    },
+  },
+};
+
+dwolla
+  .post(`${customerUrl}/exchange-sessions`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (Plaid - iOS)
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    },
+    "redirect-url": {
+      "href": "https://example.com/app123"
+    }
+  }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    },
+    'redirect-url': {
+      href: "https://example.com/app123"
+    }
+  }
+}
+
+exchange = app_token.post "#{customer_url}/exchange-sessions", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customer/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef'
+    },
+    'redirect-url': {
+      'href': 'https://example.com/app123'
+    }
+  }
+}
+
+exchange = app_token.post('%s/exchange-sessions' % customer_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef",
+    },
+    "redirect-url": {
+      href: "https://example.com/app123",
+    },
+  },
+};
+
+dwolla
+  .post(`${customerUrl}/exchange-sessions`, requestBody)
+  .then((res) => res.headers.get("location")); // => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+### Request and Response (MX)
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/2164407f-33c3-4555-a6a1-40d5e9e58744"
+    }
+  }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+```php
+/**
+ * No example for this language yet.
+ **/
+```
+
+```ruby
+# Using dwolla_v2 - https://github.com/Dwolla/dwolla-v2-ruby
+customer_url = 'https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  _links: {
+    'exchange-partner': {
+      href: "https://api.dwolla.com/exchange-partners/2164407f-33c3-4555-a6a1-40d5e9e58744"
+    }
+  }
+}
+
+exchange = app_token.post "#{customer_url}/exchange-sessions", request_body
+exchange.response_headers[:location] # => "https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d"
+```
+
+```python
+# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python
+customer_url = 'https://api.dwolla.com/customer/74a207b2-b7b7-4efa-8bf8-582148e7b980'
+request_body = {
+  '_links': {
+    'exchange-partner': {
+      'href': 'https://api.dwolla.com/exchange-partners/2164407f-33c3-4555-a6a1-40d5e9e58744'
+    }
+  }
+}
+
+exchange = app_token.post('%s/exchange-sessions' % customer_url, request_body)
+exchange.headers['location'] # => 'https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d'
+```
+
+```javascript
+// Using dwolla-v2 - https://github.com/Dwolla/dwolla-v2-node
+var customerUrl =
+  "https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980";
+var requestBody = {
+  _links: {
+    "exchange-partner": {
+      href: "https://api.dwolla.com/exchange-partners/2164407f-33c3-4555-a6a1-40d5e9e58744",
     },
   },
 };
