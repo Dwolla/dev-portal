@@ -57,14 +57,14 @@ Plaid's Sandbox includes pre-seeded test users for validating different returnin
 
 Plaid offers two test banks: one for **checking** accounts and one for **savings** accounts. Both have predefined account and routing numbers. This means:
 
-- You can add up to two banks per customer (one checking, one savings).
+- You can add up to two banks per <span><ContentTooltip preset="customer">Customer</ContentTooltip></span> (one checking, one savings).
 - To test additional banks, remove an existing funding source and repeat the Plaid Link flow.
 
 ### Plaid SDKs for Account Authentication
 
 Plaid Link serves as the front-end widget for Plaid IAV, enabling users to securely authenticate and link their bank accounts. This widget can be seamlessly embedded into your application using one of [Plaid’s Link client SDKs](https://plaid.com/docs/api/libraries/#link-client-sdks).
 
-On this guide, we’ll be using the `react-plaid-link` package, which is specifically designed for React web applications. It simplifies the integration of Plaid Link by providing a React hook to handle initialization and user interactions with the widget.
+In this guide, we’ll be using the `react-plaid-link` package, which is specifically designed for React web applications. It simplifies the integration of Plaid Link by providing a React hook to handle initialization and user interactions with the widget.
 
 If you’re using a different framework or platform, Plaid offers [SDKs](https://plaid.com/docs/api/libraries/#link-client-sdks) tailored to various environments from which you can select the appropriate package for your application infrastructure.
 
@@ -88,7 +88,7 @@ Dwolla will validate the provided `redirect-url` based on these conventions and 
   creation of a session, it becomes invalid and cannot be reused.
 </AlertBar>
 
-##### Example: Initiating an Exchange Session via Dwolla API (toggle for Node example)
+##### Example: Initiating an Exchange Session via Dwolla API
 
 ```javascript
 import { Client } from "dwolla-v2";
@@ -201,7 +201,7 @@ After creating the exchange session, retrieve the session details from Dwolla to
 
 #### Code Example
 
-##### Backend - Backend: Retrieve Plaid Link Token (toggle for Node example)
+##### Backend - Backend: Retrieve Plaid Link Token
 
 ```javascript
 // Retrieve exchange session by ID
@@ -271,9 +271,9 @@ const { open, ready } = usePlaidLink({
 
 ### Step 3: Create Exchange with Plaid Public Token
 
-After successfully completing the Plaid Link flow and retrieving the `public token`, create an **exchange** resource in the Dwolla API by passing the `public token` returned by Plaid. This creates an "exchange" representing the link between the Dwolla [Customer](https://developers.dwolla.com/docs/balance/api-reference/customers) and their external bank account.
+After successfully completing the Plaid Link flow and retrieving the `public token`, create an <span><ContentTooltip preset="exchange">Exchange</ContentTooltip></span> resource in the Dwolla API by passing the `public token` returned by Plaid. This creates an "exchange" representing the link between the Dwolla [Customer](https://developers.dwolla.com/docs/balance/api-reference/customers) and their external bank account.
 
-##### Example: Create Exchange Resource in Dwolla (toggle for Node example)
+##### Example: Create Exchange Resource in Dwolla
 
 ```javascript
 // Create an exchange for a Dwolla customer using Plaid's public token
@@ -339,7 +339,7 @@ After successfully creating the exchange, create a **funding source** for the Cu
 
 In the following function, once a response is received, it will extract the `Location` header value, which is the fully-qualified URL specifying the resource location of the Customers’s funding source.
 
-##### Example: Create Funding Source in Dwolla (toggle for Node example)
+##### Example: Create Funding Source in Dwolla
 
 ```javascript
 // Creates a funding source for a customer.
@@ -444,7 +444,7 @@ Use Dwolla's API endpoint to [create a re-authentication exchange session](https
 
 #### Example using Dwolla Node SDK
 
-##### Example: Re-Authenticate an Exchange in Dwolla (toggle for Node example)
+##### Example: Re-Authenticate an Exchange in Dwolla
 
 ```node
 import { Client } from "dwolla-v2";
