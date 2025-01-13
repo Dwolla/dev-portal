@@ -4,6 +4,11 @@ import { ReactComponent as SandboxIcon } from "../../assets/images/component-ico
 
 export default {
   presets: {
+    customer: {
+      content:
+        "A type of end-user, either business or personal, that identifies the owner of the underlying bank account used in an account-to-account payment. A Customer is required in order to initiate a transfer to or from a user's bank account.",
+      title: "Customer",
+    },
     "dwolla-balance": {
       content:
         "Dwolla Balance is a digital wallet-based solution that lets you and your users hold funds and initiate payments.",

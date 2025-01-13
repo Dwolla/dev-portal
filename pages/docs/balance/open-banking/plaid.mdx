@@ -40,12 +40,33 @@ Use the following credentials to simulate successful authentication with test ba
 - **Username**: `user_good`
 - **Password**: `pass_good`
 
+### Returning User Testing in Sandbox
+
+Plaid's Sandbox includes pre-seeded test users for validating different returning user scenarios. Use the phone numbers and OTP (always `123456`) below to simulate these cases:
+
+| Scenario                                     | Phone Number |
+| -------------------------------------------- | ------------ |
+| New User                                     | 415-555-0010 |
+| Verified Returning User                      | 415-555-0011 |
+| Verified Returning User: Linked New Account  | 415-555-0012 |
+| Verified Returning User: Linked OAuth Bank   | 415-555-0013 |
+| Verified Returning User + New Device         | 415-555-0014 |
+| Verified Returning User: Auto Account Select | 415-555-0015 |
+
 ### Key Notes About Plaid Test Banks
 
 Plaid offers two test banks: one for **checking** accounts and one for **savings** accounts. Both have predefined account and routing numbers. This means:
 
-- You can add up to two banks per customer (one checking, one savings).
+- You can add up to two banks per <span><ContentTooltip preset="customer">Customer</ContentTooltip></span> (one checking, one savings).
 - To test additional banks, remove an existing funding source and repeat the Plaid Link flow.
+
+### Plaid SDKs for Account Authentication
+
+Plaid Link serves as the front-end widget for Plaid IAV, enabling users to securely authenticate and link their bank accounts. This widget can be seamlessly embedded into your application using one of [Plaid’s Link client SDKs](https://plaid.com/docs/api/libraries/#link-client-sdks).
+
+In this guide, we’ll be using the `react-plaid-link` package, which is specifically designed for React web applications. It simplifies the integration of Plaid Link by providing a React hook to handle initialization and user interactions with the widget.
+
+If you’re using a different framework or platform, Plaid offers [SDKs](https://plaid.com/docs/api/libraries/#link-client-sdks) tailored to various environments from which you can select the appropriate package for your application infrastructure.
 
 ## Integration Steps
 
@@ -53,12 +74,21 @@ Plaid offers two test banks: one for **checking** accounts and one for **savings
 
 To begin, you will [create an exchange session](https://developers.dwolla.com/docs/balance/api-reference/open-banking/create-exchange-session-for-a-customer) for your Customer in Dwolla using the **Exchange Sessions API**. This session will specify Plaid as the **exchange partner**. The Exchange Partner ID for Plaid can be found by calling the [List Exchange Partners](https://developers.dwolla.com/docs/balance/api-reference/exchanges/list-exchange-partners) API endpoint.
 
+**About the `redirect-url` Field:**
+
+If have an **Android** and/or **iOS** app, you must include a platform-specific `redirect-url` in the request body when creating an exchange session. This URL determines where the user is redirected after completing the Plaid Link flow. The `redirect-url` is a **required** field only for Android and iOS apps. It is not needed for web-based implementations.
+
+- For **Android**, use the Android package name as the redirect-url value (e.g., `com.example.app123`).
+- For **iOS**, use a valid HTTP or HTTPS URL (e.g., `https://example.com/app123`) that can handle redirects in the app.
+
+Dwolla will validate the provided `redirect-url` based on these conventions and send the appropriate value to Plaid. If the redirect-url does not start with a valid protocol (https:// or http://), it will be assumed to be an Android package name.
+
 <AlertBar variation="info">
   Exchange Sessions are single-use. Once a user starts the IAV flow initiated by
   creation of a session, it becomes invalid and cannot be reused.
 </AlertBar>
 
-##### Example: Initiating an Exchange Session via Dwolla API using Dwolla Node SDK
+##### Example: Initiating an Exchange Session via Dwolla API
 
 ```javascript
 import { Client } from "dwolla-v2";
@@ -105,13 +135,73 @@ const exchangeSessionUrl = await createExchangeSession("your-customer-id");
 console.log("Exchange session URL:", exchangeSessionUrl); // => Exchange session URL: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 ```
 
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    }
+  }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+##### Example Request: Android
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    },
+    "redirect-url": {
+      "href": "com.example.app123"
+    }
+  }
+}
+```
+
+##### Example Request: iOS
+
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+
+{
+  "_links": {
+    "exchange-partner": {
+      "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+    },
+    "redirect-url": {
+      "href": "https://example.com/app123"
+    }
+  }
+}
+```
+
 ### Step 2: Retrieve Exchange Session and Complete Plaid Link Flow
 
 After creating the exchange session, retrieve the session details from Dwolla to obtain the **Plaid Link Token**. This token initializes the Plaid Link flow on the front end, where the Customer authenticates their bank account through Plaid’s secure interface. Once the flow is successfully completed, the `onSuccess` handler captures the `publicToken` returned by Plaid, which can be used for subsequent operations like creating an exchange.
 
 #### Code Example
 
-##### Backend - Backend: Retrieve Plaid Link Token (using Dwolla Node SDK)
+##### Backend - Backend: Retrieve Plaid Link Token
 
 ```javascript
 // Retrieve exchange session by ID
@@ -130,7 +220,31 @@ const plaidLinkToken = await getPlaidExchangeSession(
   "your-exchange-session-id"
 );
 
-console.log("Plaid Link Token:", plaidLinkToken); // => Plaid Link Token: link-sandbox-b41e8ed3-0874-4c64-b07d-a77088979d5f
+console.log("Plaid Link Token:", plaidLinkToken); // => Plaid Link Token: link-production-b41e8ed3-0874-4c64-b07d-a77088979d5f
+```
+
+```bash
+GET https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+{
+    "created": "2024-11-18T18:48:11.357Z",
+    "_links": {
+        "self": {
+            "href": "https://api.dwolla.com/exchange-sessions/ca80ecc6-9204-4e1c-9a2d-a78fa3c08933",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-sessions"
+        },
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "exchange-partner"
+        }
+    },
+    "externalProviderSessionToken": "link-production-b41e8ed3-0874-4c64-b07d-a77088979d5f"
+}
 ```
 
 ##### Frontend - Initialize and Handle Plaid Link Flow (using React)
@@ -157,7 +271,7 @@ const { open, ready } = usePlaidLink({
 
 ### Step 3: Create Exchange with Plaid Public Token
 
-After successfully completing the Plaid Link flow and retrieving the `public token`, create an **exchange** resource in the Dwolla API by passing the `public token` returned by Plaid. This creates an "exchange" representing the link between the Dwolla [Customer](https://developers.dwolla.com/docs/balance/api-reference/customers) and their external bank account.
+After successfully completing the Plaid Link flow and retrieving the `public token`, create an <span><ContentTooltip preset="exchange">Exchange</ContentTooltip></span> resource in the Dwolla API by passing the `public token` returned by Plaid. This creates an "exchange" representing the link between the Dwolla [Customer](https://developers.dwolla.com/docs/balance/api-reference/customers) and their external bank account.
 
 ##### Example: Create Exchange Resource in Dwolla
 
@@ -198,11 +312,34 @@ const exchangeUrl = await createExchange(
 console.log("Exchange URL:", exchangeUrl); // => Exchange URL: https://api.dwolla.com/exchanges/73463f82-3f9f-499f-a0ae-630c0808e09f
 ```
 
+```bash
+POST https://api.dwolla.com/customers/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchanges
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+{
+    "_links": {
+        "exchange-partner": {
+            "href": "https://api.dwolla.com/exchange-partners/f53ffb32-c84f-496a-9d9d-acd100d396ef"
+        }
+    },
+    "plaid": {
+      "publicToken": "public-production-d5456acb-01d5-4932-9783-e4c883cf1c0c"
+    }
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchanges/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
 ### Step 4: Create Funding Source
 
 After successfully creating the exchange, create a **funding source** for the Customer. This involves calling Dwolla's [Create a Funding Source](https://developers.dwolla.com/docs/balance/api-reference/funding-sources/create-funding-source-for-customer#request-and-response---using-an-exchange) endpoint, where you'll provide the **exchange** resource obtained from the previous step.
 
 In the following function, once a response is received, it will extract the `Location` header value, which is the fully-qualified URL specifying the resource location of the Customers’s funding source.
+
+##### Example: Create Funding Source in Dwolla
 
 ```javascript
 // Creates a funding source for a customer.
@@ -249,6 +386,26 @@ const fundingSourceUrl = await createFundingSource(
 console.log("Funding Source URL:", fundingSourceUrl); // => Funding Source URL: https://api.dwolla.com/funding-sources/f41ab99c-7748-4f84-a3ed-3f669c002f4f
 ```
 
+```bash
+POST https://api.dwolla.com/customers/99bfb139-eadd-4cdf-b346-7504f0c16c60/funding-sources
+Content-Type: application/vnd.dwolla.v1.hal+json
+Accept: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+{
+  "_links": {
+    "exchange": {
+      "href": "https://api.dwolla.com/exchanges/6bc9109a-04fd-49b6-ace6-ca06fd282d65"
+    }
+  },
+  "bankAccountType": "checking",
+  "name": "Jane Doe - Checking"
+}
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/funding-sources/AB443D36-3757-44C1-A1B4-29727FB3111C
+
+```
+
 ## Handling Re-authentication
 
 When Customers initially connect their bank account via Instant Account Verification, they authenticate their bank account with Plaid and grant permission to access their account information. This allows Dwolla to perform actions like [checking bank balances](https://developers.dwolla.com/docs/balance/api-reference/open-banking/retrieve-bank-balance). However, this access can be interrupted by changes made by the Customer, such as if the Customer updates their bank password, multi-factor authentication method or revokes consent to access their account information.
@@ -287,12 +444,14 @@ Use Dwolla's API endpoint to [create a re-authentication exchange session](https
 
 #### Example using Dwolla Node SDK
 
-```typescript
+##### Example: Re-Authenticate an Exchange in Dwolla
+
+```node
 import { Client } from "dwolla-v2";
 const dwolla = new Client({
   key: "YOUR_KEY",
   secret: "YOUR_SECRET",
-  environment: "sandbox", // or 'production'
+  environment: "production", // or 'sandbox'
 });
 
 /**
@@ -319,7 +478,56 @@ export async function initiateReauthentication(exchangeId: string) {
 const reauthExchangeSessionUrl = initiateReauthentication(exchangeId); // => https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
 ```
 
+```bash
+POST https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+...
+
+HTTP/1.1 201 Created
+Location: https://api.dwolla.com/exchange-sessions/fcd15e5f-8d13-4570-a9b7-7fb49e55941d
+```
+
+##### Example Request: Android
+
+```bash
+POST https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+
+{
+  "_links": {
+    "redirect-url": {
+      "href": "com.example.app123"
+    }
+  }
+}
+```
+
+##### Example Request: iOS
+
+```bash
+POST https://api.dwolla.com/exchanges/74a207b2-b7b7-4efa-8bf8-582148e7b980/exchange-sessions
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer pBA9fVDBEyYZCEsLf/wKehyh1RTpzjUj5KzIRfDi0wKTii7DqY
+
+
+{
+  "_links": {
+    "redirect-url": {
+      "href": "https://example.com/app123"
+    }
+  }
+}
+```
+
 ## Resources
 
 - [Open Banking API Reference](https://developers.dwolla.com/docs/balance/api-reference/open-banking)
 - [Integration Example App](https://github.com/Dwolla/integration-examples/tree/main/packages/open-banking/plaid)
+- [Plaid Link SDKs](https://plaid.com/docs/api/libraries/#link-client-sdks)
