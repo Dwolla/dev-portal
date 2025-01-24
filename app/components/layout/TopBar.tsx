@@ -190,6 +190,8 @@ export default function TopBar({
 
   // Check if the current route is exactly "/docs" (aka Homepage)
   const isHomepage = router.pathname === "/docs";
+  // Check if the current route contains archived files
+  const isArchived = router.pathname.startsWith("/archive");
 
   const showSidebar = () => setSidebarToggled(true);
   const hideSidebar = () => setSidebarToggled(false);
@@ -247,6 +249,7 @@ export default function TopBar({
 
       <HamburgerWrapper>
         {!isHomepage &&
+          !isArchived &&
           (sidebarToggled === false ? (
             <Hamburger
               tabIndex={0}
