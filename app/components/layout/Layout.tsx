@@ -160,15 +160,16 @@ export default function Layout({
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [selectedSecondaryNavItem, setSelectedSecondaryNavItem] = useState();
 
-  // Check if the current route is exactly "/docs" (aka Homepage)
-  const isHomepage = router.pathname === "/docs";
+  // Check if the current route is exactly "/docs" (aka Homepage) or starts with "/archive"
+  const isHomepageOrArchived =
+    router.pathname === "/docs" || router.pathname.startsWith("/archive");
 
   useEffect(() => {
     if (document) {
       document.documentElement.lang = "en-us";
       enableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
 
-      if (sidebarToggled && !isHomepage) {
+      if (sidebarToggled && !isHomepageOrArchived) {
         disableBodyScroll(document.querySelector("#body-scroll-lock-side-nav"));
       }
     }
@@ -176,7 +177,7 @@ export default function Layout({
     return () => {
       clearAllBodyScrollLocks();
     };
-  }, [sidebarToggled, isHomepage]);
+  }, [sidebarToggled, isHomepageOrArchived]);
 
   let updatedNavItems = [...navItems]; // Create a copy of NAV_ITEMS array
 
@@ -210,7 +211,7 @@ export default function Layout({
           setSidebarToggled={setSidebarToggled}
         />
         {/* Render SecondaryNavBar only if the current page is not "/docs" (aka Homepage)*/}
-        {!isHomepage && (
+        {!isHomepageOrArchived && (
           <SecondaryNavBar
             navItems={updatedNavItems}
             selectedSecondaryNavItem={selectedSecondaryNavItem}
@@ -224,7 +225,7 @@ export default function Layout({
 
       <LayoutContainer>
         {/* Render SideNav only if the current page is not "/docs" (aka Homepage)*/}
-        {!isHomepage && (
+        {!isHomepageOrArchived && (
           <LeftSidebar
             className={classnames(
               sidebarToggled ? "toggled" : "visuallyHidden"
@@ -248,7 +249,7 @@ export default function Layout({
           </LeftSidebar>
         )}
 
-        <MainArea className={classnames({ fullWidth: isHomepage })}>
+        <MainArea className={classnames({ fullWidth: isHomepageOrArchived })}>
           {announcement && (
             <AlertBar variation="announcement" isClosable>
               {announcement}
@@ -257,7 +258,7 @@ export default function Layout({
 
           <ContentArea
             className={classnames({
-              visuallyhidden: sidebarToggled && !isHomepage,
+              visuallyhidden: sidebarToggled && !isHomepageOrArchived,
             })}
           >
             {children}
