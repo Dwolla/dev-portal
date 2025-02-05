@@ -59,7 +59,6 @@
 /resources/operational-notifications.html    /concepts/operational-notifications
 /resources/facilitator-fee.html    /concepts/facilitator-fee
 /resources/bank-transfer-workflow.html    /concepts/transfer-processing-times
-/resources/dwolla-sift-science-integration.html    /concepts/sift
 /resources/changelog.html    /changelog
 /pages/sdks.html    /sdks-tools
 
@@ -103,7 +102,6 @@
 /guides/send-money/create-transfer    /docs/balance/send-money/create-transfer
 /guides/send-money    /docs/balance/send-money
 /guides/send-money/retrieve-funding-sources    /docs/balance/send-money/retrieve-funding-sources
-/concepts/sift    /docs/balance/sift
 /guides/sandbox/customers    /docs/balance/testing/customers
 /guides/sandbox/funding-sources    /docs/balance/testing/funding-sources
 /guides/sandbox    /docs/balance/testing

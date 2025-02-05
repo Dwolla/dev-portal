@@ -20,8 +20,6 @@ import quickbooksColor from "../../assets/images/content-images/content-icons/pa
 import quickbooksGray from "../../assets/images/content-images/content-icons/partner-logos/quickbooks-logo-gray.svg";
 import plaidColor from "../../assets/images/content-images/content-icons/partner-logos/plaid-logo.svg";
 import plaidGray from "../../assets/images/content-images/content-icons/partner-logos/plaid-logo-gray.svg";
-import siftColor from "../../assets/images/content-images/content-icons/partner-logos/sift-logo.svg";
-import siftGray from "../../assets/images/content-images/content-icons/partner-logos/sift-logo-gray.svg";
 import slackColor from "../../assets/images/content-images/content-icons/partner-logos/slack-logo.svg";
 import slackGray from "../../assets/images/content-images/content-icons/partner-logos/slack-logo-gray.svg";
 
@@ -75,12 +73,6 @@ const partnerContent = [
     icon: plaidGray,
     iconActive: plaidColor,
     href: "https://www.dwolla.com/integrations/plaid/",
-  },
-  {
-    label: "Sift",
-    icon: siftGray,
-    iconActive: siftColor,
-    href: "https://www.dwolla.com/integrations/sift/",
   },
   {
     label: "Slack",
