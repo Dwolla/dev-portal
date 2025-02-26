@@ -42,7 +42,7 @@
     "babel-loader": "^9.1.2",
     "babel-plugin-import-glob-array": "^0.2.0",
     "babel-preset-react-app": "^10.0.1",
-    "body-scroll-lock": "3.0.3",
+    "body-scroll-lock": "3.1.5",
     "classnames": "^2.3.2",
     "dwolla-mdx-remark": "github:Dwolla/dwolla-mdx-remark#1.1.0",
     "github-slugger": "^2.0.0",
