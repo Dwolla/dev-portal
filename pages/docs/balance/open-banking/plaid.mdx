@@ -8,6 +8,8 @@ meta:
   description: "Unify Pay by Bank with Dwolla & Plaid's Open Banking Solution. Instant Account Verification, Streamlined Payments & Enhanced Security for enterprise-level A2A payments."
 ---
 
+import plaidDemoGif from "../../../../assets/gifs/coast-demo-plaid.gif";
+
 # Add a bank with Plaid Open Banking
 
 This guide dives into leveraging Dwolla's [Open Banking Services](https://developers.dwolla.com/docs/balance/api-reference/open-banking) in collaboration with **Plaid** to streamline bank account verification within your Dwolla-powered application. Open banking empowers your users to more securely share their financial data with Dwolla and your application, eliminating the need for manual data entry and improving the overall user experience.
@@ -67,6 +69,17 @@ Plaid Link serves as the front-end widget for Plaid IAV, enabling users to secur
 In this guide, we’ll be using the `react-plaid-link` package, which is specifically designed for React web applications. It simplifies the integration of Plaid Link by providing a React hook to handle initialization and user interactions with the widget.
 
 If you’re using a different framework or platform, Plaid offers [SDKs](https://plaid.com/docs/api/libraries/#link-client-sdks) tailored to various environments from which you can select the appropriate package for your application infrastructure.
+
+## Demo
+
+<DemoPreviewCard
+  imageSrc={plaidDemoGif}
+  imageAlt="Coast Demo: Plaid Open Banking Flow"
+  title="Plaid Open Banking"
+  buttonText="Demo"
+  href="https://dwolla.coastdemo.com/share/67ca29bcc030cd6114d7d837?&step=3&skip_to_end=yes&mode=link&layoutType=web"
+  gradientDirection="to top right"
+/>
 
 ## Integration Steps
 
