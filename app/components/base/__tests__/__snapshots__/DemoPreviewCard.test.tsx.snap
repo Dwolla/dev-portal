@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DemoPreviewCard with required props 1`] = `
+<a
+  href="https://example.com"
+  rel="noreferrer"
+  target="_blank"
+>
+  <div
+    className="MuiBox-root css-cg3yu7-CTAContainer-root"
+  >
+    <div
+      className="imageWrapper MuiBox-root css-epvn9v-ImageWrapper-root"
+    >
+      <img
+        alt=""
+        height="auto"
+        src="test-image-stub"
+        width="100%"
+      />
+    </div>
+    <div
+      className="MuiBox-root css-1flqb81-GradientOverlay-root"
+    />
+    <div
+      className="MuiBox-root css-zfjjwz-Content-root"
+    />
+  </div>
+</a>
+`;
