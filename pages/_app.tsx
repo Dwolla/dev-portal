@@ -200,8 +200,8 @@ const NAV_ITEMS: SelectMuiOption[] = [
 ];
 
 const PRODUCT_OPTIONS: SelectMuiOption[] = [
-  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon },
   { value: "balance", label: "Dwolla Balance", icon: DwollaBalanceColorIcon },
+  { value: "connect", label: "Dwolla Connect", icon: DwollaConnectColorIcon },
 ];
 
 const STATUS_PAGE_SUMMARY_URL =
@@ -336,7 +336,7 @@ function AppWithHooks({ router, Component, pageProps }: Props) {
         currentPath.startsWith(`/docs/${option.value}`)
       );
 
-      // Set the initial state for selectedProduct state
+      // Set the initial state for selectedProduct state - "Balance"
       setSelectedProduct(
         initialState !== undefined ? initialState : PRODUCT_OPTIONS[0]
       );
