@@ -38,10 +38,10 @@ While RTP and ACH are similar in many ways, there are some key differences:
 
 ### Use cases and characteristics
 
-The RTP® Network supports credit “push” transfers, whereas ACH supports credit push as well as debit pull transfers. RTP is particularly suited to support [disbursement use cases](/guides/send-money). Whether your business is built around B2B, B2C or a combination, you can power your application with RTP.
+The RTP® Network supports credit "push" transfers, whereas ACH supports credit push as well as debit pull transfers. RTP is particularly suited to support [disbursement use cases](/guides/send-money). Whether your business is built around B2B, B2C or a combination, you can power your application with RTP.
 
-- **Balance Funded Transfers** - The RTP® Network is a good funds model, and to initiate transfers through the Dwolla Platform, funds must be available in the sender’s Dwolla [balance](/concepts/balance-funding-source).
-- **Credit Sends Only** - RTP transactions are all credits. The RTP® Network does include “Requests for Payment,” but only a very small number of financial institutions support this, and it still relies on a credit to be initiated by the payer upon receiving the request. As adoption of Request for Payment increases among businesses, we expect more FIs will support this feature.
+- **Balance Funded Transfers** - The RTP® Network is a good funds model, and to initiate transfers through the Dwolla Platform, funds must be available in the sender's Dwolla [balance](/concepts/balance-funding-source).
+- **Credit Sends Only** - RTP transactions are all credits. The RTP® Network does include "Requests for Payment," but only a very small number of financial institutions support this, and it still relies on a credit to be initiated by the payer upon receiving the request. As adoption of Request for Payment increases among businesses, we expect more FIs will support this feature.
 - **[RTP Enabled Financial Institutions](https://www.theclearinghouse.org/payment-systems/rtp/rtp-participating-financial-institutions)** - More than 56% of FIs support RTP, with adoption growing at an aggressive pace.
 
 ### Identifying an RTP-enabled Funding Source
@@ -50,7 +50,7 @@ On the Dwolla Platform, Funding Sources allow bank accounts to be added or retri
 
 #### Retrieving an RTP-enabled Funding Source
 
-When [retrieving an existing Funding Source](https://developers.dwolla.com/api-reference/funding-sources/retrieve) resource from the API, the response will contain a “channels” attribute which represents the different capabilities available for transfers. For a bank account, historically the only values available have been “ach” and “wire”. The example below represents how “real-time-payments” is returned within the “channels” array to identify an RTP-eligible account.
+When [retrieving an existing Funding Source](https://developers.dwolla.com/api-reference/funding-sources/retrieve) resource from the API, the response will contain a "channels" attribute which represents the different capabilities available for transfers. For a bank account, historically the only values available have been "ach" and "wire". The example below represents how "real-time-payments" is returned within the "channels" array to identify an RTP-eligible account.
 
 ```json
 "channels": [
@@ -61,7 +61,7 @@ When [retrieving an existing Funding Source](https://developers.dwolla.com/api-r
 
 ### Initiating an RTP credit transfer
 
-In order to initiate a transfer with RTP processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `real-time-payments`. This processingChannel object will be returned when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Specifying the destination processingChannel with `real-time-payments` will require a permission to be enabled.
+In order to initiate a transfer with RTP processing, an optional `processingChannel` JSON object must be included in the transfer request. The `processingChannel` object contains the `destination` key with a value of `instant`. This processingChannel object will be returned when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Specifying the destination processingChannel with `instant` will require a permission to be enabled.
 
 An optional `rtpDetails` object can be included in the transfer request body. This allows additional information to be passed to the payment recipient's bank account about their RTP credit transfer.
 
@@ -94,7 +94,7 @@ Idempotency-Key: 19051a62-3403-11e6-ac61-9e71128cae77
         "value": "10000.00"
     },
     "processingChannel": {
-        "destination": "real-time-payments"
+        "destination": "instant"
     },
     "rtpDetails": {
       "destination": {
@@ -128,7 +128,7 @@ request_body = {
     :note => "payment for completed work Dec. 1"
   },
   :processingChannel => {
-    :destination => "real-time-payments"
+    :destination => "instant"
   },
   :rtpDetails => {
     :destination => {
@@ -160,7 +160,7 @@ $transfer = $transfersApi->create([
     'value' => '10000.00'
   ],
   'processingChannel' => [
-    'destination' => 'real-time-payments'
+    'destination' => 'instant'
   ],
   'rtpDetails' => [
     'destination' => [
@@ -187,7 +187,7 @@ request_body = {
     'value': '10000.00'
   },
   'processingChannel': {
-    'destination': 'real-time-payments'
+    'destination': 'instant'
   },
   'rtpDetails': {
     'destination': {
@@ -216,7 +216,7 @@ var requestBody = {
     value: "10000.00",
   },
   processingChannel: {
-    destination: "real-time-payments",
+    destination: "instant",
   },
   rtpDetails: {
     destination: {
@@ -279,7 +279,7 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
   },
   "created": "2021-06-17T07:40:45.400Z",
   "processingChannel": {
-    "destination": "real-time-payments"
+    "destination": "instant"
   },
   "rtpDetails": {
     "destination": {
