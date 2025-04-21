@@ -27,7 +27,7 @@ To facilitate Open Banking integration with Plaid, we've updated three API endpo
 - **/customers/{id}/exchange-sessions (POST)**: Updated API endpoint to support Plaid as a provider.
 - **/exchange-sessions/{id} (GET)**: Added new atrribute `externalProviderSessionToken` to the response to accommodate Plaid-specific information, such as Plaid link token.
 - **/customers/{id}/exchanges**: Modified to include a `plaid` JSON object containing a Plaid `publicToken`.
-- Introduced new webhooks `customer_exchange_deactivated` and `customer_exchange_reauth_required` for exchange related events specific to Plaid. These webhooks will be triggered when a user's bank connection has been interrupted or is requiring reauthentication in order to ensure continued access to the user's financial data.
+- Introduced new webhook `customer_exchange_reauth_required`, an exchange related event specific to Plaid. This webhook will be triggered when a user's bank connection has been interrupted or is requiring re-authentication in order to ensure continued access to the user's financial data.
 
 ### 2024-10-30
 
