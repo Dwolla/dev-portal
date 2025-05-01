@@ -12,6 +12,24 @@ Keep up to date on new product features and enhancements, API docs, tools change
 
 ## Upcoming
 
+### 2025-05-15
+
+**ADDED**
+
+- **Verification Directives for Business Verified Customers:**
+
+  - The API now returns detailed Verification Directives in the `_embedded.errors` array of the [Retrieve a Customer](https://developers.dwolla.com/docs/balance/api-reference/customers/retrieve) response for Business Verified Customers. These directives provide actionable guidance and relevant links to help resolve verification issues. See the new [Understanding Verification Directives section](/docs/balance/business-verified-customer/handle-verification-statuses#understanding-verification-directives) in the Business Verified Customer guide.
+
+- **New and Updated Webhooks:**
+
+  - Introduced and documented new webhook topics to better reflect the Business Verified Customer verification lifecycle, including:
+    - `customer_verification_pending_review`
+    - `customer_address_verification_failed`
+    - (and updates to existing webhooks such as `customer_verified`, `customer_verification_document_needed`, `customer_reverification_needed` and `customer_suspended`)
+
+- **Expanded Testing Capabilities:**
+  - Added documentation and examples for simulating verification directives in the Sandbox using the `/sandbox-simulations` endpoint. See the [Sandbox testing guide](/docs/balance/testing/customers#simulate-verification-directives) for details on how to test these scenarios and webhook events.
+
 ## Completed
 
 ### 2024-12-16
@@ -267,14 +285,14 @@ To facilitate Open Banking integration, we've introduced two new API endpoints:
 **ADDED**
 
 - Added a new `Labels` resource to the API.
-- A Label represents a designated portion of funds within a Verified Customer’s balance.
+- A Label represents a designated portion of funds within a Verified Customer's balance.
 - Head over to our [API Docs](/api-reference/labels) or check out our blog post [to learn more](https://www.dwolla.com/updates/real-time-usd-ledger-labels/).
 
 ### 2019-03-01
 
 **ADDED**
 
-- Added a new attribute called `traceId` to the `achDetails` object within the Transfer resource, which helps with further identifying a transfer to/from a user’s bank account.
+- Added a new attribute called `traceId` to the `achDetails` object within the Transfer resource, which helps with further identifying a transfer to/from a user's bank account.
   Jump to our [API Docs](/api-reference/transfers).
 
 ### 2019-02-21
@@ -283,7 +301,7 @@ To facilitate Open Banking integration, we've introduced two new API endpoints:
 
 - Dwolla allows an application to request an access token using its Client Id and Client Secret by leveraging the Client Credentials OAuth grant type. Access tokens are used to make requests to the Dwolla API on behalf of an application and its users (customers).
 - Previously, applications made a call to `https://www.dwolla.com/oauth/v2/token` and specified the `application/x-www-form-urlencoded` `Content-Type` header, passing their client credentials (App Key and App Secret) through the body of the HTTP message sent to Dwolla.
-- With this update, the token URL as well as the manner in which an application’s client credentials are sent to Dwolla, will change to be inline with OAuth spec.
+- With this update, the token URL as well as the manner in which an application's client credentials are sent to Dwolla, will change to be inline with OAuth spec.
 - The new Dwolla token exchange endpoint is `https://api.dwolla.com/token`
 - Reference our [API Reference Docs](/api-reference/authorization/application-authorization) to learn more.
 
@@ -298,7 +316,7 @@ To facilitate Open Banking integration, we've introduced two new API endpoints:
 
 **ADDED**
 
-- Addenda support–The addenda record is used to provide additional information to the payment recipient about the payment. This value will be passed in a transfer request and can be exposed on your user’s bank statement. Addenda records provide a unique opportunity to supply your users with more information about their transactions.
+- Addenda support–The addenda record is used to provide additional information to the payment recipient about the payment. This value will be passed in a transfer request and can be exposed on your user's bank statement. Addenda records provide a unique opportunity to supply your users with more information about their transactions.
 - Learn more on our [blog post](https://www.dwolla.com/updates/customizing-payments-businesses/).
 
 ### 2018-06-30
@@ -396,13 +414,13 @@ To facilitate Open Banking integration, we've introduced two new API endpoints:
 
 **ADDED**
 
-- Added a new `customer_balance_inquiry_completed` event. Upon checking a Customer’s bank balance, Dwolla will immediately return an HTTP 202 with response body that includes a status of processing. This event will be triggered when the bank balance check has completed processing. To read more on how to trigger this event, check out our [forum post](https://discuss.dwolla.com/t/check-it-out-new-events/4554).
+- Added a new `customer_balance_inquiry_completed` event. Upon checking a Customer's bank balance, Dwolla will immediately return an HTTP 202 with response body that includes a status of processing. This event will be triggered when the bank balance check has completed processing. To read more on how to trigger this event, check out our [forum post](https://discuss.dwolla.com/t/check-it-out-new-events/4554).
 
 ### 2017-11-04
 
 **ADDED**
 
-- Added a new `customer_bank_transfer_creation_failed` event. This event will be triggered when an attempt to initiate a transfer to a verified Customer’s bank was made, but failed. Transfers initiated to a verified Customer’s bank must pass through the verified Customer’s balance before being sent to a receiving bank. Dwolla will fail to create a transaction intended for a verified Customer’s bank if the funds available in the balance are less than the transfer amount. To read more on how to trigger this event, check out our [forum post](https://discuss.dwolla.com/t/check-it-out-new-events/4554).
+- Added a new `customer_bank_transfer_creation_failed` event. This event will be triggered when an attempt to initiate a transfer to a verified Customer's bank was made, but failed. Transfers initiated to a verified Customer's bank must pass through the verified Customer's balance before being sent to a receiving bank. Dwolla will fail to create a transaction intended for a verified Customer's bank if the funds available in the balance are less than the transfer amount. To read more on how to trigger this event, check out our [forum post](https://discuss.dwolla.com/t/check-it-out-new-events/4554).
 
 ### 2017-06-29
 
@@ -470,7 +488,7 @@ Remove the `profileId` request parameter from the Off-Site Gateway in API v1.
 
 - Change in functionality for [removing a funding source](/api-reference/funding-sources/remove) in API v2. The method for removing a funding source changes from a `DELETE` to a `POST` with the need to supply `{"removed": true}` in the body of the request.
 - A `removed` attribute is added to the [funding source object](/api-reference/funding-sources#funding-source-resource).
-- A `removed` querystring request parameter is supplied when listing an [Account](/api-reference/accounts/list-funding-sources) or [Customer’s](/api-reference/funding-sources/list-funding-sources-for-a-customer) funding sources. By default, all funding sources are returned from the listing unless the `removed` request parameter is set to `false`.
+- A `removed` querystring request parameter is supplied when listing an [Account](/api-reference/accounts/list-funding-sources) or [Customer's](/api-reference/funding-sources/list-funding-sources-for-a-customer) funding sources. By default, all funding sources are returned from the listing unless the `removed` request parameter is set to `false`.
 
 ### 2016-02-29
 
@@ -484,7 +502,7 @@ Remove the `profileId` request parameter from the Off-Site Gateway in API v1.
 **ADDED**
 
 - Release endpoint in API v2: retrieve a list of business classifications for a Customer. `POST /business-classifications`
-- Release endpoint in API v2: retrieve a business classification by it’s id for a Customer. `POST /business-classifications/{id}`
+- Release endpoint in API v2: retrieve a business classification by it's id for a Customer. `POST /business-classifications/{id}`
 - Release business verified Customer creation in API v2.
 
 ### 2015-11-19
@@ -511,7 +529,7 @@ Remove the `profileId` request parameter from the Off-Site Gateway in API v1.
 
 **CHANGED**
 
-- OAuth `redirect_uri` must match the OAuth Redirect URL field set in Dwolla application’s settings.
+- OAuth `redirect_uri` must match the OAuth Redirect URL field set in Dwolla application's settings.
 
 ### 2015-10-30
 

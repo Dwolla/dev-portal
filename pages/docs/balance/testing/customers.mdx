@@ -60,7 +60,7 @@ To simulate different verification statuses for Beneficial Owners, submit either
 
 ### Simulate KBA verified and failed events
 
-If a Personal Verified Customer isn’t systematically identity-verified after their second attempt to retry their information, the Customer may be placed in a `kba` status and will be required to successfully answer at least three out of four knowledge based authentication (KBA) questions in order to pass verification.
+If a Personal Verified Customer isn't systematically identity-verified after their second attempt to retry their information, the Customer may be placed in a `kba` status and will be required to successfully answer at least three out of four knowledge based authentication (KBA) questions in order to pass verification.
 
 <InlineCTA
   icon={guidesIcon}
@@ -68,9 +68,9 @@ If a Personal Verified Customer isn’t systematically identity-verified after t
   href="/guides/personal-verified-customer/handle-verification-statuses#handling-status-kba"
 />
 
-To simulate the `customer_kba_verification_passed` event as the result of KBA success in Sandbox, answer all four questions with either “None of the above” or “I have never been associated with this vehicle”. As a result, the Customer will be placed in a verified status and the `customer_verified` event is triggered.
+To simulate the `customer_kba_verification_passed` event as the result of KBA success in Sandbox, answer all four questions with either "None of the above" or "I have never been associated with this vehicle". As a result, the Customer will be placed in a verified status and the `customer_verified` event is triggered.
 
-To simulate the `customer_kba_verification_failed` event as the result of KBA failure in Sandbox, answer the questions with any answer choices other than “None of the above” or “I have never been associated with this vehicle”. As a result, the Customer will be placed in a document status and the `customer_verification_document_needed` event is triggered.
+To simulate the `customer_kba_verification_failed` event as the result of KBA failure in Sandbox, answer the questions with any answer choices other than "None of the above" or "I have never been associated with this vehicle". As a result, the Customer will be placed in a document status and the `customer_verification_document_needed` event is triggered.
 
 ### Simulate document upload approved and failed events
 
@@ -100,3 +100,46 @@ Since the document review process requires interaction from Dwolla, sample test 
 >
   {imageFail}
 </ImageDownload>
+
+### Simulate verification directives
+
+You can test how your application handles specific embedded error codes (Verification Directives) in the Sandbox environment using the `/sandbox-simulations` endpoint. This allows you to simulate the Dwolla API returning a particular verification directive for a business Verified Customer.
+
+<InlineCTA
+  icon={guidesIcon}
+  text="Learn more about the structure and meaning of these directives in the Understanding Verification Directives section."
+  href="/docs/balance/business-verified-customer/handle-verification-statuses#understanding-verification-directives"
+/>
+
+The following error codes can be triggered:
+
+- **ControllerNonResidential**
+- **POBoxNotAllowed**
+- **AddressNotAssociatedWithBusiness**
+- **EINDocumentRequired**
+
+To simulate one of these error codes:
+
+1. Create a business Verified Customer in the Sandbox.
+2. Make a POST request to the `/sandbox-simulations` endpoint with a request body like the following:
+
+```json
+POST https://api-sandbox.dwolla.com/sandbox-simulations
+Accept: application/vnd.dwolla.v1.hal+json
+Content-Type: application/vnd.dwolla.v1.hal+json
+Authorization: Bearer {Your access token}
+
+{
+    "type": "customer-verification",
+    "_links": {
+        "customer": {
+            "href": "https://api-sandbox.dwolla.com/customers/{customer-id}"
+        }
+    },
+    "errorCode": "AddressNotAssociatedWithBusiness"
+}
+```
+
+Replace `{customer-id}` with the ID of your Sandbox customer, and set `errorCode` to one of the supported values (e.g., `ControllerNonResidential`, `POBoxNotAllowed`, `AddressNotAssociatedWithBusiness`, or `EINDocumentRequired`).
+
+After making this request, retrieve the Customer resource using the API. The specified error code will appear in the `_embedded.errors` array of the response, allowing you to test your application's handling of these verification directives.
