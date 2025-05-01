@@ -48,7 +48,7 @@ When further action is required for a Business Verified Customer to become verif
 
 #### Structure of a Verification Directive
 
-Each object within the \_embedded.errors array represents a single Verification Directive and follows this structure:
+Each object within the `_embedded.errors` array represents a single Verification Directive and follows this structure:
 
 ```json
 {
@@ -64,9 +64,9 @@ Each object within the \_embedded.errors array represents a single Verification 
 }
 ```
 
-- code: A specific, machine-readable string identifying the type of verification issue. Use this code in your application logic to handle different error scenarios.
-- message: A human-readable string explaining the issue and providing guidance on how to resolve it. This message is intended to help you inform your end-users about the required actions.
-- \_links: A HATEOAS object containing relevant links. This typically includes a link to the API resource needed to address the directive, such as updating the Customer resource or uploading a specific document type. The key of the link (e.g., "update-customer", "upload-ein-document") often indicates the required action. An empty `_links` object may be returned if no direct API action corresponds to the directive (e.g., for AdditionalReviewRequired).
+- **code**: A specific, machine-readable string identifying the type of verification issue. Use this code in your application logic to handle different error scenarios.
+- **message**: A human-readable string explaining the issue and providing guidance on how to resolve it. This message is intended to help you inform your end-users about the required actions.
+- **_links**: A HATEOAS object containing relevant links. This typically includes a link to the API resource needed to address the directive, such as updating the Customer resource or uploading a specific document type. The key of the link (e.g., "update-customer", "upload-ein-document") often indicates the required action. An empty `_links` object may be returned if no direct API action corresponds to the directive (e.g., for AdditionalReviewRequired).
 
 #### Verification Directives
 
@@ -74,6 +74,7 @@ The following table lists common verification directives you may encounter for B
 
 | Code                             | Message                                                                                                                                                                                                                                                  | Primary Action(s)                                  |
 | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Required                         | Full SSN required.                                                                                                                                                                                                                                                                          | Update Customer Address                            |
 | POBoxNotAllowed                  | Business addresses must be physical street addresses. PO Boxes are not allowed. Please update to a physical address.                                                                                                                                     | Update Customer Address                            |
 | AddressNotAssociatedWithBusiness | The business address provided does not match information in public records. Please update to a valid business address or upload proof of address documentation.                                                                                          | Update Customer Address OR Upload Proof of Address |
 | ResidentialAddressRequired       | Invalid address type for controller. Residential address required. Please enter a valid residential address for the controller.                                                                                                                          | Update Controller Address                          |
@@ -89,7 +90,7 @@ The following table lists common verification directives you may encounter for B
 
 ##### Example Retrieve Customer response
 
-Here's an example of how the \_embedded.errors array might look in a GET /customers/{id} response when multiple issues require attention:
+Here's an example of how the `_embedded.errors` array might look in a `GET /customers/{id}` response when multiple issues require attention:
 
 ```json
 // Example GET /customers/41432759-6d65-42e5-a6be-400ddd103b78
@@ -130,7 +131,7 @@ Here's an example of how the \_embedded.errors array might look in a GET /custom
 
 #### Handling Multiple Directives
 
-As demonstrated in the example response above, the `_embedded.errors` array can contain multiple Verification Directive objects simultaneously if several issues require attention. Your application should iterate through the entire errors array, presenting the guidance from each message to the end-user and providing access to all corresponding actions via the \_links. Addressing all listed directives is necessary for the user to successfully complete the verification process.
+As demonstrated in the example response above, the `_embedded.errors` array can contain multiple Verification Directive objects simultaneously if several issues require attention. Your application should iterate through the entire errors array, presenting the guidance from each message to the end-user and providing access to all corresponding actions via the `_links`. Addressing all listed directives is necessary for the user to successfully complete the verification process.
 
 ## Handling `retry` status
 
