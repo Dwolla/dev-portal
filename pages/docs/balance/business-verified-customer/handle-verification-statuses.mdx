@@ -8,6 +8,8 @@ meta:
   description: Identify the various statuses of a Business Verified Customer creation, including retry, document and suspended.
 ---
 
+import guidesIcon from "../../../../assets/images/content-images/content-icons/guides-icon.svg";
+
 # Step 2: Handling Business Verified Customer Statuses
 
 ## The basics
@@ -27,16 +29,118 @@ You have successfully created a business verified Customer; however, there are c
 
 As a developer, you will want to handle the various Customer statuses that can be returned.
 
-| Customer status | Event Topic Name                      | Transaction restricted?            | Description                                                                                                                                                                                                                                                                                                                                                                                           |
-| --------------- | ------------------------------------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| verified        | customer_verified                     | No                                 | The identifying information submitted was sufficient in verifying the Customer account.                                                                                                                                                                                                                                                                                                               |
-| retry           | customer_reverification_needed        | Yes - Cannot send funds            | The initial identity verification attempt failed because the information provided did not satisfy Dwolla’s verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with a POST request. All fields are required on the retry attempt. If the additional attempt fails, the resulting status will be either `document` or `suspended`. |
-| document        | customer_verification_document_needed | Yes - Cannot send funds            | Dwolla requires additional documentation to identify the Customer in the document status. Once a document is uploaded it will be reviewed for verification.                                                                                                                                                                                                                                           |
-| suspended       | customer_suspended                    | Yes - Cannot send or receive funds | The Customer is suspended and may neither send nor receive funds. Contact Account Management for more information.                                                                                                                                                                                                                                                                                    |
+| Customer status | Event Topic Name(s)                                                            | Transaction restricted?            | Description                                                                                                                                                                                                                                                                                                                                                                                           |
+| --------------- | ------------------------------------------------------------------------------ | ---------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| verified        | customer_verified                                                              | No                                 | The identifying information submitted was sufficient in verifying the Customer account.                                                                                                                                                                                                                                                                                                               |
+| retry           | customer_reverification_needed<br/>customer_address_verification_failed        | Yes - Cannot send funds            | The initial identity verification attempt failed because the information provided did not satisfy Dwolla's verification check. You can make one additional attempt by changing some or all the attributes of the existing Customer with a POST request. All fields are required on the retry attempt. If the additional attempt fails, the resulting status will be either `document` or `suspended`. |
+| document        | customer_verification_document_needed<br/>customer_address_verification_failed | Yes - Cannot send funds            | Dwolla requires additional documentation to identify the Customer in the document status. Once a document is uploaded it will be reviewed for verification.                                                                                                                                                                                                                                           |
+| suspended       | customer_suspended<br/>customer_verification_pending_review                    | Yes - Cannot send or receive funds | The Customer is suspended and may neither send nor receive funds. This may also indicate that the Customer's verification requires manual review by Dwolla (often corresponding to the AdditionalReviewRequired directive), or that the account has been suspended for other reasons. Contact Account Management for more information or await further review.                                        |
+
+## Understanding Verification Directives
+
+When further action is required for a Business Verified Customer to become verified, the Dwolla API includes Verification Directives in the `_embedded.errors` array of the [Retrieve a Customer](http://developers.dwolla.com/docs/balance/api-reference/customers/retrieve) response. These directives explain the outstanding requirements for verification, provide actionable instructions, and include hypermedia links (`_links`) to enable resolution. By parsing and utilizing these directives, you can build a dynamic and user-friendly interface that guides your end-users through the necessary steps, minimizing onboarding friction and reducing support overhead.
+
+<InlineCTA
+  icon={guidesIcon}
+  text="See how to simulate these verification directives in the Sandbox testing guide."
+  href="/docs/balance/testing/customers#simulate-verification-directives"
+/>
+
+#### Structure of a Verification Directive
+
+Each object within the `_embedded.errors` array represents a single Verification Directive and follows this structure:
+
+```json
+{
+  "code": "ErrorCode",
+  "message": "Human-readable explanation and instructions for resolution.",
+  "_links": {
+    "action-link": {
+      // e.g., "update-customer", "upload-ein-document"
+      "href": "URL to perform the required action",
+      "type": "application/vnd.dwolla.v1.hal+json"
+    }
+  }
+}
+```
+
+- **code**: A specific, machine-readable string identifying the type of verification issue. Use this code in your application logic to handle different error scenarios.
+- **message**: A human-readable string explaining the issue and providing guidance on how to resolve it. This message is intended to help you inform your end-users about the required actions.
+- **\_links**: A HATEOAS object containing relevant links. This typically includes a link to the API resource needed to address the directive, such as updating the Customer resource or uploading a specific document type. The key of the link (e.g., "update-customer", "upload-ein-document") often indicates the required action. An empty `_links` object may be returned if no direct API action corresponds to the directive (e.g., for AdditionalReviewRequired).
+
+#### Verification Directives
+
+The following table lists common verification directives you may encounter for Business Verified Customers, along with their meaning and typical required actions:
+
+| Code                             | Message                                                                                                                                                                                                                                                  | Primary Action(s)                                  |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Required                         | Full SSN required.                                                                                                                                                                                                                                       | Update Customer Address                            |
+| POBoxNotAllowed                  | Business addresses must be physical street addresses. PO Boxes are not allowed. Please update to a physical address.                                                                                                                                     | Update Customer Address                            |
+| AddressNotAssociatedWithBusiness | The business address provided does not match information in public records. Please update to a valid business address or upload proof of address documentation.                                                                                          | Update Customer Address OR Upload Proof of Address |
+| ResidentialAddressRequired       | Invalid address type for controller. Residential address required. Please enter a valid residential address for the controller. Please note, PO Boxes cannot be used for verification purposes.                                                          | Update Controller Address                          |
+| AdditionalReviewRequired         | Account verification is now under review. This review can take up to 2-3 business days. An account update event will detail the verification status and any required actions.                                                                            | Wait for Update Event (No immediate API action)    |
+| EINMismatch                      | The provided Employer Identification Number (EIN) does not match the EIN on the business documentation previously uploaded for verification. Please update the EIN to match the EIN letter or official business document provided.                       | Update Customer EIN                                |
+| LegalDBAMismatch                 | Business name and Doing Business As (DBA) do not match the uploaded documentation. Please correct the Legal/Registered Name and DBA fields to align with the documentation provided.                                                                     | Update Customer Legal Name/DBA Name                |
+| BusinessDBAMismatch              | The provided Doing Business As (DBA) name does not match the business documentation. Please correct the DBA Name to align with the documentation provided.                                                                                               | Update Customer DBA Name                           |
+| BusinessAddressDocRequired       | Proof of business address is required. Please upload a document showing the business name and address as registered (e.g., Utility Bill, Financial Statement, Tax Statement, Lease Agreement).                                                           | Upload Business Address Document                   |
+| EINDocumentRequired              | EIN Letter is required to verify the business. Please upload an EIN assignment letter or an official business document showing the full business name and EIN.                                                                                           | Upload EIN Document                                |
+| BusinessFormationDocRequired     | Business formation documents are required to verify good standing. Please upload Articles of Organization/Incorporation from the state of registration.                                                                                                  | Upload Business Formation Document                 |
+| PersonalIDRequired               | Personal ID is required for account verification. Please upload a valid personal ID.                                                                                                                                                                     | Upload Personal ID Document                        |
+| CoWorkingAddress                 | The provided business address is a co-working location. Please provide a proof of address document for this location or update to a residential address if operating remotely (e.g., Utility Bill, Financial Statement, Tax Statement, Lease Agreement). | Upload Business Address Document OR Update Address |
+| RegisteredAgentAddressNotAllowed | The provided business address leads to a Registered Agent, not the business itself. Please update to a physical business address or, if the business is remote, use the residential address of the Controller or a Beneficial Owner.                     | Update Customer Address                            |
+| SOSNotInGoodStanding             | We could not verify that this business is in good standing with the Secretary of State for the registered state. All business entities must be active and in good standing to proceed.                                                                   | Update Customer Information                        |
+| ForeignPassportNumberRequired    | A foreign passport has been provided for verification of the controller. Please provide the foreign passport number to complete the verification process.                                                                                                | Update Controller Info                             |
+| SOSStateMismatch                 | We could not verify the state in which this business is registered. Please update the business address to ensure it matches the registered state.                                                                                                        | Update Customer Address                            |
+| BusinessNameMismatch             | The provided business name does not match the name on the uploaded business documentation. Please update the business name to match the uploaded document.                                                                                               | Update Customer Legal Name                         |
+
+##### Example Retrieve Customer response
+
+Here's an example of how the `_embedded.errors` array might look in a `GET /customers/{id}` response when multiple issues require attention:
+
+```json
+// Example GET /customers/41432759-6d65-42e5-a6be-400ddd103b78
+{
+  "_links": {
+    // ... other customer links
+  },
+  "_embedded": {
+    "errors": [
+      {
+        "code": "POBoxNotAllowed",
+        "message": "Business addresses must be physical street addresses. PO Boxes are not allowed. Please update to a physical address.",
+        "_links": {
+          "retry-verification": {
+            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78"
+            // type property omitted for brevity
+          }
+        }
+      },
+      {
+        "code": "Required",
+        "message": "Full SSN required",
+        "path": "",
+        "_links": {
+          "retry-with-full-ssn": {
+            "href": "https://api-sandbox.dwolla.com/customers/41432759-6d65-42e5-a6be-400ddd103b78",
+            "type": "application/vnd.dwolla.v1.hal+json",
+            "resource-type": "customer"
+          }
+        }
+      }
+    ]
+  },
+  "status": "retry"
+  // ... other customer properties
+}
+```
+
+#### Handling Multiple Directives
+
+As demonstrated in the example response above, the `_embedded.errors` array can contain multiple Verification Directive objects simultaneously if several issues require attention. Your application should iterate through the entire errors array, presenting the guidance from each message to the end-user and providing access to all corresponding actions via the `_links`. Addressing all listed directives is necessary for the user to successfully complete the verification process.
 
 ## Handling `retry` status
 
-A `retry` status occurs when a Customer’s identity scores are too low during a verification attempt. Typically, a `retry` status occurs after the initial creation of a business-verified customer, however, a customer can also be placed into a retry status via the Dwolla Dashboard if the customer is in a `document` status. When the customer is in the `retry` status, your application needs to re-initiate the verification process by prompting the user via a form to resubmit their identifying information.
+A `retry` status occurs when a Customer's identity scores are too low during a verification attempt. Typically, a `retry` status occurs after the initial creation of a business-verified customer, however, a customer can also be placed into a retry status via the Dwolla Dashboard if the customer is in a `document` status. When the customer is in the `retry` status, your application needs to re-initiate the verification process by prompting the user via a form to resubmit their identifying information.
 
 <AlertBar variation="warning">
   You need to gather new information if the Customer is placed into the{" "}
@@ -51,15 +155,6 @@ When a business verified Customer is placed in the `retry` verification status, 
 - **Business-only retry**: A `retry-verification` link is returned. Include all fields required during initial customer but **omit** Controller information. For business verified Customers with Controllers, different links can be returned depending on whether retry is needed for just the business, or both the Controller and business.
 
 - **Controller and business retry**: A `retry-with-full-ssn` link is returned. If the Controller information needs to be retried, all fields that were required in the initial Customer creation attempt will be required in the retry attempt, along with **the full 9-digit SSN** of the Controller in order to give our identity vendor more information in an attempt to receive a sufficient score to approve the Customer account ([see example request below](#business-with-controller-retry-with-full-ssn---request-and-response)).
-
-#### Understanding \_embedded errors
-
-Additionally, `_embedded` errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their descriptions.
-
-| Link name           | Description                                                                     |
-| ------------------- | ------------------------------------------------------------------------------- |
-| retry-verification  | Identifies if retry information is needed for the business.                     |
-| retry-with-full-ssn | Identifies if retry information is needed for both the Controller and business. |
 
 #### Example response
 
@@ -585,7 +680,7 @@ You can provide the following best practices to the Customer in order to reduce 
 
 ### Determining verification documents needed
 
-When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](/api-reference/customers/retrieve), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, both the Controller and business, or for the DBA (Doing Business As). Additionally, embedded errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their description. Refer to the [acceptable document types](#document-types) section for more information on what types of documents are accepted for businesses and Controllers.
+When a business verified Customer is placed in the `document` verification status, Dwolla will return a link in the API response after [retrieving a Customer](/api-reference/customers/retrieve), which will be used by an application to determine if documentation is needed. For business verified Customers, different links can be returned depending on whether or not documents are needed for a Controller, the business, both the Controller and business, or for the DBA (Doing Business As). Additionally, embedded errors are included in the Customer resource which include information about the next steps required to get the Customer verified (see example response below). Refer to the table below for the list of possible links and their description.
 
 | Link name                                    | Description                                                                  |
 | -------------------------------------------- | ---------------------------------------------------------------------------- |
@@ -662,11 +757,11 @@ When a business verified Customer is placed in the `document` verification statu
 
 ##### Controllers
 
-**US persons:** A colored camera captured image of the Controller’s identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card).
+**US persons:** A colored camera captured image of the Controller's identifying document can be specified as documentType: `license` (state issued driver's license), or `idCard` (U.S. government-issued photo id card).
 
 Supported Document Examples:
 
-- Non-expired State Issued Driver’s License/Identification Card
+- Non-expired State Issued Driver's License/Identification Card
 - Non-expired US Passport
 - Federal Employment Authorization Card
 - US Visa
@@ -676,7 +771,7 @@ Unsupported Document Examples:
 - Military IDs
 - Expired government-issued IDs
 
-**Non-US persons:** A colored camera captured image of the Controller’s identifying document can be specified as documentType: `passport`. Examples include:
+**Non-US persons:** A colored camera captured image of the Controller's identifying document can be specified as documentType: `passport`. Examples include:
 
 - Non-expired Foreign Passport _**Note:** Foreign Passports are only accepted when the individual does not have an ITIN or SSN and the user must alternatively enter the Passport number_.
 
@@ -695,7 +790,7 @@ Documents that are used to help identify a business are specified as documentTyp
     - Registration of Trade Name,
     - EIN documentation (IRS-issued SS4 confirmation letter)
   - Personal documents (documentType `license`, `passport` or `idCard`):
-    - Color copy of a valid government-issued photo ID (e.g., a driver’s license, passport, or state ID card).
+    - Color copy of a valid government-issued photo ID (e.g., a driver's license, passport, or state ID card).
 
 > **Note:** Trusts should be created as Sole Proprietor accounts and will require signed trust documents that include the trust and username that are on file.
 
@@ -717,9 +812,9 @@ If Dwolla's Compliance team is unable to find an external connection to confirm 
 
 ### Uploading a document
 
-To upload a color photo of the document, you’ll initiate a multipart form-data POST request from your backend server to `https://api.dwolla.com/customers/{id}/documents`. The file must be either a .jpg, .jpeg, or .png. Files must be no larger than 10MB in size. Additionally, Business Documents can also be uploaded in a .pdf format.
+To upload a color photo of the document, you'll initiate a multipart form-data POST request from your backend server to `https://api.dwolla.com/customers/{id}/documents`. The file must be either a .jpg, .jpeg, or .png. Files must be no larger than 10MB in size. Additionally, Business Documents can also be uploaded in a .pdf format.
 
-You’ll also get a <span><ContentTooltip preset="webhook" >webhook</ContentTooltip></span> with a `customer_verification_document_uploaded` event to let you know the document was successfully uploaded.
+You'll also get a <span><ContentTooltip preset="webhook" >webhook</ContentTooltip></span> with a `customer_verification_document_uploaded` event to let you know the document was successfully uploaded.
 
 #### Request and response
 
@@ -782,15 +877,15 @@ Location: https://api-sandbox.dwolla.com/documents/11fe0bab-39bd-42ee-bb39-275af
 
 ### Document review process
 
-Once created, the document will be reviewed by Dwolla. When our team has made a decision to approve or reject, which may take up to 1-2 business days, we’ll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
+Once created, the document will be reviewed by Dwolla. When our team has made a decision to approve or reject, which may take up to 1-2 business days, we'll create either a `customer_verification_document_approved` or `customer_verification_document_failed` event.
 
 If the document was sufficient, the Customer may be verified in this process. If not, we may need additional documentation. Note: Reference the [determining verification documents needed](#document-types) section for more information on determining if additional documents are needed after an approved or failed event is triggered.
 
-If the document was found to be fraudulent or doesn’t match the identity of the Customer, the Customer will be suspended.
+If the document was found to be fraudulent or doesn't match the identity of the Customer, the Customer will be suspended.
 
 ### Document failure
 
-A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you’ll need to upload another document. To retrieve the failure reason for the document upload, you’ll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned:
+A document can fail if, for example, the Customer uploaded the wrong type of document or the `.jpg` or `.png` file supplied was not readable (i.e. blurry, not well lit, not in color, or cuts off a portion of the identifying image). If you receive a `customer_verification_document_failed` webhook, you'll need to upload another document. To retrieve the failure reason for the document upload, you'll retrieve the document by its ID. Contained in the response will be a `failureReason` field which corresponds to one or more of the following values. In case of a failure due to multiple reasons, an additional `allFailureReasons` of `reason`s and `description`s is also returned:
 
 | Failure reason            | Description                                                            | Detailed description                                                                                                                                                                                                                                                                                                 |
 | ------------------------- | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -877,8 +972,8 @@ dwolla.get(document_url).then(function (res) {
 
 ## Handling status: suspended
 
-If the Customer is `suspended`, there’s no further action you can take to correct this using the API. You’ll need to contact support@dwolla.com or your account manager for assistance.
+If the Customer is `suspended`, there's no further action you can take to correct this using the API. You'll need to contact support@dwolla.com or your account manager for assistance.
 
 ## Next steps: Beneficial Owners
 
-The successful creation of a business verified Customer and Controller doesn’t necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you. To learn how to add beneficial owner(s) to your Customer, read on in the next step.
+The successful creation of a business verified Customer and Controller doesn't necessarily mean the Customer is fully verified and eligible to transfer. After successfully creating your business verified Customer, you will need to check to see if the beneficial ownership requirements apply to you. To learn how to add beneficial owner(s) to your Customer, read on in the next step.

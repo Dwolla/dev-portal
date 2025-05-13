@@ -34,7 +34,11 @@ There are two options available for processing or failing bank transfers in the 
   letting your application know that transfers have processed or failed.
 </AlertBar>
 
-##### Sandbox simulations request and response
+#### Using the Sandbox Simulations Endpoint for Bank Transfers
+
+Dwolla provides the `/sandbox-simulations` endpoint to help you simulate the processing or failure of bank transfers in the Sandbox environment. This is useful for testing how your application responds to transfer status changes without waiting for real-world bank processing times.
+
+To process or fail the last 500 bank transfers on your Sandbox account or application, make a POST request to the `/sandbox-simulations` endpoint:
 
 ```bash
 POST https://api-sandbox.dwolla.com/sandbox-simulations
