@@ -20,7 +20,7 @@ The transfer processing time denotes the duration required for a bank transfer t
 
 Bank-to-bank transfers at Dwolla involve two steps:
 
-- Payment In (Debit) - Funds are pulled from the sender’s bank account (source) into the Dwolla Network.
+- Payment In (Debit) - Funds are pulled from the sender's bank account (source) into the Dwolla Network.
 - Payment Out (Credit) - Funds are pushed into the recipient's bank account (destination) from the Dwolla Network.
 
 The transfer processing time depends on the transfer speed chosen for both the debit and credit sides of the transfer.
@@ -37,19 +37,26 @@ The transfer processing time depends on the transfer speed chosen for both the d
 
 Standard ACH is the default processing option for bank transfers, requiring no additional setup or configuration. Any transfer created will automatically follow the standard clearing time. It applies to both ACH payment in (debit) and ACH payment out (credit) transfers.
 
-Key Points to Note for Standard ACH Transfers:
+#### Key Points to Note for Standard ACH Transfers:
 
-- **Export deadline**: Approximately 4 p.m. Central Time
-- Transfer processing time:
+- **Export deadlines**:
+  - **Veridian Credit Union**:
+    - 4 p.m. CT
+  - **KeyBank**:
+    - 8 a.m. CT
+    - 12 p.m. CT
+    - 2 p.m. CT
+    - 8 p.m. CT
+- **Transfer processing time**:
   - Debit transfers: 3-4 business days
   - Credit transfers: 1-2 business days
-- Processed on business days (processing unavailable on weekends and banking holidays)
+- **Processing schedule**: Business days only (unavailable on weekends and banking holidays)
 
 ### Standard ACH Debit (Payment In)
 
-A Standard ACH debit from a bank to the Dwolla Network processes within 3-4 business days. This extended processing time accounts for ACH returns and processing delays, and checks on [common return codes](https://www.dwolla.com/resources/ach-return-codes/) like insufficient funds and invalid bank accounts. If a failure occurs during ACH processing, the transfer will be marked with a return code. For detailed information on ACH return codes and [transfer failures](/docs/balance/transfer-failures), refer to our developer resource article.
+A Standard ACH debit from a bank to the Dwolla Network processes within 3-4 business days. This extended processing time accounts for ACH returns and processing delays, and checks on [common return codes](https://www.dwolla.com/resources/ach-return-codes/) like insufficient funds and invalid bank accounts.
 
-##### Standard ACH Debit Transfer Schedule
+##### Standard ACH Debit Transfer Schedule for Veridian Credit Union
 
 All times in Central Time (CT) (\*approximate deadlines)
 
@@ -61,13 +68,40 @@ All times in Central Time (CT) (\*approximate deadlines)
 | Wednesday 4 p.m. to Thursday 4 p.m. | Thursday 4 p.m.   | Tuesday morning    |
 | Thursday 4 p.m. to Friday 4 p.m.    | Friday 4 p.m.     | Wednesday morning  |
 
+##### Standard ACH Debit Transfer Schedule for KeyBank
+
+All times in Central Time (CT) (\*approximate deadlines)
+
+| Transfer created between              | Transfer exported | Transfer processed |
+| ------------------------------------- | ----------------- | ------------------ |
+| Friday 8 p.m. to Monday 8 a.m.        | Monday 8 a.m.     | Thursday morning   |
+| Monday 8 a.m. to Monday 12 p.m.       | Monday 12 p.m.    | Thursday morning   |
+| Monday 12 p.m. to Monday 2 p.m.       | Monday 2 p.m.     | Thursday morning   |
+| Monday 2 p.m. to Monday 8 p.m.        | Monday 8 p.m.     | Thursday morning   |
+| Monday 8 p.m. to Tuesday 8 a.m.       | Tuesday 8 a.m.    | Friday morning     |
+| Tuesday 8 a.m. to Tuesday 12 p.m.     | Tuesday 12 p.m.   | Friday morning     |
+| Tuesday 12 p.m. to Tuesday 2 p.m.     | Tuesday 2 p.m.    | Friday morning     |
+| Tuesday 2 p.m. to Tuesday 8 p.m.      | Tuesday 8 p.m.    | Friday morning     |
+| Tuesday 8 p.m. to Wednesday 8 a.m.    | Wednesday 8 a.m.  | Monday morning     |
+| Wednesday 8 a.m. to Wednesday 12 p.m. | Wednesday 12 p.m. | Monday morning     |
+| Wednesday 12 p.m. to Wednesday 2 p.m. | Wednesday 2 p.m.  | Monday morning     |
+| Wednesday 2 p.m. to Wednesday 8 p.m.  | Wednesday 8 p.m.  | Monday morning     |
+| Wednesday 8 p.m. to Thursday 8 a.m.   | Thursday 8 a.m.   | Tuesday morning    |
+| Thursday 8 a.m. to Thursday 12 p.m.   | Thursday 12 p.m.  | Tuesday morning    |
+| Thursday 12 p.m. to Thursday 2 p.m.   | Thursday 2 p.m.   | Tuesday morning    |
+| Thursday 2 p.m. to Thursday 8 p.m.    | Thursday 8 p.m.   | Tuesday morning    |
+| Thursday 8 p.m. to Friday 8 a.m.      | Friday 8 a.m.     | Wednesday morning  |
+| Friday 8 a.m. to Friday 12 p.m.       | Friday 12 p.m.    | Wednesday morning  |
+| Friday 12 p.m. to Friday 2 p.m.       | Friday 2 p.m.     | Wednesday morning  |
+| Friday 2 p.m. to Friday 8 p.m.        | Friday 8 p.m.     | Wednesday morning  |
+
 _\*Dwolla cannot guarantee an exact deadline for transmission of ACH files. Please be mindful that these are target cut-off times for transfer processing._
 
 ### Standard ACH Credit (Payment Out)
 
 A Standard ACH credit from the Dwolla Network to a bank processes within 1-2 business days.
 
-##### Standard ACH Credit Transfer Schedule
+##### Standard ACH Credit Transfer Schedule for Veridian Credit Union
 
 All times in Central Time (CT) (\*approximate deadlines)
 
@@ -78,6 +112,33 @@ All times in Central Time (CT) (\*approximate deadlines)
 | Tuesday 4 p.m. to Wednesday 4 p.m.  | Wednesday 4 p.m.  | Thursday morning   |
 | Wednesday 4 p.m. to Thursday 4 p.m. | Thursday 4 p.m.   | Friday morning     |
 | Thursday 4 p.m. to Friday 4 p.m.    | Friday 4 p.m.     | Monday morning     |
+
+##### Standard ACH Credit Transfer Schedule for KeyBank
+
+All times in Central Time (CT) (\*approximate deadlines)
+
+| Transfer created between              | Transfer exported | Transfer processed |
+| ------------------------------------- | ----------------- | ------------------ |
+| Friday 8 p.m. to Monday 8 a.m.        | Monday 8 a.m.     | Tuesday morning    |
+| Monday 8 a.m. to Monday 12 p.m.       | Monday 12 p.m.    | Tuesday morning    |
+| Monday 12 p.m. to Monday 2 p.m.       | Monday 2 p.m.     | Tuesday morning    |
+| Monday 2 p.m. to Monday 8 p.m.        | Monday 8 p.m.     | Tuesday morning    |
+| Monday 8 p.m. to Tuesday 8 a.m.       | Tuesday 8 a.m.    | Wednesday morning  |
+| Tuesday 8 a.m. to Tuesday 12 p.m.     | Tuesday 12 p.m.   | Wednesday morning  |
+| Tuesday 12 p.m. to Tuesday 2 p.m.     | Tuesday 2 p.m.    | Wednesday morning  |
+| Tuesday 2 p.m. to Tuesday 8 p.m.      | Tuesday 8 p.m.    | Wednesday morning  |
+| Tuesday 8 p.m. to Wednesday 8 a.m.    | Wednesday 8 a.m.  | Thursday morning   |
+| Wednesday 8 a.m. to Wednesday 12 p.m. | Wednesday 12 p.m. | Thursday morning   |
+| Wednesday 12 p.m. to Wednesday 2 p.m. | Wednesday 2 p.m.  | Thursday morning   |
+| Wednesday 2 p.m. to Wednesday 8 p.m.  | Wednesday 8 p.m.  | Thursday morning   |
+| Wednesday 8 p.m. to Thursday 8 a.m.   | Thursday 8 a.m.   | Friday morning     |
+| Thursday 8 a.m. to Thursday 12 p.m.   | Thursday 12 p.m.  | Friday morning     |
+| Thursday 12 p.m. to Thursday 2 p.m.   | Thursday 2 p.m.   | Friday morning     |
+| Thursday 2 p.m. to Thursday 8 p.m.    | Thursday 8 p.m.   | Friday morning     |
+| Thursday 8 p.m. to Friday 8 a.m.      | Friday 8 a.m.     | Monday morning     |
+| Friday 8 a.m. to Friday 12 p.m.       | Friday 12 p.m.    | Monday morning     |
+| Friday 12 p.m. to Friday 2 p.m.       | Friday 2 p.m.     | Monday morning     |
+| Friday 2 p.m. to Friday 8 p.m.        | Friday 8 p.m.     | Monday morning     |
 
 _\*Dwolla cannot guarantee an exact deadline for transmission of ACH files. Please be mindful that these are target cut-off times for transfer processing._
 
@@ -87,7 +148,7 @@ Dwolla offers expedited clearing into the Dwolla Network from a bank account in 
 
 Once obtaining approval from us, you will gain capability for Next Day ACH transfers into the Dwolla Network. Once activated, Next Day ACH is the default processing speed for all ACH debits unless you specify otherwise using the clearing object. Refer to the example clearing object below to slow down the processing time from Next Day to Standard.
 
-Example `clearing` Object:
+Example `clearing` Object (to slow down Next Day ACH):
 
 ```raw
 {
@@ -97,15 +158,22 @@ Example `clearing` Object:
 }
 ```
 
-Key Points to Note for Next Day ACH Transfers:
+#### Key Points to Note for Next Day ACH Transfers:
 
-- Available for debit transfers only
-- **Export deadline**: 4 p.m. Central Time
-- Transfer processing time:
+- **Available for**: Debit transfers only
+- **Export deadlines**:
+  - **Veridian Credit Union**:
+    - 4 p.m. CT
+  - **KeyBank**:
+    - 8 a.m. CT
+    - 12 p.m. CT
+    - 2 p.m. CT
+    - 8 p.m. CT
+- **Transfer processing time**:
   - Debit transfers: 1-2 business days
-- Processed on business days (processing unavailable on weekends and banking holidays)
+- **Processing schedule**: Business days only (unavailable on weekends and banking holidays)
 
-##### Next Day ACH Debit Transfer Schedule
+##### Next Day ACH Debit Transfer Schedule for Veridian Credit Union
 
 All times in Central Time (CT) (\*approximate deadlines)
 
@@ -116,6 +184,33 @@ All times in Central Time (CT) (\*approximate deadlines)
 | Tuesday 4 p.m. to Wednesday 4 p.m.  | Wednesday 4 p.m.  | Thursday morning   |
 | Wednesday 4 p.m. to Thursday 4 p.m. | Thursday 4 p.m.   | Friday morning     |
 | Thursday 4 p.m. to Friday 4 p.m.    | Friday 4 p.m.     | Monday morning     |
+
+##### Next Day ACH Debit Transfer Schedule for KeyBank
+
+All times in Central Time (CT) (\*approximate deadlines)
+
+| Transfer created between              | Transfer exported | Transfer processed |
+| ------------------------------------- | ----------------- | ------------------ |
+| Friday 8 p.m. to Monday 8 a.m.        | Monday 8 a.m.     | Tuesday morning    |
+| Monday 8 a.m. to Monday 12 p.m.       | Monday 12 p.m.    | Tuesday morning    |
+| Monday 12 p.m. to Monday 2 p.m.       | Monday 2 p.m.     | Tuesday morning    |
+| Monday 2 p.m. to Monday 8 p.m.        | Monday 8 p.m.     | Tuesday morning    |
+| Monday 8 p.m. to Tuesday 8 a.m.       | Tuesday 8 a.m.    | Wednesday morning  |
+| Tuesday 8 a.m. to Tuesday 12 p.m.     | Tuesday 12 p.m.   | Wednesday morning  |
+| Tuesday 12 p.m. to Tuesday 2 p.m.     | Tuesday 2 p.m.    | Wednesday morning  |
+| Tuesday 2 p.m. to Tuesday 8 p.m.      | Tuesday 8 p.m.    | Wednesday morning  |
+| Tuesday 8 p.m. to Wednesday 8 a.m.    | Wednesday 8 a.m.  | Thursday morning   |
+| Wednesday 8 a.m. to Wednesday 12 p.m. | Wednesday 12 p.m. | Thursday morning   |
+| Wednesday 12 p.m. to Wednesday 2 p.m. | Wednesday 2 p.m.  | Thursday morning   |
+| Wednesday 2 p.m. to Wednesday 8 p.m.  | Wednesday 8 p.m.  | Thursday morning   |
+| Wednesday 8 p.m. to Thursday 8 a.m.   | Thursday 8 a.m.   | Friday morning     |
+| Thursday 8 a.m. to Thursday 12 p.m.   | Thursday 12 p.m.  | Friday morning     |
+| Thursday 12 p.m. to Thursday 2 p.m.   | Thursday 2 p.m.   | Friday morning     |
+| Thursday 2 p.m. to Thursday 8 p.m.    | Thursday 8 p.m.   | Friday morning     |
+| Thursday 8 p.m. to Friday 8 a.m.      | Friday 8 a.m.     | Monday morning     |
+| Friday 8 a.m. to Friday 12 p.m.       | Friday 12 p.m.    | Monday morning     |
+| Friday 12 p.m. to Friday 2 p.m.       | Friday 2 p.m.     | Monday morning     |
+| Friday 2 p.m. to Friday 8 p.m.        | Friday 8 p.m.     | Monday morning     |
 
 _\*Dwolla cannot guarantee an exact deadline for transmission of ACH files. Please be mindful that these are target cut-off times for transfer processing._
 
@@ -131,24 +226,16 @@ Transfer processing is expedited with Same Day ACH, but checks for common return
   href="/docs/balance/same-day-ach"
 />
 
-##### What You Need to Know
+#### Key Points to Note for Same Day ACH Transfers
 
-** Availability:**
-
-- **Transfer Types:** Both debit (sending money out) and credit (receiving money) transfers are eligible for Same Day ACH.
-- **Financial Institutions:** While Dwolla supports Same Day ACH, the actual deadline for submission might vary depending on the bank or credit union.
-
-**Timeframes:**
-
+- **Available for**: Debit and Credit transfers
 - **Export deadlines for Veridian Credit Union**:
   - 9 a.m. CT
   - 1 p.m. CT
   - 3 p.m. CT
-- **Export deadline for Evolve Bank & Trust**:
-  - 1 p.m. CT
-- **Processing Time:** Once a Same Day ACH transfer is submitted before the deadline, it typically takes 0-1 business day to settle, regardless of whether it's a debit or credit.
+- **Processing Time**: Once a Same Day ACH transfer is submitted before the deadline, it typically takes 0-1 business day to settle, regardless of whether it's a debit or credit.
 
-**Important Note:** The [$1 million transaction limit](https://www.dwolla.com/updates/access-faster-payments-with-dwolla-same-day-ach/) is enforced by Nacha, the governing body for ACH transfers.
+**Important Note**: The [$1 million transaction limit](https://www.dwolla.com/updates/access-faster-payments-with-dwolla-same-day-ach/) is enforced by Nacha, the governing body for ACH transfers.
 
 ### Same Day ACH Debit (Payment In)
 
@@ -210,12 +297,12 @@ _\*Dwolla cannot guarantee an exact deadline for transmission of ACH files. Plea
 
 [RTP](/docs/balance/real-time-payments) is a payment method that allows for near-instantaneous transfer processing.
 
-Key Points to Note for RTP Transfers:
+#### Key Points to Note for RTP Transfers
 
-- Available for credit transfers only
+- **Available for**: Credit transfers only
 - **Export deadline**: None
-- Transfer processing time: Funds available within minutes
-- Processed 24/7/365 (business days, weekends and banking holidays)
+- **Transfer processing time**: Funds available within minutes
+- **Processing schedule**: 24/7/365 (business days, weekends and banking holidays)
 
 To initiate a credit transfer with RTP processing, you can include the following processingChannel object in your API request:
 
@@ -247,6 +334,6 @@ This table outlines the expected processing times for different transfer scenari
 
 **Canceling a transfer:** Transfers can be canceled up until they are exported out of the Dwolla Network. To help you determine if a transfer is eligible for cancellation, Dwolla will return a cancel link on the transfer resource.
 
-**Export cut-off:** Please note that while there’s a cut-off time for transfer processing, it’s not a strict deadline. In some cases, the export out of the Dwolla Network may experience delays, causing transfers created slightly after the cut-off time to be included in the same batch. As a best practice, we recommend using the [cancel link](https://developers.dwolla.com/docs/balance/api-reference/transfers#transfer-links) returned on the transfer resource to determine if a transfer is cancellable instead of relying solely on the export timing.
+**Export cut-off:** Please note that while there's a cut-off time for transfer processing, it's not a strict deadline. In some cases, the export out of the Dwolla Network may experience delays, causing transfers created slightly after the cut-off time to be included in the same batch. As a best practice, we recommend using the [cancel link](https://developers.dwolla.com/docs/balance/api-reference/transfers#transfer-links) returned on the transfer resource to determine if a transfer is cancellable instead of relying solely on the export timing.
 
 **ACH return:** Next Day ACH and Same Day ACH expedites the transfer processing time; however, checks for common return codes might experience delays which may increase the risk of losses incurred from return codes.
