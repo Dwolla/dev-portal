@@ -16,7 +16,7 @@ import VANsImage from "../../assets/images/content-images/VanBlog_graphics_02_Im
 
 # Virtual Account Numbers
 
-Virtual accounts are virtual subledgers within one physical depository account that can be utilized in a variety of ways. Virtual Account Numbers (VANs) allow clients to provide a routing and account number that can be used to allow ACH transactions to and from a [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source). The routing and account number is tied to a Dwolla Client’s Master Balance, or one of their [Verified Customer](https://developers.dwolla.com/concepts/customer-types#verified-customer)'s balances. Virtual accounts hold no funds—they are simply a mechanism to route funds into a single Dwolla Balance. Dwolla’s Virtual Account Number feature performs two crucial functions:
+Virtual accounts are virtual subledgers within one physical depository account that can be utilized in a variety of ways. Virtual Account Numbers (VANs) allow clients to provide a routing and account number that can be used to allow ACH transactions to and from a [Dwolla Balance](https://developers.dwolla.com/concepts/balance-funding-source). The routing and account number is tied to a Dwolla Client's Master Balance, or one of their [Verified Customer's](https://developers.dwolla.com/concepts/customer-types#verified-customer) balances. Virtual accounts hold no funds—they are simply a mechanism to route funds into a single Dwolla Balance. Dwolla's Virtual Account Number feature performs two crucial functions:
 
 - Eliminate the need to deposit funds into an intermediary depository account before transferring funds in or out of your Dwolla Balance.
 - Keep transaction data separate and organized within the Dwolla Balance.
@@ -105,24 +105,7 @@ Adding funds into a balance will be represented by a new transfer where the **so
         "value": "10.00",
         "currency": "USD"
     },
-    "created": "2021-12-01T16:39:06.200Z",
-    "achDetails": {
-        "source": {
-            "addenda": {
-                "values": [
-                    "addenda"
-                ]
-            },
-            "beneficiaryName": "Fake name",
-            "companyName": "Fake company name",
-            "companyEntryDescription": "PAYMENT",
-            "effectiveDate": "2021-12-01",
-            "postingData": "Fake company name:Fake discretionary data:Fake name",
-            "routingNumber": "222222226",
-            "traceId": "222222225926346"
-        },
-        "destination": {}
-    }
+    "created": "2021-12-01T16:39:06.200Z"
 }
 ```
 
@@ -155,113 +138,24 @@ Withdrawals from the Dwolla Balance will be represented by a new transfer where 
         "value": "10.00",
         "currency": "USD"
     },
-    "created": "2021-12-01T16:39:06.200Z",
-    "achDetails": {
-        "source": {},
-        "destination": {
-            "addenda": {
-                "values": [
-                    "addenda"
-                ]
-            },
-            "beneficiaryName": "Fake name",
-            "companyName": "Fake company name",
-            "companyEntryDescription": "PAYMENT",
-            "effectiveDate": "2021-12-01",
-            "postingData": "Fake company name:Fake discretionary data:Fake name",
-            "routingNumber": "222222226",
-            "traceId": "222222225926346"
-        }
-    }
+    "created": "2021-12-01T16:39:06.200Z"
 }
 ```
 
 Each new transfer will trigger a `bank_transfer_created` or `customer_bank_transfer_created` <span><ContentTooltip preset="webhook" >webhook</ContentTooltip></span>. The creation webhooks will be triggered approximately 30 minutes prior to any completed webhook event of `bank_transfer_completed` or `customer_bank_transfer_completed`.
 
-Transfers will be created in a `pending` or `failed` status depending on whether the customer record or VAN has been deactivated, suspended, or removed. Pending transfers will be processed automatically during the following times (subject to change).
+Transfers will be created in a `pending` or `failed` status depending on whether the customer record or VAN has been deactivated, suspended, or removed.
 
-- 11 a.m. CT
-- 1:15 p.m. CT
-- 5:45 p.m. CT
-
-Additional details about an external transaction will be available in the [achDetails JSON object](https://developers.dwolla.com/api-reference/transfers#achdetails-and-addenda-object) when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Either the source or the destination will be present in the object depending on the direction of the funds transfer.
-
-#### ACH Details Optional Fields
-
-| Name                      | Description                                                                                                                                                                                       |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| companyEntryDescription   | Describes the purpose of the transaction. Values can include but are not limited to: `REVERSAL`, `RECLAIM`, `NO CHECK`, `AUTOENROLL`, `REDEPCHECK`, `RETURN FEE`, `RETRY PMNT`, and `HEALTHCARE`. |
-| routingNumber             | Routing number of Originating Depository Financial Institution (ODFI)                                                                                                                             |
-| beneficiaryName           | Beneficiary of the transaction's name. In general, should match the user onboarded to the Platform's name.                                                                                        |
-| companyDiscrestionaryData | Used internally by ODFI to describe the transaction.                                                                                                                                              |
-| companyId                 | Numeric identifier of originator.                                                                                                                                                                 |
-| companyName               | Name of the originator.                                                                                                                                                                           |
-
-#### Example `achDetails` Object
-
-```raw
-{
-  ...
-  "achDetails": {
-    "source": {
-      "addenda": {
-        "values": [
-          "string"
-        ]
-      },
-      "beneficiaryName": "string",
-      "companyId": "string",
-      "companyName": "string",
-      "companyEntryDescription": "PAYMENT",  // will differ depending on originator
-      "effectiveDate": "YYYY-MM-DD",
-      "postingData": "string:string:string", // suggested memo line, fields are companyName:companyDiscretionaryData:beneficiaryName
-      "routingNumber": "string",             // of originating bank
-      "traceId": "string"
-    },
-    "destination": {
-      // same fields as source
-    }
-  }
-}
-```
+Additional details about an external transaction will be available in the when [retrieving the transfer](https://developers.dwolla.com/api-reference/transfers/retrieve) from the API. Either the source or the destination will be present in the object depending on the direction of the funds transfer.
 
 ## Test Virtual Account Number transfers
 
-External transfers can be simulated in the Dwolla Sandbox by using the sandbox-simulations endpoint with a request body that includes: a `type` field set to `virtual` and a `transfers` field with a list of transfers to process (see example below). Up to 10 transfers at a time can be included in one call to the sandbox simulations endpoint. Transfers will be created in an initial status of `pending` and will be updated to `processed` based on the times outlined below. A `failed` status can occur when the virtual account number (VAN) has been removed, the Customer has been `deactivated` or `suspended`, or when an ACH return code is assigned. Reference the [Testing Virtual Account Transfer Failures](#test-virtual-account-number-transfer-failures) section for more information on how to replicate a `failed` status.
+External transfers can be simulated in the Dwolla Sandbox by using the sandbox-simulations endpoint with a request body that includes: a `type` field set to `virtual` and a `transfers` field with a list of transfers to process (see example below). Up to 10 transfers at a time can be included in one call to the sandbox simulations endpoint. Transfers will be created and processed immediately.
 
 <AlertBar variation="info">
   To request Sandbox access to test VANs, please contact{" "}
   <a href="mailto:support@dwolla.com">support@dwolla.com</a>.
 </AlertBar>
-
-Pending transfers will be processed automatically during the following times (all in Central Time):
-
-- 2 a.m.
-- 5 a.m.
-- 8 a.m.
-- 11 a.m.
-- 1:15 p.m.
-- 5:45 p.m.
-- 8 p.m.
-
-<AlertBar variation="info">
-  The times listed above only apply to the Sandbox testing environment. In
-  Production, external ACH transfers are processed at 11 a.m., 1:15 p.m. and
-  5:45 p.m. (Central Time). This does not apply to any faster payment
-  transactions. All times are subject to change.
-</AlertBar>
-
-##### Optional fields and default values for VAN transfers
-
-| Optional Field           | Default Value                                                                                                                                         |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| companyEntryDescription  | **Note:** The default value is an empty string `""` . To simulate how a reversal transaction would look, set `companyEntryDescription` to "REVERSAL". |
-| routingNumber            | `"222222226"`                                                                                                                                         |
-| addenda                  | `"addenda"`                                                                                                                                           |
-| beneficiaryName          | `"Fake name"`                                                                                                                                         |
-| companyDiscretionaryData | `"Fake discretionary data"`                                                                                                                           |
-| companyId                | `"random integer value"`                                                                                                                              |
-| companyName              | `"Fake company name"`                                                                                                                                 |
 
 ##### Example VANs transfer processing
 
@@ -283,15 +177,6 @@ Authorization: Bearer {Your access token}
             "amount": {
                 "currency": "USD",
                 "value": "1.11"
-            },
-            "achDetails": {
-                "companyEntryDescription": "AUTOENROLL",
-                "companyName": "Test Business Name",
-                "companyDiscretionaryData": "Test discretionary data",
-                "beneficiaryName": "Test Name",
-                "routingNumber": "012256789",
-                "addenda": "addenda example",
-                "companyId": "0012422"
             }
         }
     ]
@@ -304,16 +189,14 @@ HTTP/1.1 202 Accepted
 
 ## Test Virtual Account Number transfer failures
 
-Similar to [testing ACH bank transfer failures](https://developers.dwolla.com/docs/balance/testing/transfers#test-bank-transfer-failures), you can test a transfer failure with a virtual account number by specifying an "R" code in the "name" parameter when creating a VAN (e.g. “R08 Failure Test VAN”). The return code must be at the beginning of the VAN funding source’s name. **Note** that it is not case sensitive.
+Similar to [testing ACH bank transfer failures](https://developers.dwolla.com/docs/balance/testing/transfers#test-bank-transfer-failures), you can test a transfer failure with a virtual account number by specifying an "R" code in the "name" parameter when creating a VAN (e.g. “R01”). The return code must be at the beginning of the VAN funding source’s name. **Note** that it is not case sensitive.
 
 ##### List of codes for testing VAN transfer failures
 
-| Code | Description                                                                                                                                                                                                                            | When is the failure triggered?                                                      |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| R01  | Insufficient Funds: This value is used to simulate funds failing from the source bank account (ACH debit).                                                                                                                             | During processing of pending transactions.                                          |
-| R02  | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (credit). The funding source will be automatically removed from Dwolla when this return code is triggered. | During processing of pending transactions.                                          |
-| R08  | Payment Stopped: The person who owns the account has placed a stop payment with their bank.                                                                                                                                            | “Immediately” triggered upon transfer creation by funding source naming convention. |
-| R10  | Customer Advises Unauthorized, Improper, Ineligible, or Part of an Incomplete Transaction: The person who owns the bank account has told their bank account that the transaction was unauthorized.                                     | “Immediately” triggered upon transfer creation by funding source naming convention. |
+| Code | Description                                                                                                                                                                                                                            | When is the failure triggered?             |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| R01  | Insufficient Funds: This value is used to simulate funds failing from the source bank account (ACH debit).                                                                                                                             | During processing of pending transactions. |
+| R02  | No Account/Unable to Locate Account: This value is primarily used to simulate funds failing to the destination bank account (credit). The funding source will be automatically removed from Dwolla when this return code is triggered. | During processing of pending transactions. |
 
 ## Create a VAN funding source for an account
 
